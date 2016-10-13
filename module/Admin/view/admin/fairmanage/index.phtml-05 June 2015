@@ -1,0 +1,2899 @@
+<!-- Navigation -->
+
+<style>
+.errorText {
+border:1px solid red;
+#cabGeneral input[type="text"]{height}
+}
+
+</style>
+ 
+
+    
+    <div id="page-wrapper">
+        <h4 class="fair_management_head"><b></b></h4>
+                        <div class="portlet portlet-default">
+                            <div class=" ">
+                                 
+                                    <i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+									<h5 style="background: #E2E2E2;padding:7px;margin: 0;" class="fair_management_filterHead"></h5>
+                                
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="portlet-body">
+                                <form id="fairFilter">
+                                <div id="myTabContent" class="tab-content">
+                                    <div class="tab-pane fade in active" id="cabGeneral">
+                                        <div class="container col-sm-col-sm-offset-1" style="margin: 10px auto 0px !important;">
+										<div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="cab-vehicleNo" class="col-sm-2 control-label labelalign vehicleNo_fairFilterHeading"></label>
+                                                  <div class="col-sm-4">
+                                                     <input id="vehicleNo" type="text" class=" form-control fairmanageFilter" placeholder="Vehicle No">                                    
+                                                  </div>
+                                                 
+ 												    <label id="cab-vehicleModel" class="col-sm-2 control-label labelalign vehicleModel_fareFilterHeading"></label>
+                                                   <div class="col-sm-4">
+                                                         <input id="vehicleModel" type="text" class=" form-control fairmanageFilter" placeholder="Vehicle Model">     
+                                                    </div>
+                                                 </div>
+                                             </div>
+											 
+											 <div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="cab-Registration Date" class="col-sm-2 control-label labelalign registrartionDate_fareFilterHeading"></label>
+                                                  <div class="col-sm-2">
+												  
+                                                     <input id="since" type="text" class=" form-control fairmanageFilter" placeholder="Since">                                    
+                                                  </div>
+												  <div class="col-sm-2">
+												  
+                                                     <input id="to" type="text" class=" form-control fairmanageFilter" placeholder="To">                                    
+                                                  </div>
+                                                 
+ 												    <label id="cab-country" class="col-sm-2 control-label labelalign country_fairFilterHeading"></label>
+                                                   <div class="col-sm-4">
+													   <div class="input-group">
+														<input type="text" id="cab-countryText" class="form-control fairmanageFilter" placeholder="Country">
+														<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+													   </div> 
+                                                    </div>
+                                                 </div>
+                                             </div>
+											  <div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="cab-state" class="col-sm-2 control-label labelalign state_fairFilterHeading"></label>
+                                                  <div class="col-sm-4">
+												  
+                                                      <input style="font-size:12px;" id="cab-stateText" type="text" class=" form-control fairmanageFilter" placeholder="State">                                    
+                                                  </div>
+                                                 
+ 												    <label id="cab-city" class="col-sm-2 control-label labelalign fairmanageFilter city_fairFilterHeading"></label>
+                                                   <div class="col-sm-4">
+                                                        <div class="input-group">
+ 													<input type="text" id = "cab-cityText" class="form-control fairmanageFilter" placeholder="City">
+													<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+                                                </div> 
+                                                    </div>
+                                                 </div>
+                                             </div>
+											   <div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												 
+                                                  <div class="col-sm-4 pull-right">
+                                                     <button type="button" class="btn btn-red defaultbtnsearch " id="searchFairmanage"><i class="fa fa-search" style="color:#fff; margin:5px"></i>Search</button>
+					<button type="reset" class="btn btn-red defaultbtnsearch " id="clearFairmanage"><i class="fa fa-search" style="color:#fff; margin:5px"></i>Clear</button>
+													 
+                                                  </div>
+												  
+												   
+                                                 
+ 												    
+                                                  
+                                                 </div>
+                                             </div>
+											 
+											 
+											 
+											 
+										</div>
+                                    </div>
+                                </div></form>
+                            </div>
+                            <!-- /.portlet-body -->
+                        </div>
+                        <!-- /.portlet -->
+ 
+                    <!-- /.col-lg-12 -->
+                		
+					
+					
+        
+         <div class=" ">
+            <table id="Cab-Cabtype" class="table table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th class="sno_fairTable"></th>
+                        <th class="cabType_fairTable"></th>
+                        <th class="country_fairTable"></th>
+                        <th class="state_fairTable"></th>
+                        <th class="city_fairTable"></th>
+						<th class="ratePerKm_fairTable"></th>
+						<th class="ratePerHour_fairTable"></th>
+						<th class="minimumCharge_fairTable"></th>
+						<th class="action_fairTable" style="width:110px !important;"></th>
+                      
+                    </tr>
+                </thead>
+
+                <tfoot>
+                    <tr>
+                        <th class="sno_fairTable"></th>
+                        <th class="cabType_fairTable"></th>
+                        <th class="country_fairTable"></th>
+                        <th class="state_fairTable"></th>
+                        <th class="city_fairTable"></th>
+						<th class="ratePerKm_fairTable"></th>
+						<th class="ratePerHour_fairTable"></th>
+						<th class="minimumCharge_fairTable"></th>
+						<th class="action_fairTable" style="width:110px !important;"></th>
+                    </tr>
+                </tfoot>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        <!--   <div class="row">
+				<div class="col-lg-12 addCabType">
+					<button class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Add Unit</button>
+				</div>
+			</div> -->
+			</div>
+        
+		
+				
+		
+		<!--- vehicle Fair manage  -->
+		
+		<!--3.3.1 Fair management Start-->
+	<div class="col-sm-8" id='vehicleFairmanage' style="display:none;padding: 20px;border-radius: 10px;background:#fff; top:40px !important;">
+		<h1 class="fa fa-times closbtn b-close"></h1>
+        <div class="col-lg-12">
+			<ul id="userTab" class="nav nav-tabs">
+				<li class="active"><a href="#PackageCalculation" id="PackageCalculationPopup" data-toggle="tab" class="package_head"></a></li>
+				<li class=""><a href="#distanceVehicle" id="distanceVehiclep" data-toggle="tab" class="distance_head"></a></li>
+				<li class=""><a href="#HourVehicle" id="HourVehiclep" data-toggle="tab" class="hour_head"></a></li>
+				<li class=""><a href="#Distance_Hour" id="DistanceHourp" data-toggle="tab" class="distanceHour_head"></a></li>
+				<li class=""><a href="#Distance_Waiting" id="DistanceWaitingp" data-toggle="tab" class="distanceWaiting_head"></a></li>
+				<li class=""><a href="#basicVehicle" id="basicVehiclePopup" data-toggle="tab" class="basic_head"></a></li>
+				<li class=""><a href="#PremiumVehicle" id="PremiumVehiclep" data-toggle="tab" class="premium_head"></a></li>
+				<li class=""><a href="#Fixed_RoutesVehicle" id="Fixed_RoutesVehiclep" data-toggle="tab" class="fixedRoute_head"></a></li>
+				<li class=""><a href="#Different_Shares" id="differentShares" data-toggle="tab" class="share_head"></a></li>
+				
+			</ul>
+            <div id="userTabContent" class="tab-content">
+							
+							
+							
+							<div class="tab-pane fade in active" id="PackageCalculation">
+ 								<div class="row border" >
+									<div class="col-sm-12"  style="margin:20px auto 4px; ">
+									
+										<div class="col-sm-12 col-md-12" >
+											<div class="portlet-body">
+                                            <form role="form" style="padding:10px;">
+                                                  <h4 class="localHire_package"></h4>
+													<div class="form-inline">
+                                             		 <div class="input-group">
+												<input type="radio" name="localPackage" value="Distance" class="form-control inputsize" id="localpackage_Distance">
+                                                   <label class="radio-inline distance_localHirePackage"></label>
+													</div>
+													<div class="input-group">
+													<input type="radio" name="localPackage" value="Hour"class="form-control inputsize" id="localpackage_Hour">
+                                                    <label class="radio-inline hour_localHirePackage"></label>
+                                                     </div>
+													 <div class="input-group">
+													<input type="radio" name="localPackage" value="Distance_Hour" class="form-control inputsize" id="localpackage_Distance_Hour">
+                                                    <label class="radio-inline distanceHour_localHirePackage"></label>
+                                                     </div>
+													 <div class="input-group">
+													<input type="radio" name="localPackage" value="Distance_Waiting" class="form-control inputsize" id="localpackage_Distance_Waiting">
+                                                    <label class="radio-inline distanceWaiting_localHirePackage"></label>
+                                                     </div>
+													 </div> 
+                                            	 
+											
+													<h4 class="point_package"></h4>
+												<div class="form-inline">
+                                             		 <div class="input-group">
+												<input type="radio" name="pointToPointPackage" value="Distance" class="form-control inputsize" id="pointToPointPackage_Distance">
+                                                   <label class="radio-inline distance_pointPackage"></label>
+													</div>
+													<div class="input-group">
+													<input type="radio" name="pointToPointPackage" value="Hour"class="form-control inputsize" id="pointToPointPackage_Hour">
+                                                    <label class="radio-inline hour_pointPackage"></label>
+                                                     </div>
+													 <div class="input-group">
+													<input type="radio" name="pointToPointPackage" value="Distance_Hour" class="form-control inputsize" id="pointToPointPackage_Distance_Hour">
+                                                    <label class="radio-inline distanceHour_pointPackage"></label>
+                                                     </div>
+													 <div class="input-group">
+													<input type="radio" name="pointToPointPackage" value="Distance_Waiting" class="form-control inputsize" id="pointToPointPackage_Distance_Waiting">
+                                                    <label class="radio-inline distanceWaiting_pointPackage"></label>
+                                                     </div>
+													 </div>
+													 
+													<h4 class="airport_package"></h4>
+													<div class="form-inline">
+                                             		 <div class="input-group">
+												<input type="radio" name="airportPackage" value="Distance" class="form-control inputsize" id="airportTransferPackage_Distance">
+                                                   <label class="radio-inline distance_airportPackage"></label>
+													</div>
+													<div class="input-group">
+													<input type="radio" name="airportPackage" value="Hour"class="form-control inputsize" id="airportTransferPackage_Hour">
+                                                    <label class="radio-inline hour_airportPackage"></label>
+                                                     </div>
+													 <div class="input-group">
+													<input type="radio" name="airportPackage" value="Distance_Hour" class="form-control inputsize" id="airportTransferPackage_Distance_Hour">
+                                                    <label class="radio-inline distanceHour_airportPackage"></label>
+                                                     </div>
+													 <div class="input-group">
+													<input type="radio" name="airportPackage" value="Distance_Waiting" class="form-control inputsize" id="airportTransferPackage_Distance_Waiting">
+                                                    <label class="radio-inline distanceWaiting_airportPackage"></label>
+                                                     </div>
+													 </div>
+													 
+													 
+													 <h4 class="outstation_package"></h4>
+													<div class="form-inline">
+                                             		 <div class="input-group">
+												<input type="radio" name="outstationPackage" value="Distance" class="form-control inputsize" id="outstationPackage_Distance">
+                                                   <label class="radio-inline distance_outstationPackage"></label>
+													</div>
+													<div class="input-group">
+													<input type="radio" name="outstationPackage" value="Hour"class="form-control inputsize" id="outstationPackage_Hour">
+                                                    <label class="radio-inline hour_outstationPackage"></label>
+                                                     </div>
+													 <div class="input-group">
+													<input type="radio" name="outstationPackage" value="Distance_Hour" class="form-control inputsize" id="outstationPackage_Distance_Hour">
+                                                    <label class="radio-inline distanceHour_outstationPackage"></label>
+                                                     </div>
+													 <div class="input-group">
+													<input type="radio" name="outstationPackage" value="Distance_Waiting" class="form-control inputsize" id="outstationPackage_Distance_Waiting">
+                                                    <label class="radio-inline distanceWaiting_outstationPackage"></label>
+                                                     </div>
+													 </div>
+													
+												<div class="row ">
+													<div class="col-sm-3"></div>
+													<div class="col-sm-3"></div>
+													<div class="col-sm-2 pull-right" style="margin-right:10px;">
+																<a href="#distanceVehicle" id="packagecalc"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;display: block;">Next</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="package_calc_cab_save" style="margin-bottom:10px;display: none;">
+																<a href="#"   data-toggle="tab"><button class="btn btn-info form-control" >Save</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="package_calc_vehicle_save" style="display:none;" style="padding:0;">
+															<a href="#"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;">Save</button></a>
+													</div>
+												</div>
+													
+                                            </form>
+                                            
+                                           
+                                        </div>
+										</div>
+										<div class="col-sm-4 col-md-4"></div>
+										</div>
+										
+									</div>
+							</div>
+							
+							
+							
+							
+							<div class="tab-pane fade in" id="distanceVehicle">
+                                <div class="row border">
+                                    <div class="col-sm-12 col-md-12"  style="margin:20px auto 5px;">
+										<div class="portlet-body" style="padding:10px;">
+                                            <h4 class="distanceRates_distance"></h4>
+                                           	<div class="form-group clearfix">
+                                               	<div class="col-sm-3" style="margin-right:3px;">
+                                                	<label class="ratePerKm_distance"></label>
+                                                    	<div class="input-group" style="margin-left:3px;">
+                                                   			<span class="input-group-addon ratePerKmRupees_distance"></span>
+                                                    			<input type="text" class="form-control" id="cab_vehicle_rate_per_km" >
+                                              			</div>
+                                                </div><!--
+												<div class="col-sm-3" style="display:none; margin-right:3px;">
+												<label class="">First Km Rate</label>
+													<div class="input-group">
+														<span class="input-group-addon">Rs</span>
+															<input type="text" class="form-control" id="first_km_rate">
+													</div>
+												</div>-->
+												<div class="col-sm-3">
+                                                	<label class="firstKmRate_distance"></label>
+													<div class="input-group">
+														 <span class="input-group-addon"></span>
+															<input type="text" class="form-control" id="cab_vehicle_minmum_distance">
+													</div>
+                                                </div>
+												<div class="col-sm-3" style="margin-left:3px;">
+													<label class="minimumCharge_distance"></label>
+													<div class="input-group">
+														<span class="input-group-addon minimumChargeRupees_distance"></span>
+															<input type="text" class="form-control" id="cab_vehicle_minmum_fare">
+													</div>
+												</div>
+                                            </div>
+											<div class="col-sm-12">	 
+												<form class="form-inline" role="form" >
+                                                <div class="row" style="margin:0">
+													<input type="checkbox" name="round_up_km" style="margin-right:10px;"class="form-control inputsize">
+													<label class="roundUpKm_distance"></label>
+												</div> 
+												<hr />
+												<!--<label class="control-label" style="margin-right:30px;">Cancellation Fee</label>-->
+												<h4 class="cancellationFees_distance"></h4>
+												<div class="input-group">	 
+													<input type="radio" name="cancellationFee" value="%" class="form-control inputsize cancellationCl">
+													<label class="checkbox-inline cancellationFeePercent_cancellation"></label>
+												</div>
+												<div class="input-group">
+													<input type="radio" name="cancellationFee" value="Rs" class="form-control inputsize cancellationCl">
+													<label class="checkbox-inline cancellationFeeRupees_cancellation"></label>	
+                                                </div>
+                                                  
+												<div class="input-group">
+													<span class="input-group-addon" id="cancellationUnit">Rs</span>
+														<input type="text" class="form-control" id="cab_vehicle_cancellation_charge" style="margin-top:0px;" >
+												</div>
+                                                <hr />
+											    <h4 class="accumulated_distance"></h4>
+												<p class="accumulated_distance_detail"></p>
+                                                <div class="row" style="margin:0">
+													<input type="checkbox" name="accum_instance" style="margin-right:10px;"class="form-control inputsize">
+                                                	<label class="accumulated_instance"></label>
+												</div> 
+												
+													 
+												</form>
+												<hr/>
+										<div class="row">
+												<div class="col-sm-3" style="margin-left:15px;">
+                                                	<label class="km_upto_accumulated"></label>
+                                                      
+                                                     </div>
+													<div class="col-sm-3" style="margin-left:15px;">
+                                                	<label class="rate_per_km_accumulated"></label>
+                                                    	 
+                                                    </div>
+											<div class="col-sm-3" style="margin-left:15px;></div>
+											<div class="col-sm-3">&nbsp;</div>
+										</div>	
+										
+										<div id="mainDistanceDiv">		  
+										<div class="row form-group">
+												<div class="col-sm-3" style="margin-left:15px;">
+                                                	 
+                                                     	<input type="text" class="form-control" id="kms_1"  >
+                                                     </div>
+													<div class="col-sm-3"  style="margin-left:15px;">
+                                                	 
+                                                    	<div class="input-group">
+                                                   			<span class="input-group-addon ratePerKmRupees_distance"></span>
+                                                    			<input type="text" class="form-control" id="rs_1" >
+																
+                                              			</div>
+                                                    </div>
+											<div class="col-sm-3"  id="removeDistanceFields"><a href="#"><i class="fa fa-trash-o fa-2x"></i></a></div>
+											<div class="col-sm-3">&nbsp;</div>
+										</div>
+										
+										
+										<div class="row form-group">
+												<div class="col-sm-3">
+                                                	 
+                                                     	<input type="text" class="form-control"  id="kms_2">
+                                                     </div>
+													<div class="col-sm-3">
+                                                	 
+                                                    	<div class="input-group">
+                                                   			<span class="input-group-addon">Rs</span>
+                                                    			<input type="text" class="form-control" id="rs_2" >
+																
+                                              			</div>
+                                                    </div>
+											<div class="col-sm-3">
+											<div class="col-sm-4  addButton" style="padding:0;" id="add_2">
+												<a href="#" class="btn btn-info form-control">Add</a>
+											</div>
+											</div>
+											<div class="col-sm-3">&nbsp;</div>
+										</div>
+										
+										</div>
+										
+										<div id="appended_text_form"></div>
+													  
+										<div class="row ">
+													<div class="col-sm-3"></div>
+													 <div class="col-sm-3"></div>
+													<div class="col-sm-2 pull-right" style="margin-right:10px;">
+																<a href="#HourVehicle" id="distanceVehiclen"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;display: block;">Next</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="distance_fair_manage_cab_save" style="margin-bottom:10px;display: none;">
+																<a href="#"   data-toggle="tab"><button class="btn btn-info form-control" >Save</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="distance_fair_manage_vehicle" style="margin-bottom:10px;" style="padding:0;">
+															<a href="#"  data-toggle="tab"><button class="btn btn-info form-control" >Save</button></a>
+													</div>
+										</div>			   
+                                                    
+													</div>
+
+
+                                                </div> 
+                                            
+                                           
+                                        </div>
+									</div>
+                                   
+                            </div>
+							
+							
+							
+							<div class="tab-pane fade in" id="HourVehicle">
+
+                                  <div class="row border">
+                                    <div class="col-sm-12 col-md-12"  style="margin:20px auto 0; padding:10px;">
+										<div class="portlet-body">
+                                            
+                                            
+										<div class="col-sm-12">	
+											
+											 <form class="form-inline" role="form" >
+											 <h4 class="hourlyRates_hour"></h4>
+											 <h5 class="ratePerHour_hour"></h5>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon ratePerHourRupees_hour"></span>
+                                                    <input type="text" id="cab_vehicle_rate_hour" class="form-control" style="margin-top:0px;">
+                                                    
+                                                </div> 
+												<!--
+                                                <div class="row" style="margin:10px 0;display:none;">
+                                                	<div class="input-group">
+													 <input type="checkbox" value="hourDistance" class="form-control inputsize">
+                                                     <label class="checkbox-inline">Sum hour and distance rates  </label>
+                                                           </div>
+														   <div class="input-group">
+														   
+                                                      <input type="checkbox" value="Hour" class="form-control inputsize">
+                                                        <label class="checkbox-inline">
+                                                           Hour rates by duration
+                                                        </label> 
+ 																
+                                                    </div>
+													
+													                                                	<div class="input-group">
+													 <input type="checkbox" value="hourDistance" class="form-control inputsize">
+                                                     <label class="checkbox-inline">Sum rates by distance  </label>
+                                                           </div>
+												</div> -->
+												<hr/>
+												
+											<h4 class="waitingTime_hour"></h4>	
+											<p class="waitingTimeDetail_hour"></p>
+                                            </form>
+											 
+											<div class="row">
+													<div class="col-sm-3" style="margin-left:15px;">
+														<label class="waitingMinutesUpTo_hour"></label>
+														  
+														 </div>
+														<div class="col-sm-3">
+														<label class="waitingFee_hour"></label>
+															 
+														</div>
+												<div class="col-sm-3"></div>
+												<div class="col-sm-3">&nbsp;</div>
+											</div>	
+											<div id="mainWaitningFee">		  
+											<div class="row form-group">
+													<div class="col-sm-3">
+														 
+															<input type="text" class="form-control" id="fair_waiting_minutes_1">
+														 </div>
+														<div class="col-sm-3">
+														 
+															<div class="input-group">
+																<span class="input-group-addon waitingFeeRupees_hour"></span>
+																	<input type="text" class="form-control" id="fair_waiting_fees_1">
+																	
+															</div>
+														</div>
+												<div class="col-sm-3" id="removeWaitingFeeFields"><a href="#"><i class="fa fa-trash-o fa-2x"></i></a></div>
+												<div class="col-sm-3">&nbsp;</div>
+											</div>
+											
+											<div class="row form-group">
+													<div class="col-sm-3" >
+														 
+															<input type="text" class="form-control" id="fair_waiting_minutes_2">
+													</div>
+														<div class="col-sm-3" style="margin-left:15px;">
+														 
+															<div class="input-group">
+																<span class="input-group-addon">Rs</span>
+																	<input type="text" class="form-control" id="fair_waiting_fees_2">
+																	
+															</div>
+														</div>
+												<div class="col-sm-3">
+												<div class="col-sm-4 addWaitingFee" id="addWaitingFee_2" style="padding:0; ">
+													<a href="#" class="btn btn-info form-control">Add</a>
+												</div>
+												</div>
+												<div class="col-sm-3">&nbsp;</div>
+											</div>
+											</div>
+											<div id="append_waiting_fee"></div>			  
+										 	  
+                                                    
+										</div>
+
+
+                                                </div> 
+                                            
+                                           
+                                        </div>
+										
+										<div class="row ">
+												<div class="col-sm-8"></div>
+													<div class="col-sm-2 pull-right" style="margin-right:20px;">
+														<a href="#Distance_Hour" id="HourVehiclen"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:15px;display: block;">Next</button></a>
+													</div>
+													<div class="col-sm-2  pull-right" id="fair_manage_cab_save" style="display:none;">
+														<a href="#" data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;">Save</button></a>
+													</div>
+													<div class="col-sm-2  pull-right" id="fair_manage_save" style="display:none;">
+														<a href="#" data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px; ">Save</button></a>
+													</div>
+												
+										</div>
+										
+									</div>
+									
+                            </div>
+							
+							
+							
+							<div class="tab-pane fade in" id="Distance_Hour">
+									<div class="row border" >
+										<div class="col-sm-12 col-md-12"  style="margin:20px auto 5px; padding:10px;;">
+											<div class="portlet-body">
+												<h4 class="distanceRates_distanceHour"></h4>
+												<div class="form-group clearfix">
+													<div class="col-sm-3" style="margin-right:3px;">
+														
+														<label class="ratePerKm_distanceHour"></label>
+															<div class="input-group">
+																<span class="input-group-addon ratePerKmRupees_distanceHour"></span>
+																	<input type="text" class="form-control" id="rate_per_km_dh" style="margin-right:3px !important;" >
+															</div>
+														</div>
+														<div class="col-sm-3" style="margin-right:3px;">
+														<label class="firstKmRate_distanceHour"></label>
+														
+															<div class="input-group">
+																 <span class="input-group-addon"></span>
+																	<input type="text" class="form-control" id="minmum_distance_dh">
+															</div>
+														</div>
+														<div class="col-sm-3">
+														<label class="minimumFare_distanceHour"></label>
+															<div class="input-group">
+																<span class="input-group-addon minimumFareRupees_distanceHour"></span>
+																	<input type="text" class="form-control" id="minmum_fare_dh">
+															</div>
+														</div>
+												</div>
+												<hr>
+												
+												<form class="form-inline" role="form">
+													<h4 class="hourlyRates_distanceHour"></h4>
+													<h5 class="ratePerHour_distanceHour"></h5>
+													<div class="input-group">
+														<span class="input-group-addon ratePerHourRupees_distanceHour" ></span>
+														<input type="text" id="rate_per_hour_dh" class="form-control" style="margin-top:0px;">
+														
+													</div>
+												</form>
+												
+												<div class="row ">
+													<div class="col-sm-3"></div>
+													<div class="col-sm-3"></div>
+													<div class="col-sm-2 pull-right" style="margin-right:10px;">
+														<a href="#Distance_Waiting" id="Distance_Hourn"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;display: block;">Next</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="cab_distance_hour_save" style="margin-bottom:10px;display:none;">
+																<a href="#" data-toggle="tab"><button class="btn btn-info form-control" >Save</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="vehicle_distance_hour_save" style="display:none;margin-bottom:10px;padding:0;" >
+															<a href="#"  data-toggle="tab"><button class="btn btn-info form-control" >Save</button></a>
+													</div>
+												</div>	
+												
+
+											</div> 
+                                            
+                                           
+                                        </div>
+									</div>
+							</div>
+							
+							
+							
+							<div class="tab-pane fade in" id="Distance_Waiting">
+									<div class="row border" >
+										<div class="col-sm-12 col-md-12"  style="margin:20px auto 5px; padding:10px;">
+											<div class="portlet-body">
+												<h4 class="distanceRate_distanceWaiting"></h4>
+												<div class="form-group clearfix">
+													<div class="col-sm-3" style="margin-right:3px;">
+													
+														<label class="ratePerKm_distanceWaiting"></label>
+															<div class="input-group">
+																<span class="input-group-addon ratePerKmRupees_distanceWaiting"></span>
+																	<input type="text" class="form-control" id="rate_per_km_dw" >
+															</div>
+														</div>
+														<div class="col-sm-3" style="margin-right:3px;">
+														<label class="firstKmRate_distanceWaiting"></label>
+														
+															<div class="input-group">
+																 <span class="input-group-addon"></span>
+																	<input type="text" class="form-control" id="minmum_distance_dw">
+															</div>
+														</div>
+														<div class="col-sm-3">
+														<label class="minimumFare_distanceWaiting"></label>
+															<div class="input-group">
+																<span class="input-group-addon minimumFareRupees_distanceWaiting"></span>
+																	<input type="text" class="form-control" id="minmum_fare_dw">
+															</div>
+														</div>
+												</div>
+												<div class="col-sm-12">
+												 
+													<hr/>
+													<h4 class="waitTime_distanceWaiting"></h4>	
+											<p class="waitTimeDetail_distanceWaiting"></p>
+											<div class="row">
+														<div class="col-sm-3" style="margin-left:15px;">
+															<label class="minuteUpTo_distanceWaiting"></label>
+														</div>
+														<div class="col-sm-3">
+															<label class="fee_distanceWaiting"></label>
+														</div>
+														<div class="col-sm-3">
+															<label class="afterFees_distanceWaiting"></label>
+														</div>
+														<div class="col-sm-3"></div>
+														<div class="col-sm-3">&nbsp;</div>
+											</div>
+											
+											<div id="mainWaitningFee11">		  
+												<div class="row form-group">
+															<div class="col-sm-3" style="margin-left:15px; margin-top:0px;">
+																<div class="input-group">
+																	<span class="input-group-addon "></span>
+																	<input type="text" class="form-control" id="fair_waiting_minutes11">
+																</div>
+															</div>
+															<div class="col-sm-3" style="margin-left:3px;">
+																<div class="input-group">
+																	<span class="input-group-addon feeRupees_distanceWaiting"></span>
+																		<input type="text" class="form-control" id="fair_waiting_fees11">
+																</div>
+															</div>
+													
+													<div class="col-sm-3" style="margin-left:3px;">
+														<div class="input-group">
+															<span class="input-group-addon afterFessRupees_distanceWaiting"></span>
+																<input type="text" class="form-control" id="fair_waiting_fees22">
+														</div>&nbsp;
+													</div>
+												</div>
+											</div>
+													<div id="appended_text_form"></div>
+														  
+												<div class="row ">
+													<div class="col-sm-3"></div>
+													<div class="col-sm-3"></div>
+													<div class="col-sm-2 pull-right" id="Distance_Waitingn" style="margin-bottom:10px;display:block; margin-right:10px;">
+														<a href="#basicVehicle"  data-toggle="tab"><button class="btn btn-info form-control">Next</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="cab_distance_waiting_save" style="margin-bottom:10px;display:none;">
+																<a href="#" data-toggle="tab"><button class="btn btn-info form-control" >Save</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="vehicle_distance_waiting_save" style="display:none;margin-bottom:10px;padding:0;" >
+															<a href="#"  data-toggle="tab"><button class="btn btn-info form-control" >Save</button></a>
+													</div>
+												</div>			   
+														
+												</div>
+
+
+											</div> 
+                                            
+                                           
+                                        </div>
+									</div>
+							</div>
+								
+								
+								
+								
+								<div class="tab-pane fade in" id="basicVehicle">
+ 								<div class="row border" >
+									<div class="col-sm-12"  style="margin:20px auto 4px; padding:10px;">
+									
+										<div class="col-sm-12 col-md-12" >
+											<div class="portlet-body">
+                                            <h4 class="tax_basic"></h4>
+                                            <form role="form">
+ 
+                                                <div class="input-group col-sm-6">
+                                                    <span class="input-group-addon taxPercent_basic"></span>
+                                                    <input type="text" id="cab_vehicle_taxText" class="form-control" >
+                                                    
+                                                </div>
+                                                <br>
+												<div class="input-group">
+												<input type="checkbox" value="Cash" class="chkTax form-control inputsize">
+                                                <label class="checkbox-inline cash_basic"></label>
+												</div>
+												<div class="input-group">
+												<input type="checkbox" value="Credit" class="chkTax form-control inputsize">
+                                                <label class="checkbox-inline creditCard_basic"></label>
+                                                        
+                                                    </div>
+															<hr />
+                                                  <h4 class="rounding_basic"></h4>
+												<div class="form-inline">
+												  <div class="input-group ">
+												<input type="checkbox" value="Cash" class="chkNumber form-control inputsize">
+                                                <label class="checkbox-inline cashRounding_basic"></label>
+												</div>
+												<div class="input-group">
+												<input type="checkbox" value="Credit" class="chkNumber form-control inputsize">
+                                                <label class="checkbox-inline creditCardRounding_basic"></label>
+												</div>
+												  </div>  
+                                            	 
+											
+													<h4 class="level_basic"></h4>
+												<div class="form-inline">
+                                             		 <div class="input-group">
+												<input type="radio" name="optionsInlineRadios1" value="Normal" checked=""class="form-control inputsize">
+                                                   <label class="radio-inline normalLevel_basic"></label>
+													</div>
+													<div class="input-group">
+													<input type="radio" name="optionsInlineRadios1" value="Decimal" class="form-control inputsize">
+                                                    <label class="radio-inline decimalLevel_basic"></label>
+                                                     </div>
+													 <div class="input-group">
+													<input type="radio" name="optionsInlineRadios1" value="Unit" class="form-control inputsize">
+                                                    <label class="radio-inline unitLevel_basic"></label>
+                                                     </div>
+													 </div>
+													 
+													<h4 class="direction_basic"></h4>
+													<div class="form-inline">
+                                             		 <div class="input-group">
+												<input type="radio" name="directionRadio" value="Nearest" class="form-control inputsize">
+                                                   <label class="radio-inline nearestDirection_basic"></label>
+													</div>
+													<div class="input-group">
+													<input type="radio" name="directionRadio" value="Up"class="form-control inputsize">
+                                                    <label class="radio-inline upDirection_basic"></label>
+                                                     </div>
+													 <div class="input-group">
+													<input type="radio" name="directionRadio" value="Down" class="form-control inputsize">
+                                                    <label class="radio-inline downDirection_basic"></label>
+                                                     </div>
+													 </div>
+													
+												<div class="row ">
+													<div class="col-sm-3"></div>
+													<div class="col-sm-3"></div>
+													<div class="col-sm-2 pull-right" style="margin-right:10px;">
+																<a href="#PremiumVehicle" id="basicVehiclen"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;display: block;">Next</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="basic_fair_manage_cab_save" style="margin-bottom:10px;">
+																<a href="#"   data-toggle="tab"><button class="btn btn-info form-control" >Save</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="basic_fair_manage_vehicle" style="display:none;" style="padding:0;">
+															<a href="#"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;">Save</button></a>
+													</div>
+												</div>
+													
+                                            </form>
+                                            
+                                           
+                                        </div>
+										</div>
+										<div class="col-sm-4 col-md-4"></div>
+										</div>
+										
+									</div>
+								</div>
+								
+								
+								
+								<div class="tab-pane fade in" id="PremiumVehicle">
+
+                                  <div class="row border">
+                                    <div class="col-sm-12 col-md-12">
+										<div class="portlet-body">
+                                            
+                                           	 
+										<div class="col-sm-12" style="padding:10px;">	
+											 
+											<form class="form-inline" role="form" style="margin:20px auto 4px;">
+                                               		 <h4 class="nightPremium_premium"></h4>
+													 <!--<label class="control-label" style="margin-right:30px;">Night Premium</label>-->
+                                            		 <div class="input-group">
+													 
+                                                        <input type="radio" name="nightCh" value="%" class="form-control inputsize nightChCl">
+														<label class="checkbox-inline nightPremiumPercent_premium"></label>
+                                                        </div>
+														<div class="input-group">
+														<input type="radio" name="nightCh" value="Rs" class="form-control inputsize nightChCl">
+														<label class="checkbox-inline nightPremiumRupees_premium"></label>
+ 																
+                                                    </div>
+                                                  
+                                               <div class="input-group">
+                                                   			<span class="input-group-addon" id="nightPremiumUnit">Rs</span>
+                                                    			<input type="text" class="form-control" name="nightPremium" id="nightPremiumVehicle">
+                                              			</div>
+                                               
+                                            
+											<hr/>
+									 
+										
+												  
+											<div class="row form-group">
+												<div class="col-sm-4" style="margin-left:15px;">
+                                                	<label class="nightRateBegin_premium"></label>
+                                                	<input type="text" id = "nightChStrtTime" class="form-control" >
+                                                </div>
+												<div class="col-sm-4">
+													<label class="nightRateEnd_premium"></label>
+													<input type="text" id="nightChEndTime" class="form-control" >
+                                                </div>
+										 
+										</div>
+											 
+											 <hr/>
+											<h4 class="premiums_premium"></h4>
+											<p class="premiumsDetail_premium"></p>
+                                              <label class="control-label creditCard_premium" style="margin-right:30px;"></label>
+                                            		 <div class="input-group">
+													
+                                                       <input type="radio" name= "premiumCh" value="%" class="form-control inputsize premiumChCl">
+													    <label class="checkbox-inline creditCardPercent_premium"></label>
+                                                        </div>
+														<div class="input-group">
+														 <input type="radio" name= "premiumCh" value="Rs" class="form-control inputsize premiumChCl">
+													    <label class="checkbox-inline creditCardRupees_premium"></label>
+ 																
+                                                    </div>
+                                                  
+                                               <div class="input-group">
+                                                   			<span class="input-group-addon" id="premiumVeUnit">Rs</span>
+                                                    			<input type="text" class="form-control" id="premiumofVehicle" style="margin-top:0px;">
+                                              			</div>  
+														
+														<hr/> 
+														
+														<h4 class="extras_premium"></h4>
+											<p class="extrasDetail_premium"></p>
+                                            
+										<div class="">	
+												<div class="input-group" style="margin-right:26px;">
+                                                   <input type="text" class="form-control" id="extraType_1" placeholder="Type">
+                                              	</div>
+												<div class="input-group" style="margin-right:24px;">
+                                                   <input type="text" class="form-control" id="extraIn_1">
+                                              	</div>
+                                            	<div class="input-group">
+													<input type="radio" value="%" name="extrasName_1" class="form-control inputsize">
+                                                    <label class="checkbox-inline extrasPercent_premium"></label>
+                                                </div>
+												<div class="input-group"> 
+ 													<input type="radio" value="Rs" name="extrasName_1" class="form-control inputsize">
+                                                    <label class="checkbox-inline extrasRupees_premium"></label>		
+                                                </div>
+												
+												<div class="input-group" id="removeExtraFields"> 
+ 													 <a href="#"  style="width:90px;"><i class="fa fa-trash-o fa-2x"></i></a>	
+                                                </div>
+												
+												
+												
+												<div id="mainIdExtra" style="display:inline">
+												<div class="input-group addExtras" id="addExtras_1" style="margin-right:30px;">
+													<button class="btn btn-info" style="width: 70px;margin-left: 10px;">Add</button>
+                                              	</div> 
+												</div>
+                                                <div id="append_extras" class="margintopbottom20"></div>
+												
+												<div class="row ">
+													<div class="col-sm-3"></div>
+													 <div class="col-sm-3"></div>
+													<div class="col-sm-2 pull-right" style="margin-right:10px;">
+																<a href="#Fixed_RoutesVehicle" id="PremiumVehiclen"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;display: block;width:100%;">Next</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="premium_fair_manage_cab_save" style="display:none;">
+																<a href="#"   data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;display: none;width:100%;">Save</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" style="padding:0;" id="premium_fair_manage_vehicle" >
+															<a href="#"  data-toggle="tab"><button class="btn btn-info pull-right form-control" style="margin-bottom:10px;width:100%;">Save</button></a>
+													</div>
+												</div>
+												 </form>
+													  
+											 	    </div>
+                                                    
+										
+
+											
+                                                </div> 
+                                            
+                                           
+                                        </div>
+									</div>
+                                   
+                               	 </div>
+								</div>
+								
+								
+								
+								
+								<div class="tab-pane fade in" id="Fixed_RoutesVehicle">
+
+                                  <div class="row border">
+                                    <div class="col-sm-12 col-md-12">
+										<div class="portlet-body">
+                                            
+                                           	 
+										<div class="col-sm-6 col-md-6 col-lg-12" style="padding:10px;">	
+											 
+											 <form  role="form" style="margin:20px auto;">
+                                               		 <h4 class="frequentPostcode_fixedRoute"></h4>
+                                            		 <p class="frequentPostcodeDetail_fixedRoute"></p>
+                                              
+										<!--	<div class="row">
+												<div class="col-sm-6 col-md-3">
+                                                	 <label>Postcode Prefix</label>
+                                                     	 
+                                                     </div>
+													<div class="col-sm-6 col-md-3">
+ 													<label>value 2 ways</label>
+                                                    		 
+                                                     </div>
+										 
+										</div>-->
+										   
+											<div class="row">
+												<div class="col-sm-2" style="margin-left:15px;">
+                                                	 <label class="frequentLocation_fixedRoute"></label>
+                                                     	  <input type="text" class="form-control" id="frequent_location">
+                                                     </div>
+													 
+										 
+										</div>
+										 
+												  
+											 
+											 
+											 <hr/>
+											<h4 class="postcode_fixedRoute"></h4>
+											<p class="postcodeDetail__fixedRoute"></p>
+                                             
+												<div>
+                                                <div class="form-group clearfix">
+													<div class="col-sm-3" >
+														<label class="pickUpPostcode_fixedRoute"></label>
+                                                    	<input type="text" class="form-control" id="pickupPostCode_1" style="margin-right:3px;">
+                                              		</div>
+													<div class="col-sm-3">
+														<label class="dropOffPostcode_fixedRoute"></label>
+                                                    	<input type="text" class="form-control" id="dropoffPostCode_1" style="margin-left:3px; margin-right:3px !important;">
+                                              		 </div>
+													<div class="col-sm-3" style="margin-left:6px;">
+														<label class="value_fixedRoute">Value</label>
+                                                     	<div class="input-group">
+                                                   			<span class="input-group-addon postcodeRupees_fixedRoute" style="margin-left:3px; !important;">Rs</span>
+                                                    		<input type="text" class="form-control" id="rsPostCode_1">
+                                              			</div>
+ 
+                                                    </div>
+													<div class="col-sm-2" style="margin-left:18px;">
+														<div class="row" style="margin-top: 25px;">
+															<div class="col-sm-2">
+																<input type="checkbox" class="form-control" style="width: 30px;margin:0;">
+															</div>
+															<div class="col-sm-2" style="margin-left:3px;">
+																<a href="#" class="btn btn-info addPostCodes" id="addPostCodes_1">Add</a>
+															</div>
+														</div>
+														
+                                              		</div>
+													<!--<div class="input-group" id="removeExtrapostcodes"> 
+														<a href="#"  style="width:90px;"><i class="fa fa-trash-o fa-2x"></i></a>	
+													</div>-->
+													
+                                                </div>
+													<div id="append_postCodes" class="form-group clearfix"></div>
+													</div>
+												
+												 </form>
+													  
+										<div class="row ">
+													<div class="col-sm-3"></div>
+													 	<div class="col-sm-3"></div>
+													<div class="col-sm-2 pull-right" id="fixed_route_next" style="display:block; margin-right:10px;">
+															<a href="#Different_Shares"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;display: block;width:100%;">Next</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="fixed_route_fair_manage_cab_save" style="margin-bottom:15px;display: none;">
+																<a href="#"   data-toggle="tab"><button class="btn btn-info form-control" >Save</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" style="padding:0;" id="fixed_route_fair_manage_vehicle" style="display:none;">
+															<a href="#"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:15px;">Save</button></a>
+													</div>
+												</div>
+                                                    
+													</div>
+
+
+                                                </div> 
+                                            
+                                           
+                                        </div>
+									</div>
+                                   
+                               	</div>
+								
+								
+								<div class="tab-pane fade" id="Different_Shares">
+ 								<div class="row border" >
+									<div class="col-sm-12"  style="margin:20px auto 4px; padding:10px;">
+									
+										<div class="col-sm-12 col-md-12" >
+											<div class="portlet-body">
+                                            <form class="form-inline" role="form">
+											<h4 class="different_share"></h4><br>
+											<h5 class="company_share"></h5>
+											<div class="input-group">
+												<span class="input-group-addon companyPercent_share">%</span>
+												<input type="text" id="company_share" class="form-control" style="margin-top:0px;">
+												
+											</div> 
+											
+											<h5 class="partner_share">Partner Share</h5>
+											<div class="input-group">
+												<span class="input-group-addon partnerPercent_share">%</span>
+												<input type="text" id="partner_share" class="form-control" style="margin-top:0px;">
+												
+											</div>
+											
+											<h5 class="driver_share">Driver Share</h5>
+											<div class="input-group">
+												<span class="input-group-addon driverPercent_share">%</span>
+												<input type="text" id="driver_share" class="form-control" style="margin-top:0px;">
+												
+											</div>
+												
+												</form>
+												
+												<div class="row ">
+													<div class="col-sm-3"></div>
+													<div class="col-sm-3"></div>
+													<div class="col-sm-2 pull-right" id="share_cab_save" style="margin-bottom:10px;display: block; margin-right:10px;">
+																<a href="#"   data-toggle="tab"><button class="btn btn-info form-control" >Save</button></a>
+													</div>
+													<div class="col-sm-2 pull-right">
+																<a href="#distanceVehicle" id="packagecalc"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;display: none;">Next</button></a>
+													</div>
+													<div class="col-sm-2 pull-right" id="package_calc_vehicle_save" style="display:none;" style="padding:0;">
+															<a href="#"  data-toggle="tab"><button class="btn btn-info form-control" style="margin-bottom:10px;">Save</button></a>
+													</div>
+												</div>
+													
+                                            
+                                            
+                                           
+                                        </div>
+										</div>
+										<div class="col-sm-4 col-md-4"></div>
+										</div>
+										
+									</div>
+							</div>
+								 
+								 
+            </div>														
+        </div>             
+    </div>
+		
+		
+		
+		
+		<!--- End fair management -->
+		
+		
+		
+		
+		
+		
+		
+		
+    </div>
+
+ 
+<script>
+var appendedDistanceLength = 2;
+var appendedWaitingLength = 2;
+var counterext = 1;
+var vehicleID;
+var cabTypeId;
+
+$( document ).ready(function() {
+$('#Cab-Cabtype_filter label').attr("style","display:none;");
+$("#since").datepicker();
+$("#since").datepicker("option","dateFormat","yy-mm-dd");
+$("#to").datepicker();
+$("#to").datepicker("option","dateFormat","yy-mm-dd");
+	$('#nightChStrtTime').timepicker({
+			hourMin: 18,
+			hourMax: 24
+		});	
+
+	$('#nightChEndTime').timepicker({
+			hourMin: 0,
+			hourMax: 5
+	});	
+	
+	getAllCountry();
+	dynamicText(8);
+	
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        alert("Geolocation is not supported by this browser.") ;
+    }
+	
+});
+
+
+function datatablsCSS(){
+	$('.paging_simple_numbers').parent().addClass('pgnt_topfix');
+    $('.dataTables_length').parent().removeClass('col-sm-6');
+    $('.dataTables_length').parent().addClass('col-sm-2');
+    $('.dataTables_length').parent().addClass('pgno_top');
+	$('.pgno_top').attr("style","top:27px;");
+	$('.pgnt_topfix').attr("style","top:26px;");
+}
+
+$(".addCabType").click(function(){
+	$('#fairmanageId').bPopup({
+		position : [200,100]
+	});
+
+});
+
+
+
+function showPosition(position) {
+  var lat = position.coords.latitude;	
+  var log = position.coords.longitude;
+ 
+  
+  var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/reverse_geocode';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				currentLat:lat,
+				currentlong : log,
+			},		 
+		success: function(data){
+				$("#cab-countryText").val(data.country);
+				$("#cab-stateText").val(data.location);
+				$("#cab-cityText").val(data.city);
+				getAllCabTypes();
+				getState();
+				getAllCity();
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+}
+
+
+
+function getState()
+{
+	var defaultSt = $("#cab-stateText").val();
+	
+	var country = $("#cab-countryText").val();
+	
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllState';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				country:country
+				
+			},		 
+		success: function(html){
+			
+			var len = html.data.length;
+			var detailState = "";
+			for(var i=0;i<len;i++){
+				var stateTx = html.data[i].state;
+				if(html.data[i].state == defaultSt)	{
+					detailState += "<option value='"+html.data[i].id+"' selected>"+ html.data[i].state+"</option>";
+				}else{
+					detailState += "<option value='"+html.data[i].id+"'>"+ html.data[i].state+"</option>";
+				}
+			
+				}
+			
+				$("#addCab_stateDropdown").html(detailState);
+				
+				
+				
+		},
+		error: function(error){
+			console.log(error);
+		}
+	});
+
+}
+
+function getAllCountry()
+{
+	var cabcountryText = $("#cab-countryText").val();
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCountry';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				
+			},		 
+		success: function(html){
+			
+			var len = html.data.length;
+			var detailCountry = "";
+			for(var i=0;i<len;i++){
+				if(cabcountryText == html.data[i].CountryName){
+					detailCountry += "<option value='"+html.data[i].ID+"' selected>"+ html.data[i].CountryName+"</option>";
+				}else{
+					detailCountry += "<option value='"+html.data[i].ID+"'>"+ html.data[i].CountryName+"</option>";
+				}
+			}
+			
+				$("#addCab_countryDropdown").html(detailCountry);
+			
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+
+}
+
+function getAllCity(){
+	var cabcityText = $("#cab-cityText").val();
+
+	var stateId = $('#cab-stateText').val();
+	
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCity';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				state:stateId
+				
+			},		 
+		success: function(html){
+			
+			var len = html.data.length;
+			var detailCity = "";
+			for(var i=0;i<len;i++){
+				if(cabcityText == html.data[i].name){
+					detailCity += "<option value='"+html.data[i].id+"' selecetd >"+ html.data[i].name+"</option>";
+				}else{
+					detailCity += "<option value='"+html.data[i].id+"'>"+ html.data[i].name+"</option>";
+				}
+			}
+			
+			$("#addCab_cityDropdown").html(detailCity);
+			
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+
+
+
+}
+
+
+$("#addCab_stateDropdown").change(function() {
+	var stateId = $('#addCab_stateDropdown :selected').text();
+	
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCity';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				state:stateId
+			},		 
+		success: function(html){
+			var len = html.data.length;
+			var detailCity = "";
+			for(var i=0;i<len;i++){
+				detailCity += "<option value='"+html.data[i].id+"'>"+ html.data[i].name+"</option>";
+			
+			}
+				$("#addCab_cityDropdown").html(detailCity);
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+});
+
+var cabTypeTable = '';
+function getAllCabTypes(){
+	var city = $("#cab-cityText").val();
+	var state = $("#cab-stateText").val();
+	cabTypeTable = $('#Cab-Cabtype').dataTable( {
+						"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCabType?city='+city+'&state='+state,
+						"deferRender": true
+					} );
+	datatablsCSS();
+	$("#Cab-Cabtype_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$("#Cab-Cabtype_wrapper").attr("style","border: 1px solid #d1d1d1; margin-bottom:20px;");
+	 
+	$("#Cab-Cabtype_wrapper").addClass("clearfix");
+		$("#Cab-Cabtype_wrapper").addClass("font12px");
+	$("#Cab-Cabtype_info").parent().parent().removeClass("row");	
+ 
+}
+
+function searchCabTypes(){
+	var city = $("#cab-cityText").val();
+	var state = $("#cab-stateText").val();
+	var country = $("#cab-countryText").val();
+	var vehicle_no = $("#vehicleNo").val();
+	var vehicle_model = $("#vehicleModel").val();
+	var since = $("#since").val();
+	var to = $("#to").val();
+	
+	var cabhtml = $(this).html();
+	$("#Cab-Cabtype_wrapper").val(cabhtml);
+	
+	$("#Cab-Cabtype thead").html('<tr> <th>S.No.</th> <th>vehicle Number</th> <th>Cab Type</th>  <th>Vehicle Name</th> <th> Manufacturer</th> <th>Vehicle Model</th><th>Registration Date</th><th>Rate/Km</th><th>Rate/hour</th><th>Minimum Charge</th><th>Action</th></tr>');
+	searchTable = $('#Cab-Cabtype').dataTable( {
+						"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/searchCabType?city='+city+'&state='+state+'&country='+country+'&vehicle_no='+vehicle_no+'&vehicle_model='+vehicle_model+'&since='+since+'&to='+to,
+						"deferRender": true
+					} );
+	$("#Cab-Cabtype tfoot").html('<tr> <th>S.No.</th> <th>vehicle Number</th> <th>Cab Type</th>  <th>Vehicle Name</th> <th> Manufacturer</th> <th>Vehicle Model</th><th>Registration Date</th><th>Rate/Km</th><th>Rate/hour</th><th>Minimum Charge</th><th>Action</th></tr>');
+	
+	$("#Cab-Cabtype_wrapper").attr("style","border:1px solid #d2d2d2;");
+	$("#Cab-Cabtype_wrapper").addClass("clearfix");
+	$("#Cab-Cabtype_wrapper").addClass("font12px");
+	$("#Cab-Cabtype_wrapper + div").removeClass("row");
+	$("#Cab-Cabtype_info").parent().parent().removeClass("row");
+	$("#Cab-Cabtype_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$('#Cab-Cabtype_filter label').attr("style","display:none;");
+}
+
+$("#searchFairmanage").click(function(){
+	cabTypeTable.fnDestroy();
+	searchCabTypes();
+	datatablsCSS();
+ 
+ });
+
+$('.fairmanageFilter').keypress(function(e){
+	var key=e.which;
+	if(key==13)
+	{
+		$('#searchFairmanage').click();
+	}
+});
+
+$(document).on('click','.manageVehicleFair',function(){
+	
+	$("#fair_manage_save").show();
+	$("#fixed_route_fair_manage_vehicle").show();
+	$("#premium_fair_manage_vehicle").show();
+	$("#distance_fair_manage_vehicle").show();
+	$("#basic_fair_manage_vehicle").show();
+	$("#fixed_route_fair_manage_cab_save").hide();
+	$("#premium_fair_manage_cab_save").hide();
+	$("#distance_fair_manage_cab_save").hide();
+	$("#basic_fair_manage_cab_save").hide();
+	$("#fair_manage_cab_save").hide();
+	$("#cab_package_save").hide();
+	$("#vehicle_package_save").show();
+	$("#vehicle_distance_hour_save").show();
+	$("#cab_distance_hour_save").hide();
+	$("#vehicle_distance_waiting_save").show();
+	$("#cab_distance_waiting_save").hide();
+	$("#package_calc_cab_save").show();
+	$("#package_calc_vehicle_save").hide();
+	$("#share_cab_save").show();
+	
+	
+	var divPosition = $('#navbar-brand').offset();
+      //$('html, body').animate({ scrollTop: divPosition.top }, "fast");	
+	
+	var id = $(this).attr('id');
+	var idArr = id.split("_");
+	vehicleID = idArr[1];
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/vehicleInfoById?vehicleId='+vehicleID,
+		cache: false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	
+	fairManagePopup(html);
+
+})
+.fail(function (error){
+	alert('error');
+	console.log(error);
+		
+  });
+
+});
+
+function fairManagePopup(html)
+{
+	$('#vehicleFairmanage input[type="checkbox"]').prop('checked', false);
+	$('#vehicleFairmanage input[type="radio"]').prop('checked', false);
+	$('#vehicleFairmanage input[type="text"]').val('');
+	appendedDistanceLength = 2;	
+	appendedWaitingLength = 2;
+	counterext = 1;
+	
+	$("#append_postCodes").empty();
+	
+	$("#cab_vehicle_taxText").val(html.data[0].basic_tax);
+	$("#cab_vehicle_rate_per_km").val(html.data[0].Per_Km_Charge);
+	$("#cab_vehicle_minmum_distance").val(html.data[0].Min_Distance);
+	$("#cab_vehicle_minmum_fare").val(html.data[0].MinimumCharge);
+	if(html.data[0].round_up_km == 'on' ){
+		$('input[name="round_up_km"]').prop('checked', true);
+	}
+	
+	if(html.data[0].accumulated_instance == 'on' ){
+		$('input[name="accum_instance"]').prop('checked', true);
+	}
+	
+	$("#nightPremiumVehicle").val(html.data[0].NightCharges);
+	if(html.data[0].NightChargesUnit == '%' ){
+		$('input[name="nightCh"][value="%"]').prop('checked', true);}
+	else if(html.data[0].NightChargesUnit == 'Rs' ){
+		$('input[name="nightCh"][value="Rs"]').prop('checked', true);}
+	
+	$("#nightPremiumUnit").html(html.data[0].NightChargesUnit);
+	$("#nightChStrtTime").val(html.data[0].night_rate_begins);	
+	$("#nightChEndTime").val(html.data[0].night_rate_ends);
+	
+	$("#premiumofVehicle").val(html.data[0].premiums);
+	if(html.data[0].premiumsUnit == '%' ){
+		$('input[name="premiumCh"][value="%"]').prop('checked', true);}
+	else if(html.data[0].premiumsUnit == 'Rs' ){
+		$('input[name="premiumCh"][value="Rs"]').prop('checked', true);}
+	
+	$("#premiumVeUnit").html(html.data[0].premiumsUnit);
+	
+	var kmarr = html.data[0].rateDistanceKm;
+	var rsArr = html.data[0].rateDistanceRate;
+	var lengthArr = kmarr.length;
+	
+	$("#appended_text_form").empty();
+	
+	$("#mainDistanceDiv").html('<div class="row form-group"><div class="col-sm-3" style="margin-left:15px; margin-right:3px;"><input type="text" class="form-control" id="kms_1"></div><div class="col-sm-3"><div class="input-group" ><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="rs_1" " ></div></div><div class="col-sm-3"  id="removeDistanceFields"><a href="#"><i class="fa fa-trash-o fa-2x"></i></a></div><div class="col-sm-3">&nbsp;</div></div><div class="row form-group"><div class="col-sm-3" style="margin-left:15px; margin-right:3px;"><input type="text" class="form-control"  id="kms_2"></div><div class="col-sm-3"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="rs_2" ></div></div><div class="col-sm-3"><div class="col-sm-4  addButton" style="padding:0;" id="add_2"><a href="#" class="btn btn-info form-control">Add</a></div></div><div class="col-sm-3">&nbsp;</div></div>');
+	
+	var addbtnId = $(".addButton").attr('id');
+	var addbtnIdArr = addbtnId.split("_");
+	var addbtnCnt = addbtnIdArr[1];
+	
+	if(lengthArr > addbtnCnt){
+		for(var k = addbtnCnt; k < lengthArr ; k++){
+			$('.addButton').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< kmarr.length; i++){
+		var j = i+1;
+		$("#kms_"+j).val(kmarr[i]);
+		$("#rs_"+j).val(rsArr[i]);
+	}
+	
+	
+	var postCodeAddId = $(".addPostCodes").attr('id');
+	var postCodeAddIdArr = postCodeAddId.split("_");
+	var postCodeAddCount = postCodeAddIdArr[1];
+	
+	var postCodePickup = html.data[0].postCodePickup;
+	var postCodeDrop = html.data[0].postCodeDrop;
+	var postCodeRs = html.data[0].postCodeRs;
+	
+	var postCodelen = postCodePickup.length;
+	
+	if(postCodelen > postCodeAddCount){
+		for(var k = postCodeAddCount; k < postCodelen ; k++){
+			$('.addPostCodes').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< postCodePickup.length; i++){
+		var j = i+1;
+		$("#pickupPostCode_"+j).val(postCodePickup[i]);
+		$("#dropoffPostCode_"+j).val(postCodeDrop[i]);
+		$("#rsPostCode_"+j).val(postCodeRs[i]);
+	}
+	
+	var extrasType=html.data[0].extraType;
+	var extrasArr = html.data[0].extraRate;
+	var extrasUnit = html.data[0].extraRateUnit;
+	var extrLen = extrasArr.length;
+
+	$("#append_extras").empty();
+	
+	$("#mainIdExtra").html('<div class="input-group addExtras" id="addExtras_1" style="margin-right:30px;"><button class="btn btn-info" style="width:90px;">Add</button></div>')
+	
+	var addExtraId = $(".addExtras").attr('id');
+	var addExtraIdArr = addExtraId.split("_");
+	var addextraCnt = addExtraIdArr[1];
+	
+	if(extrasArr.length > addextraCnt){
+		for(var k = addextraCnt; k < extrasArr.length ; k++){
+			$('.addExtras').trigger('click');
+		}
+	}
+	for(var i = 0;i < extrasArr.length; i++ ){
+		var j = i + 1;
+		$("#extraIn_"+j).val(extrasArr[i]);
+		$("#extraType_"+j).val(extrasType[i]);
+	if(extrasUnit[i] == '%' ){
+		$('input[name="extrasName_'+j+'"][value="%"]').prop('checked', true);}
+	else if(extrasUnit[i] == 'Rs' ){
+		$('input[name="extrasName_'+j+'"][value="Rs"]').prop('checked', true);}
+	}
+	
+	
+	$("#cab_vehicle_cancellation_charge").val(html.data[0].cancellation_fees);
+	if(html.data[0].cancellation_feesUnit == '%' ){
+		$('input[name="cancellationFee"][value="%"]').prop('checked', true);}
+	else if(html.data[0].cancellation_feesUnit == 'Rs' ){
+		$('input[name="cancellationFee"][value="Rs"]').prop('checked', true);}
+	
+	$("#cancellationUnit").html(html.data[0].cancellation_feesUnit);
+	$("#cab_vehicle_rate_hour").val(html.data[0].tripCharge_per_hour);
+	
+	$("#append_waiting_fee").empty();
+	$("#mainWaitningFee").html('<div class="row form-group"><div class="col-sm-3" style="margin-left:15px;"><input type="text" class="form-control" id="fair_waiting_minutes_1"></div><div class="col-sm-3" style="margin-left:3px;"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="fair_waiting_fees_1"></div></div><div class="col-sm-3" id="removeWaitingFeeFields"><a href="#"><i class="fa fa-trash-o fa-2x"></i></a></div><div class="col-sm-3">&nbsp;</div></div><div class="row form-group"><div class="col-sm-3" style="margin-left:15px;"><input type="text" class="form-control" id="fair_waiting_minutes_2"></div><div class="col-sm-3" style="margin-left:3px;"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="fair_waiting_fees_2"></div></div><div class="col-sm-3"><div class="col-sm-4 addWaitingFee" id="addWaitingFee_2" style="padding:0;"><a href="#" class="btn btn-info form-control">Add</a></div></div><div class="col-sm-3">&nbsp;</div></div>');
+	
+	
+	var waitningfeeMinutesArr = html.data[0].waitningfeeMinutes;
+	var waitingfeeValueArr = html.data[0].waitingfeeValue;
+	var lengthAr = waitningfeeMinutesArr.length;
+	if(lengthAr > 2){
+		for(var k = 2; k < lengthAr ; k++){
+			$('.addWaitingFee').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< lengthAr; i++){
+		var j = i+1;
+		$("#fair_waiting_minutes_"+j).val(waitningfeeMinutesArr[i]);
+		$("#fair_waiting_fees_"+j).val(waitingfeeValueArr[i]);
+	}
+	
+	var rounding = html.data[0].rounding;
+	
+	var roundingArr = rounding.split(",");
+	for(var l=0;l < roundingArr.length;l++){
+		$('input[type="checkbox"][value="'+roundingArr[l]+'"]').prop('checked',true);
+	}
+	
+	$('input[name="optionsInlineRadios1"][value="'+html.data[0].level+'"]').prop('checked', true);
+	$('input[name="directionRadio"][value="'+html.data[0].direction+'"]').prop('checked', true);
+	$("#first_km_rate").val(html.data[0].first_km_rate);
+	
+	$("#frequent_location").val(html.data[0].frequent_location);
+	
+	$("#rate_per_km_dw").val(html.data[0].rate_per_km_dw);
+	$("#minmum_distance_dw").val(html.data[0].minimum_distance_dw);
+	$("#minmum_fare_dw").val(html.data[0].minimum_fare_dw);
+	
+	var waiting_fees = html.data[0].waiting_fees;
+	var waiting_fees_arr = waiting_fees.split("_");
+	//$('input[type="text"][value="'+waiting_fees_arr[l]+'"]');
+	$("#fair_waiting_minutes11").val(waiting_fees_arr[0]);
+	$("#fair_waiting_fees11").val(waiting_fees_arr[1]);
+	$("#fair_waiting_fees22").val(waiting_fees_arr[2]);
+	
+	$("#rate_per_km_dh").val(html.data[0].rate_per_km_dh);
+	$("#minmum_distance_dh").val(html.data[0].minimum_distance_dh);
+	$("#minmum_fare_dh").val(html.data[0].minimum_fare_dh);
+	$("#rate_per_hour_dh").val(html.data[0].rate_per_hour_dh);
+	
+	
+    $.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/fetchCabPackage',
+		cache: false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	$('#localpackage_'+html.data.localPackage).prop('checked', true);
+	$('#pointToPointPackage_'+html.data.Point_To_Point_Package).prop('checked', true);
+	$('#airportTransferPackage_'+html.data.Airport_Package).prop('checked', true);
+	$('#outstationPackage_'+html.data.Outstation_Package).prop('checked', true);
+	$("#company_share").val(html.data.company_Share);
+	$("#driver_share").val(html.data.driver_Share);
+	$("#partner_share").val(html.data.partner_Share);
+	
+  }).fail(function (error){
+	alert('error');
+	console.log(error);
+		
+ });	
+	
+	
+	$("#vehicleFairmanage").bPopup({
+			 
+	}, 
+        function() {
+		var topd=$(document).scrollTop()+40;
+          $("#vehicleFairmanage").attr("style","padding:20px;border-radius: 10px;top:"+topd+"px !important;position: absolute;z-index: 9999;opacity: 1;background:#fff;left:16% !important;right:16% !important");
+        });
+}
+
+
+
+$(document).on('click','.manageCabTypeFair',function(){
+	
+	$("#fair_manage_save").hide();
+	$("#fixed_route_fair_manage_vehicle").hide();
+	$("#premium_fair_manage_vehicle").hide();
+	$("#distance_fair_manage_vehicle").hide();
+	$("#basic_fair_manage_vehicle").hide();
+	$("#vehicle_package_save").hide();
+	$("#fixed_route_fair_manage_cab_save").show();
+	$("#premium_fair_manage_cab_save").show();
+	$("#distance_fair_manage_cab_save").show();
+	$("#basic_fair_manage_cab_save").show();
+	$("#basic_fair_manage_cab_save button").show();
+	$("#cab_distance_waiting_save").show();
+	$("#vehicle_distance_waiting_save").hide();
+	$("#vehicle_distance_hour_save").hide();
+	$("#DistanceWaiting").show();
+	$("#cab_distance_hour_save").show();
+	
+	$("#fixed_route_fair_manage_cab_save button").show();
+	$("#premium_fair_manage_cab_save button").show();
+	$("#distance_fair_manage_cab_save button").show();
+	$("#fair_manage_cab_save").show();
+	$("#package_calc_cab_save").show();
+	$("#package_calc_vehicle_save").hide();
+	$("#share_cab_save").show();
+	
+	
+	
+	var divPosition = $('#navbar-brand').offset();
+      //$('html, body').animate({ scrollTop: divPosition.top }, "fast");	
+	
+	var id = $(this).attr('id');
+	var idArr = id.split("_");
+	cabTypeId = idArr[1];
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/cabTypeInfoById?cabType='+cabTypeId,
+		cache: false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	
+	fairManagePopup(html);
+	
+
+}).fail(function (error){
+	alert('error');
+	console.log(error);
+		
+  });
+
+
+});
+
+$('#Cab-Cabtype').on('click','.clickCabType',function(){
+		var city = $("#cab-cityText").val();
+		var cabId = $(this).attr('data');
+		
+		var cabhtml = $(this).html();
+		
+		$("#cab-vehicleCabTypText").val(cabhtml);
+		//clearInterval(myVar2); 
+        //clearInterval(myVar);
+      
+      if($(this).hasClass('open'))
+      {
+		 // myVar2=setInterval(function(){myTimer2()}, 5000);	  
+          $(".remove div:first").slideUp(400,function(){
+               $('.remove').remove();
+          });
+      $(this).removeClass('open');
+	}
+	else
+	{
+      $('.remove').remove();
+       $(this).addClass('open');
+      $(this).parent().parent().after('<tr class="remove" ><td colspan="10"><div style=""> <div class=""> <div class="portlet portlet-default"> <div class="portlet-heading"> <div class="portlet-title"><h5 class="h4text" style="background: #E2E2E2;padding:7px;margin: 0;">Vehicle Information</h5></div> <div class="clearfix"></div> </div> <div class="portlet-body"> <ul id="myTab" class="nav nav-tabs tabsdesign"> <li class="active"><a href="#cab_vehicle" data-toggle="tab"><i class="fa fa-list" style="color:#; margin:5px"></i>Status</a> </li> </ul> <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="cab_vehicle"> <table id="exampleVehicle" class="table table-striped table-responsive margin10"><thead> <tr> <th>S.No.</th> <th>vehicle Number</th> <th>Cab Type</th>  <th>Vehicle Name</th> <th> Manufacturer</th> <th>Vehicle Model</th><th>Status</th><th>Rate/Km</th><th>Rate/hour</th><th>Minimum Charge</th><th style="width:110px !important;"></th> </tr> </thead> <tbody> </tbody> </table> </div></div></td></tr>');
+	  
+    data=$(this).attr("data");
+    $.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/vehicleInfo?cabId='+data+'&city='+city,
+		cache: false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	var k=1;
+	var statusVehicle;
+    for(var i=0;i<html.data.length;i++)
+	{
+		statusVehicle = (html.data[i].status == 0) ?'Inactive':'Active';
+		$('#exampleVehicle tbody').append('<tr><td>'+k++ +'</td><td>'+html.data[i].vehicleNumber+'</td><td>'+html.data[i].CabType+'</td><td>'+html.data[i].name+'</td><td>'+html.data[i].Manufacturer+'</td><td>'+html.data[i].VehicleModel+'</td><td>'+statusVehicle+'</td><td>'+html.data[i].Per_Km_Charge+'</td><td>'+html.data[i].tripCharge_per_minute+'</td><td>'+html.data[i].MinimumCharge+'</td><td><button id="vehicle_'+html.data[i].id+'" class="btn btn-primary manageVehicleFair">Manage Fair</button></td></tr>');  
+	}
+  }).fail(function (error){
+	alert('error');
+	console.log(error);
+		
+ });	
+		
+}		
+});
+ 
+$(document).on('click','.addButton',function(){ 
+		var addButtonId = $(this).attr('id');
+		var counterArr = addButtonId.split("_");
+		
+		var counter = counterArr[1];
+			counter++;
+		$("#"+addButtonId).remove();	
+		
+		var detailsdiv = "";
+		detailsdiv += '<div class="row form-group"><div class="col-sm-3"><input type="text" class="form-control" id="kms_'+counter+'" ></div><div class="col-sm-3" ><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="rs_'+counter+'"  ></div></div><div class="col-sm-3"><div class="col-sm-4  addButton" style="padding:0;" id="add_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div><div class="col-sm-3">&nbsp;</div></div>';
+		appendedDistanceLength ++;
+		$("#appended_text_form").append(detailsdiv);
+		return false;
+ 
+ });
+ 
+
+$(document).on('click','#removeDistanceFields',function(){
+	var addId = $(".addButton").attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[1];
+	counter--;
+	$(".addButton").closest('.row').remove();
+	$("#rs_"+counter).closest('.col-sm-3').after('<div class="col-sm-3"><div class="col-sm-4  addButton" style="padding:0;" id="add_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+	appendedDistanceLength --;
+	return false;
+});
+
+$(document).on('click','#removeExtraFields',function(){
+	var addId = $(".addExtras").attr('id');
+	var addIdArr = addId.split("_");
+	var counte  = addIdArr[1];
+	counte--;
+	$(".addExtras").closest('.rowextra').remove();
+	
+	
+	$("input[name='extrasName_"+counte+"'][value='Rs']").closest('.input-group').after('<div class="input-group addExtras" id="addExtras_'+counte+'" style="margin-right:30px;"><button class="btn btn-info" style="width:90px;">Add</button></div>');
+	counterext --;
+	return false;
+
+});
+
+$(document).on('click','.addExtras',function(){
+	
+	$("#addExtras_"+counterext).remove();
+	
+	counterext++;
+	$("#append_extras").append('<div style="margin-top:10px;" class="rowextra"><div class="input-group" style="margin-right:30px;"><input type="text" id= "extraType_'+counterext+'" class="form-control" placeholder="Type"></div><div class="input-group" style="margin-right:30px;"><input type="text" id= "extraIn_'+counterext+'" class="form-control" placeholder="Amount"></div><div class="input-group"><input type="radio" value="%" name="extrasName_'+counterext+'" class="form-control inputsize"><label class="checkbox-inline">%</label></div><div class="input-group"><input type="radio" value="Rs" name="extrasName_'+counterext+'" class="form-control inputsize"><label class="checkbox-inline">Rs</label></div><div class="input-group addExtras" id="addExtras_'+counterext+'" style="margin-right:30px;"><button class="btn btn-info" style="width:90px;">Add</button></div></div>');
+	
+	return false;
+
+});
+
+$(document).on('click','.addWaitingFee', function(){
+	
+	var addButtonId = $(this).attr('id');
+		var counterArr = addButtonId.split("_");
+		
+		var counter = counterArr[1];
+			counter++;
+		$("#"+addButtonId).remove();	
+		
+		var detailsdiv = "";
+		detailsdiv += '<div class="row form-group"><div class="col-sm-3"><input type="text" id="fair_waiting_minutes_'+counter+'" class="form-control" ></div><div class="col-sm-3"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" id="fair_waiting_fees_'+counter+'" class="form-control" ></div></div><div class="col-sm-3"><div class="col-sm-4 addWaitingFee" id="addWaitingFee_'+counter+'" style="padding:0;"><a href="#" class="btn btn-info form-control">Add</a></div></div><div class="col-sm-3">&nbsp;</div></div>';
+		
+		appendedWaitingLength ++;
+		
+		$("#append_waiting_fee").append(detailsdiv);
+		return false;
+	
+});
+
+
+$(document).on('click','#removeWaitingFeeFields', function(){
+	var addId = $(".addWaitingFee").attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[1];
+	counter--;
+	$(".addWaitingFee").closest('.row').remove();
+	$("#fair_waiting_fees_"+counter).closest('.col-sm-3').after('<div class="col-sm-3"><div class="col-sm-4 addWaitingFee" id="addWaitingFee_'+counter+'" style="padding:0;"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+	appendedWaitingLength --;
+	return false;
+
+});
+
+
+$(document).on('click','#removeWaitingFeeFields11', function(){
+	var addId = $(".addWaitingFee11").attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[1];
+	counter--;
+	$(".addWaitingFee11").closest('.row').remove();
+	$("#fair_waiting_fees_"+counter).closest('.col-sm-3').after('<div class="col-sm-3"><div class="col-sm-4 addWaitingFee11" id="addWaitingFee11_'+counter+'" style="padding:0;"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+	appendedWaitingLength --;
+	return false;
+
+});
+
+
+$("#packagecalc").click(function(){
+	$('#PackageCalculationPopup').closest('li').removeClass('active');
+	$("#distanceVehiclep").closest('li').addClass('active');
+ 
+ });
+
+
+$("#distanceVehiclen").click(function(){
+	$('#distanceVehiclep').closest('li').removeClass('active');
+	$("#HourVehiclep").closest('li').addClass('active');
+ 
+ });
+
+$("#HourVehiclen").click(function(){
+	$("#HourVehiclep").closest('li').removeClass('active');
+	$("#DistanceHourp").closest('li').addClass('active');
+	//$("#vehicleFairmanage").css('top','588px !important');
+	
+});
+
+$("#Distance_Hourn").click(function(){
+	$("#DistanceWaitingp").closest('li').addClass('active');
+	$("#DistanceHourp").closest('li').removeClass('active');
+
+});
+
+$("#Distance_Waitingn").click(function(){
+	$("#basicVehiclePopup").closest('li').addClass('active');
+	$("#DistanceWaitingp").closest('li').removeClass('active');
+
+});
+
+$("#basicVehiclen").click(function(){
+	$("#basicVehiclePopup").closest('li').removeClass('active');
+	$("#PremiumVehiclep").closest('li').addClass('active');
+
+});
+
+$("#PremiumVehiclen").click(function(){
+	$("#Fixed_RoutesVehiclep").closest('li').addClass('active');
+	$("#PremiumVehiclep").closest('li').removeClass('active');
+
+});
+
+$("#fixed_route_next").click(function(){
+	$("#differentShares").closest('li').addClass('active');
+	$("#Fixed_RoutesVehiclep").closest('li').removeClass('active');
+
+});
+
+$("#basic_fair_manage_vehicle").click(function(){
+	var cab_vehicle_taxText = $("#cab_vehicle_taxText").val();
+	
+	var chkIdTax = '';
+	  $('.chkTax:checked').each(function () {
+		chkIdTax += $(this).val() + ",";
+	});
+	chkIdTax = chkIdTax.slice(0, -1);
+	
+	var chkId = '';
+	  $('.chkNumber:checked').each(function () {
+		chkId += $(this).val() + ",";
+	});
+	chkId = chkId.slice(0, -1);
+	  
+	var rounding  = chkId;
+	
+	var leveli = $('input[name="optionsInlineRadios1"]:checked').val();
+	var Direction = $('input[name="directionRadio"]:checked').val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageBasicVehicle',
+		cache: false,
+		dataType:"json",
+		data:{cab_vehicle_taxText:cab_vehicle_taxText,
+		chkIdTax:chkIdTax,
+		rounding:rounding,
+		leveli:leveli,
+		Direction:Direction,
+		vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+$("#distance_fair_manage_vehicle").click(function(){
+	var rate_per_km = $("#cab_vehicle_rate_per_km").val();
+	var first_km_rate = $("#first_km_rate").val();
+	
+	var vehicle_minmum_distance = $("#cab_vehicle_minmum_distance").val();
+	var vehicle_minmum_fare = $("#cab_vehicle_minmum_fare").val(); 
+	
+	var roundupkm_val = $("input[name='round_up_km']:checked").val();
+	var accum_instance_val = $("input[name='accum_instance']:checked").val();
+	
+		var cancelFeeUnit = $("input[name='cancellationFee']:checked").val();
+		var cnclFee = $("#cab_vehicle_cancellation_charge").val();
+	
+	var CancelFee = cnclFee+" "+cancelFeeUnit;
+	
+		var kmUpTo = "";
+		var ratePerKm = "";
+		for(var i=1; i<= appendedDistanceLength;i++){
+			var kmi = $("#kms_"+i).val();
+			kmUpTo += kmi+"_";
+			var rsi = $("#rs_"+i).val();
+			ratePerKm += rsi+"_";
+		}
+	
+	kmUpTo = kmUpTo.slice(0, -1);
+	ratePerKm = ratePerKm.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageDistanceVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km:rate_per_km,
+				first_km_rate:first_km_rate,
+				vehicle_minmum_distance:vehicle_minmum_distance,
+				vehicle_minmum_fare:vehicle_minmum_fare,
+				CancelFee:CancelFee,
+				kmUpTo:kmUpTo,
+				ratePerKm:ratePerKm,
+				roundupkm_val:roundupkm_val,
+				accum_instance_val:accum_instance_val,
+				vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+$("#premium_fair_manage_vehicle").click(function(){
+
+	var nightPremiumUnit = $("input[name='nightCh']:checked").val();
+	var nightChrge = $("#nightPremiumVehicle").val();
+	
+	var nightChStrtTime = $("#nightChStrtTime").val();
+	var nightChEndTime = $("#nightChEndTime").val();
+	
+	var premiumofVehicle = $("#premiumofVehicle").val();
+	var premiumofVehicleUnit = $("input[name='premiumCh']:checked").val();
+	var premium = premiumofVehicle+" "+premiumofVehicleUnit;
+	
+	var extrasIn = "";
+	var extrasUnit = "";
+	var extrasType = "";
+	
+	for(var i=1; i<= counterext;i++){
+		var extrasTypeUpTo = $("#extraType_"+i).val();
+		extrasType += extrasTypeUpTo+"_";
+		var extrasUpTo = $("#extraIn_"+i).val();
+		extrasIn += extrasUpTo+"_";
+		var extrasUnitUpTo = $('input[name=extrasName_'+i+']:checked').val();
+		extrasUnit += extrasUnitUpTo+"_";
+	}
+	
+	extrasType = extrasType.slice(0, -1);
+	extrasIn = extrasIn.slice(0, -1);
+	extrasUnit = extrasUnit.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManagePremiumVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				nightChrge:nightChrge,
+                                nightPremiumUnit:nightPremiumUnit,
+				nightChStrtTime:nightChStrtTime,
+				nightChEndTime:nightChEndTime,
+				premium:premium,
+				extrasType:extrasType,
+				extrasIn:extrasIn,
+				extrasUnit:extrasUnit,
+				vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+$("#fixed_route_fair_manage_vehicle").click(function(){
+
+	var frequent_location = $("#frequent_location").val();
+	var pickupPostCodeArr = "";
+	var dropPostCodeArr = "";
+	var rsPostCodeArr = "";
+	
+	for(var i=1; i<= counterPostCode;i++){
+		var pickupPostCode = $("#pickupPostCode_"+i).val();
+		pickupPostCodeArr += pickupPostCode+"_";
+		
+		var dropPostCode = $("#dropoffPostCode_"+i).val();
+		dropPostCodeArr += dropPostCode+"_";
+		
+		var rsPostCode = $("#rsPostCode_"+i).val();
+		rsPostCodeArr += rsPostCode+"_";
+		
+	}
+		
+	pickupPostCodeArr = pickupPostCodeArr.slice(0, -1);
+	dropPostCodeArr = dropPostCodeArr.slice(0, -1);
+	rsPostCodeArr = rsPostCodeArr.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageFixedRouteVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				frequent_location:frequent_location,
+				pickupPostCodeArr:pickupPostCodeArr,
+				dropPostCodeArr:dropPostCodeArr,
+				rsPostCodeArr:rsPostCodeArr,
+				vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+
+$("#fair_manage_save").click(function(){
+		
+	var cab_vehicle_taxText = $("#cab_vehicle_taxText").val();
+	var chkId = '';
+	  $('.chkNumber:checked').each(function () {
+		chkId += $(this).val() + ",";
+	});
+	chkId = chkId.slice(0, -1);
+	  
+	var rounding  = chkId;
+	
+	var level = $('input[name="optionsInlineRadios1"]:checked').val();
+	var Direction = $('input[name="directionRadio"]:checked').val();
+	
+	var rate_per_km = $("#cab_vehicle_rate_per_km").val();
+	var first_km_rate = $("#first_km_rate").val();
+	
+	var vehicle_minmum_distance = $("#cab_vehicle_minmum_distance").val();
+	var vehicle_minmum_fare = $("#cab_vehicle_minmum_fare").val(); 
+	
+		var cancelFeeUnit = $("input[name='cancellationFee']:checked").val();
+		var cnclFee = $("#cab_vehicle_cancellation_charge").val();
+	
+	var CancelFee = cnclFee+" "+cancelFeeUnit;
+	
+		var kmUpTo = "";
+		var ratePerKm = "";
+		for(var i=1; i<= appendedDistanceLength;i++){
+			var kmi = $("#kms_"+i).val();
+			kmUpTo += kmi+"_";
+			var rsi = $("#rs_"+i).val();
+			ratePerKm += rsi+"_";
+		}
+	
+	kmUpTo = kmUpTo.slice(0, -1);
+	ratePerKm = ratePerKm.slice(0, -1);
+	
+		var nightPremiumUnit = $("input[name='nightCh']:checked").val();
+		var nightPremium = $("#nightPremiumVehicle").val(); 
+	
+	var nightChrge = nightPremium+" "+nightPremiumUnit;
+	var nightChStrtTime = $("#nightChStrtTime").val();
+	var nightChEndTime = $("#nightChEndTime").val();	
+	
+		var extrasIn = "";
+		var extrasUnit = "";
+		for(var i=1; i<= counterext;i++){
+			var extrasUpTo = $("#extraIn_"+i).val();
+			extrasIn += extrasUpTo+"_";
+			var extrasUnitUpTo = $('input[name=extrasName_'+i+']:checked').val();
+			extrasUnit += extrasUnitUpTo+"_";
+		}
+	extrasIn = extrasIn.slice(0, -1);
+	extrasUnit = extrasUnit.slice(0, -1);
+	var vehicle_rate_hour = $("#cab_vehicle_rate_hour").val();
+
+		var minuteUpTo = "";
+		var fee_per_minutes = "";
+		for(var i=1; i<= appendedWaitingLength;i++){
+			var waitingMinutei = $("#fair_waiting_minutes_"+i).val();
+			minuteUpTo += waitingMinutei+"_";
+			var waitnigFeei = $("#fair_waiting_fees_"+i).val();
+			fee_per_minutes += waitnigFeei+"_";
+		}
+	
+	minuteUpTo = minuteUpTo.slice(0, -1);
+	fee_per_minutes = fee_per_minutes.slice(0, -1);
+	
+	var premiumofVehicle = $("#premiumofVehicle").val();
+	var premiumofVehicleUnit = $("input[name='premiumCh']:checked").val();
+	
+	var premiumo = premiumofVehicle+" "+premiumofVehicleUnit;
+	
+	var frequent_location = $("#frequent_location").val();
+	
+	var pickupPostCodeArr = "";
+		var dropPostCodeArr = "";
+		var rsPostCodeArr = "";
+		
+		
+		for(var i=1; i<= counterPostCode;i++){
+			var pickupPostCode = $("#pickupPostCode_"+i).val();
+			pickupPostCodeArr += pickupPostCode+"_";
+			
+			var dropPostCode = $("#dropoffPostCode_"+i).val();
+			dropPostCodeArr += dropPostCode+"_";
+			
+			var rsPostCode = $("#rsPostCode_"+i).val();
+			rsPostCodeArr += rsPostCode+"_";
+			
+		}
+		
+	pickupPostCodeArr = pickupPostCodeArr.slice(0, -1);
+	dropPostCodeArr = dropPostCodeArr.slice(0, -1);
+	rsPostCodeArr = rsPostCodeArr.slice(0, -1);
+	
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManagement',
+		cache: false,
+		dataType:"json",
+		data:{cab_vehicle_taxText:cab_vehicle_taxText,rounding:rounding,level:level,Direction:Direction,rate_per_km:rate_per_km,first_km_rate:first_km_rate,vehicle_minmum_distance:vehicle_minmum_distance,vehicle_minmum_fare:vehicle_minmum_fare,CancelFee:CancelFee,kmUpTo:kmUpTo,ratePerKm:ratePerKm,nightChrge:nightChrge,nightChStrtTime:nightChStrtTime,nightChEndTime:nightChEndTime,extrasIn:extrasIn,extrasUnit:extrasUnit,vehicle_rate_hour:vehicle_rate_hour,minuteUpTo:minuteUpTo,fee_per_minutes:fee_per_minutes,premium:premiumo,frequent_location:frequent_location,vehicleId:vehicleID,pickupPostCodeArr:pickupPostCodeArr,dropPostCodeArr:dropPostCodeArr,rsPostCodeArr:rsPostCodeArr}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+	
+});
+
+$("#basic_fair_manage_cab_save").click(function(){
+	var cab_vehicle_taxText = $("#cab_vehicle_taxText").val();
+	
+	var chkIdTax = '';
+	  $('.chkTax:checked').each(function () {
+		chkIdTax += $(this).val() + ",";
+	});
+	chkIdTax = chkIdTax.slice(0, -1);
+	
+	var chkId = '';
+	  $('.chkNumber:checked').each(function () {
+		chkId += $(this).val() + ",";
+	});
+	chkId = chkId.slice(0, -1);
+	  
+	var rounding  = chkId;
+	
+	var leveli = $('input[name="optionsInlineRadios1"]:checked').val();
+	var Direction = $('input[name="directionRadio"]:checked').val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageBasic',
+		cache: false,
+		dataType:"json",
+		data:{cab_vehicle_taxText:cab_vehicle_taxText,
+		chkIdTax:chkIdTax,
+		rounding:rounding,
+		leveli:leveli,
+		Direction:Direction,
+		CabTypeId:cabTypeId
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+$("#distance_fair_manage_cab_save").click(function(){
+	var rate_per_km = $("#cab_vehicle_rate_per_km").val();
+	var first_km_rate = $("#first_km_rate").val();
+	
+	var vehicle_minmum_distance = $("#cab_vehicle_minmum_distance").val();
+	var vehicle_minmum_fare = $("#cab_vehicle_minmum_fare").val(); 
+	
+	var roundupkm_val = $("input[name='round_up_km']:checked").val();
+	var accum_instance_val = $("input[name='accum_instance']:checked").val();
+	
+	
+		var cancelFeeUnit = $("input[name='cancellationFee']:checked").val();
+		var cnclFee = $("#cab_vehicle_cancellation_charge").val();
+		var CancelFee = cnclFee+" "+cancelFeeUnit;
+	
+		var kmUpTo = "";
+		var ratePerKm = "";
+		for(var i=1; i<= appendedDistanceLength;i++){
+			var kmi = $("#kms_"+i).val();
+			kmUpTo += kmi+"_";
+			var rsi = $("#rs_"+i).val();
+			ratePerKm += rsi+"_";
+		}
+	
+	kmUpTo = kmUpTo.slice(0, -1);
+	ratePerKm = ratePerKm.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageDistance',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km:rate_per_km,
+				first_km_rate:first_km_rate,
+				vehicle_minmum_distance:vehicle_minmum_distance,
+				vehicle_minmum_fare:vehicle_minmum_fare,
+				CancelFee:CancelFee,
+				kmUpTo:kmUpTo,
+				ratePerKm:ratePerKm,
+				roundupkm_val:roundupkm_val,
+				accum_instance_val:accum_instance_val,
+				CabTypeId:cabTypeId
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+$("#premium_fair_manage_cab_save").click(function(){
+
+	var nightPremiumUnit = $("input[name='nightCh']:checked").val();
+	var nightChrge = $("#nightPremiumVehicle").val();
+	
+	var nightChStrtTime = $("#nightChStrtTime").val();
+	var nightChEndTime = $("#nightChEndTime").val();
+	
+	var premiumofVehicle = $("#premiumofVehicle").val();
+	var premiumofVehicleUnit = $("input[name='premiumCh']:checked").val();
+	var premium = premiumofVehicle+" "+premiumofVehicleUnit;
+	
+	var extrasIn = "";
+	var extrasUnit = "";
+	var extrasType = "";
+	
+	for(var i=1; i<= counterext;i++){
+		var extrasTypeUpTo = $("#extraType_"+i).val();
+		extrasType += extrasTypeUpTo+"_";
+		var extrasUpTo = $("#extraIn_"+i).val();
+		extrasIn += extrasUpTo+"_";
+		var extrasUnitUpTo = $('input[name=extrasName_'+i+']:checked').val();
+		extrasUnit += extrasUnitUpTo+"_";
+	}
+	
+	extrasType = extrasType.slice(0, -1);
+	extrasIn = extrasIn.slice(0, -1);
+	extrasUnit = extrasUnit.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManagePremium',
+		cache: false,
+		dataType:"json",
+		data:{
+				nightChrge:nightChrge,
+                                nightPremiumUnit:nightPremiumUnit,
+				nightChStrtTime:nightChStrtTime,
+				nightChEndTime:nightChEndTime,
+				premium:premium,
+				extrasType:extrasType,
+				extrasIn:extrasIn,
+				extrasUnit:extrasUnit,
+				CabTypeId:cabTypeId
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+$("#fixed_route_fair_manage_cab_save").click(function(){
+
+	var frequent_location = $("#frequent_location").val();
+	var pickupPostCodeArr = "";
+	var dropPostCodeArr = "";
+	var rsPostCodeArr = "";
+	
+	for(var i=1; i<= counterPostCode;i++){
+		var pickupPostCode = $("#pickupPostCode_"+i).val();
+		pickupPostCodeArr += pickupPostCode+"_";
+		
+		var dropPostCode = $("#dropoffPostCode_"+i).val();
+		dropPostCodeArr += dropPostCode+"_";
+		
+		var rsPostCode = $("#rsPostCode_"+i).val();
+		rsPostCodeArr += rsPostCode+"_";
+		
+	}
+		
+	pickupPostCodeArr = pickupPostCodeArr.slice(0, -1);
+	dropPostCodeArr = dropPostCodeArr.slice(0, -1);
+	rsPostCodeArr = rsPostCodeArr.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageFixedRoute',
+		cache: false,
+		dataType:"json",
+		data:{
+				frequent_location:frequent_location,
+				pickupPostCodeArr:pickupPostCodeArr,
+				dropPostCodeArr:dropPostCodeArr,
+				rsPostCodeArr:rsPostCodeArr,
+				CabTypeId:cabTypeId
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+
+
+$("#fair_manage_cab_save").click(function(){
+	var cab_vehicle_taxText = $("#cab_vehicle_taxText").val();
+	var chkId = '';
+	  $('.chkNumber:checked').each(function () {
+		chkId += $(this).val() + ",";
+	});
+	chkId = chkId.slice(0, -1);
+	  
+	var rounding  = chkId;
+	
+	var leveli = $('input[name="optionsInlineRadios1"]:checked').val();
+	var Direction = $('input[name="directionRadio"]:checked').val();
+	
+	var rate_per_km = $("#cab_vehicle_rate_per_km").val();
+	var first_km_rate = $("#first_km_rate").val();
+	
+	var vehicle_minmum_distance = $("#cab_vehicle_minmum_distance").val();
+	var vehicle_minmum_fare = $("#cab_vehicle_minmum_fare").val(); 
+	
+		var cancelFeeUnit = $("input[name='cancellationFee']:checked").val();
+		var cnclFee = $("#cab_vehicle_cancellation_charge").val();
+	
+	var CancelFee = cnclFee+" "+cancelFeeUnit;
+	
+		var kmUpTo = "";
+		var ratePerKm = "";
+		for(var i=1; i<= appendedDistanceLength;i++){
+			var kmi = $("#kms_"+i).val();
+			kmUpTo += kmi+"_";
+			var rsi = $("#rs_"+i).val();
+			ratePerKm += rsi+"_";
+		}
+	
+	kmUpTo = kmUpTo.slice(0, -1);
+	ratePerKm = ratePerKm.slice(0, -1);
+	
+		var nightPremiumUnit = $("input[name='nightCh']:checked").val();
+		var nightPremium = $("#nightPremiumVehicle").val(); 
+	
+	var nightChrge = nightPremium+" "+nightPremiumUnit;
+	var nightChStrtTime = $("#nightChStrtTime").val();
+	var nightChEndTime = $("#nightChEndTime").val();	
+	
+		var extrasIn = "";
+		var extrasUnit = "";
+		for(var i=1; i<= counterext;i++){
+			var extrasUpTo = $("#extraIn_"+i).val();
+			extrasIn += extrasUpTo+"_";
+			var extrasUnitUpTo = $('input[name=extrasName_'+i+']:checked').val();
+			extrasUnit += extrasUnitUpTo+"_";
+		}
+	extrasIn = extrasIn.slice(0, -1);
+	extrasUnit = extrasUnit.slice(0, -1);
+	var vehicle_rate_hour = $("#cab_vehicle_rate_hour").val();
+
+		var minuteUpTo = "";
+		var fee_per_minutes = "";
+		for(var i=1; i<= appendedWaitingLength;i++){
+			var waitingMinutei = $("#fair_waiting_minutes_"+i).val();
+			minuteUpTo += waitingMinutei+"_";
+			var waitnigFeei = $("#fair_waiting_fees_"+i).val();
+			fee_per_minutes += waitnigFeei+"_";
+		}
+	
+	minuteUpTo = minuteUpTo.slice(0, -1);
+	fee_per_minutes = fee_per_minutes.slice(0, -1);
+	
+	var premiumofVehicle = $("#premiumofVehicle").val();
+	var premiumofVehicleUnit = $("input[name='premiumCh']:checked").val();
+	
+	var premiumo = premiumofVehicle+" "+premiumofVehicleUnit;
+	var frequent_location = $("#frequent_location").val();
+	
+	
+		var pickupPostCodeArr = "";
+		var dropPostCodeArr = "";
+		var rsPostCodeArr = "";
+		
+		
+		for(var i=1; i<= counterPostCode;i++){
+			var pickupPostCode = $("#pickupPostCode_"+i).val();
+			pickupPostCodeArr += pickupPostCode+"_";
+			
+			var dropPostCode = $("#dropoffPostCode_"+i).val();
+			dropPostCodeArr += dropPostCode+"_";
+			
+			var rsPostCode = $("#rsPostCode_"+i).val();
+			rsPostCodeArr += rsPostCode+"_";
+			
+		}
+		
+	pickupPostCodeArr = pickupPostCodeArr.slice(0, -1);
+	dropPostCodeArr = dropPostCodeArr.slice(0, -1);
+	rsPostCodeArr = rsPostCodeArr.slice(0, -1);
+	
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManagementOfCab',
+		cache: false,
+		dataType:"json",
+		data:{cab_vehicle_taxText:cab_vehicle_taxText,rounding:rounding,leveli:leveli,Direction:Direction,rate_per_km:rate_per_km,first_km_rate:first_km_rate,vehicle_minmum_distance:vehicle_minmum_distance,vehicle_minmum_fare:vehicle_minmum_fare,CancelFee:CancelFee,kmUpTo:kmUpTo,ratePerKm:ratePerKm,nightChrge:nightChrge,nightChStrtTime:nightChStrtTime,nightChEndTime:nightChEndTime,extrasIn:extrasIn,extrasUnit:extrasUnit,vehicle_rate_hour:vehicle_rate_hour,minuteUpTo:minuteUpTo,fee_per_minutes:fee_per_minutes,premium:premiumo,CabTypeId:cabTypeId,frequent_location:frequent_location,pickupPostCodeArr:pickupPostCodeArr,dropPostCodeArr:dropPostCodeArr,rsPostCodeArr:rsPostCodeArr}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+
+});
+
+
+
+$("#cab_distance_waiting_save").click(function(){
+	var rate_per_km_dw = $("#rate_per_km_dw").val();
+	var minmum_distance_dw = $("#minmum_distance_dw").val();
+	var minmum_fare_dw = $("#minmum_fare_dw").val();
+	
+	var fair_waiting_minutes11 = $("#fair_waiting_minutes11").val();
+	var fair_waiting_fees11 = $("#fair_waiting_fees11").val();
+	
+	var fair_waiting_fees22 = $("#fair_waiting_fees22").val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveDistanceWaiting',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km_dw:rate_per_km_dw,
+				minmum_distance_dw:minmum_distance_dw,
+				minmum_fare_dw:minmum_fare_dw,
+				fair_waiting_minutes11:fair_waiting_minutes11,
+				fair_waiting_fees11:fair_waiting_fees11,
+				fair_waiting_fees22:fair_waiting_fees22,
+				CabTypeId:cabTypeId
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+
+$("#cab_distance_hour_save").click(function(){
+	var rate_per_km_dh = $("#rate_per_km_dh").val();
+	var minmum_distance_dh = $("#minmum_distance_dh").val();
+	var minmum_fare_dh = $("#minmum_fare_dh").val();
+	var rate_per_hour_dh = $("#rate_per_hour_dh").val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveDistanceHour',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km_dh:rate_per_km_dh,
+				minmum_distance_dh:minmum_distance_dh,
+				minmum_fare_dh:minmum_fare_dh,
+				rate_per_hour_dh:rate_per_hour_dh,
+				CabTypeId:cabTypeId
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+
+
+$("#vehicle_distance_hour_save").click(function(){
+	var rate_per_km_dh = $("#rate_per_km_dh").val();
+	var minmum_distance_dh = $("#minmum_distance_dh").val();
+	var minmum_fare_dh = $("#minmum_fare_dh").val();
+	var rate_per_hour_dh = $("#rate_per_hour_dh").val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveDistanceHourVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km_dh:rate_per_km_dh,
+				minmum_distance_dh:minmum_distance_dh,
+				minmum_fare_dh:minmum_fare_dh,
+				rate_per_hour_dh:rate_per_hour_dh,
+				vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+
+
+$("#vehicle_distance_waiting_save").click(function(){
+	var rate_per_km_dw = $("#rate_per_km_dw").val();
+	var minmum_distance_dw = $("#minmum_distance_dw").val();
+	var minmum_fare_dw = $("#minmum_fare_dw").val();
+	
+	var fair_waiting_minutes11 = $("#fair_waiting_minutes11").val();
+	var fair_waiting_fees11 = $("#fair_waiting_fees11").val();
+	
+	var fair_waiting_fees22 = $("#fair_waiting_fees22").val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveDistanceWaitingVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km_dw:rate_per_km_dw,
+				minmum_distance_dw:minmum_distance_dw,
+				minmum_fare_dw:minmum_fare_dw,
+				fair_waiting_minutes11:fair_waiting_minutes11,
+				fair_waiting_fees11:fair_waiting_fees11,
+				fair_waiting_fees22:fair_waiting_fees22,
+				vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+
+$("#package_calc_cab_save").click(function(){
+	
+	var local = $('input[name="localPackage"]:checked').val();
+	var point_to_point = $('input[name="pointToPointPackage"]:checked').val();
+	var airport = $('input[name="airportPackage"]:checked').val();
+	var outstation = $('input[name="outstationPackage"]:checked').val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/cabPackageCalculation',
+		cache: false,
+		dataType:"json",
+		data:{
+				local:local,
+				point_to_point:point_to_point,
+				airport:airport,
+				outstation:outstation
+		}
+		
+	})
+  .done(function( html ) {
+		
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+
+$("#share_cab_save").click(function(){
+	
+	var companyShare = $('#company_share').val();
+	var partnerShare = $('#partner_share').val();
+	var driverShare = $('#driver_share').val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/shareCalculation',
+		cache: false,
+		dataType:"json",
+		data:{
+				companyShare:companyShare,
+				partnerShare:partnerShare,
+				driverShare:driverShare
+		}
+		
+	})
+  .done(function( html ) {
+		
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+
+function all_distance_manage_save(){
+	var rate_per_km = $("#cab_vehicle_rate_per_km").val();
+	var first_km_rate = $("#first_km_rate").val();
+	
+	var vehicle_minmum_distance = $("#cab_vehicle_minmum_distance").val();
+	var vehicle_minmum_fare = $("#cab_vehicle_minmum_fare").val(); 
+	
+		var cancelFeeUnit = $("input[name='cancellationFee']:checked").val();
+		var cnclFee = $("#cab_vehicle_cancellation_charge").val();
+	
+	var CancelFee = cnclFee+" "+cancelFeeUnit;
+	
+		var kmUpTo = "";
+		var ratePerKm = "";
+		for(var i=1; i<= appendedDistanceLength;i++){
+			var kmi = $("#kms_"+i).val();
+			kmUpTo += kmi+"_";
+			var rsi = $("#rs_"+i).val();
+			ratePerKm += rsi+"_";
+		}
+	
+	kmUpTo = kmUpTo.slice(0, -1);
+	ratePerKm = ratePerKm.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageDistanceVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km:rate_per_km,
+				first_km_rate:first_km_rate,
+				vehicle_minmum_distance:vehicle_minmum_distance,
+				vehicle_minmum_fare:vehicle_minmum_fare,
+				CancelFee:CancelFee,
+				kmUpTo:kmUpTo,
+				ratePerKm:ratePerKm,
+				vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fair Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+}
+
+
+
+$('.cancellationCl').click (function(){
+	var cancelUnit = $("input[name='cancellationFee']:checked").val();
+	$("#cancellationUnit").html(cancelUnit);
+	
+});
+
+$('.nightChCl').click (function(){
+	var nightPremiumUnit = $("input[name='nightCh']:checked").val();
+	$("#nightPremiumUnit").html(nightPremiumUnit);
+	
+});
+$('.premiumChCl').click (function(){
+	var PremiumUnit = $("input[name='premiumCh']:checked").val();
+	$("#premiumVeUnit").html(PremiumUnit);
+	
+});
+var counterPostCode = 1;
+$(document).on('click','.addPostCodes',function(){
+	counterPostCode++;
+	
+	var appended = '<div class="form-group clearfix"><div class="col-sm-3" style="margin-right:3px;"><input type="text" class="form-control" id="pickupPostCode_'+counterPostCode+'"></div><div class="col-sm-3" style="margin-right:3px;"><input type="text" class="form-control" id="dropoffPostCode_'+counterPostCode+'"></div><div class="col-sm-3"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="rsPostCode_'+counterPostCode+'"></div></div></div>';
+	$(this).attr("id","'addPostCodes_"+counterPostCode+"'");
+	$("#append_postCodes").append(appended);
+});
+
+</script>

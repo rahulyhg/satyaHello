@@ -1,0 +1,1134 @@
+<?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+ $path=$this->basePath();
+?> 
+<?php
+ $SightseeingDetails = $_SESSION['SightseeingDetails'];
+ $ShowsDetails = $_SESSION['ShowsDetails']; 
+ $guideDetails = $_SESSION['guideDetails']; 
+ $guide_fare = $_SESSION['guide_fare'];
+ $NoOfday=$_SESSION['NoOfday'];
+
+// echo $SightseeingDetails['s_id'];die;
+ $_SESSION['vehicleId']
+//$qry = "select * from ";
+ //echo $ShowsDetails['s_id'];
+/* foreach($guide_fare as $SD)
+ {
+	echo $SD['s_id']; 
+   echo $SD['name']; 
+   echo $SD['fare'];
+ }     */
+?>
+
+<!DOCTYPE html>
+<html style="height: 100%;" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+
+<meta charset="utf-8">
+<title>Hello42</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Le styles -->
+<link href="<?php echo $path; ?>/public/css/bootstrap_out.css" type="text/css" rel="stylesheet" media="all">
+<link href="<?php echo $path; ?>/public/css/style_out.css" type="text/css" rel="stylesheet" media="all">
+<link href="<?php echo $path; ?>/public/css/newcss_out.css" media="screen" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="<?php echo $path; ?>/public/css/flexslider.css" type="text/css" media="screen" />
+
+<script src="<?php echo $path; ?>/public/js/searchEngin.js" type="text/javascript"></script>
+<style>
+input.error {
+	border: 1px solid red;
+}
+.error {
+	color: red;
+}
+.choose
+{
+	width:99%;
+	border:none;
+}
+.bookcar
+{
+	padding:10px; 
+	color:#FFF;
+	background:#F90;
+	width:;
+}
+.formfieldtext
+{
+	margin-top:5px;
+}
+.mapcantiner_inner1 ul li
+{
+	width:188px;
+}
+
+</style>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="<?php echo $path; ?>/public/js/jquery.js"></script>
+
+<script language="javascript" type="text/javascript">
+        function togglemodify(id, btn_id) {
+			//alert(1);
+            //debugger;
+            var btnId = btn_id.v
+//            var e = document.getElementById(id);
+//            var b = document.getElementById(btn_id);
+            //            e.style.display = e.style.display == "none" ? "block" : "none";
+			//$("#1").css("display","block");
+            $("#modify_search").slideToggle(500);
+            
+        }
+		
+		function togglemodify1(id, btn_id) {
+			//alert(1);
+            //debugger;
+            var btnId = btn_id.v
+//            var e = document.getElementById(id);
+//            var b = document.getElementById(btn_id);
+            //            e.style.display = e.style.display == "none" ? "block" : "none";
+			//$("#1").css("display","block");
+            $("#modify_search1").slideToggle(500);
+           
+
+        }
+
+		
+
+        function gotoResult() {
+
+
+            if (Validate_Me()) {
+                if (TransValue())
+                    return true;
+                else
+                    return false;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+
+<script type="text/javascript"> 
+<!-- 
+function showMe (it, box) { 
+var vis = (box.checked) ? "block" : "none"; document.getElementById(it).style.display = vis;
+} 
+
+
+//--> 
+</script>
+<script type="text/javascript"> 
+<!-- 
+function showMe1 (it, box) { 
+var vis = (box.checked) ? "none" : "block"; document.getElementById(it).style.display = vis;
+} 
+
+
+//--> 
+</script>
+ <script defer src="<?php echo $path; ?>/public/js/jquery.flexslider.js"></script>
+  
+	<script type="text/javascript">
+		$(function(){
+			SyntaxHighlighter.all();
+			});
+			$(window).load(function(){
+			$('.flexslider').flexslider({
+			animation: "slide",
+			start: function(slider){
+			$('body').removeClass('loading');
+			}
+			});
+		});
+	</script>   
+
+ <script language="javascript" type="text/javascript">
+
+        function gotoResult() {
+
+
+            if (Validate_Me()) {
+                if (TransValue())
+                    return true;
+                else
+                    return false;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+
+    
+
+<style>
+
+.summary{}
+.details h2, .summary h2{padding: 7px 10px; background: #f1f1f1; font-size:22px;}
+.details .inner, .summary .inner{padding: 10px; min-height: ;}
+.summary .inner{font-size: 12px;}
+.summary .bookcimg{border:1px solid #ccc; padding:7px; box-shadow: 0px 0px 1px #ccc; margin:5px 0 20px; max-width: 260px;}
+.summary .inner .info{padding:3px 0}
+.summary .inner .infopay{padding: 10px 0;}
+.summary .inner .infopay .title{font-size: 14px; display: inline-block; width:150px;}
+.summary .inner .infopay .price{font-size: 14px; padding: 4px 0 4px 20px; font-weight:bold; font-family: arial; display: inline-block}
+.summary .inner .info ul{padding:5px 0; list-style: none ; margin-top: 0px}
+.summary .inner .info ul li{padding:3px 0}
+
+
+
+
+
+input[type=checkbox] {
+		display: block;
+	}
+
+	input[type=checkbox] + label {
+		display:inline-block;
+		margin:-2px;
+		padding: 4px 32px;
+		margin-bottom: 0;
+		font-size: 14px;
+		line-height: 20px;
+		color: #333;
+		text-align: center;
+		text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+		vertical-align: middle;
+		cursor: pointer;
+		background-color: #f5f5f5;
+		background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+		background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+		background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+		background-repeat: repeat-x;
+		border: 1px solid #ccc;
+		border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+		border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+		border-bottom-color: #b3b3b3;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+	}
+
+	input[type=checkbox]:checked + label {
+		   background-image: none;
+		outline: 0;
+		
+			background-color:#e0e0e0;
+	}
+	
+	.sightmargin{
+		margin-bottom:;
+	}
+
+</style>
+
+
+<style>
+input[type=radio] {
+		display:;
+	}
+
+	input[type=radio] + label {
+		display:inline-block;
+		margin:-2px;
+		padding: 4px 32px;
+		margin-bottom: 0;
+		font-size: 14px;
+		line-height: 20px;
+		color: #333;
+		text-align: center;
+		text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+		vertical-align: middle;
+		cursor: pointer;
+		background-color: #f5f5f5;
+		background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+		background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+		background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+		background-repeat: repeat-x;
+		border: 1px solid #ccc;
+		border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+		border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+		border-bottom-color: #b3b3b3;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+	}
+
+	input[type=radio]:checked + label {
+		   background-image: none;
+		outline: 0;
+		
+			background-color:#ccc;
+	}
+	
+	.sightmargin{
+		margin-bottom:;
+	}
+
+</style>
+
+
+
+ <div class="banner-bottom pcenter" align="center" >
+<img src="<?php echo $path; ?>/public/images/revue1.png">
+</div>
+
+
+<div class="banner-bottom pcenter" >
+		<!-- container -->
+		<div class="container">
+        
+        
+			<div class="banner-bottom-grids">
+				<div class="col-md-9 banner-bottom-grid">
+               <div class="choose" style="padding-top:0; margin-top:0;">
+						
+						<div class="destinations-grid-info tours">
+                           <div class="td-grids">
+								
+                            
+                            <div class=" " align="left">
+									<p><strong>
+                                   Your Trip: Delhi Taj Mahal Tours - 1 Day Car Trip (<a style="display:inline;" href="#">Go Back</a> / <a style="display:inline;" href="#">Customize More</a>)
+                         </strong>           
+                                    </p>
+									
+							</div>
+                            
+                              
+                            
+								
+								<div class="clearfix"> </div>
+						  </div>
+							</div>
+					</div>
+
+                    
+					<div class="choose">
+						<div class="choose-info">
+							<!--<h4>Trip Summary</h4>-->
+						</div>
+						<div class="destinations-grid-info tours">
+                           <div class="td-grids">
+								 
+                                  <div class="mapcantiner_inner1" style="padding:0 !important;">
+	
+    <div class="testimonial_box" style="margin:0 0 10px; padding:0 0 10px;">
+     <p><span class="txtdgrey mL10">Booking Information </span></p>
+
+    </div></div>
+    								<div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:0 0 10px;">
+	  <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Name<span style="color:red;">*</span>
+              			</div>
+    
+      <div class="col-md-31 sightmargin formfield" align="left" >
+									 
+                                     <input name="" type="text" class="formfieldtext form-control">
+	
+									
+							</div>
+                            
+      <div class="col-md-31 sightmargin formname" align="left">
+	    
+	   Mobile:<span style="color:red;">*</span>
+              			</div>
+    
+      <div class="col-md-31 sightmargin formfield" align="left" >
+									 
+                                     <input name="" type="text" class="formfieldtext form-control">
+	
+									
+							</div>
+                          
+                          
+       <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Email<span style="color:red;">*</span>
+              			</div>
+    
+      <div class="col-md-31 sightmargin formfield" align="left" >
+									 
+                                     <input name="" type="text" class="formfieldtext form-control">
+	
+									
+							</div>
+                            
+      <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Address:<span style="color:red;">*</span>
+              			</div>
+    
+      <div class="col-md-31 sightmargin formfield" align="left" >
+									 
+                                     <input name="" type="text" class="formfieldtext form-control">
+	
+									
+							</div>
+                           
+      <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    City:<span style="color:red;">*</span>
+              			</div>
+    
+      <div class="col-md-31 sightmargin formfield" align="left" >
+									 
+                                     <input name="" type="text" class="formfieldtext form-control">
+	
+									
+							</div>
+                            
+      <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    State:<span style="color:red;">*</span>
+              			</div>
+    
+      <div class="col-md-31 sightmargin formfield" align="left" >
+									 
+                                     <input name="" type="text" class="formfieldtext form-control">
+	
+									
+							</div>
+                            
+      <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Country:<span style="color:red;">*</span>
+              			</div>
+    
+      <div class="col-md-31 sightmargin formfield" align="left" >
+									 
+                                     <input name="" type="text" class="formfieldtext form-control">
+	
+									
+							</div>
+                            
+      <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Postal Code:<span style="color:red;">*</span>
+              			</div>
+    
+      <div class="col-md-31 sightmargin formfield" align="left" >
+									 
+                                     <input name="" type="text" class="formfieldtext form-control">
+	
+									
+							</div>
+                            
+                             
+      <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Pickup Address<span style="color:red;">*</span>
+              			</div>
+    
+      <div class="col-md-31 sightmargin formfield" align="left" >
+									 
+                                     <input name="" type="text" class="formfieldtext form-control">
+	
+									
+							</div>
+                            
+       <div class="col-md-31 sightmargin formname" align="left">
+	    
+	   Promo Code
+              			</div>
+    
+      <div class="col-md-31 sightmargin formfield" align="left" >
+									 
+                                     <input name="" type="text" class="formfieldtext form-control">
+	
+									
+							</div>
+           
+    </div>
+    
+    </div>				  </div>
+                          
+                         
+                          
+                          <div class="td-grids">
+								 <div class="mapcantiner_inner1" style="padding:0 !important;">
+	
+    <div class="testimonial_box" style="margin:0 0 10px; padding:0 0 10px;">
+     <p><span class="txtdgrey mL10">Payment Option</span></p>
+
+    </div></div>
+    
+    								<div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:0 0 10px;">
+     
+                            
+                             <div class="col-md-31 sightmargin overviueimg3" align="left" style="width:100%;">
+							
+<div class="">
+   <div class="col-md-31 sightmargin overviueimg3" align="left" style="padding-left:0 !important;">
+  <ul class="nav nav-tabs">
+    <li class="active" style="padding-left:0 !important;"><a data-toggle="tab" href="#home">Credit & Debit Cards</a></li>
+    <li style="padding-left:0 !important;"><a data-toggle="tab" href="#menu1">Paypal</a></li>
+    <li style="padding-left:0 !important;"><a data-toggle="tab" href="#menu2">Deposit Cash in Your Bank</a></li>
+    <li style="padding-left:0 !important;"><a data-toggle="tab" href="#menu3">Pay Driver Before Trip</a></li>
+  </ul>
+</div>
+  <div class="tab-content" style="background:none !important;">
+    <div id="home" class="tab-pane fade in active">
+      <h5>Pay with – Credit / Debit Card or Net Banking (Indian & International Cards Accepted)</h5>
+      <p>
+                          
+                            <!--<div class="top-destinations-info" align="center">
+							<h4>Rs. 5719 (US $87 )</h4>
+						</div>-->
+                            
+							  <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Order Total <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 6548
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Govt. Tax:(3.09%) <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 171
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Discount <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     (Rs. 1000)
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Final Total <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 5719
+	
+									
+							</div>
+                            
+                            <div class="col-md-31 sightmargin formname" align="left" style="float:right;" >
+									 
+                                    <input type="button" class="btn btn-lg bg-primary col-sm-12 makebookingbtn outstationBooking formfieldtext" title="Submit" value="Book Now" style="margin:0 !important; padding:0 !important;">
+	
+									
+							</div>
+
+							</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h5>Paypal</h5>
+      <p> 					<div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Order Total <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 6548
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Govt. Tax:(3.09%) <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 171
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Discount <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     (Rs. 1000)
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Final Total <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 5719
+	
+									
+							</div>
+                            
+                            <div class="col-md-31 sightmargin formname" align="left" style="float:right;" >
+									 
+                                    <input type="button" class="btn btn-lg bg-primary col-sm-12 makebookingbtn outstationBooking formfieldtext" title="Submit" value="Book Now" style="margin:0 !important; padding:0 !important;">
+	
+									
+							</div></p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h5>Deposit Cash in Your Bank</h5>
+      <p> 					<div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Order Total <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 6548
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Govt. Tax:(3.09%) <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 171
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Discount <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     (Rs. 1000)
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Final Total <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 5719
+	
+									
+							</div>
+                            
+                            <div class="col-md-31 sightmargin formname" align="left" style="float:right;" >
+									 
+                                    <input type="button" class="btn btn-lg bg-primary col-sm-12 makebookingbtn outstationBooking formfieldtext" title="Submit" value="Book Now" style="margin:0 !important; padding:0 !important;">
+	
+									
+							</div></p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h5>Pay Driver Before Trip</h5>
+      <p>					<div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Order Total <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 6548
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Govt. Tax:(3.09%) <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 171
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Discount <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     (Rs. 1000)
+	
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin formname" align="left">
+	    
+	    Final Total <span style="color:red;">*</span>
+              			</div>
+    
+     						 <div class="col-md-31 sightmargin formname" align="left" >
+									 
+                                     Rs. 5719
+	
+									
+							</div>
+                            
+                            <div class="col-md-31 sightmargin formname" align="left" style="float:right;" >
+									 
+                                    <input type="button" class="btn btn-lg bg-primary col-sm-12 makebookingbtn outstationBooking formfieldtext" title="Submit" value="Book Now" style="margin:0 !important; padding:0 !important;">
+	
+									
+							</div>
+                            
+                            </p>
+    </div>
+  </div>
+</div>
+
+
+                			</div>
+    
+      
+                            
+        
+                            
+                                             
+                            
+ 	
+	
+    
+    
+	
+	
+    </div>
+    
+    </div>
+    
+    
+                            <div class="mapcantiner_inner1" style="padding:0 !important;">
+	
+    <div class="testimonial_box" style="margin:0 0 10px; padding:10px 0 10px;">
+     <span class="txtdgrey mL10">Note<span style="color:red">*:-</span></span>
+     
+    <span class="txtdgrey mL10">In payment module this note should be written " Minimum 25% of payment need to deposit for further process"</span>
+
+    </div>
+    
+    </div>
+								
+								<div class="clearfix"> </div>
+						  </div>
+							</div>
+                            
+                            
+					</div>
+                    
+                    
+                    
+				</div>
+				<div class="col-md-3 banner-bottom-grid" style="float:right; ">
+                <div class="top-destinations-grids" style="margin-top:0; display:;">
+						
+						<div class="top-destinations-bottom">
+							<div class="td-grids" style="margin-bottom:0 !important;">
+                            <div class="summary">
+                            <div class="col-md-31 sightmargin overviueimg5" align="left" style="width:100%; margin-bottom:10px; padding-left:0;">
+									<select class="input-sm hidden-xs currency_selection ng-pristine ng-valid form-control" ng-change="currencyChanged(selectedCurrency)" ng-options="currency.name for currency in availableCurrencies" ng-model="selectedCurrency" name="currency_selection">
+<option value="0">US Dollar (USD)</option>
+<option value="1">Indian Rupee (INR)</option>
+<option value="2">Algerian Dinar (DZD)</option>
+<option value="3">Argentine Peso (ARS)</option>
+<option value="4">Australian Dollar (AUD)</option>
+<option value="5">Bahraini Dinar (BHD)</option>
+<option value="6">Bangladeshi Taka (BDT)</option>
+<option value="7">Bolivian Boliviano (BOB)</option>
+<option value="8">Botswanan Pula (BWP)</option>
+<option value="9">Brazilian Real (BRL)</option>
+<option value="10">British Pound Sterling (GBP)</option>
+<option value="11">Brunei Dollar (BND)</option>
+<option value="12">Bulgarian Lev (BGN)</option>
+<option value="13">Cayman Islands Dollar (KYD)</option>
+<option value="14">Chinese Yuan Renminbi (CNY)</option>
+<option value="15">Colombian Peso (COP)</option>
+<option value="16">Costa Rican Colon (CRC)</option>
+<option value="17">Croatian Kuna (HRK)</option>
+<option value="18">Danish Krone (DKK)</option>
+<option value="19">Dominican Peso (DOP)</option>
+<option value="20">Egyptian Pound (EGP)</option>
+<option value="21">Estonian Kroon (EEK)</option>
+<option value="22">Euro (EUR)</option>
+<option value="23">Fijian Dollar (FJD)</option>
+<option value="24">Honduran Lempira (HNL)</option>
+<option value="25">Hong Kong Dollar (HKD)</option>
+<option value="26">Hungarian Forint (HUF)</option>
+<option value="27">Indonesian Rupiah (IDR)</option>
+<option value="28">Israeli New Sheqel (ILS)</option>
+<option value="29">Jamaican Dollar (JMD)</option>
+<option value="30">Japanese Yen (JPY)</option>
+<option value="31">Jordanian Dinar (JOD)</option>
+<option value="32">Kazakhstan Tenge (KZT)</option>
+<option value="33">Kuwaiti Dinar (KWD)</option>
+<option value="34">Macedonian Denar (MKD)</option>
+<option value="35">Malaysian Ringgit (MYR)</option>
+<option value="36">Maldivian Rufiyaa (MVR)</option>
+<option value="37">Mauritian Rupee (MUR)</option>
+<option value="38">Mexican Peso (MXN)</option>
+<option value="39">Moldovan Leu (MDL)</option>
+<option value="40">Moroccan Dirham (MAD)</option>
+<option value="41">Nepalese Rupee (NPR)</option>
+<option value="42">Netherlands Antillean Guilder (ANG)</option>
+<option value="43">New Taiwan Dollar (TWD)</option>
+<option value="44">New Zealand Dollar (NZD)</option>
+<option value="45">Omani Rial (OMR)</option>
+<option value="46">Pakistani Rupee (PKR)</option>
+<option value="47">Papua New Guinean Kina (PGK)</option>
+<option value="48">Paraguayan Guarani (PYG)</option>
+<option value="49">Philippine Peso (PHP)</option>
+<option value="50">Polish Zloty (PLN)</option>
+<option value="51">Qatari Rial (QAR)</option>
+<option value="52">Romanian Leu (RON)</option>
+<option value="53">Russian Ruble (RUB)</option>
+<option value="54">Salvadoran Colon (SVC)</option>
+<option value="55">Saudi Riyal (SAR)</option>
+<option value="56">Serbian Dinar (RSD)</option>
+<option value="57">Seychellois Rupee (SCR)</option>
+<option value="58">Sierra Leonean Leone (SLL)</option>
+<option value="59">Singapore Dollar (SGD)</option>
+<option value="60">Slovak Koruna (SKK)</option>
+<option value="61">South African Rand (ZAR)</option>
+<option value="62">South Korean Won (KRW)</option>
+<option value="63">Sri Lanka Rupee (LKR)</option>
+<option value="64">Swiss Franc (CHF)</option>
+<option value="65">Tanzanian Shilling (TZS)</option>
+<option value="66">Thai Baht (THB)</option>
+<option value="67">Trinidad and Tobago Dollar (TTD)</option>
+<option value="68">Tunisian Dinar (TND)</option>
+<option value="69">Turkish Lira (TRY)</option>
+<option value="70">Ugandan Shilling (UGX)</option>
+<option value="71">Ukrainian Hryvnia (UAH)</option>
+<option value="72">United Arab Emirates Dirham (AED)</option>
+<option value="73">Uzbekistan Som (UZS)</option>
+<option value="74">Venezuelan Bolìvar Fuerte (VEF)</option>
+<option value="75">Vietnamese Dong (VND)</option>
+<option value="76">Yemeni Rial (YER)</option>
+<option value="77">Zambian Kwacha (ZMK)</option>
+</select>
+							</div>
+                            
+                            <div class="top-destinations-info" align="center">
+							<h4>Rs. 5719 (US $87 )</h4>
+						</div>
+                            <div class="inner" style="height:auto !important;">
+								<div class="infopay">
+	<div class="title" style="width:100%;"> </div>
+			
+		
+		<div class="title">Order Total </div>
+	<div class="price"><span class="WebRupee"><span class="WebRupee"> Rs. </span></span><span class="payaddon">6548</span></div>
+
+	<div class="title">Govt. Tax:(3.09%)</div>
+	
+		<div class="price"><span class="WebRupee"><span class="WebRupee"> Rs. </span></span><span class="payaddon">171</span></div>
+        
+        <div class="title">Discount</div>
+	
+		<div class="price"><span class="WebRupee"></span><span class="payaddon">(Rs. 1000)</span></div>
+        
+        <div class="title">Final Total</div>
+	
+		<div class="price"><span class="WebRupee"> Rs. </span><span class="payaddon">5719</span></div>
+        
+		<div class="clear"></div>
+ <label class="radio-inline specs" style="padding-left:0 !important; margin-top:20px; margin-bottom:10px;">
+        <div class="radioWrap">
+          <input type="text" name="coupan_code" placeholder="Coupan Code" style="height:34px;" id="coupan_code" onClick="" class="radiobtnalign" >
+          <span></span></div>
+		  <label id="apply_coupancode"><a href="#" > Apply Coupan </a></label>
+		  <div id="coupan_msg"></div>
+		  <div id="coupan_disount"></div>
+        <small id="booklater_conditions_local"></small>
+        </label>
+		
+
+		
+							  </div>
+</div>
+</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="top-destinations-grids" style="margin-top:20px;">
+						
+						<div class="top-destinations-bottom">
+							<div class="td-grids">
+                            <div class="summary">
+                            <div class="top-destinations-info">
+							<h4>Fair Detail</h4>
+						</div>
+                            <div class="inner">
+								<div class="infopay">
+	<div class="title">Sight Sightseeings</div>
+			<div class="price">
+		  		  <input name="exact_km" value="" id="exact_km" type="hidden">
+		  		  <input name="actual_km" value="2000" id="actual_km" type="hidden">
+		  <span class=""><span class="WebRupee"> Rs. </span></span><span class="paybooking">19600</span>
+		</div>
+		
+		<div class="title">Driver Charge</div>
+	<div class="price"><span class="WebRupee"><span class="WebRupee"> Rs. </span></span><span class="payaddon">500</span></div>
+
+	<div class="title">Guide Charge</div>
+	<div class="price"><span class="WebRupee"><span class="WebRupee"> Rs. </span></span><span class="payamount">1000 </span></div>
+		
+		<div class="clear"></div>
+
+		<div class="title">Hotel Charge</div>
+		<div class="price"><span class="WebRupee"> Rs. </span><span class="netamnt">1240</span> </div>
+
+		<div class="title">Entrance Charge</div>
+		<div class="price"><span class="WebRupee"> Rs. </span><span class="payservice">872</span> </div>
+		
+		<div class="clear"></div>
+        
+        <div class="title">Service Tax(<span id="st_text">4.94</span>%)</div>
+		<div class="price"><span class="WebRupee"> Rs. </span><span class="payservice">872</span> </div>
+		
+        <div class="title" style="color:#C22815; font-weight:bold" title="Only for booking amount">Discount(10%)</div>
+		<div class="price" style="color:#C22815; font-weight:bold" title="Only for booking amount"><span class="WebRupee"> Rs. </span><span class="discount">1960</span> </div>
+        
+        
+		<div class="clear"></div>
+		<div class="title">Payable Amount</div>
+		<div class="price"><span class="WebRupee"> Rs. </span><span class="paytotal">18512</span><span id="usdvalue"></span> </div>
+        
+	
+</div>
+</div>
+</div>
+								<div class="clearfix"> </div>
+							</div>
+							
+						</div>
+					</div>
+                    
+                    <div class="destinations" style=" display:;">
+						<div class="top-destinations-bottom">
+							<div class="td-grids">
+                            <div class="info"><b>Car Type</b> : Compact, Tata Indica</div>
+<div class="info"><b>Service</b> : Outstation</div>
+
+
+<div class="info"><b>From</b> : Delhi/NCR</div>
+
+<div class="info"><b>Destination</b> : Agra</div>
+<div class="info"><b>Round Trip</b> : Yes</div>
+
+<div class="info"><b>Pickup Address</b> : dwelhi</div>
+
+<div class="info"><b>Departure Date</b> : 23-09-2015</div>
+<div class="info"><b>Return Date</b> : 30-09-2015</div><div class="info"><b>Pickup Time</b> : 12:05</div>
+
+
+
+<div class="info">
+	<b>Fare Details:</b>
+	<ul>
+				<li>Minimum charged distance is 2000 Km</li>
+		<li>Fare calculated :
+		2000 Km x<span class="WebRupee"> Rs. </span>9 +<span class="WebRupee"> Rs. </span>1600(Driver allowance)		
+		</li>
+		<li>Per day extra charge :<span class="WebRupee"> Rs. </span>250</li>
+		<li>Per km extra charge :<span class="WebRupee"> Rs. </span>9</li>
+		<li>Per day driver allowance :<span class="WebRupee"> Rs. </span>200</li>
+				<li>If the vehicle will come after 2400 Hrs than One Extra day charge will be applicable with Driver Allowance</li>
+
+				<li>Tolls and parking charge extra</li>
+	</ul>
+</div>
+<div class="info">Final Fare shall depend upon actual Kms Travelled + Service Tax extra </div>
+								<div class="clearfix"> </div>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+        
+        
+        </div>
+    
+    <style>
+
+
+ .sightcont ul{list-style: none; padding:10px 0; margin:0;}
+ 
+ .sightinc ul li{list-style: none; padding:10px 0; margin:0 5px 5px 0;}
+ 
+  .sightcont ul li{list-style: none; padding:10px 0; margin:0 5px 5px 0;}
+ 
+.sremove, .sadd{text-align: center; font-size: 12px; cursor: pointer; margin-top: 5px;
+ border:1px solid #25729a; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px; padding: 3px 5px; text-decoration:none; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+ background-color: #3093c7; background-image: -webkit-gradient(linear, left top, left bottom, from(#3093c7), to(#1c5a85));
+ background-image: -webkit-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -moz-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -ms-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -o-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: linear-gradient(to bottom, #3093c7, #1c5a85);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85);
+ width:80px;
+}
+
+.sremove:hover, .sadd:hover{
+ border:1px solid #1c5675;
+ background-color: #26759e; background-image: -webkit-gradient(linear, left top, left bottom, from(#26759e), to(#133d5b));
+ background-image: -webkit-linear-gradient(top, #26759e, #133d5b);
+ background-image: -moz-linear-gradient(top, #26759e, #133d5b);
+ background-image: -ms-linear-gradient(top, #26759e, #133d5b);
+ background-image: -o-linear-gradient(top, #26759e, #133d5b);
+ background-image: linear-gradient(to bottom, #26759e, #133d5b);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#26759e, endColorstr=#133d5b);
+}
+
+.pright{border:1px solid #ccc; padding:5px 5px 20px; width:220px; float:right; box-shadow: 0px 0px 2px #ccc}
+.pright .btns{text-align: center;}
+.pright .btns p{font-weight: bold; margin:0 0 13px 0;}
+
+.btnsubmit{text-align: center; font-size: 16px; cursor: pointer; margin:10px 0;
+ border:1px solid #25729a; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px; padding: 10px 30px; text-decoration:none; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+ background-color: #3093c7; background-image: -webkit-gradient(linear, left top, left bottom, from(#3093c7), to(#1c5a85));
+ background-image: -webkit-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -moz-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -ms-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -o-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: linear-gradient(to bottom, #3093c7, #1c5a85);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85);
+}
+
+.btnsubmit:hover{
+ border:1px solid #1c5675;
+ background-color: #26759e; background-image: -webkit-gradient(linear, left top, left bottom, from(#26759e), to(#133d5b));
+ background-image: -webkit-linear-gradient(top, #26759e, #133d5b);
+ background-image: -moz-linear-gradient(top, #26759e, #133d5b);
+ background-image: -ms-linear-gradient(top, #26759e, #133d5b);
+ background-image: -o-linear-gradient(top, #26759e, #133d5b);
+ background-image: linear-gradient(to bottom, #26759e, #133d5b);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#26759e, endColorstr=#133d5b);
+}
+
+.btncustom{text-align: center; font-size: 16px; cursor: pointer; margin:10px 0;
+ border:1px solid #ff2596; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px; padding: 5px 18px; text-decoration:none; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF !important;
+ background-color: #ff5db1; background-image: -webkit-gradient(linear, left top, left bottom, from(#ff5db1), to(#ef007c));
+ background-image: -webkit-linear-gradient(top, #ff5db1, #ef007c);
+ background-image: -moz-linear-gradient(top, #ff5db1, #ef007c);
+ background-image: -ms-linear-gradient(top, #ff5db1, #ef007c);
+ background-image: -o-linear-gradient(top, #ff5db1, #ef007c);
+ background-image: linear-gradient(to bottom, #ff5db1, #ef007c);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ff5db1, endColorstr=#ef007c);
+}
+
+.btncustom:hover{
+ border:1px solid #f60080;
+ background-color: #ff2a98; background-image: -webkit-gradient(linear, left top, left bottom, from(#ff2a98), to(#bc0062));
+ background-image: -webkit-linear-gradient(top, #ff2a98, #bc0062);
+ background-image: -moz-linear-gradient(top, #ff2a98, #bc0062);
+ background-image: -ms-linear-gradient(top, #ff2a98, #bc0062);
+ background-image: -o-linear-gradient(top, #ff2a98, #bc0062);
+ background-image: linear-gradient(to bottom, #ff2a98, #bc0062);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ff2a98, endColorstr=#bc0062);
+}
+
+
+.fromcity{width:160px; margin-left:5px; padding:1px 0; border:1px solid #aaa;}
+
+.fields .label{text-align: left; margin:15px 0 5px 10px; font-weight:bold; color: #333}
+.fields .label:first-child{margin-top: 0 !important}
+.fields h4{background:#E76B3F; color: #fff; padding: 4px 0; }
+</style>
+    
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="max-width:500px;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Benefits of logging in</h4>
+      </div>
+      <div class="modal-body" style="height:100px;">
+       <div class="">
+ 
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+    
+    <div style="width:50%; float:left;">
+    
+      <p><ul style="list-style:circle; margin-left:10px;">
+      	<li>Faster Bookings </li>
+        <li>Track Travel History </li>
+        <li>Manage Your Profile </li>
+        <li>Deal Alerts </li><br>
+      </ul></p>
+    </div>
+     <div style="width:40%; float:right;">
+      <h5><strong>Not a member?</strong></h5>
+      
+       <p><a href="#" class="asregistra">Register Now</a></p>
+     </div>
+      
+    </div>
+    
+  </div>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>  
+ <link href="css/styleB.css" media="screen" rel="stylesheet" type="text/css" />
+
+    
+    
+</body>
+</html>

@@ -1,0 +1,246 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?>
+ 
+  <style>
+ 	.padding_topbot
+	{
+		padding:10px 0;
+	}
+ </style>
+<div id="page-wrapper" class="" >
+  <h4 style="">Payment Upload</h4>
+  <div>
+    <div class="container">
+      <div class="row">	
+		 <form id="bank_frm_details_payment" name="bank_frm_details_payment" method="multipart/form-data" novalidate="novalidate">
+         
+         
+          
+          
+              <div class="col-sm-7 col-md-7 col-lg-7 clearfix">
+                <input type="hidden" id="image_path0" name="image_path" value="">
+                 <div class="form-group clearfix spance">
+                  <label class="control-label col-sm-4 col-lg-4"> Payment To <span style="color:#f00 !important;">*</span></label>
+                   <div class="col-sm-3"><input name="paymentto" id="paymenttodriver" type="radio" value="paymenttodriver" checked="checked" /> Driver </div> 
+                   <div class="col-sm-3"><input name="paymentto" id="paymenttouser" type="radio" value="paymentuser" /> User</div> 
+                   <div class="col-sm-2"> <input name="paymentto" id="paymenttocorporate" type="radio" value="paymentcorporate" /> Corporate User</div>
+                </div>
+                
+               	 <div class="form-group clearfix spance" id="driver_paymet1">
+                  <label class="control-label col-sm-4 col-lg-4"> Search by <span style="color:#f00 !important;">*</span></label>
+                   <div class="col-sm-2"><input name="paymentdriver" id="paymentdriver" type="radio" value="driver" checked="checked" /> Driver </div> 
+                   <div class="col-sm-2"><input name="paymentdriver" id="paymentdriver" type="radio" value="vehicle" /> Vehicle</div> 
+                   <div class="col-sm-2"> <input name="paymentdriver" id="paymentdriver" type="radio" value="drivergroup" /> Driver Grounp</div>
+                </div>
+                
+                
+                
+                 <div class="form-group clearfix spance" id="driverpayment1"  style="display:none;">
+                  <label class="control-label col-sm-4 col-lg-4"> Driver Group <span style="color:#f00 !important;">*</span></label>
+                  <input type="text" id="driver_group" name="driver_group" class="col-sm-8 col-lg-8 inputfild name">
+                </div>
+                
+                 <div class="form-group clearfix spance" id="driverpayment2" style="display:none;">
+                  <label class="control-label col-sm-4 col-lg-4"> Vehicle NO. <span style="color:#f00 !important;">*</span></label>
+                  <input type="text" id="vehicleno" name="vehicleno" class="col-sm-8 col-lg-8 inputfild name">
+                </div>
+                
+                 <div class="form-group clearfix spance" id="driverpayment">
+                  <label class="control-label col-sm-4 col-lg-4"> Driver Name <span style="color:#f00 !important;">*</span></label>
+                  <input type="text" id="driver_name" name="driver_name" class="col-sm-8 col-lg-8 inputfild name">
+                </div>
+                 <div class="form-group clearfix spance" id="userpayment">
+                  <label class="control-label col-sm-4 col-lg-4"> User Name <span style="color:#f00 !important;">*</span></label>
+                  <input type="text" id="driver_name" name="driver_name" class="col-sm-8 col-lg-8 inputfild name">
+                </div>
+                
+                 <div class="form-group clearfix spance" id="corporatepayment">
+                  <label class="control-label col-sm-4 col-lg-4"> Corporate User Name <span style="color:#f00 !important;">*</span></label>
+                  <input type="text" id="driver_name" name="driver_name" class="col-sm-8 col-lg-8 inputfild name">
+                </div>
+                
+                <div class="form-group clearfix spance">
+                  <label class="control-label col-sm-4 col-lg-4"> Deposit Date <span style="color:#f00 !important;">*</span></label>
+                  <input type="text" id="deposit_date" name="deposit_date" class="col-sm-8 col-lg-8 inputfild name" autocomplete="off" >
+                </div>
+                
+                <div class="form-group clearfix spance">
+                  <label class="control-label col-sm-4">Payment Mode<span style="color:#f00 !important;">*</span></label>
+                  <select name="ctl00$cph_main$drpPaymentMode" id="cph_main_drpPaymentMode" class="col-sm-8 col-lg-8 inputfild name" onchange="javascript:control(this.value);">
+					<option value="0">----Transaction Mode----</option>
+					<option value="Cheque">Cheque</option>
+					<option value="Demand Draft">Demand Draft</option>
+					<option value="Online Transfer">Online Transfer</option>
+					<option selected="selected" value="Cash Deposit">Cash Deposit</option>
+				</select>
+                </div>
+               
+				<div id="fileupload" class="form-group clearfix spance">
+                  <label class="control-label col-sm-4">Upload Cheque / DD Copy/Transaction Slip<span class="mandat_star">*</span></label>
+                  <input type="file" id="cph_main_upldChq" name="cph_main_upldChq" class="col-sm-8 col-lg-8 inputfild name">
+                   <div class="loder" style="display:none" id="driver_upldChq"> </div>
+                    <input type="hidden" id="file_upldChq" name="file_upldChq">
+                </div>
+				<div id="trans" style="display: none;" class="form-group clearfix spance">
+                  <label class="control-label col-sm-4">Transaction number<span class="mandat_star">*</span></label>
+                  <input type="text" id="cph_main_txttransactionno" name="cph_main_txttransactionno" class="col-sm-8 col-lg-8 inputfild name">
+                </div>
+				<div id="chequeno" style="display: none;" class="form-group clearfix spance">
+                  <label class="control-label col-sm-4">Cheque / DD No.<span class="mandat_star">*</span></label>
+                  <input type="text" id="cph_main_txtChqNo" name="cph_main_txtChqNo" class="col-sm-8 col-lg-8 inputfild name">
+                </div>
+				
+				
+                <div class="form-group clearfix spance">
+                  <label class="control-label col-sm-4">Partner Bank Accounts<span class="mandat_star">*</span></label>
+                  <input type="text" id="cph_main_drpBankAccounts" name="cph_main_drpBankAccounts" class="col-sm-8 col-lg-8 inputfild name">
+                </div>
+                <div class="form-group clearfix spance">
+                  <label class="control-label col-sm-4"><span class="mandat_star">Amount <span style="color:#f00 !important;">*</span></span></label>
+				  <div>
+                  <input type="text" id="amount" name="amount" class="col-sm-8 col-lg-8 inputfild name">
+                </div>
+                <div class="form-group clearfix spance" style="margin-top:40px;">
+                  <label class="control-label col-sm-4">Deposited Bank <span style="color:#f00 !important;">*</span></label>
+                  <input type="text" class="col-sm-8 inputfild name" id="deposit_bank" name="deposit_bank">
+                </div>
+				<div class="form-group clearfix spance">
+                  <label class="control-label col-sm-4">Deposited Branch <span style="color:#f00 !important;">*</span></label>
+                  <input type="text" class="col-sm-8 inputfild name" id="deposited_branch" name="deposited_branch">
+                </div>
+				<div class="form-group clearfix spance">
+                  <label class="control-label col-sm-4">Remark /Request</label>
+                  <input type="text" class="col-sm-8 inputfild name" id="remark" name="remark">
+                </div>
+				<input type="hidden" id="driverIds" name="driverIds" class="driver_name col-mg-7 col-lg-7 inputfild name idsdriver" >
+                <div class="form-group clearfix spance">
+                  <button type="button" class="btn defaultbtnsearch pull-right updateVehicleButton col-sm-2" onclick="driver_pay_upload()">Upload payment</button>
+                </div>
+              </div>
+              </div>
+            </form>
+		
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../public/js/device_admin.js"></script>
+<!--<script src="../public/js/driver_admin.js"></script>-->
+<script>
+function control(id) {
+            //debugger;
+            document.getElementById("cph_main_drpPaymentMode");
+            if (id == "Cheque") {
+                document.getElementById("chequeno").style.display = 'block';
+                document.getElementById("trans").style.display = 'none';
+                document.getElementById("cph_main_txttransactionno").value='';
+                document.getElementById("fileupload").style.display = 'block';
+            }
+            if (id == "Demand Draft") {
+                document.getElementById("chequeno").style.display = 'block';
+                document.getElementById("trans").style.display = 'none';
+                document.getElementById("cph_main_txttransactionno").value='';
+                document.getElementById("fileupload").style.display = 'block';
+            }
+            if (id == "Online Transfer") {
+                document.getElementById("chequeno").style.display = 'none';
+                document.getElementById("cph_main_txtChqNo").value='';
+                document.getElementById("trans").style.display = 'block';
+                document.getElementById("fileupload").style.display = 'none';
+                document.getElementById("file_upldChq").value=''
+            }
+            if (id == "Cash Deposit") {
+                document.getElementById("chequeno").style.display = 'none';
+                document.getElementById("trans").style.display = 'none';
+                document.getElementById("cph_main_txtChqNo").value='';
+                document.getElementById("cph_main_txttransactionno").value='';
+                document.getElementById("fileupload").style.display = 'block';
+            }
+
+
+        }
+</script>
+
+<script>
+   
+    $(document).ready(function () {
+       
+
+ $("#deposit_date").datepicker();
+  var currentDate = new Date(); 
+  $("#deposit_date").datepicker("setDate", currentDate);
+});
+
+</script>
+
+<script>
+$(document).ready(function(){
+        $("select").change(function(){
+			
+			    $('input[type="radio"]').click(function(){
+
+        			if($(this).attr("value")=="driver"){
+
+           			 $("#driverpayment").show();
+                    $("#driverpayment1").hide();
+					$("#driverpayment2").hide()
+
+       		 }
+           if($(this).attr("value")=="vehicle"){
+
+           			 $("#driverpayment").show();
+                    $("#driverpayment2").show();
+					$("#driverpayment1").hide()
+
+       		 }
+               if($(this).attr("value")=="drivergroup"){
+
+           			 $("#driverpayment").show();
+                    $("#driverpayment2").hide();
+					$("#driverpayment1").show()
+
+       		 }
+			 
+			 if($(this).attr("value")=="paymenttodriver"){
+
+           			 $("#driver_paymet1").show();
+					 $("#driverpayment").show();
+                    $("#userpayment").hide()
+					$("#corporatepayment").hide()
+
+       		 }
+			 
+			  if($(this).attr("value")=="paymentuser"){
+
+           			 $("#driver_paymet1").hide();
+                    
+ 					$("#driverpayment").hide();
+                    $("#driverpayment2").hide();
+					$("#driverpayment1").hide()
+					$("#userpayment").show()
+					$("#corporatepayment").hide()
+       		 }
+			  if($(this).attr("value")=="paymentcorporate"){
+
+           			 $("#driver_paymet1").hide();
+					  $("#driverpayment").hide();
+                    $("#driverpayment2").hide();
+					$("#driverpayment1").hide()
+                    $("#corporatepayment").show()
+					$("#userpayment").hide()
+
+       		 }
+			 
+			 
+            });
+        }).change();
+		
+    });
+	
+	
+</script>

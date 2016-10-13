@@ -1,0 +1,165 @@
+ <?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath();
+?>     
+<?php 
+
+$status = 0;
+/* personal details of logedin person*/
+if(isset($_COOKIE['token'])){
+    $token = $_COOKIE['token'];
+    $status = 1;
+	$login_id = $_COOKIE['login_id'];
+}
+?>
+<style>
+.vehicle_name{
+	float: left;
+    font-size: 20px;
+    font-weight: normal;
+    width: 100px;
+	margin-top:10px;
+	margin-left:85px;
+}
+.fare_details{
+	float: left;
+    font-size: 15px;
+    font-weight: normal;
+	margin-top:15px;
+	margin-left:50px;
+}
+.labelalign{
+	font-weight:bold !important;
+}
+.mapcantiner_inner1 .testimonial_box .number {
+    background: #fbba00 none repeat scroll 0 0;
+    border-radius: 18px;
+    float: left;
+    font-size: 34px;
+    font-weight: normal;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 60px;
+</style>
+<input type="hidden" id="loginId" value="<?php echo $login_id; ?>" >
+<div class="container_fluid">
+<!--<div class=" container margin-b20">
+<table border="1" style="margin-bottom:10px" class="tourinfo">
+<thead>
+<tr><td colspan="4"><b>Car Details:</b></td></tr>
+<tr>
+	<th>S.No.</th>
+	<th>Car Name</th>
+	<th>Capacity</th>
+	<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<?php 
+	$i=1;
+	foreach($carDetails as $v){ 
+?>
+<tr>
+	<td><?php echo $i;?></td>
+	<td><?php echo $v['name']; ?></td>
+	<td><?php echo $v['capacity']; ?></td>
+	<td><?php echo $v['name']; ?></td>
+</tr>
+<?php $i++; 
+}?>
+</tbody></table>
+
+    </div>-->
+<div style="margin:15px auto 5px !important;" class="container col-sm-col-sm-offset-1">
+<h4>Details:</h4>
+
+<div class="row">
+<div class="form-group clearfix margintopbottom20">
+
+<label class="col-sm-2 control-label labelalign">From:</label>
+<label class="col-sm-2"><input type="hidden" name="" id="intercitytripfrom" value="<?php echo $this->data['intercitytripfrom']; ?>"><?php echo $this->data['intercitytripfrom']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">To:</label>
+<label class="col-sm-2"><input type="hidden" name="" id="intercitytripto" value="<?php echo $this->data['intercitytripto']; ?>"><?php echo $this->data['intercitytripfrom']; ?> - <?php echo $this->data['intercitytripto']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">Departure Date:</label>
+<label class="col-sm-2"><input type="hidden" name="" id="intercity_Depdate" value="<?php echo $this->data['intercity_Ddate']; ?>"><?php echo $this->data['intercity_Ddate']; ?></label>
+
+
+</div>
+</div>
+
+<div class="row">
+<div class="form-group clearfix margintopbottom20">
+
+<label class="col-sm-2 control-label labelalign">Pickup Address:</label>
+<label class="col-sm-2"><input type="hidden" name="" id="intercityPickupAddress" value="<?php echo $this->data['intercityPickupAddress']; ?>"><?php echo $this->data['intercityPickupAddress']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">Pickup Time:</label>
+<label class="col-sm-2"><input type="hidden" name="" id="intercityPickupTimeH" value="<?php echo $this->data['intercityPickupTimeH']; ?>"><input type="hidden" name="" id="intercityPickupTimeM" value="<?php echo $this->data['intercityPickupTimeM']; ?>"><?php echo $this->data['intercityPickupTimeH']; ?>:<?php echo $data['intercityPickupTimeM']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">Drop Address:</label>
+<label class="col-sm-2"><input type="hidden" name="" id="intercityDropAddress" value="<?php echo $this->data['intercityDropAddress']; ?>"><?php echo $this->data['intercityDropAddress']; ?></label>
+
+</div>
+</div>
+
+<div class="row">
+<div class="form-group clearfix margintopbottom20">
+
+<label class="col-sm-2 control-label labelalign">No. of Adults:</label>
+<label class="col-sm-2"><input type="hidden" name="" id="intercityAdults" value="<?php echo $this->data['intercityAdults']; ?>"><?php echo $this->data['intercityAdults']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">No. of Children:</label>
+<label class="col-sm-2"><input type="hidden" name="" id="intercityChilds" value="<?php echo $this->data['intercityChilds']; ?>"><?php echo $this->data['intercityChilds']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">No. of Luggages:</label>
+<label class="col-sm-2"><input type="hidden" name="" id="intercityLuggages" value="<?php echo $this->data['intercityLuggages']; ?>"><?php echo $this->data['intercityLuggages']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">Car Type:</label>
+<label class="col-sm-2"><?php if($this->data['cartypesintercity']==1) echo "Economy"; elseif($this->data['cartypesintercity']==2) echo "Sedan"; else echo "Prime"; ?></label>
+
+<label class="col-sm-2 control-label labelalign">Nationality:</label>
+<label class="col-sm-2"><input type="hidden" name="" id="intercityNationality" value="<?php echo $this->data['intercityNationality']; ?>"><?php echo $this->data['intercityNationality']; ?></label>
+
+</div>
+<input type="hidden" name="" id="intercityName" value="<?php echo $this->data['intercityName']; ?>">
+<input type="hidden" name="" id="intercityMobile" value="<?php echo $this->data['intercityMobile']; ?>">
+<input type="hidden" name="" id="intercityEmail" value="<?php echo $this->data['intercityEmail']; ?>">
+</div>
+
+</div>
+	</div>
+<?php if($carDetails!=''){?>
+<div class=" mapcantiner_inner" id="contentmanager"> <div class=" mapcantiner_inner">
+    <h2>Select a Car for Intercity</h2>
+	    <div class="mapcantiner_inner1">
+<?php 
+	$i=1;
+	foreach($carDetails as $v){ 
+?>	
+    <div class="testimonial_box" style="margin:0 0 10px; padding:0 0 10px;">
+	<span class="image_box" style="height:100px; width:198px; padding:5px;"><img src="/hello42/<?php if($v['cabImg']!='') echo $v['cabImg']; else echo "/public/image/vehicle.png";?>" style="width:185px; height:88px;"></span>
+    <span class="number" style="margin-left:80px;"><?php echo $v['capacity']; ?></span><span style="float:left; margin:56px 0 0 -64px; font-size:20px;">+driver</span>
+     <span class="vehicle_name"><?php if($v['cabType']==1) echo "Economy"; elseif($v['cabType']==2) echo "Sedan"; else echo "Prime";?></span>
+	<span class="vehicle_name" style="margin-left:15px; width:150px;"><?php echo $v['name']; ?> (<?php echo $v['CabModel']; ?>)</span>
+	<span class="fare_details">Minimum Charge: Rs.<?php echo $v['MinimumCharge']; ?><br/><a href="#" class="fareDetails" id="fareDetails<?php echo $i;?>"><center style="text-decoration:underline;">Fare Details</center></a></span>
+	<span class="fare_details"><input type="radio" name="intercity_car" id="intercity_car_radio" value="<?php echo $v['MinimumCharge'].','.$v['Min_Distance'].','.$v['cabType'].','.$v['routeId']; ?>"></span>
+    </div>
+	<script>
+$(document).ready(function(){
+    $('#fareDetails<?php echo $i;?>').popover({title: "<h3><strong>FARE DETAIL</strong></h3>", content: "Min. Coverage <?php echo $v['Min_Distance']; ?> KM <br>Per KM Charges: Rs. <?php echo $v['Per_Km_Charge']; ?> <br>Per day driver allowance: <?php echo $v['NightCharges']; ?><br> <strong>Note:</strong> If the Vehicle is released after <?php echo $v['night_rate_begins']; ?> PM than one day extra charges will be applicable  <br> <h2>Cool stuff!</h2>", html: true, placement: "bottom",trigger: 'hover'}); 
+});
+</script>
+	<?php $i++;}?>
+	    </div>
+	
+<div class="col-sm-3" style="float:right"> 
+<a href="#" type="button" onclick="bookingintercityNewtrip(this.id);" id="105" class=" btn btn-lg bg-primary col-sm-12 makebookingbtn intercityBooking" value=""/>BOOKING NOW</a>
+</div>
+
+<div class="clear"></div>
+</div></div>
+<?php }?>
+

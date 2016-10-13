@@ -1,0 +1,537 @@
+@charset "utf-8";
+/* CSS Document */
+
+.overviueimg
+{
+	width:13%;
+	
+	padding-right:0 !important;	
+}
+
+.overviueimgcar
+{
+	width:10%;
+	
+	padding-right:0 !important;	
+}
+
+.overviueimg1
+{
+	width:15%;
+
+	padding-right:0 !important;	
+}
+
+.overviueimg2
+{
+	width:14%;
+	
+	padding-right:0 !important;	
+}
+
+.overviueimg2car
+{
+	width:18%;
+	
+	padding-right:0 !important;
+	margin-top:12px;	
+}
+
+.overviueimg2car1
+{
+	width:16%;
+	
+	padding-right:0 !important;
+	margin-top:;	
+}
+
+.overviueimg3
+{
+	width:25%;
+	padding-right:0 !important;
+	float:left;
+		
+}
+
+.overviueimg31
+{
+	width:45%;
+	padding-right:0 !important;
+	float:left;
+	text-align:center;
+	margin-top:15px;
+		
+}
+
+.overviueimg32
+{
+	width:10%;
+	padding-right:0 !important;
+	float:left;
+	text-align:center;
+	margin-top:15px;
+		
+}
+
+.overviueimg4
+{
+	width:18%;
+	padding-right:0 !important;
+		
+}
+
+.overviueimg5
+{
+	width:40%;
+	padding-right:0 !important;
+		
+}
+
+.formname
+{
+	width:30%;
+	float:left;
+}
+
+.formname1
+{
+	width:30%;
+	float:left;
+}
+
+.formfield
+{
+	width:70%;
+	float:left;
+}
+
+.formfieldtext
+{
+	width:75%;
+	padding:0 15px;
+	height:35px;
+	border:1px solid #ccc;
+}
+
+
+.testimonial_box .image_box {
+    background: #f5f5f5 none repeat scroll 0 0;
+    border: 1px solid #edeaea;
+    float: left;
+    height: auto !important;
+    margin-left: 24px;
+    margin-right: 20px;
+    padding-top: 7px;
+    width:auto !important;
+}
+
+.col-md-41n {
+    width: 74.3333% !important;
+}
+
+.modal-dialog {
+    margin: 35px auto;
+    width: 700px;
+}
+.loadertext
+{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:12px;
+}
+
+.loadertext1
+{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:10px;
+}
+
+.loderdiv
+{
+	width:50%; box-shadow:0 0 4px 0 #333; background:#e5e5e5; padding:10px; border-radius:5px; margin:2% auto;
+	
+	
+}
+
+.loderdiv1
+{
+	width:80%; margin:auto; padding:10px;
+	
+	
+}
+
+.loderdiv2
+{
+	width:80%; margin:auto; padding:10px;
+	
+	
+}
+
+
+
+@media (max-width: 767px) {
+  .overviueimg {
+   width:13%;
+   padding:0 !important;
+  }
+  
+  .col-md-41n {
+    width: 100% !important;
+}
+  
+  .overviueimg2car
+{
+	width:19%;
+	
+	padding-right:0 !important;
+	margin-top:12px;	
+}
+
+  .overviueimg2car1
+{
+	width:19%;
+	
+	padding-right:0 !important;
+	margin-top:12px;	
+}
+.overviueimgcar
+{
+	width:10%;
+	
+	padding-right:0 !important;	
+}
+
+.overviueimg31
+{
+	width:40%;
+	padding-right:0 !important;
+	float:left;
+	text-align:center;
+		
+}
+
+.overviueimg32
+{
+	width:10%;
+	padding-right:0 !important;
+	float:left;
+	text-align:center;
+		
+}
+
+}
+@media (min-width: 320px) and (max-width: 768px) {
+  .overviueimg {
+   width:100% !important;
+   padding:0 !important;
+  }
+   .overviueimg1 {
+   width:50%;
+   float:left;
+   padding:0 !important;
+  }
+   .overviueimg2{
+   width:50%;
+   float:left;
+   margin-top:12px;
+   padding:0 !important;
+  }
+   .overviueimg3{
+   width:50%;
+   float:left;
+   padding:0 !important;
+  }
+  
+  .overviueimg4
+{
+	width:50%;
+	  float:left;
+   padding:0 !important;
+		
+}
+
+.overviueimg5
+{
+	width:100%;
+	 padding:0 !important;
+		
+}
+
+.formfield
+{
+	width:100%;
+}
+
+.formname
+{
+	width:100%;
+	
+}
+
+.formname1
+{
+	width:50%;
+	
+}
+.overviueimg2car
+{
+	width:50%;
+	
+	padding-right:0 !important;
+	margin-top:12px;
+	float:left;	
+}
+
+.overviueimg2car1
+{
+	width:50%;
+	
+	padding-right:0 !important;
+	margin-top:12px;
+
+	float:left;	
+}
+
+.tourstype
+{
+	display:none;
+}
+.overviueimgcar
+{
+	width:50%;
+	float:left;
+	margin-top:12px;
+	padding-right:0 !important;	
+}
+
+
+
+.overviueimg31
+{
+	width:100%;
+	padding-right:0 !important;
+	float:left;
+	margin-top:10px;
+	text-align:center;
+		
+}
+
+.overviueimg32
+{
+	width:100%;
+	padding-right:0 !important;
+	float:left;
+	text-align:center;
+	margin-top:10px
+
+		
+}
+
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+  .overviueimg {
+   width:100%;
+   padding:0 !important;
+  }
+   .overviueimg1 {
+   width:50%;
+   float:left;
+   padding:0 !important;
+  }
+   .overviueimg2{
+   width:50%;
+   float:left;
+ 
+   padding-left:15px !important;
+  }
+   .overviueimg3{
+   width:50%;
+   float:left;
+   padding:0 !important;
+  }
+    .overviueimg4
+{
+	width:50%;
+		
+}
+
+.overviueimg5
+{
+	width:100%;
+		
+}
+.overviueimg2car
+{
+	width:50%;
+	
+	padding-right:0 !important;
+	margin-top:12px;	
+}
+
+}
+
+input.error {
+	border: 1px solid red;
+}
+.error {
+	color: red;
+}
+.choose
+{
+	width:99%;
+	border:none;
+}
+.bookcar
+{
+	padding:2px 5px; 
+	color:#FFF;
+	background:#F90;
+	width:;
+	text-align:center;
+	margin-top:18px;
+	border-radius:5px;
+	box-shadow:0 0 2px 0;
+}
+
+.listing-style1.car .amenities ul::after, .listing-style3.car .amenities ul::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+.icon_pertion
+{
+	padding:7px 14px;
+	border-radius:50%;
+	border:1px solid #333;
+	background:url(../images/icon_guest.png) center no-repeat;
+	
+}
+
+.icon_pertion:hover
+{
+	padding:7px 14px;
+	border-radius:50%;
+	border:1px solid #22a1ca;
+	background:url(../images/icon_guest1.png) center no-repeat;
+	
+}
+
+.icon_lagguge
+{
+	padding:7px 14px;
+	border-radius:50%;
+	border:1px solid #333;
+	background:url(../images/icon_lagguge.png) center no-repeat;
+	
+}
+
+.icon_lagguge:hover
+{
+	padding:7px 14px;
+	border-radius:50%;
+	border:1px solid #22a1ca;
+	background:url(../images/icon_lagguge1.png) center no-repeat;
+	
+}
+
+.icon_ac
+{
+	padding:7px 14px;
+	border-radius:50%;
+	border:1px solid #333;
+	background:url(../images/icon_ac.png) center no-repeat;
+	
+}
+
+.icon_ac:hover
+{
+	padding:7px 14px;
+	border-radius:50%;
+	border:1px solid #22a1ca;
+	background:url(../images/icon_ac1.png) center no-repeat;
+	
+}
+
+.icon_fair
+{
+	padding:0 0 0 40px;
+	width:150px !important;
+	line-height:32px;
+
+	background:url(../images/cartypeicon.jpg) center no-repeat;
+	background-position:11px 7px;
+	height:32px;
+	
+}
+
+.icon_bagage
+{
+	padding:0 0 0 40px;
+	width:150px !important;
+	line-height:32px;
+
+	background:url(../images/cartypeicon.jpg) center no-repeat;
+	background-position:11px -20px;
+	height:32px;
+	
+}
+
+.icon_seating
+{
+	padding:0 0 0 40px;
+	width:200px !important;
+	line-height:32px;
+
+	background:url(../images/cartypeicon.jpg) center no-repeat;
+	background-position:11px -72px;
+	height:32px;
+	
+}
+
+.icon_amenities
+{
+	padding:0 0 0 40px;
+	width:200px !important;
+	line-height:32px;
+
+	background:url(../images/cartypeicon.jpg) center no-repeat;
+	background-position:11px -45px;
+	height:32px;
+	
+}
+
+.guestlogin
+{
+	background:#333; 
+	color:#FFF;
+	width:100%;
+	cursor:pointer;
+	line-height:35px;
+}
+
+.aslogin
+{
+	background:#f90; 
+	color:#FFF;
+	width:100%;
+	cursor:pointer;
+	line-height:35px;
+}
+
+.asregistra
+{
+	background:#f90; 
+	color:#FFF;
+	width:100%;
+	cursor:pointer;
+	line-height:35px;
+	padding:10px 15px;
+	border-radius:5px;
+}
+
+.cartypelink
+{
+	line-height: ;
+    margin-top: ;
+    width: 50px;
+}

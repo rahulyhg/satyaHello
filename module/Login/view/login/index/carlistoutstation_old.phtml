@@ -1,0 +1,269 @@
+ <?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath();
+?>     
+<?php 
+
+$status = 0;
+/* personal details of logedin person*/
+if(isset($_COOKIE['token'])){
+    $token = $_COOKIE['token'];
+    $status = 1;
+	$login_id = $_COOKIE['login_id'];
+}
+?>
+<style>
+.vehicle_name{
+	float: left;
+    font-size: 20px;
+    font-weight: normal;
+    width: 100px;
+	margin-top:10px;
+	margin-left:85px;
+}
+.fare_details{
+	float: left;
+    font-size: 15px;
+    font-weight: normal;
+	margin-top:15px;
+	margin-left:50px;
+}
+.labelalign{
+	font-weight:bold !important;
+}
+.mapcantiner_inner1 .testimonial_box .number {
+    background: #fbba00 none repeat scroll 0 0;
+    border-radius: 18px;
+    float: left;
+    font-size: 34px;
+    font-weight: normal;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 60px;
+</style>
+<form id="outstationForm" name="outstationForm" method="post" action="<?php echo $this->basePath('login/index/bookingoutstation')?>">
+<input type="hidden" id="loginId" value="<?php echo $login_id; ?>" >
+<div class="container_fluid">
+<!--<div class=" container margin-b20">
+<table border="1" style="margin-bottom:10px" class="tourinfo">
+<thead>
+<tr><td colspan="4"><b>Car Details:</b></td></tr>
+<tr>
+	<th>S.No.</th>
+	<th>Car Name</th>
+	<th>Capacity</th>
+	<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<?php 
+	$i=1;
+	foreach($carDetails as $v){ 
+?>
+<tr>
+	<td><?php echo $i;?></td>
+	<td><?php echo $v['name']; ?></td>
+	<td><?php echo $v['capacity']; ?></td>
+	<td><?php echo $v['name']; ?></td>
+</tr>
+<?php $i++; 
+}?>
+</tbody></table>
+
+    </div>-->
+
+
+
+<?php /*?>
+<div style="margin:15px auto 5px !important;" class="container col-sm-col-sm-offset-1">
+
+
+<div class="row">
+<div class="form-group clearfix margintopbottom20">
+
+<label class="col-sm-2 control-label labelalign">From:</label>
+<label class="col-sm-2"><input type="text" name="outRoundtripfrom" id="outRoundtripfrom" value="<?php echo $this->data['outRoundtripfrom']; ?>"></label>
+
+<label class="col-sm-2 control-label labelalign">To:</label>
+<label class="col-sm-2"><input type="text" name="outRoundtripto" id="outRoundtripto" value="<?php echo $this->data['outRoundtripto']; ?>"></label>
+
+<label class="col-sm-2 control-label labelalign">Departure Date:</label>
+<label class="col-sm-2"><input type="text" name="outstation_Ddate" id="outstation_Depdate" value="<?php echo $this->data['outstation_Ddate']; ?>"></label>
+<!--<label class="col-sm-2"><input type="hidden" name="outstation_Rdate" id="outstation_Rdate" value="<?php //echo $this->data['outstation_Rdate']; ?>"><?php //echo $this->data['outstation_Rdate']; ?></label>-->
+
+
+</div>
+</div>
+
+<div class="row">
+<div class="form-group clearfix margintopbottom20">
+
+<label class="col-sm-2 control-label labelalign">Pickup Address:</label>
+<label class="col-sm-2"><input type="text" name="outPickupAddress" id="outPickupAddress" value="<?php echo $this->data['outPickupAddress']; ?>"></label>
+
+<label class="col-sm-2 control-label labelalign">Pickup Time:</label>
+<label class="col-sm-2"><input type="text" name="outPickupTimeH" id="outPickupTimeH" value="<?php echo $this->data['outPickupTimeH']; ?>"><input type="text" name="outPickupTimeM" id="outPickupTimeM" value="<?php echo $this->data['outPickupTimeM']; ?>"></label>
+
+<label class="col-sm-2 control-label labelalign">Return Date:</label>
+<label class="col-sm-2"><input type="text" name="outstation_Rdate" id="outstation_Rdate" value="<?php echo $this->data['outstation_Rdate']; ?>"></label>
+
+</div>
+</div>
+
+<div class="row">
+<div class="form-group clearfix margintopbottom20">
+
+<label class="col-sm-2 control-label labelalign">No. of Adults:</label>
+<label class="col-sm-2"><input type="text" name="outstationAdults" id="outstationAdults" value="<?php echo $this->data['outstationAdults']; ?>"></label>
+
+<label class="col-sm-2 control-label labelalign">No. of Children:</label>
+<label class="col-sm-2"><input type="text" name="outstationChilds" id="outstationChilds" value="<?php echo $this->data['outstationChilds']; ?>"></label>
+
+<label class="col-sm-2 control-label labelalign">No. of Luggages:</label>
+<label class="col-sm-2"><input type="text" name="outstationLuggages" id="outstationLuggages" value="<?php echo $this->data['outstationLuggages']; ?>"></label>
+
+<label class="col-sm-2 control-label labelalign">Car Type:</label>
+<label class="col-sm-2"><input type="text" name="cartype" value="<?php echo $this->data['cartype'] ?>"><?php if($this->data['cartype']==1) echo "Economy"; elseif($this->data['cartype']==2) echo "Sedan"; else echo "Prime"; ?></label>
+
+<label class="col-sm-2 control-label labelalign">Nationality:</label>
+<label class="col-sm-2"><input type="text" name="outstationNationality" id="outstationNationality" value="<?php echo $this->data['outstationNationality']; ?>"></label>
+<input type="hidden" name="BookingType" value="104">
+</div>
+
+</div>
+
+</div>
+<?php */?>
+
+
+	
+<div style="margin:15px auto 5px !important;" class="container col-sm-col-sm-offset-1">
+<h4>Details:</h4>
+
+<div class="row">
+<div class="form-group clearfix margintopbottom20">
+
+<label class="col-sm-2 control-label labelalign">From:</label>
+<label class="col-sm-2"><input type="hidden" name="outRoundtripfrom" id="outRoundtripfrom" value="<?php echo $this->data['outRoundtripfrom']; ?>"><?php echo $this->data['outRoundtripfrom']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">To:</label>
+<label class="col-sm-2"><input type="hidden" name="outRoundtripto" id="outRoundtripto" value="<?php echo $this->data['outRoundtripto']; ?>"><?php echo $this->data['outRoundtripfrom']; ?> - <?php echo $this->data['outRoundtripto']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">Departure Date:</label>
+<label class="col-sm-2"><input type="hidden" name="outstation_Ddate" id="outstation_Depdate" value="<?php echo $this->data['outstation_Ddate']; ?>"><?php echo $this->data['outstation_Ddate']; ?></label>
+<!--<label class="col-sm-2"><input type="hidden" name="outstation_Rdate" id="outstation_Rdate" value="<?php //echo $this->data['outstation_Rdate']; ?>"><?php //echo $this->data['outstation_Rdate']; ?></label>-->
+
+
+</div>
+</div>
+
+<div class="row">
+<div class="form-group clearfix margintopbottom20">
+
+<label class="col-sm-2 control-label labelalign">Pickup Address:</label>
+<label class="col-sm-2"><input type="hidden" name="outPickupAddress" id="outPickupAddress" value="<?php echo $this->data['outPickupAddress']; ?>"><?php echo $this->data['outPickupAddress']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">Pickup Time:</label>
+<label class="col-sm-2"><input type="hidden" name="outPickupTimeH" id="outPickupTimeH" value="<?php echo $this->data['outPickupTimeH']; ?>"><input type="hidden" name="outPickupTimeM" id="outPickupTimeM" value="<?php echo $this->data['outPickupTimeM']; ?>"><?php echo $this->data['outPickupTimeH']; ?>:<?php echo $data['outPickupTimeM']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">Return Date:</label>
+<label class="col-sm-2"><input type="hidden" name="outstation_Rdate" id="outstation_Rdate" value="<?php echo $this->data['outstation_Rdate']; ?>"><?php echo $this->data['outstation_Rdate']; ?></label>
+
+</div>
+</div>
+
+<div class="row">
+<div class="form-group clearfix margintopbottom20">
+
+<label class="col-sm-2 control-label labelalign">No. of Adults:</label>
+<label class="col-sm-2"><input type="hidden" name="outstationAdults" id="outstationAdults" value="<?php echo $this->data['outstationAdults']; ?>"><?php echo $this->data['outstationAdults']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">No. of Children:</label>
+<label class="col-sm-2"><input type="hidden" name="outstationChilds" id="outstationChilds" value="<?php echo $this->data['outstationChilds']; ?>"><?php echo $this->data['outstationChilds']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">No. of Luggages:</label>
+<label class="col-sm-2"><input type="hidden" name="outstationLuggages" id="outstationLuggages" value="<?php echo $this->data['outstationLuggages']; ?>"><?php echo $this->data['outstationLuggages']; ?></label>
+
+<label class="col-sm-2 control-label labelalign">Car Type:</label>
+<label class="col-sm-2"><input type="hidden" name="cartype" value="<?php echo $this->data['cartype'] ?>"><?php if($this->data['cartype']==1) echo "Economy"; elseif($this->data['cartype']==2) echo "Sedan"; else echo "Prime"; ?></label>
+
+<label class="col-sm-2 control-label labelalign">Nationality:</label>
+<label class="col-sm-2"><input type="hidden" name="outstationNationality" id="outstationNationality" value="<?php echo $this->data['outstationNationality']; ?>"><?php echo $this->data['outstationNationality']; ?></label>
+<input type="hidden" name="BookingType" value="104">
+</div>
+
+</div>
+
+</div>
+	</div>
+<?php if($carDetails!=''){?>
+<div class=" mapcantiner_inner" id="contentmanager"> <div class=" mapcantiner_inner">
+    <h2>Select a Car for Intercity</h2>
+	    <div class="mapcantiner_inner1">
+<?php 
+	$i=1;
+	foreach($carDetails as $v){ 
+?>	
+    <div class="testimonial_box" style="margin:0 0 10px; padding:0 0 10px;">
+	<span class="image_box" style="height:100px; width:198px; padding:5px;">
+	<input type="hidden" name="cabImg" value="<?php echo $v['cabImg'] ?>">
+	<img src="/hello42/<?php if($v['cabImg']!='') echo $v['cabImg']; else echo "/public/image/vehicle.png";?>" style="width:185px; height:88px;"></span>
+    <span class="number" style="margin-left:80px;">
+	<input type="hidden" name="capacity" value="<?php echo $v['capacity'] ?>">
+	<?php echo $v['capacity']; ?></span><span style="float:left; margin:56px 0 0 -64px; font-size:20px;">+driver</span>
+     <span class="vehicle_name"><?php if($v['cabType']==1) echo "Economy"; elseif($v['cabType']==2) echo "Sedan"; else echo "Prime";?></span>
+	<span class="vehicle_name" style="margin-left:15px; width:150px;">
+	<input type="hidden" name="cabname" value="<?php echo $v['name'] ?>">
+	<input type="hidden" name="CabModel" value="<?php echo $v['CabModel'] ?>">
+	<?php echo $v['name']; ?> (<?php echo $v['CabModel']; ?>)</span>
+	<span class="fare_details">Minimum Charge: Rs.<?php echo $v['MinimumCharge']; ?><br/> 
+	<input type="hidden" name="MinimumCharge" value="<?php echo $v['MinimumCharge'] ?>">
+	<a href="#" class="fareDetails" id="fareDetails<?php echo $i;?>"><center style="text-decoration:underline;">Fare Details</center></a></span>
+	<span class="fare_details"><input type="radio" name="outstation_car" id="intercity_car_radio" value="<?php echo $v['MinimumCharge'].','.$v['Min_Distance'].','.$v['cabType'].','.$v['routeId']; ?>"></span>
+    </div>
+	<script>
+$(document).ready(function(){
+    $('#fareDetails<?php echo $i;?>').popover({title: "<h3><strong>FARE DETAIL</strong></h3>", content: "Min. Coverage <?php echo $v['Min_Distance']; ?> KM <br>Per KM Charges: Rs. <?php echo $v['Per_Km_Charge']; ?> <br>Per day driver allowance: <?php echo $v['NightCharges']; ?><br> <strong>Note:</strong> If the Vehicle is released after <?php echo $v['night_rate_begins']; ?> PM than one day extra charges will be applicable  <br> <h2>Cool stuff!</h2>", html: true, placement: "bottom",trigger: 'hover'}); 
+});
+</script>
+	<?php $i++;}?>
+	    </div>
+	
+<div class="col-sm-3" style="float:right" id="bookingGroundTrip" > 
+<a href="#" type="button"  class=" btn btn-lg bg-primary col-sm-12 makebookingbtn outstationBooking" value=""/>BOOKING NOW</a>
+</div>
+
+<div class="clear"></div>
+</div></div>
+<?php }?>
+
+</form>
+
+
+<script>
+
+$(document).on('click','#bookingGroundTrip',function(){
+	//alert('Test');
+     var status = 0; 
+     var error =0;
+     $(".error_label").hide();
+    if(status==0){
+           
+           
+           // var mob = /^[0-9]{10,15}$/;
+            //var num = /^[0-9]*$/;
+            //var nam = /^[a-zA-Z ]{2,}$/;
+            
+        
+      
+         
+          
+            }
+            if(error==0){
+$( "#outstationForm" ).submit();
+			}
+});
+
+   </script>
+

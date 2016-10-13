@@ -1,0 +1,3088 @@
+<?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+ $path=$this->basePath();
+?> 
+<?php
+ $SightseeingDetails = $_SESSION['SightseeingDetails'];
+ $ShowsDetails = $_SESSION['ShowsDetails']; 
+ $guideDetails = $_SESSION['guideDetails']; 
+ $guide_fare = $_SESSION['guide_fare'];
+ $NoOfday=$_SESSION['NoOfday'];
+
+// echo $SightseeingDetails['s_id'];die;
+ $_SESSION['vehicleId']
+//$qry = "select * from ";
+ //echo $ShowsDetails['s_id'];
+/* foreach($guide_fare as $SD)
+ {
+	echo $SD['s_id']; 
+   echo $SD['name']; 
+   echo $SD['fare'];
+ }     */
+?>
+
+<!DOCTYPE html>
+<html style="height: 100%;" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+
+<meta charset="utf-8">
+<title>Hello42</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Le styles -->
+<link href="<?php echo $path; ?>/public/css/bootstrap_out.css" type="text/css" rel="stylesheet" media="all">
+<link href="<?php echo $path; ?>/public/css/style_out.css" type="text/css" rel="stylesheet" media="all">
+<link href="<?php echo $path; ?>/public/css/newcss_out.css" media="screen" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="<?php echo $path; ?>/public/css/flexslider.css" type="text/css" media="screen" />
+
+<script src="<?php echo $path; ?>/public/js/searchEngin.js" type="text/javascript"></script>
+<style>
+input.error {
+	border: 1px solid red;
+}
+.error {
+	color: red;
+}
+.choose
+{
+	width:99%;
+	border:none;
+}
+.bookcar
+{
+	padding:10px; 
+	color:#FFF;
+	background:#F90;
+	width:;
+}
+</style>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="<?php echo $path; ?>/public/js/jquery.js"></script>
+
+<script language="javascript" type="text/javascript">
+        function togglemodify(id, btn_id) {
+			//alert(1);
+            //debugger;
+            var btnId = btn_id.v
+//            var e = document.getElementById(id);
+//            var b = document.getElementById(btn_id);
+            //            e.style.display = e.style.display == "none" ? "block" : "none";
+			//$("#1").css("display","block");
+            $("#modify_search").slideToggle(500);
+            
+        }
+		
+		function togglemodify1(id, btn_id) {
+			//alert(1);
+            //debugger;
+            var btnId = btn_id.v
+//            var e = document.getElementById(id);
+//            var b = document.getElementById(btn_id);
+            //            e.style.display = e.style.display == "none" ? "block" : "none";
+			//$("#1").css("display","block");
+            $("#modify_search1").slideToggle(500);
+           
+
+        }
+
+		
+
+        function gotoResult() {
+
+
+            if (Validate_Me()) {
+                if (TransValue())
+                    return true;
+                else
+                    return false;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+
+<script type="text/javascript"> 
+<!-- 
+function showMe (it, box) { 
+var vis = (box.checked) ? "block" : "none"; document.getElementById(it).style.display = vis;
+} 
+
+
+//--> 
+</script>
+<script type="text/javascript"> 
+<!-- 
+function showMe1 (it, box) { 
+var vis = (box.checked) ? "none" : "block"; document.getElementById(it).style.display = vis;
+} 
+
+
+//--> 
+</script>
+ <script defer src="<?php echo $path; ?>/public/js/jquery.flexslider.js"></script>
+  
+	<script type="text/javascript">
+		$(function(){
+			SyntaxHighlighter.all();
+			});
+			$(window).load(function(){
+			$('.flexslider').flexslider({
+			animation: "slide",
+			start: function(slider){
+			$('body').removeClass('loading');
+			}
+			});
+		});
+	</script>   
+
+ <script language="javascript" type="text/javascript">
+
+        function gotoResult() {
+
+
+            if (Validate_Me()) {
+                if (TransValue())
+                    return true;
+                else
+                    return false;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+
+    
+
+<style>
+
+.summary{}
+.details h2, .summary h2{padding: 7px 10px; background: #f1f1f1; font-size:22px;}
+.details .inner, .summary .inner{padding: 10px; min-height: ;}
+.summary .inner{font-size: 12px;}
+.summary .bookcimg{border:1px solid #ccc; padding:7px; box-shadow: 0px 0px 1px #ccc; margin:5px 0 20px; max-width: 260px;}
+.summary .inner .info{padding:3px 0}
+.summary .inner .infopay{padding: 10px 0;}
+.summary .inner .infopay .title{font-size: 14px; display: inline-block; width:150px;}
+.summary .inner .infopay .price{font-size: 14px; padding: 4px 0 4px 20px; font-weight:bold; font-family: arial; display: inline-block}
+.summary .inner .info ul{padding:5px 0; list-style: none ; margin-top: 0px}
+.summary .inner .info ul li{padding:3px 0}
+
+
+
+
+
+input[type=checkbox] {
+		display: block;
+	}
+
+	input[type=checkbox] + label {
+		display:inline-block;
+		margin:-2px;
+		padding: 4px 32px;
+		margin-bottom: 0;
+		font-size: 14px;
+		line-height: 20px;
+		color: #333;
+		text-align: center;
+		text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+		vertical-align: middle;
+		cursor: pointer;
+		background-color: #f5f5f5;
+		background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+		background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+		background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+		background-repeat: repeat-x;
+		border: 1px solid #ccc;
+		border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+		border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+		border-bottom-color: #b3b3b3;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+	}
+
+	input[type=checkbox]:checked + label {
+		   background-image: none;
+		outline: 0;
+		
+			background-color:#e0e0e0;
+	}
+	
+	.sightmargin{
+		margin-bottom:;
+	}
+
+</style>
+
+
+<style>
+input[type=radio] {
+		display:;
+	}
+
+	input[type=radio] + label {
+		display:inline-block;
+		margin:-2px;
+		padding: 4px 32px;
+		margin-bottom: 0;
+		font-size: 14px;
+		line-height: 20px;
+		color: #333;
+		text-align: center;
+		text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+		vertical-align: middle;
+		cursor: pointer;
+		background-color: #f5f5f5;
+		background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+		background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+		background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+		background-repeat: repeat-x;
+		border: 1px solid #ccc;
+		border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+		border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+		border-bottom-color: #b3b3b3;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+	}
+
+	input[type=radio]:checked + label {
+		   background-image: none;
+		outline: 0;
+		
+			background-color:#ccc;
+	}
+	
+	.sightmargin{
+		margin-bottom:;
+	}
+
+</style>
+
+  
+<div class="banner-bottom pcenter" align="center" >
+<img src="<?php echo $path; ?>/public/images/revue2.png">
+</div>
+
+<div class="banner-bottom pcenter" align="" >
+		<div class="container">
+        
+        
+			<div class="banner-bottom-grids">
+				<div class="col-md-9 banner-bottom-grid">
+               <div class="choose" style="padding-top:0; margin-top:0;">
+						
+						<div class="destinations-grid-info tours">
+                           <div class="td-grids">
+								
+                            
+                            <div class=" " align="left">
+									<p><strong>
+                                   Your Trip:<?php echo $_SESSION['outRoundtripfrom']; ?> - <?php echo $_SESSION['outRoundtripto']; ?> Tours - <?php echo $_SESSION['NoOfday']; ?> Day Car Trip (<a style="display:inline;" href="<?php echo $this->basePath().'/login/index/bookingoutstation';?>">Go Back</a> / <a style="display:inline;" href="#">Customize More</a>)
+                         </strong>           
+                                    </p>
+									
+							</div>
+                            
+                              
+                            
+								
+								<div class="clearfix"> </div>
+						  </div>
+							</div>
+					</div>
+
+                    
+					<div class="choose">
+						<div class="choose-info">
+							<h4>Trip Summary</h4>
+						</div>
+						<div class="destinations-grid-info tours">
+                           <div class="td-grids">
+								 <div class="mapcantiner_inner1" style="padding:0 !important;">
+	
+    <div class="testimonial_box" style="margin:0 0 10px; padding:0 0 10px;">
+     <p><span class="txtdgrey mL10">Modify Car ( <input type="radio" name="Mcar" value="ve1" onClick="showMe('divmcar', this)" />Yes &nbsp; <input type="radio" name="Mcar" value="ve1" onClick="showMe1('divmcar', this)" />No )</span></p>
+
+  
+  
+  <div class="destinations-grid-info tours" id="divmcar" style="display:none; float:left; width:100%;">
+                           <div class="td-grids">
+								
+                            
+                            <div class="col-md-3 sightmargin" align="center">
+									
+								<select name="" class="form-control">
+                                	<option>Car name 1</option>
+                                    
+                                    <option>Car name 2</option>
+                                    
+                                    <option>Car name 3</option>
+                                    
+                                    <option>Car name 4</option>
+                                    <option>Car name 5</option>
+                                
+                                </select>	
+                                    
+							</div>
+                            
+                            
+								<div class="col-xs-2 td-right">
+									
+								</div>
+								<div class="clearfix"> </div>
+						  </div>
+							</div>
+  
+    
+    								<div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:0 0 10px;">
+     <div class="col-md-31 sightmargin overviueimg" align="left">
+									<span class="image_box" style="height:auto; width:100%; padding:5px; margin:0;">
+	<input name="cabImg" value="" type="hidden">
+	<img src="<?php echo $path; ?>/public/images//vehicle.png" style="width:100%; height:;"></span>
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin overviueimg1" align="left">
+							
+Compact - AC Tata Indica<br>
+Rs. 6548
+                			</div>
+    
+      <div class="col-md-31 sightmargin overviueimg2" align="left" >
+									 <span class="vehicle_name">Pickup City:</span><br>
+                                      <span class="vehicle_name">	New Delhi</span>
+	
+									
+							</div>
+                            
+       <div class="col-md-31 sightmargin overviueimg2" align="left" >
+									 <span class="vehicle_name">Date:</span><br>
+                                      <span class="vehicle_name">12/11/2015</span>
+                                      <span class="vehicle_name">10 AM</span>
+	
+									
+							</div>  
+                            
+          <div class="col-md-31 sightmargin overviueimg2" align="left">
+									 <span class="vehicle_name">Dropoff City:</span><br>
+                                      <span class="vehicle_name">	New Delhi</span>
+	
+									
+							</div>
+                            
+       <div class="col-md-31 sightmargin overviueimg2" align="left">
+									 <span class="vehicle_name">Date:</span><br>
+                                      <span class="vehicle_name">16/11/2015</span>
+                                      <span class="vehicle_name">5 PM</span>
+	
+									
+							</div>  
+                            
+                            <div class="col-md-31 sightmargin overviueimg2" align="left">
+									 <span class="vehicle_name">Adults: 4</span><br>
+                                      <span class="vehicle_name">Children: 4</span>
+                                      
+	
+									
+							</div>                   
+                            
+ 	
+	
+    
+    
+	
+	
+    </div>
+    
+    </div>
+                            
+								</div></div>
+								<div class="clearfix"> </div>
+						  </div>
+                          
+                          
+                          
+                          <div class="td-grids">
+								 <div class="mapcantiner_inner1" style="padding:0 !important;">
+	
+    <div class="testimonial_box" style="margin:0 0 10px; padding:0 0 10px;">
+     <p><span class="txtdgrey mL10">Modify Sightseeing ( <a href="sightseeing.html" style="display:inline;">Modify</a> )</span></p>
+
+    </div></div> 
+    <h5>Agra </h5>
+    
+    
+    
+    								<div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:5px 0 10px;">
+     
+      <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;">Tajmahal</span><br>
+                                     
+	
+									
+							</div>
+                            
+                            
+       <div class="col-md-31 sightmargin overviueimg3" align="left" style="padding:0 !important;">
+							
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" style="width:50px; height:50px; margin-right:20px; border-radius:50%;"><span class="vehicle_name" style="line-height:50px; "><a href="#">Remove</a></span>
+<br>
+
+                			</div>
+                                                 
+       <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;">Rs. 500.00</span><br>
+                                     
+	
+									
+							</div> 
+                            
+                            <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;"><a href="#">Remove</a></span><br>
+                                      
+	
+									
+							</div>  
+                     
+    </div>
+    
+    </div>
+    								<div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:5px 0 10px;">
+     
+                            <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;">Agra Fort</span>
+                                     
+	
+									
+							</div>
+                            
+                            
+                            
+                             <div class="col-md-31 sightmargin overviueimg3" align="left" style="padding:0 !important;">
+							
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" style="width:50px; height:50px; margin-right:20px; border-radius:50%;"> <span class="vehicle_name" style="line-height:50px; "><a href="#">Remove</a></span>
+
+
+                			</div>
+    
+      
+                            
+       <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;">Rs. 400.00</span>
+                                     
+	
+									
+							</div> 
+                            
+                            <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;"><a href="#">Remove</a></span>
+                                      
+	
+									
+							</div>  
+                            
+         
+                            <div class="col-md-31 sightmargin overviueimg3" align="right" style="float:right; width:100%;" >
+									 <span class="vehicle_name" style="line-height:50px;"><a href="#" style="display:inline;"  onClick="javascript:togglemodify('2','btnBack');">Add More</a></span><br>
+                                      
+	
+								<div id="modify_search" style="width: 100%; border-radius: 5px; border: 1px solid rgb(204, 204, 204); padding: 5px; display:none ;">
+                                        <div class="slider">
+				<div class="arrival-grids">			 
+					 <ul class="sightadd" id="flexiselDemo4">
+
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title=""></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:22%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:22%;">Add</div>
+
+</li>
+</ul>
+                        
+                        
+                        
+						<script type="text/javascript">
+						 $(window).load(function() {			
+						  $("#flexiselDemo4").flexisel({
+							visibleItems: 4,
+							animationSpeed: 1000,
+							autoPlay: true,
+							autoPlaySpeed: 3000,    		
+							pauseOnHover:true,
+							enableResponsiveBreakpoints: true,
+							responsiveBreakpoints: { 
+								portrait: { 
+									changePoint:480,
+									visibleItems: 1
+								}, 
+								landscape: { 
+									changePoint:640,
+									visibleItems: 2
+								},
+								tablet: { 
+									changePoint:768,
+									visibleItems: 3
+								}
+							}
+						});
+						});
+						</script>
+                        
+                        <style>
+.pkgcost {font-size: 25px; padding: 10px 0; background:#1C587B; color: #fff; border-radius:5px; margin-top:10px;}
+</style>
+
+
+<script>
+document.getElementById('fromcity').selectedIndex=0;
+document.getElementById('packform').reset();
+
+var sightarray=new Array();
+sightarray.push(1);
+function removeSightSeeing(el,id){
+  var btn="<div onclick='addSightSeeing($(this).parent(),"+id+")' class='sadd'>Add</div>";
+  el.find('.sremove').remove();
+  el.append(btn);
+  $('.sightadd').append(el);
+  sightarray.splice(sightarray.indexOf(id),1);
+  document.getElementById('selsight').value=sightarray.toString();
+  console.log(sightarray);
+  console.log(document.getElementById('selsight').value);
+}
+
+function addSightSeeing(el,id){
+	//alert(el);
+	//alert(id);
+  var btn="<div onclick='removeSightSeeing($(this).parent(),"+id+")' class='sremove'>Remove</div>";
+  el.find('.sadd').remove();
+  el.append(btn);
+  $('.sightinc').append(el);
+  sightarray.push(id);
+  document.getElementById('selsight').value=sightarray.toString();
+  console.log(sightarray);
+  console.log(document.getElementById('selsight').value);
+}
+
+
+
+
+</script>
+                        
+                        
+						<script type="text/javascript" src="<?php echo $path; ?>/public/js/jquery.flexisel.js"></script>			 
+				</div>
+			</div>
+                                        </div>	
+							</div>
+        
+                            
+                                             
+                            
+ 	
+	
+    
+    
+	
+	
+    </div>
+    
+    </div>
+                            
+								
+								<div class="clearfix"> </div>
+						  </div>
+                          
+                          <div class="td-grids">
+								  
+    <h5>Jaipur</h5>
+    
+    
+    
+    								<div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:5px 0 10px;">
+
+     
+                            
+                            
+    
+      <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;">Tajmahal</span><br>
+                                     
+	
+									
+							</div>
+                            
+       <div class="col-md-31 sightmargin overviueimg3" align="left" style="padding:0 !important;">
+							
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" style="width:50px; height:50px; margin-right:20px; border-radius:50%;"><span class="vehicle_name" style="line-height:50px; "><a href="#">Remove</a></span>
+<br>
+
+                			</div>                      
+                            
+       <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;">Rs. 500.00</span><br>
+                                     
+	
+									
+							</div> 
+                            
+                            <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;"><a href="#">Remove</a></span><br>
+                                      
+	
+									
+							</div>  
+                            
+    </div>
+    
+    </div>
+    
+    								<div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:5px 0 10px;">
+     
+                            
+                             
+    
+      <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;">Agra Fort</span>
+                                     
+	
+									
+							</div>
+                            
+       <div class="col-md-31 sightmargin overviueimg3" align="left" style="padding:0 !important;">
+							
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" style="width:50px; height:50px; margin-right:20px; border-radius:50%;"><span class="vehicle_name" style="line-height:50px; "><a href="#" style="margin-left:10px;">Remove</a></span>
+
+
+                			</div>
+                            
+       <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;">Rs. 400.00</span>
+                                     
+	
+									
+							</div> 
+                            
+                            <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name" style="line-height:50px;"><a href="#">Remove</a></span>
+                                      
+	
+									
+							</div>  
+                            
+         
+                     <div class="col-md-31 sightmargin overviueimg3" align="right" style="float:right; width:100%;" >
+									 <span class="vehicle_name" style="line-height:50px;"><a style="display:inline;"  onClick="javascript:togglemodify1('2','btnBack');">Add More</a></span><br>
+                                      
+	
+								<div id="modify_search1" style="width: 100%; border-radius: 5px; border: 1px solid rgb(204, 204, 204); padding: 5px; display:none ;">
+                                        <div class="slider">
+				<div class="arrival-grids">			 
+					 <ul class="sightadd" id="flexiselDemo5">
+
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title=""></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:22%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:21%;">Add</div>
+
+</li>
+<li>
+<div class="sdes" onClick="$(this).parent().find('.sdesc').fadeIn('medium')">
+ <a  href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;"> 
+<img src="<?php echo $path; ?>/public/images/tajmahal.jpg" alt="Bahai Temple" title="Click to View Detail"></a>
+<div class="sname">Taj Mahal(Agra)<br>
+<p> <a href="#" data-toggle="modal" data-target="#myModal">
+                                    View Detail</a></p>
+</div>
+</div>
+
+
+
+<div class="sadd" onClick="addSightSeeing($(this).parent(),7)" style="margin-left:22%;">Add</div>
+
+</li>
+</ul>
+                        
+                        
+                        
+						<script type="text/javascript">
+						 $(window).load(function() {			
+						  $("#flexiselDemo5").flexisel({
+							visibleItems: 4,
+							animationSpeed: 1000,
+							autoPlay: true,
+							autoPlaySpeed: 3000,    		
+							pauseOnHover:true,
+							enableResponsiveBreakpoints: true,
+							responsiveBreakpoints: { 
+								portrait: { 
+									changePoint:480,
+									visibleItems: 1
+								}, 
+								landscape: { 
+									changePoint:640,
+									visibleItems: 2
+								},
+								tablet: { 
+									changePoint:768,
+									visibleItems: 3
+								}
+							}
+						});
+						});
+						</script>
+                        
+                        <style>
+.pkgcost {font-size: 25px; padding: 10px 0; background:#1C587B; color: #fff; border-radius:5px; margin-top:10px;}
+</style>
+
+
+<script>
+document.getElementById('fromcity').selectedIndex=0;
+document.getElementById('packform').reset();
+
+var sightarray=new Array();
+sightarray.push(1);
+function removeSightSeeing(el,id){
+  var btn="<div onclick='addSightSeeing($(this).parent(),"+id+")' class='sadd'>Add</div>";
+  el.find('.sremove').remove();
+  el.append(btn);
+  $('.sightadd').append(el);
+  sightarray.splice(sightarray.indexOf(id),1);
+  document.getElementById('selsight').value=sightarray.toString();
+  console.log(sightarray);
+  console.log(document.getElementById('selsight').value);
+}
+
+function addSightSeeing(el,id){
+	//alert(el);
+	//alert(id);
+  var btn="<div onclick='removeSightSeeing($(this).parent(),"+id+")' class='sremove'>Remove</div>";
+  el.find('.sadd').remove();
+  el.append(btn);
+  $('.sightinc').append(el);
+  sightarray.push(id);
+  document.getElementById('selsight').value=sightarray.toString();
+  console.log(sightarray);
+  console.log(document.getElementById('selsight').value);
+}
+
+
+
+
+</script>       
+						 
+				</div>
+			</div>
+                                        </div>	
+							</div> 
+                                   
+        
+                            
+                                             
+                            
+ 	
+	
+    
+    
+	
+	
+    </div>
+    
+    </div>
+                            
+								
+								<div class="clearfix"> </div>
+						  </div>
+                          
+                          
+                          <div class="td-grids">
+								 <div class="mapcantiner_inner1" style="padding:0 !important;">
+	
+    <div class="testimonial_box" style="margin:0 0 10px; padding:0 0 10px;">
+     <p><span class="txtdgrey mL10">Modify Attrections/Pay Entrance or Ticket ( <input type="radio" name="Mattrec" value="ve1" onClick="showMe('divmticket', this)" />Yes &nbsp; <input type="radio" name="Mattrec" value="ve1" onClick="showMe1('divmticket', this)" />No )</span></p>
+
+  
+    
+    <div class="destinations-grid-info tours" id="divmticket" style="display:none; width:100%;">
+                           <div class="td-grids">
+								<div id="addonsBlock">
+			<form action="/updateAddons" id="update_addons" method="post">
+<h5>Addons</h5> 
+
+
+<p><input name="order[yamuna]" type="hidden" value="0" /><input id="order_yamuna" name="order[yamuna]" type="checkbox" value="1" />	<span class="txtdgrey mL10">Travel via Yamuna Expressway :</span> <span class="txtblue txtbold">Rs. 600</span></p>
+
+<p><input name="order[include_eng_driver]" type="hidden" value="0" /><input id="order_include_eng_driver" name="order[include_eng_driver]" type="checkbox" value="1" />	<span class="txtdgrey mL10">Add English Understanding Driver :</span> <span class="txtblue txtbold">Rs. 32000</span></p>
+<p><input name="order[guided]" type="hidden" value="0" /><input id="order_guided" name="order[guided]" type="checkbox" value="1" />	<span class="txtdgrey mL10">Add Knowledgeable Tour Guide :</span> <span class="txtblue txtbold">Rs. 24000</span></p>
+<br>
+<h5>Entrance Tickets, Activities, Cultural Shows & Theatre</h5><br>
+<table width="100%" style="width:100%;">
+
+		<form action="/addOrUpdateReservation?update=" method="post" onSubmit="jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:jQuery.param(jQuery(this).serializeArray()), dataType:'script', type:'post', url:'/addOrUpdateReservation?update='}); return false;" >
+			<tr style="margin-bottom:5px; padding-bottom:10px;">
+			<td width="30%">
+			<a href="#" class="tooltipF"><p class="txtdgrey mL10">Light and Sound Show, <i>@ Agra Fort- a UNESCO world heritage site, Agra</i></p>
+				<span>
+					
+</span></a>		
+			</td>
+            <td width="60%">
+			<table cellpadding="10" cellspacing="10" width="100%" style="font-size:12px;">
+				
+				
+					<tr>
+						<td width="70%">Time: 6:30 PM, Language: English, Nationality: Indian</td><td width="20%">Rs. 100 </td>
+						<td width="10%">
+							
+							 
+							
+								
+								
+							
+							<select id="reservation_1" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_1').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=1&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Time: 6:30 PM, Language: English, Nationality: Non-Indian</td><td width="20%">Rs. 300 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_2" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_2').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=2&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Time: 7:30 PM, Language: Hindi, Nationality: Indian</td><td width="20%">Rs. 100 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_3" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_3').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=3&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Time: 7:30 PM, Language: Hindi, Nationality: Non-Indian</td><td width="20%">Rs. 300 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_4" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_4').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=4&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+			</table>
+			</td>
+            <td width="10%">
+			<span class="txtblue txtbold">Rs. 0 </span>
+			</td>
+			</tr>
+		</form>
+	
+
+	
+		<form action="/addOrUpdateReservation?update=" method="post" onSubmit="jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:jQuery.param(jQuery(this).serializeArray()), dataType:'script', type:'post', url:'/addOrUpdateReservation?update='}); return false;">
+			<tr>
+			<td width="40%">
+			<a href="#" class="tooltipF"><p class="txtdgrey mL10">TAJ MAHAL, <i>Entrance Tickets for the Masterpiece. , Agra</i></p>
+				<span>
+					
+</span></a>		
+			</td><td width="50%">
+			<table cellpadding="10" cellspacing="10" width="100%" style="font-size:12px;">
+				
+				
+					<tr>
+						<td width="70%">Nationality:- Indian</td><td width="20%">Rs. 100 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_5" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_5').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=5&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Nationality:- Non - Indian</td><td width="20%">Rs. 1000 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_6" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_6').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=6&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+			</table>
+			</td><td width="10%">
+			<span class="txtblue txtbold">Rs. 0 </span>
+			</td>
+			</tr>
+		</form>
+	
+
+	<form action="/addOrUpdateReservation?update=" method="post" onSubmit="jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:jQuery.param(jQuery(this).serializeArray()), dataType:'script', type:'post', url:'/addOrUpdateReservation?update='}); return false;">
+			<tr>
+			<td width="30%">
+			<a href="#" class="tooltipF"><p class="txtdgrey mL10">Light and Sound Show, <i>@ Agra Fort- a UNESCO world heritage site, Agra</i></p>
+				<span>
+					
+</span></a>		
+			</td>
+            <td width="60%">
+			<table cellpadding="10" cellspacing="10" width="100%" style="font-size:12px;">
+				
+				
+					<tr>
+						<td width="70%">Time: 6:30 PM, Language: English, Nationality: Indian</td><td width="20%">Rs. 100 </td>
+						<td width="10%">
+							
+							 
+							
+								
+								
+							
+							<select id="reservation_1" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_1').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=1&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Time: 6:30 PM, Language: English, Nationality: Non-Indian</td><td width="20%">Rs. 300 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_2" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_2').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=2&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Time: 7:30 PM, Language: Hindi, Nationality: Indian</td><td width="20%">Rs. 100 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_3" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_3').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=3&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Time: 7:30 PM, Language: Hindi, Nationality: Non-Indian</td><td width="20%">Rs. 300 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_4" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_4').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=4&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+			</table>
+			</td>
+            <td width="10%">
+			<span class="txtblue txtbold">Rs. 0 </span>
+			</td>
+			</tr>
+		</form>
+	
+
+		<form action="/addOrUpdateReservation?update=" method="post" onSubmit="jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:jQuery.param(jQuery(this).serializeArray()), dataType:'script', type:'post', url:'/addOrUpdateReservation?update='}); return false;">
+			<tr>
+			<td width="40%">
+			<a href="#" class="tooltipF"><p class="txtdgrey mL10">TAJ MAHAL, <i>Entrance Tickets for the Masterpiece. , Agra</i></p>
+				<span>
+					
+</span></a>		
+			</td><td width="50%">
+			<table cellpadding="10" cellspacing="10" width="100%" style="font-size:12px;">
+				
+				
+					<tr>
+						<td width="70%">Nationality:- Indian</td><td width="20%">Rs. 100 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_5" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_5').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=5&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Nationality:- Non - Indian</td><td width="20%">Rs. 1000 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_6" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_6').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=6&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+			</table>
+			</td><td width="10%">
+			<span class="txtblue txtbold">Rs. 0 </span>
+			</td>
+			</tr>
+		</form>
+	
+    
+    
+    <form action="/addOrUpdateReservation?update=" method="post" onSubmit="jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:jQuery.param(jQuery(this).serializeArray()), dataType:'script', type:'post', url:'/addOrUpdateReservation?update='}); return false;">
+			<tr>
+			<td width="30%">
+			<a href="#" class="tooltipF"><p class="txtdgrey mL10">Light and Sound Show, <i>@ Agra Fort- a UNESCO world heritage site, Agra</i></p>
+				<span>
+					
+</span></a>		
+			</td>
+            <td width="60%">
+			<table cellpadding="10" cellspacing="10" width="100%" style="font-size:12px;">
+				
+				
+					<tr>
+						<td width="70%">Time: 6:30 PM, Language: English, Nationality: Indian</td><td width="20%">Rs. 100 </td>
+						<td width="10%">
+							
+							 
+							
+								
+								
+							
+							<select id="reservation_1" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_1').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=1&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Time: 6:30 PM, Language: English, Nationality: Non-Indian</td><td width="20%">Rs. 300 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_2" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_2').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=2&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Time: 7:30 PM, Language: Hindi, Nationality: Indian</td><td width="20%">Rs. 100 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_3" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_3').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=3&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Time: 7:30 PM, Language: Hindi, Nationality: Non-Indian</td><td width="20%">Rs. 300 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_4" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_4').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=4&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+			</table>
+			</td>
+            <td width="10%">
+			<span class="txtblue txtbold">Rs. 0 </span>
+			</td>
+			</tr>
+		</form>
+	
+
+	
+		<form action="/addOrUpdateReservation?update=" method="post" onSubmit="jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:jQuery.param(jQuery(this).serializeArray()), dataType:'script', type:'post', url:'/addOrUpdateReservation?update='}); return false;">
+			<tr>
+			<td width="40%">
+			<a href="#" class="tooltipF"><p class="txtdgrey mL10">TAJ MAHAL, <i>Entrance Tickets for the Masterpiece. , Agra</i></p>
+				<span>
+					
+</span></a>		
+			</td><td width="50%">
+			<table cellpadding="10" cellspacing="10" width="100%" style="font-size:12px;">
+				
+				
+					<tr>
+						<td width="70%">Nationality:- Indian</td><td width="20%">Rs. 100 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_5" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_5').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=5&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+					<tr>
+						<td width="70%">Nationality:- Non - Indian</td><td width="20%">Rs. 1000 </td>
+						<td width="10%">
+							
+							 
+							
+							<select id="reservation_6" name="reservation[adults]"><option value="0" selected="selected">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option></select>
+							<script type="text/javascript">
+//<![CDATA[
+jQuery('#reservation_6').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:'adults=' + value, dataType:'script', type:'post', url:'/addOrUpdateReservationD?offer_id=6&order_id=696342&update='})})
+//]]>
+</script> 
+						</td>
+					</tr>
+				
+			</table>
+			</td><td width="10%">
+			<span class="txtblue txtbold">Rs. 0 </span>
+			</td>
+			</tr>
+		</form>
+	
+</table>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+jQuery('#update_addons').delayedObserver(0.25, function(element, value) {jQuery.ajax({beforeSend:function(request){$('#wrapper').ajaxloader('show','tata-ajax-loader-img2');}, complete:function(request){$('#wrapper').ajaxloader('hide')}, data:value, dataType:'script', type:'post', url:'/updateAddons?order_id=696342'})})
+//]]>
+</script>
+
+</div>
+                      
+                            
+                            
+								<div class="col-xs-2 td-right">
+									
+								</div>
+								<div class="clearfix"> </div>
+						  </div>
+							</div>
+    
+    
+    
+    								<div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:0 0 10px;">
+     
+                            
+                             <div class="col-md-31 sightmargin overviueimg5" align="left">
+							
+Travel via Yamuna Expressway : Rs. 600
+<br>
+
+                			</div>
+    
+      <div class="col-md-31 sightmargin overviueimg5" align="left" >
+									 <span class="vehicle_name">Light and Sound Show, @ Agra Fort- a UNESCO world heritage site, Agra
+	
+</span><br>
+                                     
+	
+									
+							</div>
+                            
+       
+    </div>
+    
+    </div>
+                            
+								  </div></div>
+								<div class="clearfix"> </div>
+						  </div>
+                          
+                          <div class="td-grids">
+								 <div class="mapcantiner_inner1" style="padding:0 !important;">
+	
+    <div class="testimonial_box" style="margin:0 0 10px; padding:0 0 10px;">
+     <p><span class="txtdgrey mL10">Modify Driver ( <input type="radio" name="Mdriver" value="ve1" onClick="showMe('divmdriver', this)" />Yes &nbsp; <input type="radio" name="Mdriver" value="ve1" onClick="showMe1('divmdriver', this)" />No )</span></p>
+
+   
+    
+    <div class="destinations-grid-info tours" id="divmdriver" style="display:none; float:left; width:100%;">
+                           <div class="td-grids">
+								<div class="col-md-3 sightmargin" align="center">
+									<img src="<?php echo $path; ?>/public/images/driver_icon.jpg" alt="" />
+								                                    
+							</div>
+                            
+                            <div class="col-md-3 sightmargin" align="center">
+									<p>Hindi understanding & speaking Driver</p>
+															
+									
+									<p>
+                                    Hindi (Rs 0)</p>
+									
+                                    <p><input type="radio" id="radiodriver1" name="driver" value="all" checked="checked" >
+       <label for="radiodriver1">+Add</label></p>
+							</div>
+                            
+                            <div class="col-md-3 sightmargin" align="center">
+									<p>English understanding & speaking Driver</p>
+															
+									
+									<p>
+                                    Englisg (Rs 500)</p>
+									
+                                    <p><input type="radio" id="radiodriver2" name="driver" value="all" >
+       <label for="radiodriver2">+Add</label></p>
+							</div>
+                            
+                      
+                            
+                            
+								<div class="col-xs-2 td-right">
+									
+								</div>
+								<div class="clearfix"> </div>
+						  </div>
+							</div>
+    
+    
+    								<div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:0 0 10px;">
+     
+                            
+                             <div class="col-md-31 sightmargin overviueimg5" align="left">
+							
+English understanding & speaking Driver
+<br>
+
+                			</div>
+    
+      <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name">(Rs 500)
+	
+</span><br>
+                                     
+	
+									
+							</div>
+                            
+                           <!-- <div class="col-md-31 sightmargin overviueimg" align="left" >
+									 <span class="vehicle_name"><a href="#"> Chenge</a>
+	
+</span><br>
+                                     
+	
+									
+							</div>
+     -->
+                            
+        
+                            
+                                             
+                            
+ 	
+	
+    
+    
+	
+	
+    </div>
+    
+    </div>
+                            
+								 </div></div>
+								<div class="clearfix"> </div>
+						  </div>
+                          
+                          <div class="td-grids">
+								 <div class="mapcantiner_inner1" style="padding:0 !important;">
+	
+    <div class="testimonial_box" style="margin:0 0 10px; padding:0 0 10px;">
+     <p><span class="txtdgrey mL10">Modify Guide (  <input type="radio" name="Mguide" value="ve1" onClick="showMe('divmguide', this)" />Yes &nbsp; <input type="radio" name="Mguide" value="ve1" onClick="showMe1('divmguide', this)" />No )</span></p>
+
+    <div class="destinations-grid-info tours" id="divmguide" style="display:none; float:left; width:100%;">
+                           <div class="td-grids">
+						   
+            <div class="slider">
+				<div class="arrival-grids">			 
+					 <ul id="flexiselDemo2">
+						 <li>
+							 
+                            
+                          <p>English Speaking & Understanding Guide</p>
+															
+									
+									<p>
+                                    Hindi (Rs 1000)</p>
+									
+                                    <p><input type="radio" id="radioguide1" name="guide" value="all" checked="checked" >
+       <label for="radioguide1">+Add</label></p>
+						 </li>
+						 <li>
+							 <p>English Speaking & Understanding Guide</p>
+															
+									
+									<p>
+                                    Hindi (Rs 1000)</p>
+									
+                                    <p><input type="radio" id="radioguide2" name="guide" value="all" checked="checked" >
+       <label for="radioguide2">+Add</label></p>
+						 </li>
+                         <li>
+							<p>English Speaking & Understanding Guide</p>
+															
+									
+									<p>
+                                    Hindi (Rs 1000)</p>
+									
+                                    <p><input type="radio" id="radioguide3" name="guide" value="all" checked="checked" >
+       <label for="radioguide3">+Add</label></p>
+						 </li>
+                         <li>
+							 <p>English Speaking & Understanding Guide</p>
+															
+									
+									<p>
+                                    Hindi (Rs 1000)</p>
+									
+                                    <p><input type="radio" id="radioguide4" name="guide" value="all" checked="checked" >
+       <label for="radioguide4">+Add</label></p>
+						 </li>
+                         <li>
+							 <p>English Speaking & Understanding Guide</p>
+															
+									
+									<p>
+                                    Hindi (Rs 1000)</p>
+									
+                                    <p><input type="radio" id="radioguide5" name="guide" value="all" checked="checked" >
+       <label for="radioguide5">+Add</label></p>
+						 </li>
+                         <li>
+							 
+                            <p>English Speaking & Understanding Guide</p>
+															
+									
+									<p>
+                                    Hindi (Rs 1000)</p>
+									
+                                    <p><input type="radio" id="radioguide6" name="guide" value="all" checked="checked" >
+       <label for="radioguide6">+Add</label></p>
+						 </li>
+						</ul>
+						<script type="text/javascript">
+						 $(window).load(function() {			
+						  $("#flexiselDemo2").flexisel({
+							visibleItems: 4,
+							animationSpeed: 1000,
+							autoPlay: true,
+							autoPlaySpeed: 5000,    		
+							pauseOnHover:true,
+							enableResponsiveBreakpoints: true,
+							responsiveBreakpoints: { 
+								portrait: { 
+									changePoint:480,
+									visibleItems: 1
+								}, 
+								landscape: { 
+									changePoint:640,
+									visibleItems: 2
+								},
+								tablet: { 
+									changePoint:768,
+									visibleItems: 3
+								}
+							}
+						});
+						});
+						</script>
+									 
+				</div>
+			</div>
+            
+           
+                                
+								<div class="clearfix"> </div>
+						  </div>
+							</div>
+    
+    
+    
+    								<div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:0 0 10px;">
+     
+                            
+                             <div class="col-md-31 sightmargin overviueimg5" align="left">
+							
+English Speaking & Understanding Guide
+<br>
+
+                			</div>
+    
+      <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <span class="vehicle_name">(Rs 1000)
+	
+</span><br>
+                                     
+	
+									
+							</div>
+                            
+                          
+                            
+        
+                            
+                                             
+                            
+ 	
+	
+    
+    
+	
+	
+    </div>
+    
+    <div class="destinations-grid-info tours" id="didfv7" style="display:; float:left; width:100%;">
+                           <div class="td-grids">
+								
+                                <div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:5px 0 10px;">
+     
+                            
+                             <div class="col-md-31 sightmargin overviueimg3" align="left" style="padding:0 !important;">
+							
+Day 1-
+<br>
+
+                			</div>
+    
+      <div class="col-md-31 sightmargin overviueimg5" align="left" >
+									 <span class="vehicle_name">Tajmahal, Agra Fort,</span><br>
+                                     
+	
+									
+							</div>
+                            
+      
+                            
+                            <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <input name="" type="checkbox" value="">
+                                      
+	
+									
+							</div>  
+                            
+          
+	
+	
+    </div>
+    
+    </div>
+    
+    <div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:5px 0 10px;">
+     
+                            
+                             <div class="col-md-31 sightmargin overviueimg3" align="left" style="padding:0 !important;">
+							
+Day 2-
+<br>
+
+                			</div>
+    
+      <div class="col-md-31 sightmargin overviueimg5" align="left" >
+									 <span class="vehicle_name">Tajmahal, Agra Fort,</span><br>
+                                     
+	
+									
+							</div>
+                            
+      
+                            
+                            <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <input name="" type="checkbox" value="">
+                                      
+	
+									
+							</div>  
+                            
+          
+	
+	
+    </div>
+    
+    </div>
+    
+    <div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:5px 0 10px;">
+     
+                            
+                             <div class="col-md-31 sightmargin overviueimg3" align="left" style="padding:0 !important;">
+							
+Day 2-
+<br>
+
+                			</div>
+    
+      <div class="col-md-31 sightmargin overviueimg5" align="left" >
+									 <span class="vehicle_name">Tajmahal, Agra Fort,</span><br>
+                                     
+	
+									
+							</div>
+                            
+      
+                            
+                            <div class="col-md-31 sightmargin overviueimg3" align="left" >
+									 <input name="" type="checkbox" value="">
+                                      
+	
+									
+							</div>  
+                            
+          
+	
+	
+    </div>
+    
+    </div>
+                              
+								<div class="clearfix"> </div>
+						  </div>
+							</div>
+    
+    </div>
+    
+    
+                            </div></div>
+								
+								<div class="clearfix"> </div>
+						  </div>
+                          
+                          
+                          <div class="td-grids">
+								 <div class="mapcantiner_inner1" style="padding:0 !important;">
+	
+    <div class="testimonial_box" style="margin:0 0 10px; padding:0 0 10px;">
+     <p><span class="txtdgrey mL10">Modify Hotels ( <input type="radio" name="Mhotel" value="ve1" onClick="showMe('divmhotel', this)" />Yes &nbsp; <input type="radio" name="Mhotel" value="ve1" onClick="showMe1('divmhotel', this)" />No )</span></p>
+
+   
+    
+    <div class="destinations-grid-info tours" id="divmhotel" style="display:none;">
+                           <div class="td-grids">
+								<div class="tab-pane fade in active" id="tab-1">
+                                                
+                                                
+                                                <div class="form-group form-group-lg form-group-icon-left">
+                                                    <i class="fa fa-map-marker input-icon"></i>
+                                                    <label>
+                                                        Where are you going?</label>
+                                                    <input class="form-control tt-input tt-hint  ac_input" name="HDestTo" id="HDestTo" size="31" value="Please Enter Destination" onBlur="if(this.value==''){this.value='Please Enter Destination';}" onFocus="if(this.value=='Please Enter Destination'){this.value='';};" onKeyPress="if ((event.keyCode > 64 &amp;&amp; event.keyCode < 91 ) || (event.keyCode > 96 &amp;&amp; event.keyCode < 123) || (event.keyCode==32)) event.returnValue = true; else event.returnValue = false" autocomplete="off" type="text">
+                                                </div>
+                                                <div class="input-daterange" data-date-format="M d, D">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <div class="form-group form-group-lg form-group-icon-left">
+                                                                <i class="fa fa-calendar input-icon input-icon-highlight"></i>
+                                                                <label>
+                                                                    Check-in</label>
+                                                                
+                                                                <input value="8 October 2015" id="txt_ChekinDate" name="txt_ChekinDate" class="form-control hasDatepicker">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="form-group form-group-lg form-group-icon-left">
+                                                                <i class="fa fa-calendar input-icon input-icon-highlight"></i>
+                                                                <label>
+                                                                    Check-out</label>
+                                                                
+                                                                <input value="11 October 2015" id="txt_ChekOut" name="txt_ChekOut" class="form-control hasDatepicker">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <label>
+                                                                    Star</label>
+                                                                <select class="form-control " id="cboStar" name="cboStar" style="width: 100%; padding-left: 5px;">
+                                                                    <option value="All" selected="selected">All</option>
+                                                                    <option value="5">5 Star</option>
+                                                                    <option value="4">4 Star</option>
+                                                                    <option value="3">3 Star</option>
+                                                                    <option value="2">2 Star</option>
+                                                                    <option value="1">1 Star</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <label>
+                                                                    No of Rooms</label>
+                                                                <select name="ctl00$cph_main$roomsNo" id="cph_main_roomsNo" class="form-control " style="width: 100%; padding-left: 5px;" onChange="javascript:showRoomsSearchPage();">
+	<option value="1">1 Rooms</option>
+	<option selected="selected" value="2">2 Rooms</option>
+	<option value="3">3 Rooms</option>
+	<option value="4">4 Rooms</option>
+</select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="input-daterange" data-date-format="M d, D" id="trRoom1">
+                                                    <div class="row">
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-icon-left">
+                                                                <label style="line-height: 50px; padding-top: 25px;">
+                                                                    Rooms 1</label>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-icon-left">
+                                                                <label>
+                                                                    ADULTS</label>
+                                                                
+                                                                <select name="drpAdults1" id="drpAdults1" class="form-control" style="width: 100%;
+                                                                    padding-left: 5px;" onChange="javascript:ShowRoomType(1)">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2" selected="selected">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <label>
+                                                                    KIDS</label>
+                                                                
+                                                                <select name="drpChilds1" id="drpChilds1" style="width: 100%; padding-left: 5px;" class="form-control" onChange="javascript:ChangeChildSearchPage(1)">
+                                                                    <option value="0" selected="selected">0</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <label>
+                                                                    Child(Age 1)</label>
+                                                                
+                                                                <select id="drpChdAge11" name="drpChdAge11" class="form-control" style="display: none;
+                                                                    width: 100%; padding-left: 5px;">
+                                                                    <option value="0">0</option>
+                                                                    <option value="1" selected="selected">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <label>
+                                                                    Child(Age 1)</label>
+                                                                
+                                                                <select id="drpChdAge12" name="drpChdAge12" class="form-control" style="display: none;
+                                                                    width: 100%; padding-left: 5px;">
+                                                                    <option value="0">0</option>
+                                                                    <option value="1" selected="selected">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="input-daterange" id="trRoom2" style="">
+                                                    <div class="row">
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-icon-left">
+                                                                <label style="line-height: 40px;">
+                                                                    Rooms 2</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-icon-left">
+                                                                <select name="drpAdults2" id="drpAdults2" style="width: 100%; padding-left: 5px;" class="form-control" onChange="javascript:ShowRoomType(2)">
+                                                                    <option value="1" selected="selected">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <select name="drpChilds2" id="drpChilds2" style="width: 100%; padding-left: 5px;" class="form-control" onChange="javascript:ChangeChildSearchPage(2)">
+                                                                    <option value="0" selected="selected">0</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <select id="drpChdAge21" name="drpChdAge21" class="form-control" style="display: none;
+                                                                    width: 100%; padding-left: 5px;">
+                                                                    <option value="0">0</option>
+                                                                    <option value="1" selected="selected">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-32">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <select id="drpChdAge22" name="drpChdAge22" class="form-control" style="display: none;
+                                                                    width: 100%; padding-left: 5px;">
+                                                                    <option value="0">0</option>
+                                                                    <option value="1" selected="selected">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="input-daterange" data-date-format="M d, D" id="trRoom3" style="display: none">
+                                                    <div class="row">
+                                                        <div class="col-md-3" style="width: 20%;">
+                                                            <div class="form-group form-group-lg form-group-icon-left">
+                                                                <label style="line-height: 40px;">
+                                                                    Rooms 3</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3" style="width: 20%;">
+                                                            <div class="form-group form-group-lg form-group-icon-left">
+                                                                <select name="drpAdults3" id="drpAdults3" class="form-control" style="width: 100%;
+                                                                    padding-left: 5px;" onChange="javascript:ShowRoomType(3)">
+                                                                    <option value="1" selected="selected">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3" style="width: 20%;">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <select name="drpChilds3" id="drpChilds3" style="width: 100%; padding-left: 5px;" class="form-control" onChange="javascript:ChangeChildSearchPage(3)">
+                                                                    <option value="0" selected="selected">0</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3" style="width: 20%;">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <select id="drpChdAge31" name="drpChdAge31" class="form-control" style="display: none;
+                                                                    width: 100%; padding-left: 5px;">
+                                                                    <option value="0">0</option>
+                                                                    <option value="1" selected="selected">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3" style="width: 20%;">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <select id="drpChdAge32" name="drpChdAge32" class="form-control" style="display: none;
+                                                                    width: 100%; padding-left: 5px;">
+                                                                    <option value="0">0</option>
+                                                                    <option value="1" selected="selected">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="input-daterange" data-date-format="M d, D" id="trRoom4" style="display: none">
+                                                    <div class="row">
+                                                        <div class="col-md-3" style="width: 20%;">
+                                                            <div class="form-group form-group-lg form-group-icon-left">
+                                                                <label style="line-height: 40px;">
+                                                                    Rooms 4</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3" style="width: 20%;">
+                                                            <div class="form-group form-group-lg form-group-icon-left">
+                                                                <select name="drpAdults4" id="drpAdults4" class="form-control" style="width: 100%;
+                                                                    padding-left: 5px;" onChange="javascript:ShowRoomType(4)">
+                                                                    <option value="1" selected="selected">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3" style="width: 20%;">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <select name="drpChilds4" id="drpChilds4" style="width: 100%; padding-left: 5px;" class="form-control" onChange="javascript:ChangeChildSearchPage(4)">
+                                                                    <option value="0" selected="selected">0</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3" style="width: 20%;">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <select id="drpChdAge41" name="drpChdAge41" class="form-control" style="display: none;
+                                                                    width: 100%; padding-left: 5px;">
+                                                                    <option value="0">0</option>
+                                                                    <option value="1" selected="selected">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3" style="width: 20%;">
+                                                            <div class="form-group form-group-lg form-group-select-plus">
+                                                                <select id="drpChdAge42" name="drpChdAge42" class="form-control" style="display: none;
+                                                                    width: 100%; padding-left: 5px;">
+                                                                    <option value="0">0</option>
+                                                                    <option value="1" selected="selected">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input name="ctl00$cph_main$IbSearch" value="Search for Hotels" onClick="return gotoResult('frmHotelSearch');" id="cph_main_IbSearch" class="btn btn-primary btn-lg" type="submit">
+                                                
+                                                
+                                            </div>
+                      
+                            
+                            
+								<div class="col-xs-2 td-right">
+									
+								</div>
+								<div class="clearfix"> </div>
+						  </div>
+							</div>
+    
+    								<div class="mapcantiner_inner1" style="padding:0 !important;">
+	<div class="" style="margin:0 0 10px; padding:0 0 10px;">
+     <div class="col-md-31 sightmargin overviueimg" align="left">
+									<span class="image_box" style="height:auto; width:100%; padding:5px; margin:0;">
+	<input name="cabImg" value="" type="hidden">
+	<img src="<?php echo $path; ?>/public/images/hotel.jpg" style="width:100%; height:;"></span>
+									
+							</div>
+                            
+                             <div class="col-md-31 sightmargin overviueimg1" align="left">
+							
+Taj Hotel<br>
+Rs. 6548
+                			</div>
+    
+      <div class="col-md-31 sightmargin overviueimg4" align="left" >
+									 <span class="vehicle_name">Room Type:</span><br>
+                                      <span class="vehicle_name">Deluxe</span><br>
+                                      <span class="vehicle_name">5 Star</span>
+	
+									
+							</div>
+                            
+       <div class="col-md-31 sightmargin overviueimg4" align="left" >
+									 <span class="vehicle_name">Check in Date:</span><br>
+                                      <span class="vehicle_name">12/11/2015</span>
+                                     
+	
+									
+							</div> 
+                            
+                            <div class="col-md-31 sightmargin overviueimg4" align="left" >
+									 <span class="vehicle_name">Check out Date:</span><br>
+                                      <span class="vehicle_name">16/11/2015</span>
+                                      
+	
+									
+							</div>  
+                            
+          <div class="col-md-31 sightmargin overviueimg4" align="left">
+									 <span class="vehicle_name">Adults: 4</span><br>
+                                      <span class="vehicle_name">Children: 4</span>
+                                      
+	
+									
+							</div> 
+                            
+        
+                            
+                                             
+                            
+ 	
+	
+    
+    
+	
+	
+    </div>
+    
+    </div>
+                            
+								
+                                
+                                 </div></div>
+								<div class="clearfix"> </div>
+						  </div>
+                          
+							</div>
+                            
+                            
+					</div>
+                    
+                    
+                    
+                    
+                    
+				</div>
+				<div class="col-md-3 banner-bottom-grid" style="float:right; ">
+                <div class="top-destinations-grids" style="margin-top:0; display:;">
+						
+						<div class="top-destinations-bottom">
+							<div class="td-grids" style="margin-bottom:0 !important;">
+                            <div class="summary">
+                            <div class="col-md-31 sightmargin overviueimg5" align="left" style="width:100%; margin-bottom:10px; padding-left:0;">
+									<select class="input-sm hidden-xs currency_selection ng-pristine ng-valid form-control" ng-change="currencyChanged(selectedCurrency)" ng-options="currency.name for currency in availableCurrencies" ng-model="selectedCurrency" name="currency_selection">
+<option value="0">US Dollar (USD)</option>
+<option value="1">Indian Rupee (INR)</option>
+<option value="2">Algerian Dinar (DZD)</option>
+<option value="3">Argentine Peso (ARS)</option>
+<option value="4">Australian Dollar (AUD)</option>
+<option value="5">Bahraini Dinar (BHD)</option>
+<option value="6">Bangladeshi Taka (BDT)</option>
+<option value="7">Bolivian Boliviano (BOB)</option>
+<option value="8">Botswanan Pula (BWP)</option>
+<option value="9">Brazilian Real (BRL)</option>
+<option value="10">British Pound Sterling (GBP)</option>
+<option value="11">Brunei Dollar (BND)</option>
+<option value="12">Bulgarian Lev (BGN)</option>
+<option value="13">Cayman Islands Dollar (KYD)</option>
+<option value="14">Chinese Yuan Renminbi (CNY)</option>
+<option value="15">Colombian Peso (COP)</option>
+<option value="16">Costa Rican Colon (CRC)</option>
+<option value="17">Croatian Kuna (HRK)</option>
+<option value="18">Danish Krone (DKK)</option>
+<option value="19">Dominican Peso (DOP)</option>
+<option value="20">Egyptian Pound (EGP)</option>
+<option value="21">Estonian Kroon (EEK)</option>
+<option value="22">Euro (EUR)</option>
+<option value="23">Fijian Dollar (FJD)</option>
+<option value="24">Honduran Lempira (HNL)</option>
+<option value="25">Hong Kong Dollar (HKD)</option>
+<option value="26">Hungarian Forint (HUF)</option>
+<option value="27">Indonesian Rupiah (IDR)</option>
+<option value="28">Israeli New Sheqel (ILS)</option>
+<option value="29">Jamaican Dollar (JMD)</option>
+<option value="30">Japanese Yen (JPY)</option>
+<option value="31">Jordanian Dinar (JOD)</option>
+<option value="32">Kazakhstan Tenge (KZT)</option>
+<option value="33">Kuwaiti Dinar (KWD)</option>
+<option value="34">Macedonian Denar (MKD)</option>
+<option value="35">Malaysian Ringgit (MYR)</option>
+<option value="36">Maldivian Rufiyaa (MVR)</option>
+<option value="37">Mauritian Rupee (MUR)</option>
+<option value="38">Mexican Peso (MXN)</option>
+<option value="39">Moldovan Leu (MDL)</option>
+<option value="40">Moroccan Dirham (MAD)</option>
+<option value="41">Nepalese Rupee (NPR)</option>
+<option value="42">Netherlands Antillean Guilder (ANG)</option>
+<option value="43">New Taiwan Dollar (TWD)</option>
+<option value="44">New Zealand Dollar (NZD)</option>
+<option value="45">Omani Rial (OMR)</option>
+<option value="46">Pakistani Rupee (PKR)</option>
+<option value="47">Papua New Guinean Kina (PGK)</option>
+<option value="48">Paraguayan Guarani (PYG)</option>
+<option value="49">Philippine Peso (PHP)</option>
+<option value="50">Polish Zloty (PLN)</option>
+<option value="51">Qatari Rial (QAR)</option>
+<option value="52">Romanian Leu (RON)</option>
+<option value="53">Russian Ruble (RUB)</option>
+<option value="54">Salvadoran Colon (SVC)</option>
+<option value="55">Saudi Riyal (SAR)</option>
+<option value="56">Serbian Dinar (RSD)</option>
+<option value="57">Seychellois Rupee (SCR)</option>
+<option value="58">Sierra Leonean Leone (SLL)</option>
+<option value="59">Singapore Dollar (SGD)</option>
+<option value="60">Slovak Koruna (SKK)</option>
+<option value="61">South African Rand (ZAR)</option>
+<option value="62">South Korean Won (KRW)</option>
+<option value="63">Sri Lanka Rupee (LKR)</option>
+<option value="64">Swiss Franc (CHF)</option>
+<option value="65">Tanzanian Shilling (TZS)</option>
+<option value="66">Thai Baht (THB)</option>
+<option value="67">Trinidad and Tobago Dollar (TTD)</option>
+<option value="68">Tunisian Dinar (TND)</option>
+<option value="69">Turkish Lira (TRY)</option>
+<option value="70">Ugandan Shilling (UGX)</option>
+<option value="71">Ukrainian Hryvnia (UAH)</option>
+<option value="72">United Arab Emirates Dirham (AED)</option>
+<option value="73">Uzbekistan Som (UZS)</option>
+<option value="74">Venezuelan Bolìvar Fuerte (VEF)</option>
+<option value="75">Vietnamese Dong (VND)</option>
+<option value="76">Yemeni Rial (YER)</option>
+<option value="77">Zambian Kwacha (ZMK)</option>
+</select>
+							</div>
+                            
+                           
+                            <div class="inner" style="height:auto !important;">
+								<div class="infopay">
+	<!--<div class="title" style="width:100%;"> <input type="button" class="btn btn-lg bg-primary col-sm-12 makebookingbtn outstationBooking" title="Submit" value="Book Now" style="margin:0 !important; padding:0 !important;"></div>-->
+			
+		
+		<div class="title">Charges</div>
+	<div class="price"><span class="WebRupee"><span class="WebRupee"> Rs. </span></span><span class="payaddon">6548</span></div>
+
+	<div class="title" style="width:100%;">(Includes: All Tolls, Taxes, Parking & Driver allowances)
+Govt. Tax:(3.09%) <strong>Rs. 171</strong></div>
+	
+		
+		<div class="clear"></div>
+
+		<div class="title" style="color:#C22815; font-weight:bold" title="Only for booking amount"></div>
+		
+        
+         <label class="radio-inline specs" style="padding-left:0 !important; margin-top:20px; margin-bottom:10px;">
+        <div class="radioWrap">
+          <input type="text" name="coupan_code" placeholder="Coupan Code" style="height:34px;" id="coupan_code" onClick="" class="radiobtnalign" >
+          <span></span></div>
+		  <label id="apply_coupancode"><a href="#" > Apply Coupan </a></label>
+		  <div id="coupan_msg"></div>
+		  <div id="coupan_disount"></div>
+        <small id="booklater_conditions_local"></small>
+        </label>
+        
+        
+        <div class="title"><span class="WebRupee"><b>Total Charge</b></span></div>
+	<div class="price"><span class="WebRupee"><span class="WebRupee"> Rs. </span></span><span class="payaddon">7548</span></div>
+
+	<div class="title" style="width:100%; margin-top:15px; margin-bottom:20px;"> 
+    CONTACT INFORMATION<br>
+    <input type="text" name="emailid" placeholder="Email ID" style="height:34px; width:100%;" id="emailed" onClick="" class="radiobtnalign" >
+    </div>
+    
+    <div class="title" style="width:100%;"> 
+    <div class="overviueimg31"><a href="#" class="guestlogin">As a Guest</a></div>
+    <div class="overviueimg32">or</div>
+    <div class="overviueimg31"><a class="aslogin" id="modal_trigger" href="#modal" >As login</a></div>
+    
+    <div></div>
+    
+    </div>
+    
+     <div class="title" style="width:100%; margin-top:5px;" align="center"> 
+     
+            
+            <a href="#" data-toggle="modal" data-target="#myModal" style="cursor:pointer;">View benefits of login</a>
+            
+            <div>
+        
+
+     
+     </div>
+
+		
+							  </div>
+</div>
+</div>
+							</div>
+							
+						</div>
+					</div>
+					
+                    <div class="top-destinations-grids" style="margin-top:20px;">
+						
+						<div class="top-destinations-bottom">
+							<div class="td-grids">
+                            <div class="summary">
+                            <div class="top-destinations-info">
+							<h4>Fair Detail</h4>
+						</div>
+                            <div class="inner">
+								<div class="infopay">
+	<div class="title">Sight Sightseeings</div>
+			<div class="price">
+		  		  <input name="exact_km" value="" id="exact_km" type="hidden">
+		  		  <input name="actual_km" value="2000" id="actual_km" type="hidden">
+		  <span class=""><span class="WebRupee"> Rs. </span></span><span class="paybooking">19600</span>
+		</div>
+		
+		<div class="title">Driver Charge</div>
+	<div class="price"><span class="WebRupee"><span class="WebRupee"> Rs. </span></span><span class="payaddon">500</span></div>
+
+	<div class="title">Guide Charge</div>
+	<div class="price"><span class="WebRupee"><span class="WebRupee"> Rs. </span></span><span class="payamount">1000 </span></div>
+		
+		<div class="clear"></div>
+
+		<div class="title">Hotel Charge</div>
+		<div class="price"><span class="WebRupee"> Rs. </span><span class="netamnt">1240</span> </div>
+
+		<div class="title">Entrance Charge</div>
+		<div class="price"><span class="WebRupee"> Rs. </span><span class="payservice">872</span> </div>
+		
+		<div class="clear"></div>
+        
+        <div class="title">Service Tax(<span id="st_text">4.94</span>%)</div>
+		<div class="price"><span class="WebRupee"> Rs. </span><span class="payservice">872</span> </div>
+		
+        <div class="title" style="color:#C22815; font-weight:bold" title="Only for booking amount">Discount(10%)</div>
+		<div class="price" style="color:#C22815; font-weight:bold" title="Only for booking amount"><span class="WebRupee"> Rs. </span><span class="discount">1960</span> </div>
+        
+        
+		<div class="clear"></div>
+		<div class="title">Payable Amount</div>
+		<div class="price"><span class="WebRupee"> Rs. </span><span class="paytotal">18512</span><span id="usdvalue"></span> </div>
+        
+	
+</div>
+</div>
+</div>
+								<div class="clearfix"> </div>
+							</div>
+							
+						</div>
+					</div>
+                    
+                    <div class="destinations" style=" display:;">
+						<div class="top-destinations-bottom">
+							<div class="td-grids">
+                            <div class="info"><b>Car Type</b> : Compact, Tata Indica</div>
+<div class="info"><b>Service</b> : Outstation</div>
+
+
+<div class="info"><b>From</b> : Delhi/NCR</div>
+
+<div class="info"><b>Destination</b> : Agra</div>
+<div class="info"><b>Round Trip</b> : Yes</div>
+
+<div class="info"><b>Pickup Address</b> : dwelhi</div>
+
+<div class="info"><b>Departure Date</b> : 23-09-2015</div>
+<div class="info"><b>Return Date</b> : 30-09-2015</div><div class="info"><b>Pickup Time</b> : 12:05</div>
+
+
+
+<div class="info">
+	<b>Fare Details:</b>
+	<ul>
+				<li>Minimum charged distance is 2000 Km</li>
+		<li>Fare calculated :
+		2000 Km x<span class="WebRupee"> Rs. </span>9 +<span class="WebRupee"> Rs. </span>1600(Driver allowance)		
+		</li>
+		<li>Per day extra charge :<span class="WebRupee"> Rs. </span>250</li>
+		<li>Per km extra charge :<span class="WebRupee"> Rs. </span>9</li>
+		<li>Per day driver allowance :<span class="WebRupee"> Rs. </span>200</li>
+				<li>If the vehicle will come after 2400 Hrs than One Extra day charge will be applicable with Driver Allowance</li>
+
+				<li>Tolls and parking charge extra</li>
+	</ul>
+</div>
+<div class="info">Final Fare shall depend upon actual Kms Travelled + Service Tax extra </div>
+								<div class="clearfix"> </div>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+        
+        
+        </div>
+ 
+
+</div>
+    
+    <style>
+
+
+ .sightcont ul{list-style: none; padding:10px 0; margin:0;}
+ 
+ .sightinc ul li{list-style: none; padding:10px 0; margin:0 5px 5px 0;}
+ 
+  .sightcont ul li{list-style: none; padding:10px 0; margin:0 5px 5px 0;}
+ 
+.sremove, .sadd{text-align: center; font-size: 12px; cursor: pointer; margin-top: 5px;
+ border:1px solid #25729a; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px; padding: 3px 5px; text-decoration:none; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+ background-color: #3093c7; background-image: -webkit-gradient(linear, left top, left bottom, from(#3093c7), to(#1c5a85));
+ background-image: -webkit-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -moz-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -ms-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -o-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: linear-gradient(to bottom, #3093c7, #1c5a85);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85);
+ width:80px;
+}
+
+.sremove:hover, .sadd:hover{
+ border:1px solid #1c5675;
+ background-color: #26759e; background-image: -webkit-gradient(linear, left top, left bottom, from(#26759e), to(#133d5b));
+ background-image: -webkit-linear-gradient(top, #26759e, #133d5b);
+ background-image: -moz-linear-gradient(top, #26759e, #133d5b);
+ background-image: -ms-linear-gradient(top, #26759e, #133d5b);
+ background-image: -o-linear-gradient(top, #26759e, #133d5b);
+ background-image: linear-gradient(to bottom, #26759e, #133d5b);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#26759e, endColorstr=#133d5b);
+}
+
+.pright{border:1px solid #ccc; padding:5px 5px 20px; width:220px; float:right; box-shadow: 0px 0px 2px #ccc}
+.pright .btns{text-align: center;}
+.pright .btns p{font-weight: bold; margin:0 0 13px 0;}
+
+.btnsubmit{text-align: center; font-size: 16px; cursor: pointer; margin:10px 0;
+ border:1px solid #25729a; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px; padding: 10px 30px; text-decoration:none; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+ background-color: #3093c7; background-image: -webkit-gradient(linear, left top, left bottom, from(#3093c7), to(#1c5a85));
+ background-image: -webkit-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -moz-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -ms-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: -o-linear-gradient(top, #3093c7, #1c5a85);
+ background-image: linear-gradient(to bottom, #3093c7, #1c5a85);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85);
+}
+
+.btnsubmit:hover{
+ border:1px solid #1c5675;
+ background-color: #26759e; background-image: -webkit-gradient(linear, left top, left bottom, from(#26759e), to(#133d5b));
+ background-image: -webkit-linear-gradient(top, #26759e, #133d5b);
+ background-image: -moz-linear-gradient(top, #26759e, #133d5b);
+ background-image: -ms-linear-gradient(top, #26759e, #133d5b);
+ background-image: -o-linear-gradient(top, #26759e, #133d5b);
+ background-image: linear-gradient(to bottom, #26759e, #133d5b);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#26759e, endColorstr=#133d5b);
+}
+
+.btncustom{text-align: center; font-size: 16px; cursor: pointer; margin:10px 0;
+ border:1px solid #ff2596; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px; padding: 5px 18px; text-decoration:none; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF !important;
+ background-color: #ff5db1; background-image: -webkit-gradient(linear, left top, left bottom, from(#ff5db1), to(#ef007c));
+ background-image: -webkit-linear-gradient(top, #ff5db1, #ef007c);
+ background-image: -moz-linear-gradient(top, #ff5db1, #ef007c);
+ background-image: -ms-linear-gradient(top, #ff5db1, #ef007c);
+ background-image: -o-linear-gradient(top, #ff5db1, #ef007c);
+ background-image: linear-gradient(to bottom, #ff5db1, #ef007c);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ff5db1, endColorstr=#ef007c);
+}
+
+.btncustom:hover{
+ border:1px solid #f60080;
+ background-color: #ff2a98; background-image: -webkit-gradient(linear, left top, left bottom, from(#ff2a98), to(#bc0062));
+ background-image: -webkit-linear-gradient(top, #ff2a98, #bc0062);
+ background-image: -moz-linear-gradient(top, #ff2a98, #bc0062);
+ background-image: -ms-linear-gradient(top, #ff2a98, #bc0062);
+ background-image: -o-linear-gradient(top, #ff2a98, #bc0062);
+ background-image: linear-gradient(to bottom, #ff2a98, #bc0062);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ff2a98, endColorstr=#bc0062);
+}
+
+
+.fromcity{width:160px; margin-left:5px; padding:1px 0; border:1px solid #aaa;}
+
+.fields .label{text-align: left; margin:15px 0 5px 10px; font-weight:bold; color: #333}
+.fields .label:first-child{margin-top: 0 !important}
+.fields h4{background:#E76B3F; color: #fff; padding: 4px 0; }
+</style>
+    
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="max-width:500px;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Benefits of logging in</h4>
+      </div>
+      <div class="modal-body" style="height:100px;">
+       <div class="">
+ 
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+    
+    <div style="width:50%; float:left;">
+    
+      <p><ul style="list-style:circle; margin-left:10px;">
+      	<li>Faster Bookings </li>
+        <li>Track Travel History </li>
+        <li>Manage Your Profile </li>
+        <li>Deal Alerts </li><br>
+      </ul></p>
+    </div>
+     <div style="width:40%; float:right;">
+      <h5><strong>Not a member?</strong></h5>
+      
+       <p><a href="#" class="asregistra">Register Now</a></p>
+     </div>
+      
+    </div>
+    
+  </div>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>  
+
+<script type="text/javascript" src="<?php echo $path; ?>/public/js/jquery-1.11.0.min.js"></script>
+
+
+<script type="text/javascript" src="<?php echo $path; ?>/public/js/jquery.leanModal.min.js"></script>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+
+
+
+<div id="modal" class="popupContainer" style="display:none;">
+		<header class="popupHeader">
+			<span class="header_title">Login</span>
+			<span class="modal_close"><i class="fa fa-times"></i></span>
+		</header>
+		
+		<section class="popupBody">
+			<!-- Social Login -->
+			<div class="social_login">
+				<div class="">
+					<a href="#" class="social_box fb">
+						<span class="icon"><i class="fa fa-facebook"></i></span>
+						<span class="icon_title">Connect with Facebook</span>
+						
+					</a>
+
+					<a href="#" class="social_box google">
+						<span class="icon"><i class="fa fa-google-plus"></i></span>
+						<span class="icon_title">Connect with Google</span>
+					</a>
+				</div>
+
+				<div class="centeredText">
+					<span>Or use your Email address</span>
+				</div>
+
+				<div class="action_btns">
+					<div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
+					<div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+				</div>
+			</div>
+
+			<!-- Username & Password Login form -->
+			<div class="user_login">
+				<form>
+					<label>Email / Username</label>
+					<input type="text" class="form-control" />
+					<br />
+
+					<label>Password</label>
+					<input type="password" class="form-control"  />
+					<br />
+
+					<div class="">
+						<input id="remember1" type="checkbox" />
+						<span for="remember" class="col-md-9">Remember me on this computer</span>
+					</div>
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+						<div class="one_half last"><a href="<?php echo $this->basePath().'/login/index/travellers';?>" class="btn btn_red">Login</a></div>
+					</div>
+				</form>
+
+				<a href="#" id="forgot_form" class="forgot_password">Forgot password?</a>
+			</div>
+            
+            <div class="forgot_login">
+				<form>
+					<label>Email</label>
+					<input type="text" class="form-control" />
+					
+					<br />
+
+					
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+						<div class="one_half last"><a href="#" class="btn btn_red">Submit</a></div>
+					</div>
+				</form>
+
+				
+			</div>
+
+			<!-- Register Form -->
+			<div class="user_register">
+				<form action="<?php echo $this->basePath().'/login/index/carbookingreview1';?>" method="post">
+					<label>Full Name</label>
+					<input type="text" class="form-control" />
+					<br />
+
+					<label>Email Address</label>
+					<input type="email" class="form-control" />
+					<br />
+
+					<label>Password</label>
+					<input type="password" class="form-control" />
+					<br />
+
+					<div class="">
+						<input id="send_updates" type="checkbox" />
+						<span class="col-sm-10" for="send_updates">Send me occasional email updates</span>
+					</div>
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+						<div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+    
+    <script type="text/javascript">
+	$("#modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+
+	$(function(){
+		// Calling Login Form
+		$("#login_form").click(function(){
+			$(".social_login").hide();
+			$(".user_login").show();
+			$(".forgot_login").hide();
+			return false;
+		});
+
+
+// Calling forgot Form
+		$("#forgot_form").click(function(){
+			$(".forgot_login").show();
+			$(".social_login").hide();
+			$(".user_login").hide();
+			$(".user_register").hide();
+			$(".header_title").text('Forgot Password');
+			return false;
+		});
+
+		// Calling Register Form
+		$("#register_form").click(function(){
+			$(".social_login").hide();
+			$(".user_register").show();
+			$(".header_title").text('Register');
+			$(".forgot_login").hide();
+			return false;
+		});
+
+		// Going back to Social Forms
+		$(".back_btn").click(function(){
+			$(".user_login").hide();
+			$(".user_register").hide();
+			$(".social_login").show();
+			$(".forgot_login").hide();
+			$(".header_title").text('Login');
+			return false;
+		});
+
+	})
+</script>
+
+ <link href="css/styleB.css" media="screen" rel="stylesheet" type="text/css" />
+
+    
+    
+</body>
+</html>

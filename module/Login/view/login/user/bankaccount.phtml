@@ -1,0 +1,244 @@
+
+<style>
+.errorText {
+border:1px solid red;
+
+}
+label.col-lg-offsets-5 {
+margin-left: 30.666667%;
+color:red;
+}
+input.col-lg-offsets-5{
+    border:1px solid red;
+}
+</style>
+
+     <div class="container-fluid">
+     
+ 	<div class="row">
+	 	<div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+			<h2>My Account</h2>
+		</div>
+	 </div>
+	 
+			   																												      
+     <div class="container marginbottom20">
+      	<div class="row">
+			<div class="col-lg-12">
+				<div class="col-sm-3 col-md-3 col-lg-2">
+					 
+					 <div class="list-group">
+            <a href="<?=$this->basepath().'/login/user';?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Dashboard</a>
+            <a href="<?= $this->basepath().'/login/user/editprofile'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Edit Profile</a>
+            <a href="<?= $this->basepath().'/login/user/changepassword'?>" class="list-group-item userItem "><i class="fa fa-arrow-circle-right"></i> &nbsp;Change Password</a>
+            <a href="<?= $this->basepath().'/login/user/userorderhistory'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Order History</a>
+            <a href="<?= $this->basepath().'/login/user/credithistory'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Account Balance</a>
+            <a href="<?= $this->basepath().'/login/user/Creditrequest'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Credit Request</a>
+                                             <a href="<?= $this->basepath().'/login/user/bankaccount'?>" class="list-group-item userItem yellactive"><i class="fa fa-arrow-circle-right"></i> &nbsp;Bank Account</a>
+          </div>
+				</div>
+				
+				<div class="col-sm-9 col-md-9 col-lg-10">
+					<div class="row" style="display:block;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading tabheading text-center text-uppercase ">
+                           <b style="">Bank Details</b>
+						   <b style="display:none;">Change Password</b>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+						
+						
+						<!-- Change Password Start-->
+        <div class="portlet-body" style="height:156px;">
+                            <div class="table-responsive " style="overflow-x: auto;">
+                              <table class="table borderless table-responsive">
+                                <tr>
+                                  <td><b>SR.NO</b></td>
+                                  <td><b>BANK NAME & ADDRESS</b></td>
+                                  <td><b>ACCOUNT NAME</b></td>
+                                  <td><b>ACCOUNT NUMBER</b></td>
+                                   <td><b>IFSC CODE</b></td>
+                                </tr>
+                                <tr>
+                                  <td id="total_book"></td>
+                                  <td id="completed_book">
+                                  <td id="pending_book"></td>
+                                  <td id="canceled_book"></td>
+                                   <td id="canceled_book"></td>
+                                    </td>
+                                </tr>
+                              </table>
+                            </div>
+                          </div>
+									
+						<!-- Change Password End-->			
+								
+                                                
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>An Confirmation Email has been sent on your account</p>
+                <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default closeButton" data-dismiss="modal">Close<i class="fa fa-spinner fa-spin" style="font-size:1.5em;float:right; display: none;"""></i></button>
+                
+            </div>
+        </div>
+    </div>
+ 
+</div>
+
+                                                
+								</div>
+							
+							<!-- /.table-responsive End-->
+                         
+                        </div>
+							
+							
+
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+				</div>
+			</div>
+       	</div>
+	 </div>
+
+
+
+     	 
+		 
+	 
+          
+        
+	
+<script>
+
+	
+
+
+function loginhome(){
+	var base_url = "<?php echo $this->basePath(); ?>";
+	//alert(base_url);
+//window.open('http://50.62.22.158:8085/hello42test/public/login',"_self");
+window.open(base_url+'/login',"_self");
+}
+
+
+function signuphome(){
+	
+	window.open(base_url+'/login',"_self");
+	
+}
+
+
+</script>	
+	 
+
+<script src="<?php echo $this->basePath(); ?>/public/js/jquery.validate.js"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+            //$('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true });
+            $("#changePWD").validate({
+            errorClass: 'error col-lg-offsets-5',
+			rules: {
+				old_pwd: {
+					required: true,
+				},
+				new_pwd: {
+					required: true,
+				},
+				confirm_pwd: {
+					required: true,
+				},
+			},
+			messages: {
+				old_pwd: "Please enter Old Password.",
+				new_pwd: "Please enter New Password.",
+				confirm_pwd: "Please Re-enter Password.",
+			}
+		});
+        });
+        
+        
+        
+    $("#change_pwd").click(function(){
+            
+        if($("#changePWD").valid()!=false)
+        {    
+                
+           $(".fa-spinner").show();
+           var oldPwd = $("#old_pwd").val();
+           var newpass = $("#new_pwd").val();
+           var cpass = $("#confirm_pwd").val();
+           var token = $.cookie('token');
+           
+                           
+            $.ajax({
+                     url: '<?php echo $this->basePath();?>'+'/tunnel/menu/changepassword',
+                     cache: false,
+                     dataType:"json",
+                     type:"POST",
+                     data:{
+                         newpass:newpass,
+                         cpass:cpass,
+                         token:token,
+                         oldpass:oldPwd
+                     },
+                     success: function(data){
+                         $(".fa-spinner").hide();
+                           if(data.ErrorCode=='0')
+                             {
+                                 $('.modal-body').html('<p>Password has been changed Successfully</p>');
+                                 $(".closeButton").on("click", function(e) {
+                                    location.reload();
+                                 });
+                             }
+                             else if(data.ErrorCode=='1'){
+                                 $('.modal-body').html('<p style="color:red">Old Password and New Password are Same.</p>');
+                                 $(".closeButton").on("click", function(e) {
+                                    location.reload();
+                                 });
+                             }
+                             else if(data.ErrorCode=='2'){
+                                 $('.modal-body').html('<p style="color:red">Password doesn\'t match</p>');
+                                 $(".closeButton").on("click", function(e) {
+                                    location.reload();
+                                 });
+                             }
+                             else if(data.ErrorCode=='3'){
+                                 $('.modal-body').html('<p style="color:red">Password should be of 6 characters.</p>');
+                                 $(".closeButton").on("click", function(e) {
+                                    location.reload();
+                                 });
+                             }
+                             else if(data.ErrorCode=='4'){
+                                 $('.modal-body').html('<p style="color:red">Old Password is Invalid.</p>');
+                                 $(".closeButton").on("click", function(e) {
+                                    location.reload();
+                                 });
+                             }
+                             $("#myModal").modal('show');
+                     },
+                     error:function (error){
+                           alert(error);
+                           console.log(error);
+                     }
+                 });
+        }               
+    });
+            
+</script>
+    

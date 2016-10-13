@@ -1,0 +1,3311 @@
+<?php $page_id=$_REQUEST['id'] ?>
+
+<input type="hidden" id="page1" value="<?php echo $page_id; ?>">
+<!--<div style="width:100%; height:500px; margin-top: 15%; " id="loading-image1">
+  <center>
+    <img id="loading-image" src="/hello42/public/image/27.gif"  style="display:none;"/>
+  </center>
+</div>-->
+<!--<div id="contentmanager" class=" mapcantiner_inner"> </div>-->
+<!--<script type="text/javascript">
+
+	$(document).ready(function() {
+		var base_url = "<?php echo $this->basePath(); ?>";
+		var page_id =document.getElementById("page1").value;
+		var url = base_url+'/tunnel/menu/contentManager?page_id='+page_id;
+		$.ajax({
+			type: 'POST',
+			url: url,
+			dataType: "json",
+			beforeSend: function() {
+				$("#loading-image").show();
+			},			 
+			success: function(data){
+				$("#loading-image1").hide();
+				if(data.status == 'true'){
+					$('#contentmanager').html(data.data);
+				}else{
+					alert("error");
+				}
+			},
+			error: function(error){
+				console.log(error);	
+			}
+		});
+	});
+
+</script>--> 
+
+<style>
+	.gridview{
+		color:#ccc;
+	}
+	
+	.listview
+	{
+		color:#ccc;
+	}
+	
+	.view-controls-list{
+width: ;
+text-align: right;
+margin-right: 0;
+margin-left:;
+
+}
+.active
+{
+	color:#2A6496;
+}
+
+.table-striped th {
+    font-size: 11px !important;
+	color:#333 !important;
+}
+
+.scrollbar{
+width:100%;
+height:80px;
+background-color:;
+overflow-y:scroll;
+float:left;
+}
+
+#ex3::-webkit-scrollbar{
+width:16px;
+background-color:#cccccc;
+} 
+
+#ex3::-webkit-scrollbar-thumb{
+background-color:#333;
+border-radius:10px;
+}
+#ex3::-webkit-scrollbar-thumb:hover{
+background-color:#BF4649;
+border:1px solid #333333;
+}
+#ex3::-webkit-scrollbar-thumb:active{
+background-color:#A6393D;
+border:1px solid #333333;
+} 
+
+
+#ex3::-webkit-scrollbar-track{
+border:1px gray solid;
+border-radius:10px;
+-webkit-box-shadow:0 0 6px gray inset;
+} 
+
+</style>
+        
+<?php if($page_id=="about_us"){?><!--/.row--> 
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/about-us.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+    
+
+<section id="" >
+        <div class="container">
+          <div class="center wow fadeInDown col-lg-12">
+            <h2 align="left">About Us</h2>
+               <p align="left">Hello 42 cabs is a one-stop-shop for all personal ground transportation services be it point to point, local hire, outstation or package tours. It is the brainchild of Neeraj Rustagi, CEO, Regency Tours Pvt Ltd,  who has very vast experience in travel industry very much pioneer in B2B and B2C trade since 1994.</p>
+                
+                <p align="left">Hello 42 cabs is based in Delhi and was  launched in 2014 with a long term vision of fast, reliable and transparent car rental solutions. Customers can access Hello42 through multiple ways : through our user-friendly website, mobile app and 24x7 multi-lingual call centre.  We offer our user various travelling services along with real time tracking, messaging and refer-win features.</p>
+               
+   <br />
+
+<div class="row">
+                <div class="features">
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap" align="left">
+                            <i class="fa fa-bullhorn"></i>
+                            <h3 ><strong>Fresh and Clean</strong></h3>
+                            <p>Car Rental for Local and Outstation Usage<br />
+Transfer service for Airport / Railway station<br />
+Car Hire for any package tour<br />
+ Real time tracking and sharing details<br />
+Messaging<br />
+Refer & Earn <br /></p>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap" align="left">
+                            <i class="fa fa-comments"></i>
+                            <h3><strong>Our Fleet</strong> </h3>
+                            <p>  
+                            We are offering a large variety of well maintained and young fleet. <br />
+
+Our vehicle are loaded with news paper, tissue paper, 
+and mineral water for a comfortable ride.<br />
+
+All cars have GPS systems for additional safety.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap" align="left">
+                            <i class="fa fa-cloud-download"></i>
+                            <h3><strong>Our Chauffeurs</strong> </h3>
+                            <p> Ours Chauffeurs are fully trained and police verified.<br /> 
+They are mannered and well groomed.<br />
+Our chauffeur training is collectively known as HSE i.e. Health, <br />
+Security and Environment training. <br />
+All Chauffeurs  work according to the fatigue management.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                
+                </div><!--/.services-->
+            </div>
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature">
+        <div class="container">
+            <div class="clients-area center wow col-lg-12 fadeInDown">
+                <h2>Our Team</h2>
+                <p class="lead">Ours Chauffeurs are fully trained and police verified. 
+They are mannered and well groomed.<br />
+Our chauffeur training is collectively known as HSE i.e. Health, Security and Environment training. <br />
+All Chauffeurs  work according to the fatigue management.
+</p>
+            </div>
+
+ 
+
+            <div class="row">
+                <div class="col-md-4 wow fadeInUp">
+                    <div class="clients-comments text-center">
+                        <img src="/hello42/public/images/client1.png" class="img-circle" alt="">
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
+                        <h4><span>-John Doe /</span>  Director</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 wow fadeInDown">
+                    <div class="clients-comments text-center">
+                        <img src="/hello42/public/images/client2.png" class="img-circle" alt="">
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
+                        <h4><span>-John Doe /</span>  Director</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 wow fadeInDown">
+                    <div class="clients-comments text-center">
+                        <img src="/hello42/public/images/client3.png" class="img-circle" alt="">
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
+                        <h4><span>-John Doe /</span>  Director</h4>
+                    </div>
+                </div>
+           </div>
+           
+           
+             </div><!--/.container-->
+</section>
+
+<?php } elseif($page_id=="contact_us"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/contact-us.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="contact-info">
+        <div class="center">                
+            <h2><strong>How to Reach Us?</strong></h2>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+        </div>
+        <div class="gmap-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5 text-center">
+                        <div class="gmap">
+                           <iframe width="100%" height="350" frameborder="0" src="https://maps.google.com/maps/ms?msa=0&msid=211001950410036316718.0004df15470c207210920&ie=UTF8&ll=28.651993,77.194748&spn=0,0&t=m&output=embed" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-7 map-content">
+                        <ul class="row">
+                            <li class="col-sm-6">
+                                <address>
+                                    <h5>Head Office</h5>
+                                    <p> 	29 -30, D.B Gupta Market, <br>
+                                    Karol Bagh New Delhi - 110005 (INDIA)
+                                    </p>
+                                    <p>Phone: +91-11-424 242 42 , 47474747<br>
+                                    Email Address: feedback@hello42cab.com</p>
+                                 
+                                </address>
+
+                                
+                            </li>
+
+
+                            <li class="col-sm-6">
+                               
+
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact-page">
+        <div class="container">
+            <div class="center col-lg-12">        
+                <h2><strong>Drop Your Message</strong></h2>
+                <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div> 
+            <div class="row contact-wrap col-lg-12"> 
+                <div class="status alert alert-success" style="display: none"></div>
+                <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php">
+                    <div class="col-sm-5 col-sm-offset-1">
+                        <div class="form-group">
+                            <label>Name *</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="number" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" class="form-control">
+                        </div>                        
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label>Subject *</label>
+                            <input type="text" name="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea name="message" id="message" required class="form-control" rows="15" style="height:129px !important;"></textarea>
+                        </div>                        
+                        <div class="form-group">
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Submit Message</button>
+                        </div>
+                    </div>
+                </form> 
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section>
+
+<?php } elseif($page_id=="services"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow fadeInDown">
+           <img src="<?= $this->basePath();?>/public/img_banner/services.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature" >
+        <div class="container">
+           <div class="center wow col-lg-12 fadeInDown">
+                <h2 align="left">Our Services</h2>
+                <p class="">Hello 42 Cabs services is the first company in India which is offering point to point services in car rental which is chepaer than Radio Taxi services. Hello 42 Cabs is a venture of pepole who have very vast exprience in Travel industry very much pioner in B2B and B2C trade since 1994. </p>
+            </div>
+
+            <div class="row">
+                <div class="features">
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-cloud-download"></i>
+                            <h3>Reliability</h3>
+                            <p>
+                           	 Never cancel any trip<br />
+							Well groomed drivers<br />
+							High quality with affordability<br />
+                            Promise of on time execution<br />
+							24 x 7 support<br />
+							
+                            </p>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-comments"></i>
+                            <h3>Convenience</h3>
+                            <p>
+                            	Book by  web, phone or app<br />
+								Pay by cash or card<br />
+								In car news paper, tissue paper and mineral water<br />
+								Hassle free booking and instant confirmation<br />
+                            </p>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-cloud-download"></i>
+                            <h3>Safety</h3>
+                            <p>
+                           	 Police Verified Drivers<br />
+							Real Time Cab Tracking<br />
+							Details share feature in App<br />
+							24 x 7 support<br />
+							In car GPS systems that makes our vehicle safe<br />
+                            </p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-leaf"></i>
+                            <h3>Our Fleet</h3>
+                            <p>
+                            	Wide range of cars<br />
+								Amenities for comfort<br />
+								Well maintained and young fleet<br />
+								No compromise on cab quality<br />
+                            
+                            </p>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-cogs"></i>
+                            <h3>Our Chauffeur</h3>
+                            <p>
+                            	Double Verified<br />
+								Well groomed<br />
+								Multi lingual<br />
+                                Work with fatigue management<br />
+								Highly trained : Health, Security and Environment<br />
+								
+                                
+                                </p>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-heart"></i>
+                            <h3>Our Pricing</h3>
+                            <p>
+                            	Transparent pricing structure<br />
+								No luggage charges<br />
+                                No night charges.<br />
+								No  AC charges.<br />
+								No booking charges or call centre charges<br />
+								
+                            </p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                </div><!--/.services-->
+            </div><!--/.row-->    
+        </div><!--/.container-->
+    </section>
+
+
+<?php } elseif($page_id=="partner"){?>
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/partners.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+    
+    <section id="feature" >
+        <div class="container">
+          <div class="center wow col-lg-12 fadeInDown">
+            <h2 align="left">Partners</h2>
+               <p class="lead" align="left">
+               
+               Hello42cab.com is a taxi booking portal which enables consumers to book taxis online. It gives you a wide range of choices between chauffeur driven car rentals and radio taxis across India to suit your specific need whether it be an airport transfer, late night car hire, meeting, a road trip or just a special car on a special occasion such as an anniversary, birthday or even your marriage, MICE and Events. 
+
+
+                </p>
+               
+   <br />
+
+<div class="row">
+                <div class="partners">
+                <ul>
+                    <li> 
+                    <div class="feature-wrap feature-wrapnew" align="center">
+                            <i class="fa fa-check"></i><BR />
+                            <h3>Traveler's Convenience</h3>
+                           
+                        </div>
+                    
+                    </li>
+                    <li><div class="feature-wrap feature-wrapnew" align="center">
+                            <i class="fa fa-lock"></i><BR />
+                            <h3>Passenger's Safety</h3>
+                           
+                        </div></li>
+                    <li><div class="feature-wrap feature-wrapnew" align="center">
+                            <i class="fa fa-chevron-down"></i><BR />
+                            <h3>Quality Ride</h3>
+                           
+                        </div></li>
+                    <li> <div class="feature-wrap feature-wrapnew" align="center">
+                            <i class="fa fa-inr"></i><BR />
+                            <h3>Pricing Control</h3>
+                           
+                        </div></li>
+                   
+                </ul>
+            </div><!--/.services-->
+            </div>
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+
+<?php } elseif($page_id=="farestructure"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow fadeInDown">
+           <img src="<?= $this->basePath();?>/public/img_banner/services.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section class="pricing-page">
+  <div class="container">
+    <div class="center col-sm-6" style="text-align:right;">
+      <h2>Fare Structure </h2>
+      <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>--> 
+    </div>
+      <div class="view-controls-list col-sm-6" id="viewcontrols">
+			<a class="gridview" href="<?php echo $this->basePath();  ?>/index/page?id=farestructuregrid"><i class="fa fa-th fa-2x"></i></a>
+			<a class="listview active"><i class="fa fa-list fa-2x"></i></a>
+		</div>
+        
+    <!--Local new hire start-->
+    <div class="col-md-12 table-responsive">
+      <h3  class="localfarebgorange2">Local Hire ( Delhi) </h3>
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd;">
+        <tr>
+          <th align="center">Car Type</th>
+          <th align="center">Packages</th>
+          <th align="center">Price</th>
+          <th align="center">Extra/KM</th>
+          <th align="center">Extra/hour</th>
+          <th align="center"></th>
+        </tr>
+        <tr>
+          <th rowspan="4"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/economy.jpg"> </th>
+          <th align="center"><span  class="loc4e1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center"><span  class="loce1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc12e1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+                         <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/sedancar.png">
+             
+              </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc4s1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center"><span  class="locs1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc12s1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">prime <br>
+
+          <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/primecar.png">
+            
+            </th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+          <th align="center"><span  class="loc4p1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="locp1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc12p1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        
+         <!--Local new hire End--> 
+    
+    
+    <!--point to point new start-->
+        
+        <tr>
+        	<td colspan="6" style="padding:0 !important;">
+            	  <h3  class="localfarebgred">Point to Point ( Delhi) </h3>
+            </td>
+        </tr>
+         <tr>
+          <th align="center">Car Type</th>
+           <th align="center">Package</th>
+          <th align="center">Upto 10KM</th>
+          <th align="center">Beyond 10KM</th>
+          <th align="center">Charges / Min</th>
+          <th align="center"></th>
+        </tr>
+        <tr>
+          <th width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="" src="<?php echo $this->basePath();?>/public/image/economy.jpg"> </th>
+          <th align="center"></th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott2" style="color:#000;"></span></th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott3" style="color:#000;"></span>/KM</th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott4" style="color:#000;"></span>/Min</th>
+          <th align="center" valign="middle" class="point-to-point-td"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+        
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="2"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Sedan<br>
+            <img src="<?php echo $this->basePath();?>/public/image/sedancar.png" class="" alt=""> 
+            
+            </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+         <th align="center"></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots1" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots2" style="color:#000;"></span>/KM</th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots3" style="color:#000;"></span>/Min</th>
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+      
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="2"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Prime <br>
+            <img src="<?php echo $this->basePath();?>/public/image/primecar.png" class="" alt=""> </th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+         <th align="center"></th>
+           <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="potp1" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott3" style="color:#000;"></span>/KM</th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott4" style="color:#000;"></span>/Min</th>
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+        
+         <!-- end-->
+            
+            <!--Airport transfer new start--> 
+         <tr>
+            <td colspan="6" style="padding:0 !important;"> <h3  class="localfarebgblue">Airport Transfers (Delhi) </h3></td>
+            </tr>
+        
+         <tr>
+          <th align="center">Car Type</th>
+          
+          <th align="center">Upto</th>
+          <th align="center">Price</th>
+          <th align="center">Extra/KM</th>
+           <th align="center">Charges / Min</th>
+          <th align="center"></th>
+        </tr>
+        <tr>
+         
+            <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img src="<?php echo $this->basePath();?>/public/image/economy.jpg" class="localimg" alt=""> 
+            
+            </th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        
+        
+           
+            
+            
+            <tr>
+            
+          <th align="center"><span class="" style="color:#000;">
+
+<span class="Air4e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air4e2" style="color:#000;">
+             </span>+Airport Entry </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="Air4e3" style="color:#000;"></span>/KM</th>
+          <th align="center"></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        
+         
+          <th align="center"><span class="" style="color:#000;">
+
+<span class="Aire1" style="color:#000;"></span>
+KM
+</span></th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4s2" style="color:#000;">
+             </span>+Airport Entry </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="Air4s3" style="color:#000;"></span>/KM</th>
+         <th align="center"></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        
+        
+        
+          <th align="center"><span class="" style="color:#000;">
+<span class="Air12e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center">  <i class="fa fa-inr"></i><span  class="Air12e2" style="color:#000;">
+             </span>+Airport Entry  </th>
+          <th align="center">  <i class="fa fa-inr"></i> <span  class="Air12e3" style="color:#000;"></span>/KM</th>
+          <th align="center"></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+            <img src="<?php echo $this->basePath();?>/public/image/sedancar.png" class="localimg" alt=""> </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+        
+         
+          <th align="center"><span class="" style="color:#000;">
+
+<span class="Air4e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4s2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air4s3" style="color:#000;"></span>/KM</th>
+          <th align="center"></th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        
+         
+        
+          <th align="center"><span class="" style="color:#000;">
+
+<span class="Aire1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Airs2" style="color:#000;">
+             </span>+Airport Entry </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Airs3" style="color:#000;"></span>/KM</th>
+          <th align="center"></th>
+          
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        
+        
+           <th align="center"><span class="" style="color:#000;">
+
+<span class="Air12e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air12s2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12s3" style="color:#000;"></span>/KM</th>
+           <th align="center"></th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Prime <br>
+            <img src="<?php echo $this->basePath();?>/public/image/primecar.png" class="localimg" alt=""> 
+            
+            </th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+        
+        
+        
+           <th align="center"><span class="" style="color:#000;">
+
+<span class="Air4e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4p2" style="color:#000;">
+             </span>+Airport Entry </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air4p3" style="color:#000;"></span>/KM</th>
+           <th align="center"></th>
+          
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        
+        
+        </tr>
+        <tr>
+        
+         
+         
+          <th align="center"><span class="" style="color:#000;">
+
+<span  class="Airp1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Airp2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Airp3" style="color:#000;"></span>/KM</th>
+          <th align="center"></th>
+          
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        
+         
+           <th align="center"><span class="" style="color:#000;">
+
+<span class="Air12e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air12p2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12p3" style="color:#000;"></span> KM</th>
+          <th align="center"></th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+         <!-- end-->
+         
+         <!--outstation start-->
+    
+     <tr>
+     	<td colspan="6" style="padding:0 !important;">
+        	<h3  class="localfarebgstation">Outstataion(Delhi)</h3>
+        </td>
+     </tr>
+      
+     
+        <tr>
+          <th align="center">Car Type</th>
+          
+          <th align="center">Min KM </th>
+         
+           <th align="center">Min Fare</th>
+           <th align="center"><i class="fa fa-inr"></i>/KM </th>
+           
+            <th align="center">DA </th>
+          
+          
+          <th align="center"></th>
+        </tr>
+        <tr>
+        
+          <th width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Economy <br />
+            <img alt="" class="" src="<?php echo $this->basePath();?>/public/image/economy.jpg" /></th>
+           
+             <th align="center" valign="middle" class="point-to-point-td"> <span  class="oute2" style="color:#000;"></span></th>
+             <th align="center" valign="middle" class="point-to-point-td"> <i class="fa fa-inr"></i> <span style="color:#000;" class="oute4"></span></th>
+             
+             
+          <th align="center" valign="middle" class="point-to-point-td"> <i class="fa fa-inr"></i><span  class="oute1" style="color:#000;"></span></th>
+          
+           <th align="center" valign="middle" class="point-to-point-td"> <i class="fa fa-inr"></i>   <span style="color:#000;" class="oute3"></span></th>
+          
+         
+          
+         
+          
+          
+          <th align="center" valign="middle" class="point-to-point-td"><a onclick="booking_local();" id="a" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a></th>
+        </tr>
+        <tr>
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>-->
+        </tr>
+        <tr>
+          <th rowspan="2"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Sedan<br />
+            <img src="<?php echo $this->basePath();?>/public/image/sedancar.png" class="" alt="" /> </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>-->
+        </tr>
+        <tr>
+       
+        <th align="center" class="point-to-point-td"> <span  class="outs2" style="color:#000;"></span></th>
+         <th align="center" class="point-to-point-td">   <i class="fa fa-inr"></i>   <span style="color:#000;" class="outs4"></span></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i><span  class="outs1" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td">  <i class="fa fa-inr"></i>   <span style="color:#000;" class="outs3"></span></th>
+          
+          
+         
+          
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="a" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a></th>
+        </tr>
+        <tr>
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>-->
+        </tr>
+        <tr>
+          <th rowspan="2"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Prime <br />
+            <img src="<?php echo $this->basePath();?>/public/image/primecar.png" class="" alt="" /></th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>-->
+        </tr>
+        <tr>
+         <th align="center" class="point-to-point-td"> <span  class="outp2" style="color:#000;"></span></th>
+        
+         <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i>   <span style="color:#000;" class="outs4"></span></th>
+         
+          <th align="center" class="point-to-point-td"> <i class="fa fa-inr"></i><span  class="outp1" style="color:#000;"></span></th>
+           <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i>   <span style="color:#000;" class="outs3"></span></th>
+          
+         
+         
+          
+           
+          
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="a" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a></th>
+        </tr>
+     
+    
+      <!-- End-->
+         
+         
+      </table>
+    </div>
+    
+   
+    
+   <!-- end-->
+   
+   
+    
+    
+    
+      
+      
+    
+    
+    <!--intercity new start-->
+    
+     <div class="col-md-12 table-responsive" style="display:none;">
+      <h3  class="localfarebgstation">Intercity one way traffic</h3>
+      <table class="table table-hover table-striped" id="bootstrap-table"  style="border:1px solid #ddd">
+        <tr>
+          <th align="center">Car Type</th>
+          <th align="center">Packages</th>
+          <th align="center">Price</th>
+          <th align="center">Extra/KM</th>
+          <th align="center">Extra/hour</th>
+          <th align="center"></th>
+        </tr>
+        <tr>
+          <th rowspan="4"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/economy.jpg"> </th>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+           
+             <img src="<?php echo $this->basePath();?>/public/image/sedancar.png" class="localimg" alt=""> 
+            
+            </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Prime <br>
+           <img src="<?php echo $this->basePath();?>/public/image/primecar.png" class="localimg" alt="">  </th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+      </table>
+    </div>
+    
+    
+    <!-- End-->
+    
+    
+    
+    <!--Delhi sign seen new start-->
+    
+    
+    <div class="col-md-12 table-responsive" style="display:none;">
+      <h3  class="localfarebgred">Delhi sight Seen</h3>
+      <table class="table table-hover table-striped" id="bootstrap-table"  style="border:1px solid #ddd">
+        <tr>
+          <th align="center">Car Type</th>
+          <th align="center">Packages</th>
+          <th align="center">Price</th>
+          <th align="center">Extra/KM</th>
+          <th align="center">Extra/hour</th>
+          <th align="center"></th>
+        </tr>
+        <tr>
+          <th rowspan="4"  align="center" valign="top" style="border:1px solid #ddd">
+            <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/delhi-half-day.png"> </th>
+          <th align="center"  width="19%"  style="padding-top:35px;" >Half  Day Delhi  (Economy)<br>
+          
+          4Km  40  Hours
+
+                                  </th>
+          <th align="center"  style="padding-top:35px;">2500</th>
+          <th align="center"  style="padding-top:35px;">25000</th>
+          <th align="center"  style="padding-top:35px;">12</th>
+          <th align="center"  style="padding-top:35px;"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+      <!--    <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"> </th>-->
+        </tr>
+        <tr>
+      <!--    <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"> </th>-->
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">
+           
+             <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/delhi-full-day.png"> 
+            
+            </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+          <th align="center"   style="padding-top:35px;">Full  Day Delhi  (Sedan)<br>
+
+2Km  20  Hours
+                               </th>
+          <th align="center"  style="padding-top:35px;">2500</th>
+          <th align="center"  style="padding-top:35px;">25000</th>
+          <th align="center"  style="padding-top:35px;">12</th>
+          <th align="center"  style="padding-top:35px;"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        <!--  <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>-->
+        </tr>
+        <tr>
+        <!--  <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"> </th>-->
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">
+          <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/same-day.png"></th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+          <th align="center"  style="padding-top:35px;">
+Same Day Agra (Prime)<br>
+4Km  40  Hours
+
+</th>
+          <th align="center"  style="padding-top:35px;">2500</th>
+          <th align="center"  style="padding-top:35px;">25000</th>
+          <th align="center"  style="padding-top:35px;">12</th>
+          <th align="center"  style="padding-top:35px;"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        <!--  <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>-->
+        </tr>
+        <tr>
+      <!--    <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"> </th>-->
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+      </table>
+    </div>
+    
+    
+   <!-- End-->
+   
+   
+
+    
+  </div>
+  
+  <!--localfare start-->
+  
+  </div>
+  <!--/container--> 
+</section>
+<!--/#Fare Structure -->
+
+
+
+<?php } elseif($page_id=="farestructuregrid"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow fadeInDown">
+           <img src="<?= $this->basePath();?>/public/img_banner/services.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+
+
+<section class="pricing-page">
+  <div class="container">
+    <div class="center col-sm-6" style="text-align:right;" >
+      <h2>Fare Structure </h2>
+      <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>--> 
+       
+      
+    </div>
+    <div class="view-controls-list col-sm-6" id="viewcontrols">
+			<a class="gridview active" href=""><i class="fa fa-th fa-2x"></i></a>
+			<a class="listview" href="<?php echo $this->basePath();  ?>/index/page?id=farestructure"><i class="fa fa-list fa-2x"></i></a>
+		</div>
+   
+    
+    <div class="row" style="padding:0 15px;">
+                   
+          <div class="col-sm-12 plan price-one ">
+          
+          <div class="col-lg-12" style=" background: #c52d2f none repeat scroll 0 0; color: #fff; padding:5px; ">
+           <h2> Local Hire ( Delhi) </h2></div>
+          
+          <div class="col-lg-4" style="background:#EFEFEF;">
+          
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/economy.jpg"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+          <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/hour</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+          
+          <th align="center"><span  class="loc4e1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center"><span  class="loce1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc12e1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+    
+     </div>
+          
+          
+          
+          
+          
+          
+           <div class="col-lg-4" style="background:#ebdddd;">
+           
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/sedancar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+          <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/hour</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc4s1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+          <th align="center"><span  class="locs1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc12s1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+            
+          </div>
+                      
+          <div class="col-lg-4" style="background:#eeeeee;">
+          
+           <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">prime <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/primecar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+         <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/hour</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        
+        <tr>
+          <th align="center"><span  class="loc4p1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+           <th align="center"><span  class="locp1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+           <th align="center"><span  class="loc12p1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+            
+          </div>                  
+            
+                                 </div>
+                                 
+          <div class="col-sm-12 plan price-one ">
+          
+          <div class="col-lg-12" style=" background: #333 none repeat scroll 0 0; color: #fff; padding:5px; margin-top: 5px;">
+           <h2 class=""> Point to Point ( Delhi) </h2></div>
+          
+          <div class="col-lg-4" style="background:#EFEFEF;">
+          
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/economy.jpg"> </th>
+       
+       </tr>
+       
+        <tr>
+             <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Upto 10KM</th>
+          <th align="center" class="tablepointtd1">Beyond 10KM</th>
+          <th align="center" class="tablepointtd1">Charges / Min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+          
+           <th align="center"></th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott2" style="color:#000;"></span></th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott3" style="color:#000;"></span></th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott4" style="color:#000;"></span></th>
+          <th align="center" valign="middle" class="point-to-point-td"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+       
+      </table>
+    </div>
+    
+     </div>
+          
+           <div class="col-lg-4" style="background:#ebdddd;">
+           
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/sedancar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+           <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Upto 10KM</th>
+          <th align="center" class="tablepointtd1">Beyond 10KM</th>
+          <th align="center" class="tablepointtd1">Charges / Min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+            <th align="center"></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots1" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots2" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots3" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+        
+        
+            
+      </table>
+    </div>
+            
+          </div>
+                      
+          <div class="col-lg-4" style="background:#eeeeee;">
+          
+           <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">prime <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/primecar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+           <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Upto 10KM</th>
+          <th align="center" class="tablepointtd1">Beyond 10KM</th>
+          <th align="center" class="tablepointtd1">Charges / Min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        
+        <tr>
+          <th align="center"></th>
+           <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="potp1" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="potp2" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="potp3" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+      
+            
+      </table>
+    </div>
+            
+          </div>                  
+            
+                                 </div>
+                                 
+           <div class="col-sm-12 plan price-one ">
+          
+          <div class="col-lg-12" style=" background: #083260 none repeat scroll 0 0; color: #fff; padding:5px; ">
+           <h2> Airport/Railway Station Transfers ( Delhi) </h2></div>
+          
+          <div class="col-lg-4" style="background:#EFEFEF;">
+          
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/economy.jpg"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+          <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+          
+          <th align="center">UP to <span  class="Air4e1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air4e2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air4e3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">UP to <span  class="Aire1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Aire2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Aire3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center">UP to <span  class="Air12e1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12e2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air12e3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+    
+     </div>
+          
+          
+          
+          
+          
+          
+           <div class="col-lg-4" style="background:#ebdddd;">
+           
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/sedancar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+          <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+           <th align="center">UP to <span  class="Air4s1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4s2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4s3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+          <th align="center">UP to <span  class="Aire1" style="color:#000;"></span>KM 
+			</span></th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Aire2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Aire3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center">UP to <span  class="Air12e1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12e2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12e3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+            
+          </div>
+                      
+          <div class="col-lg-4" style="background:#eeeeee;">
+          
+           <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">prime <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/primecar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+         <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        
+        <tr>
+          <th align="center">UP to <span  class="Air4p1" style="color:#000;"></span>KM 
+			</span></th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4p2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4p3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+           <th align="center">UP to <span  class="Airp1" style="color:#000;"></span>KM 
+			</span></th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Airp2" style="color:#000;">
+             </span>+Airport Entry </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Airp3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+           <th align="center">UP to <span  class="Air12p1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air12p2" style="color:#000;">
+             </span>+Airport Entry </span></th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12p3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+            
+          </div>                  
+            
+                                 </div>
+                                 
+                                 
+            <div class="col-sm-12 plan price-one ">
+          
+          <div class="col-lg-12" style=" background: #fab235 none repeat scroll 0 0; color: #fff; padding:5px; ">
+           <h2> Outstation ( Delhi) </h2></div>
+          
+          <div class="col-lg-4" style="background:#EFEFEF;">
+          
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/economy.jpg"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+          <th align="center" class="tablepointtd">Minimum KM</th>
+          <th align="center" class="tablepointtd1">Min.Fare</th>
+          <th align="center" class="tablepointtd1"><i class="fa fa-inr"></i>/KM</th>
+          <th align="center" class="tablepointtd1">DA</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+          
+          <th align="center"><span  class="oute2" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span style="color:#000;" class="oute4"></span></th>
+          <th align="center"><i class="fa fa-inr"> <i class="fa fa-inr"></i><span  class="oute1" style="color:#000;"></span></th>
+          <th align="center"> <i class="fa fa-inr"></i>   <span style="color:#000;" class="oute3"></span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+                   
+      </table>
+    </div>
+    
+     </div>
+          
+          
+          
+          
+          
+          
+           <div class="col-lg-4" style="background:#ebdddd;">
+           
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/sedancar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+           <th align="center" class="tablepointtd">Minimum KM</th>
+          <th align="center" class="tablepointtd1">Min.Fare</th>
+          <th align="center" class="tablepointtd1"><i class="fa fa-inr"></i>/KM</th>
+          <th align="center" class="tablepointtd1">DA</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+         <th align="center"><span  class="outs2" style="color:#000;"></span> </th>
+          <th align="center"> <i class="fa fa-inr"></i> <span style="color:#000;" class="outs4"></span></th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="outs1" style="color:#000;"></span></th>
+          <th align="center"><i class="fa fa-inr"></i>   <span style="color:#000;" class="outs3"></span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        
+            
+      </table>
+    </div>
+            
+          </div>
+                      
+          <div class="col-lg-4" style="background:#eeeeee;">
+          
+           <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">prime <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/primecar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+         <th align="center" class="tablepointtd">Minimum KM</th>
+          <th align="center" class="tablepointtd1">Min.Fare</th>
+          <th align="center" class="tablepointtd1"><i class="fa fa-inr"></i>/KM</th>
+          <th align="center" class="tablepointtd1">DA</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        
+        <tr>
+          <th align="center"> <span  class="outp2" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span style="color:#000;" class="outp4"></span></th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="outp1" style="color:#000;"></span></th>
+          <th align="center"> <i class="fa fa-inr"></i>   <span style="color:#000;" class="outp3"></span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+       
+            
+      </table>
+    </div>
+            
+          </div>                  
+            
+                                 </div>                     
+                    
+                                           
+          </div>
+    
+   
+  </div>
+  
+  <!--localfare start-->
+  
+  </div>
+  <!--/container--> 
+</section>
+<!--/#Fare Structure -->
+
+
+
+<?php } elseif($page_id=="career"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/careers.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+    
+    <section id="recent-works">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Career
+                <span class="small"><br />
+				all open positions 
+</span>
+                </h2>
+                
+            </div>
+
+
+            <div class="row fadeInDown rowbranding" align="center">
+                <div class="col-xs-12 col-sm-4 col-md-4 homefrature fadeInDown">
+                    <div class="recent-work-wrap" style="border:1px solid #ccc;">
+                        <img class="img-responsive" src="<?php echo $this->basePath();  ?>/public/careers/administration.png" alt="" style="height:147px !important">
+                        <div class="overlay">
+                            <div class="recent-work-inner" align="">
+                                <h3><a href="#">Administration</a> </h3>
+                                <div class="scrollbar" id="ex3">
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">HR</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Admin</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Receptionist</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                               
+                               
+                                
+                           </div>
+                               
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="recent-work-wrap">
+                   <h3><strong> Administration </strong></h3>
+                    </div>
+                    
+                </div>   
+
+                <div class="col-xs-12 col-sm-4 col-md-4 homefrature">
+                    <div class="recent-work-wrap" style="border:1px solid #ccc;">
+                        <img class="img-responsive" src="<?php echo $this->basePath();  ?>/public/careers/finance.png" alt=""  style="height:147px !important">
+                        <div class="overlay">
+                            <div class="recent-work-inner" align="">
+                                <h3><a href="#">Finance</a></h3>
+                                
+                                <div class="scrollbar" id="ex3">
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Accountant</a></span> <span class="col-sm-4"><a href="#">Click</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">CA</a></span> <span class="col-sm-4"><a href="#">Click</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Sr Accountant</a></span> <span class="col-sm-4"><a href="#">Click</a></span>
+                               
+                               
+                                
+                           </div>
+                                
+                            </div> 
+                        </div>
+                    </div>
+                    
+                     <div class="recent-work-wrap">
+                   <h3><strong> Finance</strong> </h3>
+                    </div>
+                </div> 
+
+                <div class="col-xs-12 col-sm-4 col-md-4 homefrature">
+                    <div class="recent-work-wrap" style="border:1px solid #ccc;">
+                        <img class="img-responsive" src="<?php echo $this->basePath();  ?>/public/careers/research-development.png" alt=""  style="height:147px !important">
+                        <div class="overlay" style="border:1px solid #ccc;">
+                            <div class="recent-work-inner" align="">
+                                <h3><a href="#">IT </a></h3>
+                               <div class="scrollbar" id="ex3">
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">UI Designer</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Web Designer</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Android Developer</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">IOS Developer</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Quailty Analyst</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">PHP Developer</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                 <span class="col-sm-8" style="text-align:left;"><a href="#">Sr. PHP Developer</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                            
+                                
+                           </div>
+                                
+                            </div> 
+                        </div>
+                    </div>
+                     <div class="recent-work-wrap">
+                   <h3><strong>IT</strong> </h3>
+                    </div>
+                </div>   
+
+                <div class="col-xs-12 col-sm-4 col-md-4 homefrature">
+                    <div class="recent-work-wrap" style="border:1px solid #ccc;">
+                        <img class="img-responsive" src="<?php echo $this->basePath();  ?>/public/careers/branding-and-creative.png" alt=""  style="height:147px !important">
+                        <div class="overlay">
+                            <div class="recent-work-inner" align="">
+                                <h3><a href="#">Marketing </a></h3>
+                               <div class="scrollbar" id="ex3">
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Business Development</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Sales Exqutive</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Are Sales Manager</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Digital Marketing</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Marketing Manager</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Reginol Marketing Manager</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                 
+                            
+                                
+                           </div>
+                            </div> 
+                        </div>
+                    </div>
+                     <div class="recent-work-wrap">
+                   <h3><strong>Marketing</strong> </h3>
+                    </div>
+                </div>   
+                
+                <div class="col-xs-12 col-sm-4 col-md-4 homefrature">
+                    <div class="recent-work-wrap" style="border:1px solid #ccc;">
+                        <img class="img-responsive" src="<?php echo $this->basePath();  ?>/public/careers/marketing-advertising.png" alt=""  style="height:147px !important">
+                        <div class="overlay">
+                            <div class="recent-work-inner" align="">
+                                <h3><a href="#">Opration Department</a></h3>
+                              <div class="scrollbar" id="ex3">
+                                 <span class="col-sm-8" style="text-align:left;"><a href="#">Callers</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Dispatcher</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Teaqm Leader</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Vender Manager</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Digital Marketing</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                 
+                            
+                                
+                           </div>
+                               
+                            </div> 
+                        </div>
+                    </div>
+                    
+                     <div class="recent-work-wrap">
+                   <h3><strong> Opration Department </strong></h3>
+                    </div>
+                </div>   
+
+                <div class="col-xs-12 col-sm-4 col-md-4 homefrature">
+                    <div class="recent-work-wrap" style="border:1px solid #ccc;">
+                        <img class="img-responsive" src="<?php echo $this->basePath();  ?>/public/careers/quality-control.png" alt=""  style="height:147px !important">
+                        <div class="overlay">
+                            <div class="recent-work-inner" align="center" style="margin-top:20px;">
+                                <h3><a href="#">Quality Control</a></h3>
+                                <div class="scrollbar" id="ex3">
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Callers</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Dispatcher</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Teaqm Leader</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Vender Manager</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                                <span class="col-sm-8" style="text-align:left;"><a href="#">Digital Marketing</a></span> <span class="col-sm-4"><a href="#">Delhi</a></span>
+                            
+                                
+                           </div>
+                            </div> 
+                        </div>
+                    </div>
+                    
+                     <div class="recent-work-wrap">
+                   <h3><strong> Quality Control</strong> </h3>
+                    </div>
+                </div> 
+  
+            </div>
+        </div>
+    </section>
+    
+
+
+    
+<?php } elseif($page_id=="testimonial"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/testimonials.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+<section id="feature" >
+        <div class="container">
+          <div class="center wow col-lg-12">
+            <h2 align="">Testimonial</h2>
+               <p><br />
+<br />
+</p>
+<div class="row">
+                <div class="col-md-4 wow fadeInUp">
+                    <div class="clients-comments text-center">
+                        <img src="/hello42/public/images/client1.png" class="img-circle" alt="">
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
+                        <h4><span>-John Doe /</span>  Director (Viva)</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 wow fadeInDown">
+                    <div class="clients-comments text-center">
+                        <img src="/hello42/public/images/client2.png" class="img-circle" alt="">
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
+                        <h4><span>-John Doe /</span>  Director</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 wow fadeInDown">
+                    <div class="clients-comments text-center">
+                        <img src="/hello42/public/images/client3.png" class="img-circle" alt="">
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
+                        <h4><span>-John Doe /</span>  Director</h4>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 wow fadeInUp">
+                    <div class="clients-comments text-center">
+                        <img src="/hello42/public/images/client1.png" class="img-circle" alt="">
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
+                        <h4><span>-John Doe /</span>  Director</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 wow fadeInDown">
+                    <div class="clients-comments text-center">
+                        <img src="/hello42/public/images/client2.png" class="img-circle" alt="">
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
+                        <h4><span>-John Doe /</span>  Director</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 wow fadeInDown">
+                    <div class="clients-comments text-center">
+                        <img src="/hello42/public/images/client3.png" class="img-circle" alt="">
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</h3>
+                        <h4><span>-John Doe /</span>  Director</h4>
+                    </div>
+                </div>
+           </div>
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+    </section>
+
+<?php } elseif($page_id=="terms_condition"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow ">
+           <img src="<?= $this->basePath();?>/public/img_banner/terms-conditions.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature" >
+        <div class="container">
+          <div class="center wow fadeInDown">
+            <h2 align="left">Terms & Conditions</h2>
+               <div align="left"> <strong>Payment Related (FAQ)</strong><br />
+                 Q: What are the different modes of payment you support? <br />
+                 A: We accept all major credit and debit cards. We also accept Cash   Cards and Net Banking. In details, we accept the following: Credit   Cards: MasterCard, Visa, Diners Club Debit Cards and Cash Cards:   ABN-AMRO, Andhra Bank, Axis Bank, Bank of Baroda, Bank of India, The   Bank of Punjab, Barclays, Canara Bank, Central Bank of India, Citibank,   Corporation Bank, Dena Bank, Deutsche Bank, HDFC Bank, HSBC, ICICI Bank,   IDBI Bank, Indian Bank, Indian Overseas Bank, IndusInd Bank, ING Vysya,   Karnataka Bank, Karur Vysya Bank, Lakshmi Vilas Bank, Punjab National   Bank, South Indian Bank, Standard Chartered, State Bank of India,   Syndicate Bank, Federal Bank, Union Bank of India, YES Bank, ItzCash        Net Banking: Axis Bank, Citibank, Federal Bank, HDFC Bank, ICICI Bank, J&amp;K Bank, State Bank of India<br /><br />
+
+                 Q: Can I buy for someone else using my credit/debit card? <br />
+                 A: Yes definitely! You need to mention the card holder details for the   card payment but you can enter anyone's name for the car booking. <br /><br />
+
+                 Q: Is it safe to use my credit/debit card on your site? Do you store my card number and details? <br />
+                 A: It is completely safe to use our site. We have partnered with EBS   for the payment gateway. EBS provides a 128-bit SSL encryption   technology compliant solution which is certified by VeriSign. We don't   store any card details. <strong>Bookings Related</strong><br /><br />
+
+                 Q: Can I book a cab from you without paying online?<br />
+                 A: Yes! You can call us and we will book a cab for you on Phone! We will   collect money from you on delivery of the car rental voucher. There is   an extra charge of Rs. 30 for this. <br /><br />
+
+                 Q: Do I need to register on your site to book tickets?<br />
+                 A: No. You can use our service fully without the need to register. You   just need to provide your details at the time of booking. <br /><br />
+
+                 Q: What if the car doesn't show up?<br />
+                 A: In case the vehicle you booked doesn't show up, we will offer you a full refund immediately.<br /><br />
+
+                 Q: What if the car shows up late?<br />
+                 A: We try our best to ensure our partners reach our customers on time.   But in case of delays, do call us and we will help you out by either   providing an alternate vehicle or giving you a full refund.<br />
+<br />
+
+  <div></div>
+  <strong>Cancellations Related</strong><br /><br />
+
+                 Q: Can I change my booking?<br />
+  <div></div>
+                 A: Yes. You can change the date of booking till 2 days before the booked   date free of charge. After that, there will be a cancellation charge as   detailed in the next question. <br /><br />
+
+                 Q: How do I cancel my booking? What are the charges?<br />
+                 A: You can cancel your booking anytime. The cancellation charges are as follows:<br /><br />
+
+                 48 hours before booked time: No Charge<br />
+                 24 - 48 hours before booked time: 50% of the advance amount<br />
+                 0 - 24 hours before booked time: 100% of the advance amount <strong>Terms and Conditions</strong><br /><br />
+
+                 Welcome to our website. If you continue to browse and use this website   you are agreeing to comply with and be bound by the following terms and   conditions of use, which together with our privacy policy govern Owner   of Hello 42 Cabs relationship with you in relation to this website and   the Service (as described below) The term 'Hello 42 Cabs' or 'us' or   'we' refers to the owner of the website whose registered office is   120-121, D.B Gupta Road, Karol Bagh, New Delhi. The term 'you' refers to   the user or viewer of our website. . <strong>I. USER(S) ELIGIBILITY</strong><br /><br />
+
+                 User(s) means any individual or business entity/organization that   legally operates in India or in other countries, uses and has the right   to use the Services provided by HELLO 42 CABS. The Services provided by   HELLO 42 CABS is a technology based service which enables the hiring of   taxis by commuters / passengers for a point to point service, or for   time and usage based service within city limits and outside city limits,   including inter-city all over India, through the internet and / or   mobile telecommunications devices. Our Services are available only to   those individuals or companies who can form legally binding contracts   under the applicable law. Therefore, user(s) must not be a minor as per   Indian Law; i. e. user(s) must be at least 18 years of age to be   eligible to use our Services.<br /><br />
+
+                 HELLO 42 CABS advises its users that while accessing the web site, they   must follow/abide by the related laws. HELLO 42 CABS is not responsible   for the possible consequences caused by your behaviour during use of web   site. HELLO 42 CABS may, in its sole discretion, refuse the service to   anyone at any time. <strong>II. USER(S) AGREEMENT</strong><br /><br />
+
+                 This agreement applies to user(s) if user(s) are visitors, registered -   free or paid user(s) who access the web site for any purpose. It also   applies to any legal entity which may be represented by you under actual   or apparent authority. User(s) may use this site solely for their own   personal or internal purposes.<br /><br />
+
+                 This agreement applies to all HELLO 42 CABS Services offered on the web   site, collectively with any additional terms and condition that may be   applicable to the specific service used/accessed by user(s).In the event   of a conflict or inconsistency between any provision of the terms and   conditions mentio <strong>III. AMENDMENT TO USER(S) AGREEMENT</strong><br /><br />
+
+                 HELLO 42 CABS may change, modify, amend, or update this agreement from   time to time without any prior notification to user(s) and the amended   and restated terms and conditions of use shall be effective immediately   on posting. If you do not adhere to the changes, you must stop using the   service. Your continuous use of the Services will signify your   acceptance of the changed terms. <strong>IV. INTELLECTUAL PROPERTY RIGHTS</strong><br /><br />
+
+                 HELLO 42 CABS is the sole owner or lawful licensee of all the rights to   the web site and its content. Web site content means its design, layout,   text, images, graphics, sound, video etc. The web site content embody   trade secrets and intellectual property rights protected under worldwide   copyright and other laws. All title, ownership and intellectual   property rights in the web site and its content shall remain with HELLO   42 CABS, its affiliates or licensor's of HELLO 42 CABS content, as the   case may be.<br /><br />
+
+                 All rights, not otherwise claimed under this agreement or by HELLO 42   CABS, are hereby reserved. The information contained in this web site is   intended, solely to provide general information for the personal use of   the reader, who accepts full responsibility for its use. HELLO 42 CABS   does not represent or endorse the accuracy or reliability of any   information, or advertisements (collectively, the &quot;content&quot;) contained   on, distributed through, or linked, downloaded or accessed from any of   the Services contained on this web site, or the quality of any products,   information or other materials displayed, or obtained by you as a   result of an advertisement or any other information or offer in or in   connection with the Service.<br /><br />
+
+                 We accept no responsibility for any errors or omissions, or for the   results obtained from the use of this information. All information in   this web site is provided &quot;AS IS &quot; with no guarantee of completeness,   accuracy, timeliness or of the results obtained from the use of this   information, and without warranty of any kind, express or implied,   including, but not limited to warranties of performance, merchantability   and fitness for a particular purpose. Nothing herein shall to any   extent substitute for the independent investigations and the sound   technical and business judgment of the user(s). In no event shall HELLO   42 CABS be liable for any direct, indirect, incidental, punitive, or   consequential damages of any kind whatsoever with respect to the   Service. User(s) of this site must hereby acknowledge that any reliance   upon any content shall be at their sole risk.<br /><br />
+
+                 HELLO 42 CABS reserves   the right, in its sole discretion and without any obligation, to make   improvements to, or correct any error or omissions in any portion of the   Service or the website.<br />
+  <strong>Trademark</strong> <br />
+                 All related icons and logos are registered trademarks or trademarks or   service marks of HELLO 42 CABS in various jurisdictions and are   protected under applicable copyright, trademark and other proprietary   rights laws. The unauthorized copying, modification, use or publication   of these marks is strictly prohibited.<br />
+  <strong>Copyright</strong><br /><br />
+
+                 All content on this web site is the copyright of HELLO 42 CABS except   the third party content and link to third party web site on our website.<br />
+                 Systematic retrieval of HELLO 42 CABS content to create or compile,   directly or indirectly, a collection, compilation, database or directory   (whether through robots, spiders, automatic devices or manual   processes) without written permission from HELLO 42 CABS is prohibited.<br /><br />
+
+                 In addition, use of the content for any purpose not expressly permitted   in this Agreement is prohibited and may invite legal action. As a   condition of your access to and use of HELLO 42 CABS's Services, you   agree that you will not use the web site service to infringe the   intellectual property rights of others in any way. HELLO 42 CABS   reserves the right to terminate the account of a user(s) upon any   infringement of the rights of others in conjunction with use of the   HELLO 42 CABS service, or if HELLO 42 CABS believes that user(s) conduct   is harmful to the interests of HELLO 42 CABS, its affiliates, or other   users, or for any other reason in HELLO 42 CABS's sole discretion, with   or without cause. <strong>V. LINKS TO THIRD PARTY SITES</strong> <br /><br />
+
+                 Links to third party sites are provided by web site as a convenience   to user(s) and HELLO 42 CABS has not have any control over such sites   i.e content and resources provided by them.<br /><br />
+
+                 HELLO 42 CABS may allow user(s) access to content, products or Services   offered by third parties through hyper links (in the form of word link,   banners, channels or otherwise) to such Third Party's web site. You are   cautioned to read such sites' terms and conditions and/or privacy   policies before using such sites in order to be aware of the terms and   conditions of your use of such sites. HELLO 42 CABS believes that   user(s) acknowledge that HELLO 42 CABS has no control over such third   party's site, does not monitor such sites, and HELLO 42 CABS shall not   be responsible or liable to anyone for such third party site, or any   content, products or Services made available on such a site. <strong>VI. TERMINATION</strong><br /><br />
+
+                 Most content and some of the features on the web site are made available   to visitors free of charge. However, HELLO 42 CABS reserves the right   to terminate access to certain areas or features of the web site at any   time for any reason, with or without notice. HELLO 42 CABS also reserves   the universal right to deny access to particular users to any/all of   its Services without any prior notice/explanation in order to protect   the interests of HELLO 42 CABS and/or other visitors to the web site.   HELLO 42 CABS reserves the right to limit, deny or create different   access to the web site and its features with respect to different   user(s), or to change any of the features or introduce new features   without prior notice. <strong>VII. Terms &amp; Conditions for use of taxis</strong><br /><br />
+
+                 The following Terms &amp; Conditions shall apply to customers /   passengers utilising the Services offered by the Company for the hiring   of taxis:
+  <div></div>
+  <ul>
+    <li>The customer shall pay the taxi fare (as displayed in the meter),   parking charges, additional night surcharge (where applicable) and any   fee or levy presently payable or hereinafter imposed by the law or   required to be paid for availing of the taxi Services.</li><br />
+
+    <li>The customer agrees and accepts that the use of the Services   provided by the Company is at the sole risk of the Customer, and further   acknowledges that the Company disclaims all representations and   warranties of any kind, whether express or implied.<br />
+
+      <strong>a.</strong> Smoking or consuming any kind of intoxicants   inside the Taxi. The driver has the right to refuse the pick-up or ask   the customer to alight the cab if the customer is found to be in an   intoxicated state or is found misbehaving with other passengers or the   driver, or is causing a nuisance.<br />
+      <strong>b.</strong> Littering the Taxi<br />
+      <strong>c.</strong> Soiling or damaging the seats and/or any other interiors of the Taxi.<br />
+      <strong>d.</strong> Misusing, soiling or damaging any of the devices (technical/non-technical) in the taxi.<br />
+      <strong>e.</strong> Asking the driver to break any Traffic/RTO/City   Police and/or government rules for any purpose (especially reaching the   destination earlier). The driver has the right to refuse such a request   by the customer. The driver also has the right to refuse such a pick-up   or ask such customer(s) to alight from the cab.<br />
+      <strong>f. </strong>Asking the driver to board more than 4 adults in   the taxi. The rules under which the taxi Services are provided by the   Company, stipulate that a maximum of 4 adult passengers shall be allowed   per trip. In view of this, the customer shall not pressurize the driver   to allow more than 4 adult passengers in the taxi. The driver has the   right to refuse such a pick-up or ask such customer(s) to alight from   the cab.<br />
+      <strong>g.</strong> Pressurizing the driver to overload the boot space   of the taxi with luggage. The customer shall not be generally allowed   to use the seating area of the taxi for placing any kind of luggage. </li><br />
+
+    <li>The customer agrees and acknowledges that the use of the Services   offered by Company is at the sole risk of the customer and that Company   disclaims all representations and warranties of any kind, whether   express or implied as to condition, suitability, quality,   merchantability and fitness for any purposes are excluded to the fullest   extent permitted by law.<br />
+      Without prejudice to the above, the Company makes no representation or warranty that:<br />
+      <strong>a.</strong> the Services will meet the customer's requirements;<br />
+      <strong>b.</strong>the Services will be uninterrupted, timely, secure, or error-free. <strong>c.</strong>The Company shall not be responsible or liable for   any loss or damage, howsoever caused or suffered by the Customer arising   out of the use of taxi service offered by Company or due to the failure   of Company to provide Services to the Customer for any reason   whatsoever including but not limited to the Customer's non-compliance   with the Services' recorded voice instructions, malfunction, partial or   total failure of any network terminal, data processing system, computer   tele-transmission or telecommunications system or other circumstances   whether or not beyond the control of Company or any person or any   organization involved in the above mentioned systems.<br />
+      <strong>d.</strong>The Company will not be liable for any damages of any   kind arising from the use of the Service offered by the Company,   including, but not limited to direct, indirect, incidental, punitive,   and consequential damages. <br />
+      <strong>e.</strong>There shall be extra charges for far off locations &amp; toll charges as well. <br />
+      <strong>f.</strong> If any passenger if misses the train or flight or   bus, Company will not be liable for any compensation. The customer shall   make an alternate arrangement if the cab has not reached due to any   reason.</li><br />
+
+    <li>The Customer shall indemnify Company from and against and in respect   of any or all liabilities, losses, charges and expenses (including   legal fees and costs on a full indemnity basis) claims, demands, actions   and proceedings which Company may incur or sustain directly or   indirectly from or by any reason of or in relation to the use or   proposed use of the Services by the Customer and shall pay such sums on   demand on the Company.</li><br />
+
+    <li>The Company is hereby authorized to use the location based   information provided by any of the telecommunication companies when the   Customer uses the mobile phone to make a taxi booking. The location   based information will be used only to facilitate and improve the   probability of locating a taxi for the Customer.</li><br />
+
+    <li>The Company shall be entitled to disclose to all companies within   its group, or any government body as so required by the law or by   directive or request from any government body, the particulars of the   Customer in the possession of Company in any way as Company, in its   absolute discretion, deems fit or if it considers it in its interests to   do so.</li><br />
+
+    <li>The Company shall be entitled at any time without giving any reason to terminate the booking of taxis done by the Customer.</li><br />
+
+    <li>The Company encourages all its customers to take full responsibility   of his/her items. In case of lost items inside the Company during the   journey, Company will try to locate the items on a &quot;best-effort&quot; basis   but is not responsible for the same in case of loss or damage to the   same.</li><br />
+
+    <li>If the Customer leaves any goods in the taxi or has any complaint in   respect of the Services or the use of the taxi, the Customer has to   inform Company of the same in writing within 24hours of using the taxi   or the Services of Company.</li><br />
+
+    <li>The Company shall not be liable for any conduct of the drivers of   the taxis. However, the Company encourgaes you to notify it of any   complaints that you may have against the driver of any taxi that you may   have hired using the Company's Services.</li><br />
+
+    <li>The Company shall be entitled to add to, vary or amend any or all   these terms and conditions at any time and the Customer shall be bound   by such addition, variation or amendment once such addition, variation   or amendment are incorporated into these terms and conditions at   Company's website at www.hello42cab.com on the date that Company may   indicate that such addition, variation or amendment is to come into   effect.</li><br />
+
+    <li>All the calls made to the Company's call centre are recorded by the Company for quality and training purposes.</li>
+    <li>All vehicles registered with the Company are continuously tracked   using GPS for security reasons only. It is expressly made clear to you   hereby that the Company does not own any taxis nor does it directly or   indirectly employ any drivers for the taxis. Taxis and drivers are all   supplied by third parties and the Company disclaims any and all   liability in respect of the drivers and the taxis alike.</li><br />
+
+    <li>The Company have right to use the customer contact information for   its own marketing purposes. The Company may send regular SMS updates to   the mobile numbers registered with it.</li><br />
+
+    <li>The courts of Mumbai, India shall have the sole and exclusive   jurisdiction in respect of any matters arising from the use of the   Services offered by Company or the agreement or arrangement between   Company and the Customer.</li><br />
+
+  </ul>
+                 The above mentioned terms and conditions of use and/or   Agreement and the Privacy Policy constitute the entire agreement between   the User(s) and HELLO 42 CABS with respect to access to and use of the   web site and the Services offerred by HELLO 42 CABS, superseding any   prior written or oral agreements in relation to the same subject matter   herein. <strong>VIII. Terms &amp; Conditions for use of Hello 42 cabs Money</strong><br />
+                 The following Terms &amp; Conditions shall apply to customers /   passengers utilising the Services offered by the Company for for use of   Hello 42 cabs Money:
+  <div></div>
+  <ul>
+    <li>Hello 42 cabs Money is a free credit customer account with Hello   42 cabs where all free credits earned by a customer accumulate.</li><br />
+
+    <li>Hello 42 cabs Money can be used to book City Taxi rides with Hello 42 cabs.</li>
+    <li>The amount once paid to the Hello 42 cabs Money is not refundable   and can be adjusted only against the city taxi service provided by Hello   42 cabs</li><br />
+
+    <li>The amount payable for a journey, will be directly deducted from the customers Hello 42 cabs Money</li><br />
+
+    <li>If the balance in the customers Hello 42 cabs Money is less than   the amount payable by the customer for the journey, the customer has to   pay the difference to the driver at the end of the journey</li><br />
+
+    <li>The balance in the customers Hello 42 cabs Money is not transferable in any manner.</li><br />
+
+    <li>The balance in the customers Hello 42 cabs Money is not transferable in any manner.</li><br />
+
+    <li>Each time a journey is undertaken by the customer, his Hello 42   cabs Money will be debited by the invoice value which is inclusive of   service tax amount</li><br />
+
+    <li>By clicking on the I Accept button on the Hello 42 cabs website, the customer agrees to all the above terms and conditions</li><br />
+
+  </ul>
+  <strong>Disclaimer</strong><br />
+                 The information contained in this website is for general information   purposes only. The information is provided by Hello 42 Cabs and while we   endeavor to keep the information up to date and correct, we make no   representations or warranties of any kind, express or implied, about the   completeness, accuracy, reliability, suitability or availability with   respect to the website or the information, products, services, or   related graphics contained on the website for any purpose. Any reliance   you place on such information is therefore strictly at your own risk.    In no event will we be liable for any loss or damage including   without limitation, indirect or consequential loss or damage, or any   loss or damage whatsoever arising from loss of data or profits arising   out of, or in connection with, the use of this website.    Through this website you are able to link to other websites   which are not under the control of Hello 42 Cabs. We have no control   over the nature, content and availability of those sites. The inclusion   of any links does not necessarily imply a recommendation or endorse the   views expressed within them.    Every effort is made to keep the website up and running   smoothly. However, Hello 42 Cabs takes no responsibility for, and will   not be liable for, the website being temporarily unavailable due to   technical issues beyond our control. <strong>Privacy Policy </strong><br /><br />
+
+                 This privacy policy sets out how Hello 42 Cabs uses and protects any   information that you give Hello 42 Cabs when you use this website.      Hello 42 Cabs is committed to ensuring that your privacy is   protected. Should we ask you to provide certain information by which you   can be identified when using this website, then you can be assured that   it will only be used in accordance with this privacy statement.    Hello 42 Cabs may change this policy from time to time by   updating this page. You should check this page from time to time to   ensure that you are happy with any changes. This policy is effective   from 3rd December 2010. <strong>What we collect</strong><br /><br />
+
+                 We may collect the following information:<br />
+                 •       name and job title <br />
+                 •       contact information including email address <br />
+                 •     demographic information such as postcode, preferences and interests <br />
+                 •     other information relevant to customer surveys and/or offers <strong>What we do with the information we gather</strong><br /><br />
+
+                 We require this information to understand your needs and provide you   with a better service, and in particular for the following reasons:<br />
+                 •     Internal record keeping. <br />
+                 •     We may use the information to improve our products and services. <br />
+                 •     We may periodically send promotional emails about new products,   special offers or other information which we think you may find   interesting using the email address which you have provided. <br />
+                 •     From time to time, we may also use your information to contact you   for market research purposes. We may contact you by email, phone, fax   or mail. We may use the information to customize the website according   to your interests. <strong>Security</strong><br /><br />
+
+                 We are committed to ensuring that your information is secure. In order   to prevent unauthorized access or disclosure we have put in place   suitable physical, electronic and managerial procedures to safeguard and   secure the information we collect online. <strong>How we use cookies</strong><br /><br />
+
+                 A cookie is a small file which asks permission to be placed on your   computer's hard drive. Once you agree, the file is added and the cookie   helps analyze web traffic or lets you know when you visit a particular   site. Cookies allow web applications to respond to you as an individual.   The web application can tailor its operations to your needs, likes and   dislikes by gathering and remembering information about your   preferences.  We use traffic log cookies to identify which pages are being   used. This helps us analyze data about webpage traffic and improve our   website in order to tailor it to customer needs. We only use this   information for statistical analysis purposes and then the data is   removed from the system.  Overall, cookies help us provide you with a better website, by   enabling us to monitor which pages you find useful and which you do not.   A cookie in no way gives us access to your computer or any information   about you, other than the data you choose to share with us.    You can choose to accept or decline cookies. Most web browsers   automatically accept cookies, but you can usually modify your browser   setting to decline cookies if you prefer. This may prevent you from   taking full advantage of the website. <strong>Links to other websites</strong><br /><br />
+
+                 Our website may contain links to other websites of interest. However,   once you have used these links to leave our site, you should note that   we do not have any control over that other website. Therefore, we cannot   be responsible for the protection and privacy of any information which   you provide whilst visiting such sites and such sites are not governed   by this privacy statement. You should exercise caution and look at the   privacy statement applicable to the website in question.<br /><br />
+
+                 We will not sell, distribute or lease your personal information   to third parties unless we have your permission or are required by law   to do so. We may use your personal information to send you promotional   information about third parties which we think you may find interesting   if you tell us that you wish this to happen.  You may request details of personal information which we hold   about you under the Data Protection Act 1998. A small fee will be   payable. If you would like a copy of the information held on you please   write to support@Hello 42 Cabs.com.    If you believe that any information we are holding on you is   incorrect or incomplete, please write to or email us as soon as   possible, at the above address. We will promptly correct any information   found to be incorrect. <strong>Contacting Us</strong><br /><br />
+
+                 If there are any questions regarding this privacy policy you may contact us using the information on the Contact Us </div>
+               <p class="" align="left"></div>
+            </div>
+
+    </section>
+   
+    
+    
+<?php } elseif($page_id=="apply_now"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/careers.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature">
+        <div class="container">
+            <div class="center col-lg-12">        
+                <h2><strong>Apply Now</strong></h2>
+                <p class="lead">We always keep a look-out for top talent to join us. If you feel you talented enough and can contribute to Hello42 then fill out the form below:
+     <br />
+<br />
+           
+                
+
+( Please note: If you talent matches one or more openings in the current openings section above, we recommend applying directly to those openings to increase your chances of a speedy review )
+                
+                </p>
+            </div> 
+            <div class="row contact-wrap col-lg-12"> 
+                <div class="status alert alert-success" style="display: none"></div>
+                <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php">
+                    <div class="col-sm-5 col-sm-offset-1">
+                        <div class="form-group">
+                            <label>Name *</label><br />
+                            <div class="col-sm-6 applypagesm_6">
+                            <input type="text" name="name" class="form-control" required placeholder="First Name"></div>
+                            <div class="col-sm-6 applypagesm_6">
+                            <input type="text" name="name" class="form-control" required placeholder="Last Name"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="number" class="form-control">
+                        </div>
+                                                
+                    </div>
+                    <div class="col-sm-5">
+                    <div class="form-group">
+                            <label>Post</label>
+                            <select class="form-control">
+                          <option value="">Which Department are you applying to</option>
+				<option value="Research & Development">Research & Development</option>
+		<option value="Quality Control & Assurance">Quality Control & Assurance</option>
+		<option value="Manufacturing & Plant Operations">
+			Manufacturing & Plant Operations</option>
+		<option value="Marketing & Advertising">Marketing & Advertising</option>
+		<option value="Branding & Creative">Branding & Creative</option>
+		<option value="Administration">Administration</option>
+		<option value="Finance">Finance</option>
+		<option value="Human Resource">Human Resource</option>
+		<option value="Information Technology">Information Technology</option>
+		<option value="Management">Management</option>
+                            </select>
+                          
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>Corvering Letter *</label>
+                            <input type="text" name="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload Resume *</label>
+                            <input name="Upload Resume" type="file" size="500kb" />
+                            <spam class="small">Only .doc, .docx & .pdf files of 2mb or less are allowed</samp>
+                        </div>                        
+                        <div class="form-group">
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Submit</button>
+                        </div>
+                    </div>
+                </form> 
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section>
+    
+    <?php } elseif($page_id=="copyright"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/careers.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature">
+        <div class="container">
+            <div class="center col-lg-12">        
+                <h2><strong>Copyright</strong></h2>
+                <p class="lead">We always keep a look-out for top talent to join us. If you feel you talented enough and can contribute to Hello42 then fill out the form below:
+     <br />
+<br />
+           
+                
+
+( Please note: If you talent matches one or more openings in the current openings section above, we recommend applying directly to those openings to increase your chances of a speedy review )
+                
+                </p>
+            </div> 
+          
+        </div><!--/.container-->
+    </section>
+    
+     <?php } elseif($page_id=="job"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/careers.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature">
+        <div class="container" style="text-align:left;">
+            <div class="col-lg-12" >        
+                <h2><strong>Android Developer</strong></h2>
+                <p class="lead">We always keep a look-out for top talent to join us. If you feel you talented enough and can contribute to Hello42 then fill out the form below:
+     <br />
+    
+Job Description<br />
+
+ 
+Send me Jobs like this<br />
+
+
+    Walk In On 23 Feb 2016 & 24 Feb 2016 for Android Developer and Java Developer also.<br />
+
+
+    Walk In Time : 10:00 am To 1:00 pm<br />
+
+
+    If you think you are suitable candidate then please come for interview on mentioned date and time.<br />
+
+
+    Senior Android Developer: 3 to 4 years<br />
+
+    Junior Android Developer: 1 to 2 years<br />
+
+
+    Job Description:<br />
+
+
+    - Developing serious Android apps / solutions<br />
+
+    - Writing high quality and optimized code<br />
+
+    - Contribute in Architecture / Designing solutions<br />
+
+    - Keep on upgrading on new technologies / frameworks in Android<br />
+
+
+    Desired Skills<br /><br />
+
+
+        Should have working knowledge and experience in Android Mobile Application Development. Expected skill sets.<br />
+
+        Should have experience on J2EE as Android is built on Standard Java 2 Standard Edition with a new API and structure for the applications<br />
+
+        Should be familiar with Android framework - activities, services, related life cycles, intents, content providers, broadcast receivers, etc.<br />
+ss
+        Should know about multi-threading and thread synchronization<br />
+<br />
+
+        Exposure to necessary optimization techniques for mobile devices with limited battery life (reduce number of instruction cycles, minimize memory access, don't leak any resources, etc)<br />
+<br />
+
+        Should have knowledge of XML and JSON a requirement<br />
+<br />
+
+        Should have Knowledge of Sql Lite and a working experience in SQL databases<br />
+<br />
+
+        Should be self disciplined to follow coding standards, organizational programming skills and good commenting practices
+
+    We have another requirement also: Java Developer<br />
+
+    Experience :- 2 to 3 Years<br />
+<br />
+
+
+        Understanding and experience in J2EE 1.5 and 1.6 overall concepts.<br />
+
+        Candidate should have minimum 1.5 to 2 years of experience in Java development and Coding.<br />
+
+        Hands on experience in Tomcat, Resin and Open Source Platforms.<br />
+
+        Hands on experience in any web application servers, preferably tomcat / resin.<br />
+
+        Strong in db and validating the queries and performance issues. <br />
+
+        Hands on experience in javascript with JSON and Jquery or backbone with underscore. <br />
+
+        MVC framework such as Mustache experience is an advantage. <br />
+
+        Working knowledge on MySQL Database Server, including triggers, functions and procedures. <br />
+
+        Capability to consume web services and troubleshoot the xml request responses.<br />
+
+        Good understanding of performance testing of web services.<br /><br />
+
+
+        Candidate will need to have experience in Core Java ( Java certification would be a definite plus.) OOPS, Multi- threading, Collections, J2EE, Spring, hibernate.
+        Very good in communication and client interacting capabilities.<br />
+
+
+Salary: Not Disclosed by Recruiter<br />
+
+
+Industry: IT-Software / Software Services<br />
+
+
+Functional Area: IT Software - Application Programming , Maintenance<br />
+
+
+Role Category:Programming & Design<br />
+
+
+Role:Software Developer<br />
+<ul>
+	<li>
+
+Keyskills
+</li>
+ <li>
+Java
+</li>
+
+<li>
+J2Ee
+</li>
+
+Android
+<li>
+XML
+</li>
+
+<li>
+Mobile Application Development
+</li>
+<li>
+SQL
+</li>
+<li>
+JSON
+</li>
+<li>
+Multithreading
+</li>
+<li>
+Architectural Design
+</li>
+<li>
+android developer android application developer gps and geo coding gis and geo coding sqlite database
+</li>
+<li>
+Web Services
+</li>
+<li>
+Java Developer
+</li>
+Desired Candidate Profile
+
+Education-
+
+UG: Any Graduate, B.Tech/B.E., Diploma, B.Sc, BCA
+
+PG:Post Graduation Not Required, MCA, M.Sc
+
+Doctorate:Doctorate Not Required
+
+    Please refer to the Job description above 
+
+Company Profile:
+     
+<br />
+           
+                
+
+( Please note: If you talent matches one or more openings in the current openings section above, we recommend applying directly to those openings to increase your chances of a speedy review )
+                
+                </p>
+            </div> 
+          
+        </div><!--/.container-->
+    </section>
+    
+    
+      <?php } elseif($page_id=="privacy_policy"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/privacy-policy.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature">
+        <div class="container">
+            <div class="col-lg-12" align="left">        
+                <h2><strong>Privacy Policy</strong></h2>
+                <p class="lead">We always keep a look-out for top talent to join us. If you feel you talented enough and can contribute to Hello42 then fill out the form below:
+     <br />
+<br />
+         
+
+( Please note: If you talent matches one or more openings in the current openings section above, we recommend applying directly to those openings to increase your chances of a speedy review )
+                
+                </p>
+            </div> 
+          
+        </div><!--/.container-->
+    </section>
+    
+     <?php } elseif($page_id=="faq"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/faq.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature">
+        <div class="container">
+            <div class="col-lg-12" align="left">        
+                <h2><strong>FAQ</strong></h2>
+                <p class="lead">We always keep a look-out for top talent to join us. If you feel you talented enough and can contribute to Hello42 then fill out the form below:
+     <br />
+<br />
+           
+                
+
+( Please note: If you talent matches one or more openings in the current openings section above, we recommend applying directly to those openings to increase your chances of a speedy review )
+                
+                </p>
+            </div> 
+          
+        </div><!--/.container-->
+    </section>
+    
+     <?php } elseif($page_id=="blog"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/blog.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="blog" class="container">
+        <div class="">
+            <h2>Blogs</h2>
+            <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+        </div>
+
+        <div class="blog">
+            <div class="row">
+                 <div class="col-md-8">
+                    <div class="blog-item">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2 text-center">
+                                <div class="entry-meta">
+                                    <span id="publish_date">07  NOV</span>
+                                    <span><i class="fa fa-user"></i> <a href="#">John Doe</a></span>
+                                    <span><i class="fa fa-comment"></i> <a href="blog-item.html#comments">2 Comments</a></span>
+                                    <span><i class="fa fa-heart"></i><a href="#">56 Likes</a></span>
+                                </div>
+                            </div>
+                                
+                            <div class="col-xs-12 col-sm-10 blog-content">
+                                <a href="#"><img class="img-responsive img-blog" src="<?= $this->basePath();?>/public/images/blog/blog1.jpg" width="100%" alt="" /></a>
+                                <h2><a href="blog-item.html">Consequat bibendum quam liquam viverra</a></h2>
+                                <h3>Curabitur quis libero leo, pharetra mattis eros. Praesent consequat libero eget dolor convallis vel rhoncus magna scelerisque. Donec nisl ante, elementum eget posuere a, consectetur a metus. Proin a adipiscing sapien. Suspendisse vehicula porta lectus vel semper. Nullam sapien elit, lacinia eu tristique non.posuere at mi. Morbi at turpis id urna ullamcorper ullamcorper.</h3>
+                                <a class="btn btn-primary readmore" href="blog-item.html">Read More <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>    
+                    </div><!--/.blog-item-->
+                        
+                    <div class="blog-item">
+                        <div class="row">
+                             <div class="col-sm-2 text-center">
+                                <div class="entry-meta"> 
+                                    <span id="publish_date">07  NOV</span>
+                                    <span><i class="fa fa-user"></i> <a href="#">John Doe</a></span>
+                                    <span><i class="fa fa-comment"></i> <a href="blog-item.html#comments">2 Comments</a></span>
+                                    <span><i class="fa fa-heart"></i><a href="#">56 Likes</a></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-10 blog-content">
+                                <a href=""><img class="img-responsive img-blog" src="<?= $this->basePath();?>/public/images/blog/blog2.jpg" width="100%" alt="" /></a>
+                                <h2><a href="blog-item.html">Consequat bibendum quam liquam viverra</a></h2>
+                                <h3>Curabitur quis libero leo, pharetra mattis eros. Praesent consequat libero eget dolor convallis vel rhoncus magna scelerisque. Donec nisl ante, elementum eget posuere a, consectetur a metus. Proin a adipiscing sapien. Suspendisse vehicula porta lectus vel semper. Nullam sapien elit, lacinia eu tristique non.posuere at mi. Morbi at turpis id urna ullamcorper ullamcorper.</h3>
+                                <a class="btn btn-primary readmore" href="blog-item.html">Read More <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>    
+                    </div><!--/.blog-item-->
+                        
+                    <ul class="pagination pagination-lg">
+                        <li><a href="#"><i class="fa fa-long-arrow-left"></i>Previous Page</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">Next Page<i class="fa fa-long-arrow-right"></i></a></li>
+                    </ul><!--/.pagination-->
+                </div><!--/.col-md-8-->
+
+                <aside class="col-md-4">
+                    <div class="widget search">
+                        <form role="form">
+                                <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
+                        </form>
+                    </div><!--/.search-->
+    				
+    				<div class="widget categories">
+                        <h3>Recent Comments</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="single_comments">
+                                    <img src="<?= $this->basePath();?>/public/images/blog/avatar3.png" alt=""  />
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </p>
+                                    <div class="entry-meta small muted">
+                                        <span>By <a href="#">Alex</a></span ><span>On <a href="#">Creative</a></span>
+                                    </div>
+                                </div>
+                                <div class="single_comments">
+                                    <img src="<?= $this->basePath();?>/public/images/blog/avatar3.png" alt=""  />
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </p>
+                                    <div class="entry-meta small muted">
+                                        <span>By <a href="#">Alex</a></span ><span>On <a href="#">Creative</a></span>
+                                    </div>
+                                </div>
+                                <div class="single_comments">
+                                    <img src="<?= $this->basePath();?>/public/images/blog/avatar3.png" alt=""  />
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </p>
+                                    <div class="entry-meta small muted">
+                                        <span>By <a href="#">Alex</a></span ><span>On <a href="#">Creative</a></span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>                     
+                    </div><!--/.recent comments-->
+                     
+
+                    <div class="widget categories">
+                        <h3>Categories</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="blog_category">
+                                    <li><a href="#">Computers <span class="badge">04</span></a></li>
+                                    <li><a href="#">Smartphone <span class="badge">10</span></a></li>
+                                    <li><a href="#">Gedgets <span class="badge">06</span></a></li>
+                                    <li><a href="#">Technology <span class="badge">25</span></a></li>
+                                </ul>
+                            </div>
+                        </div>                     
+                    </div><!--/.categories-->
+    				
+    				<div class="widget archieve">
+                        <h3>Archieve</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <ul class="blog_archieve">
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> December 2013 <span class="pull-right">(97)</span></a></li>
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> November 2013 <span class="pull-right">(32)</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> October 2013 <span class="pull-right">(19)</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> September 2013 <span class="pull-right">(08)</a></li>
+                                </ul>
+                            </div>
+                        </div>                     
+                    </div><!--/.archieve-->
+    				
+                    <div class="widget tags">
+                        <h3>Tag Cloud</h3>
+                        <ul class="tag-cloud">
+                            <li><a class="btn btn-xs btn-primary" href="#">Apple</a></li>
+                            <li><a class="btn btn-xs btn-primary" href="#">Barcelona</a></li>
+                            <li><a class="btn btn-xs btn-primary" href="#">Office</a></li>
+                            <li><a class="btn btn-xs btn-primary" href="#">Ipod</a></li>
+                            <li><a class="btn btn-xs btn-primary" href="#">Stock</a></li>
+                            <li><a class="btn btn-xs btn-primary" href="#">Race</a></li>
+                            <li><a class="btn btn-xs btn-primary" href="#">London</a></li>
+                            <li><a class="btn btn-xs btn-primary" href="#">Football</a></li>
+                            <li><a class="btn btn-xs btn-primary" href="#">Porche</a></li>
+                            <li><a class="btn btn-xs btn-primary" href="#">Gadgets</a></li>
+                        </ul>
+                    </div><!--/.tags-->
+    				
+    				<div class="widget blog_gallery">
+                        <h3>Our Gallery</h3>
+                        <ul class="sidebar-gallery">
+                            <li><a href="#"><img src="<?= $this->basePath();?>/public/images/blog/gallery1.png" alt="" /></a></li>
+                            <li><a href="#"><img src="<?= $this->basePath();?>/public/images/blog/gallery2.png" alt="" /></a></li>
+                            <li><a href="#"><img src="<?= $this->basePath();?>/public/images/blog/gallery3.png" alt="" /></a></li>
+                            <li><a href="#"><img src="<?= $this->basePath();?>/public/images/blog/gallery4.png" alt="" /></a></li>
+                            <li><a href="#"><img src="<?= $this->basePath();?>/public/images/blog/gallery5.png" alt="" /></a></li>
+                            <li><a href="#"><img src="<?= $this->basePath();?>/public/images/blog/gallery6.png" alt="" /></a></li>
+                        </ul>
+                    </div><!--/.blog_gallery-->
+    			</aside>  
+            </div><!--/.row-->
+        </div>
+    </section>
+    
+     <?php } elseif($page_id=="documettion"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/blog.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature">
+        <div class="container">
+            <div class="col-lg-12" align="left">        
+                <h2><strong>Documettion</strong></h2>
+                <p class="lead">We always keep a look-out for top talent to join us. If you feel you talented enough and can contribute to Hello42 then fill out the form below:
+     <br />
+<br />
+           
+                
+
+( Please note: If you talent matches one or more openings in the current openings section above, we recommend applying directly to those openings to increase your chances of a speedy review )
+                
+                </p>
+            </div> 
+          
+        </div><!--/.container-->
+    </section>
+    
+    <?php } elseif($page_id=="refund_policy"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/refund-policy.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature">
+        <div class="container">
+            <div class="col-lg-12" align="left">        
+                <h2><strong>Refund Policy</strong></h2>
+                <p class="lead">We always keep a look-out for top talent to join us. If you feel you talented enough and can contribute to Hello42 then fill out the form below:
+     <br />
+<br />
+           
+                
+
+( Please note: If you talent matches one or more openings in the current openings section above, we recommend applying directly to those openings to increase your chances of a speedy review )
+                
+                </p>
+            </div> 
+          
+        </div><!--/.container-->
+    </section>
+    
+     <?php } elseif($page_id=="ticket_system"){?>
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/refund-policy.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature">
+        <div class="container">
+            <div class="col-lg-12" align="left">        
+                <h2><strong>Ticket System</strong></h2>
+                <p class="lead">We always keep a look-out for top talent to join us. If you feel you talented enough and can contribute to Hello42 then fill out the form below:
+     <br />
+<br />
+           
+                
+
+( Please note: If you talent matches one or more openings in the current openings section above, we recommend applying directly to those openings to increase your chances of a speedy review )
+                
+                </p>
+            </div> 
+          
+        </div><!--/.container-->
+    </section>
+    
+    
+     <?php } elseif($page_id=="billing_system"){?>
+     
+     
+
+
+<section id="" style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow">
+           <img src="<?= $this->basePath();?>/public/img_banner/refund-policy.jpg" />
+               
+   <br />
+
+
+
+            <!--/.row-->    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+
+<section id="feature">
+        <div class="container">
+            <div class="col-lg-12" align="left">        
+                <h2><strong>Billing System</strong></h2>
+                <p class="lead">We always keep a look-out for top talent to join us. If you feel you talented enough and can contribute to Hello42 then fill out the form below:
+     <br />
+<br />
+           
+                
+
+( Please note: If you talent matches one or more openings in the current openings section above, we recommend applying directly to those openings to increase your chances of a speedy review )
+                
+                </p>
+            </div> 
+          
+        </div><!--/.container-->
+    </section>
+    
+<?php }?>
+
+
+
+<section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+            
+            <div class="col-md-3 col-sm-6">
+                    <div class="widget" style="color:808080;">
+                      <h3>Reach Us</h3>
+                        <ul>
+                            <li>
+                           <B> Hello 42 India Pvt. Ltd</B><br />
+29-30, D.B Gupta Market, Karol Bagh,<br /> New Delhi - 110005 (India)
+  
+                            
+                            </li>
+                            <li>
+                            <b>Tel : </b><br />
+                           	+91 11 42424242</li>
+                            <li>
+                           <b> E-mail</b><br />
+                            	feedback@hello42cab.com  
+
+                            
+                            </li>
+                                                    </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+            
+            
+             
+            
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=about_us">About us</a></li>
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=career">We are hiring</a></li>
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=about_us#feature">Meet the team</a></li>
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=copyright">Copyright</a></li>
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=terms_condition">Terms of use</a></li>
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=privacy_policy">Privacy policy</a></li>
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=contact_us">Contact us</a></li>
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-2 col-sm-6">
+                    <div class="widget">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=faq">Faq</a></li>
+                          <!--  <li><a href="<?php echo $this->basePath();  ?>/index/page?id=blog">Blog</a></li>-->
+                            <!--<li><a href="#">Forum</a></li>-->
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=documettion">Documentation</a></li>
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=refund_policy">Refund policy</a></li>
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=ticket_system">Ticket system</a></li>
+                            <li><a href="<?php echo $this->basePath();  ?>/index/page?id=billing_system">Billing system</a></li>
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+               <div class="col-md-4 col-sm-6">
+                    <div class="widget">
+                        <h3>Testimonials</h3>
+                      
+                        
+                        <div class="col-md-1 col-lg-12 img-responsive" 
+                        style="margin-top:0; overflow:hidden; padding:0;" id="slider1">
+  <div id="myCarousel1" class="carousel slide" data-ride="carousel" 
+  style="height:225px; overflow:hidden; background:transperent !important;"> 
+    <!-- Indicators -->
+    <ol class="carousel-indicators" style="display:block; margin-bottom:-20px !important;">
+      <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel1" data-slide-to="1" class=""></li>
+      <li data-target="#myCarousel1" data-slide-to="2" class=""></li>
+      <!--<li data-target="#myCarousel1" data-slide-to="3" class=""></li>
+      <li data-target="#myCarousel1" data-slide-to="4" class=""></li>-->
+    </ol>
+    <div class="carousel-inner" style="height:;">
+      <div class="item active" id="" style="height:; background:#000;">  
+      					<ul>
+      
+                            <li>
+                            <div class="col-xs-12 col-sm-12 wow fadeInDown">
+                    <div class="testimonial">
+                       
+                         <div class="media testimonial-inner">
+                            <div class="pull-left">
+                                <img class="img-responsive img-circle" src="/hello42/public/images/testimonials1.png">
+                            </div>
+                            <div class="media-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                                <span><strong>-John Doe/</strong> Director of corlate.com</span>
+                            </div>
+                         </div>
+
+                         <div class="media testimonial-inner">
+                            <div class="pull-left">
+                                <img class="img-responsive img-circle" src="/hello42/public/images/testimonials1.png">
+                            </div>
+                            <div class="media-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                                <span><strong>-John Doe/</strong> Director of corlate.com</span>
+                            </div>
+                         </div>
+
+                    </div>
+                </div></li>
+                    
+                        </ul>
+        
+      </div>
+      
+      <div class="item" style="height:; background:#000;"> 
+      <ul>
+      
+                            <li><div class="col-xs-12 col-sm-12 wow fadeInDown">
+                    <div class="testimonial">
+                       
+                         <div class="media testimonial-inner">
+                            <div class="pull-left">
+                                <img class="img-responsive img-circle" src="/hello42/public/images/testimonials1.png">
+                            </div>
+                            <div class="media-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                                <span><strong>-John Doe/</strong> Director of corlate.com</span>
+                            </div>
+                         </div>
+
+                         <div class="media testimonial-inner">
+                            <div class="pull-left">
+                                <img class="img-responsive img-circle" src="/hello42/public/images/testimonials1.png">
+                            </div>
+                            <div class="media-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                                <span><strong>-John Doe/</strong> Director of corlate.com</span>
+                            </div>
+                         </div>
+
+                    </div>
+                </div></li>
+                    
+                        </ul>
+       
+      </div>
+      
+      <div class="item" style="height:; background:#000;"> 
+      <ul>
+      
+                            <li><div class="col-xs-12 col-sm-12 wow fadeInDown">
+                    <div class="testimonial">
+                       
+                         <div class="media testimonial-inner">
+                            <div class="pull-left">
+                                <img class="img-responsive img-circle" src="/hello42/public/images/testimonials1.png">
+                            </div>
+                            <div class="media-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                                <span><strong>-John Doe/</strong> Director of corlate.com</span>
+                            </div>
+                         </div>
+
+                         <div class="media testimonial-inner">
+                            <div class="pull-left">
+                                <img class="img-responsive img-circle" src="/hello42/public/images/testimonials1.png">
+                            </div>
+                            <div class="media-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                                <span><strong>-John Doe/</strong> Director of corlate.com</span>
+                            </div>
+                         </div>
+
+                    </div>
+                </div></li>
+                    
+                        </ul>
+        
+      </div>
+      
+    </div>
+   <!-- <a class="left carousel-control bgnone" href="#myCarousel1" role="button" data-slide="prev" style="height:183px;"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control bgnone" href="#myCarousel1" role="button" data-slide="next" style="height:183px;"><span class="glyphicon glyphicon-chevron-right"></span></a> --></div>
+</div>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                
+            </div>
+        </div>
+    </section>

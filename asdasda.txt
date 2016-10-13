@@ -1,0 +1,1 @@
+SELECT a.nos FROM `tbldropdownofnos` a INNER JOIN `tblstates` b ON a.lang = b.language INNER JOIN `tbllanguage` c ON b.language=c.id  INNER JOIN `tblcountry` d ON c.country_code=d.id WHERE `state`='Delhi' AND d.country_code='India'

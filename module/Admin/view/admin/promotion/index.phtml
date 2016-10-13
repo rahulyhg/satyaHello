@@ -1,0 +1,45 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?>
+<div id="page-wrapper" class="" >
+  <h4 style="">Promotion</h4>
+  <div>
+    <div class="portlet portlet-default">
+      <div class="portlet-heading">
+        <div class=" "> <i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+          <h6 style="background: #E2E2E2;padding:7px;margin: 0;">Filter</h6>
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <!-- /.portlet-body --> 
+    </div>
+    <!-- /.portlet --> 
+  </div>
+  <div class="table-responsive" > <a href="<?php print site_url;?>/admin/promotion/add" class="btn btn-default marginright"><i class="fa fa-user marginright"></i>Add Promotion</a>
+    <table id="promotion" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Sr.</th>
+          <th>Promotion Name</th>
+          <th>ValidDate From</th>
+          <th>ValidDate To</th>
+          <th>ValidTime From</th>
+          <th>ValidTime To</th>
+          <th>Week Days</th>
+          <th>Minimum<br />Booking<br />Amount</th>
+          <th>Discount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+    </table>
+    <div class="col-sm-12 marginbottom20"> </div>
+  </div>
+</div>
+<script>
+$('#promotion').dataTable(<?php print $this->data;?>);
+</script> 

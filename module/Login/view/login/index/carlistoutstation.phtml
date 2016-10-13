@@ -1,0 +1,1796 @@
+ <?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath();
+?>     
+<?php 
+
+$status = 0;
+/* personal details of logedin person*/
+/*
+if(isset($_COOKIE['token'])){
+    $token = $_COOKIE['token'];
+    $status = 1;
+	$login_id = $_COOKIE['login_id'];
+}
+ session_start();
+ $_SESSION['outstationName'];
+ $_SESSION['outstationMobile'];
+ $_SESSION['outstationEmail'];
+ $_SESSION['cab_charge'];
+ $_SESSION['dayWise_cabcharge'];
+ $_SESSION['NoOfday'];
+ 
+ $_SESSION['outstationNationality'];
+ $session=$_SESSION['carDetails'];*/
+ //echo $_SESSION['MinimumCharge'];
+ /* foreach($session as $val)
+ {
+   echo $val['name']."</t>"; 
+   echo $val['MinimumCharge'];
+   echo $val['CabModel'];
+	//echo $val['MinimumCharge'];
+	//echo $val['Per_Km_Charge'];
+ } */
+ 
+?>
+<html lang="en">
+
+<head>
+
+<style>
+<!-- Le styles -->
+<!-- Scripts -->
+input.error {
+	border: 1px solid red;
+}
+.error {
+	color: red;
+}
+.choose
+{
+	width:99%;
+	border:none;
+}
+.bookcar
+{
+	padding:10px; 
+	color:#FFF;
+	background:#F90;
+	width:;
+}
+
+label {
+    color: #5c5c5c !important;
+    font-family: "Open Sans",sans-serif;
+    font-size: 12px !important;
+    font-weight: normal !important;
+    padding: 5px 0 0;
+}
+
+.fare-su-details::before {
+    border-bottom: 10px solid #cccaca;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    color: #fff;
+    content: "";
+    font-weight: bold;
+    height: 0;
+    left: 25%;
+    margin-left: 50px;
+    position: absolute;
+    top: -11px;
+    width: 0;
+}
+
+</style>
+
+<link href="<?php echo $path; ?>/public/css/bootstrap_out.css" type="text/css" rel="stylesheet" media="all">
+<link href="<?php echo $path; ?>/public/css/style_out.css" type="text/css" rel="stylesheet" media="all">
+<link href="<?php echo $path; ?>/public/css/newcss_out.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="<?php echo $path; ?>/public/css/flexslider.css" type="text/css" media="screen" />
+
+<link rel="stylesheet" href="<?php echo $path; ?>/public/css/style_listing.css" type="text/css" media="screen" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="<?php echo $path; ?>/public/js/jquery_out.js"></script>
+
+
+ <script language="javascript" type="text/javascript">
+        function togglemodify(id, btn_id) {
+			//alert(1);
+            //debugger;
+            var btnId = btn_id.v
+//            var e = document.getElementById(id);
+//            var b = document.getElementById(btn_id);
+            //            e.style.display = e.style.display == "none" ? "block" : "none";
+			//$("#1").css("display","block");
+            $("#modify_search").slideToggle(500);
+            if ($("#btnModify").val() == "Modify Search (+)") {
+                $("#btnModify").val("Modify Search (-)");
+            }
+            else { $("#btnModify").val("Modify Search (+)"); }
+//            b.value = e.style.display == "block" ? "Hide Search" : "Change Search";
+//           
+//            b.value = e.style.display == "none" ? "Change Search" : "Hide Search";
+           
+//            if (e.style.display = 'none') {
+//                e.style.display = 'block';
+//                b.value = "Hide search";
+
+//            }
+//            else  {
+//                e.style.display = 'none';
+//                b.value = "Change search";
+//            }
+
+        }
+		
+        function gotoResult() {
+
+
+            if (Validate_Me()) {
+                if (TransValue())
+                    return true;
+                else
+                    return false;
+            }
+            else {
+                return false;
+            }
+			
+		}
+			function Showcar(id) {
+			//alert(id);
+			var divId	="dvcarresult"+id;
+			//alert(divId);
+            var dvcarresult = document.getElementById('divId');
+			alert(dvcarresult);
+			$("#divId").slideToggle(100);
+			if (dvcarresult.style.display == 'none') {
+
+ 
+                document.getElementById('divId').style.display = "";
+				 
+				
+            }
+            else {
+
+                document.getElementById('divId').style.display = "none";
+				
+				
+            }
+        
+			
+        }
+    </script>
+
+  
+
+<style>
+
+.summary{}
+.details h2, .summary h2{padding: 7px 10px; background: #f1f1f1; font-size:22px;}
+.details .inner, .summary .inner{padding: 10px; min-height: 250px;}
+.summary .inner{font-size: 12px;}
+.summary .bookcimg{border:1px solid #ccc; padding:7px; box-shadow: 0px 0px 1px #ccc; margin:5px 0 20px; max-width: 260px;}
+.summary .inner .info{padding:3px 0}
+.summary .inner .infopay{padding: 10px 0;}
+.summary .inner .infopay .title{font-size: 14px; display: inline-block; width:150px;}
+.summary .inner .infopay .price{font-size: 14px; padding: 4px 0 4px 20px; font-weight:bold; font-family: arial; display: inline-block}
+.summary .inner .info ul{padding:5px 0; list-style: none ; margin-top: 0px}
+.summary .inner .info ul li{padding:3px 0}
+
+
+
+
+
+input[type=checkbox] {
+		display:none;
+	}
+
+	input[type=checkbox] + label {
+		display:inline-block;
+		margin:-2px;
+		padding: 4px 32px;
+		margin-bottom: 0;
+		font-size: 14px;
+		line-height: 20px;
+		color: #333;
+		text-align: center;
+		text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+		vertical-align: middle;
+		cursor: pointer;
+		background-color: #f5f5f5;
+		background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+		background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+		background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+		background-repeat: repeat-x;
+		border: 1px solid #ccc;
+		border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+		border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+		border-bottom-color: #b3b3b3;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+	}
+
+	input[type=checkbox]:checked + label {
+		   background-image: none;
+		outline: 0;
+		
+			background-color:#e0e0e0;
+	}
+	
+	.sightmargin{
+		margin-bottom:;
+	}
+
+</style>
+
+
+<style>
+input[type=radio] {
+		display:none;
+	}
+
+	input[type=radio] + label {
+		display:inline-block;
+		margin:-2px;
+		padding: 4px 32px;
+		margin-bottom: 0;
+		font-size: 14px;
+		line-height: 20px;
+		color: #333;
+		text-align: center;
+		text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+		vertical-align: middle;
+		cursor: pointer;
+		background-color: #f5f5f5;
+		background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+		background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+		background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+		background-repeat: repeat-x;
+		border: 1px solid #ccc;
+		border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+		border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+		border-bottom-color: #b3b3b3;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+	}
+
+	input[type=radio]:checked + label {
+		   background-image: none;
+		outline: 0;
+		
+			background-color:#ccc;
+	}
+	
+	.sightmargin{
+		margin-bottom:;
+	}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="loadingClass" class="loderdiv" style="">
+	<div class="loderdiv" align="center">
+    
+    <label class="loadertext" style="line-height:35px;">Searching for the best Carfares</label><br />
+    <label class="loadertext1">Adults:<?php echo $_SESSION['outstationAdults']; ?>, Children: <?php echo $_SESSION['outstationChilds']; ?> | <?php  $cartype = $_SESSION['cartype'];
+								     if($cartype ==1)
+									 {
+										 echo "Economy";
+									 }
+									 elseif($cartype == 2)
+									 {
+										 echo "Sedan";
+									 }
+									 else
+									 {
+										echo "Prime"; 
+									 }
+
+								  ?></label><br /><br />
+    
+    <img src="<?php echo $path; ?>/public/images/ajax-loader.gif" alt="" />
+    
+    </div>
+
+<div style="width:80%; margin:auto; padding:10px;" align="center">
+
+							<div class="destinations-grid-info tours" style="margin-bottom:10px !important;">
+                       
+                          <div class="mapcantiner_inner1" style="padding:0 !important;">
+	 <div class="" style="margin:0 0 10px; padding:0 0 10px;">
+     <div class="col-md-4 sightmargin" align="left">
+									<strong style="font-size:14px !important;"> <?php echo $_SESSION['outRoundtripfrom']; ?></strong>
+							</div>
+                            
+                            <!-- <div class="col-md-31 sightmargin overviueimg2car" align="left">
+											
+	
+                			</div>
+    
+    						  <div class="col-md-31 sightmargin overviueimg2car1" align="left" >
+									 <span class="vehicle_name"></span><br>
+                                      
+	
+									
+							</div>-->
+                            
+       <div class="col-md-4 sightmargin" align="left" style="line-height:;" >
+									 <span class="vehicle_name"><?php echo $_SESSION['outstation_Ddate']; ?></span><br>
+                                      
+	
+									
+							</div>  
+                            
+         
+                            
+       <!--<div class="col-md-31 sightmargin overviueimg2" align="left">
+									<span class="vehicle_name"></span><br>
+                                     
+	
+									
+							</div>-->  
+                            
+                             <div class="col-md-4 sightmargin" align="left">
+									<span class="fare_details"><strong style="font-size:14px !important;"><?php echo $_SESSION['outRoundtripto']; ?></strong></span>
+							</div>
+                            
+                           <!-- 
+                            <div class="col-md-31 sightmargin overviueimg2" align="left">
+									 <span class="vehicle_name">No of Cars</span><br>
+                                   
+							</div> -->                  
+                     
+    </div>
+    
+    </div>
+               <div class="clearfix"> </div>           
+							</div>
+                            
+                            <div class="destinations-grid-info tours" style="margin-bottom:10px !important;">
+                       
+                          <div class="mapcantiner_inner1" style="padding:0 !important;">
+	 <div class="" style="margin:0 0 10px; padding:0 0 10px;">
+     <div class="col-md-4 sightmargin " align="left">
+									<strong style="font-size:14px !important;"><?php echo $_SESSION['outRoundtripto']; ?></strong>
+							</div>
+                            
+                            
+                            
+       <div class="col-md-4 sightmargin " align="left" style="line-height:;" >
+									 <span class="vehicle_name"><?php echo $_SESSION['outstation_Rdate']; ?></span><br>
+                                      
+	
+									
+							</div>  
+                           
+                             <div class="col-md-4 sightmargin " align="left">
+									<span class="fare_details"><strong style="font-size:14px !important;"> <?php echo $_SESSION['outRoundtripfrom']; ?></strong></span>
+							</div>
+                            
+                           <!-- 
+                            <div class="col-md-31 sightmargin overviueimg2" align="left">
+									 <span class="vehicle_name">No of Cars</span><br>
+                                   
+							</div> -->                  
+                     
+    </div>
+    
+    </div>
+               <div class="clearfix"> </div>           
+							</div>
+
+</div>
+
+
+</div>
+
+<div id="showform" style="display:;" >
+
+<div class="banner-bottom pcenter" > 
+  <!-- container -->
+  <div class="container">
+    <div class="choose">
+      <div class="destinations-grid-info tours">
+        <div class="td-grids">
+          <div class="col-md-31 sightmargin" align="left">
+            <p>
+              <label><strong> From:</strong></label>
+              <br>
+              <label> <?php echo $_SESSION['outRoundtripfrom']; ?></label>
+            </p>
+          </div>
+          <div class="col-md-31 sightmargin" align="left">
+            <p>
+              <label><strong> To:</strong></label>
+              <br>
+              <label> <?php echo $_SESSION['outRoundtripto']; ?></label>
+            </p>
+          </div>
+          <div class="col-md-31 sightmargin sightmargin2" align="left">
+            <p>
+              <label><strong> Departure Date:</strong></label>
+              <br>
+              <label> <?php echo $_SESSION['outstation_Ddate']; ?></label>
+            </p>
+          </div>
+          <div class="col-md-31 sightmargin" align="left">
+            <p>
+              <label><strong> Pickup Address:</strong></label>
+              <br>
+              <label> <?php echo $_SESSION['outPickupAddress']; ?></label>
+            </p>
+          </div>
+          <div class="col-md-31 sightmargin sightmargin2" align="left">
+            <p>
+              <label><strong> Pickup Time:</strong></label>
+              <br>
+              <label> <?php echo $_SESSION['outPickupTimeH']; ?>:<?php echo $_SESSION['outPickupTimeM']; ?></label>
+            </p>
+          </div>
+          <div class="col-md-31 sightmargin" align="left">
+            <p>
+              <label><strong> Adults:</strong> <?php echo $_SESSION['outstationAdults']; ?></label>
+              <br>
+              <label> <strong> Children:</strong> <?php echo $_SESSION['outstationChilds']; ?></label>
+            </p>
+          </div>
+          <div class="col-md-31 sightmargin3" align="left">
+            <p>
+              <label> <strong>Car Type:</strong></label>
+              <br>
+              <label> <?php  $cartype = $_SESSION['cartype'];
+								     if($cartype ==1)
+									 {
+										 echo "Economy";
+									 }
+									 elseif($cartype == 2)
+									 {
+										 echo "Sedan";
+									 }
+									 else
+									 {
+										echo "Prime"; 
+									 }
+
+								  ?></label>
+            </p>
+          </div>
+          <div class="col-md-31 sightmargin" align="left">
+            <p>
+              <input id="btnModify" class="modify_text" value="Modify Search (+)" onClick="javascript:togglemodify('1','btnBack');" type="button">
+            </p>
+          </div>
+          <div class="col-xs-2 td-right" style="width:100%;">
+            <div id="modify_search" style="width: 100%; border-radius: ; border: ; padding: 5px; display:none ;"> 
+              
+            <!--Outstation Start-->
+<form id="outstationForm" name="outstationForm" method="post" action="<?php echo $this->basePath('login/index/carlistoutstation')?>">
+<div id="booking_outstation" class="portlet portlet-purple" style="border: 0;border-top: 1px solid #d2d2d2; margin:0; display:;">
+  <div id="inputSizing" class="panel-collapse in" style="height: auto;">
+    <div class="portlet-body " style="padding:10px 15px 0;">
+      <div id="popAlert" style="display:none;">
+        <div class="row">
+          <div class="col-sm-12" style="text-align:center;" >
+            <p style="border-bottom: 1px solid #ff3f3f; color:#ff3f3f">We can not confirm online booking as such short notice.</br>
+              Please call (011)42424242 for immediate bookings and confirmations.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!--================alert for same day============ --> 
+      
+      <!--================alert for same day============ -->
+      
+      <div class="row">
+    <div class="form-group clearfix" style="margin:0;">
+      <div class="col-sm-11" style="margin-left:10px;">
+      
+      
+      
+               <?php 
+	  if($_SESSION['optionsInlineRadios']==1)
+	  {
+	  ?>
+	   <label class="radio-inline specs mytip" name="optionsInlineRadios" onclick="roundtrip()" value="1" checked="" style="margin-left::10px;">
+        <div class="radioWrap">
+           <input type="radio" name="optionsInlineRadios" onClick="roundtrip()" class="radiobtnalign" value="1" checked="">
+          <span></span></div>
+       <span id="outstation_roundtrip"></span>
+        </label>
+      <?php 		
+	  }
+	  else if($_SESSION['optionsInlineRadios']==2)
+	  {
+      ?>
+
+         <label class="radio-inline specs" style="padding-left:47px !important;">
+        <div class="radioWrap">
+          <input type="radio" name="optionsInlineRadios" onClick="oneway();" class="radiobtnalign" value="2">
+          <span></span></div>
+        <span id="" style="color:#fff;">Oneway</span>
+        </label>
+        
+          <?php
+	  }
+	  else
+	  {
+	  ?>         
+         <label class="radio-inline specs" style="padding-left:47px !important;">
+        <div class="radioWrap">
+           <input type="radio" id="selectMulticity" name="optionsInlineRadios" onClick="multicity();" class="radiobtnalign" value="3">
+          <span></span></div>
+        <span id="" style="color:#fff;">Multicity</span>
+        </label>
+        
+         <?php } ?>
+      </div>
+    </div>
+    
+  </div>
+      
+      
+      
+      
+      <!--multiple country-->
+      <div> 
+        
+        <!--multiple country End-->
+        <hr style="margin:5px auto 10px;"/>
+		<?php if($status == 0){
+                              echo $status;                       ?>
+         <div class="row clearfix" style="padding-bottom:10px; display: block" id="userInfoLocal" >
+            <div class="form-group padding_margin0">
+              <label for="textInput" class="col-sm-21 control-label" id="">Name <span style="color:#F00">*</span></label>
+              <div class="col-sm-2">
+              <input id="outstationName" value="<?php echo $_SESSION['outstationName']; ?>" name="outstationName" type="text" class="form-control ui-autocomplete-input inputfild outstation_name" placeholder="Full Name">
+              </div>
+            </div>
+            <div class="form-group padding_margin0">
+              <label for="textInput" class="col-sm-21 control-label " style="padding-left:0; padding-right:0;" id="">Mobile No. <span style="color:#F00">*</span></label>
+              <div class="col-sm-2">
+                 <input id="outstationMobile" value="<?php echo $_SESSION['outstationMobile']; ?>" name="outstationMobile" type="text" class="form-control ui-autocomplete-input inputfild outstation_phno" placeholder="Mobile No." >
+            </input>
+              </div>
+            </div>
+            
+            <div class="form-group padding_margin0">
+             
+              <div class="col-sm-2">
+                 <input id="outstationMobile2" value="<?php echo $_SESSION['outstationMobile2']; ?>" name="outstationMobile2" type="text" class="form-control ui-autocomplete-input inputfild outstation_phno" placeholder="Mobile No2." >
+            </input>
+              </div>
+            </div>
+            
+            
+            
+            <div class="form-group padding_margin0">
+              <label for="textInput" class="col-sm-1 control-label" id="">Email <span style="color:#F00">*</span></label>
+              <div class="col-sm-41 col-sm-21outdate1">
+               <input id="outstationEmail" name="outstationEmail" value="<?php echo $_SESSION['outstationEmail']; ?>" type="email" class="form-control ui-autocomplete-input inputfild" placeholder="Email">
+            </input>
+              </div>
+            </div>
+          </div>
+          
+		<?php } ?> 
+          
+          
+          <div class="row" id="countryMultiple" style="display:block" >
+          <div class="col-md-12 col-lg-12 multiplerow">
+            <div class="" style="padding:5px 0;">
+              <label id="" class="col-sm-21" style="color:#fff;">From<span style="color:#F00">*</span></label>
+              <div class="col-sm-2">
+               <select id="outRoundtripfrom" name="outRoundtripfrom" onChange="citySelection4(this.value)" class="form-control check_booking" >
+             
+                  <option value="<?php echo $_SESSION['outRoundtripfrom']; ?>" ><?php echo $_SESSION['outRoundtripfrom']; ?></option>
+              </select>
+              </div>
+              <label id="outstation_to"  class="col-sm-21 col-sm-21inter" style="display:block; color:#fff; width:4% !important;">To<span style="color:#F00">*</span></label>
+               <div class="col-sm-2">
+                    <select id="outRoundtripto" name="outRoundtripto" class=" form-control" onChange="mapping(this.id);">
+			  <option value="<?php echo $_SESSION['outRoundtripto']; ?>" ><?php echo $_SESSION['outRoundtripto']; ?></option>
+              </select>
+              </div>
+              
+              <label id="" class="col-sm-21"  style="color:#fff; margin-right:8px;">Departure<span style="color:#F00">*</span></label>
+               <div class="col-sm-2">
+               
+   <input name="outstation_Ddate" id="outstation_Ddate" type="text" class=" form-control inputfild" onChange="StationpickHour(0);" value="<?php echo $_SESSION['outstation_Ddate']; ?>" />
+              </div>
+              
+               
+               <div class="col-sm-2 col-sm-21out">
+             <select id="outPickupTimeH" name="outPickupTimeH" onchange="StationpickHour();" name="field_8h" class="form-control">
+              <option value="<?php echo $_SESSION['outPickupTimeH']; ?>"><?php echo $_SESSION['outPickupTimeH']; ?></option>
+             
+            </select>
+              </div>
+              
+               <div class="col-sm-21 col-sm-21out">
+          
+           <select id="outPickupTimeM" name="outPickupTimeM" class=" form-control">
+              <option value="<?php echo $_SESSION['outPickupTimeM']; ?>"><?php echo $_SESSION['outPickupTimeM']; ?></option>
+              
+            </select>
+          </div>
+            
+             <div class="col-sm-21 col-sm-21out">
+            
+          <input type="textbox" id="no_ofdays" name="NoOfday" onFocus="" class=" form-control inputfild" placeholder="No. of Day" value="<?php echo $_SESSION['NoOfday']; ?>">
+           
+			<input type="hidden" name="BookingType" value="104">
+           
+          </div>
+              
+              
+            </div>
+            
+            
+          </div>
+          
+          <div class="col-md-12 col-lg-12 multiplerow">
+            <div class="" style="padding:5px 0;">
+              <label id="" class="col-sm-21" style="color:#fff;">From<span style="color:#F00">*</span></label>
+              
+              <div class="col-sm-2">
+
+						<input id="cityFromr1" class="form-control inputfild" type="text" value="<?php echo $_SESSION['outRoundtripto']; ?>" ><?php echo $_SESSION['outRoundtripto']; ?>">
+
+              <!-- <select id="outRoundtripfrom" name="outRoundtripfrom" class="form-control check_booking" >-->
+                <!--                                                  	<option>Please Select</option>
+                                                        <option value="Delhi/NCR">Delhi/NCR</option>-->
+              <!--</select>-->
+              </div>
+              <label id="outstation_to"  class="col-sm-21 col-sm-21inter" style="display:block; color:#fff; width:4% !important;">To<span style="color:#F00">*</span></label>
+               <div class="col-sm-2">
+						<input id="cityFromt1" class="form-control inputfild" type="text" value="<?php echo $_SESSION['outRoundtripfrom']; ?>" ><?php echo $_SESSION['outRoundtripfrom']; ?>">
+                 <!--<select id="outRoundtripto2" name="outRoundtripto2" class=" form-control" onchange="mapping(this.id);">
+              </select> -->
+              </div>
+                                  <label id="" class="col-sm-21"  style="color:#fff; margin-right:8px;">Return<span style="color:#F00">*</span></label>
+               <div class="col-sm-2">
+               
+              
+ <input  name="outstation_Rdate" id="outstation_Rdate"  type="text" class=" form-control inputfild" value="<?php echo $_SESSION['outstation_Rdate']; ?>" />
+              </div>
+              
+               <div class="col-sm-2 col-sm-21out">
+           <select id="outReturnTimeH" name="outReturnTimeH" onChange="StationpickHourRet();" class="form-control">
+              <option value="<?php echo $_SESSION['outReturnTimeH']; ?>"><?php echo $_SESSION['outReturnTimeH']; ?></option>
+             
+            </select>
+              </div>
+              
+               <div class="col-sm-21 col-sm-21out">
+          
+            <select id="outReturnTimeM" name="outReturnTimeM" class=" form-control">
+                <option value="<?php echo $_SESSION['outReturnTimeM']; ?>"><?php echo $_SESSION['outReturnTimeM']; ?></option>
+            </select>
+          </div>
+            </div>
+          </div>
+        </div>
+          <div class="row" id="countryoneway" style="display:none" >
+          <div class="col-md-12 col-lg-12 multiplerow">
+            <div class="" style="padding:5px 0;">
+              <label id="" class="col-sm-21" style="color:#fff;">From<span style="color:#F00">*</span></label>
+              <div class="col-sm-2">
+               <select id="outRoundtripfrom" name="outRoundtripfrom" class="form-control check_booking" >
+                <!--                                                  	<option>Please Select</option>
+                                                        <option value="Delhi/NCR">Delhi/NCR</option>-->
+              </select>
+              </div>
+              <label id="outstation_to"  class="col-sm-21 col-sm-21inter" style="display:block; color:#fff; width:4% !important;">To<span style="color:#F00">*</span></label>
+               <div class="col-sm-2">
+                  <select id="outRoundtripto" name="outRoundtripto" class=" form-control" onChange="mapping(this.id);">
+              </select>
+              </div>
+              <label id="" class="col-sm-21"  style="color:#fff; margin-right:8px;">Departure<span style="color:#F00">*</span></label>
+               <div class="col-sm-2">
+              
+    <input id="outstationone_Ddate" name="outstationone_Ddate" type="text" class=" form-control inputfild" onChange="" value=""
+     placeholder="<?php echo date("d-m-Y")?>"/>
+              </div>
+              
+              
+               <div class="col-sm-2 col-sm-21out">
+             <select id="outPickuponTimeH" onChange="StationpickHour();" name="outPickuponTimeH" class="form-control">
+              <option value="hrs">Hrs</option>
+             
+            </select>
+              </div>
+              
+               <div class="col-sm-21 col-sm-21out">
+          
+             <select id="outPickuponTimeM" name="outonPickupTimeM" class=" form-control">
+              <option value="min">Min</option>
+              
+            </select>
+          </div>
+            
+             <div class="col-sm-21 col-sm-21out">
+            
+          <input type="textbox" id="no_ofodays" name="NoOfoday" onFocus="DaysBetween();" class=" form-control inputfild" placeholder="No. of Day" value="">
+           
+			<input type="hidden" name="BookingType" value="104">
+           
+          </div>
+              
+              
+            </div>
+            
+            
+          </div>
+          
+        </div>
+          
+          
+        
+      </div>
+      
+      
+      
+      <!--multiple address-->
+      <div id="addCity" style="display:none">
+        <div class="row" >
+          <div class="col-md-12 col-lg-12 multiplerow">
+            <div class="" style="padding:5px 0;">
+              <label id="" class="col-sm-21" style="color:#fff;">From<span style="color:#F00">*</span></label>
+              <div class="col-sm-2">
+              <select id="cityFrom0" name="field" onChange="citySelection5(this.value)" class="form-control outstationCities">
+              </select>
+              </div>
+              <label id="outstation_to"  class="col-sm-21 col-sm-21inter" style="display:block; color:#fff; width:4% !important;">To<span style="color:#F00">*</span></label>
+               <div class="col-sm-2">
+                  <select id="multicityapd0" name="" class=" form-control" onChange="citySelection2(this.id); multiMap(this.id);">
+                  </select>
+              </div>
+              <label id="" class="col-sm-21"  style="color:#fff; margin-right:9px">Departure<span style="color:#F00">*</span></label>
+               <div class="col-sm-2">
+              <input id="outstationM_Ddate" name="outstationM_Ddate" onChange="StationpickHour(0);" type="text"  class=" form-control datepick inputfild" placeholder="<?php echo date("d-m-Y")?>">
+              </div>
+              
+               <div class="col-sm-2 col-sm-21out">
+            <select id="outPickupTimeH1" name="outPickupTimeH1" onChange="StationpickHour1();" class="form-control">
+              <option value="hrs">Hrs</option>
+             
+            </select>
+              </div>
+              
+               <div class="col-sm-21 col-sm-21out">
+          
+            <select id="outPickupTimeM1" name="outPickupTimeM1" class=" form-control">
+              <option value="min">Min</option>
+             
+            </select>
+          </div>
+            
+             <div class="col-sm-21 col-sm-21out">
+            
+         <input type="textbox" name="Nofday" class=" form-control inputfild" placeholder="No of Day">
+           
+          </div>
+              
+              
+            </div>
+            
+            
+          </div>
+          
+        </div>
+        <div class="row" >
+          <div class="col-md-12 col-lg-12 multiplerow">
+            <div class="" style="padding-top:5px;">
+            
+            <label id="" class="col-sm-21" style="color:#fff;">From<span style="color:#F00">*</span></label>
+              <div class="col-sm-2">
+               <input id="cityFrom1" type="text" class="form-control inputfild" >
+              </div>
+            
+            <label id="" class="col-sm-21 col-sm-21inter" style="display:block; color:#fff; width:4% !important;">To<span style="color:#F00">*</span></label>
+              <div class="col-sm-2">
+               <select id="multicityapd1" name="" class=" form-control" onChange="citySelection2(this.id);multiMap(this.id); ">
+                  </select>
+              </div>
+           
+            
+            <label id="" class="col-sm-21" style="color:#fff; margin-right:9px"">Departure<span style="color:#F00">*</span></label>
+              <div class="col-sm-2">
+               <input id="outstationM_Rdate" name="outstationM_Rdate" onChange="StationpickHour(0);" type="text"  class=" form-control datepick inputfild" placeholder="<?php echo date("d-m-Y")?>">
+              </div>
+           
+           <div class="col-sm-21 col-sm-21out" style="padding-top:5px;">
+            
+            <select id="outPickupTimeH2" name="outPickupTimeH2" onChange="StationpickHour();" class="form-control">
+              <option value="hrs">Hrs</option>
+             
+            </select>
+          
+         </div>
+       
+           <div class="col-sm-21 col-sm-21out" style="padding-top:5px;">
+          
+            <select id="outPickupTimeM2" name="outPickupTimeM2" class=" form-control">
+              <option value="min">Min</option>
+             
+            </select>
+          </div>
+            
+             <div class="col-sm-21 col-sm-21out" style="padding-top:5px;">
+            
+         <input type="textbox" name="Nofday" class=" form-control inputfild" placeholder="No of Day">
+           
+          </div>
+          
+            </div>
+         
+          </div>
+        </div>
+      </div>
+      <!--add div form-->
+      <div id="addCityForm" ></div>
+      <!--add div form--> 
+      
+      <!--add button-->
+      <div id="addCitybutton" onClick="addCitybutton();" style="display:none;width: 150px; font-family: arial; background: #333; font-weight: bold;padding: 2px 10px;margin-top: 5px;border: 1px solid #000; margin:10px 0 0"> <a href="#" style="color:white" id="outstation_addcity"></a> </div>
+      <!--add button end--> 
+      
+	  
+	  <div class="row" style="padding:10px 10px 0;">
+      <div class="userInfoLocal" style="padding-left:5px;">
+      
+   <div class="row clearfix" style="padding-bottom:10px; display: block">
+   
+            <div class="form-group padding_margin0">
+              <label for="textInput" class="col-sm-21 control-label" id="">Nationality </label>
+              <div class="col-sm-2">
+               <select id="outstationNationalit" name="outstationNationality" class="inputfild form-control valid" aria-invalid="false">
+               <option value="<?php echo $_SESSION['outstationNationality']; ?>" id="localCabFor0"><?php echo $_SESSION['outstationNationality']; ?></option>
+                <option value="Indian" id="localCabFor0">Indian</option>
+                <option value="Non-Indian" id="localCabFor1">Non-Indian</option>
+              </select>
+              </div>
+            </div>
+            
+            <div class="form-group padding_margin0">
+              <label for="textInput" class="col-sm-21 col-sm-21local control-label " style="padding-left:0 !important; padding-right:0 !important;" id="">No. of Adults <span style="color:#F00">*</span></label>
+              <div class="col-sm-21 col-sm-21out">
+              <select id="outstationAdult" name="outstationAdults" class="inputfild form-control">
+              <option value="<?php echo $_SESSION['outstationAdults']; ?>" ><?php echo $_SESSION['outstationAdults']; ?></option>
+              </select>
+              </div>
+            </div>
+            
+            <div class="form-group padding_margin0">
+             <label for="textInput" class="col-sm-2 control-label col-sm-21local " style="padding-left:0 !important; padding-right:0 !important;" id="">No. of Children </label>
+              <div class="col-sm-21 col-sm-21out">
+              <select id="outstationChild" name="outstationChilds" class="inputfild form-control">
+              <option value="<?php echo $_SESSION['outstationChilds']; ?>" ><?php echo $_SESSION['outstationChilds']; ?></option>
+              </select>
+              </div>
+            </div>
+            
+            <div class="form-group padding_margin0">
+              <label for="textInput" class="col-sm-21 col-sm-21local control-label" id="" style="margin-right:-2px; padding-right:0 !important; padding-left:0 !important;">No. of Luggages </label>
+              <div class="col-sm-21 col-sm-21out">
+                <select id="outstationLuggage" name="outstationLuggages" class="inputfild form-control">
+                <option value="<?php echo $_SESSION['outstationLuggages']; ?>" ><?php echo $_SESSION['outstationLuggages']; ?></option>
+                
+              </select>
+              </div>
+            </div>
+            
+          </div>
+      
+      </div>
+      </div>
+      
+      
+      <hr style="margin:6px auto 6px;"/>
+      <div class="row" style="padding-left:10px;">
+      
+      <div class="form-group clearfix">
+        <label class="col-sm-21" id="" style="margin-right:; padding-top:10px; color:#fff; padding-right:0 !important; padding-left:0 !important;">No of Cars </label>
+        <div class="radioWrap col-sm-2" style="margin-top:5px; padding-left:0 !important;">
+        
+        <select id="NoOfCar_outstation" name="NoOfCar_outstation" class="inputfild form-control">
+        
+         <option value="<?php echo $_SESSION['NoOfCar_outstation']; ?>" selected ><?php echo $_SESSION['NoOfCar_outstation']; ?></option>
+        
+              </select>
+        
+      
+          <span></span></div>
+		 
+       
+        
+       
+        <div class="radioWrap col-sm-2" style="margin-top:5px;">
+          <input type="text" name="coupan_code_outstation" placeholder="Coupon Code" id="coupan_code_outstation" onClick="" class="form-control ui-autocomplete-input inputfild loc_req_fields" >
+          <span></span></div>
+		  <label id="apply_coupancode_outstation" style="float:left; padding-top:10px; margin-right:10px;"><a href="#" > Apply Coupon </a></label>
+          
+       
+          
+		  <div id="outstation_coupan_msg"></div>
+		  <div id=""> <input type="hidden" name="outstation_coupan_id" id="outstation_coupan_id" /> 
+		  <input type="hidden" name="outstation_DiscountType" id="outstation_DiscountType" />
+		  <input type="hidden" name="outstation_coupan_disount" id="outstation_coupan_disount" /> 
+		  <input type="hidden" name="outstation_Promo_Name" id="outstation_Promo_Name" /></div>
+       
+       </div>
+      </div>
+      <div class="row">
+      
+      
+      
+    <div class="form-group clearfix" style="margin:0;">
+      <div class="col-sm-11">
+        <label id="local_carsTypes" style="margin-bottom:0; margin-right:24px; color:#fff;">Car Types</label>
+        <label class="radio-inline specs mytip economy" data-toggle="tooltip" data-placement="bottom" title="Minimum Charge: 989">
+        <div class="radioWrap">
+          <input type="radio" name="cartype" onClick="carbook(this.id);" class="radiobtnalign" Value="1"  id="economy" checked="">
+          <span></span></div>
+        <span id="local_economy" style="color:;">Economy</span>&nbsp;&nbsp;<i class="fa fa-taxi fa-1_5x" style="color:;"></i>
+        </label>
+        <label class="radio-inline specs  mytip sedan" data-toggle="tooltip" data-placement="bottom" title=" Minimum Charge: 1455" style="padding-left:47px !important;">
+        <div class="radioWrap">
+           <input type="radio" name="cartype" onClick="carbook(this.id);" class="radiobtnalign" value="2"  id="prime">
+          <span></span></div>
+        <span id="local_prime" style="color:;">Sedan</span>&nbsp;&nbsp;<i class="fa fa-car fa-1_5x" style="color:;"></i>
+        </label>
+        <label class="radio-inline specs mytip prime" data-toggle="tooltip" data-placement="bottom" title="Minimum Charge: 1670" style="padding-left:47px !important;">
+        <div class="radioWrap">
+           <input type="radio" name="cartype" onClick="carbook(this.id);" class="radiobtnalign" value="3"  id="higher">
+          <span></span></div>
+        <span id="local_higher" style="color:;">Prime</span>&nbsp;&nbsp;<i class="fa fa-car fa-1_5x" style="color:;"></i>
+        </label>
+                        
+      </div>
+    </div>
+    
+  </div>
+      
+      
+      <hr style=" margin-bottom:6px !important; margin-top:0 !important;"/>
+      
+      <div class="row">
+      
+      <div class="col-sm-11" style="margin-top:; margin-bottom:10px; color:;">
+      Coming Mode is Flight 
+      <label class="radio-inline specs mytip" data-toggle="" data-placement="bottom" title="" style="padding-left:47px !important;">
+        <div class="radioWrap">
+           <input type="radio" name="flightmode" onClick="showMe('didfv3', this)" class="radiobtnalign" value="yes"  id="">
+          <span></span></div>
+        <span id="local_higher" style="color:;">Yes</span
+        ></label>
+        
+         <label class="radio-inline specs mytip" data-toggle="" data-placement="bottom" title="" style="padding-left:47px !important;">
+        <div class="radioWrap">
+           <input type="radio" name="flightmode" onClick="showMe1('didfv3', this)" class="radiobtnalign" value="no"  id="">
+          <span></span></div>
+        <span id="local_higher" style="color:;">No</span
+        ></label>
+      
+      </div>
+      
+      </div>
+      
+       <div class="row" id="didfv3" style="display:none;">  
+        <div class="form-group padding_margin0" style="margin-top:;">
+          <label id="flight_nos1" name="flight_no" class="col-sm-2 control-label" >Flight No</label>
+          <div class="col-sm-4">
+            <input id="airFlightNo" type="text" class=" form-control inputfild" />
+          </div>
+        </div>
+        <div class="form-group clearfix">
+          <label id="flight_time" class="col-sm-2 control-label paddingleft30">Flight Time</label>
+           <div class="col-sm-2">
+             
+            <select id="flightTimeH" name="flightTimeH" onChange="StationpickHour();" class="form-control">
+              <option value="hrs">Hrs</option>
+             
+            </select>
+          </div>
+         
+       
+           <div class="col-sm-2">
+          
+            <select id="flightTimeM" name="flightTimeM" class=" form-control">
+              <option value="min">Min</option>
+             
+            </select>
+			<input type="hidden" name="BookingType" value="104">
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+      	<div class="">
+        <div class="form-group padding_margin0">
+          <label id="" class="col-sm-2 form-contro" style="padding-left:10px;">Pickup Address*</label>
+          <div class="col-sm-4">
+            <textarea id="outPickupAddress" name="outPickupAddress" class="form-control StationPick "  placeholder="" onBlur="mappingOut();" style="height:40px !important;"><?php echo $_SESSION['outPickupAddress']; ?></textarea>
+          </div>
+        </div>
+        <div class="form-group padding_margin0">
+          <label id="outstation_pickup_time" class="col-sm-2 form-contro"></label>
+          
+        </div>
+           </div>
+             <div class="col-sm-12">   
+        <div class="col-sm-6" style="margin-right: 1px; padding-left:0;" id="bookingGroundTrip"> 
+       <a href="#" id="104"  type="button" class=" btn btn-lg bg-primary col-sm-12 makebookingbtn outstationBooking" value="Make Your Booking Now"/>Make Your Booking Now</a> 
+        </div>
+        <div class="col-sm-6" style="margin-right: 1px; padding-left:0; display:none" id="bookingMultyCity"> 
+        <a href="#" onClick="bookingmulitCity();" type="button" class=" btn btn-lg bg-primary col-sm-12 makebookingbtn" value="" id="outstation_book"/></a> 
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<!--Outstation End-->
+              
+            </div>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+    </div>
+    <div class="banner-bottom-grids">
+      <div class="col-md-41n banner-bottom-grid">
+        <div class="destinations-grid-info " style="margin-bottom:; background:none !important; padding-left:0 !important; padding-right:0 !important;">
+          <div class="mapcantiner_inner1" style="padding:0 !important;">
+            <div class="" style="margin:0 0 10px; padding:0 0 10px;">
+              <div class="col-md-31 sightmargin overviueimg5" align="left" style="padding-left:0 !important;">
+                <h4>Round Trip Car</h4>
+              </div>
+              <div class="col-md-31 sightmargin overviueimg2car" align="left"> </div>
+              <div class="col-md-31 sightmargin overviueimg5" align="left" style="width:12%; float:right;">
+                <select class="input-sm pull-right hidden-xs currency_selection ng-pristine ng-valid form-control" ng-change="currencyChanged(selectedCurrency)" ng-options="currency.name for currency in availableCurrencies" ng-model="selectedCurrency" name="currency_selection">
+                  <option value="0">USD</option>
+                  <option value="1">INR)</option>
+                  <option value="2">DZD</option>
+                  <option value="3">ARS</option>
+                  <option value="4">AUD</option>
+                  <option value="5">BHD</option>
+                  <option value="6">BDT</option>
+                  <option value="7">BOB</option>
+                  <option value="8">BWP</option>
+                  <option value="9">BRL</option>
+                  <option value="10">GBP</option>
+                  <option value="11">BND</option>
+                  <option value="12">BGN</option>
+                  <option value="13">KYD</option>
+                  <option value="14">CNY</option>
+                  <option value="15">COP</option>
+                  <option value="16">CRC</option>
+                  <option value="17">HRK</option>
+                  <option value="18">DKK</option>
+                  <option value="19">DOP</option>
+                  <option value="20">EGP</option>
+                  <option value="21">EEK</option>
+                  <option value="22">EUR</option>
+                  <option value="23">FJD</option>
+                  <option value="24">HNL</option>
+                  <option value="25">HKD</option>
+                  <option value="26">HUF</option>
+                  <option value="27">IDR</option>
+                 
+                </select>
+              </div>
+              <!-- 
+                            <div class="col-md-31 sightmargin overviueimg2" align="left">
+									 <span class="vehicle_name">No of Cars</span><br>
+                                   
+							</div> --> 
+              
+            </div>
+          </div>
+        </div>
+        <div>
+        
+        <div class="destinations-grid-info tours tourstype" style="margin-bottom:10px !important;">
+          <div class="mapcantiner_inner1" style="padding:0 !important;">
+            <div class="" style="margin:0 0 10px; padding:0 0 10px;">
+              <div class="col-md-31 sightmargin overviueimgcar" align="left"> Car Type </div>
+              <div class="col-md-31 sightmargin overviueimg2car" align="left"> </div>
+              <div class="col-md-31 sightmargin overviueimg2car1" align="left" > <span class="vehicle_name">Departure</span><br>
+              </div>
+              <div class="col-md-31 sightmargin overviueimg2car1" align="left" style="line-height:;" > <span class="vehicle_name">Duration</span><br>
+              </div>
+              <div class="col-md-31 sightmargin overviueimg2" align="left"> <span class="vehicle_name">Arrival</span><br>
+              </div>
+              <div class="col-md-31 sightmargin overviueimg2" align="left"> <span class="fare_details">Price</span> </div>
+              
+									<!-- 
+                            <div class="col-md-31 sightmargin overviueimg2" align="left">
+									 <span class="vehicle_name">No of Cars</span><br>
+                                   
+							</div> --> 
+              
+            </div>
+          </div>
+          
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+<?php
+$i=1;
+foreach($session as $val)
+{
+
+$Cabcapacity = $val['Cabcapacity'];
+$speed_per_km = $val['speed_per_km'];
+$radius = $val['radius'];
+$con=mysqli_connect("10.0.0.35","root","Travel@(4242)","hello42_new");
+$No_Of_Adults = $_SESSION['outstationAdults'];
+$_SESSION['Cabtype']= $val['Cabtype'];
+$Cabtypeid = $_SESSION['Cabtype'];
+$qryCab = "select ModelName, Cabcapacity from tblcabmodelmaster where CabTypeId = '$Cabtypeid'";
+$resultCab = mysqli_query($con, $qryCab);
+
+//echo $Cabcapacity;
+if($No_Of_Adults <= $Cabcapacity)
+{
+
+$_SESSION['CabCategory']= $val['CabCategory'];
+//$_SESSION['CabModel']= $val['CabModel'];	
+$_SESSION['distance']=$val['distance'];
+if($val['CabCategory']=='')
+{
+}
+else
+{
+//echo $val['id'];
+$val['MinimumCharge'];
+$val['CabModel'];
+
+$cal_min = intval($val['distance']+$radius)*60/$speed_per_km;
+$cal_hour = $cal_min/60;
+$cal_minute = $cal_min%60;
+
+$outstation_pickup = $_SESSION['outstation_Ddate'];
+$outstation_return = $_SESSION['outstation_Rdate'];
+// echo date('Y-m-d', strtotime("$outstation_pickup +1 day"));  
+//$date = strtotime("+1 day", $_SESSION['outstation_Ddate']);
+//echo date("Y-m-d", $date);
+//echo  $time = strtotime("+1 day", $_SESSION['outstation_Ddate']);
+//echo $val['MinimumCharge'];
+//echo $val['Per_Km_Charge'];
+//}
+?>         
+      <div class="destinations-grid-info tours resutldiv">
+                       
+                          <div class="mapcantiner_inner1" style="padding:0 !important;">
+                          
+                          
+                          
+	 <div class="" style="margin:0 0 10px; padding:0 0 10px;">
+     <div class="col-md-31 sightmargin overviueimgcar" align="left">
+									<span class="image_box" style="height:auto; width:100%; padding:5px; margin:0;">
+	
+	<img src="<?php echo $path; ?>/public/images/vehicle.png" style="width:100%; height:;"></span>
+     <br>
+                            <?php  echo $_SESSION['CabCategory']."<br/>";
+
+								  ?>
+							</div>
+                             <div>
+                            <?php 
+                            while($infoCab = mysqli_fetch_assoc($resultCab))
+								{
+									echo $infoCab['ModelName'].", ";
+									//$Cabcapacity=$infoCab['Cabcapacity'];
+								}
+							?></div>
+                             <div class="col-md-31 sightmargin overviueimg2car" align="left">
+							
+<div class="amenities">
+                                                <ul>
+                                     <li style="float:left; line-height:13px;  padding: 0 0 0 5px; text-align:center;"><i class="icon_pertion"></i><br><br><?php echo $Cabcapacity; ?></li></li>
+                                     <li style="float:left; line-height:13px;  padding: 0 0 0 5px; text-align:center;"><i class="icon_lagguge"></i><br><br><?php echo $_SESSION['outstationLuggages']; ?></li>
+                                     <li style="float:left; line-height:13px;  padding: 0 0 0 5px; text-align:center;"><i class="icon_ac"></i><br><br>AC</li>
+                                                </ul>
+                                            </div>
+                			</div>
+    
+      <div class="col-md-31 sightmargin overviueimg2car1" align="left" >
+									 <span class="vehicle_name"><?php echo $_SESSION['outRoundtripfrom']; ?></span><br>
+                                      <span class="vehicle_name"><?php echo $_SESSION['outstation_Ddate'];?> <br> <?php echo $_SESSION['outPickupTimeH']?>:<?php echo $_SESSION['outPickupTimeM'];?></span>
+	
+									
+							</div>
+                            
+       <div class="col-md-31 sightmargin overviueimg2car1" align="left" style="line-height:;" >
+									 <span class="vehicle_name">No of Days <?php echo $_SESSION['NoOfday']; ?> <br> <?php echo intval($val['distance']+$radius);?> KM </span><br>
+              <br>                        
+	
+									
+							</div>  
+                            
+         
+                            
+       <div class="col-md-31 sightmargin overviueimg2" align="left">
+									<span class="vehicle_name"><?php echo $_SESSION['outRoundtripfrom']; ?></span><br>
+                                      <span class="vehicle_name"><?php echo $_SESSION['outstation_Rdate']; ?><br><?php echo ($_SESSION['outReturnTimeH']+intval($cal_hour))?>:<?php echo ($_SESSION['outReturnTimeM']+$cal_minute)?></span></span>
+	
+									
+							</div>  
+
+                             <div class="col-md-31 sightmargin overviueimg2" align="left">
+									<span class="fare_details" style="line-height:; margin-top:80px;">Charge: <br><i class="fa fa-rupee fa-1x"></i><?php echo 
+									$val['cab_charge'];?><br> 
+	<input name="MinimumCharge" value="11500" type="hidden">
+	<a href="#" class="fareDetails" data-toggle="modal" data-target="#myModal"><center style="text-decoration:underline; text-align:left;"></center></a></span>
+    
+    <div class="fare-summery-box">
+                                                       Fare Details
+                            <div class="fare-su-details animated fadeIn"> 
+                            <dl class="faresummarybox">
+                            <dt><span>Base Fare</span>
+                            <span><i class="fa fa-rupee fa-1x"></i> 
+                            <?php echo 
+									$val['cab_charge'];?>                            </span></dt>
+                            <dd><span>Driver Allowance:</span> <span><?php echo $v['NightCharges']; ?> x <?php echo $_SESSION['NoOfday']; ?> Days = <i class="fa fa-rupee fa-1x"></i>300.00           </span></dd>
+                            <dd><span>Service-Tax(5.8%):</span><span>Included   </span></dd>             
+                            <dd><span>Toll-Tax:</span><span>Excluded  </span></dd>            
+                            <dd><span>Parking:</span><span>Extra(if applicable)  </span></dd>        
+                            <dd><span>State-Tax: </span><span>Excluded</span></dd> 
+                              <dd style="font-size:12px; font-weight:500;">
+                             <strong>Note:</strong><br>Ext. Chrg. After <?php echo intval($val['distance']+$radius);?> Kms. = <i class="fa fa-rupee fa-1x"></i><?php echo $v['extra_km_charges']; ?>/Km.     
+                             </dd>
+              </dl> 
+             </div>
+                                                          </div>
+	
+	
+									
+							</div>
+                            
+                            <div class="col-md-31 sightmargin overviueimgcar" align="left">
+									 <span ><a href="#"  id="<?php echo $val['id']; ?>" class="bookcar">Select</a></span>
+									
+							</div>
+                           
+    
+    
+	
+	
+    </div>
+    
+    <div class="morediv itarget" rel="dvcarresult<?php echo $i;?>" align="center" style="text-align:center !important;">
+    	<img src="<?php echo $path; ?>/public/images/more_but.jpg" style="height:21px; width:21px; cursor:pointer;">
+    </div>
+    
+    </div>
+    
+     <div class="mapcantiner_inner1" style="padding:0 !important; padding-bottom:5px !important; background:#ccc; float:left; display:none;" id="dvcarresult<?php echo $i;?>">
+				 <div class="testimonial_box" style="margin:0 0 10px; padding:10px 0 10px;">
+     <div class="col-md-31 sightmargin overviueimgcar" align="left">
+									<span class="image_box" style="height:auto; width:100%; padding:5px; margin:0;">
+	
+	<img src="<?php echo $path; ?>/public/images/vehicle.png" style="width:100%; height:;"></span>
+     <br>
+                           <?php  echo $_SESSION['CabCategory']."<br/>";
+
+								  ?>
+							</div>
+                            
+                             <div class="col-md-31 sightmargin overviueimg2car" align="left">
+							
+<div class="amenities">
+                                                <ul>
+                                     <li style="float:left; line-height:13px;  padding: 0 0 0 5px; text-align:center;"><i class="icon_pertion"></i><br><br><?php echo $Cabcapacity; ?></li>
+                                     <li style="float:left; line-height:13px;  padding: 0 0 0 5px; text-align:center;"><i class="icon_lagguge"></i><br><br><?php echo $_SESSION['outstationLuggages']; ?></li>
+                                     <li style="float:left; line-height:13px;  padding: 0 0 0 5px; text-align:center;"><i class="icon_ac"></i><br><br>AC</li>
+                                                </ul>
+                                            </div>
+                			</div>
+    
+      <div class="col-md-31 sightmargin overviueimg2car1" align="left" >
+									 <span class="vehicle_name"><?php echo $_SESSION['outRoundtripfrom']; ?></span><br>
+                                      <span class="vehicle_name"><?php echo $_SESSION['outstation_Ddate'];?> <br> <?php echo $_SESSION['outPickupTimeH']?>:<?php echo $_SESSION['outPickupTimeM'];?></span>
+	
+									
+							</div>
+                            
+       <div class="col-md-31 sightmargin overviueimg2car1" align="left" style="line-height:55px;" >
+									 <span class="vehicle_name"><?php echo intval($cal_hour); ?>h <?php echo $cal_minute; ?>m | <?php echo intval($val['distance']+$radius);?> KM </span><br>
+                                      
+	
+									
+							</div>  
+                            
+         
+                            
+       <div class="col-md-31 sightmargin overviueimg2" align="left">
+									<span class="vehicle_name"><?php echo $_SESSION['outRoundtripto']; ?></span><br>
+                                      <span class="vehicle_name">
+									  <?php if(($_SESSION['outPickupTimeH']+intval($cal_hour))< 24)
+									        { echo $_SESSION['outstation_Ddate']; }
+										     else
+											{  echo date('Y-m-d', strtotime("$outstation_pickup +1 day")); }
+								       ?>
+                                       <br>
+									  <?php echo ($_SESSION['outPickupTimeH']+intval($cal_hour))?>:<?php echo ($_SESSION['outPickupTimeM']+$cal_minute)?>
+									  <?php
+									  /* if(($_SESSION['outPickupTimeH']+intval($cal_hour))< 24)
+									        { echo ($_SESSION['outPickupTimeH']+intval($cal_hour))?>:<?php echo ($_SESSION['outPickupTimeM']+$cal_minute) }
+										     else
+											{   */
+										/* $tot_h = $_SESSION['outPickupTimeH']+intval($cal_hour);
+                                        $rem_h =  $tot_h - 24; 
+										 echo $rem_h; */?><?php //echo ($_SESSION['outPickupTimeM']+$cal_minute);
+										
+										//}
+									  ?>
+	
+									
+							</div>  
+                            
+                             <!--<div class="col-md-31 sightmargin overviueimg2" align="left">
+									<span class="fare_details" style="line-height:; margin-top:80px;">Charge: <?php echo 
+									$val['cab_charge'];?></span><br> 
+	<i class="fa fa-rupee fa-1x"></i><input name="MinimumCharge" value="11500" type="hidden">
+	<div class="fare-summery-box">
+                                                       Fare Details
+                            <div class="fare-su-details animated fadeIn"> 
+                            <dl class="faresummarybox">
+                            <dt><span>Base Fare</span>
+                            <span><i class="fa fa-rupee fa-1x"></i> 
+                            7560.00                            </span></dt>
+                            <dd><span>Driver Allowance:</span> <span>300 x 1 Days = <i class="fa fa-rupee fa-1x"></i>300.00           </span></dd>
+                            <dd><span>Service-Tax(5.8%):</span><span>Included   </span></dd>             
+                            <dd><span>Toll-Tax:</span><span>Excluded  </span></dd>            
+                            <dd><span>Parking:</span><span>Extra(if applicable)  </span></dd>        
+                            <dd><span>State-Tax: </span><span>Excluded</span></dd> 
+                              <dd style="font-size:12px; font-weight:500;">
+                             <strong>Note:</strong><br>Ext. Chrg. After 420 Kms. = <i class="fa fa-rupee fa-1x"></i>18/Km.     
+                             </dd>
+              </dl> 
+             </div>
+                                                          </div>
+	
+	
+									
+							</div>-->
+                            
+                            
+                            <div class="col-md-31 sightmargin overviueimg2" align="left">
+                            <br>
+									 <span class="vehicle_name">No of Cars</span><br>
+                                      <span class="vehicle_name">
+                                     <?php echo $_SESSION['NoOfCar_outstation']; ?>
+                                      </span>
+                                      
+	
+									
+							</div>            
+                            
+ 	
+     <div class="col-md-31 sightmargin overviueimgcar" align="left">
+     <br>
+									 <span >No of Days</span><br>
+                                      <span ><?php echo $_SESSION['NoOfday']; ?></span>
+									
+							</div>
+	
+    
+    
+	
+	
+    </div>
+    
+   				 <div class="testimonial_box" style="margin:0 0 10px; padding:0 0 10px;">
+     <div class="col-md-31 sightmargin overviueimgcar" align="left">
+									<span class="image_box" style="height:auto; width:100%; padding:5px; margin:0;">
+	
+	<img src="<?php echo $path; ?>/public/images/vehicle.png" style="width:100%; height:;"></span>
+     <br>
+                            <?php  echo $_SESSION['CabCategory'];
+
+								  ?>
+                                  
+                                  
+							</div>
+                            
+                             <div class="col-md-31 sightmargin overviueimg2car" align="left">
+							
+<div class="amenities">
+                                                <ul>
+                                     <li style="float:left; line-height:13px;  padding: 0 0 0 5px; text-align:center;"><i class="icon_pertion"></i><br><br><?php echo $Cabcapacity; ?></li>
+                                     <li style="float:left; line-height:13px;  padding: 0 0 0 5px; text-align:center;"><i class="icon_lagguge"></i><br><br><?php echo $_SESSION['outstationLuggages']; ?></li>
+                                     <li style="float:left; line-height:13px;  padding: 0 0 0 5px; text-align:center;"><i class="icon_ac"></i><br><br>AC</li>
+                                                </ul>
+                                            </div>
+                			</div>
+    
+      <div class="col-md-31 sightmargin overviueimg2car1" align="left" >
+									 <span class="vehicle_name"><?php echo $_SESSION['outRoundtripto']; ?></span><br>
+                                      <span class="vehicle_name"><?php echo $_SESSION['outstation_Rdate'] ?><br> <?php echo $_SESSION['outReturnTimeH'] ?>:<?php echo $_SESSION['outReturnTimeM'] ?></span>
+									
+							</div>
+                            
+       <div class="col-md-31 sightmargin overviueimg2car1" align="left" style="line-height:55px;" >
+									 <span class="vehicle_name"><?php echo intval($cal_hour); ?>h <?php echo $cal_minute; ?>m | <?php echo intval($val['distance']+$radius);?> KM</span><br>
+                                      
+	
+									
+							</div>  
+                            
+         
+                            
+       <div class="col-md-31 sightmargin overviueimg2" align="left">
+									<span class="vehicle_name"><?php echo $_SESSION['outRoundtripfrom']; ?></span><br>
+                                      <span class="vehicle_name"><?php echo $_SESSION['outstation_Rdate']; ?><br><?php echo ($_SESSION['outReturnTimeH']+intval($cal_hour))?>:<?php echo ($_SESSION['outReturnTimeM']+$cal_minute)?></span>
+	
+									
+							</div>  
+                            
+                             <!--<div class="col-md-31 sightmargin overviueimg2" align="left">
+									<span class="fare_details" style="line-height:; margin-top:80px;">Charge: <?php echo 
+									$val['cab_charge'];?><br> 
+	<i class="fa fa-rupee fa-1x"></i><input name="MinimumCharge" value="11500" type="hidden">
+	<div class="fare-summery-box">
+                                                       Fare Details
+                            <div class="fare-su-details animated fadeIn"> 
+                            <dl class="faresummarybox">
+                            <dt><span>Base Fare</span>
+                            <span><i class="fa fa-rupee fa-1x"></i> 
+                            7560.00                            </span></dt>
+                            <dd><span>Driver Allowance:</span> <span>300 x 1 Days = <i class="fa fa-rupee fa-1x"></i>300.00           </span></dd>
+                            <dd><span>Service-Tax(5.8%):</span><span>Included   </span></dd>             
+                            <dd><span>Toll-Tax:</span><span>Excluded  </span></dd>            
+                            <dd><span>Parking:</span><span>Extra(if applicable)  </span></dd>        
+                            <dd><span>State-Tax: </span><span>Excluded</span></dd> 
+                              <dd style="font-size:12px; font-weight:500;">
+                             <strong>Note:</strong><br>Ext. Chrg. After 420 Kms. = <i class="fa fa-rupee fa-1x"></i>18/Km.     
+                             </dd>
+              </dl> 
+             </div>
+                                                          </div>
+	
+	
+									
+							</div>-->
+                            
+                            
+                           <div class="col-md-31 sightmargin overviueimg2" align="left">
+                           <br>
+									 <span class="vehicle_name">No of Cars</span><br>
+                                      <span class="vehicle_name">
+                                       <?php echo $_SESSION['NoOfCar_outstation']; ?>
+                                      </span>
+                                      
+	
+									
+							</div>                
+                            
+ 	
+    <div class="col-md-31 sightmargin overviueimgcar" align="left">
+    <br>
+									 <span >No of Days</span><br>
+                                      <span > <?php echo $_SESSION['NoOfday']; ?></span>
+									
+							</div>
+	
+    
+    
+	
+	
+    </div>
+    </div>
+                            
+             <div class="destinations-grid-info tours" style="margin-bottom:; background:none !important; border:none !important; padding:0;">
+                       
+                          <div class="mapcantiner_inner1" style="padding:0 !important;">
+	 <div class="" style="margin:0 0 10px; padding:0 0 10px;">
+     <div class="col-md-31 sightmargin overviueimg2car1 icon_fair" align="left">
+									<a href="#" class="cartypelink" data-toggle="modal" data-target="#myModal" style="width:70px;">Fair Rules</a>
+							</div>
+                            
+                            
+    
+      <div class="col-md-31 sightmargin overviueimg2car1 icon_bagage" align="left">
+									<a href="#" class="cartypelink" data-toggle="modal" data-target="#myModal">Baggage</a>
+							</div>
+                            
+        
+                            
+         
+                            
+       <div class="col-md-31 sightmargin overviueimg2car1 icon_seating" align="left">
+									<a href="#" class="cartypelink" data-toggle="modal" data-target="#myModal" style="width:111px;">Seating Capacity</a>
+							</div>  
+                            
+                            
+                            
+                               <div class="col-md-31 sightmargin overviueimg2car1 icon_amenities" align="left">
+									<a href="#" class="cartypelink" data-toggle="modal" data-target="#myModal">Aminities</a>
+							</div>  
+                            
+                           <!-- 
+                            <div class="col-md-31 sightmargin overviueimg2" align="left">
+									 <span class="vehicle_name">No of Cars</span><br>
+                                   
+							</div> -->                  
+                     
+    </div>
+    
+    </div>
+               <div class="clearfix"> </div>           
+							</div>            
+							</div>
+                            
+           <div class="clearfix"> </div>   
+           
+<?php 
+}
+$i++;
+}
+} 
+?>                  
+        
+        
+      </div>
+      <div class="col-md-3 banner-bottom-grid" style="float:right; ">
+        <div class="top-destinations-grids" >
+         
+       
+          <div class="top-destinations-bottom" style="height:365px;">
+            <div class="col-md-1 col-lg-12 img-responsive" style="margin-top:; overflow:hidden; padding:0;" id="slider">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height:360px; overflow:hidden;"> 
+    <!-- Indicators -->
+    <ol class="carousel-indicators" style="display:block">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+      <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+      <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+      <li data-target="#myCarousel" data-slide-to="4" class=""></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active" id="mapload"> <img src="<?php echo $path; ?>/public/images/1.jpg" alt="">
+        <div class="container"> </div>
+      </div>
+      <div class="item"> <img src="<?php echo $path; ?>/public/images/2.jpg" alt="">
+        
+      </div>
+      <div class="item"> <img src="<?php echo $path; ?>/public/images/3.jpg" alt="">
+        
+      </div>
+      
+      
+    </div>
+    <a class="left carousel-control bgnone" href="#myCarousel" role="button" data-slide="prev" style="height:380px;"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control bgnone" href="#myCarousel" role="button" data-slide="next" style="height:380px;"><span class="glyphicon glyphicon-chevron-right"></span></a> </div>
+</div>
+          </div>
+          
+        </div>
+        <div class="top-destinations-grids">
+						<div class="top-destinations-info">
+							<h4></h4>
+						</div>
+						<div class="top-destinations-bottom">
+							<div class="td-grids">
+								<div class="col-xs-3 td-left">
+									<img src="<?php echo $path; ?>/public/images/t1.jpg" alt="" />
+								</div>
+								<div class="col-xs-7 td-middle">
+									<a href="products.html">Donec libero id lacinia</a>
+									<p>Dapibus eu purus vel libero in nunc</p>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</div>
+								<div class="col-xs-2 td-right">
+									
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="td-grids">
+								<div class="col-xs-3 td-left">
+									<img src="<?php echo $path; ?>/public/images/t2.jpg" alt="" />
+								</div>
+								<div class="col-xs-7 td-middle">
+									<a href="products.html">Donec libero id lacinia</a>
+									<p>Dapibus eu purus vel libero in nunc</p>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</div>
+								<div class="col-xs-2 td-right">
+									
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="td-grids">
+								<div class="col-xs-3 td-left">
+									<img src="<?php echo $path; ?>/public/images/t3.jpg" alt="" />
+								</div>
+								<div class="col-xs-7 td-middle">
+									<a href="products.html">Donec libero id lacinia</a>
+									<p>Dapibus eu purus vel libero in nunc</p>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</div>
+								<div class="col-xs-2 td-right">
+									
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="td-grids">
+								<div class="col-xs-3 td-left">
+									<img src="<?php echo $path; ?>/public/images/t4.jpg" alt="" />
+								</div>
+								<div class="col-xs-7 td-middle">
+									<a href="products.html">Donec libero id lacinia</a>
+									<p>Dapibus eu purus vel libero in nunc</p>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</div>
+								<div class="col-xs-2 td-right">
+									
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+					</div>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+
+$(document).on('click','.bookcar',function(){
+	//alert("<?php echo $this->basePath('login/index/bookingoutstation')?>");
+	var valu=$(this).attr('id');
+	       $.ajax({
+					url: "<?php echo $this->basePath('login/index/bookinData')?>",
+					type: "post",
+					dataType: "json",
+					data:{vehicleId:valu},
+					success: function(data){
+						if(data.Status=="true"){
+							//alert("<?php echo $this->basePath('login/index/bookingoutstation')?>");
+							window.location.href = "<?php echo $this->basePath('login/index/bookingoutstation')?>";							 
+						}
+						
+					},
+						error: function(error){
+						console.log(error);	
+					}
+				});
+	
+	
+	
+	/* alert(valu);
+    var status = 0; 
+    var error =0;
+    $(".error_label").hide();
+    if(status==0){
+           
+           
+           // var mob = /^[0-9]{10,15}$/;
+            //var num = /^[0-9]*$/;
+            //var nam = /^[a-zA-Z ]{2,}$/;
+            
+        
+      
+         
+          
+            }
+            if(error==0){
+    $( "#sightseeingOutstation" ).submit();
+			} */
+});
+
+<!-- 
+function showMe (it, box) { 
+var vis = (box.checked) ? "block" : "none"; document.getElementById(it).style.display = vis;
+} 
+
+
+//--> 
+
+<!-- 
+function showMe1 (it, box) { 
+var vis = (box.checked) ? "none" : "block"; document.getElementById(it).style.display = vis;
+} 
+
+
+   </script>
+<script type="text/javascript">
+
+
+
+$(document).ready(function(){
+    $(".itarget").click(function(){
+        var id = $(this).attr("rel");
+        $("#"+id).fadeToggle("slow");
+    });
+});
+
+
+
+</script>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sightseeings Name</h4>
+      </div>
+      <div class="modal-body">
+        <div class=""> 
+          <!--
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">About</a></li>
+    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+  </ul>-->
+          
+          <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+              <h3>HOME</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+              <h3>Menu 1</h3>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+              <h3>Menu 2</h3>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+              <h3>Menu 3</h3>
+              <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+ <script language="javascript" type="text/javascript">
+     $(document).ready(function () {
+         $("#showform").hide();
+         //$("#showform").css("display", "none"); 
+         //$("#showform").fadeOut(100);
+         $("#loadingClass").delay(700).fadeOut(500);
+         // $("#showform").fadein(500); 
+         $("#showform").show();
+         //$("#showform").fadeIn(500);
+       //  $("#showform").css("display", "block");
+     }); 
+    </script>

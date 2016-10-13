@@ -1,0 +1,608 @@
+﻿
+.clear{clear:both;}
+.jscarousal
+{
+	max-width: 1225px;
+	height: 220px;
+	position: relative;
+	margin: auto;
+}
+.jscarousal .jscarousal-left, .jscarousal .jscarousal-right
+{
+	float: left;
+	width: 42px;
+	height: 52px;
+	background-color: #121212;
+	color: White;
+	position: relative;
+	top:89px;
+	cursor: pointer;
+}
+.jscarousal .jscarousal-left
+{
+	background-image:url(../image/left_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-right:-7px;
+}
+.jscarousal .jscarousal-right
+{
+	background-image:url(../image/right_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-left:-10px;
+}
+.jscarousal-contents
+{
+	width:1042px;
+	height: 220px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+.jscarousal-contents > div
+{
+	position: absolute;
+	width: 100%;
+	height: 160px;
+}
+.jscarousal-contents > div > div
+{
+	float: left;
+	margin-left: 7px;
+	margin-right: 8px;
+}
+.jscarousal-contents .img
+{
+	width: 200px;
+	height: 100px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.jscarousal-contents .img1
+{
+	position:relative;
+	width: 220px;
+	height: 160px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-top: 10px;
+	margin-bottom:20px;
+	
+}
+
+.jscarousal-contents .img2
+{
+	width: 30px;
+	height: 39px;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:999999;
+}
+
+
+
+
+.hidden
+{
+	display: none;
+}
+.visible
+{
+	display: block;
+}
+.thumbnail-active
+{
+		cursor: pointer;
+}
+.thumbnail-inactive
+{
+		cursor: pointer;
+}
+.thumbnail-text
+{
+	font-family:Arial, Helvetica, sans-serif; color:#21759b; text-align:center; font-weight:bold; font-size:16px; padding-top:10px; clear:both;
+}
+
+.thumbnail-text1
+{
+	font-family:Arial, Helvetica, sans-serif; color:#21759b; text-align:center; font-weight:normal; font-size:15px; padding-top:10px;
+}
+
+.thumbnail-text2
+{
+	font-family:Arial, Helvetica, sans-serif; color:#000; text-align:center; font-weight:normal; font-size:15px; padding-top:10px; clear:both;
+}
+
+
+.image_box{width: 245px; height:247px; background:#f5f5f5; text-align:center; position:relative;}
+
+.image_box .heading{font-family:Arial, Helvetica, sans-serif; color:#21759b; text-align:center; font-weight:bold;}
+
+.image_box2{width:272px; height:250px; background:#f5f5f5; text-align:center; position:relative;}
+.button{width:191px; height:57px;}
+
+
+/* media Queries */
+
+@media (max-width:1024px)
+{
+.jscarousal{
+	max-width: 1000px !important;
+	height: 286px;
+	position: relative;
+	margin: auto;
+}
+
+.jscarousal-contents
+{
+	width:900px !important;
+	height: 286px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+
+.jscarousal .jscarousal-left
+{
+	background-image: url(left_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-right:-7px;
+}
+.jscarousal .jscarousal-right
+{
+	background-image: url(right_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-left:-50px;
+}
+
+
+
+@media (max-width:980px)
+{
+.jscarousal{
+	max-width: 960px !important;
+	height: 286px;
+	position: relative;
+	margin: auto;
+}
+
+.jscarousal-contents
+{
+	width:900px !important;
+	height: 286px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+
+.jscarousal .jscarousal-left
+{
+	background-image: url(left_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-right:-7px;
+}
+.jscarousal .jscarousal-right
+{
+	background-image: url(right_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-left:-50px;
+}
+
+
+
+
+@media (max-width:1024px)
+{
+.jscarousal{
+	max-width: 1000px !important;
+	height: 286px;
+	position: relative;
+	margin: auto;
+}
+
+.jscarousal-contents
+{
+	width:900px !important;
+	height: 286px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+
+.jscarousal .jscarousal-left
+{
+	background-image: url(left_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-right:-7px;
+}
+.jscarousal .jscarousal-right
+{
+	background-image: url(right_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-left:-50px;
+}
+
+
+
+@media (max-width:800px)
+{
+.jscarousal{
+	max-width: 790px !important;
+	height: 286px;
+	position: relative;
+	margin: auto;
+}
+
+.jscarousal-contents
+{
+	width:720px !important;
+	height: 286px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+
+.jscarousal .jscarousal-left
+{
+	background-image: url(left_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-right:-7px !important;
+}
+.jscarousal .jscarousal-right
+{
+	background-image: url(right_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-left:-30px;
+}
+
+.image_box{width:220px; height:286px; background:#f5f5f5; text-align:center; position:relative;}
+
+.jscarousal-contents .img
+{
+	width: 200px;
+	height: 142px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-top:25px;
+	margin-bottom:20px;
+}
+.jscarousal-contents .img1
+{
+	position:relative;
+	width: 220px;
+	height: 215px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-bottom:20px;
+	
+}
+
+
+
+
+
+@media (max-width:768px)
+{
+.jscarousal{
+	max-width: 750px !important;
+	height: 286px;
+	position: relative;
+	margin: auto;
+}
+
+.jscarousal-contents
+{
+	width:700px !important;
+	height: 286px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+
+.jscarousal .jscarousal-left
+{
+	background-image: url(left_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-right:-7px !important;
+}
+.jscarousal .jscarousal-right
+{
+	background-image: url(right_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-left:-30px;
+}
+
+.image_box{width:211px; height:286px; background:#f5f5f5; text-align:center; position:relative;}
+
+.jscarousal-contents .img
+{
+	width: 190px;
+	height: 142px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-top:25px;
+	margin-bottom:20px;
+}
+.jscarousal-contents .img1
+{
+	position:relative;
+	width: 272px;
+	height: 215px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-bottom:20px;
+	
+}
+
+
+.jscarousal-contents .img1
+{
+	position:relative;
+	width: 211px;
+	height: 215px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-bottom:20px;
+	
+}
+
+
+
+@media (max-width:640px)
+{
+.jscarousal{
+	max-width: 600px !important;
+	height: 286px;
+	position: relative;
+	margin: auto;
+}
+
+.jscarousal-contents
+{
+	width:550px !important;
+	height: 286px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+
+.jscarousal .jscarousal-left
+{
+	background-image: url(left_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-right:-7px !important;
+}
+.jscarousal .jscarousal-right
+{
+	background-image: url(right_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-left:-30px;
+}
+
+.image_box{width:250px !important; height:286px; background:#f5f5f5; text-align:center; position:relative;}
+
+.jscarousal-contents .img
+{
+	width: 150px;
+	height: 142px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-top:25px;
+	margin-bottom:20px;
+}
+.jscarousal-contents .img1
+{
+	position:relative;
+	width: 250px;
+	height: 215px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-bottom:20px;
+	
+}
+
+
+
+
+
+
+@media (max-width:480px)
+{
+.jscarousal{
+	max-width: 450px !important;
+	height: 286px;
+	position: relative;
+	margin: auto;
+}
+
+.jscarousal-contents
+{
+	width:400px !important;
+	height: 286px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+
+.jscarousal .jscarousal-left
+{
+	background-image: url(left_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-right:-7px !important;
+}
+.jscarousal .jscarousal-right
+{
+	background-image: url(right_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-left:-30px;
+}
+
+.image_box{width:174px !important; height:286px; background:#f5f5f5; text-align:center; position:relative;}
+
+.jscarousal-contents .img
+{
+	width: 150px;
+	height: 142px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-top:25px;
+	margin-bottom:20px;
+}
+.jscarousal-contents .img1
+{
+	position:relative;
+	width: 174px;
+	height: 215px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-bottom:20px;
+	
+}
+.button{width:150px; height:45px;}
+
+@media (max-width:360px)
+{
+.jscarousal{
+	max-width: 350px !important;
+	height: 286px;
+position: relative;
+	margin: auto;
+}
+
+.jscarousal-contents
+{
+	width:290px !important;
+	height: 286px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+
+.jscarousal .jscarousal-left
+{
+	background-image: url(left_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-right:-7px !important;
+}
+.jscarousal .jscarousal-right
+{
+	background-image: url(right_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-left:-30px;
+}
+
+.image_box{width:255px !important; height:286px; background:#f5f5f5; text-align:center; position:relative;}
+
+.jscarousal-contents .img
+{
+	width: 150px;
+	height: 142px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-top:25px;
+	margin-bottom:20px;
+}
+.jscarousal-contents .img1
+{
+	position:relative;
+	width: 255px;
+	height: 215px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-bottom:20px;
+	
+}
+.button{max-width:130px;}
+
+
+
+@media (max-width:320px)
+{
+.jscarousal{
+	max-width: 300px !important;
+	height: 286px;
+	position: relative;
+	margin: auto;
+}
+
+.jscarousal-contents
+{
+	width:250px !important;
+	height: 286px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+
+.jscarousal .jscarousal-left
+{
+	background-image: url(left_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-right:-7px !important;
+}
+.jscarousal .jscarousal-right
+{
+	background-image: url(right_arrow.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-left:-30px;
+}
+
+.image_box{width:215px !important; height:286px; background:#f5f5f5; text-align:center; position:relative;}
+
+.jscarousal-contents .img
+{
+	width: 150px;
+	height: 142px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-top:25px;
+	margin-bottom:20px;
+}
+.jscarousal-contents .img1
+{
+	position:relative;
+	width: 215px;
+	height: 215px;
+	border: solid 1px #7A7677;
+	text-align:center;
+	border:none;
+	margin-bottom:20px;
+	
+}
+.button{width:191px !important;}

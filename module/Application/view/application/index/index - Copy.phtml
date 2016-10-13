@@ -1,0 +1,2317 @@
+<?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$this->con=mysqli_connect("166.62.35.117","root","admin","hello42_new");
+$path=$this->basePath();
+$sql = "SELECT * FROM tblbookingbill WHERE id =  1 ";
+$result = mysqli_query($this->con,$sql);
+$row_Economy = mysqli_fetch_assoc($result);
+$sql = "SELECT * FROM tblbookingbill WHERE id =  2 ";
+$result = mysqli_query($this->con,$sql);
+$row_Sidan = mysqli_fetch_assoc($result);
+$sql = "SELECT * FROM tblbookingbill WHERE id =  3 ";
+$result = mysqli_query($this->con,$sql);
+$row_Prime = mysqli_fetch_assoc($result);
+
+/*========================car type price====================*/
+
+/* personal details of logedin person*/
+
+
+
+$status = 0;
+/* personal details of logedin person*/
+if(isset($_COOKIE['token'])){
+    $token = $_COOKIE['token'];
+    $status = 1;
+}
+
+     
+?>  
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<style>
+    .mapcantiner{background-image: url("public/image/map_bg.jpg");z-index:101;}
+    .ui-tooltip-content{
+        
+        padding-left:23px;
+    }
+    .clear{clear: both;}
+  #TimeHour,#pickMinutes,#PointTimeHour,#PointpickMinutes,#airPickupTimeH,#airPickupTimeS{padding-left:0!important;}                        //date minutes hour padding remove
+                          //date minutes hour padding remove
+  .goog-te-banner-frame.skiptranslate {display: none !important;} 
+body { top: 0px !important; }
+.goog-te-gadget{
+color:transparent;
+}
+.goog-logo-link{
+display:none !important;
+}
+.goog-te-combo{
+color:#000;
+padding:3px;
+}
+.goog-te-gadget .goog-te-combo {
+  margin: 6px 0px;
+}
+
+
+  
+    .goog-te-banner-frame{display: none !important; height:0px }
+   
+    
+    .ui-autocomplete{z-index: 999;}
+    #ui-id-13{z-index: 101}
+    #map{z-index: 999; overflow: hidden;border: 1px solid #333; height:440px;}
+    
+    #economy_cab{
+    position:absolute;
+    width:100px;
+    height:450px;
+    background:red;
+    overflow: hidden;
+   
+    display:none;
+}
+
+
+</style>
+<script>
+
+   $("#local_economy").hover(function(){
+    $('#economy_cab').show();
+},function(){
+    $('#economy_cab').hide();
+});
+</script>
+<?php 
+$userId = $this->id;
+
+if(isset($_COOKIE['token']))
+
+{ ?>
+<input type="hidden" id="loginId" value="<?php echo $userId=$this->id ?>" >
+
+		<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 margintop10; float:right;">
+					
+                    <a href="#" id="log_out" class="bgnone  pull-right">
+                     	<div  class="circle-tile-heading login_signbg red marginbtom0"><i  style='cursor:pointer;'  class="fa fa-sign-out fa-fw fa-1_5x sicon"></i></div>    
+                         <label class="control-label textlogin"><span id="user_logout"><span></label>                 
+                     </a>
+                     
+                    <a href="#"  id="my_account"  class="bgnone  pull-right" onclick="return false;">
+                     	<div class="circle-tile-heading login_signbg red marginbtom0"><i style='cursor:pointer;' class="fa fa-sign-in fa-fw fa-1_5x sicon"></i></div>    
+                         <label class="control-label textlogin"><span id="useraccount"></span></label>                 
+                     </a>
+           </div>
+      </div>
+    </div>
+	
+<?php
+} 
+else{
+	
+	
+
+ ?>
+ <input type="hidden" id="loginId" value="<?php echo $userId=$this->id ?>" >
+ 
+<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="margin-top:5px; float:right;">
+					 <a href="<?php echo $path?>/login" class="bgnone  pull-right">
+                     	<div onclick="loginhome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-1_5x sicon" style='cursor:pointer;' ></i></div>    
+                         <label class="control-label textlogin"><span id="login_user"></span></label>                 
+                     </a>
+					 <a href="<?php echo $path?>/login/index/signup" class="bgnone  pull-right">
+                     	<div onclick="signuphome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-user fa-fw fa-1_5x sicon" style='cursor:pointer;' ></i></div>    
+                         <label class="control-label textlogin"><span id="user_signup"></span></label>                 
+                     </a>
+           </div>
+
+        
+      </div>
+    </div>
+    <?php } ?>
+ 
+	  <div class="container-fluid navbar-inverse mannavi" >
+	  <div class="container" style="padding:0 10px;">
+    <div class="navbar navbar-inverse marginbtom0 mannavi" role="navigation" style="border-radius:0; border:none">
+    
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" style="padding:0;" data-toggle="collapse" data-target=".navbar-collapse1">
+             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         </div>
+        <div class="navbar-collapse1 collapse" style="padding:0;">
+          <ul class="nav navbar-nav">
+<!--            <li class="active1" ><a href="#" id="home_regions" ></a></li>-->
+<li class="dropdown active1" >
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="choose_cities()"><bdi id="home_regions"></bdi><span class="caret"></span></a>
+              <ul class="dropdown-menu " id="cities_drop" role="menu" style="margin-top: 2px; display:none;padding-left: 20px;width: 100%;">
+<!--                <li><a href="#" id="cities_drop"></a></li>-->
+<!--                <li><a href="#">Hyderabad</a></li>
+                <li><a href="#">Ahmedabad</a></li>
+                <li><a href="#">Amritsar</a></li>
+                <li><a href="#">Chandigarh</a></li>
+                <li><a href="#">Jaipur</a></li>-->
+               <!-- <li class="divider menudivderbg"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>-->
+              </ul>
+			  
+           <!-- <li ><a href="#about" id="home_aboutus" style="text-transform: capitalize"></a></li>-->
+          <!--  <li><a href="#contact" id="home_services" style="text-transform: capitalize"></a></li>-->
+            <li><a href="index/page?id=partner" id="home_partners" style="text-transform: capitalize"></a></li>
+             <li><a href="index/page?id=career" id="home_careers" style="text-transform: capitalize"></a></li>
+              <li><a href="index/page?id=testimonial" id="home_testimonials" style="text-transform: capitalize"></a></li>
+               <li><a href="index/page?id=terms_condition" id="home_tc"></a></li>
+               <!--<li><a href="#contact" id="home_contact" style="text-transform: capitalize">Contact Us</a></li>-->
+              
+<!--            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" style="margin-top:2px; background:#111;">
+                <li><a href="#"></a></li>
+                <li><a href="#">Hyderabad</a></li>
+                <li><a href="#">Ahmedabad</a></li>
+                <li><a href="#">Amritsar</a></li>
+                <li><a href="#">Chandigarh</a></li>
+                <li><a href="#">Jaipur</a></li>
+                <li class="divider menudivderbg"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>-->
+            </li>
+          </ul>
+            <div id="google_translate_element" style="float:right;"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.VERTICAL, autoDisplay: false}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	 </div>
+		
+                 
+		<div class="container-fluid mapcantiner">
+                    
+                         
+                    
+ 
+		<div class="container">
+		<div class="tab">
+		<ul>
+		<li><a href="#"  id="domestic1">Domestic</a></li>
+		<li><a href="#"  id="international1">International</a></li>
+		</ul>
+		</div>
+		
+
+<div class="row">
+  <div class="col-md-7 col-lg-8 " id="international" style="padding:0;">
+  	<nav class="navmargin">
+            	 
+				
+			
+				<div style="width:100%; height:400px; background:#fff; padding-top:100px;"> <span style="text-align:center; margin-left:40% !important; margin-top:100px !important; padding-top:100px;">Coming Soon...</span></div>
+		
+				
+            </nav>
+			
+			
+  </div>
+	<!----internatioanlend---->	
+	
+          <div class="col-md-7 col-lg-8 " id="domestic" style="padding:0;">
+		  
+           	<nav class="navmargin">
+            	 
+				
+				<div class="btn-group btn-group-justified">
+                                        
+										<a class="btn btn-white mactive" role="button" id="local" onclick="booking_local();"></a>
+										<a class="btn btn-white" role="button" id="point"onclick="booking_point();"></a>
+										<a class="btn btn-white" role="button" id="airport" onclick="booking_airport();"></a>
+										<a class="btn btn-white" role="button" id="intercity" onclick="booking_airport();"></a>
+                                        <a class="btn btn-white" role="button" id="outstation" onclick="booking_outstation();"></a>
+										<a class="btn btn-white" role="button" id="packages" onclick="booking_fourth();"></a>												
+										<a class="btn btn-white" role="button" id="busbooking" onclick="booking_fourth();"></a>                                      
+                                    </div>
+				
+				
+				
+            </nav>
+            
+            
+            <div class="col-lg-12">
+                              
+                              <!--Local Hire Start-->
+            <form id='form2'>                  
+                              <div id="booking_local" class="portlet portlet-purple" style="border: 0;border-top: 1px solid #d2d2d2; margin:0; display:block">
+                                     <div id="inputSizing" class="panel-collapse in" style="height: auto;">
+                                        <div class="portlet-body" style="padding:10px 15px 0;">
+                                             
+                                            <?php
+                                            
+                                            
+                                            if($status == 0){
+                                                     ?>
+                                            
+                                            <div class="row clearfix" style="padding-bottom:10px; display: block" id="userInfoLocal" >
+                                                  <div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-1 control-label" id="">Name</label>
+                                                    <div class="col-sm-2">
+                                                      <input id="localName" value="" name="" type="text" class="form-control ui-autocomplete-input inputfild loc_name " placeholder="Full Name"></input>                                                          </div>
+                                                </div>
+                                                  <div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-2 control-label " style="padding-left:40px;" id="">Mobile No.</label>
+                                                    <div class="col-sm-3">
+                                                         <input id="localMobile" name="" type="text" class="form-control ui-autocomplete-input inputfild loc_phno" placeholder="Mobile No." ></input> 
+                                                    </div>
+                                                </div>
+												<div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-1 control-label" id="">Email</label>
+                                                    <div class="col-sm-3">
+                                                         <input id="localEmail" name="" type="email" class="form-control ui-autocomplete-input inputfild" placeholder="Email"></input> 
+                                                    </div>
+                                                </div>
+                                             </div>
+                                            
+                                            <?php             
+                                                    }
+                                               ?>					 
+											  <div class="row">
+                                                  <div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-2 control-label" id="local_cabIn"></label>
+                                                    <div class="col-sm-4">
+                                                     <select id="localCabIn" name='localCabIn' class="inputfild form-control check_booking">
+<!--                                                         <option value="" id="local_p_select"></option>
+                                                                  <option value='Delhi/NCR' id="local_selected_region"></option>-->
+                                                                </select>                                                    
+                                                               </div>
+                                                </div>
+                                                  <div class="form-group clearfix">
+                                                    <label for="textInput" class="col-sm-2 control-label managelabel" id="local_cabFor"></label>
+                                                    <div class="col-sm-4">
+                                                         <select id="localCabFor" name="localCabFor" class="inputfild form-control">
+<!--                                                         <option value="">Please Select</option>
+                                                         <option>4</option>
+                                                          <option>8</option>
+                                                          <option>10</option>
+                                                          <option>20</option>-->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                              
+                                            
+                                                 
+                                          
+                                            <hr style="margin:0px auto 5px;">
+										<div class="row" style="padding:0 10px 0;">
+											<table class="responsivetab">
+												<tr>
+													<td><label id="local_nationality" class="form-contro" style="margin-right:10px;float:left;"></label></td>
+													<td><select id="localNationality" class="inputfild form-control valid" aria-invalid="false"><option value="Indian" id="localCabFor0">Indian</option><option value="Non-Indian" id="localCabFor1">Non-Indian</option></select></td>
+													
+													<td><label id="local_nosOfAdult" class="form-contro labelmarginright"> </label></td>
+													<td>  <select id="localAdults" class="inputfild form-control"></select></td>
+													
+													<td><label id="local_nosofChild" class="form-contro labelmarginright"></label></td>
+													<td><select id="localChilds" class="inputfild form-control"></select></td>
+													
+													<td><label id="local_nosofLuggages" class="form-contro labelmarginright"></label></td>
+													<td><select id="localLuggages" class="inputfild form-control"></select></td>
+												</tr>
+											</table>
+										</div>	 
+											
+											
+                                            <hr style="margin:5px auto 10px;"/>
+											<div class="row">
+                                            <div class="">
+                                                  <div class="form-group padding_margin0">
+												   <label id="local_pickup_location" class="col-sm-2 form-contro managelabel"></label>
+                                                      <div class="col-sm-4" >
+													 
+                                                          <input id="localPickupArea" name="term" type="text"  class="form-control ui-autocomplete-input inputfild loc_req_field" placeholder="Choose Location" autocomplete="off">             
+                                                          
+                                                           <input id="localPickupArea_value" type="hidden">     
+                                                     
+                                                    </div>
+													</div>
+													<div class="form-group padding_margin0">
+													<label id="local_pickup_address" class="col-sm-2 form-contro managelabel"></label>
+													<div class="col-sm-4">
+														
+														<form></form>
+                                                                                                                <textarea id="localAddress" rows="4" name="localAddress" class="form-control Address_loc_req_field" onblur="mapping1();"  placeholder="" style="height:40px !important;"></textarea></form></div>
+													</div>
+                                              </div>
+                                          </div>
+                                            
+											<hr style="margin:10px 0 -7px"/>
+
+											 <div class="row">
+                                                 <div class="form-group clearfix" style="margin:0;">
+                                                 <div class="col-sm-12" style="margin-left:10px;">
+                                                     <div style="float:left; ">
+                                                <label class="radio-inline specs">
+                                               <input type="radio" name="booklocaltime" onclick="booking_time(this.id);" class="radiobtnalign" Value="Now"  id="now" checked=""><label id="picknow_local"></label> <small id="picknow_condions_local"></small>
+                                               </label>
+                                               <label class="radio-inline specs" style="padding-left:47px !important;">
+                                               <input type="radio" name="booklocaltime" onclick="booking_time(this.id);" class="radiobtnalign" value="Later"  id="later"><label id="booklater_local"></label> <small id="booklater_conditions_local"></small>
+                                               </label>
+                                                
+                                                     </div>     
+                                                     <!--   paste       -->
+                                                     <div id="pickdate" style="display: none;float:right; margin-top: 12px; width:50%">
+											   <div class="form-group padding_margin0">
+											     <label id="local_pickup_date" style="padding:5px 0 0 15px;width:25%"  class="col-sm-2 form-contro"></label>
+                                                                                             <div class="col-sm-4" style="width:30%">
+                                                    <input type="text" id="local_datepicker" class="form-control inputfild " placeholder="03-09-2015" onchange="pickHour(0);">
+                                                </div>
+												<div class="form-group padding_margin0">
+						<!--  local pickup time						  <label id="local_pickup_time" class="col-sm-1 form-contro"></label> -->
+                                                <div class="col-sm-2" style="width:22%">
+                                                     <select id="TimeHour" name="field_8h" onchange="pickHour(1);" class="form-control error col-lg-offsets-5" aria-required="true">
+                                                         <option value="hrs">Hrs</option>                 
+ <!--                                                 </select><label id="localTime-error" class="error col-lg-offsets-5" for="localTime">This field is required.</label>-->
+                                                 </select>
+                                                </div>
+												</div>
+                                                <div class="col-sm-2" style="width:22%">
+                                                 
+                                                    <select id="pickMinutes" name="localPikupTime" class="form-control error col-lg-offsets-5" aria-required="true">
+                                                    <option value="min">Min</option>
+													
+                                                    </select>
+                                                </div>
+                                               </div>
+											   </div>
+                                                     
+                                                     
+                                               </div>
+                                                </div>
+                                                  
+                                  <div class="form-group clearfix" style="margin:0;">
+                                                 <div class="col-sm-11" style="margin-left:10px;">
+                                                <label class="radio-inline specs">
+                                               <input type="radio" name="local_cash" onclick="" class="radiobtnalign" Value="Now"  id="now" checked=""><label id="local_cash"></label> <small id="picknow_condions_local"></small>
+                                               </label>
+                                               <label class="radio-inline specs" style="padding-left:47px !important;">
+                                               <input type="radio" name="local_cash" onclick="" class="radiobtnalign" value="Later"  id="later"><label id="local_credit"></label> <small id="booklater_conditions_local"></small>
+                                               </label>
+                                                
+                                               </div>
+                                                </div>            </div>
+											
+											
+                                              <hr style="margin:-5px auto 0px;"/>
+                                       						  
+											 <div class="row">
+                                                  <div class="form-group clearfix" style="margin:0;">
+                                                 <div class="col-sm-11">
+												  <label id="local_carsTypes" style="margin-bottom:0; margin-right:40px;"></label>
+                                                                                                  <label class="radio-inline specs mytip economy" data-toggle="tooltip" data-placement="bottom" title="">
+                                                    <input type="radio" name="cartypeslocal" onclick="carbook(this.id);" class="radiobtnalign" Value="1"  id="leconomy" checked=""><span id="local_economy" ></span>&nbsp;&nbsp;<i class="fa fa-taxi fa-1_5x"></i>
+                                               </label>
+                                                                                                  
+                                               <label class="radio-inline specs  mytip sedan" data-toggle="tooltip" data-placement="bottom" title="" style="padding-left:47px !important;">
+                                                   <input type="radio" name="cartypeslocal" onclick="carbook(this.id);" class="radiobtnalign" value="2"  id="lprime"><span id="local_prime"></span>&nbsp;&nbsp;<i class="fa fa-car fa-1_5x"></i>
+                                               </label>
+                                                <label class="radio-inline specs mytip prime" data-toggle="tooltip" data-placement="bottom" title="" style="padding-left:47px !important;">
+                                                    <input type="radio" id="selectMulticity" name="cartypeslocal" onclick="carbook(this.id);" class="radiobtnalign" value="3"  id="higher"><span id="local_higher" ></span>&nbsp;&nbsp;<i class="fa fa-car fa-1_5x"></i>
+                                               </label>
+                                               </div>
+                                                </div>
+                                                 <div class="col-sm-6">
+                                                   <a href="#" id="101" onclick="bookingLocalSubmit(this.id);" type="button" class=" btn btn-lg bg-primary col-sm-12 makebookingbtn" value="" ></a>
+                                               </div> 
+                                             </div>
+                           <div class="clear"></div>
+											
+                                          
+                           <!--<div class="row">
+                                               <div id="pickdate" style="display:none">
+											   <div class="form-group padding_margin0">
+											     <label id="local_pickup_date" style="padding-left:5px;width:25%" class="col-sm-3 form-contro"></label>
+                                                                                             <div class="col-sm-4" style="width:30%" >
+                                                    <input type="text" id="local_datepicker" class="form-control inputfild " placeholder="<?php echo date("m-d-Y")?>" onchange="pickHour();">
+                                                </div>
+												<div class="form-group padding_margin0">
+												  <label id="local_pickup_time" class="col-sm-2 form-contro"></label>
+                                                <div class="col-sm-2">
+                                                     <select id="TimeHour" name="field_8h" class="form-control error col-lg-offsets-5" aria-required="true">
+                                                         
+ <!--                                                 </select><label id="localTime-error" class="error col-lg-offsets-5" for="localTime">This field is required.</label>
+                                                 </select>
+                                                </div>
+												</div>
+                                                <div class="col-sm-2">
+                                                 
+                                                    <select id="pickMinutes" name="localPikupTime" class="form-control error col-lg-offsets-5" aria-required="true">
+                                                    
+													
+                                                    </select>
+                                                </div>
+                                               </div>
+											   </div>
+                                               <div class="col-sm-6">
+                                                   <a href="#" id="101" onclick="bookingLocalSubmit(this.id);" type="button" class=" btn btn-lg bg-primary col-sm-12 makebookingbtn" value="" ></a>
+                                               </div>
+                                               
+                                             </div>
+
+-->
+											 
+
+                                         </div>
+                                     </div>
+                                </div>
+                              
+                              <!--Local Hire End-->  
+                              
+                               <!--Point to point Start-->
+                              
+                              <div id="booking_point" class="portlet portlet-purple" style="border: 0;border-top: 1px solid #d2d2d2; margin:0; display:none;">
+                                     <div id="inputSizing" class="panel-collapse in" style="height: auto;">
+                                        <div class="portlet-body" style="padding:10px 15px 0;">
+                                            
+					 <?php
+                                            
+                                            
+                                            if($status == 0){
+                                                     ?>
+                                            
+                                            <div class="row clearfix" style="padding-bottom:10px; display: block" id="userInfoLocal" >
+                                                  <div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-1 control-label" id="">Name</label>
+                                                    <div class="col-sm-2">
+                                                      <input id="pointName" value="" name="" type="text" class="form-control ui-autocomplete-input inputfild point_name" placeholder="Full Name"></input>                                                          </div>
+                                                </div>
+                                                  <div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-2 control-label " style="padding-left:40px;" id="">Mobile No.</label>
+                                                    <div class="col-sm-3">
+                                                         <input id="" name="" type="text" class="form-control ui-autocomplete-input inputfild point_phno" placeholder="Mobile No." ></input> 
+                                                    </div>
+                                                </div>
+												<div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-1 control-label" id="">Email</label>
+                                                    <div class="col-sm-3">
+                                                         <input id="pointEmail" name="" type="email" class="form-control ui-autocomplete-input inputfild" placeholder="Email"></input> 
+                                                    </div>
+                                                </div>
+                                             </div>
+                                            
+                                            <?php             
+                                                    }
+                                               ?>					
+											 <div class="row">
+                                                  <div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-2 control-label" id="point_cabin"></label>
+                                                    <div class="col-sm-10">
+                                                     <select id="pointCabIn" name="field_13" class=" form-control check_booking">
+<!--                                                                <option value="">Please Select</option>
+                                                    <option value="Delhi/NCR">Delhi/NCR
+                                                       </option>-->
+                                                     </select>                                                  
+                                                      </div>
+                                                </div>
+                                                  
+                                             </div>
+                                              
+                                               
+                                          <hr style="margin:10px auto 5px;"/>
+											
+											<div class="row" style="padding:0 10px 0;">
+											<table class="responsivetab">
+												<tr>
+													<td><label id="point_nationality" class="form-contro" style="margin-right:10px;float:left;"></label></td>
+													<td><select id="pointNationality" class="inputfild form-control valid" aria-invalid="false"><option value="Indian" id="localCabFor0">Indian</option><option value="Non-Indian" id="localCabFor1">Non-Indian</option></select></td>
+													
+													<td><label id="point_nosAdults" class="form-contro labelmarginright"> </label></td>
+                                                                                                        <td>  <select id="pointAdults" class="inputfild form-control"></select></td>
+													
+													<td><label id="points_noschild" class="form-contro labelmarginright"></label></td>
+													<td><select id="pointChilds" class="inputfild form-control"></select></td>
+													
+													<td><label id="point_luggages" class="form-contro labelmarginright"></label></td>
+													<td><select id="pointLuggages" class="inputfild form-control"></select></td>
+												</tr>
+											</table>
+											</div>
+											
+											
+                                            
+                                            <hr style="margin: 5px auto 10px;"/>
+                                            
+                                            <div class="row">
+                                                  <div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-2 control-label" id="point_pickup"></label>
+                                                    <div class="col-sm-4">
+                                                     <input  id="pointPickupArea"  name='term'  type="text" onblur="mapping2();" class="inputfild form-control point_req_field" placeholder="Choose Location"/>                                    
+                                                           <input id="pointPickupArea_value"  type="hidden" >     
+                                                     
+                                                    </div>
+                                                </div>
+                                                  <div class="form-group clearfix">
+                                                    <label for="textInput" class="col-sm-2 control-label paddingleft30" id="point_drop"></label>
+                                                    <div class="col-sm-4">
+                                                         <input id="pointDropArea" list="citydetailsdrop" type="text" class=" form-control inputfild pointDrop" onblur="mapping2();" placeholder="Choose Location"/>
+                                                         <input id="pointDropArea_value" type="hidden"   value="dfd"> 
+                                                         <datalist id="citydetailsdrop" >
+                                                    </div>
+                                                </div>
+                                             </div>
+                                            
+                                            
+                                            <div class="row">
+											 <div class="form-group padding_margin0">
+											   <label id="point_pickup_adds" class="col-sm-2 control-label" style="padding: 4px 0 0 10px;"></label>
+                                            <div class="col-sm-10">
+                                                       <textarea id="pointAddress" class="form-control pointPickAddress"  placeholder="" onblur="mapping2();" style="height:40px !important;"></textarea>
+                                              </div>
+											  </div>
+                                          </div>
+                                            
+                                            
+                                            
+                                            <hr style="margin:10px 0 -7px"/>
+											  
+											 <div class="row">
+                                                 <div class="form-group clearfix" style="margin:0;">
+                                                     <div class="col-sm-12"><div style="float:left;margin-left: 10px;">
+                                                <label class="radio-inline specs">
+                                               <input type="radio" name="cartype1" onclick="pbooking_time(this.id);" class="radiobtnalign" Value="Economy"  id="pnow" checked=""><label id="picknow_point"></label> <small id="booknowcondions_point"></small>
+                                               </label>
+                                               <label class="radio-inline specs" style="padding-left:47px !important;">
+                                                   <input type="radio" name="cartype1" onclick="pbooking_time(this.id);" class="radiobtnalign" value="HIgher"  id="plater"><label id="booklater_point"></label> <small id="booklaterconditions_point"></small>
+                                               </label>
+                                                
+                                                             </div> 
+                                                     <!-- here  -->
+                                                     <div id="pdate" style="float: right; margin-top: 12px; width: 50%; display:none;">
+											   <div class="form-group padding_margin0">
+											     <label id="point_pickup_date" style="padding:5px 0 0 15px;width:25%" class="col-sm-2 form-contro">Pickup Date</label>
+                                                                                             <div class="col-sm-4" style="width:30%">
+                                                    <input type="text" id="point_date" class="form-control inputfild" onchange="PointpickHour(0);" placeholder="<?php echo date("m-d-Y")?>">
+                                                </div>
+												<div class="form-group padding_margin0">
+						<!--  local pickup time						  <label id="local_pickup_time" class="col-sm-1 form-contro"></label> -->
+                                                <div class="col-sm-2" style="width:22%">
+                                                    <select id="PointTimeHour" name="field_8h" onchange="PointpickHour();" class="form-control">
+                                                         <option value="">Hrs</option>
+ <!--                                                 </select><label id="localTime-error" class="error col-lg-offsets-5" for="localTime">This field is required.</label>-->
+                                                 </select>
+                                                </div>
+												</div>
+                                                <div class="col-sm-2" style="width:22%">
+                                                 
+                                                    <select id="PointpickMinutes" onchange="picMin2();" class="form-control error col-lg-offsets-5" aria-required="true">
+                                                    <option value="min">Min</option>
+													
+                                                    </select>
+                                                </div>
+                                               </div>
+											   </div>
+                                                     <!--end-->
+                                               </div>
+                                                </div>
+                                                  
+                                                                                              <div class="form-group clearfix" style="margin:0;">
+                                                 <div class="col-sm-11" style="margin-left:10px;">
+                                                <label class="radio-inline specs">
+                                               <input type="radio" name="pointcash" onclick="" class="radiobtnalign" Value="cash"  id="" checked=""><label id="point_cash"></label> <small id="picknow_condions_local"></small>
+                                               </label>
+                                               <label class="radio-inline specs" style="padding-left:47px !important;">
+                                               <input type="radio" name="pointcash" onclick="" class="radiobtnalign" value="credit"  id=""><label id="point_credit"></label> <small id="booklater_conditions_local"></small>
+                                               </label>
+                                                
+                                               </div>
+                                                </div>  
+                                             </div>
+                                            
+                                             <hr style="margin:-5px auto 0px;"/>
+                                            
+                                              
+											  
+											 <div class="row">
+                                                 <div class="form-group clearfix" style="margin:0;">
+                                                 <div class="col-sm-11">
+                                                     <label id="point_carsTypes" class="economy" style="margin-bottom:0; margin-right:40px;">Car Types</label>
+                                                <label class="radio-inline specs mytip economy" data-toggle="tooltip" data-placement="bottom" title="">
+                                                    <input type="radio" name="cartypes" onclick="carbook(this.id);" class="radiobtnalign" Value="1"  id="cartypes" checked=""><span id="point_economy"></span>&nbsp;&nbsp;<i class="fa fa-taxi fa-1_5x"></i>
+                                               </label>
+                                               <label class="radio-inline specs mytip sedan"  data-toggle="tooltip" data-placement="bottom" title=""style="padding-left:47px !important;">
+                                                   <input type="radio" name="cartypes" onclick="carbook(this.id);" class="radiobtnalign" value="2"  id="cartypes"><span id="point_prime"></span>&nbsp;&nbsp;<i class="fa fa-car fa-1_5x"></i>
+                                               </label>
+                                                <label class="radio-inline specs mytip prime" data-toggle="tooltip" data-placement="bottom" title=""" style="padding-left:47px !important;">
+                                                    <input type="radio" id="selectMulticity" name="cartypes" onclick="carbook(this.id);" class="radiobtnalign" value="3"  id="cartypes"><span id="point_higher"></span>&nbsp;&nbsp;<i class="fa fa-car fa-1_5x"></i>
+                                               </label>
+                                               </div>
+                                                </div>
+                                                  
+                                             </div>
+                                            
+
+                                              <hr style="margin:1px auto 10px;"/>
+                                       <!--     <div class="row">
+                                                 <div id="pdate" style="display: none">
+												 <div class="form-group padding_margin0">
+												   <label id="point_pickup_date" class="col-sm-2 form-contro"></label>
+                                                <div class="col-sm-4" >
+                                                    <input type="text" id="point_date" class="form-control inputfild" onchange="PointpickHour();" placeholder="">
+                                                </div>
+  												</div>
+												 <div class="form-group padding_margin0">
+												 <label id="point_pickup_time" class="col-sm-2 form-contro"></label>
+                                                <div class="col-sm-2">
+                                                
+                                                    <select id="PointTimeHour" name="field_8h" class="form-control">
+<!--                                                <option value="">Hours</option>
+                                                <option>00</option><option>01</option><option>02</option><option>03</option><option>04</option>
+                                                 <option>05</option><option>06</option><option>07</option><option>08</option><option>09</option>
+                                                 <option>10</option><option>11</option><option>12</option><option>13</option><option>14</option>
+                                                 <option>15</option><option>16</option><option>17</option><option>18</option><option>19</option>
+                                                 <option>20</option><option>21</option><option>22</option><option>23</option>
+                                                 </select>
+                                                </div>
+												</div>
+                                                <div class="col-sm-2">
+                                               
+                                                    <select id="PointpickMinutes" class=" form-control">
+<!--                                                    <option value="">Min</option>
+                                                    <option>00</option><option>05</option><option>10</option><option>15</option><option>20</option>
+                                                    <option>25</option><option>30</option><option>35</option><option>40</option><option>45</option>
+                                                    <option>50</option><option>55</option>
+                                                    </select>
+                                                </div>
+                                                 </div>
+--> <div class="col-sm-6">
+                                                  <a href="#" id="102" onclick="bookingPointSubmit(this.id);" type="button" class=" btn btn-lg bg-primary col-sm-12 makebookingbtn" value=""/><span id="point_booking"></span></a>
+                                               </div>
+                                       <div class="clear"></div> </div>
+                                         
+                                            </div>
+                                  <div>
+                                     </div>
+                                </div>
+                              
+                              <!--Point to Point End--> 
+                              
+                              
+                                 <!--Airport Transfer Start-->
+                              
+                              <div id="booking_airport" class="portlet portlet-purple" style="border: 0;border-top: 1px solid #d2d2d2; margin:0; display:none;">
+                                     <div id="inputSizing" class="panel-collapse in" style="height: auto;">
+                                        <div class="portlet-body" style="padding:10px 15px 0;">
+                                            
+					
+                                             <?php
+                                            
+                                            
+                                            if($status == 0){
+                                                     ?>
+                                            
+                                            <div class="row clearfix" style="padding-bottom:10px; display: block" id="userInfoLocal" >
+                                                  <div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-1 control-label" id="">Name</label>
+                                                    <div class="col-sm-2">
+                                                      <input id="AirName" value="" name="" type="text" class="form-control ui-autocomplete-input inputfild Air_name " placeholder="Full Name"></input>                                                          </div>
+                                                </div>
+                                                  <div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-2 control-label " style="padding-left:40px;" id="">Mobile No.</label>
+                                                    <div class="col-sm-3">
+                                                         <input id="AirMobile" name="" type="text" class="form-control ui-autocomplete-input inputfild Air_phno" placeholder="Mobile No." ></input> 
+                                                    </div>
+                                                </div>
+												<div class="form-group padding_margin0">
+                                                    <label for="textInput" class="col-sm-1 control-label" id="">Email</label>
+                                                    <div class="col-sm-3">
+                                                         <input id="AirEmail" name="" type="email" class="form-control ui-autocomplete-input inputfild" placeholder="Email"></input> 
+                                                    </div>
+                                                </div>
+                                             </div>
+                                            
+                                            <?php             
+                                                    }
+                                               ?>
+											
+											 <div class="row">
+                                                 <div class="form-group clearfix" style="margin-top:-10px !important; margin-bottom:0 !important;">
+                                                 <div class="col-sm-11" style="margin-left:10px;">
+                                                <label class="radio-inline specs">
+                                                    <input type="radio" onclick="goingToAirport();" name="AirportRadios" class="radiobtnalign" value="" checked=""><span id="airport_goingto"></span>
+                                               </label>
+                                               <label class="radio-inline specs" style="padding-left:47px !important;">
+                                                   <input type="radio" onclick="comingToAirport();" class="radiobtnalign" name="AirportRadios" value=""><span id="airport_coming"></span>
+                                               </label>
+                                               </div>
+                                                </div>
+                                                  
+                                             </div>
+                                              <hr style="margin:5px auto 5px;"/>
+                                          
+											
+										<div class="row" style="padding:0 10px 0;">	
+											<table class="responsivetab">
+												<tr>
+													<td><label id="airport_nationality" class="form-contro" style="margin-right:10px;float:left;"></label></td>
+													<td><select id="airNationality" class="inputfild form-control valid" aria-invalid="false"><option value="Indian" id="localCabFor0">Indian</option><option value="Non-Indian" id="localCabFor1">Non-Indian</option></select></td>
+													
+													<td><label id="airport_adults" class="form-contro labelmarginright"> </label></td>
+													<td>  <select id="airAdults" class="inputfild form-control"></select></td>
+													
+													<td><label id="airport_childs" class="form-contro labelmarginright"></label></td>
+													<td><select id="airChilds" class="inputfild form-control"></select></td>
+													
+													<td><label id="airport_luggages" class="form-contro labelmarginright"></label></td>
+													<td><select id="airLuggages" class="inputfild form-control"></select></td>
+												</tr>
+											</table>
+											</div>
+											
+											
+                                            
+                                            <hr style="margin:4px auto 0px;"/>
+                                            
+                                            <div class="row">
+                                                  <div class="form-group padding_margin0" style="margin-top: 10px !important;">
+												   <label id="flight_nos" class="col-sm-2 control-label"></label>
+                                                  <div class="col-sm-4">
+                                                     <input id="airFlightNo" type="text" class=" form-control inputfild" />                                    
+                                                  </div>
+                                                </div>
+                                                  <div class="form-group clearfix">
+												    <label id="point_airport" class="col-sm-2 control-label paddingleft30"></label>
+                                                   <div class="col-sm-4">
+                                                  
+                                                          <select id="airAirportTerminals" class=" form-control">
+
+                                                          </select>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                             
+                                             <div class="row" style="margin-bottom:10px">
+                                                  <div class="form-group padding_margin0" >
+                                                      <label id="airport_drop_location" class="col-sm-2 control-label" style="padding: 4px 0 0 10px; display:none;"></label>
+												  
+                                                    
+<div class="col-sm-4" id="airDropLocation" style="display:none">
+                                                    <input id="airDropLocation" type="text" class=" form-control inputfild" placeholder="Choose Location" />   
+</div>
+                           <label id="airport_pickup_locs" class="col-sm-2 control-label" style="padding: 4px 0 0 10px;"></label>
+                                                  <div class="col-sm-4" id="pickupLoc">
+                                                      <input id="airPickupLocation" type="text" class=" form-control inputfild AirPick" required=""placeholder="Choose Location" />  
+ <input id="airPickupLocation_val" type="hidden" class=" form-control inputfild" placeholder="Choose Location" />   													 </div>
+ 
+ 
+ <input id="airDropLocation_val" type="hidden" class=" form-control inputfild" placeholder="Choose Location" />   													
+                                                  </div>
+                                                 
+                                                 
+                                  <label id="airport_landmark" class="col-sm-2 control-label" style="padding: 4px 0 0 10px;" ></label>
+                                                   <div class="col-sm-4">
+                                                          <input id="airLandmark" type="text" class=" form-control inputfild AirLandMark"/>
+                                                    </div>
+                                                </div>
+                                                 
+												 
+                                             
+                                             
+                                            
+                                            
+                                            <div class="row">
+                                                
+                                                <div class="form-group padding_margin0" id="dropAdds" style="display:none;">
+                                                  <label style="margin-left:10px;float:left;" id="airport_dropadds">Drop Address</label>
+                                                   <div class="col-sm-10" id="dropadds" style="display:none">
+                                                       <textarea style="height:40px !important;margin:0 0 10px 28px;" id="airDropAddress" onblur="mappingAirComing();" class="form-control" placeholder=""></textarea>
+
+
+                                               </div>
+                                              </div>
+											<div class="form-group clearfix" id="pickupAdds">
+											 <label id="airport_pickup_adds" class="col-sm-2 control-label" style="padding: 4px 0 0 10px;"></label>
+                                            <div class="col-sm-10" >
+                                                <textarea id="airPickupAddress" onblur="mappingAirGoing();"class="form-control airPickupAddress "  placeholder="" style="height:40px !important;"></textarea>
+                                              </div>
+                                                                                  
+						
+											  </div>
+                                          </div>
+                                            
+                                            
+                                            
+                                            
+                                            <hr style="margin: 0px 0 -8px 0;"/>
+											  
+											 <div class="row">
+                                                                                             <div style="float:left;width:50%">
+                                                 <div class="form-group clearfix" style="margin:0; float:left">
+                                                 <div class="col-sm-12" style="margin-left:10px;">
+                                                <label class="radio-inline specs">
+                                               <input type="radio" name="cartype2" onclick="airport_booking_time(this.id);" class="radiobtnalign" Value="Economy"  id="anow" checked=""><label id="picknow_airport"></label> <small id="picknowcondions_airport"></small>
+                                               </label>
+                                               <label class="radio-inline specs" style="padding-left:47px !important;">
+                                               <input type="radio" name="cartype2" onclick="airport_booking_time(this.id);" class="radiobtnalign" value="HIgher"  id="alater"><label id="booklater_airport"></label> <small id="booklaterconditions_airport"></small>
+                                               </label>
+                                                 </div>
+                                               </div>
+                                               
+                                                                                             </div>  
+                                             
+                                            <!-- start airport -->
+                                            
+                                            <div id="airpickup" style="float: right; display:none; width: 50%; padding-top: 12px;">
+											   <div class="form-group padding_margin0">
+											     <label id="airport_pickdate" style="padding:5px 0 0 18px!important;width:25%" class="col-sm-2 form-contro">Pickup Date</label>
+                                                                                             <div class="col-sm-4" style="width:30%">
+                                                    <input type="text" id="airPickupDate" class="form-control inputfild" onchange="AirpickHour(0);" placeholder="<?php echo date("m-d-Y");?>">
+                                                </div>
+												<div class="form-group padding_margin0">
+						<!--  local pickup time						  <label id="local_pickup_time" class="col-sm-1 form-contro"></label> -->
+                                                <div class="col-sm-2" style="width:22%">
+                                                    <select id="airPickupTimeH" name="field_8h" class="form-control" onchange="AirpickHour(1);">
+                                                         <option value="hrs">Hrs</option>
+ <!--                                                 </select><label id="localTime-error" class="error col-lg-offsets-5" for="localTime">This field is required.</label>-->
+                                                 </select>
+                                                </div>
+												</div>
+                                                <div class="col-sm-2" style="width:22%">
+                                                 
+                                                    <select id="airPickupTimeS" class="form-control error col-lg-offsets-5" aria-required="true">
+                                                     <option value="min">Min</option>
+													
+                                                    </select>
+                                                </div>
+                                               </div>
+											   </div>
+                                           <div class="clear"></div>  </div>
+                                                                                         
+                                            <!-- end -->
+                                            <hr/>
+                                            
+                                             											  
+											 <div class="row">
+                                                 <div class="form-group clearfix" style="margin:0;">
+                                                 <div class="col-sm-11">
+												 <label id="air_carsTypes" style="margin-bottom:0; margin-right:40px;"></label>
+                                                <label class="radio-inline specs mytip economy"  data-toggle="tooltip" data-placement="bottom" title="">
+                                                    <input type="radio" name="Airportcartype" onclick="carbook(this.id);" class="radiobtnalign" Value="1"  id="economy" checked=""><span id="air_economy"></span>&nbsp;&nbsp;<i class="fa fa-taxi fa-1_5x"></i>
+                                               </label>
+                                               <label class="radio-inline specs mytip sedan" data-toggle="tooltip" data-placement="bottom" title="" style="padding-left:47px !important;">
+                                                   <input type="radio" name="Airportcartype" onclick="carbook(this.id);" class="radiobtnalign" value="2"  id="prime"><span id="air_prime"></span>&nbsp;&nbsp;<i class="fa fa-car fa-1_5x"></i>
+                                               </label>
+                                                <label class="radio-inline specs mytip prime" data-toggle="tooltip" data-placement="bottom" title="" style="padding-left:47px !important;">
+                                                    <input type="radio" id="selectMulticity" name="Airportcartype" onclick="carbook(this.id);" class="radiobtnalign" value="3"  id="higher"><span id="air_higher"></span>&nbsp;&nbsp;<i class="fa fa-car fa-1_5x"></i>
+                                               </label>
+                                               </div>
+                                                </div>
+                                                  
+                                             </div>
+                                            
+                                            
+                                              <hr style="margin:0px auto 10px;"/>
+                                        <!--    <div class="row">
+                                                 <div id="airpickup" style="display:none">
+											 	<div class="form-group padding_margin0">
+												<label id="airport_pickdate" class="col-sm-2 form-contro"></label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" id="airPickupDate" class="form-control inputfild" onchange="AirpickHour();" placeholder="<?php echo date("m-d-Y")?>">
+                                                </div>
+											</div>
+											<div class="form-group padding_margin0">	
+											 <label id="airport_pickup_time" class="col-sm-2 form-contro" ></label>
+                                                <div class="col-sm-2">
+                                                     <select id="airPickupTimeH" name="field_8h" class="form-control">
+<!--                                                    <option value="">Hours</option>
+                                                    <option>00</option><option>01</option><option>02</option><option>03</option><option>04</option>
+                                                 <option>05</option><option>06</option><option>07</option><option>08</option><option>09</option>
+                                                 <option>10</option><option>11</option><option>12</option><option>13</option><option>14</option>
+                                                 <option>15</option><option>16</option><option>17</option><option>18</option><option>19</option>
+                                                 <option>20</option><option>21</option><option>22</option><option>23</option>
+                                                 </select>
+                                                </div>
+												</div>
+													
+												 
+                                                <div class="col-sm-2">
+                                               
+                                                    <select id="airPickupTimeS" class=" form-control">
+<!--                                                    <option value="">Min</option>
+                                                    <option>00</option><option>05</option><option>10</option><option>15</option><option>20</option>
+                                                    <option>25</option><option>30</option><option>35</option><option>40</option><option>45</option>
+                                                    <option>50</option><option>55</option>
+                                                    </select>
+                                                </div>
+                                                 </div>                                      
+                                                
+                                                <div class="form-group padding_margin0">
+                                              
+                                               <div class="col-sm-6" id="goingToAirport" style="display:show">
+                                                   <a href="#" input id="103" onclick="goingToAirportSubmit(this.id);" type="button" class=" btn btn-lg bg-primary col-sm-12 makebookingbtn" value=""/></a>
+                                              </div>
+											   
+                                             </div>
+											 </div> -->
+                                        <div class="col-sm-6" id="goingToAirport" style="display:show">
+                                                   <a href="#" input id="103" onclick="goingToAirportSubmit(this.id);" type="button" class=" btn btn-lg bg-primary col-sm-12 makebookingbtn" value=""/></a>
+                                              </div>
+<div class="clear"></div></div>
+                                     </div>
+                                </div>
+                              
+                              <!--Airport Transfer End-->  
+                              
+                              
+                               <!--Outstation Start-->
+                              
+                              <div id="booking_outstation" class="portlet portlet-purple" style="border: 0;border-top: 1px solid #d2d2d2; margin:0; display:none;">
+                                     <div id="inputSizing" class="panel-collapse in" style="height: auto;">
+                                        <div class="portlet-body " style="padding:10px 15px 0;">
+                                            <div id="popAlert" style="display:none;">
+                                               <div class="row"> <div class="col-sm-12" style="text-align:center;" > <p style="border-bottom: 1px solid #ff3f3f; color:#ff3f3f">We can not confirm online booking as such short notice.</br>Please call (011)42424242 for immediate bookings and confirmations.</p> </div> </div> 
+                                            </div>
+					
+                                              	
+                                            <!--================alert for same day============ -->
+                                            	
+                                             <!--================alert for same day============ -->
+                                             <div class="row">
+                                                 <div class="form-group clearfix" style="margin-bottom:0 !important; margin-top:-10px !important;">
+                                                 <div class="col-sm-11" style="margin-left:10px;">
+                                                <label class="radio-inline specs">
+                                                    <input type="radio" name="optionsInlineRadios" onclick="roundtrip()" class="radiobtnalign" value="" checked=""><span id="outstation_roundtrip"></span>  
+                                               </label>
+                                               <label class="radio-inline specs" style="padding-left:47px !important;">
+                                                   <input type="radio" name="optionsInlineRadios"onclick="oneway();" class="radiobtnalign" value=""><span id="outstation_oneway"></span>
+                                               </label>
+                                                <label class="radio-inline specs" style="padding-left:47px !important;">
+                                                    <input type="radio" id="selectMulticity" name="optionsInlineRadios" onclick="multicity();" class="radiobtnalign" value=""><span id="outstation_multicity"></span>
+                                               </label>
+                                               </div>
+                                                </div>
+                                                  
+                                             </div>
+                                             
+                                             
+                                               <!--multiple country-->
+                                 <div>       
+                                       
+                                         <!--multiple country End-->
+                                               <hr style="margin:5px auto 10px;"/>
+                                            <div class="row" id="countryMultiple" style="display:block">
+                                                  <div class="form-group padding_margin0">
+												   <label id="outstation_from" class="col-sm-2 form-contro"></label>
+                                                  <div class="col-sm-4">
+                                                   
+                                                    <select id="outRoundtripfrom" class="form-control check_booking" >
+<!--                                                  	<option>Please Select</option>
+                                                        <option value="Delhi/NCR">Delhi/NCR</option>-->
+                                                   </select>                                    
+                                                  </div>
+                                                </div>
+                                                  <div class="form-group clearfix">
+												  <label id="outstaion_to" class="col-sm-2 form-contro paddingleft30"></label>
+                                                   <div class="col-sm-4">
+                                                           <select id="outRoundtripto" name="" class=" form-control" onchange="mapping(this.id);">
+<!--                                                              <option>Please Select</option>
+							  <option value="Agra">Agra</option><option value="Ahmedabad">Ahmedabad</option><option value="Ajanta">Ajanta</option><option value="Ajmer">Ajmer</option><option value="Alleppey">Alleppey</option><option value="Amritsar">Amritsar</option><option value="Aurangabad">Aurangabad</option><option value="Ayodhya">Ayodhya</option><option value="Bandhavgarh">Bandhavgarh</option><option value="Bandhavgarh">Bandhavgarh</option><option value="Bangalore">Bangalore</option><option value="Barmer">Barmer</option><option value="Baroda">Baroda</option><option value="Belur">Belur</option><option value="Bharatpur">Bharatpur</option><option value="Bhavnagar">Bhavnagar</option><option value="Bhopal">Bhopal</option><option value="Bhubaneshwar">Bhubaneshwar</option><option value="Bhuj">Bhuj</option><option value="Bikaner">Bikaner</option><option value="Bodhgaya">Bodhgaya</option><option value="Bundi">Bundi</option><option value="Chennai">Chennai</option><option value="Chettinad">Chettinad</option><option value="Chittorgarh">Chittorgarh</option><option value="Cochin">Cochin</option><option value="Coimbatore">Coimbatore</option><option value="Coonoor">Coonoor</option><option value="Coorg">Coorg</option><option value="Corbett">Corbett</option><option value="Dalhousie">Dalhousie</option><option value="Darjeeling">Darjeeling</option><option value="Dehradun">Dehradun</option><option value="Delhi/NCR">Delhi/NCR</option><option value="Dharamsala">Dharamsala</option><option value="Dispur">Dispur</option><option value="Dudhwa">Dudhwa</option><option value="Ellora">Ellora</option><option value="Gandhi Nagar">Gandhi Nagar</option><option value="Gangtok">Gangtok</option><option value="Gondal">Gondal</option><option value="Gorakhpur">Gorakhpur</option><option value="Guwahati">Guwahati</option><option value="Gwalior">Gwalior</option><option value="Halebid">Halebid</option><option value="Hampi">Hampi</option><option value="Haridwar">Haridwar</option><option value="Hyderabad">Hyderabad</option><option value="Imphal">Imphal</option><option value="Indore">Indore</option><option value="Itanagar">Itanagar</option><option value="Jabalpur">Jabalpur</option><option value="Jaipur">Jaipur</option><option value="Jaisalmer">Jaisalmer</option><option value="Jodhpur">Jodhpur</option><option value="Kalimpong">Kalimpong</option><option value="Kanchipuram">Kanchipuram</option><option value="Kanha">Kanha</option><option value="Kanyakumari">Kanyakumari</option><option value="Kaziranga">Kaziranga</option><option value="Kedarnath">Kedarnath</option><option value="Khajuraho">Khajuraho</option><option value="Kodaikanal">Kodaikanal</option><option value="Kohima">Kohima</option><option value="Kolkata">Kolkata</option><option value="konark">konark</option><option value="Kota">Kota</option><option value="Kovalam">Kovalam</option><option value="Kullu">Kullu</option><option value="Kumarakom">Kumarakom</option><option value="Kumbhalgarh">Kumbhalgarh</option><option value="Kushinagar">Kushinagar</option><option value="Ladakh">Ladakh</option><option value="Leh">Leh</option><option value="Lucknow">Lucknow</option><option value="Madurai">Madurai</option><option value="Mahabalipuram">Mahabalipuram</option><option value="Manali">Manali</option><option value="Mandawa">Mandawa</option><option value="Mangalore">Mangalore</option><option value="Matheran">Matheran</option><option value="Mount Abu">Mount Abu</option><option value="Mukundgarh">Mukundgarh</option><option value="Mumbai">Mumbai</option><option value="Munnar">Munnar</option><option value="Mysore">Mysore</option><option value="Nagpur">Nagpur</option><option value="Nainital">Nainital</option><option value="Nalanda">Nalanda</option><option value="Nawalgarh">Nawalgarh</option><option value="Noida">Noida</option><option value="Ooty">Ooty</option><option value="Orchha">Orchha</option><option value="Panaji">Panaji</option><option value="Patna">Patna</option><option value="Periyar">Periyar</option><option value="Puri">Puri</option><option value="Pushkar">Pushkar</option><option value="Rajgir">Rajgir</option><option value="Ranakpur">Ranakpur</option><option value="Ranchi">Ranchi</option><option value="Ranthambore">Ranthambore</option><option value="Rishikesh">Rishikesh</option><option value="Rohtang Pass">Rohtang Pass</option><option value="Samode">Samode</option><option value="Sanchi">Sanchi</option><option value="Sariska">Sariska</option><option value="Sarnath">Sarnath</option><option value="Sasangir">Sasangir</option><option value="Sawai Madhopur">Sawai Madhopur</option><option value="Shekhawati">Shekhawati</option><option value="Shimla">Shimla</option><option value="Siliguri">Siliguri</option><option value="Silvassa">Silvassa</option><option value="Sravasti">Sravasti</option><option value="Srinagar">Srinagar</option><option value="Surat">Surat</option><option value="Tanjore">Tanjore</option><option value="Thrissur">Thrissur</option><option value="Trichy">Trichy</option><option value="Trivandrum">Trivandrum</option><option value="Udaipur">Udaipur</option><option value="Umaria">Umaria</option><option value="Utelia">Utelia</option><option value="Uttarkashi">Uttarkashi</option><option value="Vaishali">Vaishali</option><option value="Varanasi">Varanasi</option><option value="Varkala">Varkala</option><option value="Vizag">Vizag</option><option value="Zainabad">Zainabad</option><option value="Mathura">Mathura							  
+							  </option>-->
+                                                          </select>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                             
+                                 </div>            
+                                             
+                                         <!--multiple address-->
+                                         <div id="addCity" style="display:none">
+                                         <div class="row" >
+                                         	<div class="col-md-12 col-lg-12 multiplerow">
+                                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                                    <label id="outstation_from2"></label>
+                                                    <select id="cityFrom0" name="field" class="form-control outstationCities"> 
+                                                     
+                                                    </select>
+                                                   
+                                                </div>
+                                                    
+                                            <div class="col-md-4 col-lg-4">
+                                            
+                                            <div class="form-group clearfix">
+                                                   <div class="col-sm-12">
+                                                       <label id="outstation_to" style="display:block">To</label>
+                               <select id="multicityapd0" name="" class=" form-control" onchange="citySelection2(this.id); multiMap(this.id);">
+<!--                                                    <option>Please Select</option>
+							  <option value="Agra">Agra</option><option value="Ahmedabad">Ahmedabad</option><option value="Ajanta">Ajanta</option><option value="Ajmer">Ajmer</option><option value="Alleppey">Alleppey</option> <option value="Amritsar">Amritsar</option><option value="Aurangabad">Aurangabad</option><option value="Ayodhya">Ayodhya</option><option value="Bandhavgarh">Bandhavgarh</option><option value="Bandhavgarh">Bandhavgarh</option><option value="Bangalore">Bangalore</option><option value="Barmer">Barmer</option><option value="Baroda">Baroda</option><option value="Belur">Belur</option><option value="Bharatpur">Bharatpur</option><option value="Bhavnagar">Bhavnagar</option><option value="Bhopal">Bhopal</option><option value="Bhubaneshwar">Bhubaneshwar</option><option value="Bhuj">Bhuj</option><option value="Bikaner">Bikaner</option><option value="Bodhgaya">Bodhgaya</option><option value="Bundi">Bundi</option><option value="Chennai">Chennai</option><option value="Chettinad">Chettinad</option><option value="Chittorgarh">Chittorgarh</option><option value="Cochin">Cochin</option><option value="Coimbatore">Coimbatore</option><option value="Coonoor">Coonoor</option><option value="Coorg">Coorg</option><option value="Corbett">Corbett</option><option value="Dalhousie">Dalhousie</option><option value="Darjeeling">Darjeeling</option><option value="Dehradun">Dehradun</option><option value="Delhi/NCR">Delhi/NCR</option><option value="Dharamsala">Dharamsala</option><option value="Dispur">Dispur</option><option value="Dudhwa">Dudhwa</option><option value="Ellora">Ellora</option><option value="Gandhi Nagar">Gandhi Nagar</option><option value="Gangtok">Gangtok</option><option value="Gondal">Gondal</option><option value="Gorakhpur">Gorakhpur</option><option value="Guwahati">Guwahati</option><option value="Gwalior">Gwalior</option><option value="Halebid">Halebid</option><option value="Hampi">Hampi</option><option value="Haridwar">Haridwar</option><option value="Hyderabad">Hyderabad</option><option value="Imphal">Imphal</option><option value="Indore">Indore</option><option value="Itanagar">Itanagar</option><option value="Jabalpur">Jabalpur</option><option value="Jaipur">Jaipur</option><option value="Jaisalmer">Jaisalmer</option><option value="Jodhpur">Jodhpur</option><option value="Kalimpong">Kalimpong</option><option value="Kanchipuram">Kanchipuram</option><option value="Kanha">Kanha</option><option value="Kanyakumari">Kanyakumari</option><option value="Kaziranga">Kaziranga</option><option value="Kedarnath">Kedarnath</option><option value="Khajuraho">Khajuraho</option><option value="Kodaikanal">Kodaikanal</option><option value="Kohima">Kohima</option><option value="Kolkata">Kolkata</option><option value="konark">konark</option><option value="Kota">Kota</option><option value="Kovalam">Kovalam</option><option value="Kullu">Kullu</option><option value="Kumarakom">Kumarakom</option><option value="Kumbhalgarh">Kumbhalgarh</option><option value="Kushinagar">Kushinagar</option><option value="Ladakh">Ladakh</option><option value="Leh">Leh</option><option value="Lucknow">Lucknow</option><option value="Madurai">Madurai</option><option value="Mahabalipuram">Mahabalipuram</option><option value="Manali">Manali</option><option value="Mandawa">Mandawa</option><option value="Mangalore">Mangalore</option><option value="Matheran">Matheran</option><option value="Mount Abu">Mount Abu</option><option value="Mukundgarh">Mukundgarh</option><option value="Mumbai">Mumbai</option><option value="Munnar">Munnar</option><option value="Mysore">Mysore</option><option value="Nagpur">Nagpur</option><option value="Nainital">Nainital</option><option value="Nalanda">Nalanda</option><option value="Nawalgarh">Nawalgarh</option><option value="Noida">Noida</option><option value="Ooty">Ooty</option><option value="Orchha">Orchha</option><option value="Panaji">Panaji</option><option value="Patna">Patna</option><option value="Periyar">Periyar</option><option value="Puri">Puri</option><option value="Pushkar">Pushkar</option><option value="Rajgir">Rajgir</option><option value="Ranakpur">Ranakpur</option><option value="Ranchi">Ranchi</option><option value="Ranthambore">Ranthambore</option><option value="Rishikesh">Rishikesh</option><option value="Rohtang Pass">Rohtang Pass</option><option value="Samode">Samode</option><option value="Sanchi">Sanchi</option><option value="Sariska">Sariska</option><option value="Sarnath">Sarnath</option><option value="Sasangir">Sasangir</option><option value="Sawai Madhopur">Sawai Madhopur</option><option value="Shekhawati">Shekhawati</option><option value="Shimla">Shimla</option><option value="Siliguri">Siliguri</option><option value="Silvassa">Silvassa</option><option value="Sravasti">Sravasti</option><option value="Srinagar">Srinagar</option><option value="Surat">Surat</option><option value="Tanjore">Tanjore</option><option value="Thrissur">Thrissur</option><option value="Trichy">Trichy</option><option value="Trivandrum">Trivandrum</option><option value="Udaipur">Udaipur</option><option value="Umaria">Umaria</option><option value="Utelia">Utelia</option><option value="Uttarkashi">Uttarkashi</option><option value="Vaishali">Vaishali</option><option value="Varanasi">Varanasi</option><option value="Varkala">Varkala</option><option value="Vizag">Vizag</option><option value="Zainabad">Zainabad</option><option value="Mathura">Mathura							  
+							  </option>-->
+                               </select>
+                                                    </div>
+                                                </div>
+                                            
+                                            </div>
+                                            
+                                            <div class="col-md-4 col-lg-4">
+                                            <label id="outstation_departure">To</label>
+                                            <input id="datepickeCity0" type="text"  class=" form-control datepick inputfild" placeholder="<?php echo date("m-d-Y")?>">
+                                            </div>
+                                            
+                                            </div>
+                                         </div>
+                                         
+										 
+								  <div class="row" >
+                                         	<div class="col-md-12 col-lg-12 multiplerow">
+                                         	
+                                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                                    <label id="outstation_from3">To</label>
+                                                    <!--<select id="" name="from" class="form-control"> 
+                                                     <option value=""></option>
+                                                     
+                                                    </select>-->
+                                                    <input id="cityFrom1" type="text" class="form-control inputfild" >
+                                                </div>
+                                             
+                                            <div class="col-md-4 col-lg-4">
+                                            
+                                            <div class="form-group clearfix">
+                                                   <div class="col-sm-12">
+                                                    <label id="outstation_to3">To</label>
+                                                          <select id="multicityapd1" name="" class=" form-control" onchange="citySelection2(this.id);multiMap(this.id); ">
+<!--                                                              <option>Please Select</option>
+							  <option value="Agra">Agra</option><option value="Ahmedabad">Ahmedabad</option><option value="Ajanta">Ajanta</option><option value="Ajmer">Ajmer</option><option value="Alleppey">Alleppey</option><option value="Amritsar">Amritsar</option><option value="Aurangabad">Aurangabad</option><option value="Ayodhya">Ayodhya</option><option value="Bandhavgarh">Bandhavgarh</option><option value="Bandhavgarh">Bandhavgarh</option><option value="Bangalore">Bangalore</option><option value="Barmer">Barmer</option><option value="Baroda">Baroda</option><option value="Belur">Belur</option><option value="Bharatpur">Bharatpur</option><option value="Bhavnagar">Bhavnagar</option><option value="Bhopal">Bhopal</option><option value="Bhubaneshwar">Bhubaneshwar</option><option value="Bhuj">Bhuj</option><option value="Bikaner">Bikaner</option><option value="Bodhgaya">Bodhgaya</option><option value="Bundi">Bundi</option><option value="Chennai">Chennai</option><option value="Chettinad">Chettinad</option><option value="Chittorgarh">Chittorgarh</option><option value="Cochin">Cochin</option><option value="Coimbatore">Coimbatore</option><option value="Coonoor">Coonoor</option><option value="Coorg">Coorg</option><option value="Corbett">Corbett</option><option value="Dalhousie">Dalhousie</option><option value="Darjeeling">Darjeeling</option><option value="Dehradun">Dehradun</option><option value="Delhi/NCR">Delhi/NCR</option><option value="Dharamsala">Dharamsala</option><option value="Dispur">Dispur</option><option value="Dudhwa">Dudhwa</option><option value="Ellora">Ellora</option><option value="Gandhi Nagar">Gandhi Nagar</option><option value="Gangtok">Gangtok</option><option value="Gondal">Gondal</option><option value="Gorakhpur">Gorakhpur</option><option value="Guwahati">Guwahati</option><option value="Gwalior">Gwalior</option><option value="Halebid">Halebid</option><option value="Hampi">Hampi</option><option value="Haridwar">Haridwar</option><option value="Hyderabad">Hyderabad</option><option value="Imphal">Imphal</option><option value="Indore">Indore</option><option value="Itanagar">Itanagar</option><option value="Jabalpur">Jabalpur</option><option value="Jaipur">Jaipur</option><option value="Jaisalmer">Jaisalmer</option><option value="Jodhpur">Jodhpur</option><option value="Kalimpong">Kalimpong</option><option value="Kanchipuram">Kanchipuram</option><option value="Kanha">Kanha</option><option value="Kanyakumari">Kanyakumari</option><option value="Kaziranga">Kaziranga</option><option value="Kedarnath">Kedarnath</option><option value="Khajuraho">Khajuraho</option><option value="Kodaikanal">Kodaikanal</option><option value="Kohima">Kohima</option><option value="Kolkata">Kolkata</option><option value="konark">konark</option><option value="Kota">Kota</option><option value="Kovalam">Kovalam</option><option value="Kullu">Kullu</option><option value="Kumarakom">Kumarakom</option><option value="Kumbhalgarh">Kumbhalgarh</option><option value="Kushinagar">Kushinagar</option><option value="Ladakh">Ladakh</option><option value="Leh">Leh</option><option value="Lucknow">Lucknow</option><option value="Madurai">Madurai</option><option value="Mahabalipuram">Mahabalipuram</option><option value="Manali">Manali</option><option value="Mandawa">Mandawa</option><option value="Mangalore">Mangalore</option><option value="Matheran">Matheran</option><option value="Mount Abu">Mount Abu</option><option value="Mukundgarh">Mukundgarh</option><option value="Mumbai">Mumbai</option><option value="Munnar">Munnar</option><option value="Mysore">Mysore</option><option value="Nagpur">Nagpur</option><option value="Nainital">Nainital</option><option value="Nalanda">Nalanda</option><option value="Nawalgarh">Nawalgarh</option><option value="Noida">Noida</option><option value="Ooty">Ooty</option><option value="Orchha">Orchha</option><option value="Panaji">Panaji</option><option value="Patna">Patna</option><option value="Periyar">Periyar</option><option value="Puri">Puri</option><option value="Pushkar">Pushkar</option><option value="Rajgir">Rajgir</option><option value="Ranakpur">Ranakpur</option><option value="Ranchi">Ranchi</option><option value="Ranthambore">Ranthambore</option><option value="Rishikesh">Rishikesh</option><option value="Rohtang Pass">Rohtang Pass</option><option value="Samode">Samode</option><option value="Sanchi">Sanchi</option><option value="Sariska">Sariska</option><option value="Sarnath">Sarnath</option><option value="Sasangir">Sasangir</option><option value="Sawai Madhopur">Sawai Madhopur</option><option value="Shekhawati">Shekhawati</option><option value="Shimla">Shimla</option><option value="Siliguri">Siliguri</option><option value="Silvassa">Silvassa</option><option value="Sravasti">Sravasti</option><option value="Srinagar">Srinagar</option><option value="Surat">Surat</option><option value="Tanjore">Tanjore</option><option value="Thrissur">Thrissur</option><option value="Trichy">Trichy</option><option value="Trivandrum">Trivandrum</option><option value="Udaipur">Udaipur</option><option value="Umaria">Umaria</option><option value="Utelia">Utelia</option><option value="Uttarkashi">Uttarkashi</option><option value="Vaishali">Vaishali</option><option value="Varanasi">Varanasi</option><option value="Varkala">Varkala</option><option value="Vizag">Vizag</option><option value="Zainabad">Zainabad</option><option value="Mathura">Mathura							  
+							  </option>-->
+                                                          </select>
+                                                    </div>
+                                                </div>
+                                            
+                                            </div>
+                                            
+                                            <div class="col-md-4 col-lg-4">
+                                            <label id="outstation_departure2"></label>
+                                            <input id="datepickeCity1" type="text"  class=" form-control datepick inputfild" placeholder="<?php echo date("m-d-Y")?>">
+                                            </div>
+                                            
+                                            </div>
+                                         </div>
+										 </div>
+										 <!--add div form-->
+										 <div id="addCityForm" ></div>
+										 <!--add div form-->
+										
+										 <!--add button-->
+                                         <div id="addCitybutton" onclick="addCitybutton();" style="display:none;width: 150px; font-family: arial; background: #333; font-weight: bold;padding: 2px 10px;margin-top: 5px;border: 1px solid #000; margin:10px 0 0">
+										 <a href="#" style="color:white" id="outstation_addcity"></a>
+										 </div>
+										 <!--add button end-->
+										 
+                                         <!--multiple address END-->    
+                                             
+                                             
+                                             
+                                             
+                                             
+                                           
+                                           <div class="row">
+                                                  <div class="form-group padding_margin0" id="outstation_text">
+												   <label id="outstation_departure3" class="col-sm-2 form-contro"></label>
+                                                  <div class="col-sm-4" id="roundtrip">
+                                                      <input id="outstation_Ddate" type="text" class=" form-control inputfild" onchange="StationpickHour(0);" placeholder="<?php echo date("m-d-Y")?>"/>                                    
+                                                  </div>
+                                                </div>
+                                                  <div class="clearfix" id="oustation_return_text">
+												    <label id="outstation_return" class="col-sm-2 form-contro paddingleft30"></label>
+                                                   <div class="col-sm-4" id="outReturn">
+                                                          <input id="outstation_Rdate" type="text" class=" form-control inputfild" placeholder="<?php echo date("m-d-Y")?>"/>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                           
+                                            
+										<div class="row" style="padding:10px 10px 0;">	
+											<table class="responsivetab">
+												<tr>
+													<td><label id="outstaion_nationality" class="form-contro" style="margin-right:10px;float:left;"></label></td>
+													<td><select id="outstationNationality" class="inputfild form-control valid" aria-invalid="false"><option value="Indian" id="localCabFor0">Indian</option><option value="Non-Indian" id="localCabFor1">Non-Indian</option></select></td>
+													
+													<td><label id="oustation_adults" class="form-contro labelmarginright"> </label></td>
+													<td>  <select id="outstationAdults" class="inputfild form-control"></select></td>
+													
+													<td><label id="oustation_childs" class="form-contro labelmarginright"></label></td>
+													<td><select id="outstationChilds" class="inputfild form-control"></select></td>
+													
+													<td><label id="outstaion_luggages" class="form-contro labelmarginright"></label></td>
+													<td><select id="outstationLuggages" class="inputfild form-control"></select></td>
+												</tr>
+											</table>
+                                            </div>
+                                         
+<!--                                         <hr/ style="margin:10px 0 0px">
+											  
+											 <div class="row">
+                                                 <div class="form-group clearfix" style="margin:0;">
+                                                 <div class="col-sm-11" style="margin-left:10px;">
+                                                <label class="radio-inline specs">
+                                               <input type="radio" name="cartypes" onclick="booking_time(this.id);" class="radiobtnalign" Value="Economy"  id="onow" checked=""><label id="picknow_outstation"></label> <small id="picknowcondions_outstation"></small>
+                                               </label>
+                                               <label class="radio-inline specs" style="padding-left:47px !important;">
+                                               <input type="radio" name="cartypes" onclick="booking_time(this.id);" class="radiobtnalign" value="HIgher"  id="olater"><label id="booklater_outstation"></label> <small id="booklaterconditions_outstation"></small>
+                                               </label>
+                                                
+                                               </div>
+                                                </div>
+                                                  
+                                             </div>-->
+											
+											
+                                              <hr style="margin:10px auto 0px;"/>
+                                            
+                                              
+											  
+											 <div class="row">
+                                                 <div class="form-group clearfix" style="margin:0;">
+                                                 <div class="col-sm-11">
+												 <label id="outstation_carsTypes" style="margin-bottom:0; margin-right:40px;"></label>
+                                                <label class="radio-inline specs mytip economy" data-toggle="tooltip" data-placement="bottom" title="">
+                                                    <input type="radio" name="cartype" onclick="carbook(this.id);" class="radiobtnalign" Value="1"  id="economy" checked=""><span id="out_economy"></span>&nbsp;&nbsp;<i class="fa fa-taxi fa-1_5x"></i>
+                                               </label>
+                                               <label class="radio-inline specs mytip sedan" data-toggle="tooltip" data-placement="bottom" title="" style="padding-left:47px !important;">
+                                                   <input type="radio" name="cartype" onclick="carbook(this.id);" class="radiobtnalign" value="2"  id="prime"><span id="out_prime"></span>&nbsp;&nbsp;<i class="fa fa-car fa-1_5x"></i>
+                                               </label>
+                                                <label class="radio-inline specs mytip prime" data-toggle="tooltip" data-placement="bottom" title="" style="padding-left:47px !important;">
+                                                    <input type="radio" id="selectMulticity" name="cartype" onclick="carbook(this.id);" class="radiobtnalign" value="3"  id="higher"><span id="out_higher"></span>&nbsp;&nbsp;<i class="fa fa-car fa-1_5x"></i>
+                                               </label>
+                                               </div>
+                                                </div>
+                                                  
+                                             </div>
+                                         
+                                         
+                                         
+                                         
+                                         
+                                            <hr style="margin:1px auto 10px;"/>
+                                              <div class="row">
+											  <div class="form-group padding_margin0">
+											    <label id="outstation_pickupadds" class="col-sm-2 form-contro"></label>
+                                                <div class="col-sm-4">
+                                                  <textarea id="outPickupAddress" class="form-control StationPick "  placeholder="" onblur="mappingOut();" style="height:40px !important;"></textarea>
+                                                </div>
+												</div>
+												 <div class="form-group padding_margin0">
+												 <label id="outstation_pickup_time" class="col-sm-2 form-contro"></label>
+                                                <div class="col-sm-2">
+                                                    <select id="outPickupTimeH" onchange="StationpickHour();" name="field_8h" class="form-control">
+                                                         <option value="hrs">Hrs</option>
+<!--                                                <option value="">Hours</option>
+                                                <option>00</option><option>01</option><option>02</option><option>03</option><option>04</option>
+                                                 <option>05</option><option>06</option><option>07</option><option>08</option><option>09</option>
+                                                 <option>10</option><option>11</option><option>12</option><option>13</option><option>14</option>
+                                                 <option>15</option><option>16</option><option>17</option><option>18</option><option>19</option>
+                                                 <option>20</option><option>21</option><option>22</option><option>23</option>-->
+                                                 </select>
+                                                </div>
+												</div>
+												 <div class="form-group padding_margin0">
+												  
+                                                <div class="col-sm-2">
+                                                     <select id="outPickupTimeM"  class=" form-control">
+                                                          <option value="min">Min</option>
+<!--                                                    <option value="">Min</option>
+                                                    <option>00</option><option>05</option><option>10</option><option>15</option><option>20</option>
+                                                    <option>25</option><option>30</option><option>35</option><option>40</option><option>45</option>
+                                                    <option>50</option><option>55</option>-->
+                                                    </select>
+													</div>
+                                                </div>
+												 <div class="col-sm-6" style="margin-right: 1px;" id="bookingGroundTrip">
+												 	  
+                                                                                                     <a href="#" id="104" onclick="bookingroundtrip(this.id);" type="button" class=" btn btn-lg bg-primary col-sm-12 makebookingbtn" value=""/></a>
+                                              </div>
+											   
+											   <div class="col-sm-6" style="margin-right: 1px; display:none" id="bookingMultyCity">
+                                                                                               <a href="#" onclick="bookingmulitCity();" type="button" class=" btn btn-lg bg-primary col-sm-12 makebookingbtn" value="" id="outstation_book"/></a>
+                                              </div>
+											 
+                                              </div>
+                                              
+                                         </div>
+                                     </div>
+                                   
+                                </div>
+                              
+                              <!--Outstation End-->  
+                          
+                              
+                              
+                              
+                           </div>
+                          
+                  <!--Make your booking button-->     
+                    
+                   	<div class="col-md-12 col-lg-12" style="display:none">
+                    	 <div class="col-md-12 col-lg-12" style="background:#fff;">
+                             <input type="button"  class=" btn btn-lg bg-primary col-md-6 col-lg-6 makebookingbtn" value=""/><span id="make_book"></span></div>
+                    	 </div>
+                   </div> 
+              	<!--Make your booking button-->   
+                        
+                     
+                
+           
+           
+           
+           <div class="col-md-1 col-lg-3 img-responsive" style="margin-top:10px; overflow:hidden; padding:0;" id="slider">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height:421px; overflow:hidden;">
+      <!-- Indicators -->
+      <ol class="carousel-indicators" style="display:block">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+		 <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+		  <li data-target="#myCarousel" data-slide-to="4" class=""></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active" id="mapload">
+           <img src="public/image/1.jpg" width="100%" height="470">
+<div class="container">
+   
+        </div>
+        </div>
+        <div class="item">
+          <img src="public/image/2.jpg" width="100%" height="470" "="" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <!-- <h1>Another example headline.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="public/image/3.jpg" alt="Third slide" width="100%">
+          <div class="container">
+            <div class="carousel-caption">
+             <!--  <h1>One more for good measure.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>-->
+            </div>
+          </div>
+        </div>
+		
+		 <div class="item">
+          <img src="public/image/4.jpg" alt="Third slide" width="100%">
+          <div class="container">
+            <div class="carousel-caption">
+             <!--  <h1>One more for good measure.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>-->
+            </div>
+          </div>
+        </div>
+		
+		<div class="item">
+          <img src="public/image/5.jpg" alt="Third slide" width="100%">
+          <div class="container">
+            <div class="carousel-caption">
+             <!--  <h1>One more for good measure.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>-->
+            </div>
+          </div>
+        </div>
+		
+      </div>
+      
+      <a class="left carousel-control bgnone" href="#myCarousel" role="button" data-slide="prev" style="height:380px;"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control bgnone" href="#myCarousel" role="button" data-slide="next" style="height:380px;"><span class="glyphicon glyphicon-chevron-right"></span></a>
+	  
+	  
+    </div>
+           
+           </div>
+<div class="col-md-3 col-lg-3 img-responsive">
+                <div id="map" style="width:100%; display: none;"></div>
+				</div>
+    <div class="clear"></div>  	</div>
+                    
+      </div>
+     
+     </div>
+    
+       <div class="clear"></div> 
+    <!--test-->
+    
+	<!--Fixed social icons right side START-->
+	 <div class="socialbtn">
+
+<a href="#" class="arrowbtn"><i class="fa fa-chevron-left fa-1_5x"></i></a>
+<a href="#"><i class="fa fa-facebook-square fa-2x" style="color:#6072a4;margin:5px"></i></a>
+<a href="#"><i class="fa fa-tumblr-square fa-2x" style="color:#6fcdef;margin:5px"></i></a>
+<a href="#"><i class="fa fa-linkedin-square fa-2x" style="color:#278cda;margin:5px"></i></a>
+<a href="#"><i class="fa fa-google-plus-square fa-2x" style="color:#d97e69;margin:5px"></i></a>
+
+
+
+</div>
+	<!--Fixed social icons right side END-->
+	
+	<!--Fixed social icons left side START-->
+	<div class="socialbtnleft">
+
+<a href="#" class="arrowbtnleft"><i class="fa fa-chevron-right fa-1_5x"></i></a>
+
+<a href="#"><i class="fa fa-car fa-1_5x cardesign"></i>&nbsp;Attach Your Car</a>
+<a href="#"><i class="fa fa-car fa-1_5x cardesign"></i>&nbsp;Track Car</a>
+
+
+
+</div>
+    <!--Fixed social icons left side END-->
+    <!--test-->
+    
+    <div class="clear"></div>
+	 <div class="clear"></div>
+    <div class="container-fluid selectyrcitybox">
+    	<div class="container">
+        	<h3 class="text-center" style="color:#fff;margin: 6px auto 0px;">Select Your City / Cab</h3>
+            <div class="col-lg-12 innerbox" style="margin: 10px 0 10px;">
+              <div style="padding:0px 20px 0;" class="clearfix">
+              
+             	 <div id="jsCarousel">
+            <div class="image_box">
+                <img src="public/images/car1.png" class="img" /><br />
+                <span class="thumbnail-text">LUXURY</span>
+                <div class="clear"></div>
+                <span class="thumbnail-text1">Indigo</span>
+                <div class="clear"></div>
+                <img src="public/image/select_cab.png" class="button" />
+          </div>
+          <div class="image_box">
+                <img src="public/images/car2.jpg" class="img" /><br />
+                <span class="thumbnail-text">LUXURY</span>
+                <div class="clear"></div>
+                <span class="thumbnail-text1">Indigo</span>
+                <div class="clear"></div>
+                <img src="public/image/select_cab.png" class="button" />
+          </div>
+          <div class="image_box">
+                <img src="public/images/car13.jpg" class="img" /><br />
+                <span class="thumbnail-text">LUXURY</span>
+                <div class="clear"></div>
+                <span class="thumbnail-text1">Indigo</span>
+                <div class="clear"></div>
+                <img src="public/image/select_cab.png" class="button" />
+          </div>
+           <div class="image_box">
+                <img src="public/images/car4.jpg" class="img" /><br />
+                <span class="thumbnail-text">LUXURY</span>
+                <div class="clear"></div>
+                <span class="thumbnail-text1">Indigo</span>
+                <div class="clear"></div>
+                <img src="public/image/select_cab.png" class="button" />
+          </div>
+          <div class="image_box">
+                <img src="public/images/image.jpg" class="img1" /><br />
+                <span class="thumbnail-text2">Agra - Taj Mahal</span>
+                
+          </div>
+          <div class="image_box">
+                <img src="public/images/image.jpg" class="img1" /><br />
+                 <span class="thumbnail-text2">Agra - Taj Mahal</span>
+                <div class="clear"></div>
+          </div>
+          <div class="image_box">
+                <img src="public/images/image.jpg" class="img1" /><br />
+                <span class="thumbnail-text2">Agra - Taj Mahal</span>
+          </div>
+          <div class="image_box">
+                <img src="public/images/image.jpg" class="img1" /><br />
+                <span class="thumbnail-text2">Agra - Taj Mahal</span>
+          </div>
+           <div class="image_box">
+                <img src="public/images/image.jpg" class="img1" /><br />
+                <span class="thumbnail-text2">Agra - Taj Mahal</span>
+          </div>
+           <div class="image_box">
+                <img src="public/images/car1.png" class="img" /><br />
+                <span class="thumbnail-text">Agra - Taj Mahal</span>
+          </div>
+          <div class="image_box">
+                <img src="public/images/car1.png" class="img" /><br />
+                <span class="thumbnail-text">LUXURY</span>
+                <div class="clear"></div>
+                <span class="thumbnail-text1">Indigo</span>
+                <div class="clear"></div>
+                <img src="public/image/select_cab.png" class="button" />
+          </div>
+            <div class="image_box">
+                <img src="public/images/car1.png" class="img" /><br />
+                <span class="thumbnail-text">LUXURY</span>
+                <div class="clear"></div>
+                <span class="thumbnail-text1">Indigo</span>
+                <div class="clear"></div>
+                <img src="public/image/select_cab.png" class="button" />
+          </div>
+           <div class="image_box">
+                <img src="public/images/car1.png" class="img" /><br />
+                <span class="thumbnail-text">LUXURY</span>
+                <div class="clear"></div>
+                <span class="thumbnail-text1">Indigo</span>
+                <div class="clear"></div>
+                <img src="public/image/select_cab.png" class="button" />
+          </div>
+          <div class="image_box">
+                <img src="public/images/car1.png" class="img" /><br />
+                <span class="thumbnail-text">LUXURY</span>
+                <div class="clear"></div>
+                <span class="thumbnail-text1">Indigo</span>
+                <div class="clear"></div>
+                <img src="public/image/select_cab.png" class="button" />
+          </div>
+         <div class="image_box">
+                <img src="public/images/car1.png" class="img" /><br />
+                <span class="thumbnail-text">LUXURY</span>
+                <div class="clear"></div>
+                <span class="thumbnail-text1">Indigo</span>
+                <div class="clear"></div>
+                <img src="public/image/select_cab.png" class="button" />
+          </div>
+           <div class="image_box">
+                <img src="public/images/car1.png" class="img" /><br />
+                <span class="thumbnail-text">LUXURY</span>
+                <div class="clear"></div>
+                <span class="thumbnail-text1">Indigo</span>
+                <div class="clear"></div>
+                <img src="public/image/select_cab.png" class="button" />
+          </div>
+        </div>
+              
+              </div>
+             </div>
+                
+                
+               
+<!--    ///////login form/////////-->
+
+<form id="login_form" style="display:none ">
+        <!--Login START-->
+		<div class="container leftbox"  >
+  <div class="col-sm-6 col-sm-offset-3" style="
+    background: #fff;
+ 
+    border-radius: 20px;
+    padding: 30px 0 0;
+" >
+				<div class="row text-center">
+					<div class="col-md-12">
+						<div class="exit_iconbox">
+							<a href="#">
+                                <div class="circle-tile-heading red">
+                                     <i class="fa fa-thumbs-up fa-fw fa-5x" style="line-height: 120px;"></i>
+                                </div>
+                            </a>
+                            
+
+						</div>
+					</div><div class="clearfix"></div>
+				</div>
+ 			<div class="row text-center">
+             
+				<div class="leftbox col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+ 					<div class="col-lg-12">
+                    
+						 
+                            <div class="spance">
+							 	<h3 style="padding:0; margin:0 auto 30px; text-transform: capitalize;">congratulations you have logged in with us successfully.</h3>
+							</div>
+                            <div class="spance">
+                            	<div class="col-sm-12 col-md-12 col-lg-12 loginboxpading">
+									<input type="button" id=" " value="OK" class="form-control form-horizontal loginbtn textsize17 b-close" >
+                            </div>
+                             
+                            
+  						</div>
+				</div>
+			</div>
+  </div>
+		</div>
+        <!--Login END--> 
+        </form>
+  <!--/////////////////////////////-->
+  <form id="login_form2" class="login_form2">
+        <!--Login START-->
+        <h1 class="fa fa-times closbtn b-close"></h1>
+		<div class="container leftbox" id="login_start" style="background-color: white; width: 500px; border:#e88d05 3px solid;">
+				<div class="row text-center">
+					<div class="col-md-12">
+						<div class="exit_iconbox">
+							<a href="#">
+                                <div class="circle-tile-heading red">
+                                     <i class="fa fa-sign-in fa-fw fa-5x"></i>
+                                </div>
+                            </a>
+                            
+
+						</div>
+					</div><div class="clearfix"></div>
+				</div>
+ 			<div class="row text-center">
+             <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+             </div>
+				<div class="leftbox col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-0">
+ 					<div class="col-lg-12">
+                    
+							<div class="spance">
+                                                            <p class='invalid' style='display:none;color:red'>Invalid Username or Password</p>
+							<input type="text" id="login_email" name="login_email" placeholder="EMAIL or MOBILE" class="form-control login form-horizontal border textsize17"/>
+							</div>
+                            <div class="spance">
+							<input type="password" id="login_password" name="password" placeholder="PASSWORD" class="form-control login form-horizontal border textsize17"/>
+							</div>
+                            <div class="spance">
+                            	<div class="col-sm-6 col-md-6 col-lg-5 loginboxpading">
+									<input type="button" id="signin"   value="LOGIN" class="form-control form-horizontal loginbtn textsize17"/>
+                            	</div>
+                                <div class="col-sm-6 col-lg-5 signupboxpading">
+                                    <a href='<?php echo $this->basePath(); ?>/login/index/signup' id="signup" style="padding:12px 0 0;text-decoration: none" class="form-control form-horizontal loginbtn textsize17"/>Sign Up</a>
+                             	</div>
+							</div>
+							<div class="clear"></div>
+                              <div class="spance">
+                             	<a href="login/index/forgetpassword" class="textsize17 darkcolor">Forgot password?</a>
+                             </div>
+                            
+                            
+  						</div>
+				</div>
+			</div>
+		</div>
+        <!--Login END--> 
+        </form>
+                
+<!--         ////////end login form///////////////       -->
+
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> 
+  <script type="text/javascript" src="/hello42/public/js/driver_reg.js"></script>
+
+  
+  
+  
+ 
+  <script>
+      //==================map loader=================================
+      
+  var geocoder;
+  var map;
+
+   function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(28.6100, 77.2300);
+    var myOptions = {
+      zoom: 8,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map"), myOptions);
+  }
+  
+   
+  
+
+  function mapping1() {
+      
+   
+      geocoder = new google.maps.Geocoder();
+     
+       $("#slider").hide();
+     $("#map").show(); 
+     
+    var address = document.getElementById("localAddress").value;
+    var loc=[];
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        loc[0]=results[0].geometry.location.lat();
+        loc[1]=results[0].geometry.location.lng();
+        var latlngPos = new google.maps.LatLng(loc[0],loc[1]);
+        var myOptions = {
+        zoom: 15,
+        center: latlngPos,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+       var map = new google.maps.Map(document.getElementById("map"), myOptions);
+        var marker=new google.maps.Marker({
+        position:latlngPos,
+        map:map,
+        animation:google.maps.Animation.BOUNCE
+    });
+
+      marker.setMap(map);
+      
+        
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+        geocoder = new google.maps.Geocoder();
+         var latlng = new google.maps.LatLng(28.6100, 77.2300);
+         var myOptions = {
+         zoom: 8,
+         center: latlng,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    map = new google.maps.Map(document.getElementById("map"), myOptions);
+    
+   
+      }
+      
+     
+  });
+ 
+    }
+    function mappingAirGoing() {
+      
+   
+      geocoder = new google.maps.Geocoder();
+     
+       $("#slider").hide();
+     $("#map").show(); 
+     
+    var address = document.getElementById("airPickupAddress").value;
+    var loc=[];
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        loc[0]=results[0].geometry.location.lat();
+        loc[1]=results[0].geometry.location.lng();
+        var latlngPos = new google.maps.LatLng(loc[0],loc[1]);
+        var myOptions = {
+        zoom: 15,
+        center: latlngPos,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+       var map = new google.maps.Map(document.getElementById("map"), myOptions);
+        var marker=new google.maps.Marker({
+        position:latlngPos,
+        map:map,
+        animation:google.maps.Animation.BOUNCE
+    });
+
+      marker.setMap(map);
+      
+        
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+        geocoder = new google.maps.Geocoder();
+         var latlng = new google.maps.LatLng(28.6100, 77.2300);
+         var myOptions = {
+         zoom: 8,
+         center: latlng,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    map = new google.maps.Map(document.getElementById("map"), myOptions);
+    
+   
+      }
+      
+     
+  });
+ return loc;
+    }
+    
+     function mappingAirComing() {
+      
+   
+      geocoder = new google.maps.Geocoder();
+     
+       $("#slider").hide();
+     $("#map").show(); 
+    
+    var address = document.getElementById("airDropAddress").value;
+    var loc=[];
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        loc[0]=results[0].geometry.location.lat();
+        loc[1]=results[0].geometry.location.lng();
+        var latlngPos = new google.maps.LatLng(loc[0],loc[1]);
+        var myOptions = {
+        zoom: 15,
+        center: latlngPos,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+       var map = new google.maps.Map(document.getElementById("map"), myOptions);
+        var marker=new google.maps.Marker({
+        position:latlngPos,
+        map:map,
+        animation:google.maps.Animation.BOUNCE
+    });
+
+      marker.setMap(map);
+      
+        
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+        geocoder = new google.maps.Geocoder();
+         var latlng = new google.maps.LatLng(28.6100, 77.2300);
+         var myOptions = {
+         zoom: 8,
+         center: latlng,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    map = new google.maps.Map(document.getElementById("map"), myOptions);
+    
+   
+      }
+      
+     
+  });
+ 
+    }
+    function mappingOut() {
+      
+   
+      geocoder = new google.maps.Geocoder();
+     
+       $("#slider").hide();
+       $("#map").show(); 
+     
+    var address = document.getElementById("outPickupAddress").value;
+    var loc=[];
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        loc[0]=results[0].geometry.location.lat();
+        loc[1]=results[0].geometry.location.lng();
+        var latlngPos = new google.maps.LatLng(loc[0],loc[1]);
+        var myOptions = {
+        zoom: 15,
+        center: latlngPos,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+       var map = new google.maps.Map(document.getElementById("map"), myOptions);
+        var marker=new google.maps.Marker({
+        position:latlngPos,
+        map:map,
+        animation:google.maps.Animation.BOUNCE
+    });
+
+      marker.setMap(map);
+      
+        
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+        geocoder = new google.maps.Geocoder();
+         var latlng = new google.maps.LatLng(28.6100, 77.2300);
+         var myOptions = {
+         zoom: 8,
+         center: latlng,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    map = new google.maps.Map(document.getElementById("map"), myOptions);
+    
+   
+      }
+      
+     
+  });
+ 
+    }
+
+
+ 
+      
+      
+      
+      
+      
+        function initialize() {
+            $("#map").css("z-index", "0");
+      var myOptions = {
+          zoom: 8,
+          center: new google.maps.LatLng(28.6100, 77.2300),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+         };
+        
+        var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+     
+      
+         
+  
+      //=======================end map loader====================
+      
+   
+      
+      //=================== calender functions===================
+     
+    function pickHour(id){
+        var check=id;
+     var d = new Date();
+    
+     var currentMonth=d.getMonth();
+     currentMonth=currentMonth+1;
+     
+     //var user_d = new Date();
+     if (currentMonth < 10) { currentMonth = '0' + currentMonth; }
+     var currentDay = d.getDate()
+     if(currentDay < 10){
+          currentDay = '0' + currentDay;
+      }
+     var current=d.getFullYear()+"-"+currentMonth+"-"+currentDay;
+      
+        var h = d.getHours();
+        var min = d.getMinutes();
+     var user_d = $("#local_datepicker").val();
+      var hrs = $("#TimeHour").val();                     //get value from hrs field
+     if(current == user_d){
+         if(hrs >h+1){
+    
+    document.getElementById("pickMinutes").innerHTML="";
+ for(var i=0;i<60;i++){
+     var j=i;
+     if (j ==5||j==0) { j = '0' + j; }
+     document.getElementById("pickMinutes").innerHTML =document.getElementById("pickMinutes").innerHTML +"<option>"+j+"     </option>";
+     i=i+4;
+ }
+ }
+        
+       
+    
+ else{  document.getElementById("TimeHour").innerHTML="";
+         document.getElementById("pickMinutes").innerHTML="";
+    for(var i=h+1;i<24;i++){ 
+        if (i < 10) { i = '0' + i; }
+     document.getElementById("TimeHour").innerHTML =document.getElementById("TimeHour").innerHTML +"<option>"+i+"     </option>";
+   }
+   for(var i=min;i<60;i++){
+       var j=i;
+       var rem = j%5;
+       if(rem ==0){
+       
+      
+      }else{
+        j=j+5-rem;
+        i=j;
+        }
+         var k=j;
+     if (k<10) { k = '0' + k; }
+     document.getElementById("pickMinutes").innerHTML =document.getElementById("pickMinutes").innerHTML +"<option>"+k+"    </option>";
+     i=i+4;
+   }} }else{
+ 
+ document.getElementById("pickMinutes").innerHTML="";
+  
+    if($("#TimeHour").val() == "hrs" || ($("#TimeHour").val() == "" || id==0 )){
+     document.getElementById("TimeHour").innerHTML = "";
+              
+      
+           for(var i=0;i<24;i++){ 
+         if (i < 10) { i = '0' + i; }
+        document.getElementById("TimeHour").innerHTML =document.getElementById("TimeHour").innerHTML +"<option>"+i+"</option>";
+ } 
+        
+            }
+ for(var i=0;i<60;i++){
+     var j=i;
+     if (j ==5||j==0) { j = '0' + j; }
+     document.getElementById("pickMinutes").innerHTML =document.getElementById("pickMinutes").innerHTML +"<option>"+j+"     </option>";
+     i=i+4;
+      }
+    }
+  }          
+  
+ 
+    //====================================================================================
+     function PointpickHour(id){ 
+     var d = new Date();
+     var currentMonth=d.getMonth();
+     currentMonth=currentMonth+1;
+     //var user_d = new Date();
+     if (currentMonth < 10) { currentMonth = '0' + currentMonth; }
+     var currentDay = d.getDate()
+     if(currentDay < 10){
+          currentDay = '0' + currentDay;
+      }
+     var current=d.getFullYear()+"-"+currentMonth+"-"+currentDay;
+     
+        var h = d.getHours();
+        var min = d.getMinutes();
+        var user_d = $("#point_date").val();
+        var hrs = $("#PointTimeHour").val();                     //get value from hrs field
+     if(current == user_d){
+         if(hrs >h+1){
+    
+    document.getElementById("PointpickMinutes").innerHTML="";
+ for(var i=0;i<60;i++){
+     var j=i;
+     if (j ==5||j==0) { j = '0' + j; }
+     document.getElementById("PointpickMinutes").innerHTML =document.getElementById("PointpickMinutes").innerHTML +"<option>"+j+"     </option>";
+     i=i+4;
+ }
+ }
+        
+       
+    
+ else{  document.getElementById("PointTimeHour").innerHTML="";
+         document.getElementById("PointpickMinutes").innerHTML="";
+    for(var i=h+1;i<24;i++){ 
+        if (i < 10) { i = '0' + i; }
+     document.getElementById("PointTimeHour").innerHTML =document.getElementById("PointTimeHour").innerHTML +"<option>"+i+"     </option>";
+   }
+   for(var i=min;i<60;i++){
+       var j=i;
+       var rem = j%5;
+       if(rem ==0){
+       
+      
+      }else{
+        j=j+5-rem;
+        i=j;
+        }
+         var k=j;
+     if (k<10) { k = '0' + k; }
+     document.getElementById("PointpickMinutes").innerHTML =document.getElementById("PointpickMinutes").innerHTML +"<option>"+k+"    </option>";
+     i=i+4;
+   }} }else{
+ 
+ document.getElementById("PointpickMinutes").innerHTML="";
+  
+    if($("#PointTimeHour").val() == "hrs" || ($("#PointTimeHour").val() == "" || id==0 )){
+     document.getElementById("PointTimeHour").innerHTML = "";
+               
+      
+           for(var i=0;i<24;i++){ 
+         if (i < 10) { i = '0' + i; }
+document.getElementById("PointTimeHour").innerHTML =document.getElementById("PointTimeHour").innerHTML +"<option>"+i+"</option>";
+ } 
+        
+            }
+ for(var i=0;i<60;i++){
+     var j=i;
+     if (j ==5||j==0) { j = '0' + j; }
+     document.getElementById("PointpickMinutes").innerHTML =document.getElementById("PointpickMinutes").innerHTML +"<option>"+j+"     </option>";
+     i=i+4;
+      }
+    }
+  }
+    //================================================================================================ 
+      function AirpickHour(id){ 
+     var d = new Date();
+     var currentMonth=d.getMonth();
+     currentMonth=currentMonth+1;
+     //var user_d = new Date();
+     if (currentMonth < 10) { currentMonth = '0' + currentMonth; }
+      var currentDay = d.getDate()
+     if(currentDay < 10){
+          currentDay = '0' + currentDay;
+      }
+     var current=d.getFullYear()+"-"+currentMonth+"-"+currentDay;
+     
+        var h = d.getHours();
+        var min = d.getMinutes();
+        var user_d = $("#airPickupDate").val();
+        var hrs = $("#airPickupTimeH").val();                     //get value from hrs field
+     if(current == user_d){
+         if(hrs >h+1){
+    
+    document.getElementById("airPickupTimeS").innerHTML="";
+ for(var i=0;i<60;i++){
+     var j=i;
+     if (j ==5||j==0) { j = '0' + j; }
+     document.getElementById("airPickupTimeS").innerHTML =document.getElementById("airPickupTimeS").innerHTML +"<option>"+j+"     </option>";
+     i=i+4;
+ }
+ }
+        
+       
+    
+ else{  document.getElementById("airPickupTimeH").innerHTML="";
+         document.getElementById("airPickupTimeS").innerHTML="";
+    for(var i=h+1;i<24;i++){ 
+        if (i < 10) { i = '0' + i; }
+     document.getElementById("airPickupTimeH").innerHTML =document.getElementById("airPickupTimeH").innerHTML +"<option>"+i+"     </option>";
+   }
+   for(var i=min;i<60;i++){
+       var j=i;
+       var rem = j%5;
+       if(rem ==0){
+       
+      
+      }else{
+        j=j+5-rem;
+        i=j;
+        }
+         var k=j;
+     if (k<10) { k = '0' + k; }
+     document.getElementById("airPickupTimeS").innerHTML =document.getElementById("airPickupTimeS").innerHTML +"<option>"+k+"    </option>";
+     i=i+4;
+   }} }else{
+ 
+    document.getElementById("airPickupTimeS").innerHTML="";
+  
+    if($("#airPickupTimeH").val() == "hrs" || ($("#airPickupTimeH").val() == "" || id==0 )){
+     document.getElementById("airPickupTimeH").innerHTML = "";
+               
+      
+           for(var i=0;i<24;i++){ 
+         if (i < 10) { i = '0' + i; }
+document.getElementById("airPickupTimeH").innerHTML =document.getElementById("airPickupTimeH").innerHTML +"<option>"+i+"</option>";
+ } 
+        
+            }
+            document.getElementById("airPickupTimeS").innerHTML="";
+ for(var i=0;i<60;i++){
+     var j=i;
+     if (j ==5||j==0) { j = '0' + j; }
+     document.getElementById("airPickupTimeS").innerHTML =document.getElementById("airPickupTimeS").innerHTML +"<option>"+j+"     </option>";
+     i=i+4;
+      }
+    }
+  }
+   
+   //======================================================================================================
+      function StationpickHour(id){ 
+     var d = new Date();
+     var currentMonth=d.getMonth();
+     currentMonth=currentMonth+1;
+     //var user_d = new Date();
+     if (currentMonth < 10) { currentMonth = '0' + currentMonth; }
+      var currentDay = d.getDate()
+     if(currentDay < 10){
+          currentDay = '0' + currentDay;
+      }
+      var current=d.getFullYear()+"-"+currentMonth+"-"+currentDay;
+     
+        var user_d = $("#outstation_Ddate").val();
+                           //get value from hrs field
+     if(current == user_d){
+         $("#popAlert").show();
+     return false;
+        }else{
+             $("#popAlert").hide();
+              var hrs = $("#outPickupTimeH").val();  
+              var min = d.getMinutes();
+              var h = d.getHours();
+ document.getElementById("outPickupTimeM").innerHTML="";
+  
+    if($("#outPickupTimeH").val() == "hrs" || ($("#outPickupTimeH").val() == "" || id==0 )){
+     document.getElementById("outPickupTimeH").innerHTML = "";
+               
+      
+           for(var i=0;i<24;i++){ 
+         if (i < 10) { i = '0' + i; }
+document.getElementById("outPickupTimeH").innerHTML =document.getElementById("outPickupTimeH").innerHTML +"<option>"+i+"</option>";
+ } 
+        
+            }
+ for(var i=0;i<60;i++){
+     var j=i;
+     if (j ==5||j==0) { j = '0' + j; }
+     document.getElementById("outPickupTimeM").innerHTML =document.getElementById("outPickupTimeM").innerHTML +"<option>"+j+"     </option>";
+     i=i+4;
+      }
+    }
+  }
+     
+     //=================== end calender functions=================== 
+  </script>
+<script>
+
+	
+
+
+function loginhome(){
+	var base_url = "<?php echo $this->basePath(); ?>";
+	//alert(base_url);
+//window.open('http://50.62.22.158:8085/hello42test/public/login',"_self");
+window.open(base_url+'/login',"_self");
+}
+
+
+function signuphome(){
+	
+	window.open(base_url+'/login',"_self");
+	
+}
+
+
+
+</script>	
+	 
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+	
+<script type="text/javascript">
+        $(document).ready(function() {
+		$("#international").hide();
+            $(".goog-logo-link").attr("style","display:none !important;");
+            //$(".goog-te-gadget").attr("style","color: transparent !important;");
+             $('.mytip').tooltip();
+           // $('#localPickupArea').attr("placeholder",'asdasd');
+            $("#form2").validate({
+             errorClass: 'error col-lg-offsets-5',
+              
+			rules: {
+                                localCabIn:"required",
+                                localCabFor:"required",
+                                field_8h:"required",
+                                localPikupTime:"required",
+                                localAddress: "required",
+				mob_no: {
+				required:true,
+				number:true,
+				minlength:10
+				
+				},
+				
+			},
+			messages: {
+				firstname: "Please enter your firstname",
+				lastname: "Please enter your lastname",
+				username: {
+					required: "Please enter a username",
+					minlength: "Your username must consist of at least 2 characters"
+				},
+				password: {
+					required: "Please provide a password",
+					minlength: "Your password must be at least 5 characters long"
+				},
+				confirm_password: {
+					required: "Please provide a password",
+					minlength: "Your password must be at least 5 characters long",
+					equalTo: "Please enter the same password as above"
+				},
+				email: "Please enter a valid email address",
+				agree: "Please accept our policy"
+			}
+		});
+            $('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true });
+        });
+</script>
+    
+<script>
+    
+    
+    function calculateRoute(from, to) {
+        // Center initialized to Naples, Italy
+        var myOptions = {
+          zoom: 10,
+          center: new google.maps.LatLng(40.84, 14.25),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        // Draw the map
+        var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
+ 
+        var directionsService = new google.maps.DirectionsService();
+        var directionsRequest = {
+          origin: from,
+          destination: to,
+          travelMode: google.maps.DirectionsTravelMode.DRIVING,
+          unitSystem: google.maps.UnitSystem.METRIC
+        };
+        directionsService.route(
+          directionsRequest,
+          function(response, status)
+          {
+            if (status == google.maps.DirectionsStatus.OK)
+            {
+              new google.maps.DirectionsRenderer({
+                map: mapObject,
+                directions: response
+              });
+            }
+            else
+              $("#error").append("Unable to retrieve your route<br />");
+          }
+        );
+      }
+ 
+      $(document).ready(function() {
+        // If the browser supports the Geolocation API
+        if (typeof navigator.geolocation == "undefined") {
+          $("#error").text("Your browser doesn't support the Geolocation API");
+          return;
+        }
+ 
+        $("#from-link, #to-link").click(function(event) {
+          event.preventDefault();
+          var addressId = this.id.substring(0, this.id.indexOf("-"));
+ 
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+              "location": new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+            },
+            function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK)
+                $("#" + addressId).val(results[0].formatted_address);
+              else
+                $("#error").append("Unable to retrieve your address<br />");
+            });
+          },
+          function(positionError){
+            $("#error").append("Error: " + positionError.message + "<br />");
+          },
+          {
+            enableHighAccuracy: true,
+            timeout: 10 * 1000 // 10 seconds
+          });
+        });
+ 
+        $("#calculate-route").submit(function(event) {
+          event.preventDefault();
+          calculateRoute($("#from").val(), $("#to").val());
+        });
+      });
+      
+      $("#my_account").click(function (){
+          
+          var token = $.cookie('token');
+          $.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/menu/fetchDriverId',
+		cache: false,
+		dataType:"json",
+		data:{
+                    token:token
+		},
+                success: function(data){
+                      if(data.userType==3)
+                      {
+                          window.open('<?php echo $this->basePath(); ?>/login/driver','_self');
+                      }
+                      else
+                      {
+                          window.open('<?php echo $this->basePath(); ?>/login/user','_self');
+                      }
+                },
+                error:function (error){
+                      alert(error);
+                      console.log(error);
+                }
+   });
+          
+      });
+    </script>
+    
+    
+   
+   
+    
+   <script>
+   $(document).on('click','#domestic1',function(){
+ $("#domestic").show();
+ $("#international").hide();
+
+});
+
+ $(document).on('click','#international1',function(){
+ $("#domestic").hide();
+ $("#international").show();
+
+});
+   </script>

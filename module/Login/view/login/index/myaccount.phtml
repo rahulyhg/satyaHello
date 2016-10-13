@@ -1,0 +1,99 @@
+<section id="feature">
+        <div class="container" style="text-align:left;">
+        <h2><strong>My Account</strong></h2>
+            <div class="col-lg-12"  style="background:#fff; margin-top:10px; padding-top:10px;">        
+                
+                <div class="col-sm-5">
+                <h2 class="modal-title">Login My Account</h2>
+                
+                <form id="login_form2" autocomplete="off">
+          <div class="col-sm-8">
+          
+          <p class='invalid' style='display:none;color:red'>Invalid Username or Password</p>
+           <label class="col-lg-12" style="text-align:left; padding-left:0 !important;"> Email or Mobile  </label> 
+
+
+          	<input class="form-control"  id="login_email" name="login_email" placeholder="Email or Mobile" style="font-size:12px;">
+          
+            <label class="col-lg-12" style="color:; padding-left:0 !important;">
+            Password
+             </label>
+      
+           <input class="form-control" type="password" id="login_password" name="password" placeholder="Password" style="font-size:12px;">
+            
+             
+             <label class="col-lg-12" style="color:#000; text-align:;">
+             <div class="col-sm-7" style="padding-left:0;">
+             <input type="checkbox" />Remember me
+             </div>
+              <div class="col-sm-5">
+             <input type="button" id="signin"   value="Login" class="btn btn-primary"  />
+                      
+                    </div>       </label>
+            <label>
+            
+             <a href="#" id="forgot_form" class="loginhome"> Forgot password?</a><br />
+
+ <a href="<?php echo $this->basePath(); ?>/login/index/signup" class="loginhome">New User? Create Account </a>
+            </label>
+            <label class="col-lg-12" style="color:#000;"></label>
+           
+          </div>
+          </form>
+                
+                 </div>
+                <div class="or_seprator_wrapper col-sm-1 make_relative">
+<span class="or_seprator" style="color:#333;">OR</span>
+</div>
+                <div class="col-sm-5" style="float:right">
+                
+                <h2 class="modal-title">Manage My Booking</h2>
+                
+               <form id="login_form3" autocomplete="off">
+          <div class="col-sm-8">
+          
+          <p class='invalid' style='display:none;color:red'>Invalid Username or Password</p>
+           <label class="col-lg-12" style="text-align:left; padding-left:0 !important;"> Booking Id  </label> 
+
+
+          	<input class="form-control"  id="bookinId" name="bookinId" placeholder="Booking Id" style="font-size:12px; ">
+          
+            <label class="col-lg-12" style="padding-left:0 !important;">
+            Mobile Number user for Booking
+             </label>
+      
+           <input class="form-control" type="text" id="mobile_No" name="mobile_No" placeholder="Mobile Number user for Booking" style="font-size:12px;">
+            
+             
+             <label class="col-lg-12" style="color:#000; text-align:center;">
+             <input type="button" id="signin"   value="Submit" class="btn btn-primary"  />
+                      
+                           </label>
+            
+            <label class="col-lg-12" style="color:#000;"></label>
+           
+          </div>
+          </form>
+                </div>
+            </div> 
+          
+        </div>
+    </section>
+<style>
+.or_seprator_wrapper {
+    border-right: 1px solid #ccc;
+    min-height: 250px;
+}
+.make_relative {
+    position: relative;
+}
+
+.or_seprator {
+    background: #fff none repeat scroll 0 0;
+    font-size: 18px;
+    padding: 10px;
+    position: absolute;
+    right: -25%;
+    top: 40%;
+}
+</style>

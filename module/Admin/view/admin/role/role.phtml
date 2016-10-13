@@ -1,0 +1,70 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?><div id="page-wrapper" class="" >
+  <h4 style="">Manage Role</h4>
+  <div>
+    <div class="container">
+      <div class="row">	
+		 <form role="form" method="post" action="rolemgmt">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="Full Name">Role Name</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="full_name" id="full_name" value="<?php print $Rec1->RoleName;?>" placeholder="Full Name" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span></div>
+            </div>
+			<div class="form-group">
+			
+			    <table id="designation" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Sr.No.</th>
+          <th>Module</th>
+		  <th>Select</th>
+          <!--<th>Edit</th>
+          <th>View</th>
+		  <th>Delete</th>-->
+        </tr>
+      </thead>
+	  <?php $i=1; 
+	  foreach($data as $val){ 
+	  ?>
+	  <tr>
+		<td><?php echo $i;?></td>
+		<td><input type="" name="submodule_id[]" id="submodule_id" value="<?php echo $val['submodule_id']; ?>"><?php echo $val['submodule_name'];?></td>
+		<td><input type="checkbox" name="submodule_edit[]"></td>
+		<!--<td><input type="checkbox" name="submodule_view[]"></td>
+		<td><input type="checkbox" name="submodule_delete[]"></td>-->
+	  </tr>
+	  <?php $i++;} ?>
+    </table>
+
+            </div>
+            <input type="submit" value="Save" class="btn btn-info pull-right">
+          </div>
+          <input type="" name="id" id="id" value="<?php print $Rec1->Role_ID;?>" />
+        </form>
+		
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+	$(document).ready(function() {
+		$('#selectall').click(function(event) {  //on click 
+			if(this.checked) { // check select status
+				$('.checkbox1').each(function() { //loop through each checkbox
+					this.checked = true;  //select all checkboxes with class "checkbox1"               
+				});
+			}else{
+				$('.checkbox1').each(function() { //loop through each checkbox
+					this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+				});         
+			}
+		});
+	});
+</script>

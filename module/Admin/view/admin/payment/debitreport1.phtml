@@ -1,0 +1,1392 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?>
+<style>
+.loader2{position:fixed;
+top:250;
+background:none;
+z-index:1000000;
+margin:auto;
+margin-left:40%;}
+
+
+.approval{width:75%; float:left;}
+
+
+.defaultmrgtop{ margin-bottom:10px;}
+
+.defaultmrglft{ width:25%; float:left;}
+.defaultmrgbootm{  margin-bottom:10px;}
+.defaultheight{ height:100px;}
+.view{float:left; width:24%;}
+
+</style>
+
+<img src="/hello42/public/image/loading.gif" class="loader2" width="150" height="150">
+
+<!-- Navigation -->
+<style>
+.errorText {
+border:1px solid red;
+
+}
+label.col-lg-offsets-5 {
+margin-left: 41.66666667%;
+color:red;
+}
+input.col-lg-offsets-5{
+    border:1px solid red;
+}
+
+.defaultmrg{margin-left:5px;}
+.defaultmrg2{margin-left:15px;}
+</style>
+
+
+ <script>
+    
+    /* copy loaded thumbnails into carousel */
+$('.row .thumbnail').on('load', function() {
+  
+}).each(function(i) {
+  if(this.complete) {
+  	var item = $('<div class="item"></div>');
+    var itemDiv = $(this).parents('div');
+    var title = $(this).parent('a').attr("title");
+    
+    item.attr("title",title);
+  	$(itemDiv.html()).appendTo(item);
+  	item.appendTo('.carousel-inner'); 
+    if (i==0){ // set first item active
+     item.addClass('active');
+    }
+  }
+});
+
+/* activate the carousel */
+$('#modalCarousel').carousel({interval:false});
+
+/* change modal title when slide changes */
+$('#modalCarousel').on('slid.bs.carousel', function () {
+  $('.modal-title').html($(this).find('.active').attr("title"));
+})
+
+/* when clicking a thumbnail */
+$('.row .thumbnail').click(function(){
+    var idx = $(this).parents('div').index();
+  	var id = parseInt(idx);
+  	$('#myModal').modal('show'); // show the modal
+    $('#modalCarousel').carousel(id); // slide carousel to selected
+  	
+});
+    
+    </script>
+
+    
+    
+    <div id="page-wrapper">
+	
+                    
+                    <!-- /.col-lg-12 -->
+               			
+					<div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           Notification to ace Department
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body table-responsive">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>S. No</th>
+                                            <th>Submit Date</th>
+                                            <th>Name</th>
+                                            <th>Issued TO</th>
+                                            <th>Amount Agent </th>
+                                            <th>Remarks </th>
+                                            <th>stataus </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX">
+                                            <td>Trident</td>
+                                            <td>Internet Explorer 4.0</td>
+                                            <td>Win 95+</td>
+                                            <td class="center">4</td>
+                                            <td class="center">X</td>
+                                            <td class="center">X</td>
+                                             <td class="center"> <a href="#myModal" role="button" data-toggle="modal"><button id="cab_4_1_101" class="btn btn-primary manageCabTypeFair">Pending</button></a></td>
+                                            
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td>Trident</td>
+                                            <td>Internet Explorer 5.0</td>
+                                            <td>Win 95+</td>
+                                            <td class="center">5</td>
+                                            <td class="center">C</td>
+                                             <td class="center">C</td>
+                                                  <td class="center"> <a href="#myModal" role="button" data-toggle="modal"><button id="cab_4_1_101" class="btn btn-primary manageCabTypeFair">Pending</button></a></td>
+                                                 
+                                                 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                      <div class="modal-content">
+                    <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                          <h4 id="myModalLabel">AUDIT PAGE</h4>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    <div class="modal-body">
+                          <form class="form-horizontal col-sm-12">
+                        <div class="form-group ">
+                         <div style="width:100%; float:left;">
+                              <label>Deposite Date</label>
+                              </div>
+                              <div  class="approval">
+                              
+                              <input class="form-control required" placeholder="Your name" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text">
+                              
+                              </div>
+                                <div class="defaultmrglft">
+                               <input type="checkbox" value="">
+                              
+                         </div>
+                         
+                         
+                         
+                         
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <div class="form-group  ">
+                         <div style="width:100%; float:left;">
+                              <label>payment mode</label>
+                              
+                              </div>
+                              <div  class="approval  defaultmrgtop">
+                              
+                              <input class="form-control required" placeholder="Your name" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text">
+                              
+                              </div>
+                                <div class="defaultmrglft">
+                               <input type="checkbox" value="">
+                              
+                         </div>
+                         
+                         
+                              
+                            </div>
+                            
+                            
+                            
+                           
+                             
+                            <div class="form-group ">
+                            
+                          
+                            <div style="float:left; width:35%;">
+                         <input class="avatar-src" name="avatar_src" type="hidden">
+									  <input class="avatar-data" name="avatar_data" type="hidden">
+									  <label for="avatarInput"></label>
+                                    
+                                      
+									  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                                      
+                                      </div>
+                                      
+                            <div  class="view">
+                                      
+                                     <h3>
+                                     <a href="#">View</a>
+                                     <h3>
+                                   
+                               
+                              
+                     
+                         
+                              
+                            </div>
+                            
+                            
+                             
+                            <div class="form-group ">
+                         <div style="width:100%; float:left;">
+                              <label>partner bank account</label>
+                              </div>
+                              <div class="approval">
+                              
+                              <input class="form-control required" placeholder="Your name" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text">
+                              
+                              </div>
+                                <div class="defaultmrglft">
+                               <input type="checkbox" value="">
+                              
+                         </div>
+                         
+                         
+                         
+                              
+                              
+                            </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                       
+                            
+                            
+                            <div class="form-group ">
+                         <div style="width:100%; float:left;">
+                              <label>Amount</label>
+                              </div>
+                              <div class="approval" >
+                              
+                              <input class="form-control required" placeholder="Your name" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text">
+                              
+                              </div>
+                                <div class="defaultmrglft">
+                               <input type="checkbox" value="">
+                              
+                         </div>
+                         
+                         
+                         
+                              
+                              
+                            </div>
+                            
+                            
+                            
+                            <div class="form-group ">
+                         <div style="width:100%; float:left;">
+                              <label>Credit Date</label>
+                              </div>
+                              <div class="approval">
+                              
+                              <input class="form-control required" placeholder="Your name" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text">
+                              
+                              </div>
+                                <div class="defaultmrglft">
+                               <input type="checkbox" value="">
+                              
+                         </div>
+                         
+                         
+                         
+                              
+                              
+                            </div>
+                            
+                            
+                            
+                            
+                            <div class="form-group ">
+                         <div style="width:100%; float:left;">
+                              <label>Credit Amount</label>
+                              </div>
+                              <div class="approval">
+                              
+                              <input class="form-control required" placeholder="Your name" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text">
+                              
+                              </div>
+                                <div class="defaultmrglft">
+                               <input type="checkbox" value="">
+                              
+                         </div>
+                         
+                         
+                         
+                              
+                              
+                            </div>
+                            
+                            
+                            <div class="form-group ">
+                         <div style="width:100%; float:left;">
+                              <label>Account holder Name</label>
+                              </div>
+                              <div class="approval">
+                              
+                              <input class="form-control required" placeholder="Your name" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text">
+                              
+                              </div>
+                                <div class="defaultmrglft">
+                               <input type="checkbox" value="">
+                              
+                         </div>
+                         
+                         
+                         
+                              
+                              
+                            </div>
+                            
+                    
+									
+                                   
+                                    
+                                   
+                                    
+                                   
+                            
+                          
+                            
+                          <div  style="height:20px; clear:both;"></div>
+                                    
+                                    
+                                    
+                                    
+                        
+                        <div class="form-group">
+                              <button type="submit" class="btn btn-success pull-left defaultmrgbootm">Save</button>
+                              
+                                <button type="submit" class="btn btn-success pull-left defaultmrg" >Audit</button>
+                      
+                            </div>
+                            
+                           
+                            
+                           <div  class="defaultheight"></div>
+
+                            
+                            
+                      </form>
+                      
+                       
+                           
+                      
+                      
+                      
+                        </div>
+                    
+                  </div>
+                    </div>
+              </div>
+                    
+                    </div>                             
+                                                 
+                                                 
+                                                 </td>
+                                        </tr>
+                                        <tr class="odd gradeA">
+                                            <td>Trident</td>
+                                            <td>Internet Explorer 5.5</td>
+                                            <td>Win 95+</td>
+                                            <td class="center">5.5</td>
+                                            <td class="center">A</td>
+                                             <td class="center">A</td>
+                                                <td class="center"> <a href="#myModal" role="button" data-toggle="modal"><button id="cab_4_1_101" class="btn btn-primary manageCabTypeFair">Pending</button></a></td>
+                                        </tr>
+                                        
+                                          <tr class="odd gradeA">
+                                            <td>Trident</td>
+                                            <td>Internet Explorer 5.5</td>
+                                            <td>Win 95+</td>
+                                            <td class="center">5.5</td>
+                                            <td class="center">A</td>
+                                             <td class="center">A</td>
+                                                  <td class="center"> <a href="#myModal" role="button" data-toggle="modal"><button id="cab_4_1_101" class="btn btn-primary manageCabTypeFair">Pending</button></a></td>
+                                        </tr>
+                                        
+                                          <tr class="odd gradeA">
+                                            <td>Trident</td>
+                                            <td>Internet Explorer 5.5</td>
+                                            <td>Win 95+</td>
+                                            <td class="center">5.5</td>
+                                            <td class="center">A</td>
+                                             <td class="center">A</td>
+                                              <td class="center"> <a href="#myModal" role="button" data-toggle="modal"><button id="cab_4_1_101" class="btn btn-primary manageCabTypeFair">Pending</button></a></td>
+                                        </tr>
+                                        
+                                          <tr class="odd gradeA">
+                                            <td>Trident</td>
+                                            <td>Internet Explorer 5.5</td>
+                                            <td>Win 95+</td>
+                                            <td class="center">5.5</td>
+                                            <td class="center">A</td>
+                                              <td class="center">A</td>
+                                              <td class="center"> <a href="#myModal" role="button" data-toggle="modal"><button id="cab_4_1_101" class="btn btn-primary manageCabTypeFair">Pending</button></a></td>
+                                        </tr>
+                                        
+                                        
+                                        
+                                        
+                                       
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <!--<div class="well">
+                                <h4>DataTables Usage Information</h4>
+                                <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a specialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.</p>
+                                <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View DataTables Documentation</a>
+                            </div>-->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+					
+        
+		
+	
+    </div>
+
+</div>
+
+
+
+
+					
+
+
+<script>
+var vehicleId;
+var cabTypeId;
+$( document ).ready(function() {
+	getAllCountry();
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        alert("Geolocation is not supported by this browser.") ;
+    }
+    
+});
+
+function datatablsCSS(){
+	$(".paging_simple_numbers").parent().addClass('pgnt_topfix');
+    $('.dataTables_length').parent().removeClass('col-sm-6');
+    $('.dataTables_length').parent().addClass('col-sm-2');
+    $('.dataTables_length').parent().addClass('pgno_top');
+	$('.pgno_top').attr("style","top:27px;");
+	$('.pgnt_topfix').attr("style","top:26px;");
+}
+
+$("#frm_details").validate({
+ errorClass: 'error col-lg-offsets-5',
+			rules: {
+				vehicle_model: {
+					required: true,
+				},
+				vehicle_externalref: {
+					required: true,
+				},
+				vehicle_year: {
+					required: true,
+				},
+				vehicle_licenseplate: {
+					required: true,
+				},
+				vehicle_engine_no: {
+					required: true,
+				},
+				vehicle_fuel_type: {
+					required: true,
+				},
+			},
+			messages: {
+				vehicle_model: "Please enter vehicle Model No.",
+				vehicle_externalref: "Please enter some External Reference.",
+				vehicle_year: "Please enter vehicle Purchasing year.",
+				vehicle_licenseplate: "Please enter vehicle Liscence Plate No.",
+				vehicle_engine_no: "Please enter vehicle Engine no.",
+				vehicle_fuel_type: "Please enter vehicle Fuel Type.",
+			}
+		});
+		
+		
+		
+$("#add_cab_type").validate({
+ errorClass: 'error col-lg-offsets-5',
+			rules: {
+				addCab_cabType: {
+					required: true,
+				},
+				addCab_countryDropdown: {
+					required: true,
+				},
+				addCab_stateDropdown: {
+					required: true,
+				},
+				addCab_cityDropdown: {
+					required: true,
+				},
+			},
+			messages: {
+				addCab_cabType: "Please enter Cab Type.",
+				addCab_countryDropdown: "Please select Country.",
+				addCab_stateDropdown: "Please select State.",
+				addCab_cityDropdown: "Please select City.",
+			}
+		});
+
+$("#addcabtype").click(function(){
+
+if($("#add_cab_type").valid()!=false)
+{
+	$.ajax({
+		type: 'POST',
+		url:'<?php echo $this->basePath();?>'+'/tunnel/admin/addcabtype',
+		dataType: "json",
+		data : {    
+				key:'',
+				city_id:$("#addCab_cityDropdown").val(),
+				cabType :$("#addCab_cabType").val()
+			},		 
+		success: function(data){
+			if(data.status=="true")
+			{
+				$('.b-close').click();
+				$("#vehicleInfoTab").hide();
+				$("#page-wrapper").show();
+				cabTypeTable.api().ajax.reload(null,true);
+				alert(data.Message);
+			}else{
+				alert(data.Message);
+				}			
+		},
+		error: function(error){
+			console.log(error);
+		}
+	});
+}
+})
+
+
+$("#addvehicle").click(function(){
+
+if($("#frm_details").valid()!=false)
+{
+	$.ajax({
+		type: 'POST',
+		url:'<?php echo $this->basePath();?>'+'/tunnel/admin/addvehicle',
+		dataType: "json",
+		data : {    
+				key:'',
+				vehicle_type:$("#vehicle_type_val").val(),
+				vehicle_model :$("#vehicle_model").val(),
+				vehicle_externalref:$("#vehicle_externalref").val(),
+				vehicle_year:$("#vehicle_year").val(),
+				vehicle_licenseplate:$("#vehicle_licenseplate").val(),
+				vehicle_engine_no:$("#vehicle_engine_no").val(),
+				vehicle_fuel_type:$("#vehicle_fuel_type").val(),
+				vehicle_color:$("#vehicle_color").val(),
+				vehicle_capacity:$("#vehicle_capacity").val(),
+				vehicle_is_active:$("#vehicle_is_active").val()
+			},		 
+		success: function(data){
+			if(data.status=="true")
+			{
+				location.reload();
+			}else{
+				alert(data.Message);
+				}			
+		},
+		error: function(error){
+			console.log(error);
+		}
+	});
+}
+})
+
+
+
+$("#updatevehicleInfo").click(function(){
+	
+	if($("#frm_details").valid()!=false)
+	{
+		$.ajax({
+			type: 'POST',
+			url:'<?php echo $this->basePath();?>'+'/tunnel/admin/editvehicle',
+			dataType: "json",
+			data : {    
+					key:'',
+					vehicle_type:$("#vehicle_type_val").val(),
+					vehicle_model :$("#vehicle_model").val(),
+					vehicle_externalref:$("#vehicle_externalref").val(),
+					vehicle_year:$("#vehicle_year").val(),
+					vehicle_licenseplate:$("#vehicle_licenseplate").val(),
+					vehicle_engine_no:$("#vehicle_engine_no").val(),
+					vehicle_fuel_type:$("#vehicle_fuel_type").val(),
+					vehicle_color:$("#vehicle_color").val(),
+					vehicle_capacity:$("#vehicle_capacity").val(),
+					vehicle_is_active:$("#vehicle_is_active").val(),
+					vehicleId:vehicleId
+				},		 
+			success: function(data){
+				if(data.status=="true")
+				{
+					//location.reload();
+					cabTypeTable.api().ajax.reload(null,true);
+					$("#vehicleInfoTab").hide();
+					$("#page-wrapper").show();
+					alert('Vehicle Updated');
+				}
+				else
+				{
+					alert(data.Message);
+				}			
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	}
+
+
+})
+
+
+
+$(".addCabType").click(function(){
+	$("#addCab_cabType").val('');
+	$(".editCabTypeButton").hide();
+	$(".addCabTypeButton").show();
+        $("#deleteCabType").hide();
+	$("#cabTypeForm").bPopup({
+	});
+
+});
+
+
+$(document).on('click','.editCabType',function(){
+	
+	cabTypeId = $(this).attr("data");
+	
+	/*$("#page-wrapper").hide();
+	$("#cabTypeForm").show();*/
+	$(".editCabTypeButton").show();
+	$("#deleteCabType").show();
+	$(".addCabTypeButton").hide();
+	
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/cabTypeInfoById?cabType='+cabTypeId,
+		cache: false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	
+	$("#addCab_cabType").val(html.data[0].CabName);
+	
+
+}).fail(function (error){
+	
+		
+  });
+	
+$("#cabTypeForm").bPopup({
+			
+	});
+
+});
+
+$(document).on('click','#updatecabtype',function(){
+	if($("#add_cab_type").valid()!=false)
+	{
+		var citySelecetd = $("#addCab_cityDropdown").val();
+		$.ajax({
+			type: 'POST',
+			url:'<?php echo $this->basePath();?>'+'/tunnel/admin/editCabType',
+			dataType: "json",
+			data : {    
+					key:'',
+					cabTypeName:$("#addCab_cabType").val(),
+					cityId :citySelecetd,
+					cabTypeId:cabTypeId
+				},		 
+			success: function(data){
+				if(data.status=="true")
+				{
+					$('.b-close').click();
+					$("#vehicleInfoTab").hide();
+					$("#page-wrapper").show();
+					cabTypeTable.api().ajax.reload(null,true);
+					alert(data.Message);
+				}else{
+					alert(data.Message);
+					}			
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	}
+	
+	
+});
+
+function showPosition(position) {
+  var lat = position.coords.latitude;	
+  var log = position.coords.longitude;
+ 
+  
+  var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/reverse_geocode';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				currentLat:lat,
+				currentlong : log,
+			},		 
+		success: function(data){
+				$("#cab-countryText").val(data.country);
+				$("#cab-stateText").val(data.location);
+				$("#cab-cityText").val(data.city);
+				getAllCabTypes();
+				getState();
+				getAllCity();
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+}
+
+
+
+function getState()
+{
+	var defaultSt = $("#cab-stateText").val();
+	
+	var country = $("#cab-countryText").val();
+	
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllState';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				country:country
+				
+			},		 
+		success: function(html){
+			
+			var len = html.data.length;
+			var detailState = "";
+			for(var i=0;i<len;i++){
+				var stateTx = html.data[i].state;
+				if(html.data[i].state == defaultSt)	{
+					detailState += "<option value='"+html.data[i].id+"' selected>"+ html.data[i].state+"</option>";
+				}else{
+					detailState += "<option value='"+html.data[i].id+"'>"+ html.data[i].state+"</option>";
+				}
+			
+			}
+			
+				$("#addCab_stateDropdown").html(detailState);
+				
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+
+}
+
+function getAllCountry()
+{
+	var cabcountryText = $("#cab-countryText").val();
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCountry';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				
+				
+			},		 
+		success: function(html){
+			
+			var len = html.data.length;
+			var detailCountry = "";
+			for(var i=0;i<len;i++){
+				if(cabcountryText == html.data[i].CountryName){
+					detailCountry += "<option value='"+html.data[i].ID+"' selected>"+ html.data[i].CountryName+"</option>";
+				}else{
+					detailCountry += "<option value='"+html.data[i].ID+"'>"+ html.data[i].CountryName+"</option>";
+				}
+			}
+			
+				$("#addCab_countryDropdown").html(detailCountry);
+			
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+
+}
+function getVehicleInfoById()
+{
+	var vehicle_Model = $("#vehicle_model").val();
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/vehicleInfoById?vehicleId=';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+			},		 
+		success: function(html){
+		}
+	});
+
+}
+
+function getAllCity(){
+	var cabcityText = $("#cab-cityText").val();
+
+	var stateId = $('#cab-stateText').val();
+	
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCity';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				state:stateId
+			},		 
+		success: function(html){
+			var len = html.data.length;
+			var detailCity = "";
+			for(var i=0;i<len;i++){
+				if(cabcityText == html.data[i].name){
+					detailCity += "<option value='"+html.data[i].id+"' selecetd >"+ html.data[i].name+"</option>";
+				}else{
+					detailCity += "<option value='"+html.data[i].id+"'>"+ html.data[i].name+"</option>";
+				}
+			}
+			
+			$("#addCab_cityDropdown").html(detailCity);
+			
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+
+
+
+}
+
+
+$("#addCab_stateDropdown").change(function() {
+	var stateId = $('#addCab_stateDropdown :selected').text();
+	
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCity';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				state:stateId
+				
+			},		 
+		success: function(html){
+			
+			var len = html.data.length;
+			var detailCity = "";
+			for(var i=0;i<len;i++){
+				detailCity += "<option value='"+html.data[i].id+"'>"+ html.data[i].name+"</option>";
+			
+			}
+				$("#addCab_cityDropdown").html(detailCity);
+			
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+ 
+ 
+ 
+
+
+});
+
+var cabTypeTable='';
+function getAllCabTypes(){
+	var city = $("#cab-cityText").val();
+	var state = $("#cab-stateText").val();
+	
+	cabTypeTable = $('#Cab-Cabtype').dataTable( {
+						"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/vehicle_getAllCabType?city='+city+'&state='+state,
+						"deferRender": true
+					} );
+					datatablsCSS();
+ $("#Cab-Cabtype_wrapper").attr("style","border:1px solid #d1d1d1; margin-bottom:10px;");
+$("#Cab-Cabtype_wrapper").addClass("clearfix");
+$("#Cab-Cabtype_wrapper").addClass("font12px");
+ //$("#Cab-Cabtype_wrapper div:first").removeClass("row");
+ $("#Cab-Cabtype_info").parent().parent().removeClass("row");
+ $("#Cab-Cabtype_wrapper div:first").attr("class","tbsearchrow clearfix");
+	
+}
+
+function searchvehicleTypes(){
+	var city_i = $("#cab-cityText").val();
+	var state_i = $("#cab-stateText").val();
+	var country_i = $("#cab-countryText").val();
+	var vehicle_no_i = $("#vehicleNo").val();
+	var vehicle_owner_i = $("#vehicleOwner").val();
+	var cab_type_i = $("#cabType").val();
+	
+	var cab_html = $(this).html();
+	$("#Cab-Cabtype_wrapper").val(cab_html);
+	
+	$("#Cab-Cabtype thead").html('<tr> <th>Id</th> <th>Vehicle Number</th><th>Vehicle Name</th><th>Vehicle Model</th><th>Cab Type</th><th> Manufacturer</th><th>Capacity</th><th>Fuel Type</th><th>Color</th><th>Registration Date</th><th>Action</th></tr>');
+	cabTypeTable = $('#Cab-Cabtype').dataTable({
+						"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/searchVehicleType?city='+city_i+'&state='+state_i+'&country='+country_i+'&vehicle_no='+vehicle_no_i+'&vehicle_owner='+vehicle_owner_i+'&cab_type='+cab_type_i,
+						"deferRender": true
+					});
+	datatablsCSS();
+	$("#Cab-Cabtype tfoot").html('<tr> <th>Id</th> <th>Vehicle Number</th><th>Vehicle Name</th><th>Vehicle Model</th><th>Cab Type</th><th>Manufacturer</th><th>Capacity</th><th>Fuel Type</th><th>Color</th><th>Registration Date</th><th>Action</th></tr>');
+	
+	$("#Cab-Cabtype_wrapper").attr("style","border:1px solid #d2d2d2;");
+	$("#Cab-Cabtype_wrapper").addClass("clearfix");
+	$("#Cab-Cabtype_wrapper").addClass("font12px");
+	$("#Cab-Cabtype_wrapper + div").removeClass("row");
+	$("#Cab-Cabtype_info").parent().parent().removeClass("row");
+	$("#Cab-Cabtype_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$('#Cab-Cabtype_filter label').attr("style","display:none;");
+}
+
+$("#searchVehicle").click(function(){
+	cabTypeTable.fnDestroy();
+	searchvehicleTypes();
+ });
+
+ $('.vehicleFilter').keypress(function(e){
+	var key=e.which;
+	if(key==13)
+	{
+		$('#searchVehicle').click();
+	}
+});
+
+$(document).on('click','#addVhicleType',function(){
+
+	$("#page-wrapper").hide();
+	$("#vehicleInfoTab").show();
+	$(".updateVehicleButton").hide();
+	$(".addVehicleButton").show();
+	
+});
+$(document).on('click','#back',function(){
+	$("#vehicleInfoTab").hide();
+	$("#page-wrapper").show();
+	cabTypeTable.api().ajax.reload(null,true);
+});
+
+
+$(document).on('click','.editVehicle',function(){ 
+	$("#page-wrapper").hide();
+	$("#vehicleInfoTab").show();
+	$(".backbtn").show();
+	$(".updateVehicleButton").show();
+	$(".addVehicleButton").hide();
+	
+	
+	vehicleId = $(this).attr('data');
+	//alert(vehicleId);
+	
+	var vehicle_Model = $("#vehicle_model").val();
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/vehicleInfoById?vehicleId='+vehicleId;
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+				 
+		success: function(html){
+				$("#vehicle_type_val").val(html.data[0].CabName);
+				$("#vehicle_model").val(html.data[0].VehicleModel);
+				$("#vehicle_externalref").val(html.data[0].external_reference);
+				$("#vehicle_year").val(html.data[0].year);
+				$("#vehicle_licenseplate").val(html.data[0].license_plate);
+				$("#vehicle_color").val(html.data[0].colour);
+				$("#vehicle_capacity").val(html.data[0].year);
+				$("#vehicle_engine_no").val(html.data[0].Engine_No);
+				$("#vehicle_fuel_type").val(html.data[0].capacity);
+				(html.data[0].status == 1)? $("#vehicle_is_active").prop("checked",true):$("#vehicle_is_active").prop("checked",false);
+		}
+	});
+
+});
+
+
+ $('#Cab-Cabtype').on('click','.clickCabType',function(){
+		var city = $("#cab-cityText").val();
+		var cabId = $(this).attr('data');
+		var cabhtml = $(this).html();
+				$("#vehicle_type").val(cabhtml);
+		$("#vehicle_type_val").val(cabId);
+		//alert(cabhtml);
+		$("#cab-vehicleCabTypText").val(cabhtml);
+		//clearInterval(myVar2); 
+        //clearInterval(myVar);
+      
+      if($(this).hasClass('open'))
+      {
+		 // myVar2=setInterval(function(){myTimer2()}, 5000);	  
+          $(".remove div:first").slideUp(400,function(){
+               $('.remove').remove();
+              
+          });
+     
+      $(this).removeClass('open');
+	  
+  }else{
+      $('.remove').remove();
+       
+      $(this).addClass('open');
+	   
+      $(this).parent().parent().after('<tr class="remove"><td colspan="7"><div><div> <div class="portlet portlet-default"> <div class="portlet-heading"> <div class="portlet-title"><h5 class="h4text" style="background: #E2E2E2;padding:7px;margin: 0;">Vehicle Information</h5></div> <div class="clearfix"></div> </div> <div class="portlet-body"> <ul id="myTab" class="nav nav-tabs tabsdesign"> <li class="active"><a href="#cab_vehicle" data-toggle="tab"><i class="fa fa-list" style="color:#; margin:5px"></i>Status</a> </li> </ul> <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="cab_vehicle"> <table id="exampleVehicle" class="table table-striped table-responsive margin10"><thead> <tr> <th>S.No.</th><th>vehicle Number</th> <th>Cab Type</th>  <th>Vehicle Name</th>  <th>Vehicle Model</th> <th> Manufacturer</th><th></th> </tr> </thead> <tbody> </tbody> </table> </div></div><div class="row clearfix margin10"><div class="col-lg-12" id="addVhicleType"><button class="btn btn-success"><i class="fa fa-plus"></i> Add Vehicle</button></div></div></td></tr>');
+
+    data=$(this).attr("data");
+   
+    $.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/vehicleInfo?cabId='+data+'&city='+city,
+		cache: false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	var k = 1;
+    for(var i=0;i<html.data.length;i++)
+	{
+		$('#exampleVehicle tbody').append('<tr><td><label class="vehicleInfo" style="cursor:pointer;color:#08c;" data="'+html.data[i].id+'">'+ k++ +'</label></td><td>'+html.data[i].vehicleNumber+'</td><td>'+html.data[i].CabType+'</td><td>'+html.data[i].name+'</td><td>'+html.data[i].VehicleModel+'</td><td>'+html.data[i].Manufacturer+'</td><td><button data="'+html.data[i].id+'" class="btn btn-primary editVehicle">Edit Vehicle</button></td></tr>');  
+	}
+  }).fail(function (error){
+			
+ });	
+		
+}		
+ 
+ });
+ 
+ 
+
+ /*
+$(document).on('click','.editVehicle',function(){ 
+
+	var vehicleId = $(this).attr('data');
+	
+	 $.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/vehicleInfoById?vehicleId='+vehicleId,
+		cache: false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	
+	$("#vehicle_id").val(html.data[0].id);
+	$("#vehicle_uniqueId").val(html.data[0].uniqueId);
+	$("#vehicle_type").val(vehicle_type);
+	
+	$("#vehicle_model").val();
+	
+	
+	$('#VehicleDetailTable').append('<tr><th>Id</th><td>'++'</td></tr><tr><th>unique Id</th><td>'+html.data[0].uniqueId+'</td></tr><tr><th>Model</th><td>'+html.data[0].VehicleModel+'</td></tr>  <tr><th>External Reference</th><td>'+html.data[0].external_reference+'</td></tr><tr><th>Year</th><td>'+html.data[0].year+'</td></tr><tr><th>License Plate</th><td>'+html.data[0].license_plate+'</td></tr><tr><th>color</th><td>'+html.data[0].colour+'</td></tr>   <tr><th>Engine Number</th><td>'+html.data[0].Engine_No+'</td></tr><tr><th>Fuel Type</th><td>'+html.data[0].fuelType+'</td></tr><tr><th>Capacity</th><td>'+html.data[0].capacity+'</td></tr><tr><th>Status</th><td>'+html.data[0].status+'</td></tr>');  
+	
+	
+	
+  }).fail(function (error){
+	alert('error');
+	console.log(error);
+		
+ });	
+	
+	
+
+}); */
+ 
+$('#Cab-Cabtype').on('click','.vehicleInfo',function(){ 
+ var vehicleId = $(this).attr('data');
+ 
+ if($(this).hasClass('openVehicle'))
+      {
+		 // myVar2=setInterval(function(){myTimer2()}, 5000);	  
+          $(".removevehicle div:first").slideUp(400,function(){
+               $('.removevehicle').remove();
+              
+          });
+     
+      $(this).removeClass('openVehicle');
+	  
+  }else{
+      $('.removevehicle').remove();
+       
+      $(this).addClass('openVehicle');
+	   
+      $(this).parent().parent().after('<tr class="removevehicle"><td colspan="7"><div><div> <div class="portlet portlet-default"> <div class="portlet-heading"> <div class="portlet-title"><h5 style="background: #E2E2E2;padding:7px;margin: 0;">Vehicle Details</h5></div> <div class="clearfix"></div> </div> <div class="portlet-body"> <ul id="myTab" class="nav nav-tabs tabsdesign"> <li class="active"><a href="#cab_vehicleInfo" data-toggle="tab"><i class="fa fa-list" style="color:#; margin:5px"></i>Info</a> </li> </ul> <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="cab_vehicleInfo"> <table id="VehicleDetailTable" class="table table-striped table-responsive margin10"></table> </div></div></td></tr>');
+
+    data=$(this).attr("data");
+   
+    $.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/vehicleInfoById?vehicleId='+vehicleId,
+		cache: false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	var k = 1;
+	var statusVehicle;
+    for(var i=0;i<html.data.length;i++)
+	{
+		statusVehicle = (html.data[0].status == 0) ?'Inactive':'Active';
+		$('#VehicleDetailTable').append('<tr><th>Id</th><td>'+html.data[0].id+'</td></tr><tr><th>unique Id</th><td>'+html.data[0].uniqueId+'</td></tr><tr><th>Model</th><td>'+html.data[0].VehicleModel+'</td></tr>  <tr><th>External Reference</th><td>'+html.data[0].external_reference+'</td></tr><tr><th>Year</th><td>'+html.data[0].year+'</td></tr><tr><th>License Plate</th><td>'+html.data[0].license_plate+'</td></tr><tr><th>color</th><td>'+html.data[0].colour+'</td></tr><tr><th>Engine Number</th><td>'+html.data[0].Engine_No+'</td></tr><tr><th>Fuel Type</th><td>'+html.data[0].fuelType+'</td></tr><tr><th>Capacity</th><td>'+html.data[0].capacity+'</td></tr><tr><th>Status</th><td>'+statusVehicle+'</td></tr>');  
+	}
+  }).fail(function (error){
+	alert('error');
+	console.log(error);
+		
+ });	
+		
+}		
+ 
+ 
+ });
+ 
+ 
+ 
+ $(".addButton").click(function(){
+		
+		var addButtonId = $(this).attr('id');
+		var counterArr = addButtonId.split("_");
+		
+		var counter = counterArr[1];
+			counter++;
+		$("#"+addButtonId).remove();
+		
+		var detailsdiv = "";
+		detailsdiv += '<div class="row form-group"><div class="col-sm-3"><input type="text" class="form-control" ></div><div class="col-sm-3"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" class="form-control" ></div></div><div class="col-sm-3"><div class="col-sm-8 addButton" style="padding:0;" id="add_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div><div class="col-sm-3">&nbsp;</div></div>';
+		
+		$("#appended_text_form").after(detailsdiv);
+ 
+ 
+ });
+ 
+ 
+ $("#genaralVehicleTabSave").click(function(){
+	var vehicleNum = $("#cab-vehicleNumText").val();
+	var vehicleName = $("#cab-vehicleNmText").val();
+	var vehicleCabType = $("#cab-vehicleCabTypText").val();
+	var manufacturer = $("#cab-vehicleManufctrText").val();
+	var vehicleModel = $("#cab-vehicleModlText").val();
+	var engineNo = $("#cab-vehicleEngnNoText").val();	
+    var fuelType = $("#cab-vehicleFuelTypText").val();
+	var vehicleCapacity = $("#cab-vehicleCapacityText").val();
+	$(".form-control").removeClass('errorText');
+	if(vehicleNum == ""){
+		$("#cab-vehicleNumText").focus();
+		$("#cab-vehicleNumText").addClass('errorText');
+		return false;
+	}else if(vehicleName == ""){
+		$("#cab-vehicleNmText").focus();
+		$("#cab-vehicleNmText").addClass('errorText');
+		return false;
+	}else if(vehicleCabType == ""){
+		$("#cab-vehicleCabTypText").focus();
+		$("#cab-vehicleCabTypText").addClass('errorText');
+		return false;
+	}else if(manufacturer == ""){
+		$("#cab-vehicleManufctrText").focus();
+		$("#cab-vehicleManufctrText").addClass('errorText');
+		return false;
+	}else if(vehicleModel == ""){
+		$("#cab-vehicleModlText").focus();
+		$("#cab-vehicleModlText").addClass('errorText');
+		return false;
+	}else if(engineNo == ""){
+		$("#cab-vehicleEngnNoText").focus();
+		$("#cab-vehicleEngnNoText").addClass('errorText');
+		return false;
+	
+	}else if(fuelType == ""){
+		$("#cab-vehicleFuelTypText").focus();
+		$("#cab-vehicleFuelTypText").addClass('errorText');
+		return false;
+	
+	}else if(vehicleCapacity == ""){
+		$("#cab-vehicleCapacityText").focus();
+		$("#cab-vehicleCapacityText").addClass('errorText');
+		return false;
+	
+	}
+	/*
+	var URL = '<?php echo $this->basePath();?>'+'/tunnel/admin/addVehicleGeneralInfo';
+	$.ajax({
+		type: 'POST',
+		url: URL,
+		dataType: "json",
+		data : {key:'',vehicleNum:vehicleNum,vehicleName:vehicleName,vehicleCabType:vehicleCabType,manufacturer:manufacturer,vehicleModel:vehicleModel,engineNo:engineNo,fuelType:fuelType,vehicleCapacity:vehicleCapacity},		 
+		success: function(html){
+							
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+	
+	*/
+	
+	
+ 
+ });
+
+
+/*
+
+     var table;
+     var data;
+     var myVar;
+     var data2;
+	 var myVar2;
+    $(document).ready(function () {
+        $('#example').on('click','.clickme',function(){
+             
+           clearInterval(myVar2); 
+        clearInterval(myVar);
+      // alert("fdfdfdfdfdfd");
+      if($(this).hasClass('open'))
+      {
+ myVar2=setInterval(function(){myTimer2()}, 5000);	  
+          $(".remove div:first").slideUp(400,function(){
+               $('.remove').remove();
+              
+          });
+     
+      $(this).removeClass('open');
+	  
+  }else{
+      $('.remove').remove();
+       
+       $(this).addClass('open');
+
+       
+      $(this).parent().parent().after('<tr class="remove" ><td colspan="7"><div style="display:none"> <div class="col-lg-12"> <div class="portlet portlet-default"> <div class="portlet-heading"> <div class="portlet-title"></div> <div class="clearfix"></div> </div> <div class="portlet-body"> <ul id="myTab" class="nav nav-tabs tabsdesign"> <li class="active"><a href="#home1" data-toggle="tab"><i class="fa fa-list" style="color:#; margin:5px"></i>Status</a> </li> <li><a href="#bookinginfo" data-toggle="tab"><i class="fa fa-user" style="color:#; margin:5px"></i>Booking Details</a> </li><li><a href="#payment" data-toggle="tab"><i class="fa fa-user" style="color:#; margin:5px"></i> Payment Details</a> </li></li></ul> <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="home1"><h4 class="h4text">Status</h4><table id="example2" class="table table-striped table-responsive"><thead> <tr> <th>Date</th> <th>State</th> <th>Text</th> </tr> </thead> <tbody> </tbody> </table></div><div class="tab-pane fade" id="payment"><h4 class="h4text">Payment Details</h4><table id="paymentdetail" class="table table-responsive table-striped"></table></div><div class="tab-pane fade" id="bookinginfo"><h4 class="h4text">Booking Information</h4><table id="bookinf" class="table table-responsive table-striped"></table></div></div></td></tr>');
+
+   
+    data=$(this).attr("data");
+   
+    $.ajax({
+  url: '<?php echo $this->basePath();?>'+"/tunnel/admin/booking_information?booking_id="+data,
+  cache: false,
+  dataType:"json"
+})
+  .done(function( html ) {
+    for(var i=0;i<html.data.length;i++)
+{
+                               $('#example2 tbody').append('<tr><td>'+html.data[i].time+'</td><td>'+html.data[i].status+'</td><td>'+html.data[i].message+'</td></tr>');  
+  }
+  });
+  $.ajax({
+  url: '<?php echo $this->basePath();?>'+"/tunnel/admin/payment_information?booking_id="+data,
+  cache: false,
+  dataType:"json"
+})
+  .done(function( html ) {
+    
+
+                               $('#paymentdetail').append('<tr><th>Waiting Charge</th><td>'+html.data[0].waiting+'</td></tr><tr><th>Trip Charge</th><td>'+html.data[0].tripCharge+'</td></tr><tr><th>Total Bill</th><td>'+html.data[0].totalbill+'</td></tr>');  
+  
+  });
+      myVar = setInterval(function(){myTimer()}, 5000);
+      function myTimer(){
+        
+     $.ajax({
+  url: '<?php echo $this->basePath();?>'+"/tunnel/admin/booking_information?booking_id="+data,
+  cache: false,
+  dataType:"json"
+})
+  .done(function( html ) {
+      $('#example2 tbody').html('');
+    for(var i=0;i<html.data.length;i++)
+{
+                               $('#example2 tbody').append('<tr><td>'+html.data[i].time+'</td><td>'+html.data[i].status+'</td><td>'+html.data[i].message+'</td></tr>');  
+  }
+  });    
+     
+   
+      }
+   
+   $(".remove div:first").slideDown(400,function(){
+       //e.preventDefault();
+    }
+
+    );
+  }
+    });
+        table=$('#example').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/booking_list",
+        "deferRender": true
+    } );
+   myVar2=setInterval(function(){myTimer2()},30000);
+
+function myTimer2(){
+    //alert(table.fnGetData().length);
+     $.ajax({
+  url: '<?php echo $this->basePath();?>'+"/tunnel/admin/latest_booking?no_of_booking="+table.fnGetData().length,
+  cache: false,
+  dataType:"json"
+})
+  .done(function( html ) {
+    for(var i=0;i<html.data.length;i++)
+    {
+     table.fnAddData(html.data[i]);   
+        
+    }
+  });    
+ 
+    
+    
+    
+}
+
+     
+    });
+
+*/
+
+</script>

@@ -1,0 +1,123 @@
+<?php 
+if (defined('RUNNING_FROM_ROOT')) {
+  
+	$url = $this->basePath().'/public';
+} ?>
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle(''. $this->translate('Hello42'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+                                    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $url . '/img/favicon.ico'))
+                 ->prependStylesheet($url . '/css/style.css')
+                        ->prependStylesheet($url . '/font-awesome-4.2.0/css/font-awesome.css')
+                        ->prependStylesheet($url . '/font-awesome-4.2.0/css/font-awesome.min.css')
+                        ->prependStylesheet($url . '/css/bootstrap-theme.min.css')
+                        ->prependStylesheet($url . '/css/bootstrap.min.css')
+						->prependStylesheet($url . '/css/style.css')
+						->prependStylesheet($url . '/css/custom.css')
+						
+						//->prependStylesheet($url . '/css/animate.min.css')
+						//->prependStylesheet($url . '/css/main.css')
+						//->prependStylesheet($url . '/css/responsive.css')
+						
+						;
+						
+						
+						?>
+        
+                                              
+             <?php  echo  $this->headScript()->prependFile($url . '/js/jquery-1.11.0.min.js')
+                        
+                        ->prependFile($url . '/js/predefine.js',   'text/javascript');
+                       
+                ?>
+        <!-- Scripts -->
+        <style>
+    input.error{
+        border:1px solid red;
+    }
+    .error{
+        color:red;
+    }
+</style>
+	<script>
+    var baseurl = "<?php echo $this->basePath(); ?>";	
+</script>	
+       
+	
+    </head>
+    <body>
+       
+<div class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1><a href="<?php echo $this->basePath();  ?>"><img src="<?php echo $this->basePath();  ?>/public/image/logo.png" width="150" height="77"></a></h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+            <?php echo $this->content; ?>
+      
+            <div class="footer">
+  
+      <div class="container">
+          <div class="row">
+         <ul class="footerlist">
+          <li>Copyright 2013 &copy; Hello42 Pvt. Ltd. All Rights Reserved.</li> 
+          
+                    
+        </ul>
+          
+        
+      </div>
+    </div>
+   </div>
+        </div> <!-- /container -->
+       
+		 <?php echo $this->inlineScript()
+                 ->prependFile($url . '/js/jszip.js')         
+                 ->prependFile($url . '/js/jquery.bpopup.js')
+               ->prependFile($url . '/js/userbooking.js')       
+             ->prependFile($url . '/js/login.js') 
+              
+            ->prependFile($url . '/js/driver_reg.js')
+           ->prependFile($this->basePath() . '/public/js/crop-avatar.js')
+            ->prependFile($this->basePath() . '/public/js/cropper.min.js')
+                         
+	    ->prependFile($url . '/js/jquery.cookie.js')
+            ->prependFile($this->basePath() . '/public/js/jquery.validate.min.js')	
+            ->prependFile($url . '/js/jquery-migrate-1.2.1.min.js')
+            ->prependFile($url . '/js/bootstrap.min.js')
+                       
+            ->prependFile($url . '/js/jquery-1.11.0.min.js')
+            ->prependFile($url . '/js/jquery-migrate-1.2.1.min.js')
+            //->prependFile($url . '/js/userbooking.js')  
+			
+            ->prependFile($url . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($url . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',)); 
+		
+		
+		?>
+       
+         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+        <!--footer-->
+		<!--footer-->
+		
+    </body>
+	
+</html>
+
+ 

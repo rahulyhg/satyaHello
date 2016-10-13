@@ -1,0 +1,1253 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } 
+
+function getValue($key) {
+    if (!isset($_REQUEST[$key])) {
+        return false;
+    }
+    return $_REQUEST[$key];
+}
+
+ ?>
+ <style>
+.loader2 {
+	position: fixed;
+	top: 250;
+	background: none;
+	z-index: 1000000;
+	margin: auto;
+	margin-left: 40%;
+}
+</style>
+
+<img src="/hello42/public/image/loading.gif" class="loader2" width="150" height="150">
+<style>
+.table{
+margin-bottom:0px;
+}
+ .monitoring li .number{ width:200px;}
+                  .monitoring li{list-style: none;}
+                  .monitoring li .right1{ float: right; text-align: left; padding-right: 304px;}
+                  .monitoring li .right2{ float: right; text-align: left; padding-right: 298px;}
+                  .monitoring li .right3{ float: right; text-align: left; padding-right: 287px;}
+                  .monitoring li .right4{ float: right; text-align: left; padding-right: 250px;}
+                  .monitoring li .right5{ float: right; text-align: left; padding-right: 263px;}
+                  .monitoring li .right6{ float: right; text-align: left; padding-right: 276px;}
+                  .monitoring li .right7{ float: right; text-align: left; padding-right: 259px;}
+                  .monitoring li .right8{ float: right; text-align: left; padding-right: 246px;}
+</style>
+<div id="page-wrapper">
+  <h4><b>Tracking</b></h4>
+  <div class="table-responsive">
+    <div class="portlet portlet-default">
+      <div class="portlet-heading">
+        <div class=" "> <i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+          <h6 style="background: #E2E2E2;padding:7px;margin: 0;"></h6>
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="portlet-body">
+        <ul id="" class="nav nav-tabs">
+          <li <?php if( getValue("data")=="home" or getValue("data")==false) echo 'class="active";'?>><a href="?data=home" ><i class="fa fa-list" style="color:#; margin:5px"></i><span id="general_fiter_head">Vehicle Status</span></a> </li>
+          <li <?php if(getValue("data")=="profile") echo 'class="active";'?>><a href="?data=profile" ><i class="fa fa-user" style="color:#; margin:5px"></i>Monitoring on Map</a> </li>
+          <li <?php if(getValue("data")=="dropdown") echo 'class="active";'?> ><a href="?data=dropdown" ><i class="fa fa-user" style="color:#; margin:5px"></i>Booking Tracking</a> </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade <?php if($_REQUEST['data']=="home" or !isset($_REQUEST['data'])) echo "in active";?>  " id="home">
+            <?php if(getValue("data")=="home" or getValue("data")==false) { ?>
+            <div id="car_details">
+              <div style="padding-left:41px; padding-bottom:18px;">No. of Drivers on Road <span style="color:#8eb398;">(<strong id="OnDuty"></strong>)</span></div>
+              <ul>
+                <a href="#" id="All">
+                <li><span class="number"><span style="color:#8eb398;">(<strong id="all"></strong>)</span> All</span> </li>
+                </a> <a href="#" id="free">
+                <li><img src="<?php echo $this->basePath();?>/public/images/1.png" /> <span class="number"><span style="color:#8eb398;"><strong id="available_driver"></strong></span> Free</span> </li>
+                </a> <a href="#" id="accepted1">
+                <li><img src="<?php echo $this->basePath();?>/public/images/4.png" /> <span class="number"><span style="color:#ee9648;"><strong id="accepted"></strong></span> &nbsp;&nbsp;&nbsp;&nbsp;Duty Accepted</span> </li>
+                </a> <a href="#" id="on_call1">
+                <li><img src="<?php echo $this->basePath();?>/public/images/3.png" /> <span class="number"><span style="color:#8eb398;"><strong id="on_call"></strong></span> &nbsp;&nbsp;&nbsp;&nbsp;On Call</span> </li>
+                </a> <a href="#" id="Located1">
+                <li><img src="<?php echo $this->basePath();?>/public/images/Located.jpg" /> <span class="number"><span style="color:#8eb398;"><strong id="Located"></strong></span> &nbsp;&nbsp;&nbsp;&nbsp;Located</span> </li>
+                </a> <a href="#" id="reported1">
+                <li><img src="<?php echo $this->basePath();?>/public/images/8.png" /> <span class="number"><span style="color:#728d3d"><strong id="reported"></strong></span> &nbsp;&nbsp;&nbsp;&nbsp;Reported</span> </li>
+                </a> <a href="#" id="hired1" >
+                <li><img src="<?php echo $this->basePath();?>/public/images/2.png" /> <span class="number"><span style="color:#ae6664;"><strong id="hired"></strong></span> Hired</span> </li>
+                </a> <a href="#" id="NotMoving1" >
+                <li><img src="<?php echo $this->basePath();?>/public/images/NotMoving.jpg" /> <span class="number"><span style="color:#ae6664;"><strong id="NotMoving"></strong></span> Not Moving</span> </li>
+                </a><a href="#" id="logout1">
+                <li><img src="<?php echo $this->basePath();?>/public/images/5.png" /> <span class="number"><span style="color:#000;"><strong id="log_out"></strong></span> &nbsp;&nbsp;&nbsp;&nbsp;Logged Out</span> </li>
+                </a>
+                <li><img src="<?php echo $this->basePath();?>/public/images/6.png" /> <span class="number"><span style="color:#457ea3;"><strong id="free_moving"></strong></span> &nbsp;&nbsp;&nbsp;&nbsp;Free Moving</span> </li>
+                <li><img src="<?php echo $this->basePath();?>/public/images/7.png" /> <span class="number"><span style="color:#a393be";><strong id="live_moving"></strong></span> &nbsp;&nbsp;&nbsp;&nbsp;Logout Moving</span> </li>
+              </ul>
+            </div>
+            <table id="example" class="table table-striped table-responsive">
+              <thead>
+                <tr>
+                  <th>SN</th>
+                  <th>Vehicle No</th>
+                  <th>MCTID</th>
+                  <th>Driver Name</th>
+                  <th>Mobile No</th>
+                  <th>Last Polling</th>
+                  <th>SPD</th>
+                  <th>IGN</th>
+                  <th>Destination</th>
+                  <th>Location</th>
+                  <th>Mtr Status</th>
+                </tr>
+              </thead>
+                </tbody>
+              
+            </table>
+            <script>
+    jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+    "stringMonthYear-pre": function (s) {
+        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+ 
+        var dateComponents = s.split(" ");
+        dateComponents[0] = dateComponents[0].replace(",", "");
+        dateComponents[1] = jQuery.trim(dateComponents[1]);
+ 
+        var year = dateComponents[1];
+ 
+        var month = 0;
+        for (var i = 0; i < months.length; i++) {
+            if (months[i].toLowerCase() == dateComponents[0].toLowerCase().substring(0,3)) {
+                month = i;
+                break;
+            }
+        }
+ 
+        return new Date(year, month, 1);
+    },
+ 
+    "stringMonthYear-asc": function (a, b) {
+        return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+    },
+ 
+    "stringMonthYear-desc": function (a, b) {
+        return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+    }
+});
+var id_s;
+     var table;
+     var data;
+     var myVar;
+     var data2;
+	 var myVar2;
+         var i=0;
+$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCabStatus',
+		cache: false,
+		dataType:"json",
+	})
+  .done(function( html ) {
+	$('#available_driver').html(html.data.available_driver);
+	$('#hired').html(html.data.hired);
+	$('#NotMoving').html(html.data.NotMoving);
+	$('#NotMovingDriverIds').html(html.data.NotMovingDriverIds);
+	$('#accepted').html(html.data.accepted);
+	$('#log_out').html(html.data.log_out);
+	$('#reported').html(html.data.reported);
+	$('#on_call').html(html.data.on_call);
+	$('#Located').html(html.data.Located);
+	$('#all').html(html.data.total_driver);
+	$('#OnDuty').html(html.data.OnDuty);
+	//console.log(html);
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+
+	$("#free").click(function () {
+		var id=1;
+		filter(id);
+	}); 
+
+	$("#hired1").click(function () {
+		var id=2;
+		filter(id);
+	});
+
+	$("#logout1").click(function () {
+		var id=3;
+		filter(id);
+	}); 
+
+	$("#reported1").click(function () {
+		var id=5;
+		filter1(id);
+	}); 
+
+
+	$("#accepted1").click(function () {
+		var id=3;
+		filter1(id);
+	}); 
+
+	$("#on_call1").click(function () {
+		var id=2;
+		filter1(id);
+	}); 
+
+
+	$("#all").click(function () {
+		all_track_details();
+	}); 
+
+
+	function filter(id){
+		var status=id;
+		table.fnDestroy();
+		table=$('#example').dataTable( {
+			"ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/tracking1?status="+status,
+			"deferRender": true,
+		});
+		datatablsCSS();
+	}
+
+	function filter1(id){
+		var status=id;
+		table.fnDestroy();
+		table=$('#example').dataTable( {
+		"ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/tracking2?status="+status,
+		"deferRender": true,
+		});
+		datatablsCSS();
+	}
+
+	$(document).ready(function(){   
+		table=$('#example').dataTable( {
+		"ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/tracking",
+		"deferRender": true,
+		responsive: false,
+		columnDefs: [
+		{ type: 'stringMonthYear', targets: 1 }
+		],
+		"order": [[ 1,2, "desc" ]]
+		} );
+		datatablsCSS();
+		$('#example').css("width",'');    
+		$("#example_wrapper div:first").attr("class","tbsearchrow clearfix");
+		$("#example_wrapper").attr("style","border: 1px solid #d2d2d2;margin: 10px 0;");
+		$("#example_wrapper").addClass("clearfix");
+		$("#example_info").parent().parent().removeClass("row");
+	});
+
+	function all_track_details(){
+		table.fnDestroy();
+		table=$('#example').dataTable({
+			"ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/tracking",
+			"deferRender": true,
+			responsive: false,
+			columnDefs: [{ type: 'stringMonthYear', targets: 1 }],
+			"order": [[ 1, "desc" ]]
+		});
+		datatablsCSS();
+		$('#example').css("width",'');    
+		$("#example_wrapper div:first").attr("class","tbsearchrow clearfix");
+		$("#example_wrapper").attr("style","border: 1px solid #d2d2d2;margin: 10px 0;");
+		$("#example_wrapper").addClass("clearfix");
+		$("#example_info").parent().parent().removeClass("row");
+	}   
+
+
+
+
+
+// CSV Generator
+/*
+$(".export").on('click', function (event) {
+       
+	$('#example').tableExport({type:'csv',escape:'true'});
+	   
+});
+
+*/
+$(".export").on('click', function (event) {
+       
+		//Get table
+		var table = $("#example")[0];
+
+		//Get number of rows/columns
+		var rowLength = table.rows.length;
+		var colLength = table.rows[0].cells.length;
+		colLength = colLength - 1;
+		
+		//Declare string to fill with table data
+		var tableString = "";
+		var tableHeader = "";
+		var tableBody = "";
+
+		//Get column headers
+		for (var i = 0; i < colLength; i++) {
+			tableHeader += table.rows[0].cells[i].innerHTML.split(",").join("") + ",";
+		}
+
+		tableHeader = tableHeader.substring(0, tableHeader.length - 1);
+		tableHeader += "\r\n";
+			
+		//Get row data
+		for (var j = 1; j < rowLength; j++) {
+			for (var k = 0; k < colLength; k++) {
+				tableString += table.rows[j].cells[k].innerHTML.split("<br>").join("") + ",";
+				//tableString += table.rows[j].cells[k].innerHTML.split(",").join("") + ",";
+				
+			}
+			//
+			tableString += "\r\n";
+		}
+		
+		tableBody += $(tableString).text();
+		
+		tableString = tableHeader + tableBody;
+		
+		var date = new Date();
+		date = date.toUTCString();
+		
+		
+		//Save file
+		if (navigator.appName == "Microsoft Internet Explorer") {
+			//Optional: If you run into delimiter issues (where the commas are not interpreted and all data is one cell), then use this line to manually specify the delimeter
+			 tableString = 'sep=,\r\n' + tableString;
+
+			 myFrame.document.open("text/html", "replace");
+			 myFrame.document.write(tableString);
+			 myFrame.document.close();
+			 myFrame.focus();
+			 myFrame.document.execCommand('SaveAs', true, 'Booking data('+ date +').csv');
+		 } else {
+			csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(tableString);
+			 $(event.target).attr({
+				 'href': csvData,
+				 'target': '_blank',
+				 'download': 'Booking('+ date +').csv'
+			 });
+			 
+		 }
+		
+		
+    });
+
+
+$("#example").on("click", "#export_booking_info", function (event) {
+		//Get table
+		var table = $("#bookinf")[0];
+
+		//Get number of rows/columns
+		var rowLength = table.rows.length;
+		var colLength = table.rows[0].cells.length;
+		
+		//Declare string to fill with table data
+		var tableString = "";
+		var tableHeader = "";
+		var tableBody = "";
+
+		//Get column headers
+		for (var j = 0; j < rowLength; j++) {
+			for (var i = 0; i < colLength; i++) {
+				tableString += table.rows[j].cells[i].innerHTML.split(",").join("") + ",";
+			}
+			tableString += "\r\n";
+		}
+		
+		var date = new Date();
+		date = date.toUTCString();
+		//alert(date);
+		
+		//Save file
+		if (navigator.appName == "Microsoft Internet Explorer") {
+			//Optional: If you run into delimiter issues (where the commas are not interpreted and all data is one cell), then use this line to manually specify the delimeter
+			 tableString = 'sep=,\r\n' + tableString;
+
+			 myFrame.document.open("text/html", "replace");
+			 myFrame.document.write(tableString);
+			 myFrame.document.close();
+			 myFrame.focus();
+			 myFrame.document.execCommand('SaveAs', true, 'Booking data('+ date +').csv');
+		 } else {
+			csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(tableString);
+			 $(event.target).attr({
+				 'href': csvData,
+				 'target': '_blank',
+				 'download': 'Booking('+ date +').csv'
+			 });
+			 
+		 }
+		
+		
+    });
+
+ $(".searchBooking").click(function(){
+             
+		var driver=$("#driver_name").val();
+		var ref=$("#ref").val();
+		var partner=$("#partner").val();
+		var booking_type=$("#type").val();
+		//table.api().clear();
+      		table.fnDestroy();
+			
+       table=$('#example').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/booking_filter?driver="+driver+"&partner="+partner+"&ref="+ref+"&type="+booking_type,
+        "deferRender": true,
+      
+		  //"bSort":false
+		 //"order": [[ 1, "desc" ]]
+    } );
+	datatablsCSS();
+		 
+		 
+});
+	 
+function datatablsCSS(){
+	$(".paging_simple_numbers").parent().addClass('pgnt_topfix');
+    $('.dataTables_length').parent().removeClass('col-sm-6');
+    $('.dataTables_length').parent().addClass('col-sm-2');
+    $('.dataTables_length').parent().addClass('pgno_top');
+	$('.pgno_top').attr("style","top:29px;");
+	$('.pgnt_topfix').attr("style","top:28px;");
+	
+	$('#example').css("width",'');    
+	$("#example_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$("#example_wrapper").attr("style","border: 1px solid #d2d2d2;margin: 10px 0;");
+	$("#example_wrapper").addClass("clearfix");
+	$("#example_info").parent().parent().removeClass("row");
+}
+
+$('.inputchange').keypress(function(e){
+	var key=e.which;
+	if(key==13)
+	{
+		$('.searchBooking').click();
+	}
+});
+
+</script>
+            <?php } ?>
+          </div>
+          <div class="tab-pane fade <?php if($_REQUEST['data']=="profile") echo "in active";?>  " id="profile">
+            <?php if($_REQUEST['data']=="profile") {?>
+            <style>
+		.table{
+			margin-bottom:0px;
+		}
+	</style>
+            <style>
+		html, body, #map-canvas {
+			height: 100%;
+			margin: 0px;
+			padding: 0px
+		}
+	</style>
+            <style>
+		#map-canvas {
+			width: 1000px;
+			height: 1000px;
+		}
+    </style>
+            <script src="https://maps.googleapis.com/maps/api/js"></script> 
+<script>
+
+	var poly;
+	var map;
+	var driver_id;
+	var lat = getUrlVars()["lat"];
+	var lon = getUrlVars()["lon"];
+	var latnt;
+	var  marker=new Array;
+	var html_new=new Array;
+
+	$(document).ready(function(){
+		$('#search_button').click(function(){
+			var SearchKey = $('#search').val();
+			getLocation('', SearchKey)
+		}); 
+	}); 
+
+/*===============================================================================================================*/
+
+	$('.hover12').on({
+		mouseleave: function() {
+			$(this).css("display","hide");
+		}
+	});
+
+/**
+ * Handles click events on a map, and adds a new point to the Polyline.
+ * @param {google.maps.MouseEvent} event
+ */
+ 
+	function changemarker(){
+		var CabImage = '/public/image/car_1.png';
+		$.ajax({
+		type: 'POST',
+		url:"<?php echo $this->basePath();?>/tunnel/admin/getCabInfo",
+		dataType: "json",
+		success: function(html){
+			
+			for(i=0;i<html.data.length;i++){
+				
+				if(html.data.CabStatus == 'Free'){
+					CabImage = '/public/images/1.png';
+				}else if(html.data.CabStatus == 'Logout'){
+					CabImage = '/public/images/5.png';
+				}else if(html.data.CabStatus == 'Reported'){
+					CabImage = '/public/images/8.png';
+				}else if(html.data.CabStatus == 'Accepted'){
+					CabImage = '/public/images/4.png';
+				}else if(html.data.CabStatus == 'OnCall'){
+					CabImage = '/public/images/3.png';
+				}else if(html.data.CabStatus == 'Hired'){
+					CabImage = '/public/images/2.png';
+				}
+				
+				if(html.data[i].CabStatus=="Free"){
+					latlng = new google.maps.LatLng(html.data[i].Latitude,html.data[i].Longtitude1);
+					marker[html.data[i].id].setPosition(latlng); 
+					marker[html.data[i].id].setIcon('<?php echo $this->basePath();?>/public/images/1.png'); 
+					var id = html.data[i].id;
+					google.maps.event.addListener(marker[html.data[i].id], 'click', function() {
+						driver_id=this.customInfo;
+						$("#cabTypeForm").bPopup({});
+					});
+				}
+				
+				google.maps.event.addListener(marker[html.data[i].id], 'click', function() {
+					return false;
+				});
+			}
+		},
+		error: function(error){
+			console.log(error);
+		}
+		});
+	}	
+	
+	function SetBooking(Range){
+		$('#ref').show();
+		$('#ref').html('');	
+		$.ajax({
+			type:'POST',
+			url:"<?php echo $this->basePath();?>/tunnel/admin/getUnassignedBooking",
+			dataType: "json",
+			data:{DriverId:driver_id,BookingRange:Range},
+			success: function(data){
+				$('#ref').append($("<option value='0'>Select Booking Refrence</option>"));
+
+				$.each(data.data, function(i) {
+				  $.each(data.data[i], function(key,obj) {
+					  $('#ref').append($("<option value='"+obj.BookingId+"'>"+obj.booking_reference+"</option>"));
+				  });
+				});		
+			},
+			error: function(){
+				console.log(error);
+			}
+			
+		});
+	}
+     
+	function addLatLng() {
+		var a;
+		var b;
+		var latlng;
+		//var path = poly.getPath();
+		//alert(id);
+		latlng = new google.maps.LatLng(lat,lon);
+		var marker = new google.maps.Marker({
+			position: latlng,
+			//title: '#' + path.getLength(),
+			map: map
+		}); 
+		//latlng='('+a+','+b+')';
+		//alert(latlng);
+		// Because path is an MVCArray, we can simply append a new coordinate
+		// and it will automatically appear.
+		//alert(event.latLng);
+		// path.push(event.latLng);
+		// Add a new marker at the new plotted point on the polyline.
+	}
+	
+	function getUrlVars() {
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+			vars[key] = value;
+		});
+		return vars;
+	}
+
+	//setInterval(function(){ changemarker(); }, 3000);
+	google.maps.event.addDomListener(window, 'load', function(){getLocation('All');});//initialize
+	//google.maps.event.addListener(window, 'load', addLatLng);
+	
+</script>
+            <div style="width:85%">
+              <div id="map-canvas" style="width:100%;height:500px;float:left;"></div>
+            </div>
+            <div id="car_detail" class="monitoring">
+              <ul>
+                <table style="font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">
+                  <tr>
+                    <td colspan="2" style="width:20px;">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="width:20px;"><table width="100%" border="0">
+                        <tr>
+                          <td><input type="text" style="width:145px; padding-left:10px;" id="search" placeholder="Search By Driver ID,Name,Mobile Number, Cab Registration Number" /></td>
+                          <td><input type="button" id="search_button" value="GO"/></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="width:20px;">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td style="width:20px;"><a href="javascript: getLocation('Free')"><img src="<?php echo $this->basePath();?>/public/images/1.png" /></a></td>
+                    <td style="width:100px;">Free <strong id="available_driver" style="color:#8eb398;"></strong></td>
+                  </tr>
+                  <tr>
+                    <td><a href="javascript: getLocation('Accepted')"><img src="<?php echo $this->basePath();?>/public/images/4.png" /></a></td>
+                    <td>Duty Accepted <strong id="accepted" style="color:#ee9648;"></strong></td>
+                  </tr>
+                  <tr>
+                    <td><a href="javascript: getLocation('OnCall')"><img src="<?php echo $this->basePath();?>/public/images/3.png" /></a></td>
+                    <td>On Call <strong id="on_call" style="color:#ae6664;"></strong></td>
+                  </tr>
+                  <tr>
+                    <td><a href="javascript: getLocation('Located')"><img src="<?php echo $this->basePath();?>/public/images/Located.jpg" /></a></td>
+                    <td>Located <strong id="Located" style="color:#ae6664;"></strong></td>
+                  </tr>
+                  <tr>
+                    <td><a href="javascript: getLocation('Reported')"><img src="<?php echo $this->basePath();?>/public/images/8.png" /></a></td>
+                    <td>Reported <strong id="reported" style="color:#728d3d"></strong></td>
+                  </tr>
+                  <tr>
+                    <td><a href="javascript: getLocation('Hired')"><img src="<?php echo $this->basePath();?>/public/images/2.png" /></a></td>
+                    <td>Hired <strong id="hired"style="color:#ae6664;"></strong></td>
+                  </tr>
+                  <tr>
+                    <td><a href="javascript: getNotMoving('NotMoving')"><img src="<?php echo $this->basePath();?>/public/images/NotMoving.jpg" /></a><input type="hidden" id="NotMovingDriverIds" /></td>
+                    <td>Not Moving <strong id="NotMoving"style="color:#ae6664;"></strong></td>
+                  </tr>
+                  <tr>
+                    <td><a href="javascript: getLocation('Logout')"><img src="<?php echo $this->basePath();?>/public/images/5.png" /></a></td>
+                    <td>Logged Out <strong id="log_out" style="color:#000;"></strong></td>
+                  </tr>
+                  <tr>
+                    <td><a href="javascript: getLocation('FreeMoving')"><img src="<?php echo $this->basePath();?>/public/images/6.png" /></a></td>
+                    <td>Free Moving <strong id="free_moving" style="color:#457ea3;"></strong></td>
+                  </tr>
+                  <tr>
+                    <td><a href="javascript: getLocation('LogoutMoving')"><img src="<?php echo $this->basePath();?>/public/images/7.png" /></a></td>
+                    <td>Logout Moving <strong id="live_moving" style="color:#a393be"></strong></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td><a href="javascript: getLocation('All')">All Status</a> <strong id="total_driver" style="color:#ae6664;"></strong></td>
+                  </tr>
+                </table>
+              </ul>
+            </div>
+            <div class="col-sm-4 col-sm-offset-4" id="cabTypeForm" style="padding: 0px;margin:auto; border-radius: 10px;background-color: white; display:none">
+              <h1 class="fa fa-times closbtn b-close"></h1>
+              <div id="" style="margin:20px;">
+                <div class="form-group clearfix spance"> </div>
+                <div class="form-group clearfix spance">
+                  <!--label class="control-label col-sm-3 col-lg-3">Booking Reference</label>
+                  <input id="ref" name="addCab_cabType" type="text" class="col-sm-9 col-lg-9 inputfild name" placeholder="Booking Reference"-->
+                  
+                  
+                  <select id="Range" name="Range" onchange="SetBooking(this.value)" >
+                  	<option value="0">Select Range</option>
+                    <option value="5">Booking within 5 Kms</option>
+                    <option value="10">Booking within 10 Kms</option>
+                    <option value="15">Booking within 15 Kms</option>
+                  </select><br /><br />
+                  
+                  <select id="ref" name="addCab_cabType" style="display:none;" >
+                  	<!--option value="">Select Booking Refrence Number</option-->
+                  </select>
+                  
+                  
+                  <input type='hidden' id='myText'>
+                </div>
+                <div class="form-group clearfix spance"> 
+                  
+                  <!--<button type="button" class="btn defaultbtnsearch pull-right" id="back">Back</button> -->
+                  <button type="button" class="btn marginright btn-primary pull-right addCabTypeButton col-sm-3"  id="addcabtype">Force to Book</button>
+                </div>
+                </form>
+              </div>
+              <div class="col-sm-4 col-md-4"></div>
+            </div>
+            
+            <!-- ========================bpopup======================================== -->
+            
+            <div class="col-sm-4 col-sm-offset-4" id="driverLocateForm" style="padding: 0px;margin:auto; border-radius: 10px;background-color: white; display:none">
+              <h1 class="fa fa-times closbtn b-close"></h1>
+              <div id="" style="margin:20px;">
+                <div class="form-group clearfix spance"> </div>
+                <div class="form-group clearfix spance">
+                  <label class="control-label col-sm-3 col-lg-3">Enter Driver Id:</label>
+                  <input id="driver" name="driver" type="text" class="col-sm-9 col-lg-9 inputfild name" placeholder="Driver Id">
+                  <input type='hidden' id='myText'>
+                </div>
+                <div class="form-group clearfix spance"> 
+                  
+                  <!--<button type="button" class="btn defaultbtnsearch pull-right" id="back">Back</button> -->
+                  <button type="button" class="btn marginright btn-primary pull-right addCabTypeButton col-sm-3"  id="locateDriver" onclick="locateDriver();">Locate Driver</button>
+                </div>
+                </form>
+              </div>
+              <div class="col-sm-4 col-md-4"></div>
+            </div>
+            <script>
+$(document).ready(function(){
+     var site_url = jQuery.cookie('BaseUrl');
+   $( "#ref" ).autocomplete({
+      source:'<?php echo $this->basePath(); ?>/tunnel/admin/bookingref',minLength: 2,
+     
+    
+
+
+    
+}); 
+$('#ui-id-1').css('z-index','900000000000000000');
+});
+
+	var id_s;
+	var table;
+	var data;
+	var myVar;
+	var data2;
+	var myVar2;
+	var i=0;
+         
+	$("#addcabtype").click(function(){
+		// type:'POST',
+		//data:{driverProfileId:ids}
+		$.ajax({
+			url: '<?php echo $this->basePath();?>'+'/tunnel/admin/assign_booking',
+			cache: false,
+			dataType:"json",
+			type:'POST',
+			data:{driver_id:driver_id,ref:$('#ref').val()}
+		})
+		.done(function( html ) {
+			if(html.status=="true"){
+				alert("Notificatication send to driver");
+			}else{
+				alert(html.msg);   
+			}
+			//console.log(html);
+		}).fail(function (error){
+		console.log(error);
+		});
+	});
+
+
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCabStatus',
+		cache: false,
+		dataType:"json",
+	})
+	.done(function( html ) {
+		$('#available_driver').html('('+html.data.available_driver+')');
+		$('#hired').html('('+html.data.hired+')');
+		$('#accepted').html('('+html.data.accepted+')');
+		$('#log_out').html('('+html.data.log_out+')');
+		$('#reported').html('('+html.data.reported+')');
+		$('#on_call').html('('+html.data.on_call+')');
+		$('#Located').html('('+html.data.Located+')');
+		$('#total_driver').html('('+html.data.total_driver+')');
+		//console.log(html);
+	}).fail(function (error){
+		console.log(error);
+	});
+ 
+</script>
+            <?php } ?>
+          </div>
+          <div class="tab-pane fade <?php if($_REQUEST['data']=="dropdown") echo "in active";?>" id="dropdown1">
+            <?php if($_REQUEST['data']=="dropdown") {?>
+            <style>
+      html, body, #map-canvas {
+        height: 500px;
+        width:100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script> 
+            <script>
+// This example creates an interactive map which constructs a
+// polyline based on user clicks. Note that the polyline only appears
+// once its path property contains two LatLng coordinates.
+
+	var poly;
+	var map;
+	var src;
+	var src2;
+	var booking_id;
+	
+	
+	var service = new google.maps.DirectionsService();
+	 
+	
+	function initialize() {	
+	
+		var  marker=new Array;	
+		
+		var mapOptions = {zoom: 10, center: new google.maps.LatLng(28.6519649,77.1943095)};
+		
+		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		
+		
+		var polyOptions = {strokeColor: '#000000', strokeOpacity: 1.0, strokeWeight: 3};
+		var polyOptions2 = {strokeColor: '#0000ff', strokeOpacity: 1.0, strokeWeight: 3};
+		var polyOptions3 = {strokeColor: '#ff0000', strokeOpacity: 1.0, strokeWeight: 2};
+		
+		poly = new google.maps.Polyline(polyOptions);
+		poly2 = new google.maps.Polyline(polyOptions2);
+		poly3 = new google.maps.Polyline(polyOptions3);
+		
+		poly.setMap(map);
+		poly2.setMap(map);
+		poly3.setMap(map);
+		
+		var path2 = poly2.getPath();
+		var path3 = poly3.getPath();
+		$.ajax({
+			
+			url: '<?php echo $this->basePath();?>/tunnel/admin/track_lat?data='+booking_id,
+			cache: false,
+			dataType:"json"
+			
+		}).done(function( html ) {
+			
+			if(booking_id){
+				
+				console.log(html);
+				
+				map.setCenter(new google.maps.LatLng(html.data.lat,html.data.lon));
+				
+			/*			var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(a,b),
+					icon:'<?php echo $this->basePath();?>/public/image/car_1.png',
+					map: map
+				});
+			*/			
+				var infowindow = new google.maps.InfoWindow();
+				
+				
+				var PickupLocationMarker = new google.maps.Marker({
+					position:new google.maps.LatLng(html.data.lat,html.data.lon),
+					icon:'<?php echo $this->basePath();?>/public/images/PingClient.jpg',
+					map: map
+				});
+				var mark=PickupLocationMarker;
+				var content='<table width="100%" border="0"><tr><td colspan="2"><strong>Client Detail</strong></td></tr><tr><td>Name : </td><td>'+html.data.ClientName+'</td></tr><tr><td>Mobile : </td><td>'+html.data.ClientMobileNumber+'</td></tr><tr><td>Cab Reg. No. : </td><td>'+html.data.CabRegistrationNumber+'</td></tr><tr><td>Cab Status : </td><td>'+html.data.cabstatus+'</td></tr><tr><td>Location : </td><td>'+html.data.p+'</td></tr></table>';
+				google.maps.event.addListener(mark,'mouseover', (function(mark,content,infowindow){ 
+					return function() {
+						infowindow.setContent(content);
+						infowindow.open(map,mark);
+					};
+				})(mark,content,infowindow)); 
+				google.maps.event.addListener(mark,'mouseout', (function(mark,content,infowindow){ 
+					return function() {
+					infowindow.setContent(content);
+					infowindow.close(map,mark);
+					};
+				})(mark,content,infowindow)); 
+				
+				if(html.data.pickup){
+						
+					var DriverLocationMarker = new google.maps.Marker({
+						position:new google.maps.LatLng(html.data.DriverLat,html.data.DriverLon),
+						icon:'<?php echo $this->basePath();?>/public/images/PingDriver.jpg',
+						map: map
+					});
+					var mark=DriverLocationMarker;
+					var content='<table width="100%" border="0"><tr><td colspan="2"><strong>Driver Detail</strong></td></tr><tr><td>Driver Name : </td><td>'+html.data.DriverName+'</td></tr><tr><td>Mobile : </td><td>'+html.data.DriverMobileNumber+'</td></tr><tr><td>Cab Reg. No. : </td><td>'+html.data.CabRegistrationNumber+'</td></tr><tr><td>Cab Status : </td><td>'+html.data.cabstatus+'</td></tr><tr><td>Location : </td><td>'+html.data.d+'</td></tr></table>';
+					google.maps.event.addListener(mark,'mouseover', (function(mark,content,infowindow){ 
+						return function() {
+							infowindow.setContent(content);
+							infowindow.open(map,mark);
+						};
+					})(mark,content,infowindow)); 
+					google.maps.event.addListener(mark,'mouseout', (function(mark,content,infowindow){ 
+						return function() {
+						infowindow.setContent(content);
+						infowindow.close(map,mark);
+						};
+					})(mark,content,infowindow)); 
+					
+					service.route({
+						origin:new google.maps.LatLng(html.data.lat,html.data.lon),
+						destination:new google.maps.LatLng(html.data.DriverLat,html.data.DriverLon),
+						travelMode: google.maps.TravelMode['DRIVING']
+					}, function (result, status) {
+						if (status == google.maps.DirectionsStatus.OK) {
+							for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+								path2.push(result.routes[0].overview_path[i]);
+							}
+						}
+					});
+				}
+				
+				$.each(html.data.Waiting, function(i,obj) {
+					
+					latlng = new google.maps.LatLng(obj.WaitLat,obj.WaitLon);
+					
+					marker[obj.id] = new google.maps.Marker({
+						position: latlng,
+						//icon:'<?php echo $this->basePath();?>/public/images/PingDriver.jpg',
+						map: map,
+						customInfo:obj.id
+					});
+					
+					var mark=marker[obj.id];
+					var content='<table width="100%" border="0"><tr><td colspan="2"><strong>Waiting Detail</strong></td></tr><tr><td>Time : </td><td>'+obj.datetime+'</td></tr><tr><td>Waiting Time : </td><td>'+obj.WaitingTime+'</td></tr></table>';
+					
+					google.maps.event.addListener(mark,'mouseover', (function(mark,content,infowindow){ 
+						return function() {
+						infowindow.setContent(content);
+						infowindow.open(map,mark);
+						};
+					})(mark,content,infowindow)); 
+				  
+				});		
+				
+				
+							
+				//addLatLng2();
+			}
+		});
+		// Add a listener for the click event
+		//google.maps.event.addListener(map, 'click', addLatLng);
+		
+	}
+
+/**
+ * Handles click events on a map, and adds a new point to the Polyline.
+ * @param {google.maps.MouseEvent} event
+ */
+ 
+	function addLatLng2() {
+		var a;
+		var b;
+		var latlng;
+		var path = poly.getPath();
+		//alert(path);
+		
+		/*$.ajax({
+		url: '<?php echo $this->basePath();?>/tunnel/admin/full_lat?data='+booking_id,
+		cache: false,
+		dataType:"json"
+		}).done(function( html ) {
+		//console.log(html);
+		for(var i=0;i<html.data.length;i++)
+		{
+		a=html.data[i].lat;
+		b=html.data[i].longi;
+		//alert(a);
+		//alert(a);
+		latlng = new google.maps.LatLng(a,b);
+		
+		//alert(latlng);
+		path.push(latlng);
+		src2= new google.maps.LatLng(a,b);
+		}
+		//path.push(latlng);
+		
+		//latlng='('+a+','+b+')';
+		//alert(latlng);
+		});
+		*/
+		
+		// Because path is an MVCArray, we can simply append a new coordinate
+		// and it will automatically appear.
+		
+		//alert(event.latLng);
+		// path.push(event.latLng);
+		
+		// Add a new marker at the new plotted point on the polyline.
+	}
+ 
+	function addLatLng() {
+		var a;
+		var b;
+		var latlng;
+		var path = poly.getPath();
+		$.ajax({
+			url: '<?php echo $this->basePath();?>/tunnel/admin/track_lat?data='+booking_id,
+			cache: false,
+			dataType:"json"
+		}).done(function( html ) {
+			console.log(html);
+			a=html.data.Latitude;
+			b=html.data.Longtitude1;
+			latlng = new google.maps.LatLng(a,b);
+			service.route({
+			origin:src,
+			destination: latlng,
+			travelMode: google.maps.TravelMode['DRIVING']
+			}, function (result, status) {
+				if (status == google.maps.DirectionsStatus.OK) {
+					for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+						path.push(result.routes[0].overview_path[i]);
+					}
+				}
+			});
+		});
+		src= new google.maps.LatLng(a,b);
+		// Because path is an MVCArray, we can simply append a new coordinate
+		// and it will automatically appear.
+		// path.push(event.latLng);
+		// Add a new marker at the new plotted point on the polyline.
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+	//setInterval(function(){addLatLng()},30000);
+
+
+    </script>
+            <input type="text" id="booking_id" placeholder="Search by Booking ID or Booking Refrence Number" style="margin:5px 0px 5px 5px;">
+            <button id="submit">Submit</button>
+            <div id="map-canvas"></div>
+            <?php } ?>
+          </div>
+          <div class="tab-pane fade" id="dropdown2">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+          </div>
+        </div>
+      </div>
+      <!-- /.portlet-body --> 
+    </div>
+    <!-- /.portlet --> 
+    
+  </div>
+  <!-- /.col-lg-12 --> 
+  
+</div>
+</div>
+<div class="col-sm-12 marginbottom20"> 
+  
+  <!--<a href="#" class="btn btn-primary marginright" id="delete_drivers_data"><i class="fa fa-envelope-o marginright"></i>Send SMS</a>--> 
+  <a href="#" class="btn btn-default marginright export" style="margin-left: 10px;"><i class="fa fa-download marginright"></i>Download CSV</a> 
+  <!--<a href="#" class="btn btn-default marginright" onclick="signupDriver();"><i class="fa fa-user marginright"></i>Add Driver</a>
+				<a href="#" class="btn marginright defaultbtnsearch" ><i class="fa fa-trash-o marginright"></i>Delete</a>--> 
+  
+</div>
+
+<!--popups Start--> 
+
+<script>
+
+	function getLocation(Status, Search){
+		
+		var CabImage = '/public/image/car_1.png';
+		var mapOptions = {
+			zoom: 10,
+		};
+		if(navigator.geolocation) {
+			browserSupportFlag = true;
+			navigator.geolocation.getCurrentPosition(function(position) {
+			initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+			map.setCenter(initialLocation); 
+			}, function() {
+				handleNoGeolocation(browserSupportFlag);
+			});
+		}else{// Browser doesn't support Geolocation
+			browserSupportFlag = false;
+			handleNoGeolocation(browserSupportFlag);
+		}
+		function handleNoGeolocation(errorFlag) {
+			if (errorFlag == true) {
+					alert("Geolocation service failed.");
+					initialLocation = newyork;
+				} else {
+					alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
+					initialLocation = siberia;
+			}
+			map.setCenter(initialLocation);
+		}
+		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		var polyOptions = {
+			strokeColor: '#000000',
+			strokeOpacity: 1.0,
+			strokeWeight: 3
+		};
+		$.ajax({
+			type: 'POST',
+			url:"<?php echo $this->basePath();?>/tunnel/admin/getCabInfo",
+			data:{CabStatus:Status, SearchKey:Search},
+			cache:false,
+			dataType: "json",
+			success: function(html){
+				for(i=0;i<html.data.length;i++){
+					
+					if(html.data[i].CabStatus == 'Free'){
+						CabImage = '/public/images/1.png';
+					}else if(html.data[i].CabStatus == 'Logout'){
+						CabImage = '/public/images/5.png';
+					}else if(html.data[i].CabStatus == 'Reported'){
+						CabImage = '/public/images/8.png';
+					}else if(html.data[i].CabStatus == 'Located'){
+						CabImage = '/public/images/Located.jpg';
+					}else if(html.data[i].CabStatus == 'Accepted'){
+						CabImage = '/public/images/4.png';
+					}else if(html.data[i].CabStatus == 'OnCall'){
+						CabImage = '/public/images/3.png';
+					}else if(html.data[i].CabStatus == 'Hired'){
+						CabImage = '/public/images/2.png';
+					}
+					
+					latlng = new google.maps.LatLng(html.data[i].Latitude,html.data[i].Longtitude1);
+					
+					marker[html.data[i].id] = new google.maps.Marker({
+						position: latlng,
+						icon: '<?php echo $this->basePath();?>'+CabImage,
+						title: html.data[i].LoginName,
+						map: map,
+						customInfo:html.data[i].id
+					});
+					
+					var infowindow = new google.maps.InfoWindow()
+					var mark=marker[html.data[i].id];
+			var content='<table style="font-size:11px;"><tr><td><strong>Driver Name :</strong> </td><td>'+html.data[i].DriverName+'</td></tr><tr><td> <strong>Mobile Number :</strong> </td><td>'+html.data[i].MobileNumber+'</td></tr><tr><td><strong>Cab Type :</strong></td><td>'+html.data[i].CabType+'</td></tr><tr><td><strong>Cab Registration No. :</strong></td><td>'+html.data[i].CabRegistrationNumber+'</td></tr><tr><td><strong>Cab Status :</strong></td><td>'+html.data[i].CabStatus+'<span><img src="<?php echo $this->basePath();?>'+CabImage+'"></span></td></tr><tr><td><strong>Cab Location :</strong></td><td width="100">'+html.data[i].Location+'</td></tr></table>';
+					
+					google.maps.event.addListener(mark,'mouseover', (function(mark,content,infowindow){ 
+						return function() {
+						infowindow.setContent(content);
+						infowindow.open(map,mark);
+						};
+					})(mark,content,infowindow)); 
+					
+//					google.maps.event.addListener(mark,'mouseout', (function(mark,content,infowindow){ 
+//						return function() {
+//						infowindow.setContent(content);
+//						infowindow.close(map,mark);
+//						};
+//					})(mark,content,infowindow)); 
+					
+					if(html.data[i].driverStatus == 0 && html.data[i].loginStatus == 1){
+						google.maps.event.addListener(marker[html.data[i].id], 'dblclick', function() {
+							driver_id=this.customInfo;
+							document.getElementById("myText").value =driver_id;
+							//SetBooking();
+							$("#cabTypeForm").bPopup();
+						});
+					}
+						
+					google.maps.event.addListener(marker[html.data[i].id], 'click', function() {
+					var mark=marker[html.data[i].id];
+					map.setCenter(mark.getPosition());
+					});
+
+				}
+			},
+			error: function(error){
+			console.log(error);
+			}
+		});
+		poly = new google.maps.Polyline(polyOptions);
+		poly.setMap(map);
+		// Add a listener for the click event
+	}
+	
+	function getNotMoving(){
+		
+		var CabImage = '/public/images/2.png';
+		var mapOptions = {
+			zoom: 10,
+		};
+		if(navigator.geolocation) {
+			browserSupportFlag = true;
+			navigator.geolocation.getCurrentPosition(function(position) {
+			initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+			map.setCenter(initialLocation); 
+			}, function() {
+				handleNoGeolocation(browserSupportFlag);
+			});
+		}else{// Browser doesn't support Geolocation
+			browserSupportFlag = false;
+			handleNoGeolocation(browserSupportFlag);
+		}
+		function handleNoGeolocation(errorFlag) {
+			if (errorFlag == true) {
+					alert("Geolocation service failed.");
+					initialLocation = newyork;
+				} else {
+					alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
+					initialLocation = siberia;
+			}
+			map.setCenter(initialLocation);
+		}
+		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		var polyOptions = {
+			strokeColor: '#000000',
+			strokeOpacity: 1.0,
+			strokeWeight: 3
+		};
+		
+		var not_moving_dids = $('#NotMovingDriverIds').val();
+		
+		$.ajax({
+			type: 'POST',
+			url:"<?php echo $this->basePath();?>/tunnel/admin/getNotMoving",
+			data:{NotMovingDriverIds:not_moving_dids},
+			cache:false,
+			dataType: "json",
+			success: function(html){
+				for(i=0;i<html.data.length;i++){
+					
+					latlng = new google.maps.LatLng(html.data[i].Latitude,html.data[i].Longtitude1);
+					
+					marker[html.data[i].id] = new google.maps.Marker({
+						position: latlng,
+						icon: '<?php echo $this->basePath();?>'+CabImage,
+						title: html.data[i].LoginName,
+						map: map,
+						customInfo:html.data[i].id
+					});
+					
+					var infowindow = new google.maps.InfoWindow()
+					var mark=marker[html.data[i].id];
+			var content='Hello 42';
+					
+					google.maps.event.addListener(mark,'mouseover', (function(mark,content,infowindow){ 
+						return function() {
+						infowindow.setContent(content);
+						infowindow.open(map,mark);
+						};
+					})(mark,content,infowindow)); 
+					
+						
+					google.maps.event.addListener(marker[html.data[i].id], 'click', function() {
+					var mark=marker[html.data[i].id];
+					map.setCenter(mark.getPosition());
+					});
+
+				}
+			},
+			error: function(error){
+			console.log(error);
+			}
+		});
+		poly = new google.maps.Polyline(polyOptions);
+		poly.setMap(map);
+		// Add a listener for the click event
+	}
+	
+</script> 

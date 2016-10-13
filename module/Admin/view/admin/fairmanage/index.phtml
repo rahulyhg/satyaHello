@@ -1,0 +1,4185 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?><!-- Navigation -->
+<style>
+.errorText {
+	border: 1px solid red;
+#cabGeneral input[type="text"] {
+height
+}
+}
+</style>
+
+<div id="page-wrapper">
+  <h4 class=""><b>Fare Management</b></h4>
+  <div class="portlet portlet-default">
+    <div class=" "> <i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+      <h5 style="background: #E2E2E2;padding:7px;margin: 0;" class="fair_management_filterHead"></h5>
+      <div class="clearfix"></div>
+    </div>
+    <div class="portlet-body">
+      <form id="fairFilter">
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade in active" id="cabGeneral">
+            <div class="container col-sm-col-sm-offset-1" style="margin: 10px auto 0px !important;">
+              <div class="row">
+                <div class="form-group clearfix margintopbottom20">
+                  <label id="cab-vehicleNo" class="col-sm-2 control-label labelalign vehicleNo_fairFilterHeading"></label>
+                  <div class="col-sm-4">
+                    <input id="vehicleNo" type="text" class=" form-control fairmanageFilter" placeholder="Vehicle No"/>
+                  </div>
+                  <label id="cab-vehicleModel" class="col-sm-2 control-label labelalign vehicleModel_fareFilterHeading"></label>
+                  <div class="col-sm-4">
+                    <input id="vehicleModel" type="text" class=" form-control fairmanageFilter" placeholder="Vehicle Model"/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group clearfix margintopbottom20">
+                  <label id="cab-Registration Date" class="col-sm-2 control-label labelalign registrartionDate_fareFilterHeading"></label>
+                  <div class="col-sm-2">
+                    <input id="since" type="text" class=" form-control fairmanageFilter" placeholder="Since">
+                  </div>
+                  <div class="col-sm-2">
+                    <input id="to" type="text" class=" form-control fairmanageFilter" placeholder="To">
+                  </div>
+                  <label id="cab-country" class="col-sm-2 control-label labelalign country_fairFilterHeading"></label>
+                  <div class="col-sm-4">
+                    <div class="input-group">
+                      <input type="text" id="cab-countryText" class="form-control fairmanageFilter" placeholder="Country">
+                      <span class="input-group-addon"><i class="fa fa-search"></i></span> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group clearfix margintopbottom20">
+                  <label id="cab-state" class="col-sm-2 control-label labelalign state_fairFilterHeading"></label>
+                  <div class="col-sm-4">
+                    <input style="font-size:12px;" id="cab-stateText" type="text" class=" form-control fairmanageFilter" placeholder="State">
+                  </div>
+                  <label id="cab-city" class="col-sm-2 control-label labelalign fairmanageFilter city_fairFilterHeading"></label>
+                  <div class="col-sm-4">
+                    <div class="input-group">
+                      <input type="text" id = "cab-cityText" class="form-control fairmanageFilter" placeholder="City">
+                      <span class="input-group-addon"><i class="fa fa-search"></i></span> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group clearfix margintopbottom20">
+                  <div class="col-sm-4 pull-right">
+                    <button type="button" class="btn btn-red defaultbtnsearch " id="searchFairmanage"><i class="fa fa-search" style="color:#fff; margin:5px"></i>Search</button>
+                    <button type="reset" class="btn btn-red defaultbtnsearch " id="clearFairmanage"><i class="fa fa-search" style="color:#fff; margin:5px"></i>Clear</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- /.portlet-body --> 
+  </div>
+  <!-- /.portlet --> 
+  <!-- /.col-lg-12 -->
+  
+  <div class="table-responsive">
+    <table id="Cab-Cabtype" class="table table-striped table-responsive">
+      <thead>
+        <tr>
+          <th class="sno_fairTable"></th>
+          <th class="FormType_fairTable"></th>
+          <th class="CalculatedBy_fairTable"></th>
+          <th class="cabType_fairTable"></th>
+          <th class="country_fairTable"></th>
+          <th class="state_fairTable"></th>
+          <th class="city_fairTable"></th>
+          <th class="ratePerKm_fairTable"></th>
+          <th class="ratePerHour_fairTable"></th>
+          <th class="minimumCharge_fairTable"></th>
+          <th class="action_fairTable" style="width:110px !important;"></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th class="sno_fairTable"></th>
+          <th class="FormType_fairTable"></th>
+          <th class="CalculatedBy_fairTable"></th>
+          <th class="cabType_fairTable"></th>
+          <th class="country_fairTable"></th>
+          <th class="state_fairTable"></th>
+          <th class="city_fairTable"></th>
+          <th class="ratePerKm_fairTable"></th>
+          <th class="ratePerHour_fairTable"></th>
+          <th class="minimumCharge_fairTable"></th>
+          <th class="action_fairTable" style="width:110px !important;"></th>
+        </tr>
+      </tfoot>
+      <tbody>
+      </tbody>
+    </table>
+    <!--   <div class="row">
+				<div class="col-lg-12 addCabType">
+					<button class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Add Unit</button>
+				</div>
+			</div> --> 
+  </div>
+  
+  <!--- vehicle Fair manage  --> 
+  
+  <!--3.3.1 Fair management Start-->
+  <div class="col-sm-8" id='vehicleFairmanage' style="display:none;padding: 20px;border-radius: 10px;background:#fff; position:fixed !important; top:0px !important; bottom:50px !important;">
+    <h1 class="fa fa-times closbtn b-close"></h1>
+    <div class="col-lg-12">
+      <ul id="userTab" class="nav nav-tabs">
+		<!--<li class="active"><a href="#ManageFareAll" id="ManageFareAllPopup" data-toggle="tab" class="FareAll_head">Manage Fare</a></li>-->
+        <li class="active"><a href="#PackageCalculation" id="PackageCalculationPopup" data-toggle="tab" class="package_head"></a></li>
+        <li class=""><a href="#distanceVehicle" id="distanceVehiclep" data-toggle="tab" class="distance_head"></a></li>
+        <li class=""><a href="#HourVehicle" id="HourVehiclep" data-toggle="tab" class="hour_head"></a></li>
+        <li class=""><a href="#Distance_Hour" id="DistanceHourp" data-toggle="tab" class="distanceHour_head"></a></li>
+        <li class=""><a href="#Distance_Waiting" id="DistanceWaitingp" data-toggle="tab" class="distanceWaiting_head"></a></li>
+        <li class=""><a href="#basicVehicle" id="basicVehiclePopup" data-toggle="tab" class="basic_head"></a></li>
+        <li class=""><a href="#PremiumVehicle" id="PremiumVehiclep" data-toggle="tab" class="premium_head"></a></li>
+        <li class=""><a href="#Fixed_RoutesVehicle" id="Fixed_RoutesVehiclep" data-toggle="tab" class="fixedRoute_head"></a></li>
+        <li class=""><a href="#Different_Shares" id="differentShares" data-toggle="tab" class="share_head"></a></li>
+      </ul>
+      <p id="errormsgtab" style="color:red;display:none;"> Please enter "digits" only </p>
+      <div id="userTabContent" class="tab-content">
+	  
+	<!--Tab for PackageCalculation Starts Here -->
+	
+        <div class="tab-pane fade in active" id="PackageCalculation">
+          <div class="row border" >
+            <div class="col-sm-12"  style="margin:20px auto 4px; ">
+              <div class="col-sm-12 col-md-12" >
+                <div class="portlet-body">
+                <form role="form" style="padding:0px;">
+                  <div id="LocalHair" style="display:none">
+                    <h4 class="localHire_package"></h4>
+                    <div class="form-inline">
+                      <div class="input-group">
+                        <input type="radio" name="localPackage" value="Distance" class="form-control inputsize" id="localpackage_Distance" >
+                        <label class="radio-inline distance_localHirePackage" ></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="localPackage" value="Hour"class="form-control inputsize" id="localpackage_Hour" >
+                        <label class="radio-inline hour_localHirePackage" ></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="localPackage" value="Distance_Hour" class="form-control inputsize" id="localpackage_Distance_Hour"  >
+                        <label class="radio-inline distanceHour_localHirePackage"></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="localPackage" value="Distance_Waiting" class="form-control inputsize " id="localpackage_Distance_Waiting" >
+                        <label class="radio-inline distanceWaiting_localHirePackage"></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="PointToPoint" style="display:none">
+                    <h4 class="point_package"></h4>
+                    <div class="form-inline">
+                      <div class="input-group">
+                        <input type="radio" name="pointToPointPackage" value="Distance" class="form-control inputsize" id="pointToPointPackage_Distance">
+                        <label class="radio-inline distance_pointPackage"></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="pointToPointPackage" value="Hour"class="form-control inputsize" id="pointToPointPackage_Hour">
+                        <label class="radio-inline hour_pointPackage"></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="pointToPointPackage" value="Distance_Hour" class="form-control inputsize" id="pointToPointPackage_Distance_Hour">
+                        <label class="radio-inline distanceHour_pointPackage"></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="pointToPointPackage" value="Distance_Waiting" class="form-control inputsize" id="pointToPointPackage_Distance_Waiting">
+                        <label class="radio-inline distanceWaiting_pointPackage"></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="AirportTransfer" style="display:none">
+                    <h4 class="airport_package"></h4>
+                    <div class="form-inline">
+                      <div class="input-group">
+                        <input type="radio" name="airportPackage" value="Distance" class="form-control inputsize" id="airportTransferPackage_Distance">
+                        <label class="radio-inline distance_airportPackage"></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="airportPackage" value="Hour"class="form-control inputsize" id="airportTransferPackage_Hour">
+                        <label class="radio-inline hour_airportPackage"></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="airportPackage" value="Distance_Hour" class="form-control inputsize" id="airportTransferPackage_Distance_Hour">
+                        <label class="radio-inline distanceHour_airportPackage"></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="airportPackage" value="Distance_Waiting" class="form-control inputsize" id="airportTransferPackage_Distance_Waiting">
+                        <label class="radio-inline distanceWaiting_airportPackage"></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="Outstation" style="display:none">
+                    <h4 class="outstation_package"></h4>
+                    <div class="form-inline">
+                      <div class="input-group">
+                        <input type="radio" name="outstationPackage" value="Distance" class="form-control inputsize" id="outstationPackage_Distance">
+                        <label class="radio-inline distance_outstationPackage"></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="outstationPackage" value="Hour"class="form-control inputsize" id="outstationPackage_Hour">
+                        <label class="radio-inline hour_outstationPackage"></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="outstationPackage" value="Distance_Hour" class="form-control inputsize" id="outstationPackage_Distance_Hour">
+                        <label class="radio-inline distanceHour_outstationPackage"></label>
+                      </div>
+                      <div class="input-group">
+                        <input type="radio" name="outstationPackage" value="Distance_Waiting" class="form-control inputsize" id="outstationPackage_Distance_Waiting">
+                        <label class="radio-inline distanceWaiting_outstationPackage"></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row ">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-2 pull-right" style="margin-right:10px;"> <a href="#distanceVehicle" id="packagecalc"  data-toggle="tab">
+                      <button class="btn btn-info form-control" style="margin-bottom:10px;display: block;">Next</button>
+                      </a> </div>
+                    <div class="col-sm-2 pull-right" id="package_calc_cab_save" style="margin-bottom:10px;display: none;"> <a href="#"   data-toggle="tab">
+                      <button class="btn btn-info form-control" >Save</button>
+                      </a> </div>
+                    <div class="col-sm-2 pull-right" id="package_calc_vehicle_save" style="display:none;" style="padding:0;">
+                    <a href="#"  data-toggle="tab">
+                    <button class="btn btn-info form-control" style="margin-bottom:10px;">Save</button>
+                    </a> </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-sm-4 col-md-4"></div>
+          </div>
+        </div>
+      </div>
+	  
+	  <!--Tab for PackageCalculation Ends Here -->
+	  
+	  <!-- Tab for Distance Starts Here-->	  
+	  
+	  
+      <div class="tab-pane fade in" id="distanceVehicle">
+        <div class="row border">
+          <div class="col-sm-12 col-md-12"  style="margin:20px auto 5px;">
+            <div class="portlet-body" style="padding:10px;">
+              <h4 class="distanceRates_distance"></h4>
+              <div class="form-group clearfix">
+                <div class="col-sm-2" style="margin-right:3px;">
+                  <label class="ratePerKm_distance"></label>
+                  <div class="input-group" style="margin-left:3px;"> <span class="input-group-addon ratePerKmRupees_distance"></span>
+                    <input type="text" class="form-control" id="cab_vehicle_rate_per_km" >
+                  </div>
+                </div>
+                <!--
+												<div class="col-sm-3" style="display:none; margin-right:3px;">
+												<label class="">First Km Rate</label>
+													<div class="input-group">
+														<span class="input-group-addon">Rs</span>
+															<input type="text" class="form-control" id="first_km_rate">
+													</div>
+												</div>-->
+                <div class="col-sm-2">
+                  <label class="firstKmRate_distance"></label>
+                  <div class="input-group"> <span class="input-group-addon">Km</span>
+                    <input type="text" class="form-control" id="cab_vehicle_minmum_distance">
+                  </div>
+                </div>
+                <div class="col-sm-2" style="margin-left:3px;">
+                  <label class="minimumCharge_distance"></label>
+                  <div class="input-group"> <span class="input-group-addon minimumChargeRupees_distance"></span>
+                    <input type="text" class="form-control" id="cab_vehicle_minmum_fare">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <form class="form-inline" role="form" >
+                  <div class="row" style="margin:0">
+                    <input type="checkbox" name="round_up_km" style="margin-right:10px;"class="form-control inputsize">
+                    <label class="roundUpKm_distance"></label>
+                  </div>
+                  <hr />
+                 
+                  <h4 class="accumulated_distance"></h4>
+                  <p class="accumulated_distance_detail"></p>
+                  <div class="row" style="margin:0">
+                    <input type="checkbox" name="accum_instance" style="margin-right:10px;"class="form-control inputsize">
+                    <label class="accumulated_instance"></label>
+                  </div>
+                </form>
+                <hr/>
+                
+                
+                
+                <div class="row">
+                  <div class="col-sm-2" >
+                    <label class="km_upto_accumulated"></label>
+                  </div>
+                  <div class="col-sm-2">
+                    <label class="rate_per_km_accumulated"></label>
+                  </div>
+                  
+                  <div class="col-sm-2" style="margin-left:15px;"></div>
+											<div class="col-sm-3">&nbsp;</div>
+                </div>
+                
+                
+                <div id="mainDistanceDiv">
+                  <div class="row form-group">
+                    <div class="col-sm-2" >
+                      <input type="text" class="form-control" id="kms_1"  >
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="input-group"> <span class="input-group-addon ratePerKmRupees_distance"></span>
+                        <input type="text" class="form-control" id="rs_1" >
+                      </div>
+                    </div>
+                    <div class="col-sm-2"  id="removeDistanceFields"><a href="#"><i class="fa fa-trash-o fa-2x"></i></a></div>
+                    <div class="col-sm-3">&nbsp;</div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-sm-2" >
+                      <input type="text" class="form-control"  id="kms_2">
+                    </div>
+                    <div class="col-sm-2" >
+                      <div class="input-group"> <span class="input-group-addon" >Rs</span>
+                        <input type="text" class="form-control" id="rs_2" >
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="col-sm-4  addButton" style="padding:0;" id="add_2"> <a href="#" class="btn btn-info form-control">Add</a> </div>
+                    </div>
+                    <div class="col-sm-3">&nbsp;</div>
+                  </div>
+                </div>
+                <div id="appended_text_form"></div>
+                <div>
+                  <input type="checkbox" name="UpdatedStatus_distance" id="UpdatedStatus_distance" value="1" />
+                  Update All Rows</div>
+                  
+				<!-- /* <div class="row">
+                  <div class="col-sm-2" style="margin-left:15px;">
+                    <label class="">Package Name</label>
+                  </div>
+                  <div class="col-sm-2" style="margin-left:15px;">
+                    <label class=""> Ignore Per Km</label>
+                  </div>
+                   <div class="col-sm-2" style="margin-left:15px;">
+                    <label class="">Amount</label>
+                  </div>
+                  	
+                </div>
+				
+				
+				<div class="row form-group">
+                  <div class="col-sm-2" style="margin-left:15px;">
+                   <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-sm-2" style="margin-left:15px;">
+                    <input type="text" class="form-control" />
+                  </div>
+                   <div class="col-sm-2" style="margin-left:15px;">
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-sm-1" style="margin-left:30px;"><a href="#" class="addpkg_on_plus" id="addpkgdis_0"><i class="fa fa-plus fa-2x"></i></a>
+                                            </div>
+                  
+                </div> 
+				 
+                <div id="addpackageDiv">
+                  
+                
+				
+                 </div>
+				
+                 <div id="appended_text_formpackage"></div> */-->
+				 <div class="row">
+                  <div class="col-sm-2" >
+                    <label >Package Name</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Ignore KM</label>
+                  </div>
+				  <div class="col-sm-2">
+                    <label>Amount</label>
+                  </div>                  
+                  <div class="col-sm-2" style="margin-left:15px;"></div>
+											<div class="col-sm-3">&nbsp;</div>
+                </div>
+                 <div id="DistanceDiv_package">
+                  <div class="row form-group">
+                    <div class="col-sm-2" >
+                      <input type="text" class="form-control allowtext" id="pkg_nameDistance_1"  >
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="input-group"> 
+                        <input type="text" class="form-control" id="pkg_ignoreKmDistance_1" >
+                      </div>
+                    </div>
+					<div class="col-sm-2">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="pkg_amountDistance_1" >
+                      </div>
+                    </div>
+                    <div class="col-sm-2"><div class="col-sm-4  addpkg_on_plus" style="padding:0;" id="addpkgdis_1"><a href="#" class="btn btn-info form-control">Add</a></div></div>                    
+                  </div>
+                </div>
+                <div id="appended_Dis_package"></div>
+                <div class="row ">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-2 pull-right" style="margin-right:10px;"> <a href="#HourVehicle" id="distanceVehiclen"  data-toggle="tab">
+                    <button class="btn btn-info form-control" style="margin-bottom:10px;display: block;">Next</button>
+                    </a> </div>
+                  <div class="col-sm-2 pull-right" id="distance_fair_manage_cab_save" style="margin-bottom:10px;display: none;"> <a href="#"   data-toggle="tab">
+                    <button class="btn btn-info form-control" >Save</button>
+                    </a> </div>
+                  <div class="col-sm-2 pull-right" id="distance_fair_manage_vehicle" style="margin-bottom:10px;" style="padding:0;">
+                  <a href="#"  data-toggle="tab">
+                  <button class="btn btn-info form-control" >Save</button>
+                  </a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	<!-- Tab for Distance Ends Here-->
+		
+	<!-- Tab for Hour Starts Here-->	
+		
+    <div class="tab-pane fade in" id="HourVehicle">
+      <div class="row border">
+        <div class="col-sm-12 col-md-12"  style="margin:20px auto 0; padding:10px;">
+          <div class="portlet-body">
+            <div class="col-sm-12">
+			  <h4 class="hourlyRates_hour"></h4>
+			  
+			  
+			  <div class="form-group clearfix">
+			  
+                <div style="margin-right:3px;" class="col-sm-2">
+                  <label class="ratePerHour_hour"></label>
+                  <div style="margin-left:3px;" class="input-group"> <span class="input-group-addon ratePerHourRupees_hour"></span>
+                    <input type="text" id="cab_vehicle_rate_hour" class="form-control">
+                  </div>
+                </div>
+               
+                <div class="col-sm-2" >
+                  <label>Ignore First Hours</label>
+                  <div class="input-group"> <span class="input-group-addon">Hrs</span>
+                    <input type="text" id="cab_vehicle_ignore_hrs" class="form-control">
+                  </div>
+                </div>
+				
+				
+				<div class="col-sm-2" style="margin-left:3px;">
+                  <label>Minimum Fare</label>
+                  <div class="input-group"> <span class="input-group-addon">Rs</span>
+                    <input type="text" class="form-control" id="cab_vehicle_hour_minimum_fare">
+                  </div>
+                </div>
+				
+              </div>
+			
+
+            </div>
+          </div>
+          <div>
+            <input type="checkbox" name="UpdatedStatus_hour" id="UpdatedStatus_hour" value="1" />
+            Update All Rows</div>
+        </div>
+        
+        <!--/* <div class="row">
+                  <div class="col-sm-2">
+                    <label class="">Package Name</label>
+                   <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-sm-2">
+                    <label class=""> Ignore Per Km</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                   <div class="col-sm-2" >
+                    <label class="">Amount</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                   <div class="col-sm-2" >
+                    <label class="">Status</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  
+                  <div class="col-sm-1" style="margin-top:25px;">
+                   <a href="#">
+                   <i class="fa fa-trash-o fa-2x"></i>
+                   </a>
+                  
+                  </div>
+											<div class="col-sm-1" style="margin-left:; margin-top:25px;">
+                                            <a href="#">
+                                           <i class="fa fa-pencil-square-o fa-2x"></i>
+                                            </a>
+                                            </div>
+                </div> */-->
+				
+				<div class="row">
+                  <div class="col-sm-2" >
+                    <label >Package Name</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Ignore Hours</label>
+                  </div>
+				  <div class="col-sm-2">
+                    <label>Amount</label>
+                  </div>                  
+                  <div class="col-sm-2" style="margin-left:15px;"></div>
+											<div class="col-sm-3">&nbsp;</div>
+                </div>
+                 <div id="Hourly_Div_package">
+                  <div class="row form-group">
+                    <div class="col-sm-2" >
+                      <input type="text" class="form-control allowtext" id="pkg_nameHourly_1"  >
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="pkg_ignoreHRHourly_1" >
+                    </div>
+					<div class="col-sm-2">
+                        <input type="text" class="form-control" id="pkg_amountHourly_1" >
+                    </div>
+                    <div class="col-sm-2"><div class="col-sm-4  addPKG_loc_hourly" style="padding:0;" id="addPKgHourly_1"><a href="#" class="btn btn-info form-control">Add</a></div></div>                    
+                  </div>
+                </div>
+                <div id="appended_Hourly_package"></div>
+        
+        <div class="row ">
+          <div class="col-sm-8"></div>
+          <div class="col-sm-2 pull-right" style="margin-right:20px;"> <a href="#Distance_Hour" id="HourVehiclen"  data-toggle="tab">
+            <button class="btn btn-info form-control" style="margin-bottom:15px;display: block;">Next</button>
+            </a> </div>
+          <div class="col-sm-2  pull-right" id="fair_manage_cab_save" style="display:none;"> <a href="#" data-toggle="tab">
+            <button class="btn btn-info form-control" style="margin-bottom:10px;">Save</button>
+            </a> </div>
+          <div class="col-sm-2  pull-right" id="fair_manage_save" style="display:none;"> <a href="#" data-toggle="tab">
+            <button class="btn btn-info form-control" style="margin-bottom:10px; ">Save</button>
+            </a> </div>
+        </div>
+      </div>
+    </div>
+	
+	<!-- Tab for Hour Ends Here-->
+	
+	<!-- Tab for Distance+Hour Starts Here-->
+		
+    <div class="tab-pane fade in" id="Distance_Hour">
+      <div class="row border" >
+        <div class="col-sm-12 col-md-12"  style="margin:20px auto 5px; padding:10px;;">
+          <div class="portlet-body">
+            <h4 class="distanceRates_distanceHour"></h4>
+            <div class="form-group clearfix">
+              <div class="col-sm-2" style="margin-right:3px;">
+                <label class="ratePerKm_distanceHour"></label>
+                <div class="input-group"> <span class="input-group-addon ratePerKmRupees_distanceHour"></span>
+                  <input type="text" class="form-control" id="rate_per_km_dh" style="margin-right:3px !important;" >
+                </div>
+              </div>
+              <div class="col-sm-2" style="margin-right:3px;">
+                <label class="firstKmRate_distanceHour"></label>
+                <div class="input-group"> <span class="input-group-addon">Km</span>
+                  <input type="text" class="form-control" id="minmum_distance_dh">
+                </div>
+              </div>
+			   <div class="col-sm-2" style="margin-right:3px;">
+                <label>Ignore First Hours</label>
+                <div class="input-group"> <span class="input-group-addon">Hrs</span>
+                  <input type="text" class="form-control" id="ignore_first_hrs_dh">
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <label class="minimumFare_distanceHour"></label>
+                <div class="input-group"> <span class="input-group-addon minimumFareRupees_distanceHour"></span>
+                  <input type="text" class="form-control" id="minmum_fare_dh">
+                </div>
+              </div>
+            </div>
+            <hr>
+            <form class="form-inline" role="form">
+              <h4 class="hourlyRates_distanceHour"></h4>
+              <h5 class="ratePerHour_distanceHour"></h5>
+              <div class="input-group col-sm-2"> <span class="input-group-addon ratePerHourRupees_distanceHour" ></span>
+                <input type="text" id="rate_per_hour_dh" class="form-control" style="margin-top:0px;">
+              </div>
+            </form>
+            <div style="text-align:left" ><br>
+              <br>
+              <br>
+              <input type="checkbox" name="UpdatedStatus_distanceHour" id="UpdatedStatus_distanceHour" value="1" />
+              Update All Rows</div>
+              
+             <!-- /* <div class="row">
+                  <div class="col-sm-2">
+                    <label class="">Package Name</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-sm-2">
+                    <label class=""> Ignore Per Km</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  
+                  <div class="col-sm-2">
+                    <label class=""> Ignore Hour</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                   <div class="col-sm-1">
+                    <label class="">Amount</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                   <div class="col-sm-2">
+                    <label class="">Status</label>
+                     <input type="text" class="form-control" />
+                  </div>
+                  
+                  <div class="col-sm-1" style="margin-top:25px;">
+                   <a href="#">
+                   <i class="fa fa-trash-o fa-2x"></i>
+                   </a>
+                  
+                  </div>
+											<div class="col-sm-1" style="margin-left:; margin-top:25px;">
+                                            <a href="#">
+                                           <i class="fa fa-pencil-square-o fa-2x"></i>
+                                            </a>
+                                            </div>
+                </div> */-->
+				<div class="row">
+                  <div class="col-sm-2" >
+                    <label >Package Name</label>
+                  </div>
+				  <div class="col-sm-2">
+                    <label>Ignore Hours</label>
+                  </div>
+				  <div class="col-sm-2">
+                    <label>Ignore KM</label>
+                  </div>                  
+				  <div class="col-sm-2">
+                    <label>Amount</label>
+                  </div>                  
+                  <div class="col-sm-2" style="margin-left:15px;"></div>
+											<div class="col-sm-3">&nbsp;</div>
+                </div>
+                 <div id="Dis_Hourly_Div_package">
+                  <div class="row form-group">
+                    <div class="col-sm-2" >
+                      <input type="text" class="form-control allowtext" id="pkg_nameDist_Hourly_1"  >
+                    </div>					 
+                    <div class="col-sm-2">                    
+                        <input type="text" class="form-control" id="pkg_ignorHR_DistHourly_1" >                      
+                    </div>
+					<div class="col-sm-2" >
+                      <input type="text" class="form-control" id="pkg_ignoreKM_DistHourly_1"  >
+                    </div>
+					<div class="col-sm-2">                      
+                        <input type="text" class="form-control" id="pkg_amount_Dist_Hourly_1" >
+                    </div>
+                    <div class="col-sm-2"><div class="col-sm-4  addPKG_loc_Dist_hourly" style="padding:0;" id="addPKg_DisT_Hourly_1"><a href="#" class="btn btn-info form-control">Add</a></div></div>                    
+                  </div>
+                </div>
+                <div id="appended_Dist_Hourly_package"></div>
+              
+            <div class="row ">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3"></div>
+              <div class="col-sm-2 pull-right" style="margin-right:10px;"> <a href="#Distance_Waiting" id="Distance_Hourn"  data-toggle="tab">
+                <button class="btn btn-info form-control" style="margin-bottom:10px;display: block;">Next</button>
+                </a> </div>
+              <div class="col-sm-2 pull-right" id="cab_distance_hour_save" style="margin-bottom:10px;display:none;"> <a href="#" data-toggle="tab">
+                <button class="btn btn-info form-control" >Save</button>
+                </a> </div>
+              <div class="col-sm-2 pull-right" id="vehicle_distance_hour_save" style="display:none;margin-bottom:10px;padding:0;" > <a href="#"  data-toggle="tab">
+                <button class="btn btn-info form-control" >Save</button>
+                </a> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	<!-- Tab for Distance+Hour Ends Here-->
+	
+	
+	<!-- Tab for Distance+Waiting Starts Here-->
+	
+    <div class="tab-pane fade in" id="Distance_Waiting">
+      <div class="row border" >
+        <div class="col-sm-12 col-md-12"  style="margin:20px auto 5px; padding:10px;">
+          <div class="portlet-body">
+            <h4 class="distanceRate_distanceWaiting"></h4>
+            <div class="form-group clearfix">
+              <div class="col-sm-2" style="margin-right:3px;">
+                <label class="ratePerKm_distanceWaiting"></label>
+                <div class="input-group"> <span class="input-group-addon ratePerKmRupees_distanceWaiting"></span>
+                  <input type="text" class="form-control" id="rate_per_km_dw" >
+                </div>
+              </div>
+              <div class="col-sm-2" style="margin-right:3px;">
+                <label class="firstKmRate_distanceWaiting"></label>
+                <div class="input-group"> <span class="input-group-addon"></span>
+                  <input type="text" class="form-control" id="minmum_distance_dw">
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <label class="minimumFare_distanceWaiting"></label>
+                <div class="input-group"> <span class="input-group-addon minimumFareRupees_distanceWaiting"></span>
+                  <input type="text" class="form-control" id="minmum_fare_dw">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <hr/>
+              <h4 class="waitTime_distanceWaiting"></h4>
+              <p class="waitTimeDetail_distanceWaiting"></p>
+              <div class="row">
+                <div class="col-sm-2" style="margin-left:15px;">
+                  <label class="minuteUpTo_distanceWaiting"></label>
+                </div>
+                <div class="col-sm-2">
+                  <label class="fee_distanceWaiting"></label>
+                </div>
+                <div class="col-sm-2">
+                  <label class="afterFees_distanceWaiting"></label>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3">&nbsp;</div>
+              </div>
+              <div id="mainWaitningFee11">
+                <div class="row form-group">
+                  <div class="col-sm-2" style="margin-left:0px; margin-top:0px;">
+                    <div class="input-group"> <span class="input-group-addon "></span>
+                      <input type="text" class="form-control" id="fair_waiting_minutes11">
+                    </div>
+                  </div>
+                  <div class="col-sm-2" style="margin-left:3px;">
+                    <div class="input-group"> <span class="input-group-addon feeRupees_distanceWaiting"></span>
+                      <input type="text" class="form-control" id="fair_waiting_fees11">
+                    </div>
+                  </div>
+                  <div class="col-sm-2" style="margin-left:3px;">
+                    <div class="input-group"> <span class="input-group-addon afterFessRupees_distanceWaiting"></span>
+                      <input type="text" class="form-control" id="fair_waiting_fees22">
+                    </div>
+                    &nbsp; </div>
+                </div>
+              </div>
+              <div id="appended_text_form"></div>
+              <div>
+                <input type="checkbox" name="UpdatedStatus_distanceWaiting" id="UpdatedStatus_distanceWaiting" value="1" />
+                Update All Rows</div>
+               <!-- /* <div class="row">
+                  <div class="col-sm-2">
+                    <label class="">Package Name</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-sm-2">
+                    <label class=""> Ignore Per Km</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                   <div class="col-sm-2">
+                    <label class="">Amount</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                   <div class="col-sm-2">
+                    <label class="">Status</label>
+                   <input type="text" class="form-control" />
+                  </div>
+                  
+                  <div class="col-sm-1" style="margin-left:15px; margin-top:25px;">
+                   <a href="#">
+                   <i class="fa fa-trash-o fa-2x"></i>
+                   </a>
+                  
+                  </div>
+											<div class="col-sm-1" style="margin-left:; margin-top:25px;">
+                                            <a href="#">
+                                           <i class="fa fa-pencil-square-o fa-2x"></i>
+                                            </a>
+                                            </div>
+                </div> */-->
+				
+				<div class="row">
+                  <div class="col-sm-2" >
+                    <label >Package Name</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Ignore KM</label>
+                  </div>
+				  <div class="col-sm-2">
+                    <label>Amount</label>
+                  </div>                  
+                  <div class="col-sm-2" style="margin-left:15px;"></div>
+											<div class="col-sm-3">&nbsp;</div>
+                </div>
+                 <div id="DistWaitDiv_package">
+                  <div class="row form-group">
+                    <div class="col-sm-2" >
+                      <input type="text" class="form-control allowtext" id="distWaitLCLpkgName_1"  >
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="distWaitLCLpkg_ingoreKM_1" >
+                    </div>
+					<div class="col-sm-2">
+                        <input type="text" class="form-control" id="distWaitLCLpkgAmount_1" >
+                    </div>
+                    <div class="col-sm-2"><div class="col-sm-4  add_DistWaitLCLpkg" style="padding:0;" id="DistWaitLCLpkgAdd_1"><a href="#" class="btn btn-info form-control">Add</a></div></div>                    
+                  </div>
+                </div>
+                <div id="appended_Dis_Wait_pkgdiv"></div>
+                
+              <div class="row ">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2 pull-right" id="Distance_Waitingn" style="margin-bottom:10px;display:block; margin-right:10px;"> <a href="#basicVehicle"  data-toggle="tab">
+                  <button class="btn btn-info form-control">Next</button>
+                  </a> </div>
+                <div class="col-sm-2 pull-right" id="cab_distance_waiting_save" style="margin-bottom:10px;display:none;"> <a href="#" data-toggle="tab">
+                  <button class="btn btn-info form-control" >Save</button>
+                  </a> </div>
+                <div class="col-sm-2 pull-right" id="vehicle_distance_waiting_save" style="display:none;margin-bottom:10px;padding:0;" > <a href="#"  data-toggle="tab">
+                  <button class="btn btn-info form-control" >Save</button>
+                  </a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	<!-- Tab for Distance+Waiting Ends Here-->
+	
+	<!-- Tab for Basic Starts Here-->
+	
+    <div class="tab-pane fade in" id="basicVehicle">
+      <div class="row border" >
+        <div class="col-sm-12"  style="margin:20px auto 4px; padding:10px;">
+          <div class="col-sm-12 col-md-12" >
+            <div class="portlet-body">
+            <h4 class="tax_basic"></h4>
+            <form role="form">
+              <div class="input-group col-sm-6"> <span class="input-group-addon taxPercent_basic"></span>
+                <input type="text" id="cab_vehicle_taxText" class="form-control" >
+              </div>
+              <br>
+              <div class="input-group">
+                <input type="checkbox" name="taxCash" value="Cash" class="chkTax form-control inputsize">
+                <label class="checkbox-inline cash_basic"></label>
+              </div>
+              <div class="input-group">
+                <input type="checkbox" name="taxCredit" value="Credit" class="chkTax form-control inputsize">
+                <label class="checkbox-inline creditCard_basic"></label>
+              </div>
+              <hr />
+			  
+			   <!--<label class="control-label" style="margin-right:30px;">Cancellation Fee</label>-->
+                  <h4 class="cancellationFees_distance"></h4>
+				  <div class="form-inline">
+                  <div class="input-group">
+                    <input type="radio" name="cancellationFee" value="%" class="form-control inputsize cancellationCl">
+                    <label class="checkbox-inline cancellationFeePercent_cancellation"></label>
+                  </div>
+                  <div class="input-group">
+                    <input type="radio" name="cancellationFee" value="Rs" class="form-control inputsize cancellationCl">
+                    <label class="checkbox-inline cancellationFeeRupees_cancellation"></label>
+                  </div>
+                  <div class="input-group col-sm-2"> <span class="input-group-addon" id="cancellationUnit">Rs</span>
+                    <input type="text" class="form-control" id="cab_vehicle_cancellation_charge" style="margin-top:0px;" >
+                  </div>
+				  </div>
+                  <hr />
+			  
+			  
+			  
+			    <h4 class="waitingTime_hour"></h4>
+                <p class="waitingTimeDetail_hour"></p>
+              <div class="row">
+                <div class="col-sm-2">
+                  <label class="waitingMinutesUpTo_hour"></label>
+                </div>
+                <div class="col-sm-2">
+                  <label class="waitingFee_hour"></label>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3">&nbsp;</div>
+              </div>
+              <div id="mainWaitningFee">
+                <div class="row form-group">
+                  <div class="col-sm-2">
+                    <input type="text" class="form-control" id="fair_waiting_minutes_1">
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="input-group"> <span class="input-group-addon waitingFeeRupees_hour"></span>
+                      <input type="text" class="form-control" id="fair_waiting_fees_1">
+                    </div>
+                  </div>
+                  <div class="col-sm-2" id="removeWaitingFeeFields"><a href="#"><i class="fa fa-trash-o fa-2x"></i></a></div>
+                  <div class="col-sm-3">&nbsp;</div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-sm-2"  >
+                    <input type="text" class="form-control" id="fair_waiting_minutes_2">
+                  </div>
+                  <div class="col-sm-2" style="margin-left:15px;">
+                    <div class="input-group"> <span class="input-group-addon">Rs</span>
+                      <input type="text" class="form-control" id="fair_waiting_fees_2">
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="col-sm-4 addWaitingFee" id="addWaitingFee_2" style="padding:0; "> <a href="#" class="btn btn-info form-control">Add</a> </div>
+                  </div>
+                  <div class="col-sm-3">&nbsp;</div>
+                </div>
+              </div>
+              <div id="append_waiting_fee"></div>
+			  
+			  
+			  
+			  <hr />
+			  	  
+			  <h4>Pre Waiting Fees</h4>
+			  
+			   <div class="row">
+                <div class="col-sm-2"><label>Pre Minutes Up to</label></div>
+                <div class="col-sm-2"><label>Fee</label></div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3">&nbsp;</div>
+              </div>
+			  
+			  
+			  <div id="PreWaitingTimeDiv_package">
+                <div class="row form-group">
+                  <div class="col-sm-2"><input type="text" class="form-control" id="pre_waiting_minutes_1"></div>
+                  <div class="col-sm-2">
+					<div class="input-group"> <span class="input-group-addon waitingFeeRupees_hour"></span>
+                      <input type="text" class="form-control" id="pre_waiting_fees_1">
+                    </div>
+                  </div>
+				  
+                   <div class="col-sm-1  addprewaiting_on_plus" style="padding:0;" id="addprewaiting_1"><a href="#" class="btn btn-info form-control">Add</a></div>
+                </div>
+            
+              </div>
+              <div id="appended_PreWaitingTime_package"></div>
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  <hr />
+			  
+              <h4 class="rounding_basic"></h4>
+              <div class="form-inline">
+                <div class="input-group ">
+                  <input type="checkbox" name="roundingCash" value="Cash" class="chkNumber form-control inputsize">
+                  <label class="checkbox-inline cashRounding_basic"></label>
+                </div>
+                <div class="input-group">
+                  <input type="checkbox" name="roundingCredit" value="Credit" class="chkNumber form-control inputsize">
+                  <label class="checkbox-inline creditCardRounding_basic"></label>
+                </div>
+              </div>
+              <h4 class="level_basic"></h4>
+              <div class="form-inline">
+                <div class="input-group">
+                  <input type="radio" name="optionsInlineRadios1" value="Normal" checked=""class="form-control inputsize">
+                  <label class="radio-inline normalLevel_basic"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="optionsInlineRadios1" value="Decimal" class="form-control inputsize">
+                  <label class="radio-inline decimalLevel_basic"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="optionsInlineRadios1" value="Unit" class="form-control inputsize">
+                  <label class="radio-inline unitLevel_basic"></label>
+                </div>
+              </div>
+              <h4 class="direction_basic"></h4>
+              <div class="form-inline">
+                <div class="input-group">
+                  <input type="radio" name="directionRadio" value="Nearest" class="form-control inputsize">
+                  <label class="radio-inline nearestDirection_basic"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="directionRadio" value="Up"class="form-control inputsize">
+                  <label class="radio-inline upDirection_basic"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="directionRadio" value="Down" class="form-control inputsize">
+                  <label class="radio-inline downDirection_basic"></label>
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="UpdatedStatus_tax_basic" id="UpdatedStatus_tax_basic" value="1" />
+                Update All Rows </div>
+                
+                
+                
+              <div class="row ">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2 pull-right" style="margin-right:10px;"> <a href="#PremiumVehicle" id="basicVehiclen"  data-toggle="tab">
+                  <button class="btn btn-info form-control" style="margin-bottom:10px;display: block;">Next</button>
+                  </a> </div>
+                <div class="col-sm-2 pull-right" id="basic_fair_manage_cab_save" style="margin-bottom:10px;"> <a href="#"   data-toggle="tab">
+                  <button class="btn btn-info form-control" >Save</button>
+                  </a> </div>
+                <div class="col-sm-2 pull-right" id="basic_fair_manage_vehicle" style="display:none;" style="padding:0;">
+                <a href="#"  data-toggle="tab">
+                <button class="btn btn-info form-control" style="margin-bottom:10px;">Save</button>
+                </a> </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-4"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Tab for Basic Ends Here-->
+    
+  <!-- Tab for Premium Starts Here-->
+  
+  <div class="tab-pane fade in" id="PremiumVehicle">
+    <div class="row border">
+      <div class="col-sm-12 col-md-12">
+        <div class="portlet-body">
+          <div class="col-sm-12" style="padding:10px;">
+            <form class="form-inline" role="form" style="margin:20px auto 4px;">
+              <h4 class="nightPremium_premium"></h4>
+              <!--<label class="control-label" style="margin-right:30px;">Night Premium</label>-->
+              <div class="input-group">
+                <input type="radio" name="nightCh" value="%" class="form-control inputsize nightChCl">
+                <label class="checkbox-inline nightPremiumPercent_premium"></label>
+              </div>
+              <div class="input-group">
+                <input type="radio" name="nightCh" value="Rs" class="form-control inputsize nightChCl">
+                <label class="checkbox-inline nightPremiumRupees_premium"></label>
+              </div>
+              <div class="input-group"> <span class="input-group-addon" id="nightPremiumUnit" style="padding-top:8px;">Rs</span>
+                <input type="text" class="form-control" name="nightPremium" id="nightPremiumVehicle" style="margin-top: 0px;">
+              </div>
+              <hr/>
+              <div class="row form-group">
+                <div class="col-sm-4" style="margin-left:15px;">
+                  <label class="nightRateBegin_premium"></label>
+                  <input type="text" id = "nightChStrtTime" class="form-control" >
+                </div>
+                <div class="col-sm-4">
+                  <label class="nightRateEnd_premium"></label>
+                  <input type="text" id="nightChEndTime" class="form-control" >
+                </div>
+              </div>
+              <hr/>
+              <h4 class="premiums_premium"></h4>
+              <p class="premiumsDetail_premium"></p>
+              <label class="control-label creditCard_premium" style="margin-right:30px;"></label>
+              <div class="input-group">
+                <input type="radio" name= "premiumCh" value="%" class="form-control inputsize premiumChCl">
+                <label class="checkbox-inline creditCardPercent_premium"></label>
+              </div>
+              <div class="input-group">
+                <input type="radio" name= "premiumCh" value="Rs" class="form-control inputsize premiumChCl">
+                <label class="checkbox-inline creditCardRupees_premium"></label>
+              </div>
+              <div class="input-group"> <span class="input-group-addon" id="premiumVeUnit">Rs</span>
+                <input type="text" class="form-control" id="premiumofVehicle" style="margin-top:0px;">
+              </div>
+              <hr/>
+			  
+			  
+			  <h4>Peak Time Charges</h4>
+			  
+			  
+			  
+			  <div class="row">
+                    <div class="col-sm-3"><label >Time From</label></div>
+                      <div class="col-sm-3"><label>Time To</label></div>
+                      <div class="col-sm-3"><label>Percentage</label></div>
+                    <div class="col-sm-3">&nbsp;</div>
+					<div class="col-sm-3">&nbsp;</div>
+                  </div>
+			  
+			  
+			  
+			 
+				
+				
+				
+				
+				
+				
+				
+                 <div id="PeakTimeDiv_package">
+                  <div class="row form-group">
+                    <div class="input-group" >
+                      <input type="text" class="form-control" id="peak_timeFrom_1" readonly>
+                    </div>
+                      <div class="input-group"> 
+                        <input type="text" class="form-control" id="peak_timeTo_1" readonly>
+                      </div>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="peak_timePercentage_1">
+                      </div>
+                    <div class="input-group"><div class="col-sm-4  addpeaktime_on_plus" style="padding:0;" id="addpeaktime_1"><a href="#" class="btn btn-info form-control">Add</a></div></div>                    
+                  </div>
+                </div>
+				<div id="appended_PeakTime_package"></div>
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+              <h4 class="extras_premium"></h4>
+              <p class="extrasDetail_premium"></p>
+              <div class="">
+              <div class="input-group" style="margin-right:26px;">
+                <input type="text" class="form-control allowtext" id="extraType_1" placeholder="Type">
+              </div>
+              <div class="input-group" style="margin-right:24px;">
+                <input type="text" class="form-control" id="extraIn_1">
+              </div>
+              <div class="input-group">
+                <input type="radio" value="%" name="extrasName_1" class="form-control inputsize">
+                <label class="checkbox-inline extrasPercent_premium"></label>
+              </div>
+              <div class="input-group">
+                <input type="radio" value="Rs" name="extrasName_1" class="form-control inputsize">
+                <label class="checkbox-inline extrasRupees_premium"></label>
+              </div>
+              <div class="input-group" id="removeExtraFields"> <a href="#"  style="width:90px;"><i class="fa fa-trash-o fa-2x"></i></a> </div>
+              <div id="mainIdExtra" style="display:inline">
+                <div class="input-group addExtras" id="addExtras_1" style="margin-right:30px;">
+                  <button class="btn btn-info" style="width: 70px;margin-left: 10px;">Add</button>
+                </div>
+              </div>
+              <div id="append_extras" class="margintopbottom20"></div>
+              <div>
+                <input type="checkbox" name="UpdatedStatus_premium" id="UpdatedStatus_premium" value="1" />
+                Update All Rows</div>
+                
+                
+              <div class="row ">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2 pull-right" style="margin-right:10px;"> <a href="#Fixed_RoutesVehicle" id="PremiumVehiclen"  data-toggle="tab">
+                  <button class="btn btn-info form-control" style="margin-bottom:10px;display: block;width:100%;">Next</button>
+                  </a> </div>
+                <div class="col-sm-2 pull-right" id="premium_fair_manage_cab_save" style="display:none;"> <a href="#"   data-toggle="tab">
+                  <button class="btn btn-info form-control" style="margin-bottom:10px;display: none;width:100%;">Save</button>
+                  </a> </div>
+                <div class="col-sm-2 pull-right" style="padding:0;" id="premium_fair_manage_vehicle" > <a href="#"  data-toggle="tab">
+                  <button class="btn btn-info pull-right form-control" style="margin-bottom:10px;width:100%;">Save</button>
+                  </a> </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tab for Premium Ends Here-->
+
+<!-- Tab for Fixed Routes Starts Here-->
+
+<div class="tab-pane fade in" id="Fixed_RoutesVehicle">
+  <div class="row border">
+    <div class="col-sm-12 col-md-12">
+      <div class="portlet-body">
+        <div class="col-sm-6 col-md-6 col-lg-12" style="padding:10px;">
+          <form  role="form" style="margin:20px auto;">
+            <h4 class="frequentPostcode_fixedRoute"></h4>
+            <p class="frequentPostcodeDetail_fixedRoute"></p>
+            
+            <!--	<div class="row">
+												<div class="col-sm-6 col-md-3">
+                                                	 <label>Postcode Prefix</label>
+                                                     	 
+                                                     </div>
+													<div class="col-sm-6 col-md-3">
+ 													<label>value 2 ways</label>
+                                                    		 
+                                                     </div>
+										 
+										</div>-->
+            
+            <div class="row">
+              <div class="col-sm-2" style="margin-left:15px;">
+                <label class="frequentLocation_fixedRoute"></label>
+                <input type="text" class="form-control allowtext" id="frequent_location">
+              </div>
+            </div>
+            <hr/>
+            <h4 class="postcode_fixedRoute"></h4>
+            <p class="postcodeDetail__fixedRoute"></p>
+            <div>
+              <div class="form-group clearfix">
+                <div class="col-sm-3" >
+                  <label class="pickUpPostcode_fixedRoute"></label>
+                  <input type="text" class="form-control" id="pickupPostCode_1" style="margin-right:3px;">
+                </div>
+                <div class="col-sm-3">
+                  <label class="dropOffPostcode_fixedRoute"></label>
+                  <input type="text" class="form-control" id="dropoffPostCode_1" style="margin-left:3px; margin-right:3px !important;">
+                </div>
+                <div class="col-sm-3" style="margin-left:6px;">
+                  <label class="value_fixedRoute">Value</label>
+                  <div class="input-group"> <span class="input-group-addon postcodeRupees_fixedRoute" style="margin-left:3px; !important;">Rs</span>
+                    <input type="text" class="form-control" id="rsPostCode_1">
+                  </div>
+                </div>
+                <div class="col-sm-2" style="margin-left:18px;">
+                  <div class="row" style="margin-top: 25px;">
+                    <div class="col-sm-2">
+                      <input type="checkbox" class="form-control" style="width: 30px;margin:0;">
+                    </div>
+                    <div class="col-sm-2" style="margin-left:3px;"> <a href="#" class="btn btn-info addPostCodes" id="addPostCodes_1">Add</a> </div>
+                  </div>
+                </div>
+                <!--<div class="input-group" id="removeExtrapostcodes"> 
+														<a href="#"  style="width:90px;"><i class="fa fa-trash-o fa-2x"></i></a>	
+													</div>--> 
+                
+              </div>
+              <div id="append_postCodes" class="form-group clearfix"></div>
+            </div>
+            <div>
+              <input type="checkbox" name="UpdatedStatus_fixedRoute" id="UpdatedStatus_fixedRoute" value="1" />
+              Update All Rows</div>
+          </form>
+          
+          
+          <div class="row ">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-2 pull-right" id="fixed_route_next" style="display:block; margin-right:10px;"> <a href="#Different_Shares"  data-toggle="tab">
+              <button class="btn btn-info form-control" style="margin-bottom:10px;display: block;width:100%;">Next</button>
+              </a> </div>
+            <div class="col-sm-2 pull-right" id="fixed_route_fair_manage_cab_save" style="margin-bottom:15px;display: none;"> <a href="#"   data-toggle="tab">
+              <button class="btn btn-info form-control" >Save</button>
+              </a> </div>
+            <div class="col-sm-2 pull-right" id="fixed_route_fair_manage_vehicle" style="padding:0; display:none;"> <a href="#"  data-toggle="tab">
+              <button class="btn btn-info form-control" style="margin-bottom:15px;">Save</button>
+              </a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tab for Fixed Routes Ends Here-->
+
+<!-- Tab for Share Starts Here-->
+
+<div class="tab-pane fade" id="Different_Shares">
+  <div class="row border" >
+    <div class="col-sm-12"  style="margin:20px auto 4px; padding:10px;">
+      <div class="col-sm-12 col-md-12" >
+        <div class="portlet-body">
+          <form class="form-inline" role="form">
+            <h4 class="different_share"></h4>
+            <br>
+            <h5 class="company_share"></h5>
+            <div class="input-group"> <span class="input-group-addon companyPercent_share">%</span>
+              <input type="text" id="company_share" class="form-control" style="margin-top:0px;" onblur="getCompanyShareSum('c')">
+            </div>
+            <h5 class="partner_share">Partner Share</h5>
+            <div class="input-group"> <span class="input-group-addon partnerPercent_share">%</span>
+              <input type="text" id="partner_share" class="form-control" style="margin-top:0px;" onblur="getCompanyShareSum('p')">
+            </div>
+            <h5 class="driver_share">Driver Share</h5>
+            <div class="input-group"> <span class="input-group-addon driverPercent_share">%</span>
+              <input type="text" id="driver_share" class="form-control" style="margin-top:0px;" onblur="getCompanyShareSum('d')">
+            </div>
+          </form>
+          
+          
+          <div class="row ">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-2 pull-right" id="share_cab_save" style="margin-bottom:10px;display: block; margin-right:10px;"> <a href="#"   data-toggle="tab">
+              <button class="btn btn-info form-control" >Save</button>
+              </a> </div>
+            <div class="col-sm-2 pull-right"> <a href="#distanceVehicle" id="packagecalc"  data-toggle="tab">
+              <button class="btn btn-info form-control" style="margin-bottom:10px;display: none;">Next</button>
+              </a> </div>
+            <div class="col-sm-2 pull-right" id="package_calc_vehicle_save" style="padding:0; display:none;" > <a href="#"  data-toggle="tab">
+              <button class="btn btn-info form-control" style="margin-bottom:10px;">Save</button>
+              </a> </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Tab for Share Ends Here-->
+
+</div>
+</div>
+</div>
+</div>
+
+<!--- End fair management --> 
+
+<script> 
+//debugger;
+var appendedDistanceLength = 2;
+var appendedPackageDistanceLength = 1;
+var appendedPackageHourlyLength = 1;
+var appendedPackageDistanceHourlyLength = 1;
+var appendedPackageDistanceWaitingLength = 1;
+var appendedPeakTimeLength = 1;
+var appendedPreWaitingTimeLength = 1;
+var appendedWaitingLength = 2;
+var counterext = 1;
+var vehicleID;
+var cabTypeId;
+var BookingTypeId;
+var RecId;
+var CityId;
+
+$( document ).ready(function() {
+$('#Cab-Cabtype_filter label').attr("style","display:none;");
+$("#since").datepicker();
+$("#since").datepicker("option","dateFormat","yy-mm-dd");
+$("#to").datepicker();
+$("#to").datepicker("option","dateFormat","yy-mm-dd");
+	$('#nightChStrtTime').timepicker({
+			hourMin: 0,
+			hourMax: 24
+		});	
+
+	$('#nightChEndTime').timepicker({
+			hourMin: 0,
+			hourMax: 24
+	});	
+	
+	getAllCountry();
+	dynamicText(8);
+	
+	showPosition('New Delhi','Delhi');
+	
+    /*if (navigator.geolocation) {
+		alert('hello');
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        alert("Geolocation is not supported by this browser.") ;
+    }*/
+	
+});
+
+$(document).ready(function(){
+$(".tab-content").delegate("input[type=text]:not(.allowtext)", "keyup", function(){
+    var inputval = $(this).val();
+      if( /^[0-9]*$/.test(inputval) == false){
+      $(this).val("");
+      if(inputval==""){
+        $("#errormsgtab").fadeOut();
+      }
+      else $("#errormsgtab").fadeIn().html("Please Enter Digits Only");
+      // alert(inputval);
+    }
+    else{
+
+      $("#errormsgtab").fadeOut();
+    }
+});
+
+});
+
+function datatablsCSS(){
+	$('.paging_simple_numbers').parent().addClass('pgnt_topfix');
+    $('.dataTables_length').parent().removeClass('col-sm-6');
+    $('.dataTables_length').parent().addClass('col-sm-2');
+    $('.dataTables_length').parent().addClass('pgno_top');
+	$('.pgno_top').attr("style","top:27px;");
+	$('.pgnt_topfix').attr("style","top:26px;");
+}
+
+$(".addCabType").click(function(){
+	$('#fairmanageId').bPopup({
+		position : [200,100]
+	});
+
+});
+
+
+
+function showPosition(position) {
+  //var lat = position.coords.latitude;	
+  //var log = position.coords.longitude;
+	var lat	=	28.652676;
+	var log	=	77.193123;
+  
+  var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/reverse_geocode';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				currentLat:lat,
+				currentlong : log,
+			},		 
+		success: function(data){
+				$("#cab-countryText").val(data.country);
+				$("#cab-stateText").val(data.location);
+				$("#cab-cityText").val(data.city);
+				getAllCabTypes();
+				getState();
+				getAllCity();
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+}
+
+
+
+function getState()
+{
+	var defaultSt = $("#cab-stateText").val();
+	
+	var country = $("#cab-countryText").val();
+	
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllState';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				country:country
+				
+			},		 
+		success: function(html){
+			
+			var len = html.data.length;
+			var detailState = "";
+			for(var i=0;i<len;i++){
+				var stateTx = html.data[i].state;
+				if(html.data[i].state == defaultSt)	{
+					detailState += "<option value='"+html.data[i].id+"' selected>"+ html.data[i].state+"</option>";
+				}else{
+					detailState += "<option value='"+html.data[i].id+"'>"+ html.data[i].state+"</option>";
+				}
+			
+				}
+			
+				$("#addCab_stateDropdown").html(detailState);
+				
+				
+				
+		},
+		error: function(error){
+			console.log(error);
+		}
+	});
+
+}
+
+function getAllCountry()
+{
+	var cabcountryText = $("#cab-countryText").val();
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCountry';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				
+			},		 
+		success: function(html){
+			
+			var len = html.data.length;
+			var detailCountry = "";
+			for(var i=0;i<len;i++){
+				if(cabcountryText == html.data[i].CountryName){
+					detailCountry += "<option value='"+html.data[i].ID+"' selected>"+ html.data[i].CountryName+"</option>";
+				}else{
+					detailCountry += "<option value='"+html.data[i].ID+"'>"+ html.data[i].CountryName+"</option>";
+				}
+			}
+			
+				$("#addCab_countryDropdown").html(detailCountry);
+			
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+
+}
+
+function getAllCity(){
+	var cabcityText = $("#cab-cityText").val();
+
+	var stateId = $('#cab-stateText').val();
+	
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCity';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				state:stateId
+				
+			},		 
+		success: function(html){
+			
+			var len = html.data.length;
+			var detailCity = "";
+			for(var i=0;i<len;i++){
+				if(cabcityText == html.data[i].name){
+					detailCity += "<option value='"+html.data[i].id+"' selecetd >"+ html.data[i].name+"</option>";
+				}else{
+					detailCity += "<option value='"+html.data[i].id+"'>"+ html.data[i].name+"</option>";
+				}
+			}
+			
+			$("#addCab_cityDropdown").html(detailCity);
+			
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+
+
+
+}
+
+
+$("#addCab_stateDropdown").change(function() {
+	var stateId = $('#addCab_stateDropdown :selected').text();
+	
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCity';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data : {    
+				key:'',
+				state:stateId
+			},		 
+		success: function(html){
+			var len = html.data.length;
+			var detailCity = "";
+			for(var i=0;i<len;i++){
+				detailCity += "<option value='"+html.data[i].id+"'>"+ html.data[i].name+"</option>";
+			
+			}
+				$("#addCab_cityDropdown").html(detailCity);
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+});
+
+var cabTypeTable;
+function getAllCabTypes(){
+	
+		
+    var city = $("#cab-cityText").val();
+    var state = $("#cab-stateText").val();
+	if(cabTypeTable != undefined && cabTypeTable != ""){
+		cabTypeTable.fnDestroy();
+	}
+	
+	cabTypeTable = $('#Cab-Cabtype').dataTable({
+        "ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllCabType?city='+city+'&state='+state,
+        "deferRender": true
+    });
+    datatablsCSS();
+    $("#Cab-Cabtype_wrapper div:first").attr("class","tbsearchrow clearfix");
+    $("#Cab-Cabtype_wrapper").attr("style","border: 1px solid #d1d1d1; margin-bottom:20px;");    
+    $("#Cab-Cabtype_wrapper").addClass("clearfix");
+    $("#Cab-Cabtype_wrapper").addClass("font12px");
+    $("#Cab-Cabtype_info").parent().parent().removeClass("row");	
+}
+
+function searchCabTypes(){
+	var city = $("#cab-cityText").val();
+	var state = $("#cab-stateText").val();
+	var country = $("#cab-countryText").val();
+	var vehicle_no = $("#vehicleNo").val();
+	var vehicle_model = $("#vehicleModel").val();
+	var since = $("#since").val();
+	var to = $("#to").val();
+	
+	var cabhtml = $(this).html();
+	$("#Cab-Cabtype_wrapper").val(cabhtml);
+	
+	$("#Cab-Cabtype thead").html('<tr> <th>S.No.</th> <th>Vehicle Number</th> <th>Cab Type</th>  <th>Vehicle Name</th> <th> Manufacturer</th> <th>Vehicle Model</th><th>Registration Date</th><th>Rate/Km</th><th>Rate/hour</th><th>Minimum Charge</th><th>Action</th></tr>');
+	searchTable = $('#Cab-Cabtype').dataTable( {
+						"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/searchCabType?city='+city+'&state='+state+'&country='+country+'&vehicle_no='+vehicle_no+'&vehicle_model='+vehicle_model+'&since='+since+'&to='+to,
+						"deferRender": true
+					} );
+	$("#Cab-Cabtype tfoot").html('<tr> <th>S.No.</th> <th>Vehicle Number</th> <th>Cab Type</th>  <th>Vehicle Name</th> <th> Manufacturer</th> <th>Vehicle Model</th><th>Registration Date</th><th>Rate/Km</th><th>Rate/hour</th><th>Minimum Charge</th><th>Action</th></tr>');
+	
+	$("#Cab-Cabtype_wrapper").attr("style","border:1px solid #d2d2d2;");
+	$("#Cab-Cabtype_wrapper").addClass("clearfix");
+	$("#Cab-Cabtype_wrapper").addClass("font12px");
+	$("#Cab-Cabtype_wrapper + div").removeClass("row");
+	$("#Cab-Cabtype_info").parent().parent().removeClass("row");
+	$("#Cab-Cabtype_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$('#Cab-Cabtype_filter label').attr("style","display:none;");
+}
+
+$("#searchFairmanage").click(function(){
+	cabTypeTable.fnDestroy();
+	searchCabTypes();
+	datatablsCSS();
+ 
+ });
+
+$('.fairmanageFilter').keypress(function(e){
+	var key=e.which;
+	if(key==13)
+	{
+		$('#searchFairmanage').click();
+	}
+});
+
+$(document).on('click','.manageVehicleFair',function(){
+	
+	
+	$("#fair_manage_save").show();
+	$("#fixed_route_fair_manage_vehicle").show();
+	$("#premium_fair_manage_vehicle").show();
+	$("#distance_fair_manage_vehicle").show();
+	$("#basic_fair_manage_vehicle").show();
+	$("#fixed_route_fair_manage_cab_save").hide();
+	$("#premium_fair_manage_cab_save").hide();
+	$("#distance_fair_manage_cab_save").hide();
+	$("#basic_fair_manage_cab_save").hide();
+	$("#fair_manage_cab_save").hide();
+	$("#cab_package_save").hide();
+	$("#vehicle_package_save").show();
+	$("#vehicle_distance_hour_save").show();
+	$("#cab_distance_hour_save").hide();
+	$("#vehicle_distance_waiting_save").show();
+	$("#cab_distance_waiting_save").hide();
+	$("#package_calc_cab_save").show();
+	$("#package_calc_vehicle_save").hide();
+	$("#share_cab_save").show();
+	
+	
+	var divPosition = $('#navbar-brand').offset();
+      //$('html, body').animate({ scrollTop: divPosition.top }, "fast");	
+	
+	var id = $(this).attr('id');
+	var idArr = id.split("_");
+	vehicleID = idArr[1];
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/vehicleInfoById?vehicleId='+vehicleID,
+		cache: false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	
+	fairManagePopup(html);
+
+})
+.fail(function (error){
+	alert('error');
+	console.log(error);
+		
+  });
+
+});
+
+function fairManagePopup(html){
+	
+	if(html.data[0].BookingTypeId == 101){
+    	$('#LocalHair').show();
+        $('#PointToPoint').hide();
+        $('#AirportTransfer').hide();
+        $('#Outstation').hide();
+		//added by Maninder
+		$('#localpkg').show();
+        $('#p2pfare').hide();
+        $('#airportpkgfare').hide();
+    }else if(html.data[0].BookingTypeId == 102){
+    	$('#LocalHair').hide();
+        $('#PointToPoint').show();
+        $('#AirportTransfer').hide();
+        $('#Outstation').hide();
+		//added by Maninder
+		$('#localpkg').hide();
+        $('#p2pfare').show();
+        $('#airportpkgfare').hide();
+    }else if(html.data[0].BookingTypeId == 103){
+    	$('#LocalHair').hide();
+        $('#PointToPoint').hide();
+        $('#AirportTransfer').show();
+        $('#Outstation').hide();
+		//added by Maninder
+		$('#localpkg').hide();
+        $('#p2pfare').hide();
+        $('#airportpkgfare').show();
+    }else if(html.data[0].BookingTypeId == 104){
+    	$('#LocalHair').hide();
+        $('#PointToPoint').hide();
+        $('#AirportTransfer').hide();
+        $('#Outstation').show();
+		//added by Maninder
+		$('#localpkg').hide();
+        $('#p2pfare').hide();
+        $('#airportpkgfare').hide();
+    }else if(html.data[0].BookingTypeId == 105){
+    	$('#LocalHair').hide();
+        $('#PointToPoint').hide();
+        $('#AirportTransfer').hide();
+        $('#Outstation').hide();
+		//added by Maninder
+		$('#localpkg').hide();
+        $('#p2pfare').hide();
+        $('#airportpkgfare').hide();
+    }else{
+    	
+    }
+
+    if(html.data[0].Sub_Package_Id == 1 ){
+		$('#package_Distance1').prop("checked", true);
+	}else if(html.data[0].Sub_Package_Id == 2){
+    	$('#package_Hour2').prop("checked", true);
+    }else if(html.data[0].Sub_Package_Id == 3){
+    	$('#package_Distance_Hour3').prop("checked", true);
+    }else if(html.data[0].Sub_Package_Id == 4){
+    	$('#package_Distance_Waiting4').prop("checked", true);
+    }
+
+	$('#vehicleFairmanage input[type="checkbox"]').prop('checked', false);
+	//$('#vehicleFairmanage input[type="radio"]').prop('checked', false);
+	$('#vehicleFairmanage input[type="text"]').val('');
+	appendedDistanceLength = 2;	
+	appendedPackageDistanceLength=1;
+	appendedPackageHourlyLength = 1;
+	appendedPackageDistanceHourlyLength = 1;
+	appendedPackageDistanceWaitingLength = 1;
+	appendedPeakTimeLength = 1;
+	appendedPreWaitingTimeLength=1;
+	appendedWaitingLength = 2;
+	counterext = 1;
+	
+	$("#append_postCodes").empty();	
+	$("#cab_vehicle_taxText").val(html.data[0].basic_tax);
+	$("#cab_vehicle_rate_per_km").val(html.data[0].Per_Km_Charge);
+/***********************************************************************************Code Added by Maninder*************************/
+	 $("#cab_vehicle_rate_per_min").val(html.data[0].tripCharge_per_minute);
+	 $("#round_up_km_value").val(html.data[0].round_up_km_value);
+	 $("#round_up_min_value").val(html.data[0].round_up_min_value);
+	 $("#bookingChargeUnit").html(html.data[0].bookingChargeUnit);
+	 
+	 var package_info = html.data[0].package_info;
+	 package_info = package_info.slice(1);
+	 package_info = package_info.slice(0,-1);	
+	 package_info = package_info.split(",");
+     for(var i=0;i<package_info.length;i++){
+		var PKG_value = package_info[i].split("_");			
+		 $("#append_local").append('<div class="row form-group" style="margin-top:5px;">'+
+		 '<div class="input-group" style="margin-left:15px;"><input value="'+PKG_value[0]+' Hours - '+PKG_value[1]+' KM" type="text" class="form-control" style="width: 90px;margin-top: 0px;"></div>'+
+		 '<div class="input-group" style="margin-left:15px;"><input value="'+PKG_value[1]+'" type="text" class="form-control" style="width: 90px;margin-top: 0px;"></div>'+
+		 '<div class="input-group" style="left:5px;"><input value="'+PKG_value[0]+'" type="text" class="form-control" style="width: 90px;margin-top: 0px;"></div>'+
+		 '<div class="input-group" style="margin-left:15px;"><input value="'+PKG_value[2]+'" type="text" class="form-control" style="width: 90px;margin-top: 0px;"></div>'+
+		 '<div class="input-group" style="margin-left:15px;"><select class="form-control" style="width: 90px;margin-top: 0px;">'+
+		 '<option value="1">True</option><option value="0">False</option></select></div>'+
+		 '<div id="append_local_btn_'+i+'" class="input-group" style="left:20px;"></div></div>');
+	 }	
+	 var len=package_info.length-1;
+	 $("#append_local_btn_"+len).append('<a href="#" class="btn btn-info addlocal_row">Add</a>');
+	 $(".addlocal_row").click(function(){
+		 $("#append_local").append('<div class="row form-group" style="margin-top:5px;">'+
+		 '<div class="input-group" style="margin-left:15px;"><input type="text" class="form-control" style="width: 90px;margin-top: 0px;"></div>'+
+		 '<div class="input-group" style="margin-left:15px;"><input type="text" class="form-control" style="width: 90px;margin-top: 0px;"></div>'+
+		 '<div class="input-group" style="left:5px;"><input type="text" class="form-control" style="width: 90px;margin-top: 0px;"></div>'+
+		 '<div class="input-group" style="margin-left:15px;"><input type="text" class="form-control" style="width: 90px;margin-top: 0px;"></div>'+
+		 '<div class="input-group" style="margin-left:15px;"><select class="form-control" style="width: 90px;margin-top: 0px;">'+
+		 '<option value="1">True</option><option value="0">False</option></select></div>'+
+		 '<div id="append_local_btn_'+len+1+'" class="input-group" style="left:20px;"><a href="#" class="btn btn-info addlocal_row">Add</a></div></div>');
+		  //$("#append_local_btn_"+len+1).hide();
+	 });
+/******************************************************************************end Maninder***********************************/
+	$("#cab_vehicle_minmum_distance").val(html.data[0].Min_Distance);
+	$("#cab_vehicle_minmum_fare").val(html.data[0].MinimumCharge);
+	if(html.data[0].round_up_km == 'on' ){
+		$('input[name="round_up_km"]').prop('checked', true);
+	}
+	if(html.data[0].round_up_min == 'on' ){
+		$('input[name="round_up_min"]').prop('checked', true);
+	}
+	
+	if(html.data[0].accumulated_instance == 'on' ){
+		$('input[name="accum_instance"]').prop('checked', true);
+	}
+	if(html.data[0].CabType == 1 ){
+		$('#vehicleType').html('Economy Rates');
+	}
+	if(html.data[0].CabType == 2 ){
+		$('#vehicleType').html('Sidan Rates');
+	}
+	if(html.data[0].CabType == 3 ){
+		$('#vehicleType').html('Prime Rates');
+	}
+	
+	$("#nightPremiumVehicle").val(html.data[0].NightCharges);
+	//alert(html.data[0].nightCharge_unit);
+	if(html.data[0].nightCharge_unit == '%' ){
+		$('input[name="nightCh"][value="%"]').prop('checked', true);}
+	else if(html.data[0].nightCharge_unit == 'Rs' ){
+		$('input[name="nightCh"][value="Rs"]').prop('checked', true);}
+	
+	$("#nightPremiumUnit").html(html.data[0].nightCharge_unit);
+	$("#nightChStrtTime").val(html.data[0].night_rate_begins);	
+	$("#nightChEndTime").val(html.data[0].night_rate_ends);
+	//alert(html.data[0].premiums_unit);
+	$("#premiumofVehicle").val(html.data[0].premiums);
+	if(html.data[0].premiums_unit == '%' ){
+		$('input[name="premiumCh"][value="%"]').prop('checked', true);}
+	else if(html.data[0].premiums_unit == 'Rs' ){
+		$('input[name="premiumCh"][value="Rs"]').prop('checked', true);}
+	
+	$("#premiumVeUnit").html(html.data[0].premiums_unit);
+	
+	/////////// Code For Distances Starts Here //////
+	
+	var kmarr = html.data[0].rateDistanceKm;
+	var rsArr = html.data[0].rateDistanceRate;
+	var lengthArr = kmarr.length;
+	
+	$("#appended_text_form").empty();
+	
+	$("#mainDistanceDiv").html('<div class="row form-group"><div class="col-sm-2" style="margin-left:0px; margin-right:3px;"><input type="text" class="form-control" id="kms_1"></div><div class="col-sm-2"><div class="input-group" ><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="rs_1" " ></div></div><div class="col-sm-2"  id="removeDistanceFields"><a href="#"><i class="fa fa-trash-o fa-2x"></i></a></div><div class="col-sm-3">&nbsp;</div></div><div class="row form-group"><div class="col-sm-2" style="margin-left:0px; margin-right:3px;"><input type="text" class="form-control"  id="kms_2"></div><div class="col-sm-2"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="rs_2" ></div></div><div class="col-sm-2"><div class="col-sm-4  addButton" style="padding:0;" id="add_2"><a href="#" class="btn btn-info form-control">Add</a></div></div><div class="col-sm-3">&nbsp;</div></div>');
+	
+	var addbtnId = $(".addButton").attr('id');
+	var addbtnIdArr = addbtnId.split("_");
+	var addbtnCnt = addbtnIdArr[1];
+	
+	if(lengthArr > addbtnCnt){
+		
+		for(var k = addbtnCnt; k < lengthArr ; k++){
+			$('.addButton').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< kmarr.length; i++){
+		var j = i+1;
+		$("#kms_"+j).val(kmarr[i]);
+		$("#rs_"+j).val(rsArr[i]);
+	}
+	
+	/////////// Code For Distances Ends Here //////
+	
+	/////////// Code For Distances Packages Starts Here //////
+	
+	var packageinfoDistancepackageNamearr = html.data[0].packageinfoDistancepackageName;
+	var packageinfoDistanceignorekmArr = html.data[0].packageinfoDistanceignorekm;
+	var packageinfoDistanceAmountArr = html.data[0].packageinfoDistanceAmount;
+	var lengthDisArr = packageinfoDistancepackageNamearr.length;
+	
+	$("#appended_Dis_package").empty();
+	
+	$("#DistanceDiv_package").html('<div class="row" style="margin-bottom:10px;"><div class="col-sm-2"><input type="text" id="pkg_nameDistance_1" class="form-control allowtext" /></div><div class="col-sm-2"><input type="text" id="pkg_ignoreKmDistance_1" class="form-control" /></div><div class="col-sm-2"><input type="text" id="pkg_amountDistance_1" class="form-control" /></div><div class="col-sm-2"><div class="col-sm-4  addpkg_on_plus" style="padding:0;" id="addpkgdis_1"><a href="#" class="btn btn-info form-control">Add</a> </div></div></div>');
+	
+	var addDisbtnId = $(".addpkg_on_plus").attr('id');
+	var addDisbtnIdArr = addDisbtnId.split("_");
+	var addDisbtnCnt = addDisbtnIdArr[1];
+	
+	if(lengthDisArr > addDisbtnCnt){
+		
+		for(var k = addDisbtnCnt; k < lengthDisArr ; k++){
+			$('.addpkg_on_plus').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< lengthDisArr; i++){
+		var j = i+1;
+		$("#pkg_nameDistance_"+j).val(packageinfoDistancepackageNamearr[i]);
+		$("#pkg_ignoreKmDistance_"+j).val(packageinfoDistanceignorekmArr[i]);
+		$("#pkg_amountDistance_"+j).val(packageinfoDistanceAmountArr[i]);
+	}
+	
+	/////////// Code For Distances Packages Ends Here //////
+	
+	/////////// Code For Hourly Packages Starts Here //////
+	
+	var packageinfoHourlypackageNamearr = html.data[0].packageinfoHourlypackageName;
+	var packageinfoHourlyignorehrArr = html.data[0].packageinfoHourlyignorehr;
+	var packageinfoHourlyAmountArr = html.data[0].packageinfoHourlyAmount;
+	var lengthHourlyArr = packageinfoHourlypackageNamearr.length;
+	
+	$("#appended_Hourly_package").empty();
+	
+	$("#Hourly_Div_package").html('<div class="row" style="margin-bottom:10px;"><div class="col-sm-2"><input type="text" id="pkg_nameHourly_1" class="form-control allowtext" /></div><div class="col-sm-2"><input type="text" id="pkg_ignoreHRHourly_1" class="form-control" /></div><div class="col-sm-2"><input type="text" id="pkg_amountHourly_1" class="form-control" /></div><div class="col-sm-2"><div class="col-sm-4  addPKG_loc_hourly" style="padding:0;" id="addPKgHourly_1"><a href="#" class="btn btn-info form-control">Add</a> </div></div></div>');
+	
+	var addHourbtnId = $(".addPKG_loc_hourly").attr('id');
+	var addHourbtnIdArr = addHourbtnId.split("_");
+	var addHourbtnCnt = addHourbtnIdArr[1];
+	
+	if(lengthHourlyArr > addHourbtnCnt){
+		
+		for(var k = addHourbtnCnt; k < lengthHourlyArr ; k++){
+			$('.addPKG_loc_hourly').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< lengthHourlyArr; i++){
+		var j = i+1;
+		$("#pkg_nameHourly_"+j).val(packageinfoHourlypackageNamearr[i]);
+		$("#pkg_ignoreHRHourly_"+j).val(packageinfoHourlyignorehrArr[i]);
+		$("#pkg_amountHourly_"+j).val(packageinfoHourlyAmountArr[i]);
+	}
+	
+	/////////// Code For Hourly Packages Ends Here //////
+	
+	/////////// Code For Distances+Hourly Packages Starts Here //////
+	
+	var packageinfoDistHourlypackageNameArr = html.data[0].packageinfoDistHourlypackageName;
+	var packageinfoDistHourlyignorehrArr	= html.data[0].packageinfoDistHourlyignorehr;
+	var packageinfoDistHourlyignorekmArr = html.data[0].packageinfoDistHourlyignorekm;
+	var packageinfoDistHourlyAmountArr = html.data[0].packageinfoDistHourlyAmount;
+	var lengthDisHourArr = packageinfoDistHourlypackageNameArr.length;
+		
+	$("#appended_Dist_Hourly_package").empty();
+	
+	$("#Dis_Hourly_Div_package").html('<div class="row" style="margin-bottom:10px;"><div class="col-sm-2"><input type="text" id="pkg_nameDist_Hourly_1" class="form-control allowtext" /></div><div class="col-sm-2"><input type="text" id="pkg_ignorHR_DistHourly_1" class="form-control" /></div><div class="col-sm-2"><input type="text" id="pkg_ignoreKM_DistHourly_1" class="form-control" /></div><div class="col-sm-2"><input type="text" id="pkg_amount_Dist_Hourly_1" class="form-control" /></div><div class="col-sm-2"><div class="col-sm-4  addPKG_loc_Dist_hourly" style="padding:0;" id="addPKg_DisT_Hourly_1"><a href="#" class="btn btn-info form-control">Add</a> </div></div></div>');
+	
+	var addDisHourbtnId = $(".addPKG_loc_Dist_hourly").attr('id');
+	var addDisHourbtnIdArr = addDisHourbtnId.split("_");
+	var addDisHourbtnCnt = addDisHourbtnIdArr[3];
+	if(lengthDisHourArr > addDisHourbtnCnt){
+		
+		for(var k = addDisHourbtnCnt; k < lengthDisHourArr ; k++){
+			$('.addPKG_loc_Dist_hourly').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< lengthDisHourArr; i++){
+		var j = i+1;
+		$("#pkg_nameDist_Hourly_"+j).val(packageinfoDistHourlypackageNameArr[i]);
+		$("#pkg_ignorHR_DistHourly_"+j).val(packageinfoDistHourlyignorehrArr[i]);
+		$("#pkg_ignoreKM_DistHourly_"+j).val(packageinfoDistHourlyignorekmArr[i]);
+		$("#pkg_amount_Dist_Hourly_"+j).val(packageinfoDistHourlyAmountArr[i]);
+	}
+	
+	/////////// Code For Distances+Hourly Packages Ends Here //////
+	
+	/////////// Code For Distances+Waiting Packages Starts Here //////
+	
+	var packageinfoDistWaitingpackageNamearr = html.data[0].packageinfoDistWaitingpackageName;
+	var packageinfoDistWaitingignorekmArr = html.data[0].packageinfoDistWaitingignorekm;
+	var packageinfoDistWaitingAmountArr = html.data[0].packageinfoDistWaitingAmount;
+	var lengthDisWaitArr = packageinfoDistWaitingpackageNamearr.length;
+	
+	$("#appended_Dis_Wait_pkgdiv").empty();
+	
+	$("#DistWaitDiv_package").html('<div class="row" style="margin-bottom:10px;"><div class="col-sm-2"><input type="text" id="distWaitLCLpkgName_1" class="form-control allowtext" /></div><div class="col-sm-2"><input type="text" id="distWaitLCLpkg_ingoreKM_1" class="form-control" /></div><div class="col-sm-2"><input type="text" id="distWaitLCLpkgAmount_1" class="form-control" /></div><div class="col-sm-2"><div class="col-sm-4  add_DistWaitLCLpkg" style="padding:0;" id="DistWaitLCLpkgAdd_1"><a href="#" class="btn btn-info form-control">Add</a> </div></div></div>');
+	
+	var addDisWaitbtnId = $(".add_DistWaitLCLpkg").attr('id');
+	var addDisWaitbtnIdArr = addDisWaitbtnId.split("_");
+	var addDisWaitbtnCnt = addDisWaitbtnIdArr[1];
+	
+	if(lengthDisWaitArr > addDisWaitbtnCnt){
+		
+		for(var k = addDisWaitbtnCnt; k < lengthDisWaitArr ; k++){
+			$('.add_DistWaitLCLpkg').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< lengthDisWaitArr; i++){
+		var j = i+1;
+		$("#distWaitLCLpkgName_"+j).val(packageinfoDistWaitingpackageNamearr[i]);
+		$("#distWaitLCLpkg_ingoreKM_"+j).val(packageinfoDistWaitingignorekmArr[i]);
+		$("#distWaitLCLpkgAmount_"+j).val(packageinfoDistWaitingAmountArr[i]);
+	}
+	
+	/////////// Code For Distances+Waiting Packages Ends Here //////
+	
+		/////////// Code For PeakTime Charges Starts Here //////
+	//alert(html.data.timeFrom);
+	var peakChargesTimeFromArr=html.data.timeFrom;
+	var peakChargesTimeToArr=html.data.timeTo;
+	var peakChargesArr= html.data.peakCharges;
+	var lengthPeakChargesArr = peakChargesTimeFromArr.length;
+	
+	$("#appended_PeakTime_package").empty();
+	
+	$("#PeakTimeDiv_package").html('<div class="row form-group" style="margin-top:10px;"><div class="input-group" style="margin-right:3px;"><input type="text" id="peak_timeFrom_1" class="form-control" readonly /></div><div class="input-group" style="margin-right:3px;"><input type="text" id="peak_timeTo_1" class="form-control" readonly /></div><div class="input-group" style="margin-right:3px;"><input type="text" id="peak_timePercentage_1" class="form-control" /></div><div class="input-group"><div class="input-group  addpeaktime_on_plus" style="padding:0;" id="addpeaktime_1"><a href="#" class="btn btn-info form-control">Add</a> </div></div></div>');
+	
+	var addPeakbtnId = $(".addpeaktime_on_plus").attr('id');
+	var addPeakbtnIdArr = addPeakbtnId.split("_");
+	var addPeakbtnCnt = addPeakbtnIdArr[1];
+	
+	if(lengthPeakChargesArr > addPeakbtnCnt){
+		
+		for(var k = addPeakbtnCnt; k < lengthPeakChargesArr ; k++){
+			$('.addpeaktime_on_plus').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< lengthPeakChargesArr; i++){
+		var j = i+1;
+		//alert(peakChargesTimeFromArr[i]);
+		$("#peak_timeFrom_"+j).val(peakChargesTimeFromArr[i]);
+		$("#peak_timeTo_"+j).val(peakChargesTimeToArr[i]);
+		$("#peak_timePercentage_"+j).val(peakChargesArr[i]);
+		
+		$("#peak_timeFrom_"+j+",#peak_timeTo_"+j).timepicker({
+		changeMonth: true,
+		changeYear: true,
+		yearRange: '2000:2015',
+		dateFormat : 'yy-mm-dd',
+		timeFormat: "HH:mm:ss",
+		defaultDate: new Date()
+		});
+	}
+	
+	/////////// Code For PeakTime Charges Ends Here //////
+	
+	
+	
+	/////////// Code For PreWaitingFees Charges Starts Here //////
+	
+	var prewaitningfeeMinutesArr=html.data[0].prewaitningfeeMinutes;
+	var prewaitingfeeValueArr=html.data[0].prewaitingfeeValue;
+	var lengthPreWaitingArr = prewaitningfeeMinutesArr.length;
+	
+	$("#appended_PreWaitingTime_package").empty();
+	
+	$("#PreWaitingTimeDiv_package").html('<div class="row form-group"><div class="col-sm-2"><input type="text" id="pre_waiting_minutes_1" class="form-control" /></div><div class="col-sm-2"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" id="pre_waiting_fees_1" class="form-control" /></div></div><div class="col-sm-1"><div class="input-group addprewaiting_on_plus" style="padding:0;" id="addprewaiting_1"><a href="#" class="btn btn-info form-control">Add</a> </div></div></div>');
+	
+	var addPreWaitingbtnId = $(".addprewaiting_on_plus").attr('id');
+	var addPreWaitingbtnIdArr = addPreWaitingbtnId.split("_");
+	var addPreWaitingbtnCnt = addPreWaitingbtnIdArr[1];
+	
+	if(lengthPreWaitingArr > addPreWaitingbtnCnt){
+		
+		for(var k = addPreWaitingbtnCnt; k < lengthPreWaitingArr ; k++){
+			$('.addprewaiting_on_plus').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< lengthPreWaitingArr; i++){
+		var j = i+1;
+		//alert(peakChargesTimeFromArr[i]);
+		$("#pre_waiting_minutes_"+j).val(prewaitningfeeMinutesArr[i]);
+		$("#pre_waiting_fees_"+j).val(prewaitingfeeValueArr[i]);
+	}
+	
+	/////////// Code For PreWaitingFees Charges Ends Here //////
+	
+	var postCodeAddId = $(".addPostCodes").attr('id');
+	var postCodeAddIdArr = postCodeAddId.split("_");
+	var postCodeAddCount = postCodeAddIdArr[1];
+	
+	var postCodePickup = html.data[0].postCodePickup;
+	var postCodeDrop = html.data[0].postCodeDrop;
+	var postCodeRs = html.data[0].postCodeRs;
+	
+	var postCodelen = postCodePickup.length;
+	
+	if(postCodelen > postCodeAddCount){
+		for(var k = postCodeAddCount; k < postCodelen ; k++){
+			$('.addPostCodes').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< postCodePickup.length; i++){
+		var j = i+1;
+		$("#pickupPostCode_"+j).val(postCodePickup[i]);
+		$("#dropoffPostCode_"+j).val(postCodeDrop[i]);
+		$("#rsPostCode_"+j).val(postCodeRs[i]);
+	}
+	
+	var extrasType=html.data[0].extraType;
+	var extrasArr = html.data[0].extraRate;
+	var extrasUnit = html.data[0].extraRateUnit;
+	var extrLen = extrasArr.length;
+
+	$("#append_extras").empty();
+	
+	$("#mainIdExtra").html('<div class="input-group addExtras" id="addExtras_1" style="margin-right:30px;"><button class="btn btn-info" style="width:90px;">Add</button></div>')
+	
+	var addExtraId = $(".addExtras").attr('id');
+	var addExtraIdArr = addExtraId.split("_");
+	var addextraCnt = addExtraIdArr[1];
+	
+	if(extrasArr.length > addextraCnt){
+		for(var k = addextraCnt; k < extrasArr.length ; k++){
+			$('.addExtras').trigger('click');
+		}
+	}
+	for(var i = 0;i < extrasArr.length; i++ ){
+		var j = i + 1;
+		$("#extraIn_"+j).val(extrasArr[i]);
+		$("#extraType_"+j).val(extrasType[i]);
+	if(extrasUnit[i] == '%' ){
+		$('input[name="extrasName_'+j+'"][value="%"]').prop('checked', true);}
+	else if(extrasUnit[i] == 'Rs' ){
+		$('input[name="extrasName_'+j+'"][value="Rs"]').prop('checked', true);}
+	}
+	
+	
+	$("#cab_vehicle_cancellation_charge").val(html.data[0].cancellation_fees);
+	if(html.data[0].cancellation_feesUnit == '%' ){
+		$('input[name="cancellationFee"][value="%"]').prop('checked', true);}
+	else if(html.data[0].cancellation_feesUnit == 'Rs' ){
+		$('input[name="cancellationFee"][value="Rs"]').prop('checked', true);}
+	
+	$("#cancellationUnit").html(html.data[0].cancellation_feesUnit);
+	$("#cab_vehicle_rate_hour").val(html.data[0].tripCharge_per_hour);
+	$("#cab_vehicle_ignore_hrs").val(html.data[0].ignore_first_hrs);
+	$("#cab_vehicle_hour_minimum_fare").val(html.data[0].minimum_hourly_Charge);
+	$("#ignore_first_hrs_dh").val(html.data[0].ignore_first_hrs_dh);
+	
+	$("#append_waiting_fee").empty();
+	$("#mainWaitningFee").html('<div class="row form-group"><div class="col-sm-2" style="margin-left:0px;"><input type="text" class="form-control" id="fair_waiting_minutes_1"></div><div class="col-sm-2" style="margin-left:3px;"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="fair_waiting_fees_1"></div></div><div class="col-sm-2" id="removeWaitingFeeFields"><a href="#"><i class="fa fa-trash-o fa-2x"></i></a></div><div class="col-sm-2">&nbsp;</div></div><div class="row form-group"><div class="col-sm-2" style="margin-left:0px;"><input type="text" class="form-control" id="fair_waiting_minutes_2"></div><div class="col-sm-2" style="margin-left:3px;"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="fair_waiting_fees_2"></div></div><div class="col-sm-2"><div class="col-sm-4 addWaitingFee" id="addWaitingFee_2" style="padding:0;"><a href="#" class="btn btn-info form-control">Add</a></div></div><div class="col-sm-2">&nbsp;</div></div>');
+	
+	
+	var waitningfeeMinutesArr = html.data[0].waitningfeeMinutes;
+	var waitingfeeValueArr = html.data[0].waitingfeeValue;
+	var lengthAr = waitningfeeMinutesArr.length;
+	if(lengthAr > 2){
+		for(var k = 2; k < lengthAr ; k++){
+			$('.addWaitingFee').trigger('click');
+		}
+	}
+	
+	for(var i=0; i< lengthAr; i++){
+		var j = i+1;
+		$("#fair_waiting_minutes_"+j).val(waitningfeeMinutesArr[i]);
+		$("#fair_waiting_fees_"+j).val(waitingfeeValueArr[i]);
+	}
+	
+	/// To show the Tax radio buttons (Cash / Account Credit card) selected in Basic Tab /////
+	
+	var basic_tax_type = html.data[0].basic_tax_type;
+	var basic_tax_typeArr = basic_tax_type.split(",");
+	for(var z=0;z < basic_tax_typeArr.length;z++){
+		$('input[name="tax'+basic_tax_typeArr[z]+'"][value="'+basic_tax_typeArr[z]+'"]').prop('checked', true);
+	}
+		
+	/// To show the Rounding radio buttons (Cash / Account Credit card) selected in Basic Tab /////
+	
+	var rounding = html.data[0].rounding;
+	var roundingArr = rounding.split(",");
+	for(var l=0;l < roundingArr.length;l++){
+		$('input[name="rounding'+roundingArr[l]+'"][value="'+roundingArr[l]+'"]').prop('checked', true);
+	}
+	
+	$('input[name="optionsInlineRadios1"][value="'+html.data[0].level+'"]').prop('checked', true);
+	$('input[name="directionRadio"][value="'+html.data[0].direction+'"]').prop('checked', true);
+	$("#first_km_rate").val(html.data[0].first_km_rate);
+	
+	$("#frequent_location").val(html.data[0].frequent_location);
+	
+	$("#rate_per_km_dw").val(html.data[0].rate_per_km_dw);
+	$("#minmum_distance_dw").val(html.data[0].minimum_distance_dw);
+	$("#minmum_fare_dw").val(html.data[0].minimum_fare_dw);
+	
+	var waiting_fees = html.data[0].waiting_fees;
+	var waiting_fees_arr = waiting_fees.split("_");
+	//$('input[type="text"][value="'+waiting_fees_arr[l]+'"]');
+	$("#fair_waiting_minutes11").val(waiting_fees_arr[0]);
+	$("#fair_waiting_fees11").val(waiting_fees_arr[1]);
+	$("#fair_waiting_fees22").val(waiting_fees_arr[2]);
+	
+	$("#rate_per_km_dh").val(html.data[0].rate_per_km_dh);
+	$("#minmum_distance_dh").val(html.data[0].minimum_distance_dh);
+	$("#minmum_fare_dh").val(html.data[0].minimum_fare_dh);
+	$("#rate_per_hour_dh").val(html.data[0].rate_per_hour_dh);
+	
+	
+    $.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/fetchCabPackage',
+		cache: false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	//// For Local Package Radio Button Selected ////////
+	$('input[name="localPackage"][value='+html.data.localPackage+']').prop('checked', true);
+	$('input[name="pointToPointPackage"][value='+html.data.Point_To_Point_Package+']').prop('checked', true);
+	$('input[name="airportPackage"][value='+html.data.Airport_Package+']').prop('checked', true);
+	$('input[name="outstationPackage"][value='+html.data.Outstation_Package+']').prop('checked', true);
+	$("#company_share").val(html.data.company_Share);
+	$("#driver_share").val(html.data.driver_Share);
+	$("#partner_share").val(html.data.partner_Share);
+  }).fail(function (error){
+	alert('error');
+	console.log(error);
+		
+ });	
+	
+	
+	$("#vehicleFairmanage").bPopup({
+			 
+	}, 
+        function() {
+		var topd=$(document).scrollTop()+40;
+          $("#vehicleFairmanage").attr("style","padding:20px;border-radius: 10px;top:"+topd+"px !important;position: absolute;z-index: 9999;opacity: 1;background:#fff;left:16% !important;right:16% !important");
+        });
+}
+
+
+
+$(document).on('click','.manageCabTypeFair',function(){
+
+	
+	$("#fair_manage_save").hide();
+	$("#fixed_route_fair_manage_vehicle").hide();
+	$("#premium_fair_manage_vehicle").hide();
+	$("#distance_fair_manage_vehicle").hide();
+	$("#basic_fair_manage_vehicle").hide();
+	$("#vehicle_package_save").hide();
+	$("#fixed_route_fair_manage_cab_save").show();
+	$("#premium_fair_manage_cab_save").show();
+	$("#distance_fair_manage_cab_save").show();
+	$("#basic_fair_manage_cab_save").show();
+	$("#basic_fair_manage_cab_save button").show();
+	$("#cab_distance_waiting_save").show();
+	$("#vehicle_distance_waiting_save").hide();
+	$("#vehicle_distance_hour_save").hide();
+	$("#DistanceWaiting").show();
+	$("#cab_distance_hour_save").show();
+	
+	$("#fixed_route_fair_manage_cab_save button").show();
+	$("#premium_fair_manage_cab_save button").show();
+	$("#distance_fair_manage_cab_save button").show();
+	$("#fair_manage_cab_save").show();
+	$("#package_calc_cab_save").show();
+	$("#package_calc_vehicle_save").hide();
+	$("#share_cab_save").show();	
+	
+	
+	var divPosition = $('#navbar-brand').offset();
+      //$('html, body').animate({ scrollTop: divPosition.top }, "fast");	
+	
+	var id = $(this).attr('id');
+	//alert(id);
+	var idArr = id.split("_");
+    
+    RecId = idArr[1];
+	cabTypeId = idArr[2];
+	BookingTypeId = idArr[3];
+	CityId = idArr[4];
+   	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/cabTypeInfoById?Id='+RecId,
+		cache: false,
+		async:false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	
+	fairManagePopup(html);
+	
+
+}).fail(function (error){
+	alert('error');
+	console.log(error);
+		
+  });
+
+
+});
+
+$('#Cab-Cabtype').on('click','.clickCabType',function(){
+		var city = $("#cab-cityText").val();
+		var cabId = $(this).attr('data');
+        var array = cabId.split(',',2);
+		cabId = array[1];
+        BookingTypeId = array[0];
+        
+		var cabhtml = $(this).html();
+		
+		$("#cab-vehicleCabTypText").val(cabhtml);
+		//clearInterval(myVar2); 
+        //clearInterval(myVar);
+      
+      if($(this).hasClass('open'))
+      {
+		 // myVar2=setInterval(function(){myTimer2()}, 5000);	  
+          $(".remove div:first").slideUp(400,function(){
+               $('.remove').remove();
+          });
+      $(this).removeClass('open');
+	}
+	else
+	{
+      $('.remove').remove();
+       $(this).addClass('open');
+      $(this).parent().parent().after('<tr class="remove" ><td colspan="10"><div style=""> <div class=""> <div class="portlet portlet-default"> <div class="portlet-heading"> <div class="portlet-title"><h5 class="h4text" style="background: #E2E2E2;padding:7px;margin: 0;">Vehicle Information</h5></div> <div class="clearfix"></div> </div> <div class="portlet-body"> <ul id="myTab" class="nav nav-tabs tabsdesign"> <li class="active"><a href="#cab_vehicle" data-toggle="tab"><i class="fa fa-list" style="color:#; margin:5px"></i>Normal Cab Fare</a> </li> <li><a href="#Spacial">Spacial Cab Fare</a></li> </ul> <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="cab_vehicle"> <table id="exampleVehicle" class="table table-striped table-responsive margin10"><thead> <tr> <th>S.No.</th> <th>Driver Id</th> <th>Driver Name</th> <th>Vehicle Number</th> <th>Cab Type</th>  <th>Vehicle Name</th> <th> Manufacturer</th> <th>Vehicle Model</th><th>Status</th><th>Rate/Km</th><th>Rate/hour</th><th>Minimum Charge</th><th style="width:110px !important;"></th> </tr> </thead> <tbody> </tbody> </table> </div></div></td></tr>');
+	  
+    data=$(this).attr("data");
+    $.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/vehicleInfo?BookingTypeId='+BookingTypeId+'&cabId='+cabId+'&city='+city,
+		cache: false,
+		dataType:"json"
+	})
+  .done(function( html ) {
+	var k=1;
+	var statusVehicle;
+    for(var i=0;i<html.data.length;i++)
+	{
+		statusVehicle = (html.data[i].status == 0) ?'Inactive':'Active';
+		$('#exampleVehicle tbody').append('<tr><td>'+k++ +'</td><td>'+html.data[i].DriverId+'</td><td>'+html.data[i].DriverName+'</td><td>'+html.data[i].CabRegistrationNumber+'</td><td>'+html.data[i].CabType+'</td><td>'+html.data[i].CabName+'</td><td>'+html.data[i].CabManufacturer+'</td><td>'+html.data[i].CabModel+'</td><td>'+statusVehicle+'</td><td>'+html.data[i].RatePerKm+'</td><td>'+html.data[i].RatePerHr+'</td><td>'+html.data[i].MinimumCharge+'</td><td><button id="vehicle_'+html.data[i].id+'" class="btn btn-primary manageVehicleFair">Manage Fare</button></td></tr>');  
+	}
+  }).fail(function (error){
+	alert('error');
+	console.log(error);
+		
+ });	
+		
+}		
+});
+ 
+$(document).on('click','.addButton',function(){ 
+		var addButtonId = $(this).attr('id');
+		var counterArr = addButtonId.split("_");
+		
+		var counter = counterArr[1];
+			counter++;
+		$("#"+addButtonId).remove();	
+		
+		var detailsdiv = "";
+		detailsdiv += '<div class="row form-group"><div class="col-sm-2"><input type="text" class="form-control" id="kms_'+counter+'" ></div><div class="col-sm-2" ><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="rs_'+counter+'"  ></div></div><div class="col-sm-1 removeDistanceFields"  id="removeDistanceFields_"'+counter+'><a href="#"><i class="fa fa-trash-o fa-2x"></i></a></div><div class="col-sm-2"><div class="col-sm-4  addButton" style="padding:0;" id="add_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div><div class="col-sm-2">&nbsp;</div></div>';
+		appendedDistanceLength ++;
+		$("#appended_text_form").append(detailsdiv);
+		return false;
+ 
+ });
+ 
+
+$(document).on('click','.removeDistanceFields',function(){
+	var addId = $(".addButton").attr('id');
+	var  trashId = $(this).attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[1];
+	counter--;
+	$(this).closest('.row').remove();
+	$("#rs_"+counter).closest('.col-sm-2').after('<div class="col-sm-2"><div class="col-sm-4  addButton" style="padding:0;" id="add_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+	appendedDistanceLength --;
+	return false;
+});
+
+$(document).on('click','#removeExtraFields',function(){
+	var addId = $(".addExtras").attr('id');
+	var addIdArr = addId.split("_");
+	var counte  = addIdArr[1];
+	counte--;
+	$(".addExtras").closest('.rowextra').remove();
+	
+	
+	$("input[name='extrasName_"+counte+"'][value='Rs']").closest('.input-group').after('<div class="input-group addExtras" id="addExtras_'+counte+'" style="margin-right:30px;"><button class="btn btn-info" style="width:90px;">Add</button></div>');
+	counterext --;
+	return false;
+
+});
+
+$(document).on('click','.addExtras',function(){
+	
+	$("#addExtras_"+counterext).remove();
+	
+	counterext++;
+	$("#append_extras").append('<div style="margin-top:10px;" class="rowextra"><div class="input-group" style="margin-right:30px;"><input type="text" id= "extraType_'+counterext+
+	'" class="form-control allowtext" placeholder="Type"></div><div class="input-group" style="margin-right:30px;"><input type="text" id= "extraIn_'+counterext+
+	'" class="form-control" placeholder="Amount"></div><div class="input-group"><input type="radio" value="%" name="extrasName_'+counterext+
+	'" class="form-control inputsize"><label class="checkbox-inline">%</label></div><div class="input-group"><input type="radio" value="Rs" name="extrasName_'+counterext+
+	'" class="form-control inputsize"><label class="checkbox-inline">Rs</label></div><div class="input-group addExtras" id="addExtras_'+counterext+
+	'" style="margin-right:30px;"><button class="btn btn-info" style="width:90px;">Add</button></div></div>');
+	
+	return false;
+
+});
+
+$(document).on('click','.addWaitingFee', function(){
+	
+	var addButtonId = $(this).attr('id');
+		var counterArr = addButtonId.split("_");
+		
+		var counter = counterArr[1];
+			counter++;
+		$("#"+addButtonId).remove();	
+		
+		var detailsdiv = "";
+		detailsdiv += '<div class="row form-group"><div class="col-sm-2"><input type="text" id="fair_waiting_minutes_'+counter+'" class="form-control" ></div><div class="col-sm-2"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" id="fair_waiting_fees_'+counter+'" class="form-control" ></div></div><div class="col-sm-3"><div class="col-sm-4 addWaitingFee" id="addWaitingFee_'+counter+'" style="padding:0;"><a href="#" class="btn btn-info form-control">Add</a></div></div><div class="col-sm-3">&nbsp;</div></div>';
+		
+		appendedWaitingLength ++;
+		
+		$("#append_waiting_fee").append(detailsdiv);
+		return false;
+	
+});
+
+
+$(document).on('click','#removeWaitingFeeFields', function(){
+	var addId = $(".addWaitingFee").attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[1];
+	counter--;
+	$(".addWaitingFee").closest('.row').remove();
+	$("#fair_waiting_fees_"+counter).closest('.col-sm-3').after('<div class="col-sm-3"><div class="col-sm-4 addWaitingFee" id="addWaitingFee_'+counter+'" style="padding:0;"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+	appendedWaitingLength --;
+	return false;
+
+});
+
+
+$(document).on('click','#removeWaitingFeeFields11', function(){
+	var addId = $(".addWaitingFee11").attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[1];
+	counter--;
+	$(".addWaitingFee11").closest('.row').remove();
+	$("#fair_waiting_fees_"+counter).closest('.col-sm-3').after('<div class="col-sm-3"><div class="col-sm-4 addWaitingFee11" id="addWaitingFee11_'+counter+'" style="padding:0;"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+	appendedWaitingLength --;
+	return false;
+
+});
+
+$("#PackageCalculationN").click(function(){
+	$('#ManageFareAllPopup').closest('li').removeClass('active');
+	$("#PackageCalculationPopup").closest('li').addClass('active');
+ 
+ });
+ 
+$("#packagecalc").click(function(){
+	$('#PackageCalculationPopup').closest('li').removeClass('active');
+	$("#distanceVehiclep").closest('li').addClass('active');
+ 
+ });
+
+
+$("#distanceVehiclen").click(function(){
+	$('#distanceVehiclep').closest('li').removeClass('active');
+	$("#HourVehiclep").closest('li').addClass('active');
+ 
+ });
+
+$("#HourVehiclen").click(function(){
+	$("#HourVehiclep").closest('li').removeClass('active');
+	$("#DistanceHourp").closest('li').addClass('active');
+	//$("#vehicleFairmanage").css('top','588px !important');
+	
+});
+
+$("#Distance_Hourn").click(function(){
+	$("#DistanceWaitingp").closest('li').addClass('active');
+	$("#DistanceHourp").closest('li').removeClass('active');
+
+});
+
+$("#Distance_Waitingn").click(function(){
+	$("#basicVehiclePopup").closest('li').addClass('active');
+	$("#DistanceWaitingp").closest('li').removeClass('active');
+
+});
+
+$("#basicVehiclen").click(function(){
+	$("#basicVehiclePopup").closest('li').removeClass('active');
+	$("#PremiumVehiclep").closest('li').addClass('active');
+
+});
+
+$("#PremiumVehiclen").click(function(){
+	$("#Fixed_RoutesVehiclep").closest('li').addClass('active');
+	$("#PremiumVehiclep").closest('li').removeClass('active');
+
+});
+
+$("#fixed_route_next").click(function(){
+	$("#differentShares").closest('li').addClass('active');
+	$("#Fixed_RoutesVehiclep").closest('li').removeClass('active');
+
+});
+
+$("#basic_fair_manage_vehicle").click(function(){
+	var cab_vehicle_taxText = $("#cab_vehicle_taxText").val();
+	
+	var chkIdTax = '';
+	  $('.chkTax:checked').each(function () {
+		chkIdTax += $(this).val() + ",";
+	});
+	chkIdTax = chkIdTax.slice(0, -1);
+	
+	var chkId = '';
+	  $('.chkNumber:checked').each(function () {
+		chkId += $(this).val() + ",";
+	});
+	chkId = chkId.slice(0, -1);
+	  
+	var rounding  = chkId;
+	
+	var leveli = $('input[name="optionsInlineRadios1"]:checked').val();
+	var Direction = $('input[name="directionRadio"]:checked').val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageBasicVehicle',
+		cache: false,
+		dataType:"json",
+		data:{cab_vehicle_taxText:cab_vehicle_taxText,
+		chkIdTax:chkIdTax,
+		rounding:rounding,
+		leveli:leveli,
+		Direction:Direction,
+		vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+$("#distance_fair_manage_vehicle").click(function(){
+	var rate_per_km = $("#cab_vehicle_rate_per_km").val();
+	var first_km_rate = $("#first_km_rate").val();
+	
+	var vehicle_minmum_distance = $("#cab_vehicle_minmum_distance").val();
+	var vehicle_minmum_fare = $("#cab_vehicle_minmum_fare").val(); 
+	
+	var roundupkm_val = $("input[name='round_up_km']:checked").val();
+	var accum_instance_val = $("input[name='accum_instance']:checked").val();
+	
+		var cancelFeeUnit = $("input[name='cancellationFee']:checked").val();
+		var cnclFee = $("#cab_vehicle_cancellation_charge").val();
+	
+	var CancelFee = cnclFee+" "+cancelFeeUnit;
+	
+		var kmUpTo = "";
+		var ratePerKm = "";
+		for(var i=1; i<= appendedDistanceLength;i++){
+			var kmi = $("#kms_"+i).val();
+			kmUpTo += kmi+"_";
+			var rsi = $("#rs_"+i).val();
+			ratePerKm += rsi+"_";
+		}
+	
+	kmUpTo = kmUpTo.slice(0, -1);
+	ratePerKm = ratePerKm.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageDistanceVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km:rate_per_km,
+				first_km_rate:first_km_rate,
+				vehicle_minmum_distance:vehicle_minmum_distance,
+				vehicle_minmum_fare:vehicle_minmum_fare,
+				CancelFee:CancelFee,
+				kmUpTo:kmUpTo,
+				ratePerKm:ratePerKm,
+				roundupkm_val:roundupkm_val,
+				accum_instance_val:accum_instance_val,
+				vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+$("#premium_fair_manage_vehicle").click(function(){
+
+	var nightPremiumUnit = $("input[name='nightCh']:checked").val();
+	var nightChrge = $("#nightPremiumVehicle").val();
+	
+	var nightChStrtTime = $("#nightChStrtTime").val();
+	var nightChEndTime = $("#nightChEndTime").val();
+	
+	var premiumofVehicle = $("#premiumofVehicle").val();
+	var premiumofVehicleUnit = $("input[name='premiumCh']:checked").val();
+	var premium = premiumofVehicle+" "+premiumofVehicleUnit;
+	
+	var extrasIn = "";
+	var extrasUnit = "";
+	var extrasType = "";
+	
+	for(var i=1; i<= counterext;i++){
+		var extrasTypeUpTo = $("#extraType_"+i).val();
+		extrasType += extrasTypeUpTo+"_";
+		var extrasUpTo = $("#extraIn_"+i).val();
+		extrasIn += extrasUpTo+"_";
+		var extrasUnitUpTo = $('input[name=extrasName_'+i+']:checked').val();
+		extrasUnit += extrasUnitUpTo+"_";
+	}
+	
+	extrasType = extrasType.slice(0, -1);
+	extrasIn = extrasIn.slice(0, -1);
+	extrasUnit = extrasUnit.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManagePremiumVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				nightChrge:nightChrge,
+                                nightPremiumUnit:nightPremiumUnit,
+				nightChStrtTime:nightChStrtTime,
+				nightChEndTime:nightChEndTime,
+				premium:premium,
+				extrasType:extrasType,
+				extrasIn:extrasIn,
+				extrasUnit:extrasUnit,
+				vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+$("#fixed_route_fair_manage_vehicle").click(function(){
+	var frequent_location = $("#frequent_location").val();
+	var pickupPostCodeArr = "";
+	var dropPostCodeArr = "";
+	var rsPostCodeArr = "";
+	
+	for(var i=1; i<= counterPostCode;i++){
+		var pickupPostCode = $("#pickupPostCode_"+i).val();
+		pickupPostCodeArr += pickupPostCode+"_";
+		
+		var dropPostCode = $("#dropoffPostCode_"+i).val();
+		dropPostCodeArr += dropPostCode+"_";
+		
+		var rsPostCode = $("#rsPostCode_"+i).val();
+		rsPostCodeArr += rsPostCode+"_";
+		
+	}
+		
+	pickupPostCodeArr = pickupPostCodeArr.slice(0, -1);
+	dropPostCodeArr = dropPostCodeArr.slice(0, -1);
+	rsPostCodeArr = rsPostCodeArr.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageFixedRouteVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				frequent_location:frequent_location,
+				pickupPostCodeArr:pickupPostCodeArr,
+				dropPostCodeArr:dropPostCodeArr,
+				rsPostCodeArr:rsPostCodeArr,
+				vehicleId:vehicleID
+		}
+		
+	})
+    
+  .done(function( html ) {
+		alert("Fare Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+
+$("#fair_manage_save").click(function(){
+		
+	var cab_vehicle_taxText = $("#cab_vehicle_taxText").val();
+	var chkId = '';
+	  $('.chkNumber:checked').each(function () {
+		chkId += $(this).val() + ",";
+	});
+	chkId = chkId.slice(0, -1);
+	  
+	var rounding  = chkId;
+	
+	var level = $('input[name="optionsInlineRadios1"]:checked').val();
+	var Direction = $('input[name="directionRadio"]:checked').val();
+	
+	var rate_per_km = $("#cab_vehicle_rate_per_km").val();
+	var first_km_rate = $("#first_km_rate").val();
+	
+	var vehicle_minmum_distance = $("#cab_vehicle_minmum_distance").val();
+	var vehicle_minmum_fare = $("#cab_vehicle_minmum_fare").val(); 
+	
+		var cancelFeeUnit = $("input[name='cancellationFee']:checked").val();
+		var cnclFee = $("#cab_vehicle_cancellation_charge").val();
+	
+	var CancelFee = cnclFee+" "+cancelFeeUnit;
+	
+		var kmUpTo = "";
+		var ratePerKm = "";
+		for(var i=1; i<= appendedDistanceLength;i++){
+			var kmi = $("#kms_"+i).val();
+			kmUpTo += kmi+"_";
+			var rsi = $("#rs_"+i).val();
+			ratePerKm += rsi+"_";
+		}
+	
+	kmUpTo = kmUpTo.slice(0, -1);
+	ratePerKm = ratePerKm.slice(0, -1);
+	
+		var nightPremiumUnit = $("input[name='nightCh']:checked").val();
+		var nightPremium = $("#nightPremiumVehicle").val(); 
+	
+	var nightChrge = nightPremium+" "+nightPremiumUnit;
+	var nightChStrtTime = $("#nightChStrtTime").val();
+	var nightChEndTime = $("#nightChEndTime").val();	
+	
+		var extrasIn = "";
+		var extrasUnit = "";
+		for(var i=1; i<= counterext;i++){
+			var extrasUpTo = $("#extraIn_"+i).val();
+			extrasIn += extrasUpTo+"_";
+			var extrasUnitUpTo = $('input[name=extrasName_'+i+']:checked').val();
+			extrasUnit += extrasUnitUpTo+"_";
+		}
+	extrasIn = extrasIn.slice(0, -1);
+	extrasUnit = extrasUnit.slice(0, -1);
+	var vehicle_rate_hour = $("#cab_vehicle_rate_hour").val();
+
+		var minuteUpTo = "";
+		var fee_per_minutes = "";
+		for(var i=1; i<= appendedWaitingLength;i++){
+			var waitingMinutei = $("#fair_waiting_minutes_"+i).val();
+			minuteUpTo += waitingMinutei+"_";
+			var waitnigFeei = $("#fair_waiting_fees_"+i).val();
+			fee_per_minutes += waitnigFeei+"_";
+		}
+	
+	minuteUpTo = minuteUpTo.slice(0, -1);
+	fee_per_minutes = fee_per_minutes.slice(0, -1);
+	
+	var premiumofVehicle = $("#premiumofVehicle").val();
+	var premiumofVehicleUnit = $("input[name='premiumCh']:checked").val();
+	
+	var premiumo = premiumofVehicle+" "+premiumofVehicleUnit;
+	
+	var frequent_location = $("#frequent_location").val();
+	
+	var pickupPostCodeArr = "";
+		var dropPostCodeArr = "";
+		var rsPostCodeArr = "";
+		
+		
+		for(var i=1; i<= counterPostCode;i++){
+			var pickupPostCode = $("#pickupPostCode_"+i).val();
+			pickupPostCodeArr += pickupPostCode+"_";
+			
+			var dropPostCode = $("#dropoffPostCode_"+i).val();
+			dropPostCodeArr += dropPostCode+"_";
+			
+			var rsPostCode = $("#rsPostCode_"+i).val();
+			rsPostCodeArr += rsPostCode+"_";
+			
+		}
+		
+	pickupPostCodeArr = pickupPostCodeArr.slice(0, -1);
+	dropPostCodeArr = dropPostCodeArr.slice(0, -1);
+	rsPostCodeArr = rsPostCodeArr.slice(0, -1);
+	
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManagement',
+		cache: false,
+		dataType:"json",
+		data:{cab_vehicle_taxText:cab_vehicle_taxText,rounding:rounding,level:level,Direction:Direction,rate_per_km:rate_per_km,first_km_rate:first_km_rate,vehicle_minmum_distance:vehicle_minmum_distance,vehicle_minmum_fare:vehicle_minmum_fare,CancelFee:CancelFee,kmUpTo:kmUpTo,ratePerKm:ratePerKm,nightChrge:nightChrge,nightChStrtTime:nightChStrtTime,nightChEndTime:nightChEndTime,extrasIn:extrasIn,extrasUnit:extrasUnit,vehicle_rate_hour:vehicle_rate_hour,minuteUpTo:minuteUpTo,fee_per_minutes:fee_per_minutes,premium:premiumo,frequent_location:frequent_location,vehicleId:vehicleID,pickupPostCodeArr:pickupPostCodeArr,dropPostCodeArr:dropPostCodeArr,rsPostCodeArr:rsPostCodeArr}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		location.reload();
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+	
+});
+
+
+$("#vehicle_distance_hour_save").click(function(){
+	var rate_per_km_dh = $("#rate_per_km_dh").val();
+	var minmum_distance_dh = $("#minmum_distance_dh").val();
+	var minmum_fare_dh = $("#minmum_fare_dh").val();
+	var rate_per_hour_dh = $("#rate_per_hour_dh").val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveDistanceHourVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km_dh:rate_per_km_dh,
+				minmum_distance_dh:minmum_distance_dh,
+				minmum_fare_dh:minmum_fare_dh,
+				rate_per_hour_dh:rate_per_hour_dh,
+				vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+
+
+$("#vehicle_distance_waiting_save").click(function(){
+	var rate_per_km_dw = $("#rate_per_km_dw").val();
+	var minmum_distance_dw = $("#minmum_distance_dw").val();
+	var minmum_fare_dw = $("#minmum_fare_dw").val();
+	
+	var fair_waiting_minutes11 = $("#fair_waiting_minutes11").val();
+	var fair_waiting_fees11 = $("#fair_waiting_fees11").val();
+	
+	var fair_waiting_fees22 = $("#fair_waiting_fees22").val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveDistanceWaitingVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km_dw:rate_per_km_dw,
+				minmum_distance_dw:minmum_distance_dw,
+				minmum_fare_dw:minmum_fare_dw,
+				fair_waiting_minutes11:fair_waiting_minutes11,
+				fair_waiting_fees11:fair_waiting_fees11,
+				fair_waiting_fees22:fair_waiting_fees22,
+				vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+
+function getRadioVal(name){
+    var radios = document.getElementsByName(name), 
+        value  = '';
+    
+    for (var i = radios.length; i--;) {
+        if (radios[i].checked) {
+            value = radios[i].value;
+            break;
+        }
+    }
+    return value;
+}
+
+
+
+
+
+
+function all_distance_manage_save(){
+	var rate_per_km = $("#cab_vehicle_rate_per_km").val();
+	var first_km_rate = $("#first_km_rate").val();
+	
+	var vehicle_minmum_distance = $("#cab_vehicle_minmum_distance").val();
+	var vehicle_minmum_fare = $("#cab_vehicle_minmum_fare").val(); 
+	
+		var cancelFeeUnit = $("input[name='cancellationFee']:checked").val();
+		var cnclFee = $("#cab_vehicle_cancellation_charge").val();
+	
+	var CancelFee = cnclFee+" "+cancelFeeUnit;
+	
+		var kmUpTo = "";
+		var ratePerKm = "";
+		for(var i=1; i<= appendedDistanceLength;i++){
+			var kmi = $("#kms_"+i).val();
+			kmUpTo += kmi+"_";
+			var rsi = $("#rs_"+i).val();
+			ratePerKm += rsi+"_";
+		}
+	
+	kmUpTo = kmUpTo.slice(0, -1);
+	ratePerKm = ratePerKm.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageDistanceVehicle',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km:rate_per_km,
+				first_km_rate:first_km_rate,
+				vehicle_minmum_distance:vehicle_minmum_distance,
+				vehicle_minmum_fare:vehicle_minmum_fare,
+				CancelFee:CancelFee,
+				kmUpTo:kmUpTo,
+				ratePerKm:ratePerKm,
+				vehicleId:vehicleID
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+}
+
+
+
+$('.cancellationCl').click (function(){
+	var cancelUnit = $("input[name='cancellationFee']:checked").val();
+	$("#cancellationUnit").html(cancelUnit);
+	var cancelUnit = $("input[name='bookingCharge']:checked").val();
+	$("#bookingChargeUnit").html(cancelUnit);
+	
+});
+
+
+$('.nightChCl').click (function(){
+	var nightPremiumUnit = $("input[name='nightCh']:checked").val();
+	$("#nightPremiumUnit").html(nightPremiumUnit);
+	
+});
+$('.premiumChCl').click (function(){
+	var PremiumUnit = $("input[name='premiumCh']:checked").val();
+	$("#premiumVeUnit").html(PremiumUnit);
+	
+});
+var counterPostCode = 1;
+$(document).on('click','.addPostCodes',function(){
+	counterPostCode++;
+	
+	var appended = '<div class="form-group clearfix"><div class="col-sm-3" style="margin-right:3px;"><input type="text" class="form-control" id="pickupPostCode_'+counterPostCode+'"></div><div class="col-sm-3" style="margin-right:3px;"><input type="text" class="form-control" id="dropoffPostCode_'+counterPostCode+'"></div><div class="col-sm-3"><div class="input-group"><span class="input-group-addon">Rs</span><input type="text" class="form-control" id="rsPostCode_'+counterPostCode+'"></div></div></div>';
+	$(this).attr("id","'addPostCodes_"+counterPostCode+"'");
+	$("#append_postCodes").append(appended);
+});
+
+
+//// Code To Save Package Calculation Starts Here ///// 
+
+$("#package_calc_cab_save").click(function(){
+	
+	//var local = $('input[name="localPackage"]:checked').val();
+	//var point_to_point = $('input[name="pointToPointPackage"]:checked').val();
+	//var airport = $('input[name="airportPackage"]:checked').val();
+	//var outstation = $('input[name="outstationPackage"]:checked').val();
+    
+    local = getRadioVal('localPackage');
+    point_to_point = getRadioVal('pointToPointPackage');
+    airport = getRadioVal('airportPackage');
+    outstation = getRadioVal('outstationPackage');
+
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/cabPackageCalculation',
+		cache: false,
+		dataType:"json",
+		data:{
+				local:local,
+				point_to_point:point_to_point,
+				airport:airport,
+				outstation:outstation
+		}
+		
+	})
+  .done(function( html ) {
+		
+		alert("Fare Updated");
+		//location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+//// Code To Save Package Calculation Ends Here ///// 
+
+//// Code To Save Distance Starts Here ///// 
+
+
+$("#distance_fair_manage_cab_save").click(function(){
+    var Updated_Status = $("input[name='UpdatedStatus_distance']:checked").val();
+	var rate_per_km = $("#cab_vehicle_rate_per_km").val();
+	var first_km_rate = $("#first_km_rate").val();
+	
+	var vehicle_minmum_distance = $("#cab_vehicle_minmum_distance").val();
+	var vehicle_minmum_fare = $("#cab_vehicle_minmum_fare").val(); 
+	
+	var roundupkm_val = $("input[name='round_up_km']:checked").val();
+	var accum_instance_val = $("input[name='accum_instance']:checked").val();
+	
+	
+		///// Distances Code Starts Here ////
+		
+		var kmUpTo = "";
+		var ratePerKm = "";
+		for(var i=1; i<= appendedDistanceLength;i++){
+			var kmi = $("#kms_"+i).val();
+			kmUpTo += kmi+"_";
+			var rsi = $("#rs_"+i).val();
+			ratePerKm += rsi+"_";
+		}
+		kmUpTo = kmUpTo.slice(0, -1);
+		ratePerKm = ratePerKm.slice(0, -1);
+	
+		///// Distances Code Ends Here ////
+		
+		///// Package Distances Code Starts Here ////
+		
+		var pkg_nameDistance = "";
+		var pkg_ignoreKmDistance = "";
+		var pkg_amountDistance = "";
+		for(var i=1; i<= appendedPackageDistanceLength;i++){
+			var dpkg_name = $("#pkg_nameDistance_"+i).val();
+			pkg_nameDistance += dpkg_name+"_";
+			var dpkg_km = $("#pkg_ignoreKmDistance_"+i).val();
+			pkg_ignoreKmDistance += dpkg_km+"_";
+			var dpkg_amt = $("#pkg_amountDistance_"+i).val();
+			pkg_amountDistance += dpkg_amt+"_";
+		}
+		pkg_nameDistance		=	pkg_nameDistance.slice(0, -1);
+		pkg_ignoreKmDistance	=	pkg_ignoreKmDistance.slice(0, -1);
+		pkg_amountDistance		=	pkg_amountDistance.slice(0, -1);
+		
+		///// Package Distances Code Ends Here ////
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageDistance',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km:rate_per_km,
+				first_km_rate:first_km_rate,
+				vehicle_minmum_distance:vehicle_minmum_distance,
+				vehicle_minmum_fare:vehicle_minmum_fare,
+				kmUpTo:kmUpTo,
+				ratePerKm:ratePerKm,
+				pkg_nameDistance:pkg_nameDistance,
+				pkg_ignoreKmDistance:pkg_ignoreKmDistance,
+				pkg_amountDistance:pkg_amountDistance,
+				roundupkm_val:roundupkm_val,
+				accum_instance_val:accum_instance_val,
+				CabTypeId:cabTypeId,
+                BookingTypeId:BookingTypeId,
+                RecId:RecId,
+				CityId:CityId,
+                UpdatedStatus:Updated_Status
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		//location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+//// Code To Save Distance Ends Here ///// 
+
+//// Code To Save Hourly Starts Here ///// 
+
+$("#fair_manage_cab_save").click(function(){
+	var Updated_Status = $('input[name="UpdatedStatus_hour"]:checked').val();
+	var cab_vehicle_taxText = $("#cab_vehicle_taxText").val();
+	var chkId = '';
+	  $('.chkNumber:checked').each(function () {
+		chkId += $(this).val() + ",";
+	});
+	chkId = chkId.slice(0, -1);
+	  
+	var rounding  = chkId;
+	
+	var leveli = $('input[name="optionsInlineRadios1"]:checked').val();
+	var Direction = $('input[name="directionRadio"]:checked').val();
+	
+	var rate_per_km = $("#cab_vehicle_rate_per_km").val();
+	var first_km_rate = $("#first_km_rate").val();
+	
+	var vehicle_minmum_distance = $("#cab_vehicle_minmum_distance").val();
+	var vehicle_minmum_fare = $("#cab_vehicle_minmum_fare").val(); 
+	
+		var cancelFeeUnit = $("input[name='cancellationFee']:checked").val();
+		var cnclFee = $("#cab_vehicle_cancellation_charge").val();
+	
+	var CancelFee = cnclFee+" "+cancelFeeUnit;
+	
+		var kmUpTo = "";
+		var ratePerKm = "";
+		for(var i=1; i<= appendedDistanceLength;i++){
+			var kmi = $("#kms_"+i).val();
+			kmUpTo += kmi+"_";
+			var rsi = $("#rs_"+i).val();
+			ratePerKm += rsi+"_";
+		}
+	
+	kmUpTo = kmUpTo.slice(0, -1);
+	ratePerKm = ratePerKm.slice(0, -1);
+	
+	///// Package Hourly Code Starts Here ////
+
+	var pkg_nameHourly = "";
+	var pkg_ignoreHrHourly = "";
+	var pkg_amountHourly = "";
+	for(var i=1; i<= appendedPackageHourlyLength;i++){
+		var dpkg_name = $("#pkg_nameHourly_"+i).val();
+		pkg_nameHourly += dpkg_name+"_";
+		var dpkg_hr = $("#pkg_ignoreHRHourly_"+i).val();
+		pkg_ignoreHrHourly += dpkg_hr+"_";
+		var dpkg_amt = $("#pkg_amountHourly_"+i).val();
+		pkg_amountHourly += dpkg_amt+"_";
+	}
+	pkg_nameHourly		=	pkg_nameHourly.slice(0, -1);
+	pkg_ignoreHrHourly	=	pkg_ignoreHrHourly.slice(0, -1);
+	pkg_amountHourly	=	pkg_amountHourly.slice(0, -1);
+
+	///// Package Hourly Code Ends Here ////
+	
+		var nightPremiumUnit = $("input[name='nightCh']:checked").val();
+		var nightPremium = $("#nightPremiumVehicle").val(); 
+	
+	var nightChrge = nightPremium+" "+nightPremiumUnit;
+	var nightChStrtTime = $("#nightChStrtTime").val();
+	var nightChEndTime = $("#nightChEndTime").val();	
+	
+		var extrasIn = "";
+		var extrasUnit = "";
+		for(var i=1; i<= counterext;i++){
+			var extrasUpTo = $("#extraIn_"+i).val();
+			extrasIn += extrasUpTo+"_";
+			var extrasUnitUpTo = $('input[name=extrasName_'+i+']:checked').val();
+			extrasUnit += extrasUnitUpTo+"_";
+		}
+	extrasIn = extrasIn.slice(0, -1);
+	extrasUnit = extrasUnit.slice(0, -1);
+	var vehicle_rate_hour = $("#cab_vehicle_rate_hour").val();
+	var vehicle_ignore_hour = $("#cab_vehicle_ignore_hrs").val();
+	var vehicle_hour_minimum_fare = $("#cab_vehicle_hour_minimum_fare").val();
+
+		var minuteUpTo = "";
+		var fee_per_minutes = "";
+		for(var i=1; i<= appendedWaitingLength;i++){
+			var waitingMinutei = $("#fair_waiting_minutes_"+i).val();
+			minuteUpTo += waitingMinutei+"_";
+			var waitnigFeei = $("#fair_waiting_fees_"+i).val();
+			fee_per_minutes += waitnigFeei+"_";
+		}
+	
+	minuteUpTo = minuteUpTo.slice(0, -1);
+	fee_per_minutes = fee_per_minutes.slice(0, -1);
+	
+	var premiumofVehicle = $("#premiumofVehicle").val();
+	var premiumofVehicleUnit = $("input[name='premiumCh']:checked").val();
+	
+	var premiumo = premiumofVehicle+" "+premiumofVehicleUnit;
+	var frequent_location = $("#frequent_location").val();
+	
+	
+		var pickupPostCodeArr = "";
+		var dropPostCodeArr = "";
+		var rsPostCodeArr = "";
+		
+		
+		for(var i=1; i<= counterPostCode;i++){
+			var pickupPostCode = $("#pickupPostCode_"+i).val();
+			pickupPostCodeArr += pickupPostCode+"_";
+			
+			var dropPostCode = $("#dropoffPostCode_"+i).val();
+			dropPostCodeArr += dropPostCode+"_";
+			
+			var rsPostCode = $("#rsPostCode_"+i).val();
+			rsPostCodeArr += rsPostCode+"_";
+			
+		}
+		
+	pickupPostCodeArr = pickupPostCodeArr.slice(0, -1);
+	dropPostCodeArr = dropPostCodeArr.slice(0, -1);
+	rsPostCodeArr = rsPostCodeArr.slice(0, -1);
+	
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManagementOfCab',
+		cache: false,
+		dataType:"json",
+		data:{
+        		RecId:RecId,
+        		BookingTypeId:BookingTypeId,
+        		CabTypeId:cabTypeId,
+        		cab_vehicle_taxText:cab_vehicle_taxText,
+                rounding:rounding,
+                leveli:leveli,
+                Direction:Direction,
+                rate_per_km:rate_per_km,
+                first_km_rate:first_km_rate,
+                vehicle_minmum_distance:vehicle_minmum_distance,
+                vehicle_minmum_fare:vehicle_minmum_fare,
+                CancelFee:CancelFee,kmUpTo:kmUpTo,
+                ratePerKm:ratePerKm,
+                nightChrge:nightChrge,
+                nightChStrtTime:nightChStrtTime,
+                nightChEndTime:nightChEndTime,
+                extrasIn:extrasIn,
+                extrasUnit:extrasUnit,
+                vehicle_rate_hour:vehicle_rate_hour,
+				vehicle_ignore_hour:vehicle_ignore_hour,
+				vehicle_hour_minimum_fare:vehicle_hour_minimum_fare,
+                minuteUpTo:minuteUpTo,
+                fee_per_minutes:fee_per_minutes,
+                premium:premiumo,
+                frequent_location:frequent_location,
+                pickupPostCodeArr:pickupPostCodeArr,
+                dropPostCodeArr:dropPostCodeArr,rsPostCodeArr:rsPostCodeArr,		
+				pkg_nameHourly:pkg_nameHourly,
+				pkg_ignoreHrHourly:pkg_ignoreHrHourly,
+				pkg_amountHourly:pkg_amountHourly,
+				CityId:CityId,
+                UpdatedStatus:Updated_Status
+            }
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		//location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+
+});
+
+//// Code To Save Hourly Ends Here ///// 
+
+//// Code To Save Distance+Hourly Starts Here ///// 
+
+$("#cab_distance_hour_save").click(function(){
+
+    var Updated_Status = $('input[name="UpdatedStatus_distanceHour"]:checked').val();
+	var rate_per_km_dh = $("#rate_per_km_dh").val();
+	var minmum_distance_dh = $("#minmum_distance_dh").val();
+	var minmum_fare_dh = $("#minmum_fare_dh").val();
+	var rate_per_hour_dh = $("#rate_per_hour_dh").val();
+	var ignore_first_hrs_dh=$("#ignore_first_hrs_dh").val();
+	
+	///// Package Distance Hourly Code Starts Here ////
+
+	var pkg_nameDist_Hourly = "";
+	var pkg_ignorHR_DistHourly = "";
+	var pkg_ignoreKM_DistHourly = "";	
+	var pkg_amount_Dist_Hourly = "";
+	
+	for(var i=1; i<= appendedPackageDistanceHourlyLength;i++){
+		var dpkg_name = $("#pkg_nameDist_Hourly_"+i).val();
+		pkg_nameDist_Hourly += dpkg_name+"_";
+		var dpkg_hr = $("#pkg_ignorHR_DistHourly_"+i).val();
+		pkg_ignorHR_DistHourly += dpkg_hr+"_";
+		var dpkg_km = $("#pkg_ignoreKM_DistHourly_"+i).val();
+		pkg_ignoreKM_DistHourly += dpkg_km+"_";		
+		var dpkg_amt = $("#pkg_amount_Dist_Hourly_"+i).val();
+		pkg_amount_Dist_Hourly += dpkg_amt+"_";
+		
+	}
+	pkg_nameDist_Hourly			=	pkg_nameDist_Hourly.slice(0, -1);
+	pkg_ignorHR_DistHourly		=	pkg_ignorHR_DistHourly.slice(0, -1);
+	pkg_ignoreKM_DistHourly		=	pkg_ignoreKM_DistHourly.slice(0, -1);	
+	pkg_amount_Dist_Hourly		=	pkg_amount_Dist_Hourly.slice(0, -1);
+
+	///// Package Distance Hourly Code Starts Here ////
+	
+	
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveDistanceHour',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km_dh:rate_per_km_dh,
+				minmum_distance_dh:minmum_distance_dh,
+				minmum_fare_dh:minmum_fare_dh,
+				rate_per_hour_dh:rate_per_hour_dh,
+				ignore_first_hrs_dh:ignore_first_hrs_dh,
+				CabTypeId:cabTypeId,
+                BookingTypeId:BookingTypeId,
+                RecId:RecId,
+				pkg_nameDist_Hourly:pkg_nameDist_Hourly,
+				pkg_ignorHR_DistHourly:pkg_ignorHR_DistHourly,
+				pkg_ignoreKM_DistHourly:pkg_ignoreKM_DistHourly,				
+				pkg_amount_Dist_Hourly:pkg_amount_Dist_Hourly,
+				CityId:CityId,
+                UpdatedStatus:Updated_Status
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		//location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		//alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+//// Code To Save Distance+Hourly Ends Here ///// 
+
+//// Code To Save Distance+Waiting Starts Here ///// 
+
+$("#cab_distance_waiting_save").click(function(){
+	var Updated_Status = $('input[name="UpdatedStatus_distanceWaiting"]:checked').val();
+	var rate_per_km_dw = $("#rate_per_km_dw").val();
+	var minmum_distance_dw = $("#minmum_distance_dw").val();
+	var minmum_fare_dw = $("#minmum_fare_dw").val();
+	
+	var fair_waiting_minutes11 = $("#fair_waiting_minutes11").val();
+	var fair_waiting_fees11 = $("#fair_waiting_fees11").val();
+	
+	var fair_waiting_fees22 = $("#fair_waiting_fees22").val();
+	
+	
+	///// Package Distances Waiting Code Starts Here ////
+
+	var pkg_nameDistanceWaiting = "";
+	var pkg_ignoreKmDistanceWaiting = "";
+	var pkg_amountDistanceWaiting = "";
+	for(var i=1; i<= appendedPackageDistanceWaitingLength;i++){
+		var dpkg_name1 = $("#distWaitLCLpkgName_"+i).val();
+		pkg_nameDistanceWaiting += dpkg_name1+"_";
+		var dpkg_km = $("#distWaitLCLpkg_ingoreKM_"+i).val();
+		pkg_ignoreKmDistanceWaiting += dpkg_km+"_";
+		var dpkg_amt = $("#distWaitLCLpkgAmount_"+i).val();
+		pkg_amountDistanceWaiting += dpkg_amt+"_";
+	}
+	pkg_nameDistanceWaiting		=	pkg_nameDistanceWaiting.slice(0, -1);
+	pkg_ignoreKmDistanceWaiting	=	pkg_ignoreKmDistanceWaiting.slice(0, -1);
+	pkg_amountDistanceWaiting	=	pkg_amountDistanceWaiting.slice(0, -1);
+
+	///// Package Distances Waiting Code Ends Here ////
+		
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveDistanceWaiting',
+		cache: false,
+		dataType:"json",
+		data:{
+				rate_per_km_dw:rate_per_km_dw,
+				minmum_distance_dw:minmum_distance_dw,
+				minmum_fare_dw:minmum_fare_dw,
+				fair_waiting_minutes11:fair_waiting_minutes11,
+				fair_waiting_fees11:fair_waiting_fees11,
+				fair_waiting_fees22:fair_waiting_fees22,
+				CabTypeId:cabTypeId, 
+                BookingTypeId:BookingTypeId,
+                RecId:RecId,
+				pkg_nameDistanceWaiting:pkg_nameDistanceWaiting,
+				pkg_ignoreKmDistanceWaiting:pkg_ignoreKmDistanceWaiting,
+				pkg_amountDistanceWaiting:pkg_amountDistanceWaiting,
+				CityId:CityId,
+                UpdatedStatus:Updated_Status
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		//location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+//// Code To Save Distance+Waiting Ends Here ///// 
+
+//// Code To Save Basic Starts Here ///// 
+
+$("#basic_fair_manage_cab_save").click(function(){
+
+	var Updated_Status = $('input[name="UpdatedStatus_tax_basic"]:checked').val();
+	var cab_vehicle_taxText = $("#cab_vehicle_taxText").val();
+	
+	var chkIdTax = '';
+	  $('.chkTax:checked').each(function () {
+		chkIdTax += $(this).val() + ",";
+	});
+	chkIdTax = chkIdTax.slice(0, -1);
+	
+	var chkId = '';
+	  $('.chkNumber:checked').each(function () {
+		chkId += $(this).val() + ",";
+	});
+	chkId = chkId.slice(0, -1);
+	  
+	var rounding  = chkId;
+	
+	var leveli = $('input[name="optionsInlineRadios1"]:checked').val();
+	var Direction = $('input[name="directionRadio"]:checked').val();
+	
+	var cancelFeeUnit = $("input[name='cancellationFee']:checked").val();
+	var cnclFee = $("#cab_vehicle_cancellation_charge").val();
+	var CancelFee = cnclFee+" "+cancelFeeUnit;
+	
+	///// Code for Waiting Time Fees Starts Here ////
+	
+	var minuteUpTo = "";
+	var fee_per_minutes = "";
+	for(var i=1; i<= appendedWaitingLength;i++){
+		var waitingMinutei = $("#fair_waiting_minutes_"+i).val();
+		minuteUpTo += waitingMinutei+"_";
+		var waitnigFeei = $("#fair_waiting_fees_"+i).val();
+		fee_per_minutes += waitnigFeei+"_";
+	}
+
+	minuteUpTo = minuteUpTo.slice(0, -1);
+	fee_per_minutes = fee_per_minutes.slice(0, -1);
+	
+	///// Code for Waiting Time Fees Ends Here ////
+	
+	///// Code for Pre Waiting Fees Starts Here ////
+	
+	var pre_waiting_minutes = "";
+	var pre_waiting_fees = "";
+	for(var i=1; i<= appendedPreWaitingTimeLength;i++){
+		var PrewaitingMinutei = $("#pre_waiting_minutes_"+i).val();
+		pre_waiting_minutes += PrewaitingMinutei+"_";
+		var PrewaitnigFeei = $("#pre_waiting_fees_"+i).val();
+		pre_waiting_fees += PrewaitnigFeei+"_";
+	}
+
+	pre_waiting_minutes = pre_waiting_minutes.slice(0, -1);
+	pre_waiting_fees = pre_waiting_fees.slice(0, -1);
+	
+	///// Code for Pre Waiting Fees Ends Here ////
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageBasic',
+		cache: false,
+		dataType:"json",
+		data:{cab_vehicle_taxText:cab_vehicle_taxText,
+		chkIdTax:chkIdTax,
+		rounding:rounding,
+		leveli:leveli,
+		Direction:Direction,
+		CabTypeId:cabTypeId,
+        BookingTypeId:BookingTypeId,
+        RecId:RecId,
+		CancelFee:CancelFee,
+		minuteUpTo:minuteUpTo,
+		fee_per_minutes:fee_per_minutes,
+		pre_waiting_minutes:pre_waiting_minutes,
+		pre_waiting_fees:pre_waiting_fees,
+        UpdatedStatus:Updated_Status
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		//location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+//// Code To Save Basic Ends Here ///// 
+
+//// Code To Save Premium Starts Here ///// 
+
+$("#premium_fair_manage_cab_save").click(function(){
+
+	var Updated_Status = $("input[name='UpdatedStatus_premium']:checked").val();
+	var nightPremiumUnit = $("input[name='nightCh']:checked").val();
+	var nightChrge = $("#nightPremiumVehicle").val();
+    //var nightChrge = nightChrge+" "+nightPremiumUnit;
+	
+	var nightChStrtTime = $("#nightChStrtTime").val();
+	var nightChEndTime = $("#nightChEndTime").val();
+	
+	var premiumofVehicle = $("#premiumofVehicle").val();
+	var premiumofVehicleUnit = $("input[name='premiumCh']:checked").val();
+	//var premium = premiumofVehicle+" "+premiumofVehicleUnit;
+	
+	var extrasIn = "";
+	var extrasUnit = "";
+	var extrasType = "";
+	
+	for(var i=1; i<= counterext;i++){
+		var extrasTypeUpTo = $("#extraType_"+i).val();
+		extrasType += extrasTypeUpTo+"_";
+		var extrasUpTo = $("#extraIn_"+i).val();
+		extrasIn += extrasUpTo+"_";
+		var extrasUnitUpTo = $('input[name=extrasName_'+i+']:checked').val();
+		extrasUnit += extrasUnitUpTo+"_";
+	}
+	
+	extrasType = extrasType.slice(0, -1);
+	extrasIn = extrasIn.slice(0, -1);
+	extrasUnit = extrasUnit.slice(0, -1);
+	
+	
+	///// PeakTime Charges Code Starts Here ////
+
+	var peakTimeChargesFrom = "";
+	var peakTimeChargesTo = "";
+	var peakTimeChargesPercent = "";
+	for(var i=1; i<= appendedPeakTimeLength;i++){
+	var peaktime_from = $("#peak_timeFrom_"+i).val();
+	peakTimeChargesFrom += peaktime_from+"_";
+	var peaktime_to = $("#peak_timeTo_"+i).val();
+	peakTimeChargesTo += peaktime_to+"_";
+	var peaktime_charges = $("#peak_timePercentage_"+i).val();
+	peakTimeChargesPercent += peaktime_charges+"_";
+	}
+	peakTimeChargesFrom		=	peakTimeChargesFrom.slice(0, -1);
+	peakTimeChargesTo		=	peakTimeChargesTo.slice(0, -1);
+	peakTimeChargesPercent	=	peakTimeChargesPercent.slice(0, -1);
+
+	///// PeakTime Charges Code Ends Here ////
+	
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManagePremium',
+		cache: false,
+		dataType:"json",
+		data:{
+				nightChrge:nightChrge,
+                nightPremiumUnit:nightPremiumUnit,
+				nightChStrtTime:nightChStrtTime,
+				nightChEndTime:nightChEndTime,
+				premiumofVehicle:premiumofVehicle,
+				premiumofVehicleUnit:premiumofVehicleUnit,
+				extrasType:extrasType,
+				extrasIn:extrasIn,
+				extrasUnit:extrasUnit,
+				peakTimeChargesFrom:peakTimeChargesFrom,
+				peakTimeChargesTo:peakTimeChargesTo,
+				peakTimeChargesPercent:peakTimeChargesPercent,
+				CabTypeId:cabTypeId, 
+                BookingTypeId:BookingTypeId,
+                RecId:RecId,
+                UpdatedStatus:Updated_Status
+		}
+		
+	})
+  .done(function( html ) {
+		alert("Fare Updated");
+		//location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+//// Code To Save Premium Ends Here ///// 
+
+//// Code To Save Fixed Routes Starts Here ///// 
+
+$("#fixed_route_fair_manage_cab_save").click(function(){
+
+	var Updated_Status = $("input[name='UpdatedStatus_fixedRoute']:checked").val();  
+	var frequent_location = $("#frequent_location").val();
+	var pickupPostCodeArr = "";
+	var dropPostCodeArr = "";
+	var rsPostCodeArr = "";
+	
+	for(var i=1; i<= counterPostCode;i++){
+		var pickupPostCode = $("#pickupPostCode_"+i).val();
+		pickupPostCodeArr += pickupPostCode+"_";
+		
+		var dropPostCode = $("#dropoffPostCode_"+i).val();
+		dropPostCodeArr += dropPostCode+"_";
+		
+		var rsPostCode = $("#rsPostCode_"+i).val();
+		rsPostCodeArr += rsPostCode+"_";
+		
+	}
+		
+	pickupPostCodeArr = pickupPostCodeArr.slice(0, -1);
+	dropPostCodeArr = dropPostCodeArr.slice(0, -1);
+	rsPostCodeArr = rsPostCodeArr.slice(0, -1);
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/saveFairManageFixedRoute',
+		cache: false,
+		dataType:"json",
+		data:{
+				frequent_location:frequent_location,
+				pickupPostCodeArr:pickupPostCodeArr,
+				dropPostCodeArr:dropPostCodeArr,
+				rsPostCodeArr:rsPostCodeArr,
+				CabTypeId:cabTypeId,
+                BookingTypeId:BookingTypeId,
+                RecId:RecId,
+                UpdatedStatus:Updated_Status
+		}
+		
+	})
+    
+  .done(function( html ) {
+		alert("Fare Updated");
+		//location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+//// Code To Save Fixed Routes Ends Here /////
+
+//// Code To Save Share Starts Here /////
+
+$("#share_cab_save").click(function(){
+	
+	var companyShare = $('#company_share').val();
+	var partnerShare = $('#partner_share').val();
+	var driverShare = $('#driver_share').val();
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/shareCalculation',
+		cache: false,
+		dataType:"json",
+		data:{
+				companyShare:companyShare,
+				partnerShare:partnerShare,
+				driverShare:driverShare
+		}
+		
+	})
+  .done(function( html ) {
+		
+		alert("Fare Updated");
+		location.reload();
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+});
+
+//// Code To Save Share Ends Here /////
+
+function getCompanyShareSum(val)
+{
+	debugger;
+//alert(val);
+var status=false;
+var res;
+var company_share	=	document.getElementById('company_share').value;
+var partner_share	=	document.getElementById('partner_share').value;
+var driver_share	=	document.getElementById('driver_share').value;
+var ch=' ';
+if(company_share==ch || partner_share==ch || driver_share==ch)
+{
+	debugger;
+	//alert('Munesh');
+	if(val=='c')
+	alert('Please enter correct number in Company Share');
+	else if(val=='p')
+	alert('Please enter correct number in Partner Share');
+	else if(val=='d')
+	alert('Please enter correct number in Driver Share');
+}else if((parseInt(company_share)<0 || parseInt(company_share)>100) && (parseInt(partner_share)<0 || parseInt(partner_share)>100) && (parseInt(driver_share)<0 || parseInt(driver_share)>100)){
+	//alert('Mohit');
+	if(val=='c')
+	alert('Please enter number in range of 1-100 in Company Share');
+	else if(val=='p')
+	alert('Please enter number in range of 1-100 in Partner Share');
+	else if(val=='d')
+	alert('Please enter number in range of 1-100 in Driver Share');
+}else{
+/* if(company_share=="" && parseInt(company_share)<0 && company_share==ch){
+	alert('Mohit');
+} */
+var total_share		=	parseInt(100);
+if(val=='c'){
+		var result = total_share - parseInt(company_share);
+		res = result - parseInt(partner_share);
+		if(res<0){
+		document.getElementById('partner_share').value	=	result;
+		result=0;
+		document.getElementById('driver_share').value	=	result;
+		}else{
+		result=result-parseInt(partner_share);
+		document.getElementById('partner_share').value	=	parseInt(partner_share);
+		document.getElementById('driver_share').value	=	result;
+		}
+		status=true;
+}
+else if(val=='p'){
+	//debugger;
+var result = total_share - parseInt(partner_share);
+
+ res = result - parseInt(driver_share);
+ if(res<0){
+	document.getElementById('driver_share').value	=	result;
+	result=0;
+	document.getElementById('company_share').value	=	result;
+	}else{
+		result=result-parseInt(driver_share);
+		document.getElementById('driver_share').value	=	parseInt(driver_share);
+		document.getElementById('company_share').value	=	result;
+	}
+ 
+/* if(result<=0){result=0;}
+document.getElementById('company_share').value	=	result; */
+status=true;
+}
+else if(val=='d'){
+	debugger;
+var result = total_share - parseInt(driver_share);
+res = result - parseInt(company_share);
+
+ if(res<0){
+	document.getElementById('company_share').value	=	result;
+	result=0;
+	document.getElementById('partner_share').value	=	result;
+	}else{
+	result=result-parseInt(company_share);
+	document.getElementById('company_share').value	=	parseInt(company_share);
+	document.getElementById('partner_share').value	=	result;
+	}
+
+/* if(result<=0){result=0;}
+document.getElementById('partner_share').value	=	result; */
+status=true;
+}
+if(status=false){
+	if(val=='c')
+	alert('Please enter correct value in Company Share');
+	else if(val=='p')
+	alert('Please enter correct value in Partner Share');
+	else if(val=='d')
+	alert('Please enter correct value in Driver Share');
+}
+/*if(a>total_share)
+{
+	if(val=='c')
+	alert('Please enter correct value in Company Share');
+	else if(val=='p')
+	alert('Please enter correct value in Partner Share');
+	else if(val=='d')
+	alert('Please enter correct value in Driver Share');
+}
+else if(a<=total_share){
+
+ if(val=='c'){
+var result = total_share - (parseInt(company_share) + parseInt(partner_share));
+document.getElementById('driver_share').value	=	result;
+}
+else if(val=='p'){
+var result = total_share - (parseInt(partner_share) + parseInt(driver_share));
+document.getElementById('company_share').value	=	result;
+}
+else if(val=='d'){
+var result = total_share - (parseInt(driver_share) + parseInt(company_share));
+document.getElementById('partner_share').value	=	result;
+} 
+}*/
+/*else{
+	if(val=='c')
+	alert('Please enter correct Number in Company Share');
+	else if(val=='p')
+	alert('Please enter correct Number in Partner Share');
+	else if(val=='d')
+	alert('Please enter correct Number in Driver Share');
+}
+ var sum_e=0;
+var sum_d=0;
+var cot_e=53;
+var cot_d=83;
+for(var i_e=1;i_e<=cot_e;i_e++)
+{
+sum_e	=	sum_e+ parseInt(document.getElementById('total_pay_e'+i_e).value);
+}
+for(var i_d=1;i_d<=cot_d;i_d++)
+{
+sum_d	=	sum_d+parseInt(document.getElementById('total_pay_d'+i_d).value);
+}
+var total_ear=sum_e+parseInt(document.getElementById('emp_basic').value)+parseInt(document.getElementById('gpid').value);
+//alert(sum_d);
+document.getElementById('tot_ear').innerHTML=total_ear+'.00';
+document.getElementById('tot_ded').innerHTML=sum_d+'.00';
+document.getElementById('net_amount').innerHTML=(parseInt(total_ear)-parseInt(sum_d))+'.00';
+//alert(12); */
+}
+}
+
+///////////////////Local------>>>>> Distance***********************************************////
+
+$(document).on('click','.addpkg_on_plus',function(){ 
+		var addButtonId = $(this).attr('id');
+		var counterArr = addButtonId.split("_");
+		
+		var counter = counterArr[1];
+			counter++;
+		$("#"+addButtonId).remove();	
+		
+		var detailsdiv = "";
+		detailsdiv += '<div class="row form-group"><div class="col-sm-2"><input type="text" id="pkg_nameDistance_'+counter+'" class="form-control allowtext" /></div><div class="col-sm-2"><input type="text" id="pkg_ignoreKmDistance_'+counter+'" class="form-control" /></div><div class="col-sm-2"><input type="text" id="pkg_amountDistance_'+counter+'" class="form-control" /></div><div class="col-sm-1 remove_pkg_row"><a href="#"  id="removeDistancePkgFields_'+counter+'"><i class="fa fa-trash-o fa-2x"></i></a></div><div class="col-sm-2"><div class="col-sm-4  addpkg_on_plus" style="padding:0;" id="addpkgdis_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div></div>';
+		
+		appendedPackageDistanceLength ++;
+		$("#appended_Dis_package").append(detailsdiv);
+		return false;
+ 
+ });
+ 
+
+$(document).on('click','.remove_pkg_row',function(){
+	var addId = $(".addpkg_on_plus").attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[1];
+	counter--;
+	$(this).closest('.row').remove();
+		 var addbtn_length=$("#appended_Dis_package .addpkg_on_plus").length;
+		 var row_leng=$("#appended_Dis_package .row").length;
+		//alert(rowleng);
+		 if(row_leng ==0){
+			$("#pkg_amountDistance_1").parent().after('<div class="col-sm-2"><div class="col-sm-4  addpkg_on_plus" style="padding:0;" id="addpkgdis_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+		  }
+		if(addbtn_length ==0){
+				$("#removeDistancePkgFields_"+counter).parent().after('<div class="col-sm-2"><div class="col-sm-4  addpkg_on_plus" style="padding:0;" id="addpkgdis_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+			}   
+		appendedPackageDistanceLength --;		
+	return false;
+});
+
+/////////////////////*********************************************************************
+///////////////////Local------>>>>> Hourly***********************************************////
+
+$(document).on('click','.addPKG_loc_hourly',function(){ 
+		var addButtonId = $(this).attr('id');
+		var counterArr = addButtonId.split("_");
+		
+		var counter = counterArr[1];
+			counter++;
+		$("#"+addButtonId).remove();	
+		
+		var detailsdiv = "";
+		detailsdiv += '<div class="row form-group"><div class="col-sm-2"><input type="text" id="pkg_nameHourly_'+counter+'" class="form-control allowtext" /></div><div class="col-sm-2"><input type="text" id="pkg_ignoreHRHourly_'+counter+'" class="form-control" /></div><div class="col-sm-2"><input type="text" id="pkg_amountHourly_'+counter+'" class="form-control" /></div><div class="col-sm-1 remove_pkg_row_hourly"><a href="#"  id="removeHourly_PkgFields_'+counter+'"><i class="fa fa-trash-o fa-2x"></i></a></div><div class="col-sm-2"><div class="col-sm-4  addPKG_loc_hourly" style="padding:0;" id="addPKgHourly_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div></div>';
+		
+		appendedPackageHourlyLength ++;
+		$("#appended_Hourly_package").append(detailsdiv);
+		return false;
+ 
+ });
+ 
+
+$(document).on('click','.remove_pkg_row_hourly',function(){
+	var addId = $(".addPKG_loc_hourly").attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[1];
+	counter--;
+	$(this).closest('.row').remove();
+		 var addbtn_length=$("#appended_Hourly_package .addPKG_loc_hourly").length;
+		 var row_leng=$("#appended_Hourly_package .row").length;
+		//alert(rowleng);
+		 if(row_leng ==0){
+			$("#pkg_amountHourly_1").parent().after('<div class="col-sm-2"><div class="col-sm-4  addPKG_loc_hourly" style="padding:0;" id="addPKgHourly_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+		  }
+		if(addbtn_length ==0){
+				$("#removeHourly_PkgFields_"+counter).parent().after('<div class="col-sm-2"><div class="col-sm-4  addPKG_loc_hourly" style="padding:0;" id="addPKgHourly_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+			}   
+		appendedPackageHourlyLength --;		
+	return false;
+});
+
+/////////////////////*****************************************************************
+///////////////////Local------>>>>> Distance + Hour***********************************************////
+
+$(document).on('click','.addPKG_loc_Dist_hourly',function(){ 
+		var addButtonId = $(this).attr('id');		
+		var counterArr = addButtonId.split("_");		
+		var counter = counterArr[3];
+			counter++;
+		$("#"+addButtonId).remove();		
+		var detailsdiv = "";
+		detailsdiv += '<div class="row form-group"><div class="col-sm-2"><input type="text" id="pkg_nameDist_Hourly_'+counter+'" class="form-control allowtext" /></div><div class="col-sm-2"><input type="text" id="pkg_ignorHR_DistHourly_'+counter+'" class="form-control" /></div><div class="col-sm-2"><input type="text" id="pkg_ignoreKM_DistHourly_'+counter+'" class="form-control" /></div><div class="col-sm-2"><input type="text" id="pkg_amount_Dist_Hourly_'+counter+'" class="form-control" /></div><div class="col-sm-1 removepkgrow_disthourly"><a href="#"  id="removeDist_Hourly_Pkg_'+counter+'"><i class="fa fa-trash-o fa-2x"></i></a></div><div class="col-sm-2"><div class="col-sm-4  addPKG_loc_Dist_hourly" style="padding:0;" id="addPKg_DisT_Hourly_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div></div>';		
+		appendedPackageDistanceHourlyLength ++;
+		$("#appended_Dist_Hourly_package").append(detailsdiv);
+		return false; 
+ });
+$(document).on('click','.removepkgrow_disthourly',function(){
+	var addId = $(".addPKG_loc_Dist_hourly").attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[3];
+	counter--;
+	$(this).closest('.row').remove();
+		 var addbtn_length=$("#appended_Dist_Hourly_package .addPKG_loc_Dist_hourly").length;
+		 var row_leng=$("#appended_Dist_Hourly_package .row").length;
+		 if(row_leng ==0){
+			$("#pkg_amount_Dist_Hourly_1").parent().after('<div class="col-sm-2"><div class="col-sm-4  addPKG_loc_Dist_hourly" style="padding:0;" id="addPKg_DisT_Hourly_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+		  }
+		if(addbtn_length ==0){
+				$("#removeDist_Hourly_Pkg_"+counter).parent().after('<div class="col-sm-2"><div class="col-sm-4  addPKG_loc_Dist_hourly" style="padding:0;" id="addPKg_DisT_Hourly_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+			}   
+		appendedPackageDistanceHourlyLength --;		
+	return false;
+});
+
+/////////////////////*****************************************************************
+///////////////////Local------>>>>> Distance + Waiting***********************************************////
+
+$(document).on('click','.add_DistWaitLCLpkg',function(){ 
+		var addButtonId = $(this).attr('id');
+		var counterArr = addButtonId.split("_");		
+		var counter = counterArr[1];
+			counter++;
+		$("#"+addButtonId).remove();		
+		var detailsdiv = "";
+		detailsdiv += '<div class="row form-group"><div class="col-sm-2"><input type="text" id="distWaitLCLpkgName_'+counter+'" class="form-control allowtext" /></div><div class="col-sm-2"><input type="text" id="distWaitLCLpkg_ingoreKM_'+counter+'" class="form-control" /></div><div class="col-sm-2"><input type="text" id="distWaitLCLpkgAmount_'+counter+'" class="form-control" /></div><div class="col-sm-1 remove_pkg_DistWait"><a href="#"  id="removeDistWaitLCLPkg_'+counter+'"><i class="fa fa-trash-o fa-2x"></i></a></div><div class="col-sm-2"><div class="col-sm-4  add_DistWaitLCLpkg" style="padding:0;" id="DistWaitLCLpkgAdd_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div></div>';		
+		appendedPackageDistanceWaitingLength ++;
+		$("#appended_Dis_Wait_pkgdiv").append(detailsdiv);
+		return false; 
+ });
+$(document).on('click','.remove_pkg_DistWait',function(){
+	var addId = $(".add_DistWaitLCLpkg").attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[1];
+	counter--;
+	$(this).closest('.row').remove();
+		 var addbtn_length=$("#appended_Dis_Wait_pkgdiv .add_DistWaitLCLpkg").length;
+		 var row_leng=$("#appended_Dis_Wait_pkgdiv .row").length;
+		 if(row_leng ==0){
+			$("#distWaitLCLpkgAmount_1").parent().after('<div class="col-sm-2"><div class="col-sm-4  add_DistWaitLCLpkg" style="padding:0;" id="DistWaitLCLpkgAdd_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+		  }
+		if(addbtn_length ==0){
+				$("#removeDistWaitLCLPkg_"+counter).parent().after('<div class="col-sm-2"><div class="col-sm-4  add_DistWaitLCLpkg" style="padding:0;" id="DistWaitLCLpkgAdd_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+			}   
+		appendedPackageDistanceWaitingLength --;		
+	return false;
+});
+/////////////////////*********************************************************
+
+
+///////////////////Peak Time Addition Starts HERE*******************************////
+
+$(document).on('click','.addpeaktime_on_plus',function(){ 
+		var addButtonId = $(this).attr('id');
+		var counterArr = addButtonId.split("_");
+		
+		var counter = counterArr[1];
+			counter++;
+		$("#"+addButtonId).remove();	
+		
+		var detailsdiv = "";
+		detailsdiv += '<div class="row form-group" style="margin-top:10px;"><div class="input-group" style="margin-right:3px;"><input type="text" id="peak_timeFrom_'+counter+'" class="form-control" readonly/></div><div class="input-group" style="margin-right:3px;"><input type="text" id="peak_timeTo_'+counter+'" class="form-control" readonly/></div><div class="input-group" style="margin-right:3px;"><input type="text" id="peak_timePercentage_'+counter+'" class="form-control" /></div><div class="input-group remove_peaktime_row" style="margin-left:3px;"><a href="#"  id="removePeakTimePkgFields_'+counter+'"><i class="fa fa-trash-o fa-2x"></i></a></div><div class="input-group" style="margin-left:3px;"><div class="input-group addpeaktime_on_plus" style="padding:0;" id="addpeaktime_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div></div>';
+		appendedPeakTimeLength ++;
+		$("#appended_PeakTime_package").append(detailsdiv);
+		
+		$("#peak_timeFrom_"+counter+",#peak_timeTo_"+counter).timepicker({
+		changeMonth: true,
+		changeYear: true,
+		yearRange: '2000:2015',
+		dateFormat : 'yy-mm-dd',
+		timeFormat: "HH:mm:ss",
+		defaultDate: new Date()
+		});
+		return false;
+ 
+ });
+ 
+
+$(document).on('click','.remove_peaktime_row',function(){
+	var addId = $(".addpeaktime_on_plus").attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[1];
+	counter--;
+	$(this).closest('.row').remove();
+		 var addbtn_length=$("#appended_PeakTime_package .addpeaktime_on_plus").length;
+		 var row_leng=$("#appended_PeakTime_package .row").length;
+		//alert(rowleng);
+		 if(row_leng ==0){
+			$("#peak_timePercentage_1").parent().after('<div class="input-group"><div class="addpeaktime_on_plus" style="padding:0;" id="addpeaktime_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+		  }
+		if(addbtn_length ==0){
+				$("#removePeakTimePkgFields_"+counter).parent().after('<div class="input-group"><div class="col-sm-4  addpeaktime_on_plus" style="padding:0;" id="addpeaktime_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+			}   
+		appendedPeakTimeLength --;		
+	return false;
+});
+
+$("#peak_timeFrom_1,#peak_timeTo_1").timepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '2000:2015',
+        dateFormat : 'yy-mm-dd',
+		timeFormat: "HH:mm:ss",
+        defaultDate: new Date()
+    });
+
+////////////Peak Time Addition Ends HERE***************************************
+
+
+///////////////////Pre Waiting Time Addition Starts HERE*******************************////
+
+
+
+
+$(document).on('click','.addprewaiting_on_plus',function(){ 
+		var addButtonId = $(this).attr('id');
+		var counterArr = addButtonId.split("_");
+		
+		var counter = counterArr[1];
+			counter++;
+		$("#"+addButtonId).remove();	
+		
+		var detailsdiv = "";
+	
+		detailsdiv += '<div class="row form-group" style="margin-top:10px;"><div class="col-sm-2"><input type="text" id="pre_waiting_minutes_'+counter+'" class="form-control"/></div><div class="col-sm-2"><div class="input-group"> <span class="input-group-addon waitingFeeRupees_hour">Rs</span><input type="text" id="pre_waiting_fees_'+counter+'" class="form-control"/></div></div><div class="col-sm-1 remove_prewaitingtime_row"><a href="#"  id="removePreWaitingPkgFields_'+counter+'"><i class="fa fa-trash-o fa-2x"></i></a></div><div class="col-sm-1"><div class=" addprewaiting_on_plus" style="padding:0;" id="addprewaiting_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div></div>';
+		appendedPreWaitingTimeLength ++;
+		$("#appended_PreWaitingTime_package").append(detailsdiv);
+		return false;
+ 
+ });
+ 
+
+$(document).on('click','.remove_prewaitingtime_row',function(){
+	var addId = $(".addprewaiting_on_plus").attr('id');
+	var addIdArr = addId.split("_");
+	var counter  = addIdArr[1];
+	counter--;
+	$(this).closest('.row').remove();
+		 var addbtn_length=$("#appended_PreWaitingTime_package .addprewaiting_on_plus").length;
+		 var row_leng=$("#appended_PreWaitingTime_package .row").length;
+		//alert(rowleng);
+		 if(row_leng ==0){
+			$("#pre_waiting_fees_1").parent().after('<div class="input-group"><div class="addprewaiting_on_plus" style="padding:0;" id="addprewaiting_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+		  }
+		if(addbtn_length ==0){
+				$("#removePreWaitingPkgFields_"+counter).parent().after('<div class="input-group"><div class="col-sm-1  addprewaiting_on_plus" style="padding:0;" id="addprewaiting_'+counter+'"><a href="#" class="btn btn-info form-control">Add</a></div></div>');
+			}   
+		appendedPreWaitingTimeLength --;		
+	return false;
+});
+
+///////////////////Pre Waiting Time Addition Ends HERE*******************************////
+
+
+
+</script> 

@@ -1,0 +1,382 @@
+<?php $session=new Zend\Session\Container('user');
+//echo $session->offsetGet('token');exit; 
+?>
+
+
+<style>
+.goog-te-banner-frame.skiptranslate {
+	display: none !important;
+}
+body {
+	top: 0px !important;
+}
+.goog-te-gadget {
+	color: transparent !important;
+}
+.goog-logo-link {
+	display: none !important;
+}
+.goog-te-combo {
+	color: #000;
+	padding: 3px;
+}
+.goog-te-gadget .goog-te-combo {
+	margin: 6px 0px !important;
+}
+
+.list-group-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    display: block;
+    font-size: 14px !important;
+    margin-bottom: -1px;
+    padding: 10px 7px;
+    position: relative;
+}
+
+.yellactive {
+   
+    font-size: 14px !important;
+  
+}
+
+.col-sm-2 {
+    color: #333 !important;
+}
+</style>
+<script>
+          var global_url="<?php echo $this->basePath();?>";
+        </script>
+<?php 
+if (defined('RUNNING_FROM_ROOT')) {
+  
+	$url = $this->basePath().'/public';
+} ?>
+<?php echo $this->doctype(); ?>
+<html lang="en">
+<head>
+
+ <title>Car Rental | Car Hire | Taxi Service| Cab Service | Online Taxi Booking | Cab Booking India | Cab Booking Delhi |Point to Point Cab booking | Outstatin Services | Airport Transfer | Holle42</title> 
+
+<meta name="Keywords" content="Car Rental , Car Hire, Taxi Service, Cab Service, Cab Hire, Taxi Hire ,Cab Rental, Taxi Booking, Rent A Car, Car Rental India, Online Cab Booking, Taxi Cab , Car Rental Service, Online Taxi Booking, Local Taxi Service, Cheap Car Rental, Cab , Taxi , Car Rental, Car Hire Services , Car Rentals India, Taxi Booking India, Cab Booking India Car For Hire,  Taxi Services, Online Car Rentals , Book A Taxi  , Book A Cab, Car Rentals Agency India, Rental Cars In India, Car Hire India, India Car Hire, Car Hire In India, India Car Rentals, Car Rent In India, India Rental Cars, India Cabs, Rent Car In India, Car Rental India, India Car Rental, Rent A Car India, Car Rental In India, Rent A Car In India, India Car Rental Company, Corporate Car Rental India, City Cabs Delhi, Car Rental Company In India, Hire Oneway outstation taxi,Book Oneway taxi from Delhi to Chandigarh,Book Oneway taxi from Delhi to Agra,Book Oneway taxi from Delhi to Jaipur and more in minutes!, Airport Transfer Booking,Taxi for Airport Transfer, Cab for airport Transfer, Car for Airport Transfer,Car for Rail Transfer, Cabs for Rail Transfer,Taxi for Rain Transfer, Outstatin Services in Delhi, Outstation Services in Agra, Outstaton Services in Jaipur, Local car Hire, Point to Point Car Hire in Delhi, Point to Point Taxi Hire in Delhi, Point to Point Cab Hire in Delhi,Cabs for outstation, Cars for outstation,"/>
+
+ <meta name="Description" content="Hello42 India Pvt. Ltd. Provides Online Cab Hire, Taxi Booking , Car Hire Services. Car Hire / Cab /Taxi With Us and Get Best Car Rental Rates, Taxi, Cab Services Across India. Rent A Car, Online Taxi Booking, Local Taxi Service, Cheap Car Rental, Car Rentals Agency India, Rental Cars In India, Car Hire India, India Car Hire, Car Hire In India, India Car Rentals, Car Rent In India, India Rental Cars, India Cabs, Rent Car In India, Car Rental India, India Car Rental, Rent A Car India, Car Rental In India,  Rent A Car In India, India Car Rental Company, Corporate Car Rental India, Rent A Car In Delhi, City Cabs India, Car Rental Company In India Clean cars , On Time Service  ,Planned Pickup , Courteous Driver,  Clean Car ,Complimentary, Outstation Services Rs9/Km Onwards, Airport Transfers only Rs 300 onwards"/>
+
+<meta charset="utf-8">
+<?php echo $this->headTitle(''. $this->translate('Hello42'))->setSeparator(' - ')->setAutoEscape(false) ?><?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+<!-- Le styles -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $url . '/img/favicon.ico'))
+                        ->prependStylesheet($url . '/css/style.css')
+						
+						->prependStylesheet($url . '/css/animate.min.css')
+						//->prependStylesheet($url . '/css/main.css')
+						->prependStylesheet($url . '/css/responsive.css')
+						
+                        ->prependStylesheet($url . '/font-awesome-4.2.0/css/font-awesome.css')
+                        ->prependStylesheet($url . '/css/bootstrap.min1.css')
+                        ->prependStylesheet($url . '/font-awesome-4.2.0/css/font-awesome.min.css')
+                        ->prependStylesheet($url . '/css/bootstrap-theme.min.css')
+                        ->prependStylesheet($url . '/css/bootstrap.min.css')
+                        ->prependStylesheet($url . '/css/style.css')
+                        ->prependStylesheet($url . '/css/plugins/dataTables.bootstrap.css')
+                        ->prependStylesheet($url . '/css/custom.css')
+						->prependStylesheet($url . '/css/updatedstyle.css')
+						->prependStylesheet($url . '/css/fonts.css')
+                ;?>
+<script src="http://maps.google.com/maps/api/js?sensor=true&libraries=places"></script>
+<?php  echo  $this->headScript()
+			 
+			
+                     ->prependFile($url . '/js/plugins/dataTables/dataTables.bootstrap.js')
+                     ->prependFile($url . '/js/plugins/dataTables/jquery.dataTables.js')
+                     ->prependFile($url . '/js/bootstrap.js')
+                     ->prependFile($url . '/js/global_text.js')
+                     ->prependFile($url . '/js/login_data.js')  
+                     ->prependFile($url . '/js/userhome.js')
+                     ->prependFile($url . '/js/predefine.js',   'text/javascript')
+                     ->prependFile($url . '/js/regioncheck.js')
+                     ->prependFile($url . '/js/global_text.js')
+                     ->prependFile($url . '/js/jquery.min.js')
+					  ->prependFile($url . '/js/translate-this.js')
+					   ->prependFile($url . '/js/predefine.js')
+                     ;
+						
+                       
+                ?>
+<!-- Scripts -->
+<style>
+input.error {
+	border: 1px solid red;
+}
+.error {
+	color: red;
+}
+</style>
+<script>
+    var baseurl = "<?php echo $this->basePath(); ?>";	
+</script>
+</head>
+<body>
+<script>
+$(document).ready(function() {
+		 $window = $(window);
+	$(window).scroll(function(){
+
+		if($window.scrollTop() > 100)
+			$("#menufix").addClass("active");
+		else	
+			$("#menufix").removeClass("active");
+			
+		if($window.scrollTop() > 300)
+			$("#menufix").addClass("active_more");
+		else	
+			$("#menufix").removeClass("active_more");
+	});
+
+});
+</script>
+
+<div class="" id="menufix">
+<div class="navbar navbar-inverse minhight30 marginbtom0 clearfix topheaderbg" role="navigation">
+  <div class="container">
+   <div style="float:right;">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+    </div>
+    </div>
+    <div style="float:left;">
+     <div class="navbar navbar-inverse marginbtom0 mannavi" role="navigation" style="border-radius:0; border:none">
+      <div class="navbar-header" style="float:;">
+        <button type="button" class="navbar-toggle collapsed" style="padding:0;" data-toggle="collapse" data-target=".navbar-collapse1"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      </div>
+      <div class="navbar-collapse1 collapse" style="padding:1px 0;">
+        <ul class="nav navbar-nav">
+        
+        <li class="" > <a href="#" class="dropdown-toggle" data-toggle="dropdown" onClick="choose_cities()" style="color:#fff;">
+            <bdi id="">Delhi and NCR</bdi>
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu " id="cities_drop" role="menu" style="margin-top: ; display:none;padding-left: 0px;width: 100%; height:auto; border:#c6c6c6 1px solid; margin-left:13px;">
+            </ul>
+            </li>
+          
+          <!--            <li class="active1" ><a href="#" id="home_regions" ></a></li>-->
+          
+        <!--  <li><a href="page?id=career" id="" style="text-transform: capitalize">Careers</a></li>
+          <li><a href="page?id=testimonial" id="" style="text-transform: capitalize">Testimonials</a></li>
+          <li><a href="page?id=terms_condition" id="">Terms & Conditions</a></li>
+          </li>-->
+        </ul>
+       
+        <div id="google_translate_element" class="google_translate_element1" style="margin:5px 0 0 0 !important;">
+        
+        <!-- Begin TranslateThis Button -->
+
+<div id="translate-this"><a style="width:180px;height:18px;display:block;" class="translate-this-button" href="http://www.translatecompany.com/translate-this/">Translate</a></div>
+<script type="text/javascript" src="//x.translateth.is/translate-this.js"></script>
+<script type="text/javascript">TranslateThis();</script>
+
+<!-- End TranslateThis Button -->
+        
+        </div>
+        
+        
+        <!--<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.VERTICAL, autoDisplay: false}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>--> 
+       
+      </div>
+      <!--/.nav-collapse --> 
+    </div>
+      </div>
+    <div class="navbar-collapse collapse  navbar-right" style="padding:0;">
+      <ul class="nav navbar-nav">
+        <!--<li class="active"><a href="<?php echo $this->basePath();  ?>" class="font12px"><i class="fa fa-home fa-fw fa-1x"></i><span id="menu_home"></span></a></li>
+        <li><a href="<?php echo $this->basePath();  ?>/index/page?id=about_us" class="font12px"><i class="fa fa-user fa-fw fa-1x"></i><span id="menu_aboutus"></span></a></li>
+        <li><a href="<?php echo $this->basePath();  ?>/index/page?id=services" class="font12px"><i class="fa fa-paper-plane fa-fw fa-1x"></i><span id="home_services"></span></a></li>
+         <li><a href="page?id=partner" id="" class="font12px" ><i class="fa fa-user fa-fw fa-1x"></i>Partners</a></li>
+     
+        <li><a href="<?php echo $this->basePath();  ?>/index/page?id=contact_us" class="font12px"><i class="fa fa-phone fa-fw fa-1x"></i><span id="home_contact"></span></a></li>-->
+     
+      <li class="active "><a href="<?php echo $this->basePath();  ?>" class="font12px"><i class="fa fa-home fa-fw fa-1x"></i><span>Home</span></a></li>
+          <li><a href="<?php echo $this->basePath();  ?>/index/page?id=about_us" class="font12px "><i class="fa fa-user fa-fw fa-1x"></i><span id="">About Us</span></a></li>
+          <li><a href="<?php echo $this->basePath();  ?>/index/page?id=services" class="font12px "><i class="fa fa-paper-plane fa-fw fa-1x"></i><span id="">Services</span></a></li>
+         <!-- <li><a href="<?php echo $this->basePath();  ?>/index/page?id=partner" id="" class="font12px " ><i class="fa fa-user fa-fw fa-1x"></i>Partners</a></li>-->
+        
+         
+          <li><a href="<?php echo $this->basePath();  ?>/index/page?id=contact_us" class="font12px"><i class="fa fa-phone fa-fw fa-1x"></i><span id="">Contact Us</span></a></li>
+           <li><a href="driver/" class="font12px "><i class="fa fa-user fa-fw fa-1x"></i><span id="">Driver Registration</span></a></li>
+         
+     
+      </ul>
+    </div>
+    <!--/.nav-collapse --> 
+  </div>
+</div>
+</div>
+<div class="container-fluid">
+  <div class="container container_header">
+    <div class="col-sm-3 col-md-3 col-lg-3 marginbottom20"> <a href="<?php echo $this->basePath();  ?>" style="margin-left: 10px; float:left;"><img src="<?php echo $this->basePath();  ?>/public/image/logo.png" width="127" height="65"></a> </div>
+    <?php 
+$userId = $this->id;
+//if(isset($_COOKIE['token']))
+if($session->offsetGet('token')!="")
+{ 
+$token = $_COOKIE['token'];
+$status = 1;
+$login_id = $_COOKIE['login_id'];
+
+?>
+    <!--<input type="hidden" id="loginId" value="<?php //echo $userId=$this->id ?>" >-->
+	<input type="hidden" id="loginId" value="<?php echo $login_id; ?>" >
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 margintop10" style="margin-right:46px; float:right;">
+	<?php if($session->offsetGet('prof_img')!="")
+	{  ?>
+	<img id="d_image123" src="<?= $this->basePath()."/".$session->offsetGet('prof_img') ?>" 
+	style="float:right;margin-right: -7%;border-radius: 10%;margin-top: 15px;" width="40" height="35">
+	<?php }else{ ?>
+	<img id="d_image12" src="<?= $this->basePath()."/public/img/default_user.png";?>" 
+	style="float:right;margin-right: -7%;border-radius: 10%;margin-top: 15px;" width="40" height="35">
+	<?php } ?>
+	<div><label style="width:86px;text-align:center;margin-top: 47px;float:right;margin-right: -10%;color: dodgerblue;font-size: 14px;cursor:pointer;">
+	<?php echo $session->offsetGet('FirstName'); ?></label></div>	
+	<a href="#" id="log_out" class="bgnone  pull-right">
+      <div  class="circle-tile-heading login_signbg red marginbtom0"><i  style='cursor:pointer;'  class="fa fa-sign-out fa-fw fa-1_5x sicon"></i></div>
+      <label class="control-label textlogin">
+      <!--<span id="user_logout"><span>-->
+      <span id="">Log out<span>
+      
+      </label>
+      </a>
+	  
+	  
+	  <?php if($session->offsetGet('type_data')==3){ ?>
+	  <a href="<?php echo $this->basePath() ?>/login/driver" id="my_account" class="bgnone  pull-right" onClick="return true;">
+      <div class="circle-tile-heading login_signbg red marginbtom0"><i style='cursor:pointer;' class="fa fa-sign-in fa-fw fa-1_5x sicon"></i></div>
+      <label class="control-label textlogin">
+     <!-- <span id="useraccount"></span>-->
+      <span id=""> My Account</span>
+      </label>
+      </a>
+	  <?php }else{ ?>
+	  <a href="<?php echo $this->basePath() ?>/login/user" id="my_account" class="bgnone  pull-right" onClick="return true;">
+      <div class="circle-tile-heading login_signbg red marginbtom0"><i style='cursor:pointer;' class="fa fa-sign-in fa-fw fa-1_5x sicon"></i></div>
+      <label class="control-label textlogin"><span id="useraccount"></span></label>
+      </a>
+	  <?php }?>
+	  
+	  <?php if($session->offsetGet('type_data')==3){ ?>
+	  <a href="<?php echo $this->basePath() ?>/login/driver/drivereditprofile">
+	 <!-- <label style="margin-top: 5%;margin-left: 56%;color: dodgerblue;font-size: 14px;cursor:pointer;"><?php echo $session->offsetGet('Email'); ?></label>-->
+	  </a>
+	  <?php }else{ ?>
+	  <a href="<?php echo $this->basePath() ?>/login/user/editprofile">
+	 <!-- <label style="margin-top: 5%;margin-left: 56%;color: dodgerblue;font-size: 14px;cursor:pointer;"><?php echo $session->offsetGet('Email'); ?></label>-->
+	  </a>
+	  <?php }?>
+	  
+	  </div>
+  </div>
+</div>
+<?php
+} 
+else{
+	
+	
+
+ ?>
+<input type="hidden" id="loginId" value="<?php echo $userId=$this->id ?>" >
+<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="margin-top:5px; float:right;"> <a href="<?php echo $this->basePath();  ?>/login" class="bgnone  pull-right">
+  <div onClick="loginhome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-1_5x sicon" style='cursor:pointer;' ></i></div>
+  <label class="control-label textlogin"><span id="login_user"></span></label>
+  </a> <a href="<?php echo $this->basePath();  ?>/login/index/signup" class="bgnone  pull-right">
+  <div onClick="signuphome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-user fa-fw fa-1_5x sicon" style='cursor:pointer;' ></i></div>
+  <label class="control-label textlogin"><span id="user_signup"></span></label>
+  </a> </div>
+</div>
+</div>
+<?php } ?>
+</div>
+</div>
+
+<?php echo $this->content; ?> 
+<!--test--> 
+
+<!--Fixed social icons right side START-->
+<div class="socialbtn"> <a href="#" class="arrowbtn"><i class="fa fa-chevron-left fa-1_5x"></i></a> <a href="https://www.facebook.com/hello42cab"><i class="fa fa-facebook-square fa-2x" style="color:#6072a4;margin:5px"></i></a> <a href="https://twitter.com/Hello42Cab"><i class="fa fa-tumblr-square fa-2x" style="color:#6fcdef;margin:5px"></i></a> <a href="http://www.linkedin.com/profile/view?id=275100208&trk=tab_pro"><i class="fa fa-linkedin-square fa-2x" style="color:#278cda;margin:5px"></i></a> <a href="https://plus.google.com/b/114185713917284363039/114185713917284363039/posts/p/pub"><i class="fa fa-google-plus-square fa-2x" style="color:#d97e69;margin:5px"></i></a> </div>
+<!--Fixed social icons right side END--> 
+
+<!--Fixed social icons left side START-->
+<div class="socialbtnleft"> 
+<a href="#" class="arrowbtnleft"><i class="fa fa-chevron-right fa-1_5x"></i></a> 
+<a href="<?php echo $this->basePath(); ?>/login/index/signup?role=3"><i class="fa fa-car fa-1_5x cardesign"></i><span style="font-size:12px !important; color:#333;">&nbsp;Attach Your Car</span></a> 
+<a href="#"><i class="fa fa-map-marker fa-1_5x cardesign" style="padding:10px 15px;""></i><span style="font-size:12px !important; color:#333;">&nbsp;Track Car</span></a> </div>
+<!--Fixed social icons left side END--> 
+<!--test-->
+<!--footer-->
+
+<div class="container-fluid webfooter">
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-121">
+    <div class="col-sm-6" >
+       <p style="text-align:left;">Copyright 2013 &copy; Hello42 Pvt. Ltd. All Rights Reserved.</p>
+      </div>
+    <div class="col-sm-6"><p style="text-align:right;">
+    	 <a class="btn btn-social-icon padding_margin0" target="_blank" href="https://www.facebook.com/hello42cab"><i class="fa fa-facebook fa-1x socialneticons btn-danger"></i></a> <a class="btn btn-social-icon padding_margin0" target="_blank" href="https://twitter.com/Hello42Cab"><i class="fa fa-tumblr fa-1x socialneticons btn-danger"></i></a> <a class="btn btn-social-icon padding_margin0" target="_blank" href="http://www.linkedin.com/profile/view?id=275100208&trk=tab_pro"><i class="fa fa-linkedin fa-1x socialneticons btn-danger"></i></a> <a class="btn btn-social-icon padding_margin0" target="_blank" href="https://plus.google.com/b/114185713917284363039/114185713917284363039/posts/p/pub"><i class="fa fa-google-plus fa-1x socialneticons btn-danger"></i></a> </p>
+    
+    </div>
+    
+      
+    </div>
+    </div>
+  </div>
+</div>
+<!--footer--> 
+
+<?php echo $this->inlineScript()        
+                    ->prependFile($url . '/js/jquery.bpopup.js')
+                    ->prependFile($url . '/js/userbooking.js')       
+                    ->prependFile($url . '/js/login.js')
+//                  ->prependFile($this->basePath() . '/public/js/crop-avatar.js')
+                    ->prependFile($this->basePath() . '/public/js/cropper.min.js')
+                    ->prependFile($url . '/js/driver_reg.js')
+                    ->prependFile($url . '/js/jquery.cookie.js')
+                    ->prependFile($this->basePath() . '/public/js/jquery.validate.min.js')	
+                    ->prependFile($url . '/js/jquery-migrate-1.2.1.min.js')
+					
+					 ->prependFile($url . '/jsn/jquery.prettyPhoto.js')
+					 ->prependFile($url . '/jsn/jquery.isotope.js')
+
+->prependFile($url . '/jsn/main.js')
+
+->prependFile($url . '/jsn/wow.min.js')
+
+					
+					
+                    ->prependFile($url . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                    ->prependFile($url . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',)); 
+		
+		
+		?> 
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> 
+<!--footer--> 
+<!--footer--> 
+<script>
+			
+		</script>
+        
+        <style>
+		.col-sm-2 {
+    color: #333 !important;
+}
+</style>
+</body>
+</html>
+<!--         ////////end login form///////////////       -->

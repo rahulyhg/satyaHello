@@ -1,0 +1,358 @@
+<div class="signinbg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 pull-left">
+						<strong style="display:none; width:130px; color:white; font-size:14px;">Email Or Number</strong>
+                        <strong style="display:block; width:130px; color:white; font-size:14px;">Login</strong>
+                        <h3 style="display:none;">Segment</h3>
+
+                      </div>
+					<div class="col-lg-5 col-lg-offset-1" id="crum" style="display:none">
+					  <ul class=" badcarmlist">
+                     	<li class="active"><a class="active" href="">Email</a></li>
+                        <li class='segment_crum'><a class="segment_crum" href="">Segment</a></li>
+                      	 <li><a href="">Verification</a></li>
+                   
+                       	 <li style="background:none;"><a href="
+                         ">Done</a></li>
+                     </ul>
+					</div>
+ 				</div>
+			</div>
+		</div>
+        
+        
+
+<?php
+//session_start();
+
+?>
+<!--<div class="jumbotron">
+    <h1><?php //echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
+    <p><?php //echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
+    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php //echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+       <div>
+			<table>
+			<tr>
+			<h2>User SignUp</h2>
+			</tr>
+			<tr>
+			<td>User Name: </td>
+			<td><input type="text" id="username" name= "username"></td>
+			</tr>
+			<tr>
+			<td>password: </td>
+			<td><input type="text" id="password" name= "password"></td>
+			</tr>
+			<tr>
+			
+			<td><input type="button" value="Save" onclick="testforsignup();"></td>
+			</tr>
+			</table>
+	   </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php// echo $this->translate('Discover Modules') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php //echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
+                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank"><?php //echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php// echo $this->translate('Help &amp; Support') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php //echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
+                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank"><?php// echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function testforsignup(){
+				
+				var username = $("#username").val();
+				var password = $("#password").val();
+				
+
+				var url = '../tunnel/menu/hie';
+						$.ajax({
+							type: 'POST',
+							//contentType: 'application/json',
+							url: url,
+							dataType: "json",
+							data : {user:username,pass:password},
+							success: sucessForUpdate,
+							error: errorForUpdate
+						});
+
+							function sucessForUpdate(data){
+							alert("success");	
+							
+							
+							
+							}
+							function errorForUpdate(data){
+							
+							console.log(data);
+							alert("no");	
+							}
+				
+}
+
+</script>-->
+
+
+
+
+		
+		<form id="login_form2" autocomplete="off">
+        <!--Login START-->
+		<div class="container leftbox" id="login_start" style="display:block; margin-top: 40px;">
+				<div class="row text-center">
+					<div class="col-md-12">
+						<div class="exit_iconbox">
+							<a href="#">
+                               <!--<div class="circle-tile-heading red">
+                                     <i class="fa fa-sign-in fa-fw fa-5x"></i>
+                                </div>-->
+								<div class="circle-tile-heading red">
+                                     <i class="fa fa-sign-in fa-fw fa-1_5x sicon" style="cursor:pointer;"></i>
+                                </div>
+                            </a>
+                            
+
+						</div>
+					</div><div class="clearfix"></div>
+				</div>
+ 			<div class="row text-center">
+             <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+             </div>
+				<div class="leftbox col-md-6 col-lg-5 col-md-offset-3 col-lg-offset-3">
+ 					<div class="col-lg-12">
+                    
+							<div class="spance">
+							<p class='invalid' style='display:none;color:red'>Invalid Username or Password</p>
+							<input style="width: 250px;margin: 0 0 0 159px; font-size:14px;" type="text" id="login_email" name="login_email" placeholder="Email or Mobile" class="form-control login form-horizontal border "/>
+							</div>
+                            <div class="spance">
+							<input style="width: 250px;margin: 0 0 0 159px; font-size:14px;" type="password" id="login_password" name="password" placeholder="Password" class="form-control login form-horizontal border "/>
+							</div>
+                            <div class="spance">
+                            	<div class="col-sm-2 col-md-2 col-lg-2 loginboxpading" style="margin-left: 190px;">
+									<input type="button" id="signin"   value="Login" class="form-control form-horizontal loginbtnnew" style="line-height:24px !important; padding:3px 0 0;text-decoration: none;font-size:14px;" />									
+                            	</div>
+                                <div class="col-sm-2 col-lg-2 signupboxpading">
+                                    <a href='<?php echo $this->basePath(); ?>/login/index/signup' id="signup" class="form-control form-horizontal loginbtn " style="line-height:24px !important; padding:3px 0 0;text-decoration: none;font-size:14px;"/>Sign Up</a>
+                             	</div>
+							</div><br/>							
+                              <div class="spance" style="margin-top:30px; margin-bottom:50px;">
+                             	<strong><a href="login/index/forgetpassword" class="darkcolor" style="font-size:14px;">Forgot password?</a></strong>
+                             </div>
+							<div class="spance" style="margin-top: -32px;">
+							<div id="fb-root" style="float:left; width:1px;"></div>
+                            
+							<div class="col-md-6" id="renderMe" align="right"><a class="btn btn-danger btn-social btn-google-plus" style="background:#c52d2f;">
+							<i class="fa fa-google-plus"></i>Sign in with Google Plus
+						  </a></div>
+                          <div class="col-md-6" id="renderMe" align="left">
+							<a href="#">
+							<img border="0" src="public/img/facebook_login.png" height="35px" width="" onClick="fblogin();" style="cursor:pointer" />
+							</a>
+                            </div>
+						    <div class="spance col-md-12" style="margin-top:5px;">
+								<script type="in/Login">
+								</script>
+								</div>
+							</div>
+                            
+  						</div>
+				</div>
+			</div>
+		</div>
+		
+        <!--Login END--> 
+        </form>
+        
+        
+        </div>
+         
+         
+        </div>   
+         
+         
+         
+         
+        </div>
+		</div>
+		
+<!--************************************************Facebook Login  ***************************************------------>
+<script>
+window.fbAsyncInit = function() {
+    FB.init({
+       appId: '1546806812242275',
+       cookie: true,
+       xfbml: true,
+       oauth: true
+    }); 
+};
+(function() {
+var e = document.createElement('script'); e.async = true;
+e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+document.getElementById('fb-root').appendChild(e);
+}());
+
+function fblogin(){
+	alert(4343434);
+FB.login(function(response){	
+if (response.authResponse) {
+	
+	 FB.api('/me', function(response) {
+		//alert(response.email);
+		console.log(response);
+            $.ajax({
+                        type: "POST",
+                        url: "<?php echo $this->basePath()?>"+'/tunnel/menu/LoginUserByWeb',
+                        data:{ email: response.email,firstName:response.first_name,lastName:response.last_name,gender:response.gender},
+                        dataType: 'json',
+                        success: function(data)
+                        {
+                            if(data.UserData!=""){
+                                    document.cookie="token="+data.UserData[0].token;
+									document.cookie="login_id="+data.UserData[0].ID;
+									if(data.UserData[0].type_data==1){
+									  window.location.href="<?php echo $this->basePath()?>"+"/login/user"; 
+									}else if(data.UserData[0].type_data==3){
+									  window.location.href="<?php echo $this->basePath()?>"+"/login/driver";
+									}else{
+										window.open("<?php echo $this->basePath()?>","_self"); 
+									}
+                            }
+                            else{
+                                window.location.href = "<?php echo $this->basePath()?>"+'/login';
+                            }       
+                        }                 
+                 });   
+	 });
+	
+	
+}
+},{scope: 'public_profile,email'});
+}
+</script>;
+<!--************************************************Google Plus***************************************------------>
+<script src="https://apis.google.com/js/client:platform.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+var loginFinished = function(authResult)
+{
+  if (authResult)
+  {
+    console.log(authResult);
+  }
+  gapi.client.load('oauth2', 'v2', function()
+  {
+    gapi.client.oauth2.userinfo.get()
+      .execute(function(resp)
+      {
+		  console.log(resp);
+		  //alert(resp.email+"\n"+resp.given_name+"\n"+resp.family_name+"\n"+resp.gender);
+           $.ajax({
+				type: "POST",
+				url: "<?php echo $this->basePath()?>"+'/tunnel/menu/LoginUserByWeb',
+				data:{ email: resp.email,firstName:resp.given_name,lastName:resp.family_name,gender:resp.gender},
+				dataType: 'json',
+				success: function(data)
+									 {
+										if(data.UserData!=""){
+												document.cookie="token="+data.UserData[0].token;
+												document.cookie="login_id="+data.UserData[0].ID;
+												if(data.UserData[0].type_data==1){
+												  window.location.href="<?php echo $this->basePath()?>"+"/login/user"; 
+												}else if(data.UserData[0].type_data==3){
+												  window.location.href="<?php echo $this->basePath()?>"+"/login/driver";
+												}else{
+												  window.open("<?php echo $this->basePath()?>","_self"); 
+												}
+										}
+										else{
+											window.location.href = "<?php echo $this->basePath()?>"+'/login';
+										}       
+									}
+				});  
+      });
+  });
+};
+var options = {
+  'callback': loginFinished,
+  'approvalprompt': 'force',
+  'clientid': '649874344811-oquab6f3rl7eled3omv77p7rppavs47f.apps.googleusercontent.com',
+  'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email',
+  'requestvisibleactions': 'http://schemas.google.com/CommentActivity http://schemas.google.com/ReviewActivity',
+  'cookiepolicy': 'single_host_origin'
+};
+$(document).ready(function () {
+    gapi.signin.render('renderMe', options);    
+}); 
+  </script>
+
+<!--************************************************Linked In Login**************************************------------>
+<script type="text/javascript" src="http://platform.linkedin.com/in.js"> 
+api_key: 77hhsy8r4qypnh
+scope: r_emailaddress,r_basicprofile
+onLoad: LinkedInUserDataLoad
+authorize: true
+</script>
+<script>
+function LinkedInUserDataLoad() {
+  IN.Event.on(IN, "auth", OnLinkedInUser);
+}
+function OnLinkedInUser() {
+    IN.API.Profile("me").fields("id","firstName","lastName","picture-url","headline","email-address").result(ShowUserProfileData);
+}
+function ShowUserProfileData(profiles) {
+	if(profiles != ""){
+		var member = profiles.values[0];
+		console.log(member);
+		alert(member.id+"\n"+member.firstName+"\n"+member.lastName+"\n"+member.emailAddress+"\n"+member.pictureUrl+"\n"+member.headline);
+		  $.ajax({
+				type: "POST",
+				url: "<?php echo $this->basePath()?>"+'/tunnel/menu/LoginUserByWeb',
+				data:{email: member.emailAddress,firstName:member.firstName,lastName:member.lastName,gender:''},
+				dataType: 'json',
+				success: function(data)
+									{
+										if(data.UserData!=""){
+												document.cookie="token="+data.UserData[0].token;
+												document.cookie="login_id="+data.UserData[0].ID;
+												if(data.UserData[0].type_data==1){
+												  window.location.href="<?php echo $this->basePath()?>"+"/login/user"; 
+												}else if(data.UserData[0].type_data==3){
+												  window.location.href="<?php echo $this->basePath()?>"+"/login/driver";
+												}else{
+													window.open("<?php echo $this->basePath()?>","_self"); 
+												}
+										}
+										else{
+											window.location.href = "<?php echo $this->basePath()?>"+'/login';
+										}       
+									}
+				}); 
+	}    
+}
+</script>
+<!--************************************************End of    Linked In Login**************************************------------> 
+

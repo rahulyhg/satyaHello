@@ -1,0 +1,1680 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?><style>
+.loader2{position:fixed;
+top:250;
+background:none;
+z-index:1000000;
+margin:auto;
+margin-left:40%;}
+</style>
+
+<img src="/hello42/public/image/loading.gif" class="loader2" width="150" height="150"> 
+    <div id="page-wrapper" class="" >
+    <h4 style="">Client</h4>
+
+	   <div>
+
+                        <div class="portlet portlet-default">
+                            <div class="portlet-heading">
+                                <div class=" ">
+                                 
+                                    <i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+									<h6 style="background: #E2E2E2;padding:7px;margin: 0;">Filter</h6>
+                                
+                                <div class="clearfix"></div>
+                            </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="portlet-body">
+                                <ul id="myTab" class="nav nav-tabs">
+                                    <li class="active"><a href="#drivergroup" data-toggle="tab"><i class="fa fa-list" style=" margin:5px"></i>Drivers Group</a>
+                                    </li>
+                                    <li><a href="#driverSearch" data-toggle="tab"><i class="fa fa-user" style=" margin:5px"></i>Drivers</a>
+                                    </li>
+                                    <li>
+                                        <a href="#vehicleSearch" class="dropdown-toggle" data-toggle="tab"><i class="fa fa-user" style=" margin:5px"></i>Vehicles</a>
+                                     </li>
+									
+                                </ul>
+                                <div id="myTabContent" class="tab-content clearfix">
+                                    <div class="tab-pane fade in active" id="drivergroup">
+                                        <div class="container col-sm-col-sm-offset-1" style="margin: 10px auto 0px !important;padding: 0 10px;">
+										<div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign">Id</label>
+                                                  <div class="col-sm-4">
+                      <input id="groupId" type="text" class=" form-control inputchange" placeholder="Driver group ids">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">Vehicle</label>
+                                                   <div class="col-sm-4">
+                         <input id="groupVehicle" type="text" class=" form-control inputchange" placeholder="Id or license plate">     
+                                                    </div>
+                                                 </div>
+                                             </div>
+											 
+											 <div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign">Name</label>
+                                                  <div class="col-sm-4">
+												  
+                 <input id="groupName" type="text" class=" form-control inputchange" placeholder="Driver group name">                                    
+                                                  </div>
+                                                                                                   
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">Vehicle external reference</label>
+                                                   <div class="col-sm-4">
+                                                        <div class="input-group">
+ 													<input id="groupExt" type="text" class="form-control inputchange" placeholder="Vehicle external reference">
+													<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+                                                </div> 
+                                                    </div>
+                                                 </div>
+                                             </div>
+											  <div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign"></label>
+                                                  <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="Since">                                    
+                                                  </div>
+												   <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="To">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">Driver</label>
+                                                   <div class="col-sm-4">
+						<div class="input-group">
+ <input type="text" id="groupDname" class="form-control inputchange" placeholder="Driver">
+			<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+                                                </div> 
+                                                            
+                                                    </div>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                 </div>
+                                                                                              <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign"></label>
+                                                  <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="Since">                                    
+                                                  </div>
+												   <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="To">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">Driver external reference</label>
+                                                   <div class="col-sm-4">
+						<div class="input-group">
+ <input type="text" id="groupDExt" class="form-control inputchange" placeholder="Driver external reference">
+			<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+                                                </div> 
+                                                            
+                                                    </div>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                 </div>
+                                             </div>
+											   <div class="row">
+<!--                                                <div class="form-group clearfix margintopbottom20">
+												 
+                                                  <div class="col-sm-4 pull-right">
+                                                     <a href="#" class="btn btn-red defaultbtnsearch"><i class="fa fa-search" style="color:#fff; margin:5px"></i>Search</a>
+													 <a href="#" class="btn btn-red defaultbtnsearch"><i class="fa fa-times" style="color:#fff; margin:5px"></i>Clear</a>                                  
+                                                  </div>
+												  
+												   
+                                                 
+ 												    
+                                                  
+                                                 </div>-->
+                                             </div>
+											 
+											 
+											 
+											 
+										</div>
+                                    </div>
+                                    <div class="tab-pane fade" id="driverSearch">
+                                          <div class="tab-pane fade in active" id="home">
+                                        <div class="container col-sm-col-sm-offset-1" style="margin: 10px auto 0px !important;padding: 0 10px;">
+										<div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign">Id</label>
+                                                  <div class="col-sm-4">
+                                                     <input id="driverSearchId" type="text" class=" form-control inputchange" placeholder="Driver Id">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">Vehicle</label>
+                                                   <div class="col-sm-4">
+                                                         <input id="driverSearchVehicle" type="text" class=" form-control inputchange" placeholder="Id or license plate">     
+                                                    </div>
+                                                 </div>
+                                             </div>
+											 
+											 <div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign">Name</label>
+                                                  <div class="col-sm-4">
+												  
+                                                     <input id="driverSearchName" type="text" class=" form-control inputchange" placeholder="Driver Name">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">Vehicle External Reference</label>
+                                                   <div class="col-sm-4">
+                                                        <div class="input-group">
+ 													<input id="driverSearchExt" type="text" class="form-control inputchange" placeholder="Vehicle External Reference">
+													<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+                                                </div> 
+                                                    </div>
+                                                 </div>
+                                             </div>
+											  <div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign"></label>
+                                                  <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="Since">                                    
+                                                  </div>
+												   <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="To">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">Driver</label>
+                                                   <div class="col-sm-4">
+												     <div class="input-group">
+ 													<input type="text" id="driverSearchDriver" class="form-control inputchange" placeholder="Driver">
+													<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+                                                </div> 
+                                                            
+                                                    </div>
+                                                 </div>
+                                                                                              
+                                                                                               <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign"></label>
+                                                  <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="Since">                                    
+                                                  </div>
+												   <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="To">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">Driver External Reference</label>
+                                                   <div class="col-sm-4">
+												     <div class="input-group">
+ 													<input type="text" id="driverSearchExternal" class="form-control inputchange" placeholder="Driver External Reference">
+													<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+                                                </div> 
+                                                            
+                                                    </div>
+                                                 </div>
+                                             </div>
+											   <div class="row">
+<!--                                                <div class="form-group clearfix margintopbottom20">
+												 
+                                                  <div class="col-sm-4 pull-right">
+                                                     <a href="#" class="btn btn-red defaultbtnsearch" id="driversearching"><i class="fa fa-search" style="color:#fff; margin:5px"></i>Search</a>
+													 <a href="#" class="btn btn-red defaultbtnsearch"><i class="fa fa-times" style="color:#fff; margin:5px"></i>Clear</a>                                  
+                                                  </div>
+												  
+												   
+                                                 
+ 												    
+                                                  
+                                                 </div>-->
+                                             </div>
+											 
+											 
+											 
+											 
+										</div>
+                                    </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="vehicleSearch">
+                                          <div class="tab-pane fade in active" id="home">
+                                        <div class="container col-sm-col-sm-offset-1" style="margin: 10px auto 0px !important;padding: 0 10px;">
+										<div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign">License Plate</label>
+                                                  <div class="col-sm-4">
+                          <input id="vlPlate" type="text" class=" form-control inputchange" placeholder="License Plate">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">Make</label>
+                                                   <div class="col-sm-4">
+                                <input id="vmake" type="text" class=" form-control inputchange" placeholder="Make">     
+                                                    </div>
+                                                 </div>
+                                             </div>
+											 
+											 <div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign">Model</label>
+                                                  <div class="col-sm-4">
+												  
+                                     <input id="vmodel" type="text" class=" form-control inputchange" placeholder="Model">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">External Refrence</label>
+                                                   <div class="col-sm-4">
+                                                        <div class="input-group">
+ 	<input id="vEref" type="text" class="form-control inputchange" placeholder="External Refrence">
+													<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+                                                </div> 
+                                                    </div>
+                                                 </div>
+                                             </div>
+											  
+											   
+											 
+											 
+											 
+											 
+										</div>
+                                    </div>
+                                    </div>
+                                    <div class="col-sm-4 pull-right" style="margin-bottom:15px; padding-left:0;">
+  <a href="#" class="btn btn-red defaultbtnsearch" id="vsearch"><i class="fa fa-search" style="color:#fff; margin:5px"></i>Search</a>
+  <a href="#" class="btn btn-red defaultbtnsearch"><i class="fa fa-times" style="color:#fff; margin:5px"></i>Clear</a>                                  
+                                                  </div>
+                                    <div class="tab-pane fade" id="dropdown2">
+                                        <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+                                        <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <!-- /.portlet-body -->
+                        </div>
+                        <!-- /.portlet -->
+
+                    </div>				
+					
+        <div class="table-responsive">
+            
+            <table id="driver" class="table table-striped">
+                <thead>
+                    <tr>
+                    	<th  width="8%"><input type="checkbox" value="1" id="CheckAll"> Check All</th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Booking Count</th>
+                        <th>Created</th>
+                        
+
+                       
+                     
+                    </tr>
+                </thead>
+				
+				 <tbody>
+
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                    	<th>Check All</th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Booking Count</th>
+                        <th>Created</th>
+                        
+
+                       
+                     
+                    </tr>
+                </tfoot>
+
+               
+                
+            </table>
+            <div class="col-sm-12 marginbottom20">
+                
+				<a href="#" class="btn btn-primary marginright" id="delete_drivers_data"><i class="fa fa-envelope-o marginright"></i>Send SMS</a>
+				<a href="#" class="btn btn-default marginright"><i class="fa fa-download marginright"></i>Download CSV</a>
+				<a href="#" class="btn btn-default marginright" onclick="signupDriver();"><i class="fa fa-user marginright"></i>Add Driver</a>
+<!--				<a href="#" class="btn marginright defaultbtnsearch" ><i class="fa fa-trash-o marginright"></i>Delete</a>-->
+				
+				
+				
+				
+            </div>
+			
+			<div class="col-sm-12 marginbottom20">
+ 			<table class="table">
+            <thead>
+              <tr>
+                <th colspan="5"><h4 style="margin:0;">Driver Status</h4></th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><small style='width: 15px;height: 15px;background: green;padding: 5px;border-radius: 180px;display: inline-block;margin: 0px 9px -2px 10px;'></small>Active Drivers</td>
+				<td><small style='width: 15px;height: 15px;background: rgb(251, 186, 0);padding: 5px;border-radius: 180px;display: inline-block;margin: 0px 9px -2px 10px;'></small>On Hold Drivers</td>
+                <td><small style='width: 15px;height: 15px;background: black;padding: 5px;border-radius: 180px;display: inline-block;margin: 0px 9px -2px 10px;'></small>Black Listed Drivers</td>
+                <td><small style='width: 15px;height: 15px;background: blue;padding: 5px;border-radius: 180px;display: inline-block;margin: 0px 9px -2px 10px;'></small>Inactive drivers</td>
+                <td><small style='width: 15px;height: 15px;background: #B64242;padding: 5px;border-radius: 180px;display: inline-block;margin: 0px 9px -2px 10px;'></small>Unapproved</td>
+              </tr>
+              
+              
+            </tbody>
+          </table>	
+				
+            </div>
+			 
+			 
+			
+        </div>
+            
+    </div>
+
+</div>
+
+<!--<div id="driverprofile">-->
+
+  
+<div class="page-wrapper" style="display: none" id="driverprofile">
+    <i class="fa fa-reply fa-1_5x backbtn" style="top:-11px; position:relative;" id="backbutton" onclick="history.go(-1);"></i>
+                         <div class="portlet portlet-default">
+                            <div class="portlet-heading">
+                                <div class="portlet-title text-center">
+                                    <h5 id='client_head' style="background: #E2E2E2;padding:7px;margin: 0;"></h5>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="portlet-body">
+                                <ul id="myTab" class="nav nav-tabs">
+                                    <li class="active"><a href="#userRoleDriver" data-toggle="tab">Entity</a>
+                                    </li>
+                                    <!--<li class=""><a href="#drivergroups" data-toggle="tab" id="driver_group_details">Credit Cards</a>
+                                    </li>-->
+                                    <li class="">
+                                        <a href="#smses"  class="dropdown-toggle" id="bookingfeaturesdrop" data-toggle="tab">SMS History</a>
+                                     </li>
+									 <li>
+                                        <a href="#emailHistory"  id="bookingBankref" class="dropdown-toggle" data-toggle="tab">Email History</a>
+                                     </li>
+									  <li>
+                                        <a href="#driverCertificates" id="dcertificates" class="dropdown-toggle" data-toggle="tab">Blocks </a>
+                                     </li>
+									  <li>
+                                        <a href="#verification_photos" id="verify_imag" class="dropdown-toggle" data-toggle="tab">Booking History</a>
+                                     </li>
+									 
+                                </ul>
+                                <div id="myTabContent" class="tab-content clearfix">
+                                    
+                  <div class="tab-pane fade active in" id="userRoleDriver">
+                                         
+					<div class="container margintop">
+<!--users-->
+
+						<div id="userRoleDriver" style="margin:20px audio 0; ">
+  <!--
+    <form  id='frm_details' name='frm_details' method="multipart/form-data" >
+    <!--<input type="file" name="UploadPhoto" id="UploadPhoto" />
+		
+		<img src="public/images/photo_not_available.png" id="PhotoPrev" alt="Photo Preview" />-->
+    <!--left_panel_form START-->
+     <!--right_panel_form START-->
+    
+         <div class=" col-sm-4 col-md-4 col-lg-4 clearfix userprofileimg pull-right">
+         	<div id="crop-avatar">
+
+    <!-- Current avatar -->
+   
+    <div class="avatar-view userimg_byratio" style="width:140px; margin:auto;" title="Profile Picture">
+      <img id="d_image" src="" style="float:right;margin-right: 11px;" width="130" height="140" /></a>
+    </div>
+ 
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form class="avatar-form" id="change_profileImage" name="change_profileImage" method="POST" action="<?php echo $this->basePath().'/tunnel/admin/updateClientProfileImage';?>" enctype="multipart/form-data">
+			<div class="modal-header">
+			 <h1 class="closbtn" style="right: -22px;border: none !important;" data-dismiss="modal"><i class="fa fa-close"></i></h1>
+			  <h4 class="modal-title" id="avatar-modal-label">Profile Picture</h4>
+			</div>														
+			<div class="modal-body">
+			  <div class="avatar-body">
+				<!-- Upload image and data -->
+				<div class="avatar-upload">
+				  <input class="avatar-src" name="avatar_src" type="hidden">
+				  <input class="avatar-data" name="avatar_data" type="hidden">
+				  <label for="avatarInput">Local upload</label>	
+                  <input type="hidden" id="client_id" name="client_id" class="driver_name col-mg-7 col-lg-7 inputfild name idsdriver" >				  
+				  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+				</div>
+				<!-- Crop and preview -->
+				<div class="row">
+				  <div class="col-md-9">
+					  <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+					<div class="avatar-wrapper"></div>
+				  </div>
+				  <div class="col-md-3">
+					<div class="avatar-preview preview-lg" style="position:relative"></div>
+					<div class="avatar-preview preview-md" style="position:relative"></div>
+					<div class="avatar-preview preview-sm" style="position:relative"></div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<div class="modal-footer">
+			  <button class="btn btn-primary avatar-save col-sm-2 pull-right" id="save_image" type="submit" style="margin-left:10px;" onclick="changeProfileImage();">Save</button>
+			  <button class="btn btn-default col-sm-2 pull-right" type="button" data-dismiss="modal">Close</button>														  
+			</div>
+		  </form>
+        </div>
+      </div>
+    </div><!-- /.modal -->
+
+    <!-- Loading state -->
+   
+  </div>
+             <div id="crop-vehicle center" style="width:140px; margin:auto;">
+
+    <!-- Current avatar -->
+   
+    
+    <!-- Loading state -->
+   
+  </div>
+		
+		<h5><center><b>Management</b></center></h5>
+<center><div class="btn defaultbtnsearch ">Send SMS</div></center>
+<h5><center>Current Status</center></h5>
+
+<!--<center>
+    <select name="driver_length" aria-controls="driver" class="form-control input-sm" disabled>
+        <option value="10">Online</option>
+        <option value="10">Offline</option></select>
+</center>-->
+
+
+        </div>
+     <form id="driver_form_details" name="frm_details" method="multipart/form-data">
+         <div class="col-sm-8 col-md-8 col-lg-8 clearfix">
+             <input type="hidden" id="image_path0" name="image_path" value="">  	
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4 col-lg-4">External Id</label>
+            <input type="text" id="clientid" name="" class="driver_name col-mg-7 col-lg-7 inputfild name idsdriver" disabled value="">
+            <input type="hidden" id="clientids" name="driverIds" class="driver_name col-mg-7 col-lg-7 inputfild name idsdriver" >
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4 col-lg-4">Reference Key</label>
+            <input  type="text" id="referralKey" name="" class="driver_name col-mg-7 col-lg-7 inputfild name idsdriver" disabled value="">
+			 
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4 col-lg-4">First name</label>
+            <input type="text" id="clientfirst" name="driver_firstName" class="col-mg-7 col-lg-7 inputfild name"  autocomplete="off" placeholder="First name">
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4 col-lg-4">Last name</label>
+            <input type="text" id="clientlast" name ="clientlast" placeholder="Anonymous" class="col-mg-7 col-lg-7 inputfild name">
+            
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4 col-lg-4">Language</label>
+             <input type="text" id="clientlanguage" name ="clientlanguage" placeholder="English" class="col-mg-7 col-lg-7 inputfild name">
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Email</label>
+           <input type="text" id="clientusername" name ="clientusername" placeholder="Email" class="col-mg-7 col-lg-7 inputfild name">
+           </div>           
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Phone number</label>
+            <div class="input-group col-sm-7">
+				<input type="text" id="clientcontact" class="col-sm-12 col-lg-12 inputfild name" placeholder="Phone No." style="border-top-right-radius: 0 !important;border-bottom-right-radius: 0 !important;">
+				<span class="input-group-addon"><i class="fa fa-edit"></i> Edit</span>   
+		   </div>
+           </div> 
+			<div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Alternate Email</label>
+           <input type="text" id="clt_AltEmail" name ="clt_AltEmail" placeholder="Alternate Email" class="col-mg-7 col-lg-7 inputfild name">
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Alternate Contact No</label>
+           <input type="text" id="clt_AlternateContactNo" name ="clt_AlternateContactNo" placeholder="Alternate Mobile" class="col-mg-7 col-lg-7 inputfild name">
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Country</label>
+           <input type="text" id="clt_Country" name ="clt_Country" placeholder="Country" class="col-mg-7 col-lg-7 inputfild name">
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">State</label>
+           <input type="text" id="clt_State" name ="clt_State" placeholder="State" class="col-mg-7 col-lg-7 inputfild name">
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">City</label>
+           <input type="text" id="clt_City" name ="clt_City" placeholder="City" class="col-mg-7 col-lg-7 inputfild name">
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Address1</label>
+           <input type="text" id="clt_Address1" name ="clt_Address1" placeholder="Address1" class="col-mg-7 col-lg-7 inputfild name">
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Address2</label>
+           <input type="text" id="clt_Address2" name ="clt_Address2" placeholder="Address2" class="col-mg-7 col-lg-7 inputfild name">
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Pin Code</label>
+           <input type="text" id="clt_PinCode" name="clt_PinCode" placeholder="Pin Code" class="col-mg-7 col-lg-7 inputfild name">
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Created on</label>
+             <label class=" col-mg-7 col-lg-7 phno" id="create_date"></label>
+           </div> 
+	
+			<!--payment -->
+			
+			<!--end payment -->
+			
+	<div class="form-group clearfix col-sm-11">	  		
+
+<div class="form-group clearfix spance">
+          
+          
+              
+                  <button type="button" class="btn defaultbtnsearch pull-right col-sm-2" onclick="backbutton();">Back</button> 
+	<button type="button" class="btn defaultbtnsearch pull-right col-sm-2" style="margin-right:10px;" onclick="update_driver();">Update</button> 
+           </div>
+		   
+          </div>
+		    
+		    
+        
+  
+           
+            <!--bottom part checkbox of form End-->
+           
+         </form>
+    </div>																													
+                
+                
+         <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>An Confirmation Email has been sent on your account</p>
+                <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+ 
+</div>
+       
+              
+<div class="clearfix"></div>
+<!-- End Signup for users-->
+
+
+
+
+
+<!-- End Signup for users-->
+
+      
+          
+        </div>
+										 
+                         </div>
+						             </div>
+
+						<!--Driver Group START-->
+                                  <!--  <div class="tab-pane fade" id="drivergroups">
+                                       
+                            <div class="col-sm-6 clearfix" style="margin: 30px auto 20px;padding: 0;">
+                                  <label class="col-sm-2">Driver group</label>
+                                  <div class="col-sm-7">
+                                  <input type="text" class="inputfild" id="group_search_admin">
+                                  <input type="hidden" class="form-control" id="group_search_admin_value">
+                                  </div>
+                                  <a href="#" class="btn btn-success col-sm-2" id="driver_add_group">Add</a>
+                             </div>
+									   
+                <table class="table">
+                        <thead>
+                        <tr>
+                               <th>Group name</th>
+                               <th>Action</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                               <tr>
+                                       <td><a href="#" id="driver_group_default"></a>
+                                       <input type="hidden" id="driver_group_default_name">
+                                       </td>
+                                       <td><a href="#" class="btn defaultbtnsearch  col-sm-2" id="remove_default_drivers">Remove</a></td>
+                               </tr>
+                       </tbody>
+                </table>
+										 
+                                    </div>-->
+                                                
+                                                
+                                                <!--smses history-->
+                                                <div class="tab-pane fade" id="smses">
+                                       
+					<table id="driversmshistory" class="table table-striped">
+                <thead>
+                    <tr>
+                        
+                        <th>Time</th>
+                        <th>Header</th>
+                        <th>Body</th>
+                        <th>Cost</th>
+                        <th >Status</th>
+                       
+
+                       
+                     
+                    </tr>
+                </thead>
+				
+				 <tbody>
+
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        
+                        <th>Time</th>
+						<th>Header</th>
+                        <th>Body</th>
+                        <th>Cost</th>
+                        <th >Status</th>
+
+                        
+                    </tr>
+                </tfoot>
+
+               
+                
+            </table>
+                                    </div>
+                                                <!--end smses-->
+                                               
+                                                
+                                <!---Email ---->
+							<div class="tab-pane fade" id="emailHistory">
+                                       
+					<table id="driverEmailhistory" class="table table-striped">
+                <thead>
+                    <tr>
+                        
+                        <th>Time</th>
+                        <th>Header</th>
+                        <th>Body</th>
+
+                        <th >Status</th>
+                       
+
+                       
+                     
+                    </tr>
+                </thead>
+				
+				 <tbody>
+
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        
+                        <th>Time</th>
+						<th>Header</th>
+                        <th>Body</th>
+                        
+                        <th >Status</th>
+
+                        
+                    </tr>
+                </tfoot>
+
+               
+                
+            </table>
+                                    </div>
+								
+                                <!---Email End---->                
+                                                
+                             <!-- driver status --> 
+				<div class="tab-pane fade" id="statusDriver">
+                                       
+					<table id="driverstatushistory" class="table table-striped">
+                <thead>
+                    <tr>
+                        
+                        <th>Login Time</th>
+                       
+                       <th>Logout Time</th>
+
+                        <th >Status</th>
+                       
+
+                       
+                     
+                    </tr>
+                </thead>
+				
+				 <tbody>
+
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        
+                        <th>Login Time</th>
+                       
+                       <th>Logout Time</th>
+                        
+                        <th >Status</th>
+
+                        
+                    </tr>
+                </tfoot>
+
+               
+                
+            </table>
+                                    </div>							 
+                             <!-- driver status End--> 
+
+
+<!-- driver allocation history-->
+<div class="tab-pane fade" id="allocationDriver">
+                                       
+					<table id="driverAhistory" class="table table-striped">
+                <thead>
+                    <tr>
+                        
+                        <th>SNo.</th>
+                        <th>Time</th>
+                        
+
+                        <th >Status</th>
+                       
+
+                       
+                     
+                    </tr>
+                </thead>
+				
+				 <tbody>
+
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        
+                        <th>SNo.</th>
+                        <th>Logot Time</th>
+                       
+                        
+                        <th >Status</th>
+
+                        
+                    </tr>
+                </tfoot>
+
+               
+                
+            </table>
+                                    </div>								 
+<!-- driver allocation history EnD-->	
+
+		<!-- driver booking Histroy-->
+		
+		<div class="tab-pane fade" id="bHistroyDriver">
+                                       
+					<table id="driverBhistory" class="table table-striped">
+                <thead>
+                    <tr>
+                        
+                        
+                        <th width="10%">Id</th>
+                        <th width="5%">Pickup Time</th>
+                        <th width="10%">Vehicle</th>
+                        <th width="10%">Booking Type</th>
+                        <th width="5%">Partner</th>
+                        <th width="5%">Client</th>
+                        <th width="10%" style="">Departure</th>
+						 <th width="10%">Drop Area</th>
+                        <th width="10%">Status</th>
+                     <th width="5%">C Share</th>
+                      <th width="5%">D Share</th>
+                       <th width="5%">P Share</th>
+                    
+                       
+
+                       
+                     
+                    </tr>
+                </thead>
+				
+				 <tbody>
+
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        
+                        <th width="10%">Id</th>
+                        <th width="5%">Pickup Time</th>
+                        <th width="10%">Vehicle</th>
+                        <th width="10%">Booking Type</th>
+                        <th width="5%">Partner</th>
+                        <th width="5%">Client</th>
+                        <th width="10%" style="">Departure</th>
+						 <th width="10%">Drop Area</th>
+                        <th width="10%">Status</th>
+                     <th >C Share</th>
+                      <th >D Share</th>
+                       <th >P Share</th>
+
+                        
+                    </tr>
+                </tfoot>
+
+               
+                
+            </table>
+                                    </div>	
+		<!-- driver booking Histroy END-->
+                
+                <!--driver ledger-->
+                
+                <div class="tab-pane fade" id="ledgerDriver">
+                                       
+					<table id="ledgerDriverhistory" class="table table-striped">
+                <thead>
+                    <tr>
+                        
+                        
+                       
+                        <th >Date</th>
+                        <th >Debit Amount</th>
+                        <th >Credit Amount</th>
+                        <th >Current Amount</th>
+                       
+                    
+                       
+
+                       
+                     
+                    </tr>
+                </thead>
+				
+				 <tbody>
+
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        
+                        
+                        <th >Date</th>
+                        <th >Debit Amount</th>
+                        <th >Credit Amount</th>
+                        <th >Current Amount</th>
+                        
+                    </tr>
+                </tfoot>
+
+               
+                
+            </table>
+                                    </div>
+                <!--driver ledger end-->
+
+						 
+                                                
+ 						<!--Driver Group END-->	
+						
+						<!--Booking features Start-->
+							 <div class="tab-pane fade clearfix" id="bookingBank">
+                                
+					<div class="container">
+					
+						<div id="userRoleDriver" style="margin:0px auto 10px;">
+ 
+         <h3 class="container">Bank Account</h3>  
+		
+     <form id="bank_frm_details" name="frm_details" method="multipart/form-data" novalidate="novalidate">
+         <div class="col-sm-7 col-md-7 col-lg-7 clearfix">
+             <input type="hidden" id="image_path0" name="image_path" value="">  	
+         
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4 col-lg-4">Bank Name & Branch Name*</label>
+            <input type="text" id="bankName" name="bankName" class="col-sm-8 col-lg-8 inputfild name" autocomplete="off" >
+            
+			
+           </div>
+          
+           
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Bank A/C Holder Name<span class="mandat_star">*</span></label>
+            <input type="text" id="bankAccHolder" name="bankAccHolder" class="col-sm-8 col-lg-8 inputfild name">
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Bank Address<span class="mandat_star">*</span></label>
+            <input type="text" id="bankAdds" name="bankAdds" class="col-sm-8 col-lg-8 inputfild name">
+           </div>
+            
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Bank A/C no<span class="mandat_star">*</span></label>
+       		<input type="text" id="bankAccNo" name="bankAccNo" class="col-sm-8 col-lg-8 inputfild name">
+           </div>
+		      
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4"><span class="mandat_star">RTGS/NEFT Code<span class="mandat_star">*</span></span></label>
+            <input type="text" id="bankNeft" name="bankNeft" class="col-sm-8 col-lg-8 inputfild name">
+ 
+           </div>
+           <div class="form-group clearfix spance">
+               <label class="control-label col-sm-4">IBN No.</label>
+            <input type="text" class="col-sm-8 inputfild name" id="bankIbn" name="bankIbn">
+           </div>
+		   
+		   
+		   
+		   
+		   
+		   
+		   		   		   
+		   
+		   
+		    <div class="form-group clearfix spance">
+              
+			    
+				
+				<button type="button" class="btn defaultbtnsearch pull-right updateVehicleButton col-sm-2" id="updateBankInfo">Update</button>
+
+				<button type="button" class="btn defaultbtnsearch pull-right addVehicleButton col-sm-2" style="margin-right: 10px; display: none;" id="addvehicle">Add</button>				
+           </div>
+		   
+          </div>
+		  
+		  </form>
+		    
+		    
+        
+  
+           
+            <!--bottom part checkbox of form End-->
+			
+			
+			
+			
+			
+           
+         
+    </div>																													
+                
+                
+         <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>An Confirmation Email has been sent on your account</p>
+                <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+ 
+</div>
+       
+              
+<div class="clearfix"></div>
+<!-- End Signup for users-->
+
+
+
+
+
+<!-- End Signup for users-->
+
+      
+          
+        </div>
+									  
+									   </div>
+						<!--Booking features End-->
+						
+						
+						<!--Bank account-->
+						<div class="tab-pane fade clearfix" id="bookingfeatures">
+                                       
+									  <div class="col-sm-6  clearfix" style="margin: 30px auto 20px;padding: 0;">
+									   	<label class="col-sm-2">Add Booking</label>
+                                                                               
+										<div class="col-sm-7">
+                                                                                    
+	<select id="s1" multiple="multiple" name="driver_feature[]">
+										 
+										 <option value="1">Flex Traffic</option>
+                                                                                 <option value="2">Shopping</option>
+                                                                                 <option value="3">English Language</option>
+                                                                                 <option value="4">Transparent Patient</option>
+                                                                                  <option value="5">Assist General</option>
+                                                                          <option value="6">Assist Shopping Pharmacy</option>
+                                                                    <option value="7">Assist Shopping With Expenses</option>
+                                                                                
+                                                                                
+										  
+										 </select>
+<button type="button" class="btn defaultbtnsearch updateVehicleButton col-sm-4 pull-right" style="margin-right:10px;" id="driver_feature_update">Update</button>
+										</div>
+                                                                               
+									   </div>
+									  
+									   </div>
+						<!--Bank account End-->
+                                                
+                                                <!--verification photos-->
+                                                                         
+                       <div class="tab-pane fade clearfix" id="verification_photos">
+                                                                           
+                                       <!--
+									   <div class="col-sm-6  clearfix" style="margin: 30px auto 20px;padding: 0;">
+									   	<label class="col-sm-3">Driver Photo Verified</label>
+                                                                                <form id="driver_img_photo" class="col-sm-2">
+										<div class="col-sm-9">
+		<input type="checkbox" value="1" id="photo_verify" name="photo_verify" class="form-control inputsize photo">
+										</div>
+
+  </form><button type="button" class="btn defaultbtnsearch updateVehicleButton col-sm-2" style="" id="driver_photo">Update</button>
+									   </div>
+
+										-->
+										
+									<table class="table table-striped dataTable" id="dataTables-clientBooking">
+									 
+										<thead>
+											<tr>
+											<th>Id</th>
+											<th>Booking Date</th>
+											<th>Created By</th>
+											<th>Created On</th>
+											<th>Updated By</th>
+											<th>Updated On</th>
+											<th>Status</th>
+											<th class="col-sm-1">Action</th>
+											</tr>
+										</thead>
+										<tbody>
+										
+										</tbody>
+										<tfoot>
+											<tr>
+											<th>Id</th>
+											<th>Booking Date</th>
+											<th>Created By</th>
+											<th>Created On</th>
+											<th>Updated By</th>
+											<th>Updated On</th>
+											<th>Status</th>					
+											<th class="col-sm-1">Action</th>
+											</tr>
+										</tfoot>
+									</table>
+										
+									   </div>
+                                                                        
+                                                                        
+                                                                        
+                                                                        <!-- end of verification photos-->
+                                                
+                                                
+						<!-- certificates starts -->
+			 <div class="tab-pane fade clearfix" id="driverCertificates">
+                                
+									  <div class="container">
+
+
+						<div id="" style="margin:0px auto 10px;">
+ 							 <h3 class="container">Driver Certificates</h3> 
+         
+		
+     <form id="bank_frm_details_file" name="bank_frm_details_file" method="multipart/form-data" >
+         <div class="col-sm-7 col-md-7 col-lg-7 clearfix">
+             	
+         
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4 col-lg-4">Residential Address*</label>
+<div class="col-sm-1" style="padding-right: 0;"><a href="" class="fa fa-download fa-2x" style="" id="driverRproof"></a></div>
+            
+            <div class="col-sm-3" style="padding-left: 0;">
+              
+                
+<input name="file" type="file" style="float: left;display: inline;">
+                  <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_resident">   
+                   </progress>--> 
+ 						<div class="loder" style="display:none" id="driver_resident">
+					</div>
+		<input type="hidden" id="driver_addsH" name="driver_addsH">
+             </div>
+			
+           </div>
+          
+           
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Office Address<span class="mandat_star">*</span></label>
+            <div class="col-sm-1" style="padding-right: 0;"><a href="" class="fa fa-download fa-2x" style="" id="driverOproof"></a></div>
+            
+            <div class="col-sm-3" style="padding-left: 0;">
+              
+                
+<input name="file_office" type="file" style="float: left;display: inline;">
+                  <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_resident">   
+                   </progress>--> 
+ 						<div class="loder" style="display:none" id="driver_office">
+					</div>
+		<input type="hidden" id="driver_oaddsH" name="driver_oaddsH">
+             </div>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Pan Card Details<span class="mandat_star">*</span></label>
+            <div class="col-sm-1" style="padding-right: 0;"><a href="" class="fa fa-download fa-2x" style="" id="driverPanproof"></a></div>
+            
+            <div class="col-sm-3" style="padding-left: 0;">
+              
+                
+<input name="file_pan" type="file" style="float: left;display: inline;">
+                  <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_resident">   
+                   </progress>--> 
+ 						<div class="loder" style="display:none" id="driver_panupload">
+					</div>
+		<input type="hidden" id="driver_panH" name="driver_panH">
+             </div>
+           </div>
+            
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4">Name of Vehicle<span class="mandat_star">*</span></label>
+       		<div class="col-sm-1" style="padding-right: 0;"><a href="" class="fa fa-download fa-2x" style="" id="driverVproof"></a></div>
+            
+            <div class="col-sm-3" style="padding-left: 0;">
+              
+                
+<input name="file_vehicle" type="file" style="float: left;display: inline;">
+                  <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_resident">   
+                   </progress>--> 
+ 						<div class="loder" style="display:none" id="driver_vehicle">
+					</div>
+		<input type="hidden" id="file_vehicleH" name="file_vehicleH">
+             </div>
+           </div>
+		      
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-4"><span class="mandat_star">Badge / License No.<span class="mandat_star">*</span></span></label>
+            <div class="col-sm-1" style="padding-right: 0;"><a href="" class="fa fa-download fa-2x" style="" id="driverbadgeproof"></a></div>
+            
+            <div class="col-sm-3" style="padding-left: 0;">
+              
+                
+<input name="file_badge" type="file" style="float: left;display: inline;">
+                  <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_resident">   
+                   </progress>--> 
+ 						<div class="loder" style="display:none" id="driver_badge">
+					</div>
+		<input type="hidden" id="file_badgeH" name="file_badgeH">
+             </div>
+           </div>
+           <div class="form-group clearfix spance">
+               <label class="control-label col-sm-4">Police Verification*</label>
+            <div class="col-sm-1" style="padding-right:0;"><a href="" class="fa fa-download fa-2x" style="" id="driverPoliceproof"></a></div>
+            
+            <div class="col-sm-3" style="padding-left: 0;">
+              
+                
+<input name="file_police" type="file" style="float: left;display: inline;">
+                  <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_resident">   
+                   </progress>--> 
+ 						<div class="loder" style="display:none" id="driver_police">
+					</div>
+		<input type="hidden" id="file_policeH" name="file_policeH">
+             </div>
+			
+           </div>
+		   
+		   <div class="form-group clearfix spance">
+               <label class="control-label col-sm-4">Audit Report*</label>
+           <div class="col-sm-1" style="padding-right: 0;"><a href="" class="fa fa-download fa-2x" style="" id="driverAuiditproof"></a></div>
+            
+            <div class="col-sm-3" style="padding-left: 0;">
+              
+                
+<input name="file_audit" type="file" style="float: left;display: inline;">
+                  <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_resident">   
+                   </progress>--> 
+ 						<div class="loder" style="display:none" id="driver_audit">
+					</div>
+		<input type="hidden" id="file_auditH" name="file_auditH">
+             </div>
+           </div>
+             
+<!--             <div class="form-group clearfix spance">
+               <label class="control-label col-sm-4">Download All Certificates</label>
+           <div class="col-sm-1" style="padding-right: 0;"><a href="" class="fa fa-download fa-2x" style="" id="driverAllproof"></a></div>
+            
+            <div class="col-sm-3" style="padding-left: 0;">
+              
+                
+<input type="hidden" id="driver_allH" name="driver_allH">
+             </div>
+           </div>-->
+		   
+		   
+		   
+		   
+		   
+		   
+		   		   		   
+		   
+		   
+		  
+		   
+          </div>
+		  
+		  </form>
+			<!-- certificates end -->
+						
+									
+                                                                        
+									
+                               
+                            </div>
+                            <!-- /.portlet-body -->
+                        </div>
+                        <!-- /.portlet -->
+
+                    </div>
+
+
+<!--//////////////////////bpop up//////////////////-->
+
+
+
+<!--//////////////////////end bpop up//////////////////-->
+
+<!-- ///////////////////////driver signup form ////////////////////////-->
+
+
+                
+                
+         
+       
+              
+<div class="clearfix"></div>
+<!-- End Signup for users-->
+
+
+
+
+
+<!-- End Signup for users-->
+
+
+
+
+
+      
+            
+        </div>
+
+<!-- //////////////////////////////////////end of driver signup form.......................-->
+
+<!--search table -->
+
+ 
+
+
+<!--end search table-->
+
+
+
+
+
+
+<!--</div>-->
+<script src="../public/js/driver_admin.js"></script>
+<script>
+var base_url = '<?php echo $this->basePath();?>';
+
+    <?php if(isset($_REQUEST['client'])){ ?>
+          $(document).ready(function () {
+         $("#page-wrapper").hide();
+     $("#driverprofile").show();
+     
+         var uid='<?php echo $_REQUEST['client']; ?>';
+    
+        
+         /* $.ajax({
+                    dataType:'json',
+                    url:'<?php echo $this->basePath();?>'+'/tunnel/Admin/client_profile',
+                    type:'POST',
+                    data:{id:uid},
+                    success:successProfile,
+                    error:errorProfile
+
+                }); */
+
+
+
+//});
+
+     
+       
+        
+        
+   var table1=$('#driversmshistory').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/smsData?ids="+uid,
+ "deferRender": true
+    } );
+
+var table4=$('#driverEmailhistory').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/emamilData?ids="+uid,
+ "deferRender": true
+    } );	
+/*	
+
+var table2=$('#driverstatushistory').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/statusData?ids="+id,
+ "deferRender": true
+    } );
+	
+var table3=$('#driverAhistory').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/allocationData?ids="+id,
+ "deferRender": true
+ } );
+ 
+ */
+ 
+ /* var table5=$('#dataTables-clientBooking').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/clientBookingHistory?ids="+uid,
+ "deferRender": true
+ } ); */
+ /*
+ var table6=$('#ledgerDriverhistory').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/driverledgers?ids="+id,
+ "deferRender": true
+ } );
+ 
+ */
+ 
+	$("#driversmshistory_wrapper").attr("style","border:1px solid #d1d1d1; margin:10px 0;");
+$("#driversmshistory_wrapper").addClass("clearfix");
+$("#driversmshistory_wrapper").addClass("font12px");
+$("#driversmshistory_wrapper div:first").removeClass("row");
+ $("#driversmshistory_info").parent().parent().removeClass("row");
+ $("#driversmshistory_wrapper div:first").attr("class","tbsearchrow clearfix");
+table.fnDestroy();	
+  });
+  
+  
+  
+
+    
+    /* function successProfile(data){
+    //alert(data.data.img); 
+  
+    $('#client_head').html(data.data.first);
+   $('#clientid').val(data.data.id);
+   $('#clientids').val(data.data.id);
+   $('#client_id').val(data.data.id);
+   $('#referralKey').val(data.data.referralKey);
+   $('#clientfirst').val(data.data.first);
+   $('#clientlast').val(data.data.last);
+   $('#clientusername').val(data.data.username);
+   $('#clientcontact').val(data.data.contact);
+   $('#clientlanguage').val(data.data.lang);
+   //$('#clientimage').val(data.data.img);
+   $('#create_date').html(data.data.date);  
+   
+     if(data.data.img != ''){
+				//alert(data.data.img);
+           $("#d_image").attr("src",'<?php echo $this->basePath();?>'+'/'+data.data.img);
+	   }else{	
+        //alert('test1');	   
+		   $("#d_image").attr("src",'<?php echo $this->basePath();?>'+'/public/image/default_user.png');
+	   }
+   
+        
+}
+function errorProfile(error){
+     
+    console.log(error);
+    
+} */     
+        
+        
+        
+    <?php }else{ ?>
+     var table;
+     var data;
+     var myVar;
+     var data2;
+     var myVar2;
+	 var id;
+     var image_no=0;
+	 
+	 
+    $(document).ready(function () {
+
+  ///////table creation///////////////  
+       table=$('#driver').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/client_list",
+ "deferRender": true
+    } );
+    
+ ///////end table creation/////////////// 
+ //var id;
+  $(document).on('click','.myclient',function(e){
+      
+    e.preventDefault();
+    
+      $("#page-wrapper").hide();
+     $("#driverprofile").show();
+     
+         var uid=$(this).html();
+    
+        
+         $.ajax({
+                    dataType:'json',
+                    url:'<?php echo $this->basePath();?>'+'/tunnel/Admin/client_profile',
+                    type:'POST',
+                    data:{id:uid},
+                    success:successProfile,
+                    error:errorProfile
+
+                });
+
+
+
+//});
+
+     
+       
+        
+        
+   var table1=$('#driversmshistory').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/smsData?ids="+uid,
+ "deferRender": true
+    } );
+
+var table4=$('#driverEmailhistory').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/emamilData?ids="+uid,
+ "deferRender": true
+    } );	
+/*	
+
+var table2=$('#driverstatushistory').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/statusData?ids="+id,
+ "deferRender": true
+    } );
+	
+var table3=$('#driverAhistory').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/allocationData?ids="+id,
+ "deferRender": true
+ } );
+ 
+ */
+ 
+ var table5=$('#dataTables-clientBooking').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/clientBookingHistory?ids="+uid,
+ "deferRender": true
+ } );
+ /*
+ var table6=$('#ledgerDriverhistory').dataTable( {
+        "ajax": '<?php echo $this->basePath();?>'+"/tunnel/admin/driverledgers?ids="+id,
+ "deferRender": true
+ } );
+ 
+ */
+ 
+	$("#driversmshistory_wrapper").attr("style","border:1px solid #d1d1d1; margin:10px 0;");
+$("#driversmshistory_wrapper").addClass("clearfix");
+$("#driversmshistory_wrapper").addClass("font12px");
+$("#driversmshistory_wrapper div:first").removeClass("row");
+ $("#driversmshistory_info").parent().parent().removeClass("row");
+ $("#driversmshistory_wrapper div:first").attr("class","tbsearchrow clearfix");
+table.fnDestroy();	
+  });
+  
+  
+  
+$("#driver_wrapper").attr("style","border:1px solid #d1d1d1; margin:10px 0;");
+$("#driver_wrapper").addClass("clearfix");
+$("#driver_wrapper").addClass("font12px");
+$("#driver_wrapper div:first").removeClass("row");
+ $("#driver_info").parent().parent().removeClass("row");
+ $("#driver_wrapper div:first").attr("class","tbsearchrow clearfix");
+
+ });
+    
+    function successProfile(data){
+     //alert(data.data.lang); 
+	//var valu=$(this).attr(data.data.img);
+	//alert(valu);
+    /// if(valu == '')
+     //{
+		 
+	// }		 
+	/* if ( $('html').attr(data.data.img) == ' ' ) 
+	{
+		alert('test');
+    // do this
+	} else {
+			// do that
+	} */
+	//alert(data.data.img);
+   $('#client_head').html(data.data.first);
+   $('#clientid').val(data.data.id);
+   $('#clientids').val(data.data.id);
+   $('#client_id').val(data.data.id);
+   $('#referralKey').val(data.data.referralKey);
+   $('#clientfirst').val(data.data.first);
+   $('#clientlast').val(data.data.last);
+   $('#clientusername').val(data.data.username);
+   $('#clientcontact').val(data.data.contact);
+   $('#clientlanguage').val(data.data.lang);   
+   $('#create_date').html(data.data.date);
+   $('#clt_AltEmail').val(data.data.AltEmail);
+   $('#clt_AlternateContactNo').val(data.data.AlternateContactNo);
+   $('#clt_Country').val(data.data.Country);
+   $('#clt_State').val(data.data.State);
+   $('#clt_City').val(data.data.City);
+   $('#clt_Address1').val(data.data.Address1);
+   $('#clt_Address2').val(data.data.Address2);   
+   $('#clt_PinCode').val(data.data.PinCode);
+   
+   if(data.data.img != ''){
+				//alert(base_url);
+           $("#d_image").attr("src",base_url+'/'+data.data.img);
+	   }else{	
+        //alert('test1');	   
+		   $("#d_image").attr("src",'<?php echo $this->basePath()?>'+'/image/default_user.png');
+	   }
+   
+        
+}
+function errorProfile(error){
+     
+    console.log(error);
+    
+}     
+
+    <?php } ?>
+	
+	
+$(document).ready(function() {
+    $('#CheckAll').click(function(event) {  //on click 
+        if(this.checked) { // check select status
+            $('.client_check').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"               
+            });
+        }else{
+            $('.client_check').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+        }
+    });
+    
+});
+
+function changeProfileImage(){	      	  
+	  $("#change_profileImage").on('submit',(function(e){
+		e.preventDefault();
+			$.ajax({			
+			type: "POST",
+			data:  new FormData(this),
+			contentType: false,
+			cache: false,
+			processData:false,
+			url: $("#change_profileImage").attr('action'),
+           dataType: "json",		 
+           success: function(data){
+                            if(data.status == 'true'){
+								alert(data.Message);
+								window.location.href = base_url+'/admin/client';																	
+                             }else{
+                                 alert(data.Message);
+								 window.location.href = base_url+'/admin/client';
+                             }
+                        },		
+                        error: function(error){
+                            console.log(error);	
+                        }	        
+		});
+	}));  
+ } 
+
+</script>
+

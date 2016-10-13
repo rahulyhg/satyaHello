@@ -1,0 +1,338 @@
+
+<style>
+.errorText {
+border:1px solid red;
+
+}
+label.col-lg-offsets-5 {
+margin-left: 30.666667%;
+color:red;
+}
+input.col-lg-offsets-5{
+    border:1px solid red;
+}
+</style>
+
+     <div class="container-fluid">
+     
+ 	<div class="row">
+	 	<div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+			<h2>My Account</h2>
+		</div>
+	 </div>
+	 
+			   																												      
+     <div class="container marginbottom20">
+      	<div class="row">
+			<div class="col-lg-12">
+				<div class="col-sm-3 col-md-3 col-lg-2">
+					 
+					 <div class="list-group">
+            <a href="<?=$this->basepath().'/login/user';?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Dashboard</a>
+            <a href="<?= $this->basepath().'/login/user/editprofile'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Edit Profile</a>
+            <a href="<?= $this->basepath().'/login/user/changepassword'?>" class="list-group-item userItem "><i class="fa fa-arrow-circle-right"></i> &nbsp;Change Password</a>
+            <a href="<?= $this->basepath().'/login/user/userorderhistory'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Order History</a>
+            <a href="<?= $this->basepath().'/login/user/credithistory'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Account Balance</a>
+            <a href="<?= $this->basepath().'/login/user/Creditrequest'?>" class="list-group-item userItem yellactive"><i class="fa fa-arrow-circle-right"></i> &nbsp;Credit Request</a>
+                                             <a href="<?= $this->basepath().'/login/user/bankaccount'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Bank Account</a>
+          </div>
+				</div>
+				
+				<div class="col-sm-9 col-md-9 col-lg-10">
+					<div class="row" style="display:block;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading tabheading text-center text-uppercase ">
+                           <b style="">Credit Limit Request</b>
+						   <b style="display:none;">Change Password</b>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+						
+						
+						<!-- Change Password Start-->
+                                            
+        <div class="col-sm-12 col-md-12" style="display:block;">
+             <div class="change_password">
+                    <div class="left_panel">
+					  <form action="" method="POST" name="driver_editProfile" id="driver_editProfile"> 
+						<label><b>Deposit Date*</b></label><input type="text" class="input" name="deposit_date" id="deposit_date" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                      
+                                      
+                                            <label><b>Payment Mode</b></label>
+                                            
+                                            <select name="ctl00$cph_main$drpPaymentMode" id="cph_main_drpPaymentMode"  class="input" onchange="javascript:control(this.value);">
+	<option value="0">----Transaction Mode----</option>
+	<option value="Cheque">Cheque</option>
+	<option value="Demand Draft">Demand Draft</option>
+	<option value="Online Transfer">Online Transfer</option>
+	<option selected="selected" value="Cash Deposit">Cash Deposit</option>
+</select>
+<div class="clear"></div>
+                                    <div id="fileupload" class="" style="display: none; width:100%; float:left;">
+                                        
+                                            <label><b>Upload Cheque / DD Copy/Transaction Slip</b></label>
+                                            
+                                                       
+                                                        <input name="ctl00$cph_main$upldChq" id="cph_main_upldChq" class="" type="file">
+                                     
+                                    </div>
+                                    <div id="trans" class="" style="display: none; width:100%; float:left;">
+                                       
+                                            <label><b>Transaction number</b> </label>
+                                         
+                                             <input name="ctl00$cph_main$txttransactionno" maxlength="20" id="cph_main_txttransactionno" class="input" type="text">
+                                           
+                                          
+                                       
+                                    </div>
+                                    <div id="chequeno" class="" style="display: none; width:100%; float:left;">
+                                       
+                                            <label><b>Cheque / DD No.</b>  </label>
+                                            <input name="ctl00$cph_main$txtChqNo" id="cph_main_txtChqNo" class="input" type="text">
+                                        
+                                    </div>
+                                    <div class="" style="width:100%; float:left;">
+                                       
+                                            <label><b>Partner Bank Accounts</b> </label>
+                                         
+                                             <input name="ctl00$cph_main$drpBankAccounts" maxlength="20" id="cph_main_drpBankAccounts" 
+                                             class="input" onchange="validate();" type="text">
+                                           
+                                                
+                                           
+                                    
+                                    </div>	
+                                           
+                                                
+                                           
+                                   
+                        
+                        <div class="clear"></div>
+                        <label><b>Amount*</b></label><input type="text" class="input" name="amount" id="amount">
+                        <div class="clear"></div>
+                        <label><b>Deposited Bank*</b></label><input type="text" class="input" name="deposit_bank" id="deposit_bank" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Deposited Branch *</b></label><input type="text" class="input" name="deposited_branch" id="deposited_branch">
+                        <div class="clear"></div>                        
+                        <div class="clear"></div>
+                        <label><b>Remark /Request </b></label> 
+                        <input type="text" class="input" name="remark" id="remark">
+                        
+                        
+                        <div class="clear"></div>
+                        
+						<div class="clear"></div>
+						<input type="hidden" name="id_tbluser" id="id_tbluser">
+						<input type="hidden" name="id_tbluserinfo" id="id_tbluserinfo">
+						<input type="hidden" name="id_tbldriver" id="id_tbldriver">
+						<button type="button" class="btn btn-primary submitbtn" style="margin-left:27% !important;" onclick="driver_edit()" >Save</button>
+						</form>
+                    </div>
+                    
+                    
+    </div>
+                    <div class="col-sm-4 col-sm-offset-2 paddinttop10">
+
+            </div>
+        </div>
+        
+									
+						<!-- Change Password End-->			
+								
+                                                
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>An Confirmation Email has been sent on your account</p>
+                <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default closeButton" data-dismiss="modal">Close<i class="fa fa-spinner fa-spin" style="font-size:1.5em;float:right; display: none;"""></i></button>
+                
+            </div>
+        </div>
+    </div>
+ 
+</div>
+
+                                                
+								</div>
+							
+							<!-- /.table-responsive End-->
+                         
+                        </div>
+							
+							
+
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+				</div>
+			</div>
+       	</div>
+	 </div>
+
+
+
+     	 
+		 
+	 
+          
+        
+	
+<script>
+
+	
+
+
+function loginhome(){
+	var base_url = "<?php echo $this->basePath(); ?>";
+	//alert(base_url);
+//window.open('http://50.62.22.158:8085/hello42test/public/login',"_self");
+window.open(base_url+'/login',"_self");
+}
+
+
+function signuphome(){
+	
+	window.open(base_url+'/login',"_self");
+	
+}
+
+
+</script>	
+	 
+
+<script src="<?php echo $this->basePath(); ?>/public/js/jquery.validate.js"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+            //$('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true });
+            $("#changePWD").validate({
+            errorClass: 'error col-lg-offsets-5',
+			rules: {
+				old_pwd: {
+					required: true,
+				},
+				new_pwd: {
+					required: true,
+				},
+				confirm_pwd: {
+					required: true,
+				},
+			},
+			messages: {
+				old_pwd: "Please enter Old Password.",
+				new_pwd: "Please enter New Password.",
+				confirm_pwd: "Please Re-enter Password.",
+			}
+		});
+        });
+        
+        
+        
+    $("#change_pwd").click(function(){
+            
+        if($("#changePWD").valid()!=false)
+        {    
+                
+           $(".fa-spinner").show();
+           var oldPwd = $("#old_pwd").val();
+           var newpass = $("#new_pwd").val();
+           var cpass = $("#confirm_pwd").val();
+           var token = $.cookie('token');
+           
+                           
+            $.ajax({
+                     url: '<?php echo $this->basePath();?>'+'/tunnel/menu/changepassword',
+                     cache: false,
+                     dataType:"json",
+                     type:"POST",
+                     data:{
+                         newpass:newpass,
+                         cpass:cpass,
+                         token:token,
+                         oldpass:oldPwd
+                     },
+                     success: function(data){
+                         $(".fa-spinner").hide();
+                           if(data.ErrorCode=='0')
+                             {
+                                 $('.modal-body').html('<p>Password has been changed Successfully</p>');
+                                 $(".closeButton").on("click", function(e) {
+                                    location.reload();
+                                 });
+                             }
+                             else if(data.ErrorCode=='1'){
+                                 $('.modal-body').html('<p style="color:red">Old Password and New Password are Same.</p>');
+                                 $(".closeButton").on("click", function(e) {
+                                    location.reload();
+                                 });
+                             }
+                             else if(data.ErrorCode=='2'){
+                                 $('.modal-body').html('<p style="color:red">Password doesn\'t match</p>');
+                                 $(".closeButton").on("click", function(e) {
+                                    location.reload();
+                                 });
+                             }
+                             else if(data.ErrorCode=='3'){
+                                 $('.modal-body').html('<p style="color:red">Password should be of 6 characters.</p>');
+                                 $(".closeButton").on("click", function(e) {
+                                    location.reload();
+                                 });
+                             }
+                             else if(data.ErrorCode=='4'){
+                                 $('.modal-body').html('<p style="color:red">Old Password is Invalid.</p>');
+                                 $(".closeButton").on("click", function(e) {
+                                    location.reload();
+                                 });
+                             }
+                             $("#myModal").modal('show');
+                     },
+                     error:function (error){
+                           alert(error);
+                           console.log(error);
+                     }
+                 });
+        }               
+    });
+	
+	
+ function control(id) {
+            debugger;
+            document.getElementById("cph_main_drpPaymentMode").style.border = "0px";
+            if (id == "Cheque") {
+                document.getElementById("chequeno").style.display = 'block';
+                document.getElementById("trans").style.display = 'none';
+                document.getElementById("fileupload").style.display = 'block';
+            }
+            if (id == "Demand Draft") {
+                document.getElementById("chequeno").style.display = 'block';
+                document.getElementById("trans").style.display = 'none';
+                document.getElementById("fileupload").style.display = 'block';
+            }
+            if (id == "Online Transfer") {
+                document.getElementById("chequeno").style.display = 'none';
+                document.getElementById("trans").style.display = 'block';
+                document.getElementById("fileupload").style.display = 'none';
+            }
+            if (id == "Cash Deposit") {
+                document.getElementById("chequeno").style.display = 'none';
+                document.getElementById("trans").style.display = 'none';
+                document.getElementById("fileupload").style.display = 'none';
+            }
+
+
+        }
+            
+</script>
+    

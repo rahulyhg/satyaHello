@@ -1,0 +1,182 @@
+ <?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath();
+?>     
+<?php 
+$userId = $this->id;
+
+if($this->id != "")
+
+{ ?>
+<input type="hidden" id="loginId" value="<?php echo $userId=$this->id ?>" >
+
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 margintop10">
+					
+					 <a href="<?= $this->basePath();?>/login/index/logout" class="bgnone  pull-right">
+                     	<div  class="circle-tile-heading login_signbg red marginbtom0"><i  style='cursor:pointer;'  class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">LogOut</label>                 
+                     </a>
+                     <a href="<?php echo $path?>/dashboard/profile" class="bgnone  pull-right">
+                     	<div onclick="editprofile();" class="circle-tile-heading login_signbg red marginbtom0"><i style='cursor:pointer;' class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">My Account</label>                 
+                     </a>
+           </div>
+      </div>
+    </div>
+	
+<?php
+} 
+else{
+	
+	
+
+ ?>
+ <input type="hidden" id="loginId" value="<?php echo $userId=$this->id ?>" >
+ 
+<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="margin-top:5px;">
+					 <a href="<?php echo $path?>/login" class="bgnone  pull-right">
+                     	<div onclick="loginhome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-1_5x sicon" style='cursor:pointer;' ></i></div>    
+                         <label class="control-label textlogin">Login</label>                 
+                     </a>
+					 <a href="<?php echo $path?>/login/index/signup" class="bgnone  pull-right">
+                     	<div onclick="signuphome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-1_5x sicon" style='cursor:pointer;' ></i></div>    
+                         <label class="control-label textlogin">Sign Up</label>                 
+                     </a>
+           </div>
+      </div>
+    </div>
+    <?php } ?>
+	  <div class="container-fluid navbar-inverse mannavi">
+	  <div class="container">
+    <div class="navbar navbar-inverse marginbtom0 mannavi" role="navigation" style="border-radius:0; border:none">
+    
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" style="padding:0;" data-toggle="collapse" data-target=".navbar-collapse1">
+             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         </div>
+        <div class="navbar-collapse1 collapse">
+          <ul class="nav navbar-nav">
+<!--            <li class="active1" ><a href="#" id="home_regions" ></a></li>-->
+            <li class="dropdown active1">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="choose_cities()"><bdi id="home_regions"></bdi><span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" style="margin-top:2px; ">
+                <li><a href="#" id="cities_drop"></a></li>
+<!--                <li><a href="#">Hyderabad</a></li>
+                <li><a href="#">Ahmedabad</a></li>
+                <li><a href="#">Amritsar</a></li>
+                <li><a href="#">Chandigarh</a></li>
+                <li><a href="#">Jaipur</a></li>-->
+               <!-- <li class="divider menudivderbg"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>-->
+              </ul>
+           <!-- <li ><a href="#about" id="home_aboutus" style="text-transform: capitalize"></a></li>-->
+          <!--  <li><a href="#contact" id="home_services" style="text-transform: capitalize"></a></li>-->
+            <li><a href="#contact" id="home_partners" style="text-transform: capitalize"></a></li>
+             <li><a href="#contact" id="home_careers" style="text-transform: capitalize"></a></li>
+              <li><a href="#contact" id="home_testimonials" style="text-transform: capitalize"></a></li>
+               <li><a href="#contact" id="home_tc"></a></li>
+               <!--<li><a href="#contact" id="home_contact" style="text-transform: capitalize">Contact Us</a></li>-->
+              
+<!--            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" style="margin-top:2px; background:#111;">
+                <li><a href="#"></a></li>
+                <li><a href="#">Hyderabad</a></li>
+                <li><a href="#">Ahmedabad</a></li>
+                <li><a href="#">Amritsar</a></li>
+                <li><a href="#">Chandigarh</a></li>
+                <li><a href="#">Jaipur</a></li>
+                <li class="divider menudivderbg"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>-->
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	 </div>
+		
+
+    <div class="container_fluid">
+    
+	 	<div class="col-lg-12 text-center headingbg">
+			<h2>CONTACT US</h2>
+		</div>
+     <div class="container margin-b20">
+    
+    <div></div>
+    <div class=" mapcantiner_inner1  ">
+     <iframe width="100%" height="371" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=120+-121,++D.B+Gupta+Market,++Karol+Bagh,+New+Delhi,&amp;aq=&amp;sll=21.125498,81.914063&amp;sspn=24.79385,43.286133&amp;ie=UTF8&amp;hq=&amp;hnear=D.B.+Gupta+Market+Road+Bus+Stop,+Desh+Bandhu+Gupta+Rd,+Block+56,+Karol+Bagh,+New+Delhi,+Central+Delhi,+Delhi+110005&amp;t=m&amp;z=14&amp;ll=28.652649,77.19334&amp;output=embed"></iframe><br /><small><a href="https://www.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=120+-121,++D.B+Gupta+Market,++Karol+Bagh,+New+Delhi,&amp;aq=&amp;sll=21.125498,81.914063&amp;sspn=24.79385,43.286133&amp;ie=UTF8&amp;hq=&amp;hnear=D.B.+Gupta+Market+Road+Bus+Stop,+Desh+Bandhu+Gupta+Rd,+Block+56,+Karol+Bagh,+New+Delhi,+Central+Delhi,+Delhi+110005&amp;t=m&amp;z=14&amp;ll=28.652649,77.19334" style="color:#0000FF;text-align:left"></a></small>
+     
+      
+     
+     
+     <div class="clear"></div>
+    <div class="row">
+		<div class="col-sm-5   marginbottom20 clarfix ">
+      
+		<h2>Contact Info</h2>
+			 <address ><strong>REGENCY TOURS PVT. LTD.</strong><br>
+
+29-30, D.B Gupta Market, Karol Bagh, New Delhi - 110005 (India)<br>
+
+Tel : Board 011-47474700 Domestic Pkg : 011-47474730,31<br>
+
+International Pkg : 011-47474729,  32, 33 I Air Ticketing : 011-47474736<br>
+
+Mobile - International Packages : +91-8130214242<br>
+
+Domestic Packages : +91-8130144242 
+E-mail - International Packages : obt@regencytours.in I 
+Domestic Packages : dom@regencytours.in<br>
+
+Website : www.asian-tours.com, www.regencytours.in 
+</address>
+		</div>
+						<div class="col-sm-7 marginbottom20">
+							<h2>contact Form</h2>
+
+									<form class="form-inline" role="form ">
+									           <div class="form-group">
+                                                    <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                                    <input type="email" class="form-control" id=" " placeholder="Name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                    <input type="password" class="form-control" id=" " placeholder="Email">
+                                                </div>
+												 <div class="form-group">
+                                                    <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                    <input type="password" class="form-control" id=" " placeholder="Phone">
+                                                </div>
+						</div>
+						<div class="col-sm-7 marginbottom20">
+												
+												 <div class="form-group ">
+                                                <textarea class="form-control" id="textArea" placeholder="Message" style="height: auto !important;"></textarea>
+												</div>
+                                                <button type="submit" class="btn btn-default btn-lg-4">Sign in</button>
+												</div>
+                                            </form>
+											
+											
+											
+										 
+											
+
+
+
+		</div>
+	
+	</div>
+     
+ 
+</div>
+    </div>

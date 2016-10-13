@@ -1,0 +1,443 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?>
+ <style>
+.loader2 {
+	position: fixed;
+	top: 250;
+	background: none;
+	z-index: 1000000;
+	margin: auto;
+	margin-left: 40%;
+}
+</style>
+<img src="/hello42/public/image/loading.gif" class="loader2" width="150" height="150">
+<style>
+.table {
+	margin-bottom: 0px;
+}
+</style>
+<style>
+html, body, #map-canvas {
+	height: 100%;
+	margin: 0px;
+	padding: 0px
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<style>
+#map-canvas {
+	width: 1000px;
+	height: 1000px;
+}
+</style>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+      var poly;
+var map;
+var lat = getUrlVars()["lat"];
+var lon = getUrlVars()["lon"];
+var latnt;
+var  marker=new Array;
+//alert(id);
+function initialize() {
+  var mapOptions = {
+    zoom: 16,
+    // Center the map on Chicago, USA.
+    //center: new google.maps.LatLng(28.6629,77.2100)
+  };
+if(navigator.geolocation) {
+    browserSupportFlag = true;
+    navigator.geolocation.getCurrentPosition(function(position) {
+      initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      map.setCenter(initialLocation); 
+    }, function() {
+      handleNoGeolocation(browserSupportFlag);
+    });
+  }
+  // Browser doesn't support Geolocation
+  else {
+    browserSupportFlag = false;
+    handleNoGeolocation(browserSupportFlag);
+  }
+
+  function handleNoGeolocation(errorFlag) {
+    if (errorFlag == true) {
+      alert("Geolocation service failed.");
+      initialLocation = newyork;
+    } else {
+      alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
+      initialLocation = siberia;
+    }
+    map.setCenter(initialLocation);
+  }
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var polyOptions = {
+    strokeColor: '#000000',
+    strokeOpacity: 1.0,
+    strokeWeight: 3
+  };
+  $.ajax({
+		type: 'POST',
+		url:"<?php echo $this->basePath();?>/tunnel/admin/driver_lat",
+		dataType: "json",
+		
+		success: function(html){
+			
+			
+	for(i=0;i<html.data.length;i++)
+	{
+            if(html.data[i].map=="available"){
+		latlng = new google.maps.LatLng(html.data[i].Latitude,html.data[i].Longtitude1);
+			marker[html.data[i].id] = new google.maps.Marker({
+				position: latlng,
+                                icon: '<?php echo $this->basePath();?>/public/images/1.png',
+				title: html.data[i].LoginName,
+				map: map
+			  });
+                          google.maps.event.addListener(marker[html.data[i].id], 'click', function() {
+    
+  });
+                          }
+			   if(html.data[i].map=="hired"){
+		latlng = new google.maps.LatLng(html.data[i].Latitude,html.data[i].Longtitude1);
+		 marker[html.data[i].id] = new google.maps.Marker({
+				position: latlng,
+                                icon: '<?php echo $this->basePath();?>/public/images/2.png',
+				title: html.data[i].LoginName,
+				map: map
+			  });
+                          }
+                          if(html.data[i].map=="logout"){
+		latlng = new google.maps.LatLng(html.data[i].Latitude,html.data[i].Longtitude1);
+			 marker[html.data[i].id] = new google.maps.Marker({
+				position: latlng,
+                                icon: '<?php echo $this->basePath();?>/public/images/5.png',
+				title: html.data[i].LoginName,
+				map: map
+			  });
+                          }
+                           
+	}
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+   
+  
+  //alert(id);
+  
+  poly = new google.maps.Polyline(polyOptions);
+  poly.setMap(map);
+
+  // Add a listener for the click event
+  
+}
+
+/**
+ * Handles click events on a map, and adds a new point to the Polyline.
+ * @param {google.maps.MouseEvent} event
+ */
+ function changemarker(){
+ $.ajax({
+		type: 'POST',
+		url:"<?php echo $this->basePath();?>/tunnel/admin/driver_lat",
+		dataType: "json",
+		
+		success: function(html){
+			
+//alert(html.length);			
+	for(i=0;i<html.data.length;i++)
+	{
+            if(html.data[i].map=="available"){
+		latlng = new google.maps.LatLng(html.data[i].Latitude,html.data[i].Longtitude1);
+			marker[html.data[i].id].setPosition(latlng); 
+                        marker[html.data[i].id].setIcon('<?php echo $this->basePath();?>/public/images/1.png'); 
+                          }
+			   if(html.data[i].map=="hired"){
+		latlng = new google.maps.LatLng(html.data[i].Latitude,html.data[i].Longtitude1);
+		marker[html.data[i].id].setPosition(latlng);
+                marker[html.data[i].id].setIcon('<?php echo $this->basePath();?>/public/images/2.png'); 
+                          }
+                          if(html.data[i].map=="logout"){
+		latlng = new google.maps.LatLng(html.data[i].Latitude,html.data[i].Longtitude1);
+			marker[html.data[i].id].setPosition(latlng);
+                        marker[html.data[i].id].setIcon('<?php echo $this->basePath();?>/public/images/5.png'); 
+                          }
+                          
+                          
+	}
+			},
+		error: function(error){
+			console.log(error);
+		}
+	});
+   
+ 
+    }
+function addLatLng() {
+    var a;
+	var b;
+	var latlng;
+  //var path = poly.getPath();
+  
+	//alert(id);
+	 latlng = new google.maps.LatLng(lat,lon);
+	
+var marker = new google.maps.Marker({
+    position: latlng,
+    //title: '#' + path.getLength(),
+    map: map
+  }); 
+	//latlng='('+a+','+b+')';
+	//alert(latlng);
+
+	
+	
+  // Because path is an MVCArray, we can simply append a new coordinate
+  // and it will automatically appear.
+  
+  //alert(event.latLng);
+ // path.push(event.latLng);
+
+  // Add a new marker at the new plotted point on the polyline.
+ 
+ 
+}
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+setInterval(function(){ changemarker(); }, 3000);
+google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addListener(window, 'load', addLatLng);
+    </script>
+<div id="wrapper" style="margin-top:100px">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style=" background: #b64242 !important;box-shadow: 0px 0px 10px #838383; border:none;">
+  <ul class="nav navbar-top-links navbar-right" style="float:right;margin:38px 15px 0;">
+    
+    <!-- /.dropdown -->
+    <li class="dropdown" style="float:right;"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background:none;"><i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i></a>
+      <ul class="dropdown-menu dropdown-user">
+        <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a></li>
+        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a></li>
+        <li class="divider"></li>
+        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a></li>
+      </ul>
+      <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+  </ul>
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" style="float: left;margin: 60px 10px 0;border-color: #fff;"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+  <a class="navbar-brand" style="margin:2px 15px 0px;z-index: 999;" href="<?php print site_url;?>/admin/dashboard"><img src="<?php echo $this->basePath();?>/public/image/logo.png" alt=""></a>
+  <div class="navbar-collapse" style="width:100%;">
+    <ul class="nav navbar-nav" style="margin:47px 0 0;">
+      <li><a href="<?php print site_url;?>/admin/dashboard/booking"><i class="fa fa-briefcase fa-fw"></i>Jobs</a></li>
+      <li><a href="<?php print site_url;?>/admin/tracking"><i class="fa fa-map-marker fa-fw"></i>Tracking<span></span></a>
+        <!-- /.nav-second-level -->
+      </li>
+      <li><a href="tables.html"><i class="fa fa-envelope-o fa-fw"></i>Message</a></li>
+      <li><a href="<?php print site_url;?>/admin/complaint"><i class="fa fa-edit fa-fw"></i>Complaint</a></li>
+      <!--                <li>
+                    <a href="<?php print site_url;?>/admin/driver"><i class="fa fa-user fa-fw"></i> Driver</a>
+                </li>-->
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-graduation-cap fa-fw"></i>Entity<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="<?php print site_url;?>/admin/client">Client</a></li>
+          <li><a href="<?php print site_url;?>/admin/driver">Driver</a></li>
+          <li><a href="<?php print site_url;?>/admin/group">Driver Groups</a></li>
+        </ul>
+      </li>
+      <li><a href="<?php print site_url;?>/admin/fairmanage">Manage Fair</a></li>
+      <li></li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-graduation-cap fa-fw"></i>General Master<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Sim Card</a></li>
+          <li><a href="<?php print site_url;?>/admin/device">Device</a></li>
+          <li></li>
+          <li><a href="<?php print site_url;?>/admin/vehicle">Vehicle</a></li>
+          <li><a href="#">Change Password</a></li>
+        </ul>
+      </li>
+      <ul class="nav nav-second-level collapse">
+        <li><a href="#">Sim Card</a></li>
+        <li><a href="#">Device</a></li>
+        <li><a href="#">Taxi</a></li>
+        <li><a href="#">Taxi Model</a></li>
+        <li><a href="#">Change Password</a></li>
+      </ul>
+      <!-- /.nav-second-level -->
+      
+      <li><a href="#"><i class="fa fa-files-o fa-fw"></i>Repots<span></span></a>
+        <!-- /.nav-second-level -->
+      </li>
+    </ul>
+  </div>
+  <!--/.nav-collapse -->
+</div>
+<div id="page-wrapper">
+<h4><b>Booking</b></h4>
+<div>
+  <div class="portlet portlet-default">
+    <div class="portlet-heading">
+      <div class=" "><i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+        <h6 style="background: #E2E2E2;padding:7px;margin: 0;">Filter</h6>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="portlet-body">
+      <ul id="myTab" class="nav nav-tabs">
+        <li class="active"><a href="#home" data-toggle="tab"><i class="fa fa-list" style="color:#; margin:5px"></i><span id="general_fiter_head"></span></a></li>
+        <li><a href="#profile" data-toggle="tab"><i class="fa fa-user" style="color:#; margin:5px"></i>Client</a></li>
+        <li><a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" style="color:#; margin:5px"></i>Driver</a></li>
+        <li><a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-road" style="color:#; margin:5px"></i>Vehicle</a></li>
+        <li><a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe" style="color:#; margin:5px"></i>Location</a></li>
+        <li><a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear (alias)" style="color:#; margin:5px"></i>State</a></li>
+        <li><a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-eur" style="color:#; margin:5px"></i>Payment</a></li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="home">
+          <div class="container col-sm-col-sm-offset-1" style="margin: 20px auto 8px !important;padding: 0 10px;">
+            <div class="row">
+              <div class="form-group clearfix margintopbottom20">
+                <label id="flight_nos" class="col-sm-2 control-label labelalign">Id</label>
+                <div class="col-sm-4">
+                  <input id="ref" type="text" class=" form-control inputchange" placeholder="Booking Process Id">
+                </div>
+                <label id="point_airport" class="col-sm-2 control-label labelalign">Vehicle Owner</label>
+                <div class="col-sm-4">
+                  <input id=" " type="text" class=" form-control inputchange" placeholder="Vehicle Owner">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group clearfix margintopbottom20">
+                <label id="flight_nos" class="col-sm-2 control-label labelalign">Booking Type</label>
+                <div class="col-sm-4">
+                  <input id="type" type="text" class=" form-control inputchange" placeholder="Internal Id">
+                </div>
+                <label id="point_airport" class="col-sm-2 control-label labelalign">Driver</label>
+                <div class="col-sm-4">
+                  <div class="input-group">
+                    <input id="driver_name" type="text" class="form-control inputchange" placeholder="Driver">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group clearfix margintopbottom20">
+                <label id="flight_nos" class="col-sm-2 control-label labelalign">Initial request data</label>
+                <div class="col-sm-2">
+                  <input id=" " type="text" class=" form-control inputchange" placeholder="Since">
+                </div>
+                <div class="col-sm-2">
+                  <input id=" " type="text" class=" form-control inputchange" placeholder="To">
+                </div>
+                <label id="point_airport" class="col-sm-2 control-label labelalign">Partner</label>
+                <div class="col-sm-4">
+                  <div class="input-group">
+                    <input type="text" id="partner" class="form-control inputchange" placeholder="Partner">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group clearfix margintopbottom20">
+                <div class="col-sm-4 pull-right"><a href="#" class="btn btn-red defaultbtnsearch searchBooking"><i class="fa fa-search" id="search_me" style="color:#fff; margin:5px"></i>Search</a><a href="#" class="btn btn-red defaultbtnsearch"><i class="fa fa-times" style="color:#fff; margin:5px"></i>Clear</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="profile">
+          <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+          <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown1">
+          <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+          <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown2">
+          <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+          <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+        </div>
+      </div>
+    </div>
+    <!-- /.portlet-body -->
+  </div>
+  <!-- /.portlet -->
+  
+</div>
+<!-- /.col-lg-12 -->
+
+<div id="car_details">
+  <ul>
+    <li><img src="<?php echo $this->basePath();?>/public/images/1.png" /><span class="number"><span style="color:#8eb398;"><strong id="available_driver"></strong></span>&nbsp;&nbsp;&nbsp;&nbsp; Free</span></li>
+    <li><img src="<?php echo $this->basePath();?>/public/images/2.png" /><span class="number"><span style="color:#ae6664;"><strong id="hired"></strong></span>&nbsp;&nbsp;&nbsp;&nbsp;Hired</span></li>
+    <li><img src="<?php echo $this->basePath();?>/public/images/3.png" /><span class="number"><span style="color:#f4f4a2;"><strong id="on_call"></strong></span>&nbsp;&nbsp;&nbsp;&nbsp;On Call</span></li>
+    <li><img src="<?php echo $this->basePath();?>/public/images/4.png" /><span class="number"><span style="color:#ee9648;"><strong id="accepted"></strong></span>&nbsp;&nbsp;&nbsp;&nbsp;Duty Accepted</span></li>
+    <li><img src="<?php echo $this->basePath();?>/public/images/5.png" /><span class="number"><span style="color:#000;"><strong id="log_out"></strong></span>&nbsp;&nbsp;&nbsp;&nbsp;Logged Out</span></li>
+    <li><img src="<?php echo $this->basePath();?>/public/images/8.png" /><span class="number"><span style="color:#728d3d"><strong id="reported"></strong></span>&nbsp;&nbsp;&nbsp;&nbsp;Reported</span></li>
+    <li><img src="<?php echo $this->basePath();?>/public/images/6.png" /><span class="number"><span style="color:#457ea3;"><strong id="free_moving"></strong></span>&nbsp;&nbsp;&nbsp;&nbsp;Free Moving</span></li>
+    <li><img src="<?php echo $this->basePath();?>/public/images/7.png" /><span class="number"><span style="color:#a393be";><strong id="live_moving"></strong></span>&nbsp;&nbsp;&nbsp;&nbsp;Logout Moving</span></li>
+  </ul>
+</div>
+
+<body>
+<div id="map-canvas"></div>
+</body>
+</div>
+</div>
+<div class="col-sm-12 marginbottom20">
+  
+  <!--<a href="#" class="btn btn-primary marginright" id="delete_drivers_data"><i class="fa fa-envelope-o marginright"></i>Send SMS</a>-->
+  <a href="#" class="btn btn-default marginright export" style="margin-left: 10px;"><i class="fa fa-download marginright"></i>Download CSV</a>
+  <!--<a href="#" class="btn btn-default marginright" onclick="signupDriver();"><i class="fa fa-user marginright"></i>Add Driver</a>
+				<a href="#" class="btn marginright defaultbtnsearch" ><i class="fa fa-trash-o marginright"></i>Delete</a>-->
+  
+</div>
+
+<!--popups Start-->
+
+<script>
+  
+var id_s;
+     var table;
+     var data;
+     var myVar;
+     var data2;
+	 var myVar2;
+         var i=0;
+$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/driver_track',
+		cache: false,
+		dataType:"json",
+		
+		
+	})
+  .done(function( html ) {
+		$('#available_driver').html(html.data.available_driver);
+		$('#hired').html(html.data.hired);
+                $('#accepted').html(html.data.accepted);
+                 $('#log_out').html(html.data.log_out);
+                     $('#reported').html(html.data.reported);
+		//console.log(html);
+	
+  }).fail(function (error){
+		alert(error);
+		console.log(error);
+		
+ });
+
+
+</script>

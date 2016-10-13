@@ -1,0 +1,75 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?>
+<div id="page-wrapper" class="" >
+  <h4 style="">Manage modules</h4>
+  <div>
+    <div class="container">
+      <div class="row">	
+		 <form role="form" method="post" action="rolemgmt">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="Full Name">Full Name</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="full_name" id="full_name" value="<?php print $data['Rec']->full_name;?>" placeholder="Full Name" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span></div>
+            </div>
+			<div class="form-group">
+              <label for="Full Name">Full Name</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="full_name" id="full_name" value="<?php print $data['Rec1']->RoleName;?>" placeholder="Full Name" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span></div>
+            </div>
+			<div class="form-group">
+              <label for="Module">Select Module</label>
+              <div class="input-group">
+                <ul style="list-style-type: none;">
+                   <li><input type="checkbox" name="CheckAll" id="selectall" value="1" /><strong> Check / Un-Check All</strong></li>
+				  <li><input type="checkbox" name="manage_jobs" id="manage_jobs" class="checkbox1" value="1" <?php if($data['Rec']->manage_jobs==1) echo "checked";?>/> Jobs</li>
+                  <li><input type="checkbox" name="manage_client" id="manage_client" class="checkbox1" value="1"  <?php if($data['Rec']->manage_client==1) echo "checked";?>/> Client</li>
+                  <li><input type="checkbox" name="manage_driver" id="manage_driver" class="checkbox1" value="1" <?php if($data['Rec']->manage_driver==1) echo "checked";?> /> Driver</li>
+				  <li><input type="checkbox" name="manage_driver_groups" id="manage_driver_groups" class="checkbox1" value="1" <?php if($data['Rec']->manage_driver_groups==1) echo "checked";?> /> Driver Groups</li>
+				  <li><input type="checkbox" name="manage_tracking" id="manage_tracking" class="checkbox1" value="1" <?php if($data['Rec']->manage_tracking==1) echo "checked";?> /> Tracking</li>
+				  <li><input type="checkbox" name="manage_complaint" id="manage_complaint" class="checkbox1" value="1" <?php if($data['Rec']->manage_complaint==1) echo "checked";?> /> Complaint</li>
+				  <li><input type="checkbox" name="manage_fair" id="manage_fair" class="checkbox1" value="1" <?php if($data['Rec']->manage_fair==1) echo "checked";?>/> Manage Fair</li>
+				  <li><input type="checkbox" name="manage_reports" id="manage_reports" class="checkbox1" value="1" <?php if($data['Rec']->manage_reports==1) echo "checked";?>/> Reports</li>
+				  <li><input type="checkbox" name="manage_promotion" id="manage_promotion" class="checkbox1" value="1"  <?php if($data['Rec']->manage_promotion==1) echo "checked";?>/> Promotion</li>
+				  <li><input type="checkbox" name="manage_device" id="manage_device" class="checkbox1" value="1"  <?php if($data['Rec']->manage_device==1) echo "checked";?>/> Device</li>
+                  <li><input type="checkbox" name="manage_vehicle" id="manage_vehicle" class="checkbox1" value="1"  <?php if($data['Rec']->manage_vehicle==1) echo "checked";?>/> Vehicle</li>
+                  <li><input type="checkbox" name="manage_enquiry" id="manage_enquiry" class="checkbox1" value="1"  <?php if($data['Rec']->manage_enquiry==1) echo "checked";?>/> Enquiry</li>
+				  <li><input type="checkbox" name="manage_role" id="manage_role" class="checkbox1" value="1" <?php if($data['Rec']->manage_role==1) echo "checked";?> /> Manage Role</li>
+				  <li><input type="checkbox" name="manage_user" id="manage_user" class="checkbox1" value="1" <?php if($data['Rec']->manage_user==1) echo "checked";?> /> Manage User</li>
+				  <li><input type="checkbox" name="mange_driver_payment" id="mange_driver_payment" class="checkbox1" value="1" <?php if($data['Rec']->mange_driver_payment==1) echo "checked";?> /> Driver Payment</li>
+				  
+                
+                </ul>
+              </div>
+            </div>
+            <input type="submit" value="Save" class="btn btn-info pull-right">
+          </div>
+          <input type="hidden" name="id" id="id" value="<?php print $data['Rec']->id;?>" />
+        </form>
+		
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+	$(document).ready(function() {
+		$('#selectall').click(function(event) {  //on click 
+			if(this.checked) { // check select status
+				$('.checkbox1').each(function() { //loop through each checkbox
+					this.checked = true;  //select all checkboxes with class "checkbox1"               
+				});
+			}else{
+				$('.checkbox1').each(function() { //loop through each checkbox
+					this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+				});         
+			}
+		});
+	});
+</script>

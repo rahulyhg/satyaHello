@@ -1,0 +1,68 @@
+Array
+(
+    [0] => Array
+        (
+            [Min] => Min
+        )
+
+    [1] => Array
+        (
+            [Min] => 00
+        )
+
+    [2] => Array
+        (
+            [Min] => 05
+        )
+
+    [3] => Array
+        (
+            [Min] => 10
+        )
+
+    [4] => Array
+        (
+            [Min] => 15
+        )
+
+    [5] => Array
+        (
+            [Min] => 20
+        )
+
+    [6] => Array
+        (
+            [Min] => 25
+        )
+
+    [7] => Array
+        (
+            [Min] => 30
+        )
+
+    [8] => Array
+        (
+            [Min] => 35
+        )
+
+    [9] => Array
+        (
+            [Min] => 40
+        )
+
+    [10] => Array
+        (
+            [Min] => 45
+        )
+
+    [11] => Array
+        (
+            [Min] => 50
+        )
+
+    [12] => Array
+        (
+            [Min] => 55
+        )
+
+)

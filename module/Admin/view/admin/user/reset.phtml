@@ -1,0 +1,56 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } 
+
+if($updfailed != ""){
+    echo "<script>alert(".$updfailed.")</script>";
+    // print_r($_GET['msglgOt']);die;
+}
+
+ ?>
+<div id="page-wrapper" class="" >
+  <h4 style="">Reset Password</h4>
+  <div>
+    <div class="container">
+      <div class="row">	
+		 <form role="form" method="post" action="resetpassword" onsubmit="return confirm('Are you sure you want to change this password')">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="Full Name">Full Name</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="full_name" id="full_name" value="<?php print $data['Rec']->full_name;?>" placeholder="Full Name" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span></div>
+            </div>
+            <div class="form-group">
+              <label for="Username">Username</label>
+              <div class="input-group">
+				<input type="text" class="form-control" name="username" id="username" value="<?php print $data['Rec']->username;?>" placeholder="Username" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span></div>
+            </div>
+			<div class="form-group">
+              <label for="Email">Email</label>
+              <div class="input-group">
+				<input type="text" class="form-control" name="email" id="email" value="<?php print $data['Rec']->email;?>" placeholder="Email" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span></div>
+            </div>
+			
+			<div class="form-group">
+              <label for="New Password">New Password</label>
+              <div class="input-group">
+				<input type="password" class="form-control" name="password" id="password" placeholder="New Password" required>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span></div>
+            </div>
+			
+            <input type="submit" value="Reset" class="btn btn-info pull-right">
+          </div>
+          <input type="hidden" name="id" id="id" value="<?php print $data['Rec']->id;?>" />
+        </form>
+		
+      </div>
+    </div>
+  </div>
+</div>

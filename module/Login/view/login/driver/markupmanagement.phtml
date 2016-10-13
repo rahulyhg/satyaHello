@@ -1,0 +1,202 @@
+
+	 
+		<!--footer-->
+	 
+
+     <div class="container-fluid">
+     
+ 	<div class="row">
+	 	<div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+			<h2>My Account</h2>
+		</div>
+	 </div>
+	 
+			   																												      
+     <div class="container marginbottom20">
+      	<div class="row">
+			<div class="col-lg-12">
+				<div class="col-sm-3 col-md-3 col-lg-2">
+					 
+					 <div class="list-group">
+            <a href="<?php echo $this->basepath(); ?>/login/driver" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Dashboard</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/drivereditprofile" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Edit Profile</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/changepassword" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Change Password</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/driverorderhistory" class="list-group-item "><i class="fa fa-arrow-circle-right"></i> &nbsp;Booking History</a>
+            <!--<a href="<?php echo $this->basepath(); ?>/login/driver/accountbalance" class="list-group-item "><i class="fa fa-arrow-circle-right"></i> &nbsp;Account Balance</a>-->
+			<a href="<?php echo $this->basepath(); ?>/login/driver/markupmanagement" class="list-group-item yellactive"><i class="fa fa-arrow-circle-right"></i> &nbsp;Markup Management</a>
+			<a href="<?php echo $this->basepath(); ?>/login/driver/transaction" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Transaction</a>
+            <!--<a href="<?php echo $this->basepath(); ?>/login/driver/creditrequest" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Credit Request</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/bankdetail" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Bank Details</a>-->
+            <a href="<?php echo $this->basepath(); ?>/login/driver/vehicleupdate" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Vehicle Details</a>
+          </div>
+				</div>
+				
+				<div class="col-sm-9 col-md-9 col-lg-10">
+					<div class="row" style="display:block;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading tabheading text-center text-uppercase ">
+                           <b style="display:;">MARKUP MANAGEMENT</b>
+						 
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+						
+						<!-- Dashboard Start-->	
+								<div class="col-sm-12 col-md-12" style="display:block;">
+									
+									<div class="col-sm-4 col-sm-offset-2 paddinttop10">
+										 
+			                       
+                        <!-- /.portlet -->
+                     
+									</div>
+									<div class="col-sm-4 paddinttop10">
+										
+									</div>
+									
+						<div class="row">
+						
+									<div class="col-sm-4 paddinttop10">
+										
+									</div>
+									
+									<div class="col-sm-4 paddinttop10">
+									
+									</div>
+									
+									<div class="col-sm-4 paddinttop10">
+									
+			                       
+									</div>
+						
+						</div>
+					<div class="markup_management">
+					
+					<label>Type</label>
+					<select class="text3">
+					<option>Point to Point</option>
+					<option>Airport</option>
+					<option>Local</option>
+					<option>Outstation</option>
+					</select>
+					<label >Markup Type</label>
+					<select class="text3">
+					<option>INR</option>
+					<option>%</option>
+					</select>
+					<label >Status</label>
+					<input type="checkbox" class="">
+					<label>Fare Type</label>
+					<select class="text3">
+					
+					<option>Normal Fare</option>
+					
+					</select>
+					<input type="button" value="ADD MARKUP" class="add">
+					</div>
+						
+						
+						<table class="table3">
+						<tr>
+						<td style="width:10% !important;">Name</td>
+						<td style="width:10% !important;">Markup Type</td>
+						<td style="width:20% !important;">MarkupValueDomFare Type</td>
+						<td style="width:10% !important;">Status</td>
+						<td style="width:10% !important;">&nbsp;</td>
+						<td style="width:10% !important;">&nbsp;</td>
+						<td style="width:10% !important;">&nbsp;</td>
+						
+						</tr>
+						<tr>
+						<td>ALL-(All)</td>
+						<td>F</td>
+						<td>100</td>
+						<td></td>
+						<td><img src="/hello42/public/image/bullet.png" /></td>
+						<td>DeActivate</td>
+						<td>Edit</td>
+						
+						</tr>
+						
+						</table>
+						<div class="row">
+							
+									
+								
+								</div>
+							
+							<!-- /.table-responsive End-->
+                         
+                        </div>
+							<!-- Dashboard Start-->	
+
+						
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+				</div>
+			</div>
+       	</div>
+	 </div>
+
+
+
+    </div>
+	</div> 	 
+		 
+	 
+          
+        
+	
+<script>
+
+	
+
+
+function loginhome(){
+	var base_url = "<?php echo $this->basePath(); ?>";
+	//alert(base_url);
+//window.open('http://50.62.22.158:8085/hello42test/public/login',"_self");
+window.open(base_url+'/login',"_self");
+}
+
+
+function signuphome(){
+	
+	window.open(base_url+'/login',"_self");
+	
+}
+
+
+</script>	
+	 
+
+<script type="text/javascript">
+        $(document).ready(function() {
+            //$('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true });
+            account_bal();
+        });
+        
+        
+        function account_bal(){
+            var token = $.cookie('token');
+            var table;
+            table=$('#driver').dataTable({
+              "ajax": '<?php echo $this->basePath();?>/tunnel/menu/driverAccountBalance?token='+token,
+              "deferRender": true
+              });  
+              $("#driver_wrapper").attr("style","border:1px solid #d2d2d2;");
+              $("#driver_wrapper").addClass("clearfix");
+              //$("#driver_wrapper").addClass("font12px");
+              $("#driver_wrapper + div").removeClass("row");
+              $("#driver_info").parent().parent().removeClass("row");
+              $("#driver_wrapper div:first").attr("class","tbsearchrow clearfix");
+              $('#driver_filter label').attr("style","display:none;");
+              $(".paginate_button").attr("style","z-index:999 !important;");
+}
+</script>
+    

@@ -1,0 +1,48 @@
+
+.fare-summery-box{ position:relative; display:block; padding:0px 18px 10px 0; cursor:pointer; float:; }
+.fare-summery-box:hover .fare-su-details, .fare-su-details{ background:#f1f1f1; padding:15px; position:absolute; top: 47px;right: -74px; display:block; border-radius:5px; color:#444; border:1px solid #CCCACA;-moz-box-shadow: inset 0px 1px 18px #C9C7C7;-webkit-box-shadow: inset 0px 1px 18px #C9C7C7; box-shadow: inset 0px 1px 18px #C9C7C7;}
+.fare-su-details{display:none;position:absolute;color: #333;top:52px;right:-47px; margin-top: -16px; text-align:left; line-height:21px; width:250px;z-index:999999999 !important; font-weight:normal;}
+.fare-su-details .faresummarybox dd, .fare-su-details .faresummarybox dt{ float:left; width:100%; padding-bottom:7px; }
+.fare-su-details .faresummarybox dd span, .fare-su-details .faresummarybox dt span{float:left;  font-size:13px; font-weight:normal;}
+.fare-su-details .faresummarybox dd span + span, .fare-su-details .faresummarybox dt span + span{float:right; font-size:12px; text-align:right;}
+.fare-summery-box b{ color:#333; text-decoration:underline;}
+.fare-su-details:before{content: "";position: absolute;width: 0;height:0;border-left: 10px solid transparent;border-right: 10px solid transparent;top:-11px;left:25%;margin-left:50px;	border-bottom:10px solid #CCCACA; color:#fff; font-weight:bold;}
+.payment-fareDetail{border:1px solid #ccc; margin-top:15px; border-radius:2px; overflow:hidden;}
+.payment-fareDetail h3{ background:#0e4973; padding:12px; color:#fff; font-size:18px; margin-bottom:0; text-align:center; font-weight:normal;}
+.payment-fareDetail dl{float:left; width:100%;  border-bottom:1px solid #ccc; margin:0;}
+.payment-fareDetail dt, .payment-fareDetail dd{ font-size:12px; color:#444;padding:8px 0 8px 10px;}
+.payment-fareDetail dd{ border-left:1px solid #ccc;}
+.user-payment-like{background: none; border-top:1px solid #CBCACA; padding:10px 0px 0 0px; margin-top:20px; overflow:hidden}
+.user-payment-like h4{ margin-bottom:0; padding:0 0 5px 0}
+.user-payment-like .radio:before {line-height: 11px;border: 2px solid #0e4973;}
+.payment-page .box-title { background: #ebebeb; border-bottom:2px solid #0e4973;display: inline-block;margin-top: 20px;  padding: 9px 54px 11px 0px;  width:100%; text-align:left; }
+.payment-page .box-title small{ color:#333;}
+.user-payment-like .radio + .radio, user-payment-like .checkbox + .checkbox{ margin-left:0 !important;}
+.payment-page .user-payment-like h4, .payment-page .user-payment-like h2{color:#444;}
+.py-route, .py-route-title{ font-size:33px; color:#444; margin-bottom:21px; position:relative;}
+.pyh-time{ position:absolute;font-size: 23px; color:#444;top: 50px;font-weight: bold;left:18px;}
+.carno{top: 40px; left:26px;}
+.extrakm-heading{ font-size:14px; line-height:18px; color:#666666;}
+.pyh-time sup{font-size:15px;}
+.py-route-bg i{ padding-right:10px; display:inline-block;}
+.py-route-bg i + b + i + b, .py-route-bg i + b + i {font-size:28px;}
+.py-route-bg i + b + i + b + i + b, .py-route-bg i + b + i + b + i {font-size:24px;}
+.py-route-bg i + b + i + b + i + b + i + b, .py-route-bg i + b + i + b + i + b + i {font-size:18px;}
+.py-route-bg i + b{ font-weight:normal; text-transform:uppercase}
+.pa-route-time, .pa-route-time-title, .pa-route-date-time{font-size:20px; color:#666666; padding-left:5px;}
+.pa-route-time{display:block;}
+.py-route-title{font-size:24px;}
+.py-route-title i{float: left;padding-top: 12px;padding-right: 17px;}
+.pa-route-time-title, .pa-route-date-time{font-size:19px;}
+.pa-route-date-time{padding-left:35px; display:block;}
+.payable-advance{ text-align:right;}
+.payable-advance h2 span{font-size:13px;}
+.payable-advance h2 span + br + span{font-size:18px; line-height:23px;}
+.procode-input {-webkit-box-shadow: inset -2px -1px 17px 6px rgba(235,232,235,1);
+-moz-box-shadow: inset -2px -1px 17px 6px rgba(235,232,235,1);
+box-shadow: inset -2px -1px 17px 6px rgba(235,232,235,1);
+border-radius: 4px !important;}
+.Total-payment-box{ padding:15px 0 0 35px;}
+.routetimeheading, .cartypebg, .outstation-city, .oneway-bg{background:url("http://www.mytaxiindia.com/images_new/payment-icon.png")no-repeat 0 0;float: left;margin-top: 6px;}
+.routetimeheading{width: 40px;height: 35px;margin-right: 9px;background-position: -8px -9px;}
+.cartypebg{width: 40px;height: 39px;margin-right:13px;background-position:-75px -4px;}

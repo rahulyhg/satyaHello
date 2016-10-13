@@ -1,0 +1,6 @@
+Array
+(
+    [avatar_src] => 
+    [avatar_data] => {"x":100,"y":300,"height":800,"width":800}
+    [username] => 0v
+)

@@ -1,0 +1,1957 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?><style>
+.loader2{position:fixed;
+top:250;
+background:none;
+z-index:1000000;
+margin:auto;
+margin-left:40%;}
+</style>
+
+<img src="/hello42/public/image/loading.gif" class="loader2" width="150" height="150">
+
+       <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                     <h1 class="text-center textmgntopbotm"style="display:block">Client Dashboard</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Mobile Device Management</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Taxi Management</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Taxi Model Management</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Change Passowrd</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Driver Restering & Assignment</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Driver management</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Complaint management</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Complaint Enquiry </h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Enquiry Master</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Action Master</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Driver Complaint</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Executed Bookings</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Manually Assigned</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Current Job</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Closing Duty</h1>
+					<h1 class="text-center textmgntopbotm" style="display:none">Cancelled Jobs</h1>
+					
+					
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+             <div>
+
+                        <div class="portlet portlet-default">
+                            <div class="portlet-heading">
+                                <div class=" ">
+                                 
+                                    <i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+									<h6 style="background: #E2E2E2;padding:7px;margin: 0;">Filter</h6>
+                                
+                                <div class="clearfix"></div>
+                            </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="portlet-body">
+                                <ul id="myTab" class="nav nav-tabs">
+                                    <li class="active"><a href="#drivergroup" data-toggle="tab"><i class="fa fa-list" style="color:#; margin:5px"></i>Drivers Group</a>
+                                    </li>
+                                    
+                                    
+									
+                                </ul>
+                                <div id="myTabContent" class="tab-content clearfix">
+                                    <div class="tab-pane fade in active" id="drivergroup">
+                                        <div class="container col-sm-col-sm-offset-1" style="margin: 20px auto 8px !important;padding: 0 10px;">
+										<div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign">Driver Group</label>
+                                                  <div class="col-sm-4 ">
+                      <input id="groupId" type="text" class=" form-control inputchange" placeholder="Driver Group">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">Driver</label>
+                                                   <div class="col-sm-4">
+                         <input id="driverName" type="text" class=" form-control inputchange" placeholder="Driver"> 
+                         
+                                                    </div>
+                                                 </div>
+                                             </div>
+											 
+                                            <div class="row" >
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign">Client</label>
+                                                  <div class="col-sm-4">
+												  
+                 <input id="clientsearch" type="text" class=" form-control inputchange" placeholder="Client Email Id">                                    
+                                                  </div>
+                                                                                                   
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign"></label>
+                                                   <div class="col-sm-4">
+                                                        <div class="input-group">
+ 													<input id="groupExt" type="hidden"  placeholder="Vehicle external reference">
+													
+                                                </div> 
+                                                    </div>
+                                                 </div>
+                                             </div>
+											  <div class="row">
+                                                <div class="form-group clearfix margintopbottom20">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign"></label>
+                                                  <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="Since">                                    
+                                                  </div>
+												   <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="To">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign">Vehicle</label>
+                                                   <div class="col-sm-4">
+						<div class="input-group">
+ <input type="text" id="dashboardVehicle" class="form-control inputchange" placeholder="Vehicle">
+			<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+                                                </div> 
+                                                            
+                                                    </div>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                 </div>
+                                                <div class="form-group clearfix margintopbottom20" style="display:none">
+												   <label id="flight_nos" class="col-sm-2 control-label labelalign"></label>
+                                                  <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="Since">                                    
+                                                  </div>
+												   <div class="col-sm-2">
+                                                     <input id=" " type="hidden" class=" form-control inputchange" placeholder="To">                                    
+                                                  </div>
+                                                 
+ 												    <label id="point_airport" class="col-sm-2 control-label labelalign"></label>
+                                                   <div class="col-sm-4">
+						<div class="input-group">
+ <input type="hidden" id="groupDExt" class="form-control inputchange" placeholder="Driver external reference">
+			  
+                                                </div> 
+                                                            
+                                                    </div>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                 </div>
+                                             </div>
+											   <div class="row">
+
+                                             </div>
+											 
+											 
+											 
+											 
+										</div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <div class="col-sm-4 pull-right" style="margin-bottom:15px; padding-left:0;">
+  <a href="#" class="btn btn-red defaultbtnsearch" id="dashboard_driver" ><i class="fa fa-search" style="color:#fff; margin:5px"></i>Search</a>
+  <a href="#" class="btn btn-red defaultbtnsearch"><i class="fa fa-times" style="color:#fff; margin:5px"></i>Clear</a>                                  
+                                                  </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                            <!-- /.portlet-body -->
+                        </div>
+                        <!-- /.portlet -->
+
+                    </div>	
+            
+            
+            
+            
+            
+            
+            
+            
+
+			<div class="row" style="display:;">
+                <div class="">
+                    <div class="">
+                       
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+     <table class="table table-striped table-bordered table-hover dataTable font12px " id="dataTablesdriverdashboard">
+   
+                                    <tbody>
+                                         
+                                        <tr id="datefirst">
+
+                                            
+                                        </tr>
+                                         
+                                        <tr id="dateSecond">
+
+											
+                                        </tr>
+                                        <tr id="dateThird">
+
+                                        </tr>
+                                        <tr id="dateFourth">
+
+                                        </tr>
+                                        <tr id="dateFifth">
+
+                                        </tr>
+                                        <tr id="dateSix">
+
+                                        </tr>
+                                        <tr id="dateSeven">
+
+                                        </tr>
+                                        <tr id="dateEight">
+
+                                        </tr>
+				<tr id="dateNine">
+
+                                        </tr>
+				
+										
+                                      
+                                    </tbody>
+                                </table>
+                                
+                                
+        <!-- driver group search -->
+   <table class="table table-striped table-bordered table-hover dataTable font12px " id="dashboardgroup" style="display:none">
+   
+                                    <tbody>
+                                         
+                                        <tr id="gFirst">
+                                           
+                                            
+                                        </tr>
+                                         
+                                        <tr id="gSecond">
+
+											
+                                        </tr>
+                                        <tr id="gThird">
+
+                                        </tr>
+                                        <tr id="gFourth">
+
+                                        </tr>
+                                        <tr id="gFifth">
+
+                                        </tr>
+                                        <tr id="gSix">
+
+                                        </tr>
+                                        <tr id="gSeven">
+
+                                        </tr>
+                                        <tr id="gEight">
+
+                                        </tr>
+				<tr id="gNine">
+
+                                        </tr>
+				
+										
+                                      
+                                    </tbody>
+                                </table>
+                            <!-- end driver group search -->    
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            
+<!--Details should come date wise.Hour wise.-->
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- not using -- >
+
+
+
+
+
+	<!--Details should come date wise.Hour wise. End-->
+
+	
+
+	
+	<!--1.1.6	Taxi Management End-->
+          
+	
+	
+	
+	
+	<!--Driver Restering & Assignment Start-->
+	 <div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading tabheading">
+                            Driver Restering & Assignment
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                 <table class="table table-striped table-bordered table-hover dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<th>Assignment Mode</th>
+									    
+										</thead>
+										
+										 <tbody>
+                                        <tr>
+  											<td>
+												<div class="form-group space">
+	                                                 <div class="col-sm-11" style="margin-left:10px;">
+	                                                <label class="radio-inline specs">
+	                                               <input type="radio" onclick="goingToAirport();" name="optionsInlineRadios" class="radiobtnalign" value="" checked="">HandOver(to Driver)
+	                                               </label>
+	                                               <label class="radio-inline specs" style="padding-left:47px !important;">
+	                                               <input type="radio" onclick="comingToAirport();" class="radiobtnalign" name="optionsInlineRadios" value="">TakeOver(from Driver)
+	                                               </label>
+	                                               </div>
+	                                            </div>
+											</td>
+                                        </tr>
+										
+										<thead class="bg-success">
+											<th>Taxi</th>
+ 										</thead>
+									
+									<tr>
+										<td>
+										<div class="">
+                                                  <div class="form-group padding_margin0">
+                                                  
+												  <div class="col-sm-3" style="" id="dropLoc">
+                                                    <label>Taxi Status</label>
+                                                    <input id="airDropLocation" type="text" class=" form-control" placeholder="">                                    
+                                                  </div>
+                                                </div>
+                                                  <div class="form-group">
+                                                   <div class="col-sm-3">
+                                                    <label>Vehicle Id</label>
+                                                         <input id="airLandmark" type="text" class=" form-control">
+                                                    </div>
+                                                </div>
+<div class="form-group clearfix">
+                                                   <div class="col-sm-3">
+                                                    <label>Model</label>
+                                                         <input id="airLandmark" type="text" class=" form-control">
+                                                    </div>
+
+													  <div class="col-sm-3">
+                                                    <label>Odometer</label>
+                                                         <input id="airLandmark" type="text" class=" form-control">
+                                                    </div>
+
+                                                </div>
+                                             </div>
+
+										<div class="">
+                                                  <div class="form-group padding_margin0">
+                                                  
+												  <div class="col-sm-3" style="" id="dropLoc">
+                                                    <label>Registration Date</label>
+                                                    <input id="airDropLocation" type="text" class=" form-control" placeholder="">                                    
+                                                  </div>
+                                                </div>
+                                                  <div class="form-group">
+                                                   <div class="col-sm-3">
+                                                    <label>Fuel Type</label>
+                                                         <input id="airLandmark" type="text" class=" form-control">
+                                                    </div>
+                                                </div>
+<div class="form-group clearfix">
+                                                   <div class="col-sm-3">
+                                                    
+                                                    </div>
+													 <div class="col-sm-1 pull-right">
+                                                    <label> </label>
+                                                         <button class="btn form-control btn-success">Show</button>
+                                                    </div>
+
+													 
+
+                                                </div>
+                                             </div>
+ 
+										</td>
+									</tr>
+									
+									<thead class="bg-success">
+											<th>Driver</th>
+ 										</thead>
+									<tr>
+										<td>
+										<div class="">
+                                                  <div class="form-group padding_margin0">
+                                                  
+												  <div class="col-sm-3" style="" id="dropLoc">
+                                                    <label>Name</label>
+                                                    <input id="airDropLocation" type="text" class=" form-control" placeholder="">                                    
+                                                  </div>
+                                                </div>
+                                                  <div class="form-group">
+                                                   <div class="col-sm-3">
+                                                    <label>Mobile No</label>
+                                                         <input id="airLandmark" type="text" class=" form-control">
+                                                    </div>
+                                                </div>
+<div class="form-group clearfix">
+                                                   <div class="col-sm-3">
+                                                    <label>Address</label>
+                                                         <input id="airLandmark" type="text" class=" form-control">
+                                                    </div>
+
+													  <div class="col-sm-3">
+                                                    <label>Status</label>
+                                                         <input id="airLandmark" type="text" class=" form-control">
+                                                    </div>
+
+                                                </div>
+                                             </div>
+
+										<div class="">
+                                                  <div class="form-group padding_margin0">
+                                                  
+												  <div class="col-sm-3" style="" id="dropLoc">
+                                                    <label>Licence No</label>
+                                                    <input id="airDropLocation" type="text" class=" form-control" placeholder="">                                    
+                                                  </div>
+                                                </div>
+                                                  <div class="form-group">
+                                                   <div class="col-sm-3">
+                                                    <label>Sex</label>
+                                                         <select id="localCabIn" name="localCabIn" class="inputfild form-control">
+                                                         <option value="">Male</option>
+                                                                  <option value="">Female</option>
+                                                                </select>
+                                                    </div>
+                                                </div>
+<div class="form-group clearfix">
+                                                   <div class="col-sm-3">
+                                                    
+                                                    </div>
+													 <div class="col-sm-1 pull-right">
+                                                    <label> </label>
+                                                         <button class="btn form-control btn-success">Show</button>
+                                                    </div>
+ 
+                                                </div>
+                                             </div>
+ 
+										</td>
+									</tr>
+									
+									<thead class="bg-success">
+											<th>Reason</th>
+ 										</thead>	
+												
+									<tr>
+										<td>
+ 											<div class="row">
+												<div class="col-sm-6 " style="margin: 15px 0 0;">
+													<form class="form-horizontal" role="form">
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Handover Reason</label>
+                                                    <div class="col-sm-9">
+                                                        <select id="localCabIn" name="localCabIn" class="inputfild form-control">
+                                                         <option value="">Car Assign to Driver</option>
+                                                                  <option value="Delhi/NCR">Car Assign to Driver</option>
+                                                                </select>   
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputPassword3" class="col-sm-3 control-label">Remarks</label>
+                                                    <div class="col-sm-9">
+                                                        
+                                                         <textarea id="localAddress" name="localAddress" class="form-control" placeholder=""></textarea>                                            
+                                                              
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-3 col-sm-9">
+                                                        <button type="submit" class="btn btn-default">Update</button>
+														<button type="submit" class="btn btn-default ">Refresh</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+												
+												</div>
+												<div class="col-sm-6"></div>
+											</div>
+
+										</td>
+									</tr>			
+
+                                    </tbody>
+                                </table>
+  
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--Driver Restering & Assignment End-->
+	
+	<!--Driver management Start-->
+	<div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+							<div class="row"><div class="col-sm-6"><div id="example-table_length" class="dataTables_length"><label><select size="1" name="example-table_length" aria-controls="example-table"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example-table_filter"><label>Search: <input type="text" aria-controls="example-table"></label></div></div></div>
+                                <table class="table table-striped table-bordered table-hover dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<tr>
+										<th>SNo.</th>
+									    <th>Driver id</th>
+										<th>Name</th>
+										<th>Phone No</th>
+										<th>Address</th>
+										<th>Taxi No</th>
+										<th>Job Type</th>
+										<th>Status</th>
+										<th>License No</th>
+										<th>father's name</th>
+										<th>View Doucments</th>
+										<th>&nbsp;</th>
+										
+										</tr></thead>
+										
+										 <tbody>
+                                       <tr>
+                                            <td class="center">1</td>
+ 											<td>20001</td>
+                                            <td>Balvinder</td>
+                                            <td>9999312741</td>
+											<td>pochanpur,dwarka </td>
+                                            <td>4958-HR57</td>
+											<td>Subscription</td>
+                                            <td>Active</td>
+											<td>99993127412</td>
+											<td>&nbsp;</td>
+											<td><a href="#">Doucments</a></td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                         </tr>
+										  <tr>
+                                            <td class="center">1</td>
+ 											<td>20001</td>
+                                            <td>Balvinder</td>
+                                            <td>9999312741</td>
+											<td>pochanpur,dwarka </td>
+                                            <td>4958-HR57</td>
+											<td>Subscription</td>
+                                            <td>Active</td>
+											<td>99993127412</td>
+											<td>&nbsp;</td>
+											<td><a href="#">Doucments</a></td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                         </tr>
+										  <tr>
+                                            <td class="center">1</td>
+ 											<td>20001</td>
+                                            <td>Balvinder</td>
+                                            <td>9999312741</td>
+											<td>pochanpur,dwarka </td>
+                                            <td>4958-HR57</td>
+											<td>Subscription</td>
+                                            <td>Active</td>
+											<td>99993127412</td>
+											<td>&nbsp;</td>
+											<td><a href="#">Doucments</a></td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                         </tr>
+										  <tr>
+                                            <td class="center">1</td>
+ 											<td>20001</td>
+                                            <td>Balvinder</td>
+                                            <td>9999312741</td>
+											<td>pochanpur,dwarka </td>
+                                            <td>4958-HR57</td>
+											<td>Subscription</td>
+                                            <td>Active</td>
+											<td>99993127412</td>
+											<td>&nbsp;</td>
+											<td><a href="#">Doucments</a></td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                         </tr>
+										  <tr>
+                                            <td class="center">1</td>
+ 											<td>20001</td>
+                                            <td>Balvinder</td>
+                                            <td>9999312741</td>
+											<td>pochanpur,dwarka </td>
+                                            <td>4958-HR57</td>
+											<td>Subscription</td>
+                                            <td>Active</td>
+											<td>99993127412</td>
+											<td>&nbsp;</td>
+											<td><a href="#">Doucments</a></td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                         </tr>
+										 
+                                  
+										
+										
+                                        
+                                    </tbody>
+                                </table>
+  <div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example-table_info">Showing 10 to 50 of 100 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#">? Previous</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="active"><a href="#">6</a></li><li class="next disabled"><a href="#">Next ? </a></li></ul></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--Driver management End-->
+	
+	<!--3.2.10	Complaint management: Start-->
+	<div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+							<div class="row"><div class="col-sm-6"><div id="example-table_length" class="dataTables_length"><label><select size="1" name="example-table_length" aria-controls="example-table"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example-table_filter"><label>Search: <input type="text" aria-controls="example-table"></label></div></div></div>
+                                <table class="table table-striped table-bordered table-hover dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<tr>
+										<th>Id</th>
+									    <th>Description</th>
+										<th>Created By</th>
+										<th>Created On</th>
+										<th>&nbsp;</th>
+										 									
+										</tr></thead>
+										
+										 <tbody>
+                                       <tr>
+                                            <td class="center">1</td>
+ 											<td>Driver userd abusive/harsh lang	</td>
+                                            <td>Rajeev</td>
+                                            <td>16/Nov/2014 17:04</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                         </tr>
+										  <tr>
+                                            <td class="center">2</td>
+ 											<td>Driver userd abusive/harsh lang	</td>
+                                            <td>Rajeev</td>
+                                            <td>16/Nov/2014 17:04</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                         </tr>
+										 <tr>
+                                            <td class="center">3</td>
+ 											<td>Driver userd abusive/harsh lang	</td>
+                                            <td>Rajeev</td>
+                                            <td>16/Nov/2014 17:04</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                         </tr>
+										  <tr>
+                                            <td class="center">4</td>
+ 											<td>Driver userd abusive/harsh lang	</td>
+                                            <td>Rajeev</td>
+                                            <td>16/Nov/2014 17:04</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                         </tr>
+										 <tr>
+                                            <td class="center">5</td>
+ 											<td>Driver userd abusive/harsh lang	</td>
+                                            <td>Rajeev</td>
+                                            <td>16/Nov/2014 17:04</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                         </tr>
+										 
+                                  
+										
+										
+                                        
+                                    </tbody>
+                                </table>
+<div class="row">
+									<div class="col-lg-12">
+									<button class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Add Type</button>
+									</div>
+								</div>
+  <div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example-table_info">Showing 10 to 50 of 100 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#">? Previous</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="active"><a href="#">6</a></li><li class="next disabled"><a href="#">Next ? </a></li></ul></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--3.2.10	Complaint management: End-->
+	
+	<!--3.2.11.4 Complaint Enquiry List Start-->
+	<div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+							<div class="row"><div class="col-sm-6"><div id="example-table_length" class="dataTables_length"><label><select size="1" name="example-table_length" aria-controls="example-table"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example-table_filter"><label>Search: <input type="text" aria-controls="example-table"></label></div></div></div>
+                                <table class="table table-bordered dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<tr>
+										<th>SNo</th>
+									    <th>Id</th>
+										<th>Caller Name</th>
+										<th>Massage</th>
+										<th>Type</th>
+										<th>Enquiry Date & Time</th>
+										<th>Status</th>
+										<th>&nbsp;</th>
+										<th>&nbsp;</th>
+										 									
+										</tr></thead>
+										
+										 <tbody>
+                                       <tr>
+                                            <td class="center">1</td>
+ 											<td>945</td>
+                                            <td>Ds Yadav</td>
+                                            <td>Driver enquiry</td>
+											<td>Driver enquiry</td>
+											<td>19/jan/2014 04:23</td>
+											<td>close</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+											<td><button class="btn form-control btn-default">Log</button></td>
+                                         </tr>
+										  <tr>
+                                            <td class="center">1</td>
+ 											<td>945</td>
+                                            <td>Ds Yadav</td>
+                                            <td>Driver enquiry</td>
+											<td>Driver enquiry</td>
+											<td>19/jan/2014 04:23</td>
+											<td>close</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+											<td><button class="btn form-control btn-default">Log</button></td>
+                                         </tr>
+										  <tr>
+                                            <td class="center">1</td>
+ 											<td>945</td>
+                                            <td>Ds Yadav</td>
+                                            <td>Driver enquiry</td>
+											<td>Driver enquiry</td>
+											<td>19/jan/2014 04:23</td>
+											<td>close</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+											<td><button class="btn form-control btn-default">Log</button></td>
+                                         </tr>
+										  <tr>
+                                            <td class="center">1</td>
+ 											<td>945</td>
+                                            <td>Ds Yadav</td>
+                                            <td>Driver enquiry</td>
+											<td>Driver enquiry</td>
+											<td>19/jan/2014 04:23</td>
+											<td>close</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+											<td><button class="btn form-control btn-default">Log</button></td>
+                                         </tr>
+										  <tr>
+                                            <td class="center">1</td>
+ 											<td>945</td>
+                                            <td>Ds Yadav</td>
+                                            <td>Driver enquiry</td>
+											<td>Driver enquiry</td>
+											<td>19/jan/2014 04:23</td>
+											<td>close</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+											<td><button class="btn form-control btn-default">Log</button></td>
+                                         </tr>
+										  <tr class="readbg">
+                                            <td class="center">1</td>
+ 											<td>945</td>
+                                            <td>Ds Yadav</td>
+                                            <td>Driver enquiry</td>
+											<td>Driver enquiry</td>
+											<td>19/jan/2014 04:23</td>
+											<td>open</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+											<td><button class="btn form-control btn-default">Log</button></td>
+                                         </tr>
+										 
+										 
+										 
+                                  
+										
+										
+                                        
+                                    </tbody>
+                                </table>
+<div class="row">
+								 
+								</div>
+  <div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example-table_info">Showing 10 to 50 of 100 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#">? Previous</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="active"><a href="#">6</a></li><li class="next disabled"><a href="#">Next ? </a></li></ul></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--3.2.11.4 Complaint Enquiry List End-->
+       
+	<!--3.2.11.5 Enquiry Type  Start-->
+	<div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+							<div class="row"><div class="col-sm-6"><div id="example-table_length" class="dataTables_length"><label><select size="1" name="example-table_length" aria-controls="example-table"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example-table_filter"><label>Search: <input type="text" aria-controls="example-table"></label></div></div></div>
+                                <table class="table table-bordered dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<tr>
+ 									    <th>Id</th>
+										<th>Enquiry	Type</th>
+										<th>Created By</th>
+										<th>Created On</th>
+ 										<th>Status</th>
+										<th>&nbsp;</th>
+										<th>&nbsp;</th>
+										 									
+										</tr></thead>
+										
+										 <tbody>
+                                       <tr>
+  											<td>1</td>
+                                            <td>Fare Details</td>
+                                            <td>jitander</td>
+											<td>06/Dec/2011 10:46</td>
+ 											<td>Active</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+											<td><button class="btn form-control btn-danger">delete</button></td>
+                                         </tr>
+										  <tr>
+  											<td>1</td>
+                                            <td>Fare Details</td>
+                                            <td>jitander</td>
+											<td>06/Dec/2011 10:46</td>
+ 											<td>Active</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+											<td><button class="btn form-control btn-danger">delete</button></td>
+                                         </tr>
+										  <tr>
+  											<td>1</td>
+                                            <td>Fare Details</td>
+                                            <td>jitander</td>
+											<td>06/Dec/2011 10:46</td>
+ 											<td>Active</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+											<td><button class="btn form-control btn-danger">delete</button></td>
+                                         </tr>
+										  <tr>
+  											<td>1</td>
+                                            <td>Fare Details</td>
+                                            <td>jitander</td>
+											<td>06/Dec/2011 10:46</td>
+ 											<td>Active</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+											<td><button class="btn form-control btn-danger">delete</button></td>
+                                         </tr>
+										  <tr>
+  											<td>1</td>
+                                            <td>Fare Details</td>
+                                            <td>jitander</td>
+											<td>06/Dec/2011 10:46</td>
+ 											<td>Active</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+											<td><button class="btn form-control btn-danger">delete</button></td>
+                                         </tr>
+										  
+										
+                                        
+                                    </tbody>
+                                </table>
+								<div class="row">
+									<div class="col-lg-12">
+									<button class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Add Type</button>
+									</div>
+								</div>
+<div class="row">
+								 
+								</div>
+  <div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example-table_info">Showing 10 to 50 of 100 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#">? Previous</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="active"><a href="#">6</a></li><li class="next disabled"><a href="#">Next ? </a></li></ul></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--3.2.11.5 Enquiry Type End-->   
+	
+	<!--3.2.11.6 Action Taken Type:  Start-->
+	<div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+							<div class="row"><div class="col-sm-6"><div id="example-table_length" class="dataTables_length"><label><select size="1" name="example-table_length" aria-controls="example-table"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example-table_filter"><label>Search: <input type="text" aria-controls="example-table"></label></div></div></div>
+                                <table class="table table-bordered dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<tr>
+ 									    <th>Id</th>
+										<th>Action</th>
+										<th>Created By</th>
+										<th>Created On</th>
+ 										<th>Status</th>
+										<th>&nbsp;</th>
+ 
+										</tr></thead>
+										
+										 <tbody>
+                                       <tr class="readbg">
+  											<td>1</td>
+                                            <td>open</td>
+                                            <td>rajeev</td>
+											<td>18/Nov/2011 22:09</td>
+ 											<td>Active</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										    <tr class="yellowbg">
+  											<td>1</td>
+                                            <td>In Progress</td>
+                                            <td>rajeev</td>
+											<td>18/Nov/2011 22:09</td>
+ 											<td>Active</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										    <tr class="greenbg">
+  											<td>1</td>
+                                            <td>Closed</td>
+                                            <td>rajeev</td>
+											<td>18/Nov/2011 22:09</td>
+ 											<td>Active</td>
+                                            <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										  
+										  
+										  
+										
+                                        
+                                    </tbody>
+                                </table>
+								<div class="row">
+									<div class="col-lg-12">
+									<button class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Add Type</button>
+									</div>
+								</div>
+<div class="row">
+								 
+								</div>
+  <div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example-table_info">Showing 10 to 50 of 100 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#">? Previous</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="active"><a href="#">6</a></li><li class="next disabled"><a href="#">Next ? </a></li></ul></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--3.2.11.6 Action Taken Type: End-->  
+	
+	<!--3.2.11.1 Driver Complaint:  Start-->
+	<div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+							<div class="row"><div class="col-sm-6"><div id="example-table_length" class="dataTables_length"><label><select size="1" name="example-table_length" aria-controls="example-table"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example-table_filter"><label>Search: <input type="text" aria-controls="example-table"></label></div></div></div>
+                                <table class="table table-bordered dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<tr>
+ 									    <th>Id</th>
+										<th>Description</th>
+										<th>Created By</th>
+										<th>Created On</th>
+ 										<th>&nbsp;</th>
+ 
+										</tr></thead>
+										
+										 <tbody>
+                                       <tr>
+  											<td>1</td>
+                                            <td>Rash driving causing accident</td>
+                                            <td>rajeev</td>
+											<td>18/Nov/2011 22:09</td>
+                                             <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										     <tr>
+  											<td>1</td>
+                                            <td>Rash driving causing accident</td>
+                                            <td>rajeev</td>
+											<td>18/Nov/2011 22:09</td>
+                                             <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										     <tr>
+  											<td>1</td>
+                                            <td>Rash driving causing accident</td>
+                                            <td>rajeev</td>
+											<td>18/Nov/2011 22:09</td>
+                                             <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										     <tr>
+  											<td>1</td>
+                                            <td>Rash driving causing accident</td>
+                                            <td>rajeev</td>
+											<td>18/Nov/2011 22:09</td>
+                                             <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										     
+										    
+										  
+										  
+										  
+										
+                                        
+                                    </tbody>
+                                </table>
+								<div class="row">
+									<div class="col-lg-12">
+									<button class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Add Type</button>
+									</div>
+								</div>
+<div class="row">
+								 
+								</div>
+  <div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example-table_info">Showing 10 to 50 of 100 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#">? Previous</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="active"><a href="#">6</a></li><li class="next disabled"><a href="#">Next ? </a></li></ul></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--3.2.11.1 Driver Complaint: End-->  
+	
+	<!--3.2.12.1 Executed Booking  Start-->
+	<div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+							<div class="row"><div class="col-sm-6"><div id="example-table_length" class="dataTables_length"><label><select size="1" name="example-table_length" aria-controls="example-table"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example-table_filter"><label> <input type="text" aria-controls="example-table"></label><label>Search:<select size="1" name="example-table_length" aria-controls="example-table" style="margin-right: 10px;padding: 3px;"><option value="100">Select Search Type</option></select></label></div></div></div>
+                                <table class="table table-bordered dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<tr>
+ 									    <th>SNo.</th>
+										<th>Job No.</th>
+										<th>Mobile No.</th>
+										<th>Customer Name</th>
+ 										<th>Boarding Time</th>
+										<th>P Area</th>
+										<th>D Area</th>
+										<th>Taxi No.</th>
+										<th>Dist(Km)</th>
+										<th>Fare(Rs)</th>
+										<th>Location</th>
+ 
+										</tr></thead>
+										
+										 <tbody>
+                                       <tr>
+  											<td>1</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Mr Rajiv Modhi</td>
+                                            <td>17/Jan/2014 16:30</td>
+											<td>Connaught place	</td>
+											<td>IGI</td>
+											<td>9590-DL1YD</td>
+											<td>&nbsp;</td>
+											<td>0</td>
+											<td>&nbsp;</td>
+                                          </tr>
+										   <tr>
+  											<td>2</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Mr Rajiv Modhi</td>
+                                            <td>17/Jan/2014 16:30</td>
+											<td>Connaught place	</td>
+											<td>IGI</td>
+											<td>9590-DL1YD</td>
+											<td>&nbsp;</td>
+											<td>0</td>
+											<td>&nbsp;</td>
+                                          </tr>
+										   <tr>
+  											<td>3</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Mr Rajiv Modhi</td>
+                                            <td>17/Jan/2014 16:30</td>
+											<td>Connaught place	</td>
+											<td>IGI</td>
+											<td>9590-DL1YD</td>
+											<td>&nbsp;</td>
+											<td>0</td>
+											<td>&nbsp;</td>
+                                          </tr>
+										   <tr>
+  											<td>4</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Mr Rajiv Modhi</td>
+                                            <td>17/Jan/2014 16:30</td>
+											<td>Connaught place	</td>
+											<td>IGI</td>
+											<td>9590-DL1YD</td>
+											<td>&nbsp;</td>
+											<td>0</td>
+											<td>&nbsp;</td>
+                                          </tr>   
+										  
+										
+                                        
+                                    </tbody>
+                                </table>
+								 
+<div class="row">
+								 
+								</div>
+  <div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example-table_info">Showing 10 to 50 of 100 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#">? Previous</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="active"><a href="#">6</a></li><li class="next disabled"><a href="#">Next ? </a></li></ul></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--3.2.12.1 Executed Booking End-->  
+	
+	<!--3.2.12.2 Advanced Booking:  Start-->
+	<div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+							<div class="row"><div class="col-sm-6"><div id="example-table_length" class="dataTables_length"><label><select size="1" name="example-table_length" aria-controls="example-table"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example-table_filter"><label>Search: <input type="text" aria-controls="example-table"></label></div></div></div>
+                                <table class="table table-bordered dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<tr>
+ 									    <th>SNo.</th>
+										<th>Job No.</th>
+										<th>Mobile No.</th>
+										<th>Customer Name</th>
+ 										<th>Pickup Time</th>
+										<th>Pickup Area</th>
+										<th>Drop Area</th>
+										<th>taxi No</th>
+										<th>Driver Id</th>
+										<th>Driver Name</th>
+										<th>Job Status</th>
+										<th>&nbsp;</th>
+ 
+										</tr></thead>
+										
+										 <tbody>
+                                       <tr>
+  											<td>1</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>24/Nov/2011 04:09</td>
+											<td>Gurgaon-Area</td>
+											<td>IGI</td>
+											<td>9590-DL1YD</td>
+											<td>9590-DL1YD</td>
+											<td>&nbsp;</td>
+v											<td>Dispatching</td>
+                                             <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										   <tr>
+  											<td>2</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>24/Nov/2011 04:09</td>
+											<td>Gurgaon-Area</td>
+											<td>IGI</td>
+											<td>9590-DL1YD</td>
+											<td>9590-DL1YD</td>
+											<td>&nbsp;</td>
+v											<td>Dispatching</td>
+                                             <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										   <tr>
+  											<td>3</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>24/Nov/2011 04:09</td>
+											<td>Gurgaon-Area</td>
+											<td>IGI</td>
+											<td>9590-DL1YD</td>
+											<td>9590-DL1YD</td>
+											<td>&nbsp;</td>
+v											<td>Dispatching</td>
+                                             <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										   <tr>
+  											<td>4</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>24/Nov/2011 04:09</td>
+											<td>Gurgaon-Area</td>
+											<td>IGI</td>
+											<td>9590-DL1YD</td>
+											<td>9590-DL1YD</td>
+											<td>&nbsp;</td>
+v											<td>Dispatching</td>
+                                             <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>										     
+										  
+										  
+										  
+										
+                                        
+                                    </tbody>
+                                </table>
+								 
+<div class="row">
+								 
+								</div>
+  <div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example-table_info">Showing 10 to 50 of 100 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#">? Previous</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="active"><a href="#">6</a></li><li class="next disabled"><a href="#">Next ? </a></li></ul></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--3.2.12.2 Advanced Booking: End-->
+	
+	<!--3.2.12.4  Current Job:  Start-->
+	<div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+							<div class="row"><div class="col-sm-6"><div id="example-table_length" class="dataTables_length"><label><select size="1" name="example-table_length" aria-controls="example-table"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example-table_filter"><label>Search: <input type="text" aria-controls="example-table"></label></div></div></div>
+                                <table class="table table-bordered dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<tr>
+ 									    <th>SNo.</th>
+										<th>Job No.</th>
+										<th>Caller Id</th>
+										<th>Caller Name</th>
+ 										<th>Boarding Time</th>
+										<th>Pickup Address</th>
+										<th>Drop Address</th>
+										<th>Taxi No.</th>
+										<th>Job Status</th>
+ 										<th>&nbsp;</th>
+ 
+										</tr></thead>
+										
+										 <tbody>
+                                       <tr>
+  											<td>1</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>17/Jan/2014 19:09</td>
+											<td>Malviya Nagar</td>
+											<td>new Delhi Raliway Station</td>
+											<td>7939-DL1VC</td>
+											<td><a href="#">Manually</a></td>
+                                              <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										   <tr>
+  											<td>2</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>17/Jan/2014 19:09</td>
+											<td>Malviya Nagar</td>
+											<td>new Delhi Raliway Station</td>
+											<td>7939-DL1VC</td>
+											<td><a href="#">Manually</a></td>
+                                              <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										   <tr>
+  											<td>3</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>17/Jan/2014 19:09</td>
+											<td>Malviya Nagar</td>
+											<td>new Delhi Raliway Station</td>
+											<td>7939-DL1VC</td>
+											<td><a href="#">Assigned</a></td>
+                                              <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										   <tr>
+  											<td>4</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>17/Jan/2014 19:09</td>
+											<td>Malviya Nagar</td>
+											<td>new Delhi Raliway Station</td>
+											<td>7939-DL1VC</td>
+											<td><a href="#">No Bidding</a></td>
+                                              <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										  				     
+										  
+										  
+										  
+										
+                                        
+                                    </tbody>
+                                </table>
+								 
+<div class="row">
+								 
+								</div>
+  <div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example-table_info">Showing 10 to 50 of 100 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#">? Previous</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="active"><a href="#">6</a></li><li class="next disabled"><a href="#">Next ? </a></li></ul></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--3.2.12.4  Current Job: End-->
+	
+	<!--3.2.12.7 Closing Duty:  Start-->
+	<div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+							<div class="row"><div class="col-sm-6"><div id="example-table_length" class="dataTables_length"><label><select size="1" name="example-table_length" aria-controls="example-table"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example-table_filter"><label>Search: <input type="text" aria-controls="example-table"></label></div></div></div>
+                                <table class="table table-bordered dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<tr>
+ 									    <th>SNo.</th>
+										<th>Job No.</th>
+										<th>Caller Id</th>
+										<th>Caller Name</th>
+ 										<th>Opening Date</th>
+										<th>Closing Date</th>
+										<th>Opening(Km)</th>
+										<th>Closing(Km)</th>
+										<th>Total(Km)</th>
+ 										<th>Service Tax</th>
+										<th>Driver Charges</th>
+										<th>Toll/Mcd/Parking</th>
+										<th>Total Amount</th>
+										<th>&nbsp;</th>
+ 
+										</tr></thead>
+										
+										 <tbody>
+                                       <tr>
+  											<td>1</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>17/jan/2014</td>
+											<td>17/jan/2014</td>
+											<td>0</td>
+											<td>15</td>
+											<td>15</td>
+											<td>0</td>
+											<td>0</td>
+											<td>0</td>
+											<td>300</td>
+                                              <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										   <tr>
+  											<td>2</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>17/jan/2014</td>
+											<td>17/jan/2014</td>
+											<td>0</td>
+											<td>15</td>
+											<td>15</td>
+											<td>0</td>
+											<td>0</td>
+											<td>0</td>
+											<td>300</td>
+                                              <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										   <tr>
+  											<td>3</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>17/jan/2014</td>
+											<td>17/jan/2014</td>
+											<td>0</td>
+											<td>15</td>
+											<td>15</td>
+											<td>0</td>
+											<td>0</td>
+											<td>0</td>
+											<td>300</td>
+                                              <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										   <tr>
+  											<td>4</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>17/jan/2014</td>
+											<td>17/jan/2014</td>
+											<td>0</td>
+											<td>15</td>
+											<td>15</td>
+											<td>0</td>
+											<td>0</td>
+											<td>0</td>
+											<td>300</td>
+                                              <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										  
+										
+                                        
+                                    </tbody>
+                                </table>
+								 <div class="row">
+									<div class="col-lg-12">
+									<button class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Add Type</button>
+									</div>
+								</div>
+<div class="row">
+								 
+								</div>
+  <div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example-table_info">Showing 10 to 50 of 100 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#">? Previous</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="active"><a href="#">6</a></li><li class="next disabled"><a href="#">Next ? </a></li></ul></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--3.2.12.7 Closing Duty: End-->
+	
+	<!--3.2.12.8 Cancelled Jobs  Start-->
+	<div class="row" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+							<div class="row"><div class="col-sm-6"><div id="example-table_length" class="dataTables_length"><label><select size="1" name="example-table_length" aria-controls="example-table"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example-table_filter"><label>Search: <input type="text" aria-controls="example-table"></label></div></div></div>
+                                <table class="table table-bordered dataTable" id="dataTables-example">
+                                 
+                                       <thead class="bg-success">
+										<tr>
+ 									    <th>SNo.</th>
+										<th>Job No.</th>
+										<th>Mobile No.</th>
+										<th>Customer Name</th>
+ 										<th>Boarding Time</th>
+										<th>Taxi No</th>
+										<th>Order Type</th>
+										<th>Status</th>
+ 										<th>&nbsp;</th>
+ 
+										</tr></thead>
+										
+										 <tbody>
+                                       <tr>
+  											<td>1</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>17/jan/2014</td>
+											<td>&nbsp;</td>
+											<td>&nbsp;</td>
+											<td>Manually Assigned</td>
+v                                           <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										   <tr>
+  											<td>2</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>17/jan/2014</td>
+											<td>&nbsp;</td>
+											<td>&nbsp;</td>
+											<td>Manually Assigned</td>
+v                                           <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										   <tr>
+  											<td>3</td>
+                                            <td>M15578</td>
+                                            <td>9820045502</td>
+											<td>Ankur</td>
+											<td>17/jan/2014</td>
+											<td>&nbsp;</td>
+											<td>&nbsp;</td>
+											<td>No bidding</td>
+v                                           <td><button class="btn form-control btn-default">Show</button></td>
+                                          </tr>
+										  
+										  
+										
+                                        
+                                    </tbody>
+                                </table>
+								 
+<div class="row">
+								 
+								</div>
+  <div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example-table_info">Showing 10 to 50 of 100 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev"><a href="#">? Previous</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="active"><a href="#">6</a></li><li class="next disabled"><a href="#">Next ? </a></li></ul></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	<!--3.2.12.8 Cancelled Jobs End-->
+	
+	
+	   
+		  
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <table id='try'>
+        
+        
+    </table>
+    <!-- /#wrapper -->
+<script>
+    $(document).ready(function () {
+//datefirst
+  ///////table creation///////////////  
+     
+           $.ajax({
+				        type: 'POST',
+				        url: '<?php echo $this->basePath();?>'+'/tunnel/admin/driverdashboard',
+				        dataType: "json",	 
+				        success: successdriverdash,
+                                        error:errordriverdash
+           
+       });
+    
+     
+     
+    });
+    
+    function successdriverdash(data){
+         
+         
+         $("#datefirst").html('<td></td><td><strong>'+data.data[0]+'</strong></td><td><strong>'+data.data[1]+'</strong></td><td><strong>'+data.data[2]+'</strong></td><td><strong>'+data.data[3]+'</strong></td><td><strong>'+data.data[4]+'<strong></td><td><strong>'+data.data[5]+'</strong></td><td><strong>'+data.data[6]+'</strong></td><td><strong>'+data.data[7]+'</strong></td>');
+         
+         
+         $("#dateSecond").html('<td>Gross Revenue</td><td>'+data.gross[0]+'</td><td>'+data.gross[1]+'</td><td>'+data.gross[2]+'</td><td>'+data.gross[3]+'</td><td>'+data.gross[4]+'</td><td>'+data.gross[5]+'</td><td>'+data.gross[6]+'</td><td>'+data.gross[7]+'</td>');
+         
+         $("#dateThird").html('<td>Avg. Trip Fare</td><td>'+data.avg[0]+'</td><td>'+data.avg[1]+'</td><td>'+data.avg[2]+'</td><td>'+data.avg[3]+'</td><td>'+data.avg[4]+'</td><td>'+data.avg[5]+'</td><td>'+data.avg[6]+'</td><td>'+data.avg[7]+'</td>');
+         
+         $("#dateFourth").html('<td>Requested Bookings</td><td>'+data.rBooking[0]+'</td><td>'+data.rBooking[1]+'</td><td>'+data.rBooking[2]+'</td><td>'+data.rBooking[3]+'</td><td>'+data.rBooking[4]+'</td><td>'+data.rBooking[5]+'</td><td>'+data.rBooking[6]+'</td><td>'+data.rBooking[7]+'</td>');
+         
+          $("#dateFifth").html('<td>Accepted Bookings</td><td>'+data.aBooking[0]+'</td><td>'+data.aBooking[1]+'</td><td>'+data.aBooking[2]+'</td><td>'+data.aBooking[3]+'</td><td>'+data.aBooking[4]+'</td><td>'+data.aBooking[5]+'</td><td>'+data.aBooking[6]+'</td><td>'+data.aBooking[7]+'</td>');
+          
+          
+          $("#dateSix").html('<td>Paids Bookings</td><td>'+data.paidBooking[0]+'</td><td>'+data.paidBooking[1]+'</td><td>'+data.paidBooking[2]+'</td><td>'+data.paidBooking[3]+'</td><td>'+data.paidBooking[4]+'</td><td>'+data.paidBooking[5]+'</td><td>'+data.paidBooking[6]+'</td><td>'+data.paidBooking[7]+'</td>');
+          
+           $("#dateSeven").html('<td>Cancelled Bookings</td><td>'+data.cancelled[0]+'</td><td>'+data.cancelled[1]+'</td><td>'+data.cancelled[2]+'</td><td>'+data.cancelled[3]+'</td><td>'+data.cancelled[4]+'</td><td>'+data.cancelled[5]+'</td><td>'+data.cancelled[6]+'</td><td>'+data.cancelled[7]+'</td>');
+           
+            $("#dateEight").html('<td>Extra Charges</td><td>'+data.extra[0]+'</td><td>'+data.extra[1]+'</td><td>'+data.extra[2]+'</td><td>'+data.extra[3]+'</td><td>'+data.extra[4]+'</td><td>'+data.extra[5]+'</td><td>'+data.extra[6]+'</td><td>'+data.extra[7]+'</td>');
+            
+              $("#dateNine").html('<td>No Show Bookings</td><td>'+data.noshowing[0]+'</td><td>'+data.noshowing[1]+'</td><td>'+data.noshowing[2]+'</td><td>'+data.noshowing[3]+'</td><td>'+data.noshowing[4]+'</td><td>'+data.noshowing[5]+'</td><td>'+data.noshowing[6]+'</td><td>'+data.noshowing[7]+'</td>');
+   
+   }
+    
+    
+    function errordriverdash(error){
+        console.log(error);
+    }
+    
+    
+    
+    
+   
+   $("#dashboard_driver").click(function(){
+       
+       
+      
+       $("#dataTablesdriverdashboard").hide(); 
+        $("#dashboardgroup").show();
+  
+   var group = $("#groupId").val();
+   var dName = $("#driverName").val(); 
+   var dVehicle = $("#dashboardVehicle").val();
+   var clientSearch  = $("#clientsearch").val();
+  
+        $.ajax({
+				        type: 'POST',
+				        url: '<?php echo $this->basePath();?>'+'/tunnel/admin/drivergsearch',
+				        dataType: "json",
+                                        data:{vgroup:group,name:dName,vno:dVehicle,clients:clientSearch},
+				        success: successgsearch,
+                                        error:errorgsearch
+           
+               });
+    });  
+    
+    function successgsearch(data){
+      
+         $("#gFirst").html('<td></td><td><strong>'+data.data[0]+'</strong></td><td><strong>'+data.data[1]+'</strong></td><td><strong>'+data.data[2]+'</strong></td><td><strong>'+data.data[3]+'</strong></td><td><strong>'+data.data[4]+'<strong></td><td><strong>'+data.data[5]+'</strong></td><td><strong>'+data.data[6]+'</strong></td><td><strong>'+data.data[7]+'</strong></td>');
+         
+         
+         $("#gSecond").html('<td>Gross Revenue</td><td>'+data.gross[0]+'</td><td>'+data.gross[1]+'</td><td>'+data.gross[2]+'</td><td>'+data.gross[3]+'</td><td>'+data.gross[4]+'</td><td>'+data.gross[5]+'</td><td>'+data.gross[6]+'</td><td>'+data.gross[7]+'</td>');
+         
+         $("#gThird").html('<td>Avg. Trip Fare</td><td>'+data.avg[0]+'</td><td>'+data.avg[1]+'</td><td>'+data.avg[2]+'</td><td>'+data.avg[3]+'</td><td>'+data.avg[4]+'</td><td>'+data.avg[5]+'</td><td>'+data.avg[6]+'</td><td>'+data.avg[7]+'</td>');
+         
+         $("#gFourth").html('<td>Requested Bookings</td><td>'+data.rBooking[0]+'</td><td>'+data.rBooking[1]+'</td><td>'+data.rBooking[2]+'</td><td>'+data.rBooking[3]+'</td><td>'+data.rBooking[4]+'</td><td>'+data.rBooking[5]+'</td><td>'+data.rBooking[6]+'</td><td>'+data.rBooking[7]+'</td>');
+         
+          $("#gFifth").html('<td>Accepted Bookings</td><td>'+data.aBooking[0]+'</td><td>'+data.aBooking[1]+'</td><td>'+data.aBooking[2]+'</td><td>'+data.aBooking[3]+'</td><td>'+data.aBooking[4]+'</td><td>'+data.aBooking[5]+'</td><td>'+data.aBooking[6]+'</td><td>'+data.aBooking[7]+'</td>');
+          
+          
+          $("#gSix").html('<td>Paids Bookings</td><td>'+data.paidBooking[0]+'</td><td>'+data.paidBooking[1]+'</td><td>'+data.paidBooking[2]+'</td><td>'+data.paidBooking[3]+'</td><td>'+data.paidBooking[4]+'</td><td>'+data.paidBooking[5]+'</td><td>'+data.paidBooking[6]+'</td><td>'+data.paidBooking[7]+'</td>');
+          
+           $("#gSeven").html('<td>Cancelled Bookings</td><td>'+data.cancelled[0]+'</td><td>'+data.cancelled[1]+'</td><td>'+data.cancelled[2]+'</td><td>'+data.cancelled[3]+'</td><td>'+data.cancelled[4]+'</td><td>'+data.cancelled[5]+'</td><td>'+data.cancelled[6]+'</td><td>'+data.cancelled[7]+'</td>');
+           
+            $("#gEight").html('<td>Extra Charges</td><td>'+data.extra[0]+'</td><td>'+data.extra[1]+'</td><td>'+data.extra[2]+'</td><td>'+data.extra[3]+'</td><td>'+data.extra[4]+'</td><td>'+data.extra[5]+'</td><td>'+data.extra[6]+'</td><td>'+data.extra[7]+'</td>');
+            
+              $("#gNine").html('<td>No Show Bookings</td><td>'+data.noshowing[0]+'</td><td>'+data.noshowing[1]+'</td><td>'+data.noshowing[2]+'</td><td>'+data.noshowing[3]+'</td><td>'+data.noshowing[4]+'</td><td>'+data.noshowing[5]+'</td><td>'+data.noshowing[6]+'</td><td>'+data.noshowing[7]+'</td>');
+    }
+    function errorgsearch(error){
+        
+        console.log(error);
+    }
+        
+        
+   
+</script>
+    <!-- jQuery Version 1.11.0 -->
+    
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+	var url='<?php echo $this->basePath();?>';
+    $(document).ready(function() {
+          var myVar;
+     var data2;
+	 var myVar2;
+         
+        var url_new='<?php echo $this->basePath();?>'+'/tunnel/admin/dashboard';
+        $('#total_jobs_val').click(function(){
+       alert($(this).html());         
+    });
+          $('#dataTables-example_1').on('click','.clickme',function(){
+             
+           
+           clearInterval(myVar2); 
+        clearInterval(myVar);
+      // alert("fdfdfdfdfdfd");
+      if($(this).hasClass('open'))
+      {
+ myVar2=setInterval(function(){myTimer2()}, 5000);	  
+          $(".remove div:first").slideUp(400,function(){
+               $('.remove').remove();
+              
+          });
+     
+      $(this).removeClass('open');
+	  
+  }else{
+      $('.remove').remove();
+       
+       $(this).addClass('open');
+
+       
+      $(this).parent().parent().after('<tr class="remove" ><td colspan="8"><div style="display:none"> <div class=""> <div class="portlet portlet-default"> <!--<div class="portlet-heading"> <div class="portlet-title"></div> <div class="clearfix"></div> </div>--> <div class="portlet-body"> <ul id="myTab" class="nav nav-tabs tabsdesign"> <li class="active"><a href="#home1" data-toggle="tab"><i class="fa fa-list" style="color:#; margin:5px"></i>Status</a> </li> <li><a href="#bookinginfo" data-toggle="tab"><i class="fa fa-user" style="color:#; margin:5px"></i>Booking Details</a> </li><li><a href="#payment" data-toggle="tab"><i class="fa fa-user" style="color:#; margin:5px"></i> Payment Details</a> </li></li></ul> <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="home1"><h4 class="h4text">Status</h4><table id="example2" class="table table-striped table-responsive"><thead> <tr> <th>Date</th> <th>State</th> <th>Text</th> </tr> </thead> <tbody> </tbody> </table></div><div class="tab-pane fade" id="payment"><h4 class="h4text">Payment Details</h4><table id="paymentdetail" class="table table-responsive table-striped"></table></div><div class="tab-pane fade" id="bookinginfo"><h4 class="h4text">Booking Information</h4><table id="bookinf" class="table table-responsive table-striped"></table></div></div></td></tr>');
+
+   
+    data=$(this).attr("data");
+   
+    $.ajax({
+  url: '<?php echo $this->basePath();?>'+"/tunnel/admin/booking_information?booking_id="+data,
+  cache: false,
+  dataType:"json"
+})
+  .done(function( html ) {
+    for(var i=0;i<html.data.length;i++)
+{
+                               $('#example2 tbody').append('<tr><td>'+html.data[i].time+'</td><td>'+html.data[i].status+'</td><td>'+html.data[i].message+'</td></tr>');  
+  }
+  });
+  $.ajax({
+  url: '<?php echo $this->basePath();?>'+"/tunnel/admin/payment_information?booking_id="+data,
+  cache: false,
+  dataType:"json"
+})
+  .done(function( html ) {
+    
+
+                              $('#paymentdetail').append('<tr><th></th><th>Created At</th><td>'+html.data[0].created_at+'</td></tr><tr><th></th><th>Is Paid</th><td>'+html.data[0].is_paid+'</td></tr><tr><th></th><th>Pait At</th><td>'+html.data[0].paid_at+'</td></tr><tr><th>Price</th><th>Currency</th><td>'+html.data[0].currency+'</td></tr><tr><th></th><th>Invoice Number</th><td>'+html.data[0].invoice_number+'</td></tr><tr><th></th><th>External Refernece</th><td></td></tr><tr><th></th><th>Payment Type</th><td>'+html.data[0].payment_type+'</td></tr><tr><th></th><th>Fees</th><td>'+html.data[0].fees+'</td></tr><tr><th></th><th>Total Price </th><td>'+html.data[0].total_price+'</td></tr><tr><th></th><th>Total Tax Price</th><td>'+html.data[0].total_tax_price+'</td></tr><tr><th>Payment Parts</th><th>Company Base Index</th><td></td></tr><tr><th></th><th>Partner Index</th><td></td></tr><tr><th></th><th>Distance Rate</th><td></td></tr><tr><th></th><th>Duration Rate</th><td>'+html.data[0].duration_rate+'</td></tr><tr><th></th><th>Starting Rate</th><td>'+html.data[0].starting_rate+'</td></tr><tr><th></th><th>Base Price</th><td>'+html.data[0].base_price+'</td></tr><tr><th></th><th>Tax Price</th><td>'+html.data[0].tax_price+'</td></tr><tr><th></th><th>Fraction Discount</th><td></td></tr><tr><th></th><th>Voucher Amount</th><td></td></tr><tr><th></th><th>Price Type</th><td>Variable</td></tr><tr><th>Applied Tarrifs</th><th>Starting Rate</th><td>'+html.data[0].starting_charge+'</td></tr><tr><th></th><th>Distance Rate</th><td>'+html.data[0].distance_charge+'</td></tr><tr><th></th><th>Duration Rate</th><td>'+html.data[0].duration_charge+'</td></tr><tr><th></th><th>Minimum Price</th><td>'+html.data[0].minimum_price+'</td></tr><tr><th></th><th>Cancellation Price</th><td>'+html.data[0].cancellation_price+'</td></tr><tr><th></th><th>No Show Fee</th><td></td></tr><tr><th colspan="3">Credit Card Details</th></tr><tr><th>Personal</th><th>Internal Id</th><td></td></tr><tr><th></th><th>External Id</th><td></td></tr><tr><th></th><th>External Reference</th><td></td></tr><tr><th></th><th>Card Type</th><td></td></tr><tr><th></th><th>Card Number</th><td></td></tr><tr><th></th><th>Expired At</th><td></td></tr><tr><th></th><th>Card Owner</th><td></td></tr><tr><th></th><th>Created At</th><td></td></tr><tr><th></th><th>Verified Date</th><td></td></tr><tr><th></th><th>Active</th><td></td></tr><!--<tr><th>Waiting Charge</th><td>'+html.data[0].waiting+'</td></tr><tr><th>Trip Charge</th><td>'+html.data[0].tripCharge+'</td></tr><tr><th>Total Bill</th><td>'+html.data[0].totalbill+'</td></tr><tr><th>Staring Rate</th><td></td></tr><tr><th>Distance Rate</th><td></td></tr><tr><th>Duration Rate</th><td></td></tr><tr><th>Minimum Price</th><td></td></tr><tr><th></th><td></td></tr>-->');  
+                       $('#bookinf').append('<tr><th>In</th><td>Booking Id</td><td>'+html.data[0].booking_id+'</td></tr><tr><th></th><th>UserAgent</th><td>'+html.data[0].useragent+'</td></tr><tr><th></th><th>Comments for the client</th><td></td></tr><tr><th></th><th>Comment For the driver</th><td></td></tr><tr><th></th><th>Drivers Note</th><td>'+html.data[0].driver_note+'</td></tr><tr><th></th><th>Clients Note</th><td>'+html.data[0].client_note+'</td></tr><tr><th></th><th>Features</th><td>'+html.data[0].features+'</td></tr><tr><th></th><th>Vehicle Type</th><td></td></tr><tr><th></th><th>Is Corporate Booking</th><td>'+html.data[0].is_corporate_booking+'</td></tr><tr><th></th><th>Is account booking</th><td>'+html.data[0].is_account_booking+'</td></tr><tr><th></th><th>Is credit card Available</th><td></td></tr><tr><th></th><th>Voucher Id</th><td>'+html.data[0].voucher_id+'</td></tr><tr><th></th><th>Voucher Type</th><td>'+html.data[0].voucher_type+'</td></tr><tr><th></th><th>Voucher Amount</th><td></td></tr><tr><th>Out</th><th>External Booking Reference</th><td>N/A</td></tr><tr><th></th><th>Arrival Time Pre</th><td>'+html.data[0].arrival_time_pre+'</td></tr><tr><th></th><th>Arrival Time Post</th><td>'+html.data[0].arrival_time_post+'</td></tr><tr><th></th><th>Arrival Time Actual</th><td>'+html.data[0].arrival_time_actual+'</td></tr><tr><th></th><th>Expiration Time</th><td>'+html.data[0].expiration_time+'</td></tr><tr><th></th><th>Actual Driving Duration</th><td>'+html.data[0].actual_driven_duration+'</td></tr><tr><th></th><th>Actual Waiting Distance</th><td>'+html.data[0].actual_waiting_distance+'</td></tr><tr><th></th><th>Actual Distance</th><td>'+html.data[0].actual_distance+'</td></tr><tr><th></th><th>Booking Type</th><td>'+html.data[0].bookingtype+'</td></tr><tr><th></th><th>Booking Date</th><td>'+html.data[0].bookingdate+'</td></tr><tr><th></th><th>Pickup Date</th><td>'+html.data[0].pickupdate+'</td></tr><tr><th></th><th>Pickup Area</th><td>'+html.data[0].pickuparea+'</td></tr><tr><th></th><th>Pickup Address</th><td>'+html.data[0].pickupaddress+'</td></tr><tr><th></th><th>Drop Address</th><td>'+html.data[0].dropaddress+'</td></tr><tr><th></th><th>Drop Area</th><td>'+html.data[0].droparea+'</td></tr><tr><th></th><th>Estimated Distance</th><td>'+html.data[0].estimated_distance+'</td></tr><tr><th></th><th>Estimated Time</th><td>'+html.data[0].estimated_time+'</td></tr><tr><th></th><th>Estimated Price</th><td>'+html.data[0].estimated_price+'</td></tr><tr><th>Driver Rating</th><th>Rating</th><td>'+html.data[0].driver_rating+'</td></tr><tr><th></th><th>Reason</th><td></td></tr><tr><th></th><th>Comment</th><td></td></tr><tr><th>Client Rating</th><th>Rating</th><td>'+html.data[0].client_rating+'</td></tr><tr><th></th><th>Reason</th><td></td></tr><tr><th></th><th>Comment</th><td></td></tr>');  
+  
+  });
+      myVar = setInterval(function(){myTimer()}, 5000);
+      function myTimer(){
+        
+     $.ajax({
+  url: '<?php echo $this->basePath();?>'+"/tunnel/admin/booking_information?booking_id="+data,
+  cache: false,
+  dataType:"json"
+})
+  .done(function( html ) {
+      $('#example2 tbody').html('');
+    for(var i=0;i<html.data.length;i++)
+{
+                               $('#example2 tbody').append('<tr><td>'+html.data[i].time+'</td><td>'+html.data[i].status+'</td><td>'+html.data[i].message+'</td></tr>');  
+  }
+  });    
+     
+   
+      }
+   
+   $(".remove div:first").slideDown(400,function(){
+       //e.preventDefault();
+    }
+
+    );
+  }
+    });
+        $('.book_type').click(function(){
+        $('.book_type').removeClass('activecol');
+        $(this).addClass('activecol');
+        $('.remove').remove();
+       $('.hour_wise').hide();
+       $('.'+$(this).attr("data")).show();
+        
+        
+    });
+       $.ajax({
+				        type: 'POST',
+					headers: { 'auth-token': 'C3PO R2D2' },	//contentType: 'application/json',
+				        url: url_new,
+				        dataType: "json",
+						//data : {userName : name,},		 
+				        success: function(data){
+				        		for(key in data.value) {
+  var infoJSON = data.value[key];
+  $('#'+key+'_val').html(infoJSON);
+  $('#'+key+'_val_2').html(infoJSON);
+}for(key in data.key) {
+  var infoJSON = data.key[key];
+ // alert(infoJSON);
+  $('#'+key).html(infoJSON);
+}
+for(key in data.date_a) {
+  var infoJSON = data.date_a[key];
+ // alert(infoJSON);
+  $('#'+key).append('<span>('+infoJSON+')</span>');
+}
+	
+  for(key in data.hour) {
+  var infoJSON = data.hour[key];;
+  $('#'+key+'>span').html('('+infoJSON+')');
+}
+for(i=0;i<data.hour_wise.length;i++)
+{
+    
+ $('#dataTables-example_1').append('<tr class="hour_wise hide hour_wise_'+data.hour_wise[i].hour+' book_'+data.hour_wise[i].BookingType+'"><td><a class="clickme" data="'+data.hour_wise[i].id+'">'+data.hour_wise[i].ref+'</a></td><td>'+data.hour_wise[i].ContactNo+'</td><td>'+data.hour_wise[i].clientname+'</td><td>'+data.hour_wise[i].bookingdate+'</td><td>'+data.hour_wise[i].partner+'</td><td>'+data.hour_wise[i].pickuparea+'</td><td>'+data.hour_wise[i].driver+'</td><td>'+data.hour_wise[i].status+'</td></tr>');   
+ }
+$('.hour_wise_0').removeClass('hide');								
+									},
+				        error: function(error){
+						
+								console.log(error);	
+						}
+			});
+       // $('#dataTables-example').dataTable();
+       $('.hour').click(function(){
+           //alert("yahoo");
+       $('.remove').remove();
+       $('.hour').removeClass('activecol');
+         $(this).addClass('activecol');
+       $('.hour_wise').addClass('hide');
+	   
+	   
+      
+       $('.hour_wise_'+$(this).attr('data')).removeClass('hide');
+	   //alert($('.hour_wise_'+$(this).attr('data')+'.book_102').length);
+	   $("#span_101").html($('.hour_wise_'+$(this).attr('data')+'.book_101').length);
+       $("#span_102").html($('.hour_wise_'+$(this).attr('data')+'.book_102').length);
+$("#span_103").html($('.hour_wise_'+$(this).attr('data')+'.book_103').length);
+$("#span_104").html($('.hour_wise_'+$(this).attr('data')+'.book_104').length);	   
+    });
+       $('.date').click(function(){
+           $('.remove').remove();
+           $('.date').removeClass('activecol');
+           $(this).addClass('activecol');
+      // alert($(this).attr('data'));
+       $('.hour>span').html('');
+       var url2='<?php echo $this->basePath();?>'+'/tunnel/admin/days_wise';
+       $.ajax({
+				        type: 'POST',
+					headers: { 'auth-token': 'C3PO R2D2' },	//contentType: 'application/json',
+				        url: url2,
+				        dataType: "json",
+                                        
+					data : {date :$(this).attr("data")},		 
+				        success: function(data){
+				        		
+$('.hour_wise').remove();	
+  for(key in data.hour) {
+  var infoJSON = data.hour[key];
+ // alert(infoJSON);
+ 
+  $('#'+key+'>span').html('('+infoJSON+')');
+}
+				for(i=0;i<data.hour_wise.length;i++)
+{
+    
+ $('#dataTables-example_1').append('<tr class="hour_wise hide hour_wise_'+data.hour_wise[i].hour+' book_'+data.hour_wise[i].BookingType+'"><td><a class="clickme" data="'+data.hour_wise[i].id+'">'+data.hour_wise[i].ref+'</a></td><td>'+data.hour_wise[i].ContactNo+'</td><td>'+data.hour_wise[i].clientname+'</td><td>'+data.hour_wise[i].bookingdate+'</td><td>'+data.hour_wise[i].partner+'</td><td>'+data.hour_wise[i].pickuparea+'</td><td>'+data.hour_wise[i].driver+'</td><td>'+data.hour_wise[i].status+'</td></tr>');   
+ }
+$('.hour_wise_0').removeClass('hide');						
+								
+									},
+				        error: function(error){
+						
+								console.log(error);	
+						}
+			});
+        
+    });
+       
+       
+    });
+   
+    
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+ <?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath();
+?>     
+<?php 
+$userId = $this->id;
+
+if($this->id != "")
+
+{ ?>
+<input type="hidden" id="loginId" value="<?php echo $userId=$this->id ?>" >
+
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 margintop10">
+					
+					 <a href="<?= $this->basePath();?>/login/index/logout" class="bgnone  pull-right">
+                     	<div  class="circle-tile-heading login_signbg red marginbtom0"><i  style='cursor:pointer;'  class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">LogOut</label>                 
+                     </a>
+                     <a href="<?php echo $path?>/dashboard/profile" class="bgnone  pull-right">
+                     	<div onclick="editprofile();" class="circle-tile-heading login_signbg red marginbtom0"><i style='cursor:pointer;' class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">My Account</label>                 
+                     </a>
+           </div>
+      </div>
+    </div>
+	
+<?php
+} 
+else{
+	
+	
+
+ ?>
+ <input type="hidden" id="loginId" value="<?php echo $userId=$this->id ?>" >
+ 
+<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="margin-top:5px;">
+					 <a href="<?php echo $path?>/login" class="bgnone  pull-right">
+                     	<div onclick="loginhome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-1_5x sicon" style='cursor:pointer;' ></i></div>    
+                         <label class="control-label textlogin">Login</label>                 
+                     </a>
+					 <a href="<?php echo $path?>/login/index/signup" class="bgnone  pull-right">
+                     	<div onclick="signuphome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-1_5x sicon" style='cursor:pointer;' ></i></div>    
+                         <label class="control-label textlogin">Sign Up</label>                 
+                     </a>
+           </div>
+      </div>
+    </div>
+    <?php } ?>
+	  <div class="container-fluid navbar-inverse mannavi">
+	  <div class="container">
+    <div class="navbar navbar-inverse marginbtom0 mannavi" role="navigation" style="border-radius:0; border:none">
+    
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" style="padding:0;" data-toggle="collapse" data-target=".navbar-collapse1">
+             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         </div>
+        <div class="navbar-collapse1 collapse">
+          <ul class="nav navbar-nav">
+<!--            <li class="active1" ><a href="#" id="home_regions" ></a></li>-->
+            <li class="dropdown active1">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="choose_cities()"><bdi id="home_regions"></bdi><span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" style="margin-top:2px; ">
+                <li><a href="#" id="cities_drop"></a></li>
+<!--                <li><a href="#">Hyderabad</a></li>
+                <li><a href="#">Ahmedabad</a></li>
+                <li><a href="#">Amritsar</a></li>
+                <li><a href="#">Chandigarh</a></li>
+                <li><a href="#">Jaipur</a></li>-->
+               <!-- <li class="divider menudivderbg"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>-->
+              </ul>
+           <!-- <li ><a href="#about" id="home_aboutus" style="text-transform: capitalize"></a></li>-->
+          <!--  <li><a href="#contact" id="home_services" style="text-transform: capitalize"></a></li>-->
+            <li><a href="#contact" id="home_partners" style="text-transform: capitalize"></a></li>
+             <li><a href="#contact" id="home_careers" style="text-transform: capitalize"></a></li>
+              <li><a href="#contact" id="home_testimonials" style="text-transform: capitalize"></a></li>
+               <li><a href="#contact" id="home_tc"></a></li>
+               <!--<li><a href="#contact" id="home_contact" style="text-transform: capitalize">Contact Us</a></li>-->
+              
+<!--            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" style="margin-top:2px; background:#111;">
+                <li><a href="#"></a></li>
+                <li><a href="#">Hyderabad</a></li>
+                <li><a href="#">Ahmedabad</a></li>
+                <li><a href="#">Amritsar</a></li>
+                <li><a href="#">Chandigarh</a></li>
+                <li><a href="#">Jaipur</a></li>
+                <li class="divider menudivderbg"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>-->
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	 </div>
+		
+
+    <div class="container_fluid">
+    
+	 	<div class="col-lg-12 text-center headingbg" style="margin:0; border-bottom:1px solid #f0f0f0;">
+			 <h2>SERVICES</h2>
+		</div>
+
+ <div class="services">
+  	<div class="container">
+  			<div class="col-sm-2 col-sm-offset-1 text-center"><a href="#">
+                                <div class="circle-tile-heading orangebg">
+                                     <i class="fa fa-user fa-fw fa-5x" style="margin: 0px 15px;"></i>
+                                </div>
+                            </a>
+							<h4>English Speaking Driver</h4>
+							</div>
+			<div class="col-sm-2 text-center"><a href="#">
+                                <div class="circle-tile-heading orangebg">
+                                     <i class="fa fa-user fa-fw fa-5x" style="margin: 0px 15px;"></i>
+                                </div>
+                            </a>
+							<h4>Language Guides/ Tranlators</p>
+							</div>
+			<div class="col-sm-2 text-center"><a href="#">
+                                <div class="circle-tile-heading orangebg">
+                                     <i class="fa fa-user fa-fw fa-5x" style="margin: 0px 15px;"></i>
+                                </div>
+                            </a>
+							<h4>Air Tickets</h4>
+							</div>
+			<div class="col-sm-2 text-center"><a href="#">
+                                <div class="circle-tile-heading orangebg">
+                                     <i class="fa fa-user fa-fw fa-5x" style="margin: 0px 15px"></i>
+                                </div>
+                            </a>
+							<h4>Hotel Booking</h4>
+							</div>
+							
+							<div class="col-sm-2 text-center"><a href="#">
+                                <div class="circle-tile-heading orangebg">
+                                     <i class="fa fa-user fa-fw fa-5x" style="margin: 0px 15px"></i>
+                                </div>
+                            </a>
+							<h4>Hotel Booking</h4>
+							</div>
+    	</div>
+  	  </div>
+
+
+		
+    <div class="container margin-b20">
+        
+    <div></div>
+    <div class=" mapcantiner_inner1">
+  
+      <h4><strong>Hello42Cabs is the market place to find taxis in India!</strong> </h4>
+      <p><strong>We offers:</strong></p>
+      <ol>
+      <li>  Point to Point Services</li>
+        <li>  Outstation Packages</li>
+          <li>  Airport Transfers</li>
+            <li>  Full day Packages</li>
+              <li> Tailor made Sightseeing Packages.</li>
+      </ol>
+      <p><strong>Why prefer us</strong></p>
+      
+      <ol>
+      <li>Hello 42 cabs services is cheaper than other radio taxi and car rental services.</li>
+      <li>Quality is assured with each delivery.</li>
+      <li>Promise of on time execution .</li>
+      
+      </ol>
+       <h4><strong>Why We are cheaper</strong></h4>
+Hello 42 cabs services is cheaper than Radio Taxi because:</p>
+<ol>
+<li> Hello 42 is not charging any luggage charges</li>
+<li> Hello 42 is not charging any booking charges or call centre charges</li>
+<li>Hello 42 is not charging any night charges.</li>
+<li> Hello 42 is not charging any AC charges.</li>
+<li>Hello 42 is working on point to point concept.</li>
+<li> No hidden Charges.</li>
+</ol>
+     </div> 
+    </div>
+ 

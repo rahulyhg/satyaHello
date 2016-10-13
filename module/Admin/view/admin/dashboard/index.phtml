@@ -1,0 +1,1071 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?><div class="loader"><img src="/hello42/public/image/loading.gif" width="150" height="150" /></div> 
+        <div id="page-wrapper">
+                <h4><b class="booking_header">Dashboard</b></h4>
+          
+ <div class="row" style="display:block;">
+                <div class="">
+                    <div class="">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="padding:0 15px;">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover font12px" id="dataTables-example">
+                                    <thead style="background: #c0504d; color: #000;">
+                                        <th colspan="2" class="text-center ">Revenue</th>
+										<th colspan="2" class="text-center">Jobs</th>
+									    <th colspan="2" class="text-center ">Dispatch</th>
+										<th colspan="2" class="text-center ">Calls</th>
+										
+										
+										
+									</thead>
+			
+                                    <tbody>
+                                         <thead style="background:#d1d1d1; color:#3c3c3c;">
+                                         
+                                            
+                                        </thead>
+										 <tr class="gradeA">
+                                                                                     <td id="total_revenue" style="width:15%;"></td>
+                                                                                     <td id="total_revenue_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="total_jobs_2" style="width:15%;"></td>
+                                                                                     <td id="total_jobs_val_2" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="total_taxis_registered" style="width:15%;"></td>
+                                                                                     <td id="taxis_reg_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td style="width:15%;">Total Calls</td>
+                                                                                     <td></td>
+                                                                                    
+                                                                                     
+                                            
+                                          </tr>
+                                       	 <tr class="gradeA">
+                                             <td id="cash_duty">Cash Duty</td>
+                                                                                     <td id="cash_duty_val_val" style="width:10%; text-align:center;" ></td>
+                                                                                     <td id="total_jobs_2" >Job Completed</td>
+                                                                                     <td id="job_completed_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="taxis_on_road"></td>
+                                                                                     <td id="taxis_road_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td>Total Missed Calls</td>
+                                                                                     <td></td>
+                                            
+                                          </tr>
+										   <tr class="gradeA">
+                                                                                       <td id="cash_duty">Credit Duty</td>
+                                                                                     <td id="credit_duty_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="jobs_cancelled" ></td>
+                                                                                     <td id="cancel_jobs_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="taxis_logged_in"></td>
+                                                                                     <td id="taxis_logged_in_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td>Total Enquiry</td>
+                                                                                     <td></td>
+                                            
+                                          </tr>
+									     <tr class="gradeA">
+                                                                                   <td id="cash_duty">Local Duty</td>
+                                                                                     <td id="local_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="job_in_progress_2" ></td>
+                                                                                     <td id="job_in_progress_val_2" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="taxis_logged_off"></td>
+                                                                                     <td id="taxis_logged_off_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td>Fare Related Enquiry
+</td>
+                                                                                     <td></td>
+                                           
+                                          </tr>
+										  <tr class="gradeA">
+                                                                                       <td id="point_duty">Point Duty</td>
+                                                                                     <td id="point_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="jobs_advance_2" ></td>
+                                                                                     <td id="job_advance_val_2" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="total_taxis_registered">Blocked Driver</td>
+                                                                                     <td id="taxis_reg_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td>Total Complaints
+</td>
+                                                                                     <td></td>
+                                            
+                                          </tr>
+									   <tr class="gradeA">
+                                                                                  <td id="point_duty">Airport Duty</td>
+                                                                                     <td id="air_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="total_jobs_2" >Cash</td>
+                                                                                     <td id="cash_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="taxis_not_functional"></td>
+                                                                                     <td id="taxis_reg_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td>Extra Charging
+</td>
+                                                                                     <td></td>
+                                           
+                                          </tr>
+										   
+									   <tr class="gradeA">
+                                                                                 <td id="out_duty">Outstation Duty</td>
+                                                                                     <td id="outstation_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="total_jobs_2" >Credit</td>
+                                                                                     <td id="credit_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="available_drivers"></td>
+                                                                                     <td id="taxis_available_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td>Bid Rejects
+</td>
+                                                                                     <td></td>
+                                        
+                                          </tr>
+										  <tr class="gradeA">
+                                                                                       <td id="out_duty"></td>
+                                                                                     <td id="outstation_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="total_jobs_2" ></td>
+                                                                                     <td id="credit_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="taxi_busy_2"></td>
+                                                                                     <td id="taxis_busy_val_2" style="width:10%; text-align:center;"></td>
+                                                                                     <td>Time Constraints
+
+</td>
+                                                                                     <td></td>
+                                        
+                                          </tr>
+										  <tr class="gradeA">
+                                                                                           <td id="out_duty"></td>
+                                                                                     <td id="outstation_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="total_jobs_2" ></td>
+                                                                                     <td id="credit_val_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="taxi_free_2"></td>
+                                                                                     <td id="taxis_free_val_2" style="width:10%; text-align:center;"></td>
+                                                                                     <td>Total Calls Received
+
+
+</td>
+                                                                                     <td></td>
+                                           
+                                          </tr>
+										    <tr class="gradeA">
+                                          
+                                          </tr>
+										   
+										    <tr class="gradeA">
+                                            
+                                          
+                                          </tr>
+										  <tr class="gradeA">
+                                           
+                                          </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+		
+                          
+ <div class="row" style="display:block;">
+                <div class="">
+                    <div class="">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="padding:0 15px;">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover font12px" id="dataTables-example">
+                                    <thead style="background: #c0504d; color: #000;">
+                                        <th colspan="2" class="text-center ">Zone</th>
+										<th colspan="2" class="text-center">Job Type</th>
+									    <th colspan="2" class="text-center ">Job Via App</th>
+										<th colspan="2" class="text-center ">City</th>
+										
+										
+										
+									</thead>
+                                    <tbody>
+                                         <thead style="background:#d1d1d1; color:#3c3c3c;">
+                                         
+                                            
+                                        </thead>
+										 <tr class="gradeA">
+                                                                                     <td id="total_revenue" style="width:15%;">North</td>
+                                                                                     <td id="total_revenue_val_val" style="width:10%;"></td>
+                                                                                     <td id="total_jobs_2" style="width:15%;" >Local</td>
+                                                                                     <td id="local_book_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="total_taxis_registered" style="width:15%;">Website</td>
+                                                                                     <td id="web_app_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td style="width:15%;">Noida</td>
+                                                                                     <td id="noida_jobs_val" style="width:10%; text-align:center;"></td>
+                                                                                    
+                                                                                     
+                                            
+                                          </tr>
+                                       	 <tr class="gradeA">
+                                             <td id="cash_duty">South</td>
+                                                                                     <td id="cash_duty_val_val"></td>
+                                                                                     <td id="total_jobs_2" >Point to Point</td>
+                                                                                     <td id="point_book_val" style="text-align:center;"></td>
+                                                                                     <td id="taxis_on_road">User App</td>
+                                                                                     <td id="user_app_val" style="text-align:center;"></td>
+                                                                                     <td>Delhi</td>
+                                                                                     <td id="delhi_jobs_val" style="text-align:center;"></td>
+                                            
+                                          </tr>
+										   <tr class="gradeA">
+                                                                                       <td id="cash_duty">East</td>
+                                                                                     <td id="credit_duty_val_val" style="text-align:center;"></td>
+                                                                                     <td id="jobs_cancelled" >Airport Transfer</td>
+                                                                                     <td id="airport_book_val" style="text-align:center;"></td>
+                                                                                     <td id="taxis_logged_in">Call Center</td>
+                                                                                     <td id="call_center_val" style="text-align:center;"></td>
+                                                                                     <td>Gurgaon</td>
+                                                                                     <td id="gurgaon_jobs_val" style="text-align:center;"></td>
+                                            
+                                          </tr>
+									     <tr class="gradeA">
+                                                                                   <td id="cash_duty">West</td>
+                                                                                     <td id="local_val_val" style="text-align:center;"></td>
+                                                                                     <td id="job_in_progress_2" >Outstation</td>
+                                                                                     <td id="outstation_book_val" style="text-align:center;"></td>
+                                                                                     <td id="taxis_logged_off"></td>
+                                                                                     <td id="taxis_logged_off_val" style="text-align:center;"></td>
+                                                                                     <td>Faridabad
+</td>
+                                                                                     <td id="faridabad_jobs_val" style="text-align:center;"></td>
+                                           
+                                          </tr>
+										  <tr class="gradeA">
+                                                                                       <td id="point_duty"></td>
+                                                                                     <td id="point_val_val"></td>
+                                                                                     <td id="jobs_advance_2" >Railway</td>
+                                                                                     <td id="job_advance_val_2"></td>
+                                                                                     <td id="total_taxis_registered"></td>
+                                                                                     <td id="taxis_reg_val"></td>
+                                                                                     <td>
+Ghaziabad</td>
+                                                                                     <td></td>
+                                            
+                                          </tr>
+									  
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+		
+                <div class="row" style="display:block;">
+                <div class="">
+                    <div class="">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="padding:0 15px;">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover font12px" id="dataTables-example">
+                                    <thead style="background: #c0504d; color: #000;">
+                                        <th colspan="2" class="text-center ">Complaints</th>
+										<th colspan="2" class="text-center">Share%</th>
+									    <th colspan="2" class="text-center "></th>
+										<th colspan="2" class="text-center "></th>
+										
+										
+										
+									</thead>
+                                    <tbody>
+                                         <thead style="background: #c0504d; color: #000;">
+                                         
+                                            
+                                        </thead>
+										 <tr class="gradeA">
+                                                                                     <td id="total_revenue" style="width:15%;">Maintenance
+</td>
+                                                                                     <td id="total_revenue_val_val" style="width:10%;"></td>
+                                                                                     <td id="total_jobs_2" style="width:15%;">Hello42</td>
+                                                                                     <td id="company_sh_val" style="width:10%; text-align:center;"></td>
+                                                                                     <td id="total_taxis_registered" style="width:15%;"></td>
+                                                                                     <td id="taxis_reg_val" style="width:10%;"></td>
+                                                                                     <td style="width:15%;"></td>
+                                                                                     <td style="width:10%;"></td>
+                                                                                    
+                                                                                     
+                                            
+                                          </tr>
+                                          	 <tr class="gradeA">
+                                                                                     <td id="total_revenue">
+Taxi Delayed
+</td>
+                                                                                     <td id="total_revenue_val_val"></td>
+                                                                                     <td id="total_jobs_2" >Partners
+</td>
+                                                                                     <td id="partner_sh_val"  style="width:10%; text-align:center;"></td>
+                                                                                     <td id="total_taxis_registered"></td>
+                                                                                     <td id="taxis_reg_val"></td>
+                                                                                     <td></td>
+                                                                                     <td></td>
+                                                                                    
+                                                                                     
+                                            
+                                          </tr>
+                                       	 <tr class="gradeA">
+                                                                                     <td id="total_revenue">
+Driver
+</td>
+                                                                                     <td id="total_revenue_val_val"></td>
+                                                                                     <td id="total_jobs_2" >Drivers
+</td>
+                                                                                     <td id="driver_sh_val"  style="width:10%; text-align:center;"></td>
+                                                                                     <td id="total_taxis_registered"></td>
+                                                                                     <td id="taxis_reg_val"></td>
+                                                                                     <td></td>
+                                                                                     <td></td>
+                                                                                    
+                                                                                     
+                                            
+                                          </tr>
+                                           <tr class="gradeA">
+                                                                                     <td id="total_revenue">
+CCE
+</td>
+                                                                                     <td id="total_revenue_val_val"></td>
+                                                                                     <td id="total_jobs_2" >
+</td>
+                                                                                     <td id="total_jobs_val_2"></td>
+                                                                                     <td id="total_taxis_registered"></td>
+                                                                                     <td id="taxis_reg_val"></td>
+                                                                                     <td></td>
+                                                                                     <td></td>
+                                                                                    
+                                                                                     
+                                            
+                                          </tr>
+                                           <tr class="gradeA">
+                                                                                     <td id="total_revenue">
+Lost & Found
+</td>
+                                                                                     <td id="total_revenue_val_val"></td>
+                                                                                     <td id="total_jobs_2" >
+</td>
+                                                                                     <td id="total_jobs_val_2"></td>
+                                                                                     <td id="total_taxis_registered"></td>
+                                                                                     <td id="taxis_reg_val"></td>
+                                                                                     <td></td>
+                                                                                     <td></td>
+                                                                                    
+                                                                                     
+                                            
+                                          </tr>
+                                           <tr class="gradeA">
+                                                                                     <td id="total_revenue">
+Extra Charging
+
+</td>
+                                                                                     <td id="total_revenue_val_val"></td>
+                                                                                     <td id="total_jobs_2" >
+</td>
+                                                                                     <td id="total_jobs_val_2"></td>
+                                                                                     <td id="total_taxis_registered"></td>
+                                                                                     <td id="taxis_reg_val"></td>
+                                                                                     <td></td>
+                                                                                     <td></td>
+                                                                                    
+                                                                                     
+                                            
+                                          </tr>
+                                           <tr class="gradeA">
+                                                                                     <td id="total_revenue">
+Bill Not Given
+
+</td>
+                                                                                     <td id="total_revenue_val_val"></td>
+                                                                                     <td id="total_jobs_2" >
+</td>
+                                                                                     <td id="total_jobs_val_2"></td>
+                                                                                     <td id="total_taxis_registered"></td>
+                                                                                     <td id="taxis_reg_val"></td>
+                                                                                     <td></td>
+                                                                                     <td></td>
+                                                                                    
+                                                                                     
+                                            
+                                          </tr>
+                                       	 <tr class="gradeA">
+                                                                                     <td id="total_revenue">
+Miss behaved by driver
+
+
+</td>
+                                                                                     <td id="total_revenue_val_val"></td>
+                                                                                     <td id="total_jobs_2" >
+</td>
+                                                                                     <td id="total_jobs_val_2"></td>
+                                                                                     <td id="total_taxis_registered"></td>
+                                                                                     <td id="taxis_reg_val"></td>
+                                                                                     <td></td>
+                                                                                     <td></td>
+                                                                                    
+                                                                                     
+                                            
+                                          </tr>
+									  
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+		
+                <div class="row" style="display:none;">
+                <div class="">
+                    <div class="">
+                       
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover dataTable font12px " id="dataTables-example">
+                                    
+                                    <tbody>
+                                        <tr class="gradeX">
+                                            <td id='taxis_registered_2'></td>
+                                            <td id="taxis_reg_val_2"class="center"></td>
+                                            <td id="taxis_on_road_2"></td>
+                                            <td class="center" id="taxis_road_val_2"></td>
+											
+                                            <td id='taxis_not_functional_2'></td>
+                                            <td class="center">0</td>
+                                            <td id="taxis_logged_off"></td>
+                                            <td class="center" id="taxis_logged_off_val_2"></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                          <td id="taxi_busy_2"></td>
+                                            <td class="center" id="taxis_busy_val_2"></td>
+                                            <td id="taxi_free_2"></td>
+                                            <td class="center" id="taxis_free_val_2"></td>
+											<td id="taxi_delay_2"></td>
+                                            <td class="center">0</td>
+                                            <td id="total_calls_received_2"></td>
+                                            <td class="center">0</td>
+											
+                                        </tr>
+                                        <tr class="gradeA">
+                                          <td id="total_missed_call_2"></td>
+                                            <td class="center">0</td>
+                                            <td id="available_drivers_2"></td>
+                                            <td class="center" id="taxis_available_val_2"></td>
+											<td id="drivers_logged_in_2"></td>
+                                            <td id="taxis_logged_in_val_2"class="center"></td>
+                                            <td id="total_jobs_2"></td>
+                                            <td class="center" id="total_jobs_val_2"></td>
+                                        </tr>
+                                        <tr class="gradeA">
+                                          <td id="job_in_progress_2"></td>
+                                            <td class="center" id="job_in_progress_val_2"></td>
+                                            <td id="west_2">West</td>
+                                            <td class="center">0</td>
+											<td id="kerbs_2"></td>
+                                            <td class="center">0</td>
+                                            <td id="jobs_cancelled_2"></td>
+                                            <td id="cancel_jobs_val_2"></td>
+                                        </tr>
+                                        <tr class="gradeA">
+                                            <td id="jobs_advance_2"></td>
+                                            <td class="center" id="job_advance_val_2"></td>
+                                            <td id="south_2"></td>
+                                            <td class="center">0</td>
+											<td id="jobs_from_delhi_2"></td>
+                                            <td class="" id="delhi_jobs_val_2"></td>
+                                            <td id="jobs_from_gurgaon_2"></td>
+                                            <td class="center" id="gurgaon_jobs_val_2"></td>
+                                        </tr>
+                                        <tr class="gradeA">
+                                           <td id="total_enquiry_2"></td>
+                                            <td class="center">0</td>
+                                            <td id="east_2"></td>
+                                            <td class="center">0</td>
+											<td id="credit_duty_2"></td>
+                                            <td class="center">0</td>
+                                            <td id="out_station_duty_2">Out Station Duty</td>
+                                            <td id="outstation_jobs_val_2"></td>
+                                        </tr>
+                                        <tr class="gradeA">
+                                          <td id="total_complaints_2"></td>
+                                            <td class="center">0</td>
+                                            <td id="north_2"></td>
+                                           <td class="center">0</td>
+											<td id="jobs_from_noida_gzb_2"></td>
+                                            <td class="center" id="noida_jobs_val_2">0</td>
+                                            <td id="job_from_faridabad_2"></td>
+                                            <td class="center" id="faridabad_jobs_val_2">0</td>
+                                        </tr>
+                                        <tr class="gradeA">
+                                          <td id="extra_charging_2"></td>
+                                            <td class="center">0</td>
+                                            <td id="bid_reject_2"></td>
+                                            <td class="bid_reject_2"></td>
+											<td id="short_distance_2"></td>
+                                            <td class="center">0</td>
+                                            <td>Fare Related Enquiry</td>
+                                            <td class="center">0</td>
+                                        </tr>
+										<tr class="gradeA">
+                                          <td>Revenue Call Center</td>
+                                            <td class="center">0</td>
+                                            <td>Time Constraints</td>
+                                           <td class="center">0</td>
+											<td>Complnts Taxi Delay</td>
+                                            <td class="center">0</td>
+                                            <td>Driver's Complaints</td>
+                                            <td class="center">0</td>
+                                        </tr>
+										<tr class="gradeA">
+                                          <td>&nbsp;</td>
+                                            <td class="center">&nbsp;</td>
+                                            <td>Complaints Maintenance</td>
+                                           <td class="center">0</td>
+											<td>Total Revenue</td>
+                                            <td class="center">0</td>
+                                            <td>Revenue from Kerbs</td>
+                                            <td class="center">0</td>
+                                        </tr>
+										<tr class="gradeA">
+                                          <td>&nbsp;</td>
+                                            <td class="center">&nbsp;</td>
+                                            <td>Lost &amp; Found</td>
+                                            <td class="center">0</td>
+											<td>Total Revenue</td>
+                                            <td class="center">0</td>
+                                            <td>Revenue from Kerbs</td>
+                                            <td class="center">0</td>
+                                        </tr>
+                                      <tr class="gradeA">
+                                          <td>&nbsp;</td>
+                                            <td class="center">&nbsp;</td>
+                                            <td>Earning &lt; Rs. 1000</td>
+                                            <td class="center">0</td>
+											<td>Earning &gt; Rs. 1000</td>
+                                            <td class="center">0</td>
+                                            <td>&nbsp;</td>
+                                            <td class="center">&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+           
+ <div class="row" style="display:none;">
+                <div class="">
+                    <div class="">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="padding:0 15px;">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover font12px" id="dataTables-example">
+                                    <thead style="background:#3c3c3c; color:#fff;">
+										<th colspan="2" class="text-center">Dispatch</th>
+									    <th colspan="2" class="text-center ">Call Center</th>
+										<th colspan="2" class="text-center ">Jobs Details</th>
+										<th colspan="2" class="text-center">Complaints</th>
+										<th colspan="2" class="text-center ">Revenue</th>
+										<th colspan="2" >&nbsp;</th>
+									</thead>
+                                    <tbody>
+                                         <thead style="background:#d1d1d1; color:#3c3c3c;">
+                                            <td id="total_taxis_registered"></td>
+                                            <td id="taxis_reg_val"class="center"></td>
+                                            <td id="total_calls"></td>
+                                            <td id="total_calls_val" class="center"></td>
+					    <td id="total_jobs">Total Jobs</td>
+                                            <td id="total_jobs_val" class="center"></td>
+                                            <td id="total_complaint"></td>
+                                            <td id="total_complaint_val"class="center"></td>
+											<td id="total_revenue"></td>
+                                            <td id="amount" class="center"></td>
+											<td id="company_share"></td>
+                                            
+                                        </thead>
+										 <tr class="gradeA">
+                                            <td id="taxis_on_road"></td>
+                                            <td id="taxis_road_val"class="center"></td>
+                                            <td>Total Missed Calls</td>
+                                            <td class="center">0</td>
+											<td id='jobs_1'></td>
+                                            <td class="center" id='delhi_jobs_val'></td>
+                                            <td>Complaints Maintence</td>
+                                            <td class="center">0</td>
+											<td>Cash Duty</td>
+                                            <td class="center"></td>
+											<td></td>
+                                          </tr>
+                                       	 <tr class="gradeA">
+                                            <td id="taxis_logged_in"></td>
+                                            <td id="taxis_logged_in_val"class="center"></td>
+                                            <td>Jobs In Progress</td>
+                                            <td class="center" id="jobs_in_progress_val">0</td>
+											<td id='jobs_2'></td>
+                                            <td class="center" id='noida_jobs_val'></td>
+                                            <td>Complaints Taxi Delay</td>
+                                            <td class="center">0</td>
+											<td>Credit Duty</td>
+                                            <td class="center">0</td>
+											<td></td>
+                                          </tr>
+										   <tr class="gradeA">
+                                            <td id="taxis_logged_off">Taxis Logged Off</td>
+                                            <td id="taxis_logged_off_val" class="center">0</td>
+                                            <td>Jobs Advance</td>
+                                            <td class="center" id="job_advance_val"></td>
+											<td id="jobs_3"></td>
+                                            <td class="center" id='faridabad_jobs_val'></td>
+                                            <td>Driver's Complaints</td>
+                                            <td class="center">0</td>
+											<td colspan="2"><b>AGENT WISE REVENUE</b></td>
+                                             
+											<td></td>
+                                          </tr>
+									     <tr class="gradeA">
+                                            <td id="blocked_driver"></td>
+                                            <td id='driver_blocked_val'class="center"></td>
+                                            <td>Total Enquiry</td>
+                                            <td class="center">0</td>
+											<td id="jobs_4"></td>
+                                            <td class="center"id='gurgaon_jobs_val'></td>
+                                            <td>CCE Complint</td>
+                                            <td class="center">0</td>
+											<td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                          </tr>
+										  <tr class="gradeA">
+                                            <td id="taxis_not_functional"></td>
+                                            <td class="center">0</td>
+                                            <td>Total Complaints</td>
+                                            <td class="center">0</td>
+											<td id='out_station_duty'></td>
+                                            <td class="center" id="outstation_jobs_val"></td>
+                                            <td>Lost & Found</td>
+                                            <td class="center">0</td>
+											<td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                          </tr>
+									   <tr class="gradeA">
+                                            <td id='available_drivers'>Available Drivers</td>
+                                            <td id='taxis_available_val' class="center"></td>
+                                            <td>Extra Charging</td>
+                                            <td class="center">0</td>
+											<td id="jobs_cancelled"></td>
+                                            <td class="center" id="cancel_jobs_val"></td>
+                                            <td>Extra Charging</td>
+                                            <td class="center">0</td>
+											<td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                          </tr>
+										   
+									   <tr class="gradeA">
+                                            <td>West</td>
+                                            <td class="center">0</td>
+                                            <td>Bid Rejects</td>
+                                            <td class="center">0</td>
+											<td>Credit Duty</td>
+                                            <td class="center">0</td>
+                                            <td>Bill Not Given</td>
+                                            <td class="center">0</td>
+											<td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                          </tr>
+										  <tr class="gradeA">
+                                            <td>South</td>
+                                            <td class="center">0</td>
+                                            <td>Time Constraints</td>
+                                            <td class="center">0</td>
+											<td id='airport_drop'></td>
+                                            <td id='airport_jobs_val'></td>
+                                            <td>Miss Behaved by driver</td>
+                                            <td class="center"></td>
+											<td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                          </tr>
+										  <tr class="gradeA">
+                                            <td>East </td>
+                                            <td class="center">0</td>
+                                            <td>AGENT WISE REPORT</td>
+                                            <td class="center">0</td>
+											<td id="railway_station_drop"></td>
+                                            <td class="center" id='railway_jobs_val'>0</td>
+                                            <td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                          </tr>
+										    <tr class="gradeA">
+                                            <td>North </td>
+                                            <td class="center">0</td>
+                                            <td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                            <td class="center"></td>
+                                            <td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                          </tr>
+										    </tr>
+										    <tr class="gradeA">
+                                            <td>Noida </td>
+                                            <td class="center"></td>
+                                            <td> </td>
+                                            <td class="center"></td>
+											<td></td>
+                                            <td class="center"></td>
+                                            <td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                          </tr>
+										  <tr class="gradeA">
+                                            <td>Gurgaon </td>
+                                            <td class="center"></td>
+                                            <td> </td>
+                                            <td class="center"></td>
+											<td></td>
+                                            <td class="center"></td>
+                                            <td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                            <td class="center"></td>
+											<td></td>
+                                          </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+<!--Details should come date wise.Hour wise.-->
+	 <div class="row" style="display:;">
+                <div class="">
+                    <div class="">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="padding:0 15px 15px">
+                            <div class="table-responsive" style="overflow-x:auto;border: 1px solid #d2d2d2;">
+						 
+                                <table class="table table-striped table-bordered table-hover dataTable tabcolspac font12px" style="margin-top: 0px !important;" id="dataTables-example">
+                                 
+                                    <body>
+                                        <tr>
+  					
+                                            
+                                            <td class="activecol date" data="<?php echo date("Y-m-d"); ?>" id="<?php echo date("Y-m-d"); ?>"><h4><?php echo date('j-M');?></h4></td>
+                                            <?php 
+                                            for($i=1;$i<=14;$i++)
+                                            {
+                                           ?>
+                                            <td class="date" data="<?php echo date('Y-m-d',strtotime( date('Y-m-d')."+ $i days")); ?>" id="<?php echo date('Y-m-d',strtotime( date('Y-m-d')."+ $i days")); ?>"><h4><?php echo date('j-M',strtotime( date('Y-m-d')."+ $i days")).'</h4><span></span></td>'; }?>
+                                                    
+                                        
+                                        </tr>
+                                </table>
+                                 <table class="table table-striped table-bordered table-hover dataTable tabcolspac font12px" id="dataTables-example">
+										 <tr>
+                                                                                     
+                                                                                     <td class="activecol hour" id="hour_0" data="0"><h4>0</h4><span></span></td>
+							                             <?php
+                                                                                     for($i=1;$i<=23;$i++)
+                                                                                     {
+                                                                                         
+                                                                                         echo '<td id="hour_'.$i.'" class="hour" data="'.$i.'"><h4>'.$i.'</h4><span></span></td>';
+                                                                                         
+                                                                                     }
+                                                                                     
+                                                                                     ?>
+                                                                                       
+                                                                                        
+                                        </tr>
+										
+ 
+                                    </tbody>
+                                </table>
+								
+ 									<div class="row divspace" style="margin:10px 0; background:#f5f5f5;border: 1px solid #d1d1d1;">
+                                                                            <div class="col-lg-3 book_type book_101 border-right" data='book_101' ><h5>Local Hire<img src="/hello42/public/image/local.png" style="margin-left:5px;"></h5><span id="span_101"></span></div>								 
+  											<div class="col-lg-3 book_type book_102 border-right" data='book_102'><h5>Point To Point <img src="/hello42/public/image/point.png" style="margin-left:5px;"></h5><span id="span_102"></span></div>
+                                            <div class="col-lg-3 book_type book_103 border-right" data='book_103' ><h5>Airport <img src="/hello42/public/image/airport.png" style="margin-left:5px;"></h5><span id="span_103"></span></div>
+                                            <div class="col-lg-3 book_type book_104 border-right" data='book_104' ><h5>Outstation <img src="/hello42/public/image/outstation.png" style="margin-left:5px;"></h5><span id="span_104"></span></div>
+											
+                                    </div>
+                                     
+									<table id="dataTables-example_1">
+										
+										</table>	
+							       
+ 
+                            </div>
+                            <!-- /.table-responsive -->
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+	
+	
+	   
+		  
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <table id='try'>
+        
+        
+    </table>
+    <!-- /#wrapper -->
+
+    <!-- jQuery Version 1.11.0 -->
+    
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+	var url='<?php echo $this->basePath();?>';
+    $(document).ready(function() {
+	
+          var myVar;
+     var data2;
+	 var myVar2;
+         
+        var url_new='<?php echo $this->basePath();?>'+'/tunnel/admin/dashboard';
+        $('#total_jobs_val').click(function(){
+			alert($(this).html());         
+		});
+          
+		  $('#dataTables-example_1').on('click','.clickme',function(){
+             
+           
+           clearInterval(myVar2); 
+        clearInterval(myVar);
+      // alert("fdfdfdfdfdfd");
+      if($(this).hasClass('open'))
+      {
+ myVar2=setInterval(function(){myTimer2()}, 5000);	  
+          $(".remove div:first").slideUp(400,function(){
+               $('.remove').remove();
+              
+          });
+     
+      $(this).removeClass('open');
+	  
+  }else{
+      $('.remove').remove();
+       
+       $(this).addClass('open');
+
+       
+      $(this).parent().parent().after('<tr class="remove" ><td colspan="8"><div style="display:none"> <div class=""> <div class="portlet portlet-default"> <!--<div class="portlet-heading"> <div class="portlet-title"></div> <div class="clearfix"></div> </div>');
+	  
+	  /*  <div class="portlet-body"> <ul id="myTab" class="nav nav-tabs tabsdesign"> <li class="active"><a href="#home1" data-toggle="tab"><i class="fa fa-list" style="color:#; margin:5px"></i>Status</a> </li> <li><a href="#bookinginfo" data-toggle="tab"><i class="fa fa-user" style="color:#; margin:5px"></i>Booking Details</a> </li><li><a href="#payment" data-toggle="tab"><i class="fa fa-user" style="color:#; margin:5px"></i> Payment Details</a> </li></li></ul> <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="home1"><h5 class="h4text" style="background: #E2E2E2;padding:7px;margin: 0;">Status</h5><table id="example2" class="table table-striped table-responsive"><thead> <tr> <th>Date</th> <th>State</th> <th>Text</th> </tr> </thead> <tbody> </tbody> </table></div><div class="tab-pane fade" id="payment"><h5 class="h4text" style="background: #E2E2E2;padding:7px;margin: 0;">Payment Details</h5><table id="paymentdetail" class="table table-responsive table-striped"></table></div><div class="tab-pane fade" id="bookinginfo"><h5 class="h4text" style="background: #E2E2E2;padding:7px;margin: 0;">Booking Information</h5><table id="bookinf" class="table table-responsive table-striped"></table></div></div></td></tr>  */
+
+   
+    data=$(this).attr("data");
+   
+    $.ajax({
+  url: '<?php echo $this->basePath();?>'+"/tunnel/admin/booking_information?booking_id="+data,
+  cache: false,
+  dataType:"json"
+})
+  .done(function( html ) {
+    for(var i=0;i<html.data.length;i++)
+{
+                               $('#example2 tbody').append('<tr><td>'+html.data[i].time+'</td><td>'+html.data[i].status+'</td><td>'+html.data[i].message+'</td></tr>');  
+  }
+  });
+  $.ajax({
+  url: '<?php echo $this->basePath();?>'+"/tunnel/admin/payment_information?booking_id="+data,
+  cache: false,
+  dataType:"json"
+})
+  .done(function( html ) {
+    
+
+                              $('#paymentdetail').append('<tr><th></th><th>Created At</th><td>'+html.data[0].created_at+'</td></tr><tr><th></th><th>Is Paid</th><td>'+html.data[0].is_paid+'</td></tr><tr><th></th><th>Pait At</th><td>'+html.data[0].paid_at+'</td></tr><tr><th>Price</th><th>Currency</th><td>'+html.data[0].currency+'</td></tr><tr><th></th><th>Invoice Number</th><td>'+html.data[0].invoice_number+'</td></tr><tr><th></th><th>External Refernece</th><td></td></tr><tr><th></th><th>Payment Type</th><td>'+html.data[0].payment_type+'</td></tr><tr><th></th><th>Fees</th><td>'+html.data[0].fees+'</td></tr><tr><th></th><th>Total Price </th><td>'+html.data[0].total_price+'</td></tr><tr><th></th><th>Total Tax Price</th><td>'+html.data[0].total_tax_price+'</td></tr><tr><th>Payment Parts</th><th>Company Base Index</th><td></td></tr><tr><th></th><th>Partner Index</th><td></td></tr><tr><th></th><th>Distance Rate</th><td></td></tr><tr><th></th><th>Duration Rate</th><td>'+html.data[0].duration_rate+'</td></tr><tr><th></th><th>Starting Rate</th><td>'+html.data[0].starting_rate+'</td></tr><tr><th></th><th>Base Price</th><td>'+html.data[0].base_price+'</td></tr><tr><th></th><th>Tax Price</th><td>'+html.data[0].tax_price+'</td></tr><tr><th></th><th>Fraction Discount</th><td></td></tr><tr><th></th><th>Voucher Amount</th><td></td></tr><tr><th></th><th>Price Type</th><td>Variable</td></tr><tr><th>Applied Tarrifs</th><th>Starting Rate</th><td>'+html.data[0].starting_charge+'</td></tr><tr><th></th><th>Distance Rate</th><td>'+html.data[0].distance_charge+'</td></tr><tr><th></th><th>Duration Rate</th><td>'+html.data[0].duration_charge+'</td></tr><tr><th></th><th>Minimum Price</th><td>'+html.data[0].minimum_price+'</td></tr><tr><th></th><th>Cancellation Price</th><td>'+html.data[0].cancellation_price+'</td></tr><tr><th></th><th>No Show Fee</th><td></td></tr><tr><th colspan="3">Credit Card Details</th></tr><tr><th>Personal</th><th>Internal Id</th><td></td></tr><tr><th></th><th>External Id</th><td></td></tr><tr><th></th><th>External Reference</th><td></td></tr><tr><th></th><th>Card Type</th><td></td></tr><tr><th></th><th>Card Number</th><td></td></tr><tr><th></th><th>Expired At</th><td></td></tr><tr><th></th><th>Card Owner</th><td></td></tr><tr><th></th><th>Created At</th><td></td></tr><tr><th></th><th>Verified Date</th><td></td></tr><tr><th></th><th>Active</th><td></td></tr><!--<tr><th>Waiting Charge</th><td>'+html.data[0].waiting+'</td></tr><tr><th>Trip Charge</th><td>'+html.data[0].tripCharge+'</td></tr><tr><th>Total Bill</th><td>'+html.data[0].totalbill+'</td></tr><tr><th>Staring Rate</th><td></td></tr><tr><th>Distance Rate</th><td></td></tr><tr><th>Duration Rate</th><td></td></tr><tr><th>Minimum Price</th><td></td></tr><tr><th></th><td></td></tr>-->');  
+                       $('#bookinf').append('<tr><th>In</th><td>Booking Id</td><td>'+html.data[0].booking_id+'</td></tr><tr><th></th><th>UserAgent</th><td>'+html.data[0].useragent+'</td></tr><tr><th></th><th>Comments for the client</th><td></td></tr><tr><th></th><th>Comment For the driver</th><td></td></tr><tr><th></th><th>Drivers Note</th><td>'+html.data[0].driver_note+'</td></tr><tr><th></th><th>Clients Note</th><td>'+html.data[0].client_note+'</td></tr><tr><th></th><th>Features</th><td>'+html.data[0].features+'</td></tr><tr><th></th><th>Vehicle Type</th><td></td></tr><tr><th></th><th>Is Corporate Booking</th><td>'+html.data[0].is_corporate_booking+'</td></tr><tr><th></th><th>Is account booking</th><td>'+html.data[0].is_account_booking+'</td></tr><tr><th></th><th>Is credit card Available</th><td></td></tr><tr><th></th><th>Voucher Id</th><td>'+html.data[0].voucher_id+'</td></tr><tr><th></th><th>Voucher Type</th><td>'+html.data[0].voucher_type+'</td></tr><tr><th></th><th>Voucher Amount</th><td></td></tr><tr><th>Out</th><th>External Booking Reference</th><td>N/A</td></tr><tr><th></th><th>Arrival Time Pre</th><td>'+html.data[0].arrival_time_pre+'</td></tr><tr><th></th><th>Arrival Time Post</th><td>'+html.data[0].arrival_time_post+'</td></tr><tr><th></th><th>Arrival Time Actual</th><td>'+html.data[0].arrival_time_actual+'</td></tr><tr><th></th><th>Expiration Time</th><td>'+html.data[0].expiration_time+'</td></tr><tr><th></th><th>Actual Driving Duration</th><td>'+html.data[0].actual_driven_duration+'</td></tr><tr><th></th><th>Actual Waiting Distance</th><td>'+html.data[0].actual_waiting_distance+'</td></tr><tr><th></th><th>Actual Distance</th><td>'+html.data[0].actual_distance+'</td></tr><tr><th></th><th>Booking Type</th><td>'+html.data[0].bookingtype+'</td></tr><tr><th></th><th>Booking Date</th><td>'+html.data[0].bookingdate+'</td></tr><tr><th></th><th>Pickup Date</th><td>'+html.data[0].pickupdate+'</td></tr><tr><th></th><th>Pickup Area</th><td>'+html.data[0].pickuparea+'</td></tr><tr><th></th><th>Pickup Address</th><td>'+html.data[0].pickupaddress+'</td></tr><tr><th></th><th>Drop Address</th><td>'+html.data[0].dropaddress+'</td></tr><tr><th></th><th>Drop Area</th><td>'+html.data[0].droparea+'</td></tr><tr><th></th><th>Estimated Distance</th><td>'+html.data[0].estimated_distance+'</td></tr><tr><th></th><th>Estimated Time</th><td>'+html.data[0].estimated_time+'</td></tr><tr><th></th><th>Estimated Price</th><td>'+html.data[0].estimated_price+'</td></tr><tr><th>Driver Rating</th><th>Rating</th><td>'+html.data[0].driver_rating+'</td></tr><tr><th></th><th>Reason</th><td></td></tr><tr><th></th><th>Comment</th><td></td></tr><tr><th>Client Rating</th><th>Rating</th><td>'+html.data[0].client_rating+'</td></tr><tr><th></th><th>Reason</th><td></td></tr><tr><th></th><th>Comment</th><td></td></tr>');  
+  
+  });
+      myVar = setInterval(function(){myTimer()}, 5000);
+      function myTimer(){
+        
+     $.ajax({
+  url: '<?php echo $this->basePath();?>'+"/tunnel/admin/booking_information?booking_id="+data,
+  cache: false,
+  dataType:"json"
+})
+  .done(function( html ) {
+      $('#example2 tbody').html('');
+    for(var i=0;i<html.data.length;i++)
+{
+                               $('#example2 tbody').append('<tr><td>'+html.data[i].time+'</td><td>'+html.data[i].status+'</td><td>'+html.data[i].message+'</td></tr>');  
+  }
+  });    
+     
+   
+      }
+   
+   $(".remove div:first").slideDown(400,function(){
+       //e.preventDefault();
+    }
+
+    );
+  }
+    });
+        $('.book_type').click(function(){
+        $('.book_type').removeClass('activecol');
+        $(this).addClass('activecol');
+        $('.remove').remove();
+       $('.hour_wise').hide();
+       $('.'+$(this).attr("data")).show();
+        
+        
+    });
+       $.ajax({
+				        type: 'POST',
+					headers: { 'auth-token': 'C3PO R2D2' },	//contentType: 'application/json',
+				        url: url_new,
+				        dataType: "json",
+						//data : {userName : name,},		 
+				        success: function(data){
+								console.log(data);
+				        		for(key in data.value) {
+							  var infoJSON = data.value[key];
+							  $('#'+key+'_val').html(infoJSON);
+							  $('#'+key+'_val_2').html(infoJSON);
+							}for(key in data.key) {
+							  var infoJSON = data.key[key];
+							 // alert(infoJSON);
+							  $('#'+key).html(infoJSON);
+							}
+						
+						for(key in data.date_a) {
+						  var infoJSON = data.date_a[key];
+						 // alert(infoJSON);
+						  $('#'+key).append('<span>('+infoJSON+')</span>');
+						}
+	
+  for(key in data.hour) {
+  var infoJSON = data.hour[key];;
+  $('#'+key+'>span').html('('+infoJSON+')');
+}
+for(i=0;i<data.hour_wise.length;i++)
+{
+    
+ $('#dataTables-example_1').append('<tr class="hour_wise hide hour_wise_'+data.hour_wise[i].hour+' book_'+data.hour_wise[i].BookingType+'"><td><a class="clickme" data="'+data.hour_wise[i].id+'">'+data.hour_wise[i].ref+'</a></td><td>'+data.hour_wise[i].ContactNo+'</td><td>'+data.hour_wise[i].clientname+'</td><td>'+data.hour_wise[i].bookingdate+'</td><td>'+data.hour_wise[i].partner+'</td><td>'+data.hour_wise[i].pickuparea+'</td><td>'+data.hour_wise[i].driver+'</td><td>'+data.hour_wise[i].status+'</td></tr>');   
+ }
+$('.hour_wise_0').removeClass('hide');	
+$(".loader").hide();							
+									},
+				        error: function(error){
+						
+								console.log(error);	
+						}
+			});
+       // $('#dataTables-example').dataTable();
+       $('.hour').click(function(){
+           //alert("yahoo");
+       $('.remove').remove();
+       $('.hour').removeClass('activecol');
+         $(this).addClass('activecol');
+       $('.hour_wise').addClass('hide');
+	   
+	   
+      
+       $('.hour_wise_'+$(this).attr('data')).removeClass('hide');
+	   //alert($('.hour_wise_'+$(this).attr('data')+'.book_102').length);
+	   $("#span_101").html($('.hour_wise_'+$(this).attr('data')+'.book_101').length);
+       $("#span_102").html($('.hour_wise_'+$(this).attr('data')+'.book_102').length);
+$("#span_103").html($('.hour_wise_'+$(this).attr('data')+'.book_103').length);
+$("#span_104").html($('.hour_wise_'+$(this).attr('data')+'.book_104').length);	   
+    });
+       $('.date').click(function(){
+           $('.remove').remove();
+           $('.date').removeClass('activecol');
+           $(this).addClass('activecol');
+      // alert($(this).attr('data'));
+       $('.hour>span').html('');
+       var url2='<?php echo $this->basePath();?>'+'/tunnel/admin/days_wise';
+       $.ajax({
+				        type: 'POST',
+					headers: { 'auth-token': 'C3PO R2D2' },	//contentType: 'application/json',
+				        url: url2,
+				        dataType: "json",
+                                        
+					data : {date :$(this).attr("data")},		 
+				        success: function(data){
+							console.log(data);
+	
+							$('.hour_wise').remove();	
+						  for(key in data.hour) {
+						  var infoJSON = data.hour[key];
+						 // alert(infoJSON);
+						 
+						  $('#'+key+'>span').html('('+infoJSON+')');
+						}
+				for(i=0;i<data.hour_wise.length;i++)
+{
+    
+ $('#dataTables-example_1').append('<tr class="hour_wise hide hour_wise_'+data.hour_wise[i].hour+' book_'+data.hour_wise[i].BookingType+'"><td><a class="clickme" data="'+data.hour_wise[i].id+'">'+data.hour_wise[i].ref+'</a></td><td>'+data.hour_wise[i].ContactNo+'</td><td>'+data.hour_wise[i].clientname+'</td><td>'+data.hour_wise[i].bookingdate+'</td><td>'+data.hour_wise[i].partner+'</td><td>'+data.hour_wise[i].pickuparea+'</td><td>'+data.hour_wise[i].driver+'</td><td>'+data.hour_wise[i].status+'</td></tr>');   
+ }
+$('.hour_wise_0').removeClass('hide');						
+								
+									},
+				        error: function(error){
+						
+								console.log(error);	
+						}
+			});
+        
+    });
+       
+       
+    });
+   
+    
+    </script>
+
+</body>
+
+</html>

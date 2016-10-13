@@ -1,0 +1,2466 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?><style>
+.errorText {
+border:1px solid red;
+
+}
+label.col-lg-offsets-5 {
+margin-left: 41.66666667%;
+color:red;
+}
+input.col-lg-offsets-5{
+    border:1px solid red;
+}
+</style>
+
+<div id="page-wrapper"  class="table-responsive">
+	<h4 class="complaint_management_head"><b></b></h4>
+	<div class="row" style="display:block;">
+        <div class="col-lg-12">
+			<div class="portlet-body" style="" id="complaint_mgmt">
+					
+								<ul id="myTab" class="nav nav-tabs">
+                                    <li class="active">
+										<a href="#complaint_list" data-toggle="tab" id="show_complaint_list" class="complaint_list_tab"><i class="fa fa-user" style="color:#; margin:5px"></i></a>
+                                    </li>
+									<li class="">
+										<a href="#complaint_type" data-toggle="tab" id="show_complaint_type" class="complaint_type_tab"><i class="fa fa-list" style="color:#; margin:5px"></i></a>
+                                    </li>
+									<li>
+                                        <a href="#enquiry_list" data-toggle="tab" id="show_enquiry_list" class="enquiry_list_tab"><i class="fa fa-user" style="color:#; margin:5px"></i></a>
+                                     </li>
+									<li class="">
+                                        <a href="#enquiry_type" data-toggle="tab" id="show_enquiry_type" class="enquiry_type_tab"><i class="fa fa-user" style="color:#; margin:5px"></i></a>
+                                     </li>
+									 <li>
+                                        <a href="#action_type" data-toggle="tab" id="show_action_type" class="action_taken_type_tab"><i class="fa fa-user" style="color:#; margin:5px"></i></a>
+                                     </li>
+                                </ul>
+								
+								
+					<!--3.2.11.6 Compalint List:  Start-->
+					
+						<div class="active in" style="" id="complaint_list" >
+						   
+							<div class="portlet portlet-default" >
+						
+								<div class="table-responsive">
+									 
+										<i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+										<h5 style="background: #E2E2E2;padding:7px;margin: 0;" class="complaint_filter_head"></h5>
+									
+									<div class="clearfix"></div>
+								</div>
+								<div class="portlet-body" style="margin-top: 10px;">
+                                                                    <form>
+									<div id="myTabContent" class="tab-content">
+										<div class="tab-pane fade in active" id="cabGeneral">
+											<div class="container col-sm-col-sm-offset-1" style="margin: 15px auto 5px !important;">
+											<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													    <label id="cab-vehicleNo" class="col-sm-2 control-label labelalign booking_id_complaint_filter_heading"></label>
+													    <div class="col-sm-4">
+															<input id="booking_id_no" type="text" class=" form-control complaint " placeholder="Booking ID">                                    
+														</div>
+													 
+														<label id="cab-vehicleModel" class="col-sm-2 control-label labelalign complaint_type_complaint_filter_heading"></label>
+													    <div class="col-sm-4">
+															<input id="complaint_type_text" type="text" class=" form-control complaint" placeholder="Complaint Type">                                    
+														</div>
+													 </div>
+													
+													<div class="form-group clearfix margintopbottom20">
+													    <label id="cab-vehicleNo" class="col-sm-2 control-label labelalign created_date_complaint_filter_heading"></label>
+													    <div class="col-sm-2">
+															<input id="created_since" type="text" class=" form-control complaint" placeholder="Since">                                    
+														</div>
+														<div class="col-sm-2">  
+															<input id="created_to" type="text" class=" form-control complaint" placeholder="To">                                    
+														</div>
+													 
+														<label id="cab-vehicleModel" class="col-sm-2 control-label labelalign updated_date_complaint_filter_heading"></label>
+													    <div class="col-sm-2">
+															<input id="closed_since" type="text" class=" form-control complaint" placeholder="Since">                                    
+														</div>
+														<div class="col-sm-2">  
+															<input id="closed_to" type="text" class=" form-control complaint" placeholder="To">                                    
+														</div>
+													 </div>
+												 </div>
+												 
+												 <div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													   <!--<label id="enquiryType" class="col-sm-2 control-label labelalign">Enquiry Type</label>
+													  <div class="col-sm-4">
+														 <input id="enquiryTypeText" type="text" class=" form-control" placeholder="Enquiry Type">
+													  </div>-->
+													 
+														<label id="enquiryStatusText_i" class="col-sm-2 control-label labelalign status_complaint_filter_heading"></label>
+													   <div class="col-sm-4">
+														<input type="text" id="complaintStatusText" class="form-control complaint" placeholder="Status">
+														</div>
+													 </div>
+												 </div>
+												  <!--<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													   <label id="cab-state" class="col-sm-2 control-label labelalign">State</label>
+													  <div class="col-sm-4">
+													  
+														 <input id="cab-stateText" type="text" class=" form-control" placeholder="State">                                    
+													  </div>
+													 
+														<label id="cab-city" class="col-sm-2 control-label labelalign">City</label>
+													   <div class="col-sm-4">
+															<div class="input-group">
+														<input type="text" id="cab-cityText" class="form-control" placeholder="City">
+														<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+													</div> 
+														</div>
+													 </div>
+												 </div>-->
+												<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													 
+														<div class="col-sm-4 pull-right">
+															<button type="button" class="btn btn-red defaultbtnsearch searchVehicle" id="searchComplaints"><i class="fa fa-search" style="color:#fff; margin:5px"></i></button>
+															<button type="reset" class="btn btn-red defaultbtnsearch clearVehicle" id=""><i class="fa fa-search" style="color:#fff; margin:5px"></i>Clear</button>
+														 
+														</div>
+													</div>
+												</div> 
+											</div>
+										</div>
+										
+									</div></form>
+								</div>
+							</div>	
+									
+									<table id="example" class="table table-striped table-responsive">
+										<thead>
+											<tr>
+												<th width="5%" class="booking_id_table"></th>
+												<th width="10%" class="pickup_time_table"></th>
+												<th width="8%" class="vehicle_table"></th>
+												<th width="10%" class="booking_type_table"></th>
+												<th width="5%" class="partner_table"></th>
+												<th width="5%" class="client_table"></th>
+												<th width="10%" style="" class="departure_table"></th>
+												<th width="10%" class="drop_area"></th>
+												<th width="10%" class="status"></th>
+												<th width="5%" class="">Action</th>
+											</tr>
+										</thead>
+
+										<tfoot>
+										   <tr>
+												<th width="5%" class="booking_id_table"></th>
+												<th width="10%" class="pickup_time_table"></th>
+												<th width="8%" class="vehicle_table"></th>
+												<th width="10%" class="booking_type_table"></th>
+												<th width="5%" class="partner_table"></th>
+												<th width="5%" class="client_table"></th>
+												<th width="10%" style="" class="departure_table"></th>
+												<th width="10%" class="drop_area"></th>
+												<th width="10%" class="status"></th>
+												<th width="5%" class="">Action</th>
+											</tr>
+										</tfoot>
+
+										<tbody>
+
+										</tbody>
+									</table>
+									
+									<!--popups Start-->
+
+									<div class="col-sm-4" id="booking_action" style=" display:none;background: rgb(255, 255, 255);padding: 20px; border-radius: 10px;">
+									<!--padding: 20px; border-radius: 10px;left: 16% !important; right: 16% !important; background: rgb(255, 255, 255);-->
+												<h1 class="fa fa-times closbtn b-close" id="btnclose"></h1><h5 style="margin: 0 0 15px;"><large>Booking</large>&nbsp;<b class="booking_no">1580530343</b></h5>
+												<div class="col-sm-12">
+											
+													<ul id="userTab" class="nav nav-tabs">
+														<li class="active"><a href="#options" id="distanceVehiclep" data-toggle="tab">Options</a></li>
+														<li class=""><a href="#statewrp" id="HourVehiclep" data-toggle="tab">State</a></li>
+														<li class=""><a href="#financialwrp" id="financialpopup" data-toggle="tab">Financial</a></li>
+														<li class="dropdown">
+															<a href="#" class="dropdown-toggle" data-toggle="dropdown">Client<span class="caret"></span></a>
+															<ul class="dropdown-menu" role="menu">
+																<li><a href="#" data-toggle="tab">Liks</a></li>
+																<li><a href="#" data-toggle="tab">Profile</a></li>
+																<li><a href="#" data-toggle="tab">Booking history</a></li>
+																<li><a href="#" data-toggle="tab">Actions</a></li>
+																<li><a href="#" data-toggle="tab">Send SMS to client</a></li>
+																<li><a href="#" data-toggle="tab">Block</a></li>
+															</ul>
+														</li>
+														<li class="dropdown">
+															<a href="#" class="dropdown-toggle" data-toggle="dropdown">Driver<span class="caret"></span></a>
+																<ul class="dropdown-menu" role="menu">
+																	<li><a href="#" data-toggle="tab">Links</a></li>
+																	<li><a href="#" data-toggle="tab">Profile</a></li>
+																	<li><a href="#" data-toggle="tab">Group</a></li>
+																	<li><a href="#" data-toggle="tab">Vehicle</a></li>
+																	<li><a href="#" data-toggle="tab">Booking history</a></li>
+																	<li><a href="#" data-toggle="tab">Allocation history</a></li>
+																	<li>&nbsp;</li>
+																	<li><small style="margin-left:15px; color:#a0a0a0 !important;">Actions</small></li>
+																	<li><a href="#" data-toggle="tab">Send SMS to driver</a></li>
+																</ul>
+														</li>
+														<li class=""><a href="#complaintwrp" id="cmplntpopup" data-toggle="tab">Complaint</a></li>
+													</ul>
+												<div id="userTabContent" class="tab-content">
+															
+													<!--options box Start-->
+															
+																<div class="tab-pane fade in active" id="options">
+																	<div class="row border" style="margin: -1px 0;">
+																		<div class="col-sm-12 col-md-12">
+																			<div class="portlet-body">
+																			  
+																				<div class="form-group clearfix">
+									 
+																				<div class="col-sm-6">
+																					<h5>Actions	</h5>
+																						<button id="change" class="btn btn-default col-sm-12">Change pickup time</button>
+																						
+																						
+																				</div>
+																				<div class="col-sm-6">
+																						<h5>Links</h5>
+																						<a href="#">Track and trace</a>
+																				</div>
+																				</div>
+																				<div class="form-group clearfix">
+									 
+																				<div class="col-sm-6">
+																						<input type="text" style="" id="datetimepicker">
+																				</div>
+																					<div class="col-sm-6">
+																						<a href="#"></a>
+																					</div>
+																			   </div>
+																				<div class="form-group clearfix">
+									 
+																				<div class="col-sm-6">
+																						<button class="btn btn-default col-sm-12">Change rating</button>
+																				</div>
+																					<div class="col-sm-6">
+																						<a href="#"></a>
+																					</div>
+																			   </div>
+																		   </div> 
+																		</div>
+																	</div>
+																 </div>
+
+													<!--options box End-->
+													
+													<!--state box Start-->
+															
+																<div class="tab-pane fade in" id="statewrp">
+																	<div class="row border" style="margin: -1px 0;">
+																		<div class="col-sm-12 col-md-12">
+																			<div class="portlet-body">
+																			  
+																				<div class="form-group clearfix">
+									 
+																					<div class="col-sm-6">
+																						<h5>Actions	</h5>
+																						<button class="btn btn-default col-sm-12">Execute cancel</button>
+																					</div>
+																					<div class="col-sm-6">
+																							<h5>Links</h5>
+																							<a href="#"></a>
+																					</div>
+																				</div>
+																				
+																				<div class="form-group clearfix">
+									 
+																					<div class="col-sm-6">
+																							<button class="btn btn-default col-sm-12 disabled">Execute no show</button>
+																					</div>
+																					<div class="col-sm-6">
+																						<a href="#"></a>
+																					</div>
+																			   </div>
+																			   <div class="form-group clearfix">
+									 
+																					<div class="col-sm-6">
+																							<button class="btn btn-default col-sm-12" id="claim_btn">Claim</button>
+																					</div>
+																					<div class="col-sm-6">
+																						<a href="#"></a>
+																					</div>
+																			   </div>
+																			   <div class="form-group clearfix">
+									 
+																					<div class="col-sm-6">
+																							<button class="btn btn-default col-sm-12 disabled">Redispatch</button>
+																					</div>
+																					<div class="col-sm-6">
+																						<a href="#"></a>
+																					</div>
+																			   </div>
+																		   </div> 
+																		</div>
+																	</div>
+																 </div>
+
+													<!--state box End-->
+													
+													<!--Financial box Start-->
+															
+																<div class="tab-pane fade in" id="financialwrp">
+																	<div class="row border" style="margin: -1px 0;">
+																		<div class="col-sm-12 col-md-12">
+																			<div class="portlet-body">
+																			  
+																				<div class="form-group clearfix">
+									 
+																					<div class="col-sm-6">
+																						<h5>Actions	</h5>
+																						<button class="btn btn-default col-sm-12 disabled">Execute Payment</button>
+																					</div>
+																					<div class="col-sm-6">
+																							<h5>Send Receipes</h5>
+																							<a href="#"></a>
+																					</div>
+																				</div>
+																				
+																				<div class="form-group clearfix">
+									 
+																					<div class="col-sm-6">
+																							<button class="btn btn-default col-sm-12 disabled">Manual Payment</button>
+																					</div>
+																					<div class="col-sm-6">
+																						<a href="#"></a>
+																					</div>
+																			   </div>
+																			   <div class="form-group clearfix">
+									 
+																					<div class="col-sm-6">
+																							<button class="btn btn-default col-sm-12 disabled">Send receipt to client</button>
+																					</div>
+																					<div class="col-sm-6">
+																						<a href="#"></a>
+																					</div>
+																			   </div>
+																			   <div class="form-group clearfix">
+									 
+																					<div class="col-sm-6">
+																							<button class="btn btn-default col-sm-12 disabled">Send receipt to driver</button>
+																					</div>
+																					<div class="col-sm-6">
+																						<a href="#"></a>
+																					</div>
+																			   </div>
+																			  
+																		   </div> 
+																		</div>
+																	</div>
+																 </div>
+
+													<!--Financial box End-->
+												
+														<!--Complaint popup start-->
+														<div class="tab-pane fade in" id="complaintwrp">
+															<div class="row border" style="margin: -1px 0;">
+																<div class="col-sm-12 col-md-12">
+																	<div class="portlet-body">
+																		<div class="form-group clearfix spance" style="margin-top: 30px;margin-bottom:30px;" id="complaintstatus_popup">
+																			
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+									
+														<!--Complaint popup end-->
+
+												</div>														
+											</div>             
+										</div>
+										
+										
+								<!--clam popup Start-->
+
+										<div class="col-sm-4" id="claim" style="padding: 20px; border-radius: 10px;background: rgb(255, 255, 255); display:none;z-index:9999999999999999999999999999999">
+											<h1 class="fa fa-times closbtn b-close"></h1><h5 style="margin: 0 0 15px;"><large>Booking</large>&nbsp;<b class="booking_no">1580530343</b></h5>
+											<div class="col-sm-12">
+											
+											 
+												<div id="userTabContent" class="tab-content">
+															
+													<!--options box Start-->
+															
+																<div class="tab-pane fade in active" id="">
+																	<div class="row border" style="margin: -1px 0;">
+																		<div class="col-sm-12 col-md-12">
+																			<div class="portlet-body">
+																			  
+																			  <div class="form-group clearfix">
+									 
+																				<div class="col-sm-12">
+																					<h5>Claim Booking</h5>
+																						<div class="input-group">
+																						<input type="text" id="taxi_nosUpdate" class="col-sm-12 inputfild" placeholder="Driver" style="border-radius: 5px 0px 0px 5px !important;">
+																						<input type="hidden" id="taxi_nos_idUpdate">
+																						<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+																					</div>
+																				</div>
+																				
+																				</div>
+																				
+																				<div class="form-group clearfix">
+									 
+																				<div class="col-sm-6">
+																						<button class="btn btn-default col-sm-12" id="reserve">Reserve booking</button>
+																				</div>
+																				<div class="col-sm-6">
+																						<button class="btn btn-default col-sm-12">Back</button>
+																				</div>
+																					<div class="col-sm-6">
+																						<a href="#"></a>
+																					</div>
+																			   </div>
+																		   </div> 
+																		</div>
+																	</div>
+																 </div>
+
+													<!--options box End-->
+												</div>														
+											</div>             
+										</div>
+
+								<!--Clam popup End-->
+									
+									
+	  
+						</div>
+					
+					<!--3.2.11.6 Complaint List:  End-->			
+				
+				<!-- complaint type start -->
+					<div class="" id="complaint_type" style="display:none">
+							
+						<div class="portlet portlet-default" >
+						
+								<div class="">
+									 
+										<i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+										<h5 style="background: #E2E2E2;padding:7px;margin: 0;">Filter</h5>
+									
+									<div class="clearfix"></div>
+								</div>
+								<div class="portlet-body" style="margin-top: 10px;">
+									<div id="myTabContent" class="tab-content">
+										<div class="tab-pane fade in active" id="cabGeneral">
+											<div class="container col-sm-col-sm-offset-1" style="margin: 15px auto 5px !important;">
+											<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													    <label id="cab-vehicleNo" class="col-sm-2 control-label labelalign">Created Date</label>
+													    <div class="col-sm-2">
+															<input id="created_since_complaint" type="text" class=" form-control" placeholder="Since">                                    
+														</div>
+														<div class="col-sm-2">  
+															<input id="created_to_complaint" type="text" class=" form-control" placeholder="To">                                    
+														</div>
+													 
+														<label id="cab-vehicleModel" class="col-sm-2 control-label labelalign">Updated Date</label>
+													    <div class="col-sm-2">
+															<input id="closed_since_complaint" type="text" class=" form-control" placeholder="Since">                                    
+														</div>
+														<div class="col-sm-2">  
+															<input id="closed_to_complaint" type="text" class=" form-control" placeholder="To">                                    
+														</div>
+													 </div>
+												 </div>
+												 
+												 <div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													   <label id="enquiryType" class="col-sm-2 control-label labelalign">Complaint Type</label>
+													  <div class="col-sm-4">
+														 <input id="complaint_TypeText" type="text" class=" form-control" placeholder="Complaint Type">
+													  </div>
+													 
+														<label id="complaintStatusText_i" class="col-sm-2 control-label labelalign">Status</label>
+													   <div class="col-sm-4">
+														<input type="text" id="complaint_StatusText" class="form-control" placeholder="Status">
+														</div>
+													 </div>
+												 </div>
+												  <!--<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													   <label id="cab-state" class="col-sm-2 control-label labelalign">State</label>
+													  <div class="col-sm-4">
+													  
+														 <input id="cab-stateText" type="text" class=" form-control" placeholder="State">                                    
+													  </div>
+													 
+														<label id="cab-city" class="col-sm-2 control-label labelalign">City</label>
+													   <div class="col-sm-4">
+															<div class="input-group">
+														<input type="text" id="cab-cityText" class="form-control" placeholder="City">
+														<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+													</div> 
+														</div>
+													 </div>
+												 </div>-->
+												<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													 
+														<div class="col-sm-4 pull-right">
+															<button type="button" class="btn btn-red defaultbtnsearch searchVehicle" id="search_Complaint"><i class="fa fa-search" style="color:#fff; margin:5px"></i>Search</button>
+															<button type="button" class="btn btn-red defaultbtnsearch searchVehicle" id=""><i class="fa fa-search" style="color:#fff; margin:5px"></i>Clear</button>
+														 
+														</div>
+													</div>
+												</div> 
+											</div>
+										</div>
+										
+									</div>
+								</div>
+						</div>
+							
+                                <table class="table table-striped dataTable" id="dataTables-example">
+                                 
+                                    <thead>
+										<tr>
+										<th class="id_complaint_type_table"></th>
+									    <th class="complaint_type_complaint_type_table"></th>
+										<th style="width: 25% !important;" class="description_complaint_type_table"></th>
+										<th class="createdby_complaint_type_table"></th>
+										<th class="createdon_complaint_type_table"></th>	
+										<th class="updated_by__complaint_type_table"></th>
+										<th class="updatedon_complaint_type_table"></th>
+										<th class="col-sm-1 action_complaint_type_table"></th>
+										</tr>
+									</thead>
+									<tbody>
+                                    
+									</tbody>
+									<tfoot>
+										<tr>
+										<th class="id_complaint_type_table"></th>
+									    <th class="complaint_type_complaint_type_table"></th>
+										<th style="width: 25% !important;" class="description_complaint_type_table"></th>
+										<th class="createdby_complaint_type_table"></th>
+										<th class="createdon_complaint_type_table"></th>	
+										<th class="updated_by__complaint_type_table"></th>
+										<th class="updatedon_complaint_type_table"></th>
+										<th class="col-sm-1 action_complaint_type_table"></th>
+										</tr>
+									</tfoot>
+                                </table>
+								<div class="row">
+									<div class="col-lg-12" style="margin:10px 0;">
+									<button class="btn btn-success add_complaintType" id="addSubComplaintType"><i class="fa fa-plus" ></i>&nbsp; </button>
+									</div>
+								</div>
+								
+							<div class="col-sm-3 col-sm-offset-4" id="subComplaintForm" style="padding: 0px; margin: auto; border-radius: 10px; left: 536px; position: absolute; top: 45.5px; z-index: 9999; opacity: 1; display: none; background-color: white;">					
+							<h1 class="fa fa-times closbtn b-close" id="btn_close"></h1>
+								<div id="" style="margin:20px;">
+												
+									<form role="form" id="add_sub_complaint" method="Post" >
+ 
+                                                <div class="form-group clearfix spance">
+												</div>
+												
+												<div class="form-group clearfix spance">
+													<label class="control-label col-sm-3 col-lg-4 complaintType_addComplaintPopup"></label>
+													<select name="add_complaint_type" id="add_complaint_type" style="" class="col-sm-9 col-lg-8 inputfild name">
+ 													</select>
+												</div>
+												
+												<div class="form-group clearfix spance">
+													<label class="control-label col-sm-3 col-lg-4 subComplaint_addComplaintPopup"></label>
+													<input id="add_sub_complaints" name="add_sub_complaints" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Sub Complaint"> 
+												</div>
+												 
+												<div class="form-group clearfix spance">
+													<button type="button" class="btn btn-primary pull-right addCabTypeButton col-sm-3 addButon_addComplaintPopup" style="" id="addSubComplaint"></button> 
+													<!--<button type="button" class="btn defaultbtnsearch pull-right editCabTypeButton col-sm-3" style="display: none;" id="updatecabtype">Update</button>-->
+												</div>
+									</form>
+                                              
+								</div>
+                                    <div class="col-sm-4 col-md-4"></div>
+							</div>
+							
+							<div class="col-sm-3 col-sm-offset-4" id="manageComplaintForm" style="padding: 0px; margin: auto; border-radius: 10px; left: 536px; position: absolute; top: 45.5px; z-index: 9999; opacity: 1; display: none; background-color: white;">					
+								<h1 class="fa fa-times closbtn b-close"></h1>
+								<div id="" style="margin:20px;">
+												
+									<form role="form" id="manage_complaint_type" method="Post" >
+ 
+                                                <div class="form-group clearfix spance">
+												</div>
+												
+												<div class="form-group clearfix spance">
+													<label class="control-label col-sm-3 col-lg-4 id_manageComplaintPopup"></label>
+													<input id="manage_complaint_type_id" name="manage_complaint_type_id" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Id" disabled> 
+												</div>
+												
+												<div class="form-group clearfix spance">
+													<label class="control-label col-sm-3 col-lg-4 complaintType_manageComplaintPopup"></label>
+													<input id="manage_complaint" name="manage_complaint" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Complaint Type"disabled>
+												</div>
+												<div class="form-group clearfix spance">
+													<label class="control-label col-sm-3 col-lg-4 description_manageComplaintPopup"></label>
+													<input id="manage_complaint_type_status" name="manage_complaint_type_status" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Description" > 
+												</div>
+												 
+												<div class="form-group clearfix spance">
+													<button type="button" class="btn defaultbtnsearch pull-right addCabTypeButton col-sm-3 b-close deleteButton_manageComplaintPopup" style="margin-left:5px;" id="deleteComplaint"><i class="fa fa-trash-o marginright"></i></button>
+													<button type="button" class="btn btn-primary pull-right editCabTypeButton col-sm-3 b-close updateButton_manageComplaintPopup" style="" id="updateComplaint"></button>
+												</div>
+									</form>
+                                              
+								</div>
+                                    <div class="col-sm-4 col-md-4"></div>
+							</div>
+							
+									<form id="delete_form" style="left: 150px; position: absolute; top: 200px; z-index: 9999; opacity: 1; display:none;">
+										<div class="container leftbox">
+											<div class="col-sm-4 col-sm-offset-4" style="background: #fff;border-radius:10px;">
+												<h1 class="fa fa-times closbtn b-close"></h1>
+												<div class="row text-center">
+													<div class="col-md-12">
+														<div class="exit_iconbox">
+															<i class="fa fa-thumbs-up fa-fw fa-5x" style="line-height: 120px;color: #4298D7;"></i>
+														</div>
+													</div>
+													<div class="clearfix">
+													</div>
+												</div>
+												<div class="row text-center">
+													<div class="col-sm-12" style="padding:0 10px;">
+														<div class="col-sm-12 ">
+															<div class="spance">
+																<h4 class="confirmDeletion_manageComplaintPopup" style="padding:0; margin:0 auto 30px; text-transform: capitalize;"></h4>
+															</div>
+															<div style="padding-bottom:20px;" class="clearfix">
+																<div class="col-sm-6">
+																	
+																	<button type="button" class="btn btn-default form-control b-close yes_manageComplaintPopup" id="complaint_confirmation" style=""></button>
+																</div>
+																<div class="col-sm-6">
+																	<button type="button" class="btn defaultbtnsearch form-control b-close no_manageComplaintPopup" id="complaint_doubtful" style=""></button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+  
+                    </div>
+						
+						<!-- complaint type end -->
+						
+						<!-- enquiry list start -->
+						
+                    <div class="" style="margin-bottom: 20px;display:none" id="enquiry_list">
+							   
+						<div class="portlet portlet-default" >
+						
+								<div class=" ">
+									 
+										<i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+										<h5 class="enquiryList_filterHead" style="background: #E2E2E2;padding:7px;margin: 0;"></h5>
+									
+									<div class="clearfix"></div>
+								</div>
+								<div class="portlet-body" style="margin-top: 10px;">
+                                                                    <form>
+									<div id="myTabContent" class="tab-content">
+										<div class="tab-pane fade in active" id="cabGeneral">
+											<div class="container col-sm-col-sm-offset-1" style="margin: 15px auto 5px !important;">
+											<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													    <label id="cab-vehicleNo" class="col-sm-2 control-label labelalign createdDate_enquiryFilterHeading">Created Date</label>
+													    <div class="col-sm-2">
+															<input id="created_since_enquiry" type="text" class="form-control enquiry " placeholder="Since">                                    
+														</div>
+														<div class="col-sm-2">  
+															<input id="created_to_enquiry" type="text" class="form-control" placeholder="To">                                    
+														</div>
+													 
+														<label id="cab-vehicleModel" class="col-sm-2 control-label labelalign updatedDate_enquiryFilterHeading">Updated Date</label>
+													    <div class="col-sm-2">
+															<input id="closed_since_enquiry" type="text" class="form-control enquiry" placeholder="Since">                                    
+														</div>
+														<div class="col-sm-2">  
+															<input id="closed_to_enquiry" type="text" class="form-control" placeholder="To">                                    
+														</div>
+													 </div>
+												 </div>
+												 
+												 <div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													   <label id="enquiryType" class="col-sm-2 control-label labelalign enquiryType_enquiryFilterHeading">Enquiry Type</label>
+													  <div class="col-sm-4">
+														 <input id="enquiryTypeText" type="text" class="form-control enquiry" placeholder="Enquiry Type">
+													  </div>
+													 
+														<label id="enquiryStatusText_i" class="col-sm-2 control-label labelalign status_enquiryFilterHeading">Status</label>
+													   <div class="col-sm-4">
+														<input type="text" id="enquiryStatusText" class="form-control enquiry" placeholder="Status">
+														</div>
+													 </div>
+												 </div>
+												  <!--<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													   <label id="cab-state" class="col-sm-2 control-label labelalign">State</label>
+													  <div class="col-sm-4">
+													  
+														 <input id="cab-stateText" type="text" class=" form-control" placeholder="State">                                    
+													  </div>
+													 
+														<label id="cab-city" class="col-sm-2 control-label labelalign">City</label>
+													   <div class="col-sm-4">
+															<div class="input-group">
+														<input type="text" id="cab-cityText" class="form-control" placeholder="City">
+														<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+													</div> 
+														</div>
+													 </div>
+												 </div>-->
+												<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													 
+														<div class="col-sm-4 pull-right">
+															<button type="button" class="btn btn-red defaultbtnsearch searchVehicle" id="searchEnquiry"><i class="fa fa-search" style="color:#fff; margin:5px"></i>Search</button>
+															<button type="reset" class="btn btn-red defaultbtnsearch clearVehicle" id=""><i class="fa fa-search" style="color:#fff; margin:5px"></i>Clear</button>
+														 
+														</div>
+													</div>
+												</div> 
+											</div>
+										</div>
+										
+									</div></form>
+								</div>
+						</div>
+
+							   <table class="table table-striped dataTable" id="dataTables-enquiry_list" >
+									 
+										<thead>
+											<tr>
+											<th class="id_enquiryListTable"></th>
+											<th class="callerName_enquiryListTable" style="width:10%;"></th>
+											<th class="email_enquiryListTable"></th>
+											<th class="contactNo_enquiryListTable"></th>
+											<th class="csrID_enquiryListTable"></th>
+											<th class="description_enquiryListTable" style="width: 15% !important;"></th>
+											<th class="enquiryType_enquiryListTable"></th>
+											<th class="enquiryDate_enquiryListTable"></th>
+											<th class="status_enquiryListTable"></th>	
+											<th class="updatedBy_enquiryListTable"></th>
+											<th class="updatedDate_enquiryListTable"></th>
+											</tr>
+										</thead>
+										<tbody>
+										
+										</tbody>
+										<tfoot>
+											<tr>
+											<th class="id_enquiryListTable"></th>
+											<th class="callerName_enquiryListTable" style="width:10%;"></th>
+											<th class="email_enquiryListTable"></th>
+											<th class="contactNo_enquiryListTable"></th>
+											<th class="csrID_enquiryListTable"></th>
+											<th class="description_enquiryListTable" style="width: 15% !important;"></th>
+											<th class="enquiryType_enquiryListTable"></th>
+											<th class="enquiryDate_enquiryListTable"></th>
+											<th class="status_enquiryListTable"></th>	
+											<th class="updatedBy_enquiryListTable"></th>
+											<th class="updatedDate_enquiryListTable"></th>											
+											</tr>
+										</tfoot>
+									</table>
+					</div>
+				
+						<!-- enquiry list end -->
+						
+					
+					<!--3.2.11.5 Enquiry Type  Start-->
+					
+					<div class="" style="display:none;" id="enquiry_type" >     
+					
+						<div class="portlet portlet-default" >
+						
+								<div class=" ">
+									 
+										<i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+										<h5 style="background: #E2E2E2;padding:7px;margin: 0;">Filter</h5>
+									
+									<div class="clearfix"></div>
+								</div>
+								<div class="portlet-body" style="margin-top: 10px;">
+									<div id="myTabContent" class="tab-content">
+										<div class="tab-pane fade in active" id="cabGeneral">
+											<div class="container col-sm-col-sm-offset-1" style="margin: 15px auto 5px !important;">
+											<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													    <label id="cab-vehicleNo_type" class="col-sm-2 control-label labelalign">Created Date</label>
+													    <div class="col-sm-2">
+															<input id="created_since_enquiry_type" type="text" class=" form-control" placeholder="Since">                                    
+														</div>
+														<div class="col-sm-2">  
+															<input id="created_to_enquiry_type" type="text" class=" form-control" placeholder="To">                                    
+														</div>
+													 
+														<label id="cab-vehicleModel_type" class="col-sm-2 control-label labelalign">Updated Date</label>
+													    <div class="col-sm-2">
+															<input id="closed_since_enquiry_type" type="text" class=" form-control" placeholder="Since">                                    
+														</div>
+														<div class="col-sm-2">  
+															<input id="closed_to_enquiry_type" type="text" class=" form-control" placeholder="To">                                    
+														</div>
+													 </div>
+												 </div>
+												 
+												 <div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													   <label id="enquiryType_type" class="col-sm-2 control-label labelalign">Enquiry Type</label>
+													  <div class="col-sm-4">
+														 <input id="enquiryTypeText_type" type="text" class=" form-control" placeholder="Enquiry Type">
+													  </div>
+													 
+														<label id="enquiryStatusText_i_type" class="col-sm-2 control-label labelalign">Status</label>
+													   <div class="col-sm-4">
+														<input type="text" id="enquiryStatusText_type" class="form-control" placeholder="Status">
+														</div>
+													 </div>
+												 </div>
+												  <!--<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													   <label id="cab-state" class="col-sm-2 control-label labelalign">State</label>
+													  <div class="col-sm-4">
+													  
+														 <input id="cab-stateText" type="text" class=" form-control" placeholder="State">                                    
+													  </div>
+													 
+														<label id="cab-city" class="col-sm-2 control-label labelalign">City</label>
+													   <div class="col-sm-4">
+															<div class="input-group">
+														<input type="text" id="cab-cityText" class="form-control" placeholder="City">
+														<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+													</div> 
+														</div>
+													 </div>
+												 </div>-->
+												<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													 
+														<div class="col-sm-4 pull-right">
+															<button type="button" class="btn btn-red defaultbtnsearch searchVehicle" id="searchEnquiry_Type"><i class="fa fa-search" style="color:#fff; margin:5px"></i>Search</button>
+															<button type="button" class="btn btn-red defaultbtnsearch searchVehicle" id=""><i class="fa fa-search" style="color:#fff; margin:5px"></i>Clear</button>
+														 
+														</div>
+													</div>
+												</div> 
+											</div>
+										</div>
+										
+									</div>
+								</div>
+						</div>
+							
+							<table class="table table-striped dataTable" id="dataTables-enquiry_type">
+							 
+								<thead>
+									<tr>
+									<th class="id_enquiryType_table"></th>
+									<th class="enquiryType_enquiry_type_table"></th>
+									<th class="createdBy_enquiry_type_table"></th>
+									<th class="createdOn_enquiry_type_table"></th>
+									<th class="updatedBy_enquiry_type_table"></th>
+									<th class="updatedOn_enquiry_type_table"></th>
+									<th class="status_enquiry_type_table"></th>
+									<th class="col-sm-1 action_enquiry_type_table"></th>
+									</tr>
+								</thead>
+								<tbody>
+								
+								</tbody>
+								<tfoot>
+									<tr>
+									<th class="id_enquiryType_table"></th>
+									<th class="enquiryType_enquiry_type_table"></th>
+									<th class="createdBy_enquiry_type_table"></th>
+									<th class="createdOn_enquiry_type_table"></th>
+									<th class="updatedBy_enquiry_type_table"></th>
+									<th class="updatedOn_enquiry_type_table"></th>
+									<th class="status_enquiry_type_table"></th>
+									<th class="col-sm-1 action_enquiry_type_table"></th>
+									</tr>
+								</tfoot>
+							</table>
+					
+					<div class="row">
+						<div class="col-lg-12 b-close" style="margin:10px 0;">
+						<button class="btn btn-success add_enquiryType" id="addEnquiryType"><i class="fa fa-plus"></i>&nbsp;</button>
+						</div>
+					</div>
+									
+					<div class="col-sm-3 col-sm-offset-4" id="enquiryTypeForm" style="padding: 0px; margin: auto; border-radius: 10px; left: 536px; position: absolute; top: 45.5px; z-index: 9999; opacity: 1; display: none; background-color: white;">					
+						<h1 class="fa fa-times closbtn b-close" id="enquirytypeclose"></h1>
+								<div id="" style="margin:20px;">
+													
+									<form role="form" id="add_enquiry_type" method="Post" >
+	 
+													<div class="form-group clearfix spance">
+													</div>
+													
+													<div class="form-group clearfix spance">
+														<label class="control-label col-sm-3 col-lg-4 enquiryType_addEnquiryPopup"></label>
+														<input id="enquiry_typ" name="enquiry_typ" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Enquiry Type"> 
+													</div>
+													
+													<div class="form-group clearfix spance">
+														<label class="control-label col-sm-3 col-lg-4 status_addEnquiryPopup"></label>
+														<select name="enquiry_type_status" id="enquiry_type_status" style="" class="col-sm-9 col-lg-8 inputfild name">
+														</select>
+													</div>
+													<div class="form-group clearfix spance">
+														<button type="button" class="btn btn-primary pull-right addCabTypeButton col-sm-3 addButton_addEnquirypopup" style="" id="addEnquiry"></button>
+													</div>
+									</form>
+												  
+								</div>
+										<div class="col-sm-4 col-md-4"></div>
+					</div>
+					
+					<div class="col-sm-3 col-sm-offset-4" id="manageEnquiryForm" style="padding: 0px; margin: auto; border-radius: 10px; left: 536px; position: absolute; top: 45.5px; z-index: 9999; opacity: 1; display: none; background-color: white;">					
+						<h1 class="fa fa-times closbtn b-close" ></h1>
+								<div id="" style="margin:20px;">
+													
+									<form role="form" id="manage_enquiry_type" method="Post" >
+	 
+													<div class="form-group clearfix spance">
+													</div>
+													
+													<div class="form-group clearfix spance">
+														<label class="control-label col-sm-3 col-lg-4 id_manageEnquiryPopup"></label>
+														<input id="manage_enquiry_type_id" name="manage_enquiry_type_id" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Id" disabled> 
+													</div>
+													
+													<div class="form-group clearfix spance">
+														<label class="control-label col-sm-3 col-lg-4 enquiryType_manageEnquiryPopup"></label>
+														<input id="manage_enquiry" name="manage_enquiry" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Enquiry Type">
+													</div>
+													
+													<div class="form-group clearfix spance">
+														<label class="control-label col-sm-3 col-lg-4 status_manageEnquiryPopup"></label>
+														<select name="manage_enquiry_type_status" id="manage_enquiry_type_status" style="" class="col-sm-9 col-lg-8 inputfild name">
+														</select>
+														<!--<input id="manage_enquiry_type_status" name="manage_enquiry_type_status" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Status"> -->
+													</div>
+													 
+													<div class="form-group clearfix spance">
+														<button type="button" class="btn defaultbtnsearch pull-right addCabTypeButton col-sm-3 b-close deleteButton_manageEnquiryPopup" style="margin-left:5px;" id="deleteEnquiry"><i class="fa fa-trash-o marginright"></i></button> 
+														<button type="button" class="btn btn-primary pull-right editCabTypeButton col-sm-3 b-close updateButton_manageEnquiryPopup" style="" id="updateEnquiry"></button>
+													</div>
+									</form>
+												  
+								</div>
+										<div class="col-sm-4 col-md-4"></div>
+					</div>
+					
+					<form id="login_form212" style="left: 150px; position: absolute; top: 200px; z-index: 9999; opacity: 1; display:none;">
+						<div class="container leftbox">
+							<div class="col-sm-4 col-sm-offset-4" style="background: #fff;border-radius:10px;">
+								<h1 class="fa fa-times closbtn b-close"></h1>
+								<div class="row text-center">
+									<div class="col-md-12">
+										<div class="exit_iconbox">
+											<i class="fa fa-thumbs-up fa-fw fa-5x" style="line-height: 120px;color: #4298D7;"></i>
+										</div>
+									</div>
+									<div class="clearfix">
+									</div>
+								</div>
+								<div class="row text-center">
+									<div class="col-sm-12" style="padding:0 10px;">
+										<div class="col-sm-12 ">
+											<div class="spance">
+												<h4 class="confirmDeletion_manageEnquiryPopup" style="padding:0; margin:0 auto 30px; text-transform: capitalize;"></h4>
+											</div>
+											<div style="padding-bottom:20px;" class="clearfix">
+												<div class="col-sm-6">
+													
+													<button type="button" class="btn btn-default form-control b-close yes_manageEnquiry Popup" id="confirmation" style=""></button>
+												</div>
+												<div class="col-sm-6">
+													<button type="button" class="btn defaultbtnsearch form-control b-close no_manageEnquiryPopup" id="doubtful" style=""></button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+									
+				</div>
+				
+					<!--3.2.11.5 Enquiry Type  End-->
+					
+					<!--3.2.11.6 Action Taken Type:  Start-->
+					
+					<div class="" style="display:none;" id="action_type" >
+						   
+						<div class="portlet portlet-default" >
+						
+								<div class=" ">
+									 
+										<i class="fa fa-filter" style="float: left;margin:7px;color:#3D84C1;"></i>
+										<h5 style="background: #E2E2E2;padding:7px;margin: 0;">Filter</h5>
+									
+									<div class="clearfix"></div>
+								</div>
+								<div class="portlet-body" style="margin-top: 10px;">
+									<div id="myTabContent" class="tab-content">
+										<div class="tab-pane fade in active" id="cabGeneral">
+											<div class="container col-sm-col-sm-offset-1" style="margin: 15px auto 5px !important;">
+											<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													    <label id="cab-vehicleNo_action_type" class="col-sm-2 control-label labelalign">Created Date</label>
+													    <div class="col-sm-2">
+															<input id="created_since_action_type" type="text" class=" form-control" placeholder="Since">                                    
+														</div>
+														<div class="col-sm-2">  
+															<input id="created_to_action_type" type="text" class=" form-control" placeholder="To">                                    
+														</div>
+													 
+														<label id="cab-vehicleModel" class="col-sm-2 control-label labelalign">Updated Date</label>
+													    <div class="col-sm-2">
+															<input id="closed_since_action_type" type="text" class=" form-control" placeholder="Since">                                    
+														</div>
+														<div class="col-sm-2">  
+															<input id="closed_to_action_type" type="text" class=" form-control" placeholder="To">                                    
+														</div>
+													 </div>
+												 </div>
+												 
+												 <div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													   <label id="enquiryType" class="col-sm-2 control-label labelalign">Enquiry Type</label>
+													  <div class="col-sm-4">
+														 <input id="enquiry_action_type" type="text" class=" form-control" placeholder="Enquiry Type">
+													  </div>
+													 
+														<label id="enquiryStatusText_i_action_type" class="col-sm-2 control-label labelalign">Status</label>
+													   <div class="col-sm-4">
+														<input type="text" id="enquiry_action_typeText" class="form-control" placeholder="Status">
+														</div>
+													 </div>
+												 </div>
+												  <!--<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													   <label id="cab-state" class="col-sm-2 control-label labelalign">State</label>
+													  <div class="col-sm-4">
+													  
+														 <input id="cab-stateText" type="text" class=" form-control" placeholder="State">                                    
+													  </div>
+													 
+														<label id="cab-city" class="col-sm-2 control-label labelalign">City</label>
+													   <div class="col-sm-4">
+															<div class="input-group">
+														<input type="text" id="cab-cityText" class="form-control" placeholder="City">
+														<span class="input-group-addon"><i class="fa fa-search"></i></span>   
+													</div> 
+														</div>
+													 </div>
+												 </div>-->
+												<div class="row">
+													<div class="form-group clearfix margintopbottom20">
+													 
+														<div class="col-sm-4 pull-right">
+															<button type="button" class="btn btn-red defaultbtnsearch searchVehicle" id="searchEnquiryType"><i class="fa fa-search" style="color:#fff; margin:5px"></i>Search</button>
+															<button type="button" class="btn btn-red defaultbtnsearch searchVehicle" id=""><i class="fa fa-search" style="color:#fff; margin:5px"></i>Clear</button>
+														 
+														</div>
+													</div>
+												</div> 
+											</div>
+										</div>
+										
+									</div>
+								</div>
+						</div>
+							
+									<table class="table table-striped dataTable" id="dataTables-action_type">
+									 
+										<thead>
+											<tr>
+											<th class="id_actionType_table">Id</th>
+											<th class="actionType_action_type_table"></th>
+											<th class="createdBy_action_type_table"></th>
+											<th class="createdOn_action_type_table"></th>
+											<th class="updatedBy_action_type_table"></th>
+											<th class="updatedOn_action_type_table"></th>
+											<th class="status_action_type_table"></th>
+											<th class="col-sm-1 action_action_type_table"></th>
+											</tr>
+										</thead>
+										<tbody>
+										
+										</tbody>
+										<tfoot>
+											<tr>
+											<th class="id_actionType_table">Id</th>
+											<th class="actionType_action_type_table"></th>
+											<th class="createdBy_action_type_table"></th>
+											<th class="createdOn_action_type_table"></th>
+											<th class="updatedBy_action_type_table"></th>
+											<th class="updatedOn_action_type_table"></th>
+											<th class="status_action_type_table"></th>
+											<th class="col-sm-1 action_action_type_table"></th>
+											</tr>
+										</tfoot>
+									</table>
+									<div class="row">
+										<div class="col-lg-12 b-close" style="margin:10px 0;">
+											<button class="btn btn-success add_actionType" id="addActionType"><i class="fa fa-plus"></i>&nbsp; </button>
+										</div>
+									</div>
+									
+									<div class="col-sm-3 col-sm-offset-4" id="actionTypeForm" style="padding: 0px; margin: auto; border-radius: 10px; left: 536px; position: absolute; top: 45.5px; z-index: 9999; opacity: 1; display: none; background-color: white;">					
+										<h1 class="fa fa-times closbtn b-close" id="actiontypeclose"></h1>
+												<div id="" style="margin:20px;">
+																	
+													<form role="form" id="add_action_type" method="Post" >
+					 
+																	<div class="form-group clearfix spance">
+																	</div>
+																	
+																	<div class="form-group clearfix spance">
+																		<label class="control-label col-sm-3 col-lg-4 actionType_addActionPopup"></label>
+																		<input id="action_typ" name="action_typ" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Action Type"> 
+																	</div>
+																	
+																	<div class="form-group clearfix spance">
+																		<label class="control-label col-sm-3 col-lg-4 status_addActionPopup"></label>
+																		<select name="action_type_status" id="action_type_status" style="" class="col-sm-9 col-lg-8 inputfild name">
+																		</select>
+																	</div>
+																	<div class="form-group clearfix spance">
+																		<button type="button" class="btn btn-primary pull-right addCabTypeButton col-sm-3 addButton_addActionpopup" style="" id="addAction"></button>
+																	</div>
+													</form>
+																  
+												</div>
+														<div class="col-sm-4 col-md-4"></div>
+									</div>
+									
+									<div class="col-sm-3 col-sm-offset-4" id="manageActionForm" style="padding: 0px; margin: auto; border-radius: 10px; left: 536px; position: absolute; top: 45.5px; z-index: 9999; opacity: 1; display: none; background-color: white;">					
+										<h1 class="fa fa-times closbtn b-close" ></h1>
+												<div id="" style="margin:20px;">
+																	
+													<form role="form" id="manage_action_type" method="Post" >
+					 
+																	<div class="form-group clearfix spance">
+																	</div>
+																	
+																	<div class="form-group clearfix spance">
+																		<label class="control-label col-sm-3 col-lg-4 id_manageActionPopup"></label>
+																		<input id="manage_action_type_id" name="manage_action_type_id" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Id" disabled> 
+																	</div>
+																	
+																	<div class="form-group clearfix spance">
+																		<label class="control-label col-sm-3 col-lg-4 actionType_manageActionPopup"></label>
+																		<input id="manage_action" name="manage_action" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Action Type">
+																	</div>
+																	
+																	<div class="form-group clearfix spance">
+																		<label class="control-label col-sm-3 col-lg-4 status_manageActionPopup"></label>
+																		<select name="manage_action_type_status" id="manage_action_type_status" style="" class="col-sm-9 col-lg-8 inputfild name">
+																		</select>
+																		<!--<input id="manage_enquiry_type_status" name="manage_enquiry_type_status" type="text" class="col-sm-9 col-lg-8 inputfild name" placeholder="Status"> -->
+																	</div>
+																	 
+																	<div class="form-group clearfix spance">
+																		<button type="button" class="btn defaultbtnsearch pull-right addCabTypeButton col-sm-3 b-close deleteButton_manageActionPopup" style="margin-left:5px;" id="deleteAction"><i class="fa fa-trash-o marginright"></i></button> 
+																		<button type="button" class="btn btn-primary pull-right editCabTypeButton col-sm-3 b-close updateButton_manageActionPopup" style="" id="updateAction"></button>
+																	</div>
+													</form>
+																  
+												</div>
+														<div class="col-sm-4 col-md-4"></div>
+									</div>
+									
+									<form id="login_form" style="left: 150px; position: absolute; top: 200px; z-index: 9999; opacity: 1; display:none;">
+										<div class="container leftbox">
+											<div class="col-sm-4 col-sm-offset-4" style="background: #fff;border-radius:10px;">
+												<h1 class="fa fa-times closbtn b-close"></h1>
+												<div class="row text-center">
+													<div class="col-md-12">
+														<div class="exit_iconbox">
+															<i class="fa fa-thumbs-up fa-fw fa-5x" style="line-height: 120px;color: #4298D7;"></i>
+														</div>
+													</div>
+													<div class="clearfix">
+													</div>
+												</div>
+												<div class="row text-center">
+													<div class="col-sm-12" style="padding:0 10px;">
+														<div class="col-sm-12 ">
+															<div class="spance">
+																<h4 class="confirmDeletion_manageActionPopup" style="padding:0; margin:0 auto 30px; text-transform: capitalize;"></h4>
+															</div>
+															<div style="padding-bottom:20px;" class="clearfix">
+																<div class="col-sm-6">
+																	
+																	<button type="button" class="btn btn-default form-control b-close yes_manageActionPopup" id="action_confirmation" style=""></button>
+																</div>
+																<div class="col-sm-6">
+																	<button type="button" class="btn defaultbtnsearch form-control b-close no_manageActionPopup" id="action_doubtful" style=""></button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+									
+					</div>
+					
+					<!--3.2.11.6 Action Taken Type:  End-->
+				</div>
+        </div>
+    </div>
+</div>
+<script>
+var id_s;
+var table;
+var data;
+var myVar;
+var data2;
+var myVar2;
+var complaintStatus;
+var com_data;
+var complaintTable;
+
+$( document ).ready(function() {
+	complaintTable = $('#example').dataTable( {
+		"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllBookingComplaintList',
+		"deferRender": true,
+		"order": [[ 0, "desc" ]]
+	});
+	$.fn.dataTableExt.sErrMode = 'throw';
+	datatablsCSS();
+        dynamicText(5);
+	dynamicText(2);
+	$("#example_wrapper").attr("style","border:1px solid #d2d2d2;");
+	$("#example_wrapper").addClass("clearfix");
+	$("#example_wrapper").addClass("font12px");
+	$("#example_wrapper + div").removeClass("row");
+	$("#example_info").parent().parent().removeClass("row");
+	$("#example_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$('#example_filter label').attr("style","display:none;");
+	
+	
+	$("#created_since").datepicker();
+	$("#created_since").datepicker("option","dateFormat","yy-mm-dd");
+	$("#created_to").datepicker();
+	$("#created_to").datepicker("option","dateFormat","yy-mm-dd");
+	$("#closed_since").datepicker();
+	$("#closed_since").datepicker("option","dateFormat","yy-mm-dd");
+	$("#closed_to").datepicker();
+	$("#closed_to").datepicker("option","dateFormat","yy-mm-dd");
+	
+	$("#created_since_enquiry").datepicker();
+	$("#created_since_enquiry").datepicker("option","dateFormat","yy-mm-dd");
+	$("#created_to_enquiry").datepicker();
+	$("#created_to_enquiry").datepicker("option","dateFormat","yy-mm-dd");
+	$("#closed_since_enquiry").datepicker();
+	$("#closed_since_enquiry").datepicker("option","dateFormat","yy-mm-dd");
+	$("#closed_to_enquiry").datepicker();
+	$("#closed_to_enquiry").datepicker("option","dateFormat","yy-mm-dd");
+	
+	
+});
+
+function datatablsCSS(){
+	$(".paging_simple_numbers").parent().addClass('pgnt_topfix');
+    $('.dataTables_length').parent().removeClass('col-sm-6');
+    $('.dataTables_length').parent().addClass('col-sm-2');
+    $('.dataTables_length').parent().addClass('pgno_top');
+	$('.pgno_top').attr("style","top:37px;");
+	$('.pgnt_topfix').attr("style","top:36px;");
+}
+
+$(document).on('click','#show_complaint_list',function(){
+	$("#complaint_list").show();
+	$("#complaint_type").hide();
+	$("#enquiry_list").hide();
+	$("#enquiry_type").hide();
+	$("#action_type").hide();
+	showComplaintList();
+});
+
+$(document).on('click','#show_complaint_type',function(){
+	$("#complaint_list").hide();
+	$("#complaint_type").show();
+	$("#enquiry_list").hide();
+	$("#enquiry_type").hide();
+	$("#action_type").hide();
+	showComplaint();
+});
+
+$(document).on('click','#show_enquiry_list',function(){
+	$("#complaint_list").hide();
+	$("#complaint_type").hide();
+	$("#enquiry_list").show();
+	$("#enquiry_type").hide();
+	$("#action_type").hide();
+	showEnquiryList();
+});
+
+$(document).on('click','#show_enquiry_type',function(){
+	$("#complaint_list").hide();
+	$("#complaint_type").hide();
+	$("#enquiry_list").hide();
+	$("#enquiry_type").show();
+	$("#action_type").hide();
+	showEnquiryType();
+});
+
+$(document).on('click','#show_action_type',function(){
+	$("#complaint_list").hide();
+	$("#complaint_type").hide();
+	$("#enquiry_list").hide();
+	$("#enquiry_type").hide();
+	$("#action_type").show();
+	showActionType();
+});
+
+function showComplaintList(){
+	complaintTable.fnDestroy();
+	complaintTable = $('#example').dataTable( {
+		"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllBookingComplaintList',
+		"deferRender": true
+	});
+	datatablsCSS();
+	$("#example_wrapper").attr("style","border:1px solid #d2d2d2;");
+	$("#example_wrapper").addClass("clearfix");
+	$("#example_wrapper").addClass("font12px");
+	$("#example_wrapper + div").removeClass("row");
+	$("#example_info").parent().parent().removeClass("row");
+	$("#example_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$('#example_filter label').attr("style","display:none;");
+}
+
+function showComplaint(){
+	complaintTable.fnDestroy();
+	complaintTable = $('#dataTables-example').dataTable( {
+		"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllcomplaint',
+		"deferRender": true
+	});
+	datatablsCSS();
+	$("#dataTables-example_wrapper").attr("style","border:1px solid #d2d2d2;");
+	$("#dataTables-example_wrapper").addClass("clearfix");
+	$("#dataTables-example_wrapper").addClass("font12px");
+	$("#dataTables-example_wrapper + div").removeClass("row");
+	$("#dataTables-example_info").parent().parent().removeClass("row");
+	$("#dataTables-example_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$('#dataTables-example_filter label').attr("style","display:none;");
+}
+
+function showEnquiryList(){
+complaintTable.fnDestroy();
+	complaintTable = $('#dataTables-enquiry_list').dataTable( {
+		"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllEnquiry',
+		"deferRender": true,
+                "order": [[ 7, "desc" ]]
+	});
+	datatablsCSS();
+	$("#dataTables-enquiry_list_wrapper").attr("style","border:1px solid #d2d2d2;");
+	$("#dataTables-enquiry_list_wrapper").addClass("clearfix");
+	$("#dataTables-enquiry_list_wrapper").addClass("font12px");
+	$("#dataTables-enquiry_list_wrapper + div").removeClass("row");
+	$("#dataTables-enquiry_list_info").parent().parent().removeClass("row");
+	$("#dataTables-enquiry_list_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$('#dataTables-enquiry_list_filter label').attr("style","display:none;");
+}
+
+function showEnquiryType(){
+	complaintTable.fnDestroy();
+	complaintTable = $('#dataTables-enquiry_type').dataTable( {
+		"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllEnquiryType',
+		"deferRender": true
+	});
+	datatablsCSS();
+	$("#dataTables-enquiry_type_wrapper").attr("style","border:1px solid #d2d2d2;");
+	$("#dataTables-enquiry_type_wrapper").addClass("clearfix");
+	$("#dataTables-enquiry_type_wrapper").addClass("font12px");
+	$("#dataTables-enquiry_type_wrapper + div").removeClass("row");
+	$("#dataTables-enquiry_type_info").parent().parent().removeClass("row");
+	$("#dataTables-enquiry_type_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$('#dataTables-enquiry_type_filter label').attr("style","display:none;");
+}
+
+function showActionType(){
+	complaintTable.fnDestroy();
+	complaintTable = $('#dataTables-action_type').dataTable( {
+		"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllActionType',
+		"deferRender": true
+	});
+	datatablsCSS();
+	$("#dataTables-action_type_wrapper").attr("style","border:1px solid #d2d2d2;");
+	$("#dataTables-action_type_wrapper").addClass("clearfix");
+	$("#dataTables-action_type_wrapper").addClass("font12px");
+	$("#dataTables-action_type_wrapper + div").removeClass("row");
+	$("#dataTables-action_type_info").parent().parent().removeClass("row");
+	$("#dataTables-action_type_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$('#dataTables-action_type_filter label').attr("style","display:none;");
+}
+
+$(document).on('click','.clickComplaintType',function(){
+	var complaintId = $(this).attr('data');
+	var cabhtml = $(this).html();
+	
+	if($(this).hasClass('open'))
+	{ 
+		$(".remove div:first").slideUp(400,function(){
+			$('.remove').remove();
+		});
+		$(this).removeClass('open');
+	}
+	else
+	{
+		$('.remove').remove();
+		$(this).addClass('open');
+		$(this).parent().parent().after('<tr class="remove" ><td colspan="11"><div style=""> <div class=""> <div class="portlet portlet-default"> <div class="portlet-heading"> <div class="portlet-title"><h5 class="h4text" style="background: #E2E2E2;padding:7px;margin: 0;">Enquiry Details</h5></div> <div class="clearfix"></div> </div> <div class="portlet-body"> <ul id="myTab" class="nav nav-tabs tabsdesign"> <li class="active"></li> </ul> <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="complaint_mgmt"> <table id="exampleComplaint" class="table table-responsive table-striped"><tbody><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr><tr><th></th><th></th><td></td></tr></tbody></table></div></div></td></tr>');
+
+		data=$(this).attr("data");
+		
+		$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllEnquiryById?complaint_id='+data,
+		cache: false,
+		dataType:"json"
+		})
+		.done(function( html ) {
+		var k=1;
+		statusComplaint = (html.data[0].status == 0) ?'Inactive':'Active';
+		
+		$('#exampleComplaint').html('<tbody><tr><th></th><th style="width:20%" class="id_enquiry_list_info"></th><td>'+html.data[0].Id+'</td></tr><tr><th></th><th class="csrID_enquiry_list_info"></th><td>'+html.data[0].CSRID+'</td></tr><tr><th></th><th class="callerId_enquiry_list_info"></th><td>'+html.data[0].CallerId+'</td></tr><tr><th></th><th class="callerName_enquiry_list_info"></th><td>'+html.data[0].CallerName+'</td></tr><tr><th></th><th class="contactNo_enquiry_list_info"></th><td>'+html.data[0].ContactNo+'</td></tr><tr><th></th><th class="email_enquiry_list_info"></th><td>'+html.data[0].EmailId+'</td></tr><tr><th></th><th class="city_enquiry_list_info"></th><td>'+html.data[0].City+'</td></tr><tr><th></th><th class="enquiryType_enquiry_list_info"></th><td>'+html.data[0].EnqType+'</td></tr><tr><th></th><th class="address_enquiry_list_info"></th><td>'+html.data[0].Address+'</td></tr><tr><th></th><th class="locality_enquiry_list_info"></th><td>'+html.data[0].Locality+'</td></tr><tr><th></th><th class="message_enquiry_list_info"></th><td>'+html.data[0].Message+'</td></tr><tr><th></th><th class="contracted_enquiry_list_info"></th><td>'+html.data[0].Contracted+'</td></tr><tr><th></th><th class="enquiryDate_enquiry_list_info"></th><td>'+html.data[0].EnquiryDate+'</td></tr><tr><th></th><th class="status_enquiry_list_info"></th><td><select name="enquiry_status" id="enquiry_status" style="" class="col-sm-3 col-lg-2 inputfild name"></select><button class="btn btn-primary manageEnquiryStatus" style="margin-left: 10px;" id="enquiry_'+html.data[0].Id+'">Update Status</button></td></tr></tbody>');
+		getEnquiryStatus();
+		dynamicText(5);
+		}).fail(function (error){
+		alert('error');
+		console.log(error);	
+		});	
+	}	
+});
+
+var enquiryStatus;
+function getEnquiryStatus(){
+
+	data=$(this).attr("data");
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllEnquiryById?complaint_id='+data,
+		cache: false,
+		dataType:"json"
+	})
+	.done(function( html ) {
+		enquiryStatus = html.data[0].Status;
+		//alert(enquiryStatus);
+		var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllActionType';
+		$.ajax({
+			type: 'POST',
+			url: url,
+			dataType: "json",
+			data:{    
+					key:'',
+				},
+			success: function(html){
+				var len = html.data.length;
+				var detailComplaint = "";
+				for(var i=0;i<len;i++){
+					if(enquiryStatus == html.data[i][1]){
+						detailComplaint += "<option value='"+html.data[i][1]+"' selected='selected'>"+html.data[i][1]+"</option>";
+					}else{
+						detailComplaint += "<option value='"+html.data[i][1]+"'>"+html.data[i][1]+"</option>";
+					}
+				}
+				$("#enquiry_status").html(detailComplaint);
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	}).fail(function (error){
+	alert('error');
+	console.log(error);	
+	});
+}
+
+$(document).on('click','#addSubComplaintType',function(){
+	$("#subComplaintForm").bPopup({
+	});
+	$("#add_sub_complaint")[0].reset();
+});
+
+$("#add_sub_complaint").validate({
+ errorClass: 'error col-lg-offsets-5',
+			rules: {
+				add_complaint_type: {
+					required: true,
+				},
+				add_sub_complaints: {
+					required: true,
+				},
+				created_by: {
+					required: true,
+				}
+			},
+			messages: {
+				add_complaint_type: "Please Enter Complaint Type.",
+				add_sub_complaints: "Please Enter Sub Complaint.",
+				created_by: "Please Enter your name."
+			}
+});
+
+$("#addSubComplaint").click(function(){
+	if($("#add_sub_complaint").valid()!=false)
+	{
+		var complaint_type = $("#add_complaint_type").val();
+		var sub_complaint = $("#add_sub_complaints").val();
+		$.ajax({
+			url: '<?php echo $this->basePath();?>'+'/tunnel/admin/SubComplaintType',
+			cache: false,
+			dataType:"json",
+			data:{
+					complaint_type:complaint_type,
+					sub_complaint:sub_complaint
+			}
+		})
+	  .done(function( data ){
+			$("#btn_close").click();
+			if(data.status=="true")
+			{
+				complaintTable.api().ajax.reload(null,true);
+				alert(data.Message);
+			}else{
+				alert(data.Message);
+			}
+	  }).fail(function (error){
+			alert(error);
+			console.log(error);
+			
+	 });
+	}
+});
+
+function getComplaintType(){
+	var complaintTypeText = $("#add_complaint_type").val();
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllEnquiryType';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data: {    
+				key:'',
+			},		 
+		success: function(html){
+			var len = html.data.length;
+			var detailComplaint = "";
+			for(var i=0;i<len;i++){
+				if(complaintTypeText == html.data[i][1]){
+					detailComplaint += "<option value='"+html.data[i][0]+"' selected>"+html.data[i][1]+"</option>";
+				}else{
+					detailComplaint += "<option value='"+html.data[i][0]+"'>"+html.data[i][1]+"</option>";
+				}
+			}
+			$("#add_complaint_type").html(detailComplaint);
+			
+		},
+		error: function(error){
+			console.log(error);
+		}
+	});
+}
+
+$("#addSubComplaintType").click(function(){
+	getComplaintType();
+});
+
+$(document).on('click','.manageEnquiryType',function(){
+	$("#manageEnquiryForm").bPopup({
+	});
+	$("#manage_enquiry_type")[0].reset();
+	var id = $(this).attr('id');
+	var idArr = id.split("_");
+	enquiryTypeId = idArr[1];
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/enquiryTypeInfoById',
+		cache: false,
+		dataType:"json",
+		data:{
+			enquiryId:enquiryTypeId
+		}
+	})
+	.done(function(html){
+		var len = html.data.length;
+		var idd = $("#manage_enquiry_type_id").val(html.data[0].id);
+		var enqquiry = $("#manage_enquiry").val(html.data[0].enquiry_type);
+		var createdd = $("#manage_enquiry_type_created_by").val(html.data[0].created_by);
+		var crreated = $("#manage_enquiry_type_created_on").val(html.data[0].created_on);
+		var status_Text = html.data[0].status;
+		var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllStatus';
+		$.ajax({
+			type: 'POST',
+			url: url,
+			dataType: "json",
+			data: {    
+					key:'',
+				},
+			success: function(html){
+				var len = html.data.length;
+				var detailComplaint = "";
+				for(var i=0;i<len;i++){
+					if(status_Text == html.data[i].status){
+						detailComplaint += "<option value='"+html.data[i].status+"' selected>"+html.data[i].status+"</option>";
+					}else{
+						detailComplaint += "<option value='"+html.data[i].status+"'>"+html.data[i].status+"</option>";
+					}
+				}
+				$("#manage_enquiry_type_status").html(detailComplaint);
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	})
+	.fail(function (error){
+		alert('error');
+		console.log(error);
+	});
+});
+
+
+$(document).on('click','#addEnquiryType',function(){
+	$("#enquiryTypeForm").bPopup({
+	});
+	$("#add_enquiry_type")[0].reset();
+	getStatus();
+});
+
+function getStatus(){
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllStatus';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data:{    
+			key:'',
+		},
+		success: function(html){
+			var len = html.data.length;
+			var detailComplaint = "";
+			for(var i=0;i<len;i++){
+				detailComplaint += "<option value='"+html.data[i].status+"' selected>"+html.data[i].status+"</option>";
+			}
+			$("#action_type_status").html(detailComplaint);
+			$("#enquiry_type_status").html(detailComplaint);
+		},
+		error: function(error){
+			console.log(error);
+		}
+	});
+}
+
+$("#add_enquiry_type").validate({
+ errorClass: 'error col-lg-offsets-5',
+			rules: {
+				enquiry_typ: {
+					required: true,
+				}
+			},
+			messages: {
+				enquiry_typ: "Please Enter Enquiry Type."
+			}
+});
+
+$("#addEnquiry").click(function(){
+	if($("#add_enquiry_type").valid()!=false)
+	{
+		var enquiry_type_i = $("#enquiry_typ").val();
+		var enquiry_type_status_i = $("#enquiry_type_status").val();
+		
+		$.ajax({
+			url: '<?php echo $this->basePath();?>'+'/tunnel/admin/insertEnquiryType',
+			cache: false,
+			dataType:"json",
+			data:{
+					enquiry_type:enquiry_type_i,
+					enquiry_type_status:enquiry_type_status_i
+			}
+		})
+		.done(function( data ) {
+			if(data.status=="true")
+			{
+				complaintTable.api().ajax.reload(null,true);
+				alert(data.Message);
+			}else{
+				alert(data.Message);
+			}
+			$("#enquirytypeclose").click();
+		})
+		.fail(function (error){
+			alert(error);
+			console.log(error);
+		});
+	}
+});
+
+$('#deleteEnquiry').click(function(){
+	$("#login_form212").bPopup({
+	});
+});
+
+$('#updateEnquiry').click(function(){
+	var update_id = $("#manage_enquiry_type_id").val();
+	var manageEnquery = $("#manage_enquiry").val();
+	var EnquiryStatus = $("#manage_enquiry_type_status").val();
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/updateEnquiryType',
+		cache: false,
+		dataType:"json",
+		data:{
+			enquiryId:update_id,
+			manageEnquery:manageEnquery,
+			EnquiryStatus:EnquiryStatus
+		}
+	})
+	.done(function(data){
+			if(data.status=="true")
+			{
+				complaintTable.api().ajax.reload(null,true);
+				alert(data.Message);
+			}else{
+				alert(data.Message);
+			}
+	  }).fail(function (error){
+			alert(error);
+			console.log(error);
+	 });
+});
+
+$('#confirmation').click(function(){
+	var update_id = $("#manage_enquiry_type_id").val();
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/deleteEnquiryType',
+		cache: false,
+		dataType:"json",
+		data:{
+			enquiryId:update_id
+		}
+	})
+	.done(function(data){
+			if(data.status=="true")
+			{
+				complaintTable.api().ajax.reload(null,true);
+				alert(data.Message);
+			}else{
+				
+			}
+	  }).fail(function (error){
+			alert(error);
+			console.log(error);
+	 });
+});
+
+$(document).on('click','#addActionType',function(){
+	$("#actionTypeForm").bPopup({
+	});
+	$("#add_action_type")[0].reset();
+	getStatus();
+});
+
+$("#add_action_type").validate({
+ errorClass: 'error col-lg-offsets-5',
+			rules: {
+				action_typ: {
+					required: true,
+				}
+			},
+			messages: {
+				action_typ: "Please Enter Action Type."
+			}
+});
+
+$("#addAction").click(function(){
+	if($("#add_action_type").valid()!=false)
+	{
+		var action_type_i = $("#action_typ").val();
+		var action_type_status_i = $("#action_type_status").val();
+		
+		$.ajax({
+			url: '<?php echo $this->basePath();?>'+'/tunnel/admin/insertActionType',
+			cache: false,
+			dataType:"json",
+			data:{
+					action_type:action_type_i,
+					action_type_status:action_type_status_i
+			}
+		})
+		.done(function( data ) {
+			if(data.status=="true")
+			{
+				complaintTable.api().ajax.reload(null,true);
+				alert(data.Message);
+			}else{
+				alert(data.Message);
+			}
+			$("#actiontypeclose").click();
+		})
+		.fail(function (error){
+			alert(error);
+			console.log(error);
+		});
+	}
+});
+
+$(document).on('click','.manageActionType',function(){
+	$("#manageActionForm").bPopup({
+	});
+	$("#manage_action_type")[0].reset();
+	var id = $(this).attr('id');
+	var idArr = id.split("_");
+	actionTypeId = idArr[1];
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/actionTypeInfoById',
+		cache: false,
+		dataType:"json",
+		data:{
+			actionId:actionTypeId
+		}
+	})
+	.done(function( html ){
+		var len = html.data.length;
+		var idd = $("#manage_action_type_id").val(html.data[0].id);
+		var enqquiry = $("#manage_action").val(html.data[0].action);
+		var createdd = $("#manage_action_type_created_by").val(html.data[0].created_by);
+		var crreated = $("#manage_action_type_created_on").val(html.data[0].created_on);
+		var status_Text = html.data[0].status;
+		var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllStatus';
+		$.ajax({
+			type: 'POST',
+			url: url,
+			dataType: "json",
+			data:{    
+					key:'',
+				},
+			success: function(html){
+				var len = html.data.length;
+				var detailComplaint = "";
+				for(var i=0;i<len;i++){
+					if(status_Text == html.data[i].status){
+						detailComplaint += "<option value='"+html.data[i].status+"' selected>"+html.data[i].status+"</option>";
+					}else{
+						detailComplaint += "<option value='"+html.data[i].status+"'>"+html.data[i].status+"</option>";
+					}
+				}
+				$("#manage_action_type_status").html(detailComplaint);
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	})
+	.fail(function (error){
+		alert('error');
+		console.log(error);
+	});
+});
+
+
+$('#deleteAction').click(function(){
+	$("#login_form").bPopup({
+	});
+});
+
+$('#updateAction').click(function(){
+	var update_id = $("#manage_action_type_id").val();
+	var manageAction = $("#manage_action").val();
+	var ActionStatus = $("#manage_action_type_status").val();
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/updateActionType',
+		cache: false,
+		dataType:"json",
+		data:{
+			ActionId:update_id,
+			manageAction:manageAction,
+			ActionStatus:ActionStatus
+		}
+	})
+	.done(function(data){
+			if(data.status=="true")
+			{
+				complaintTable.api().ajax.reload(null,true);
+				alert(data.Message);
+			}else{
+				alert(data.Message);
+			}
+	  }).fail(function (error){
+			alert(error);
+			console.log(error);
+	 });
+});
+
+$('#action_confirmation').click(function(){
+	var update_id = $("#manage_action_type_id").val();
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/deleteActionType',
+		cache: false,
+		dataType:"json",
+		data:{
+			actionId:update_id
+		}
+	})
+	.done(function(data){
+			if(data.status=="true")
+			{
+				complaintTable.api().ajax.reload(null,true);
+				alert(data.Message);
+			}else{
+				
+			}
+	  }).fail(function (error){
+			alert(error);
+			console.log(error);
+	 });
+});
+
+$(document).on('click','.manage_ComplaintType',function(){
+	$("#manageComplaintForm").bPopup({
+	});
+	$("#manage_complaint_type")[0].reset();
+	var id = $(this).attr('id');
+	var idArr = id.split("_");
+	complaint_TypeId = idArr[1];
+	
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/complaint_TypeInfoById',
+		cache: false,
+		dataType:"json",
+		data:{
+			complaintId:complaint_TypeId
+		}
+	})
+	.done(function( html ) {
+		ComplaintManagePopup(html);
+	}).fail(function (error){
+		alert('error');
+		console.log(error);
+	});
+});
+
+function ComplaintManagePopup(html){
+	var len = html.data.length;
+	var idd = $("#manage_complaint_type_id").val(html.data[0].id);
+	var enqquiry = $("#manage_complaint").val(html.data[0].enquiry_type);
+	var createdd = $("#manage_complaint_type_status").val(html.data[0].sub_complaint);
+}
+
+$('#updateComplaint').click(function(){
+	var update_id = $("#manage_complaint_type_id").val();
+	var ComplaintDescrptn = $("#manage_complaint_type_status").val();
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/updateComplaintType',
+		cache: false,
+		dataType:"json",
+		data:{
+			complaintId:update_id,
+			ComplaintDescrptn:ComplaintDescrptn
+		}
+	})
+	.done(function(data){
+			if(data.status=="true")
+			{
+				complaintTable.api().ajax.reload(null,true);
+				alert(data.Message);
+			}else{
+				alert(data.Message);
+			}
+	  }).fail(function (error){
+			alert(error);
+			console.log(error);
+	 });
+});
+
+$('#deleteComplaint').click(function(){
+	$("#delete_form").bPopup({
+	});
+});
+
+$('#complaint_confirmation').click(function(){
+	var update_id = $("#manage_complaint_type_id").val();
+	//alert(update_id);
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/admin/deleteComplaintType',
+		cache: false,
+		dataType:"json",
+		data:{
+			actionId:update_id
+		}
+	})
+	.done(function(data){
+			if(data.status=="true")
+			{
+				complaintTable.api().ajax.reload(null,true);
+				alert(data.Message);
+			}else{
+				
+			}
+	  }).fail(function (error){
+			alert(error);
+			console.log(error);
+	 });
+});
+
+$(document).on('click','.manageEnquiryStatus',function(){
+	var enquiryText = $("#enquiry_status").val();
+	var id = $(this).attr('id');
+	var idArr = id.split("_");
+	Enquiry_Id = idArr[1];
+	//alert(Enquiry_Id);
+	//alert(enquiryText);
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/updateEnquiryStatus';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data:{    
+				enquiryText:enquiryText,
+				Enquiry_Id:Enquiry_Id
+			}
+	}).done(function(data){
+			if(data.status=="true")
+			{
+				complaintTable.api().ajax.reload(null,true);
+				alert(data.Message);
+			}else{
+				alert(data.Message);
+			}
+	  }).fail(function (error){
+			alert(error);
+			console.log(error);
+	 });
+});
+
+$('.complaint').keypress(function(e){
+	var key=e.which;
+	if(key==13)
+	{
+		$('#searchEnquiry').click();
+	}
+});
+
+$(document).on('click','#searchEnquiry',function(){
+	var createdSince = $("#created_since_enquiry").val();
+	var createdTo = $("#created_to_enquiry").val();
+	var closedSince = $("#closed_since_enquiry").val();
+	var closedTo = $("#closed_to_enquiry").val();
+	var enquiryType_Text = $("#enquiryTypeText").val();
+	var enquiryStatus_Text = $("#enquiryStatusText").val();
+	var cabhtml = $(this).html();
+	$("#dataTables-enquiry_list_wrapper").val(cabhtml);
+	
+	complaintTable.fnDestroy();
+	complaintTable = $('#dataTables-enquiry_list').dataTable( {
+						"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/searchEnquiryList?created_since='+createdSince+'&created_to='+createdTo+'&closed_since='+closedSince+'&closed_to='+closedTo+'&enquiry_Type_Text='+enquiryType_Text+'&enquiry_Status_Text='+enquiryStatus_Text,
+						"deferRender": true
+					} );
+	datatablsCSS();
+	$("#dataTables-enquiry_list_wrapper").attr("style","border:1px solid #d2d2d2;");
+	$("#dataTables-enquiry_list_wrapper").addClass("clearfix");
+	$("#dataTables-enquiry_list_wrapper").addClass("font12px");
+	$("#dataTables-enquiry_list_wrapper + div").removeClass("row");
+	$("#dataTables-enquiry_list_info").parent().parent().removeClass("row");
+	$("#dataTables-enquiry_list_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$('#dataTables-enquiry_list_filter label').attr("style","display:none;");
+});
+
+$('.complaint').keypress(function(e){
+	var key=e.which;
+	if(key==13)
+	{
+		$('#searchComplaints').click();
+	}
+});
+
+$(document).on('click','#searchComplaints',function(){
+	var bookingIDNo = $("#booking_id_no").val();
+	var complaintTypeText = $("#complaint_type_text").val();
+	var createdSince = $("#created_since").val();
+	var createdTo = $("#created_to").val();
+	var closedSince = $("#closed_since").val();
+	var closedTo = $("#closed_to").val();
+	var complaintStatus_Text = $("#complaintStatusText").val();
+	var cabhtml = $(this).html();
+	$("#example_wrapper").val(cabhtml);
+	
+	complaintTable.fnDestroy();
+	complaintTable = $('#example').dataTable( {
+						"ajax": '<?php echo $this->basePath();?>'+'/tunnel/admin/searchComplaintType?booking_id='+bookingIDNo+'&complaint_TypeText='+complaintTypeText+'&created_since='+createdSince+'&created_to='+createdTo+'&closed_since='+closedSince+'&closed_to='+closedTo+'&complaint_Status_Text='+complaintStatus_Text,
+						"deferRender": true
+					} );
+	datatablsCSS();
+	$("#example_wrapper").attr("style","border:1px solid #d2d2d2;");
+	$("#example_wrapper").addClass("clearfix");
+	$("#example_wrapper").addClass("font12px");
+	$("#example_wrapper + div").removeClass("row");
+	$("#example_info").parent().parent().removeClass("row");
+	$("#example_wrapper div:first").attr("class","tbsearchrow clearfix");
+	$('#example_filter label').attr("style","display:none;");
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////show complaint bookings start////////////////////////////////////////////////////////////////////////
+
+
+$('#reserve').click(function(){
+	var driver_id=$( "#taxi_nos_idUpdate" ).val();
+	//alert(id_s);
+	//alert(driver_id);
+	$.ajax({		
+	url: '<?php echo $this->basePath();?>'+"/tunnel/admin/reserve_booking?booking_id="+id_s+"&driver_id="+driver_id,
+	cache: false,
+	dataType:"json"
+	}).done(function( html ) {  
+	//alert(html.data);
+	$("#taxi_nosUpdate").val("");
+	$(".b-close").click();
+	})
+});
+
+$('#ui-id-1').css('z-index','900000000000000000');
+
+$("#claim_btn").click(function(){
+	$("#claim").bPopup();
+})
+		
+jQuery('#datetimepicker').datetimepicker({
+	timepicker:false,
+	format:'d.m.Y'
+});
+		
+$('#example').on('click','.action',function(){
+	data=$(this).attr("data");
+	//alert(data);
+    var request=$.ajax({
+		url: '<?php echo $this->basePath();?>'+"/tunnel/admin/booking_action?id="+data,
+		cache: false,
+		dataType:"json"
+	});
+	request.done(function( html ){
+		//alert(html.data.ref);
+		$(".booking_no").html(html.data.ref);
+		$("#datetimepicker").val(html.data.date);
+		//$("#booking_no").html(html.data.ref);
+		if(html.data.stat>2)
+		{
+			$("#claim_btn").addClass("disabled");
+		}else{
+			$("#claim_btn").removeClass("disabled");
+		}
+		$("#booking_action").bPopup();
+		getComplaintStatus();
+		$.ajax({
+			url: '<?php echo $this->basePath();?>'+"/tunnel/admin/driver_info?id="+data,
+			cache: false,
+			dataType:"json"
+		})
+		.done(function(html){
+			$('#complaintstatus_popup').html('<label class="control-label col-sm-3 col-lg-4" style="">Status</label><select name="complaint_status_popup" id="complaint_status_popup" style="" class="col-sm-4 col-lg-4 inputfild name"></select><button id='+html.data.com_id+' class="btn btn-primary manageComplaintStatusPopup" style="margin-left: 10px;">Update Status</button>');
+			console.log(html);
+		})
+		.fail(function(error){
+			consolo.log(error);
+		});
+	});
+	request.fail(function( jqXHR, textStatus ) {
+		alert( "Request failed: " + textStatus );
+	});	
+});
+
+$('.b-close').click(function(){	
+	$('#distanceVehiclep').click();
+})	
+
+$(document).on('click','.driver_click',function(){
+    clearInterval(myVar2); 
+    if($(this).hasClass('open')){
+	  
+		$(".remove div:first").slideUp(400,function(){
+			$('.remove').remove();       
+		});
+		$(this).removeClass('open');
+	}
+	else
+	{
+		$('.remove').remove();
+		var divd=$(this).parent().parent();
+		$(this).addClass('open');
+		data=$(this).attr("data");
+		$.ajax({
+		url: '<?php echo $this->basePath();?>'+"/tunnel/admin/driver_info?id="+data,
+		cache: false,
+		dataType:"json"
+		})
+		.done(function( html ) {
+		console.log(html);
+		if(html.data.com_id=="")
+		{
+			divd.after('<tr class="remove" ><td colspan="9"><div class="portlet portlet-default">  <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="home1"><h4 class="h4textmrn0">Driver Details</h4><div style=""><table id="driverinfo" class="table table-striped table-responsive"><tr><th>Transport Details</th><td>Name</td><td>Hello 42</td></tr><tr><th></th><td>Contact No</td><td>'+html.data.ContactNo+'</td></tr><tr><th></th><td>Primary Language</td><td></td></tr><tr><th></th><td>Average Rating</td><td></td></tr><tr><th>Driver Group</th><td>Name</td><td>'+html.data.group_name+'</td></tr><tr><th></th><td>Group Owner</td><td>'+html.data.vendor_name+'</td></tr><tr><th>Driver</th><td>Name</td><td>'+html.data.driver_name+'</td></tr><tr><th></th><td>Contact No</td><td>'+html.data.ContactNo+'</td></tr><tr><th></th><td>Current Status</td><td></td></tr><tr><th></th><td>Current Signup Status</td><td>'+html.data.status+'</td></tr><tr><th></th><td>Average Rating (60 days)</td><td></td></tr><tr><th></th><td>Bank IBAN</td><td>'+html.data.account_no+'</td></tr><tr><th></th><td>Bank Swift</td><td></td></tr><tr><th>Vehicle</th><td>License Plate</td><td>'+html.data.vehicleNumber+'</td></tr><tr><th></th><td>Make</td><td>'+html.data.make+'</td></tr><tr><th></th><td>Model</td><td>'+html.data.model+'</td></tr><tr><th></th><td>Year</td><td>'+html.data.year+'</td></tr><tr><th></th><td>Color</td><td></td></tr><tr><th></th><td>Vehicle Type</td><td>'+html.data.v_type+'</td></tr></table></div></div></div></td></tr>');
+		}
+		else
+		{
+			divd.after('<tr class="remove" ><td colspan="10"><div class="portlet portlet-default">  <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="home1"><h4 class="h4textmrn0">Driver Details</h4><div style=""><table id="driverinfo" class="table table-striped table-responsive"><tr><th>Transport Details</th><td>Name</td><td>Hello 42</td></tr><tr><th></th><td>Contact No</td><td>'+html.data.ContactNo+'</td></tr><tr><th></th><td>Primary Language</td><td></td></tr><tr><th></th><td>Average Rating</td><td></td></tr><tr><th>Driver Group</th><td>Name</td><td>'+html.data.group_name+'</td></tr><tr><th></th><td>Group Owner</td><td>'+html.data.vendor_name+'</td></tr><tr><th>Driver</th><td>Name</td><td>'+html.data.driver_name+'</td></tr><tr><th></th><td>Contact No</td><td>'+html.data.ContactNo+'</td></tr><tr><th></th><td>Current Status</td><td></td></tr><tr><th></th><td>Current Signup Status</td><td>'+html.data.status+'</td></tr><tr><th></th><td>Average Rating (60 days)</td><td></td></tr><tr><th></th><td>Bank IBAN</td><td>'+html.data.account_no+'</td></tr><tr><th></th><td>Bank Swift</td><td></td></tr><tr><th>Vehicle</th><td>License Plate</td><td>'+html.data.vehicleNumber+'</td></tr><tr><th></th><td>Make</td><td>'+html.data.make+'</td></tr><tr><th></th><td>Model</td><td>'+html.data.model+'</td></tr><tr><th></th><td>Year</td><td>'+html.data.year+'</td></tr><tr><th></th><td>Color</td><td></td></tr><tr><th></th><td>Vehicle Type</td><td>'+html.data.v_type+'</td></tr><tr><th>Complaint</th><td>Complaint  Type</td><td>'+html.data.com_type+'</td></tr><tr><th></th><td>Complaint Subtype</td><td>'+html.data.sub_type+'</td></tr><tr><th></th><td>Caller Name</td><td>'+html.data.com_caller+'</td></tr><tr><th></th><td>CSR</td><td>'+html.data.csr+'</td></tr><tr><th></th><td>Complaint Description</td><td>'+html.data.com_desc+'</td></tr><tr><th></th><td>Complaint Date</td><td>'+html.data.ComplaintDate+'</td></tr><tr><th></th><td>Updated By</td><td>'+html.data.updated_by+'</td></tr><tr><th></th><td>Updated Date</td><td>'+html.data.updated_date+'</td></tr><tr><th></th><td>Current Status</td><td><select name="complaint_status" id="complaint_status" style="" class="col-sm-4 col-lg-3 inputfild name"></select><button class="btn btn-primary manageComplaintStatus" style="margin-left: 10px;" id="complaint_'+html.data.com_id+'">Update Status</button></td></tr></table></div></div></div></td></tr>');
+			getComplaintStatus();
+			}
+		});
+    }     
+});
+
+function getComplaintStatus(){
+	data=$(this).attr("data");
+	$.ajax({
+		url: '<?php echo $this->basePath();?>'+"/tunnel/admin/driver_info?id="+data,
+		cache: false,
+		dataType:"json"
+	})
+	.done(function(html){
+		com_data = html.data.com_id;
+		$.ajax({
+			url: '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllComplaintById?complaint_id='+com_data,
+			cache: false,
+			dataType:"json"
+		})
+		.done(function( html ){
+			complaintStatus = html.data[0].StatusID;
+			//alert( "Complaint Status : " + complaintStatus );
+			var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/getAllActionType';
+			$.ajax({
+				type: 'POST',
+				url: url,
+				dataType: "json",
+				data:{    
+						key:'',
+				},
+				success: function(html){
+					var len = html.data.length;
+					var detailComplaint = "";
+					for(var i=0;i<len;i++){
+						if(complaintStatus == html.data[i][1]){
+							detailComplaint += "<option value='"+html.data[i][1]+"' selected='selected'>"+html.data[i][1]+"</option>";
+						}else{
+							detailComplaint += "<option value='"+html.data[i][1]+"'>"+html.data[i][1]+"</option>";
+						}
+					}
+					$("#complaint_status").html(detailComplaint);
+					$("#complaint_status_popup").html(detailComplaint);
+				},
+					error: function(error){
+					console.log(error);
+				}
+			});
+		})
+		.fail(function (error){
+			alert('error');
+			console.log(error);	
+		});
+	})
+	.fail(function (error){
+			alert('error');
+			console.log(error);	
+	});
+}
+ 
+$(document).on('click','.manageComplaintStatus',function(){
+	var complaintText = $("#complaint_status").val();
+	var id = $(this).attr('id');
+	var idArr = id.split("_");
+	Complaint_Id = idArr[1];
+	//alert(Complaint_Id);
+	//alert(complaintText);
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/updateComplaintStatus';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data:{    
+				complaintText:complaintText,
+				Complaint_Id:Complaint_Id
+			}
+	})
+	.done(function(data){
+		if(data.status=="true")
+		{
+			complaintTable.api().ajax.reload(null,true);
+			alert(data.Message);
+		}else
+		{
+			alert(data.Message);
+		}
+	  })
+	  .fail(function (error){
+			alert(error);
+			console.log(error);
+	 });
+});
+
+$(document).on('click','.manageComplaintStatusPopup',function(){
+	var complaintText = $("#complaint_status_popup").val();
+	Complaint_Id = $(this).attr('id');
+	//alert(Complaint_Id);
+	//alert(complaintText);
+	var url = '<?php echo $this->basePath();?>'+'/tunnel/admin/updateComplaintStatus';
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",
+		data:{    
+				complaintText:complaintText,
+				Complaint_Id:Complaint_Id
+			}
+	})
+	.done(function(data){
+		$("#btnclose").click();
+		if(data.status=="true")
+		{
+			complaintTable.api().ajax.reload(null,true);
+			alert(data.Message);
+		}
+		else
+		{
+			alert(data.Message);
+		}
+	  })
+	  .fail(function (error){
+			alert(error);
+			console.log(error);
+	 });
+});
+ 
+$(document).on('click','.client',function(){
+	clearInterval(myVar2); 
+	
+	if($(this).hasClass('open')){
+		 
+	$(".remove div:first").slideUp(400,function(){
+		$('.remove').remove();
+	});
+	$(this).removeClass('open');
+	}
+	else
+	{
+		$('.remove').remove();
+		var divd=$(this).parent().parent();
+		$(this).addClass('open');
+			data=$(this).attr("data");
+		$.ajax({
+		url: '<?php echo $this->basePath();?>'+"/tunnel/admin/client_information?client_id="+data,
+		cache: false,
+		dataType:"json"
+	})
+	.done(function( html ) {
+		divd.after('<tr class="remove" ><td colspan="9"><div class="portlet portlet-default">  <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="home1"><h4 class="h4text" style="margin:0 !important;">Client Information</h4><div style=""><table id="clientinfo" class="table table-striped table-responsive"><tr><th>Client Name</th><td>'+html.data[0].clientname+'</td></tr><tr><th>Contact</th><td>'+html.data[0].contact+'</td></tr><tr><th>Email</th><td>'+html.data[0].email+'</td></tr><tr><th>Alt Email</th><td>'+html.data[0].altemail+'</td></tr><tr><th>Landline</th><td>'+html.data[0].landline+'</td></tr></table></div></div></div></td></tr>');
+		});
+	}
+});
+        
+$(document).on('click','.clickme',function(){
+    clearInterval(myVar2);
+    // alert("fdfdfdfdfdfd");
+    if($(this).hasClass('open'))
+    {
+		  
+        $(".remove div:first").slideUp(400,function(){
+        $('.remove').remove();
+        });
+		$(this).removeClass('open');  
+	}
+	else
+	{
+		$('.remove').remove();
+		$(this).addClass('open');
+		$(this).parent().parent().after('<tr class="remove" ><td colspan="10"><div style="display:none"> <div class=""> <!--<div class="portlet portlet-default"> <div class="portlet-heading"> <div class="portlet-title"></div>--> <div class="clearfix"></div> </div> <div class="portlet-body"> <ul id="myTab" class="nav nav-tabs tabsdesign"> <li class="active"><a href="#home1" data-toggle="tab"><i class="fa fa-list" style="color:#; margin:5px"></i>Status</a> </li> <li><a href="#bookinginfo" data-toggle="tab"><i class="fa fa-user" style="color:#; margin:5px"></i>Booking Details</a> </li><li><a href="#payment" data-toggle="tab"><i class="fa fa-user" style="color:#; margin:5px"></i> Payment Details</a> </li><li><a href="#driver_alloc" data-toggle="tab"><i class="fa fa-user" style="color:#; margin:5px"></i>Driver Allocation</a> </li><li><a href="#way_point" data-toggle="tab"><i class="fa fa-user" style="color:#; margin:5px"></i>Way Points</a> </li></li></ul> <div id="myTabContent" class="tab-content contantboxoftabs"> <div class="tab-pane fade in active" id="home1"><h4 class="h4text">Status</h4><table id="example2" class="table table-striped table-responsive"><thead> <tr> <th>Date</th> <th>State</th> <th>Text</th> </tr> </thead> <tbody> </tbody> </table></div><div class="tab-pane fade" id="payment"><h4 class="h4text">Payment Details</h4><table id="paymentdetail" class="table table-responsive table-striped"></table></div><div class="tab-pane fade" id="bookinginfo"><h4 class="h4text">Booking Information</h4><table id="bookinf" class="table table-responsive table-striped"></table></div><div id="driver_alloc" class="tab-pane fade"><h4 class="h4text">Driver Allocation</h4><table id="driver_alloc_2" class="table table-striped table-responsive"><thead> <tr> <th>Driver</th> <th>Vehicle</th> <th>Created</th><th>Allocation Status</th> </tr> </thead> <tbody> </tbody> </table></div></div></td></tr>');
+		data=$(this).attr("data");
+		$.ajax({
+			url: '<?php echo $this->basePath();?>'+"/tunnel/admin/booking_information?booking_id="+data,
+			cache: false,
+			dataType:"json"
+		})
+		.done(function( html ){
+			$('#example2 tbody').html('');
+			for(var i=0;i<html.data.length;i++)
+			{
+				$('#example2 tbody').append('<tr><td>'+html.data[i].time+'</td><td>'+html.data[i].status+'</td><td>'+html.data[i].message+'</td></tr>');  
+			}
+		});
+		$.ajax({
+			url: '<?php echo $this->basePath();?>'+"/tunnel/admin/payment_information?booking_id="+data,
+			cache: false,
+			dataType:"json"
+		})
+		.done(function( html ){
+						  $('#paymentdetail').append('<tr><th></th><th>Created At</th><td>'+html.data[0].created_at+'</td></tr><tr><th></th><th>Is Paid</th><td>'+html.data[0].is_paid+'</td></tr><tr><th></th><th>Paid At</th><td>'+html.data[0].paid_at+'</td></tr><tr><th>Price</th><th>Currency</th><td>'+html.data[0].currency+'</td></tr><tr><th></th><th>Invoice Number</th><td>'+html.data[0].invoice_number+'</td></tr><tr><th></th><th>External Refernece</th><td></td></tr><tr><th></th><th>Payment Type</th><td>'+html.data[0].payment_type+'</td></tr><tr><th></th><th>Fees</th><td>'+html.data[0].fees+'</td></tr><tr><th></th><th>Total Price </th><td>'+html.data[0].total_price+'</td></tr><tr><th></th><th>Total Tax Price</th><td>'+html.data[0].total_tax_price+'</td></tr><tr><th>Payment Parts</th><th>Company Base Index</th><td></td></tr><tr><th></th><th>Partner Index</th><td></td></tr><tr><th></th><th>Distance Rate</th><td>'+html.data[0].distance_rate+'</td></tr><tr><th></th><th>Duration Rate</th><td>'+html.data[0].duration_rate+'</td></tr><tr><th></th><th>Starting Rate</th><td>'+html.data[0].starting_rate+'</td></tr><tr><th></th><th>Base Price</th><td>'+html.data[0].minimum_price+'</td></tr><tr><th></th><th>Tax Price</th><td>'+html.data[0].tax_price+'</td></tr><tr><th></th><th>Fraction Discount</th><td></td></tr><tr><th></th><th>Voucher Amount</th><td></td></tr><tr><th></th><th>Price Type</th><td>Variable</td></tr><tr><th>Applied Tarrifs</th><th>Starting Rate</th><td>'+html.data[0].starting_charge+'</td></tr><tr><th></th><th>Distance Rate</th><td>'+html.data[0].distance_rate+'</td></tr><tr><th></th><th>Duration Rate</th><td>'+html.data[0].duration_charge+'</td></tr><tr><th></th><th>Minimum Price</th><td>'+html.data[0].minimum_price+'</td></tr><tr><th></th><th>Cancellation Price</th><td>'+html.data[0].cancellation_price+'</td></tr><tr><th></th><th>No Show Fee</th><td></td></tr><tr><th colspan="3">Credit Card Details</th></tr><tr><th>Personal</th><th>Internal Id</th><td></td></tr><tr><th></th><th>External Id</th><td></td></tr><tr><th></th><th>External Reference</th><td></td></tr><tr><th></th><th>Card Type</th><td></td></tr><tr><th></th><th>Card Number</th><td></td></tr><tr><th></th><th>Expired At</th><td></td></tr><tr><th></th><th>Card Owner</th><td></td></tr><tr><th></th><th>Created At</th><td></td></tr><tr><th></th><th>Verified Date</th><td></td></tr><tr><th></th><th>Active</th><td></td></tr><!--<tr><th>Waiting Charge</th><td>'+html.data[0].waiting+'</td></tr><tr><th>Trip Charge</th><td>'+html.data[0].tripCharge+'</td></tr><tr><th>Total Bill</th><td>'+html.data[0].totalbill+'</td></tr><tr><th>Staring Rate</th><td></td></tr><tr><th>Distance Rate</th><td></td></tr><tr><th>Duration Rate</th><td></td></tr><tr><th>Minimum Price</th><td></td></tr><tr><th></th><td></td></tr>-->');  
+						   $('#bookinf').append('<tr><th>In</th><td>Booking Id</td><td>'+html.data[0].book_ref+'</td></tr><tr><th></th><th>UserAgent</th><td>'+html.data[0].useragent+'</td></tr><tr><th></th><th>Comments for the client</th><td></td></tr><tr><th></th><th>Comment For the driver</th><td></td></tr><tr><th></th><th>Drivers Note</th><td>'+html.data[0].driver_note+'</td></tr><tr><th></th><th>Clients Note</th><td>'+html.data[0].client_note+'</td></tr><tr><th></th><th>Features</th><td>'+html.data[0].features+'</td></tr><tr><th></th><th>Vehicle Type</th><td>'+html.data[0].cab_name+'</td></tr><tr><th></th><th>Is account booking</th><td>'+html.data[0].is_account_booking+'<td></td></tr><tr><th></th><th>Is Corporate Booking</th><td>'+html.data[0].is_corporate_booking+'</td></tr><tr><th></th><th>Is account booking</th><td>'+html.data[0].is_account_booking+'</td></tr><tr><th></th><th>Is credit card Available</th><td></td></tr><tr><th></th><th>Voucher Id</th><td>'+html.data[0].voucher_id+'</td></tr><tr><th></th><th>Voucher Type</th><td>'+html.data[0].voucher_type+'</td></tr><tr><th></th><th>Voucher Amount</th><td></td></tr><tr><th>Out</th><th>External Booking Reference</th><td>N/A</td></tr><tr><th></th><th>Arrival Time Pre</th><td>'+html.data[0].arrival_time_pre+'</td></tr><tr><th></th><th>Arrival Time Post</th><td>'+html.data[0].arrival_time_post+'</td></tr><tr><th></th><th>Arrival Time Actual</th><td>'+html.data[0].arrival_time_actual+'</td></tr><tr><th></th><th>Expiration Time</th><td>'+html.data[0].expiration_time+'</td></tr><tr><th></th><th>Actual Driving Duration</th><td>'+html.data[0].actual_driven_duration+'</td></tr><tr><th></th><th>Actual Waiting Distance</th><td>'+html.data[0].actual_waiting_distance+'</td></tr><tr><th></th><th>Actual Distance</th><td>'+html.data[0].actual_distance+'</td></tr><tr><th></th><th>Booking Type</th><td>'+html.data[0].bookingtype+'</td></tr><tr><th></th><th>Booking Date</th><td>'+html.data[0].bookingdate+'</td></tr><tr><th></th><th>Pickup Date</th><td>'+html.data[0].pickupdate+'</td></tr><tr><th></th><th>Pickup Area</th><td>'+html.data[0].pickuparea+'</td></tr><tr><th></th><th>Pickup Address</th><td>'+html.data[0].pickupaddress+'</td></tr><tr><th></th><th>Drop Address</th><td>'+html.data[0].dropaddress+'</td></tr><tr><th></th><th>Drop Area</th><td>'+html.data[0].droparea+'</td></tr><tr><th></th><th>Estimated Distance</th><td>'+html.data[0].estimated_distance+'</td></tr><tr><th></th><th>Estimated Time</th><td>'+html.data[0].estimated_time+'</td></tr><tr><th></th><th>Estimated Price</th><td>'+html.data[0].estimated_price+'</td></tr><tr><th>Driver Rating</th><th>Rating</th><td>'+html.data[0].driver_rating+'</td></tr><tr><th></th><th>Reason</th><td></td></tr><tr><th></th><th>Comment</th><td></td></tr><tr><th>Client Rating</th><th>Rating</th><td>'+html.data[0].client_rating+'</td></tr><tr><th></th><th>Reason</th><td></td></tr><tr><th></th><th>Comment</th><td></td></tr>');  
+	  
+		});
+		myVar = setInterval(function(){myTimer()}, 30000);
+		function myTimer(){
+			$.ajax({
+				url: '<?php echo $this->basePath();?>'+"/tunnel/admin/booking_information?booking_id="+data,
+				cache: false,
+				dataType:"json"
+			})
+			.done(function( html ) {
+				$('#example2 tbody').html('');
+				for(var i=0;i<html.data.length;i++)
+				{
+					$('#example2 tbody').append('<tr><td>'+html.data[i].time+'</td><td>'+html.data[i].status+'</td><td>'+html.data[i].message+'</td></tr>');  
+				}
+			});    
+			$.ajax({
+				url: '<?php echo $this->basePath();?>'+"/tunnel/admin/driver_alloc?booking_id="+data,
+				cache: false,
+				dataType:"json"
+			})
+			.done(function( html ) {
+			$('#driver_alloc_2 tbody').html('');
+				for(var i=0;i<html.data.length;i++)
+				{
+					$('#driver_alloc_2').append('<tr><td>'+html.data[i].driver_name+'</td><td>'+html.data[i].vehicle+'</td><td>'+html.data[i].created+'</td><td>'+html.data[i].status+'</td></tr>');  
+				}
+			});
+		}
+		$(".remove div:first").slideDown(400,function(){
+		   //e.preventDefault();
+		}
+		);
+	}
+});
+///////////////////////////////////////////////////////////////////////////// show complaint bookings end/////////////////////////////////////////////////////////////////////////////////////////////////
+
+</script>

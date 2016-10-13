@@ -1,0 +1,443 @@
+<?php $session=new Zend\Session\Container('admin');
+//echo $session->offsetGet('token');exit; 
+
+?>
+<?php echo $this->doctype(); ?>
+<html lang="en">
+<head>
+<style>
+.navbar-nav > li > .dropdown-menu {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: 0;
+    position: absolute;
+    width: 100%;
+}
+
+
+.navbar-right .dropdown-menu {
+    left: auto;
+    right: 0;
+	position:absolute;
+}
+.navbmrg{margin:30px 0px -33px; float:left;}
+.responsimrg{width:100%; margin-bottom:0px;}
+
+@media screen and (max-width: 320px){
+.responsimrg{width:100%; margin-bottom:20px;}
+	
+}
+
+
+
+
+</style>
+
+<meta charset="utf-8">
+<?php echo $this->headTitle(''. $this->translate('Hello42'))->setSeparator(' - ')->setAutoEscape(false) ?><?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+<!-- Le styles -->
+<script>
+    var global_url='<?php echo $this->basePath();?>';
+</script>
+<?php 
+$path=$this->basePath();
+if (defined('RUNNING_FROM_ROOT')) {
+  $this->plugin('basePath')->setBasePath($this->basePath().'/public');
+} ?>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') 
+->prependStylesheet($this->basePath() . '/css/plugins/metisMenu/metisMenu.min.css') 
+->prependStylesheet($this->basePath() . '/css/plugins/dataTables.bootstrap.css') 
+->prependStylesheet($this->basePath() . '/css/sb-admin-2.css')
+->prependStylesheet($this->basePath() . '/css/crop-avatar.css')
+->prependStylesheet($this->basePath() . '/font-awesome-4.2.0/css/font-awesome.min.css')
+->prependStylesheet($this->basePath() . '/css/jquery-ui-timepicker-addon.css')
+->prependStylesheet($this->basePath() . '/css/rating.css')
+// ->prependStylesheet($this->basePath() . '/css/jquery.datetimepicker.css')
+//  ->prependStylesheet($this->basePath() . '/smoothness-1.8.13/jquery-ui-1.8.13.custom.css')
+->prependStylesheet($this->basePath() . '/smoothness-1.8.13/ui.dropdownchecklist.themeroller.css')
+?>
+
+<!-- Scripts -->
+<script>
+var baseurl="<?php echo $path;?>";
+</script>
+<script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<?php echo $this->headScript()
+->prependFile($this->basePath() . '/smoothness-1.8.13/ui.dropdownchecklist-1.4-min.js')
+//   ->prependFile($this->basePath() . '/smoothness-1.8.13/jquery-1.6.1.min.js')
+//  ->prependFile($this->basePath() . '/smoothness-1.8.13/jquery-ui-1.8.13.custom.min.js')
+->prependFile($this->basePath() . '/js/jquery-ui-timepicker-addon.js')
+->prependFile($this->basePath() . '/js/userhomemap.js')
+->prependFile($this->basePath() . '/js/jquery.validate.js')
+->prependFile($this->basePath() . '/js/crop-avatar.js')
+->prependFile($this->basePath() . '/js/cropper.min.js')
+->prependFile($this->basePath() . '/js/jquery.cookie.js')
+// ->prependFile($this->basePath() . '/js/login.js')
+//->prependFile($this->basePath() . '/js/plugins/metisMenu/metisMenu.min.js')
+->prependFile($this->basePath() . '/js/plugins/dataTables/dataTables.bootstrap.js')
+->prependFile($this->basePath() . '/js/plugins/dataTables/jquery.dataTables.js')
+->prependFile($this->basePath() . '/js/bootstrap.min.js')
+->prependFile($this->basePath() . '/js/jquery.colorbox.js')
+->prependFile($this->basePath() . '/js/jquery.bpopup.js')
+//->prependFile($this->basePath() . '/js/jquery.datetimepicker.js')
+->prependFile($this->basePath() . '/js/csv_plugin/tableExport.js')
+->prependFile($this->basePath() . '/js/csv_plugin/jquery.base64.js')
+// ->prependFile($this->basePath() . '/js/custom.js')
+->prependFile($this->basePath() . '/js/jquery.dataTables.min.js')
+->prependFile($this->basePath() . '/js/custom1.js')
+->prependFile($this->basePath() . '/js/combodate.js');
+?>
+</head>
+<body>
+<div id="wrapper" style="margin-top:110px" > 
+  
+  <!-- Navigation -->
+  <div class="navbar navbar-inverse navbar-fixed-top adminlayout" role="navigation" style=" background: #b64242 !important;box-shadow: 0px 0px 10px #838383; border:none;">
+		<div class="adminlayout">
+		
+        <ul class="nav navbar-top-links navbar-right" style="float:right; margin:38px -3px 0;">
+		  
+		  <!-- /.dropdown -->
+		  <li class="dropdown" style="float:right;"> <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background:none;"> <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i> </a>
+			<ul class="dropdown-menu dropdown-user">
+			  <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a> </li>
+			  <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+			  <li><a href="#" id="admin_logout"><i class="fa fa-sign-out fa-fw"></i>
+			  <input type="hidden" name="admin_id" id="admin_id" value="<?php echo $session->offsetGet('id'); ?>" >
+			  Logout</a> </li>
+			</ul>
+			<!-- /.dropdown-user --> 
+		  </li>
+		  <!-- /.dropdown -->
+		</ul>
+        </div>
+        
+        <div style="col-lg-2">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" style="float: left;margin:15px 4px 1px 5px; border-color: #fff;"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        
+		<a class="navbar-brand" style="margin:-0px; z-index: 999;" href="<?php echo $path; ?>/admin/dashboard"><img src="/hello42/public/image/logo.png" alt=""></a>
+        
+        </div>
+        
+        
+		<div class="navbar-collapse" style="width:100%; margin-bottom:0px;">
+		  <ul class="nav navbar-nav" style="margin:30px 0px -33px ; float:left;">
+		  <?php if($session->offsetGet('manage_jobs')==1){ ?> 
+		  <li> <a href="<?php echo $path;?>/admin/dashboard/booking"><i class="fa fa-briefcase fa-fw"></i> Jobs</a> </li>
+		  <?php } ?>
+			
+			<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-graduation-cap fa-fw"></i>Entity<span class="caret"></span></a>
+			  <ul class="dropdown-menu" role="menu">
+					  <?php if($session->offsetGet('manage_client')==1){ ?> 
+				  <li> <a href="<?php echo $path;?>/admin/client">Client</a> </li>
+				  <?php } ?>
+						
+						<?php if($session->offsetGet('manage_driver')==1){ ?> 
+				  <li> <a href="<?php echo $path;?>/admin/driver">Driver</a> </li>
+				  <?php } ?>
+						
+						<?php if($session->offsetGet('manage_driver_groups')==1){ ?> 
+				  <li> <a href="<?php echo $path;?>/admin/group">Driver Groups</a> </li>
+				  <?php } ?>
+				  <li> <a href="<?php echo $path;?>/admin/payment/approvalpage">Driver Payment</a> </li>
+				  <li> <a href="<?php echo $path;?>/admin/driver/auditpage">Audit Driver Payment</a> </li>
+				  
+				
+			  </ul>
+			</li>
+			<?php if($session->offsetGet('manage_tracking')==1){ ?> 
+				  <li> <a href="<?php echo $path;?>/admin/tracking"><i class="fa fa-map-marker fa-fw"></i> Tracking<span></span></a> 
+			  <!-- /.nav-second-level --> 
+			</li>
+				  <?php } ?>
+			
+			<?php if($session->offsetGet('manage_complaint')==1){ ?> 
+				 <li> <a href="<?php echo $path;?>/admin/complaint"><i class="fa fa-edit fa-fw"></i> Complaint</a> </li> 
+			  <!-- /.nav-second-level --> 
+			</li>
+				  <?php } ?>
+			
+			<!--                <li>
+						<a href="<?php echo $path;?>/admin/driver"><i class="fa fa-user fa-fw"></i> Driver</a>
+					</li>-->
+			<?php if($session->offsetGet('manage_fair')==1){ ?> 
+				<li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-graduation-cap fa-fw"></i>Manage Package<span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">
+				<li><a href="<?php echo $path;?>/admin/fairmanage">Manage Fare</a></li>
+				<!--<li><a href="<?php echo $path;?>/admin/package/local">Local Package</a></li>
+				<li><a href="<?php echo $path;?>/admin/user">Airport Package</a> </li>-->
+				<li><a href="#">Local Package</a></li>
+				<li><a href="#">Airport Package</a> </li>
+				</ul>
+				</li>
+				  <?php } ?>
+			
+			
+			<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-graduation-cap fa-fw"></i>General Master<span class="caret"></span></a>
+			  <ul class="dropdown-menu" role="menu">
+				<li> <a href="#">Sim Card</a> </li>
+				<li> <a id="notify">Job Notification</a> </li>
+				<li> <a href="<?php echo $path;?>/admin/device">Device</a></li>
+				<li> <a href="<?php echo $path;?>/admin/vehicle">Vehicle</a> </li>
+				<li> <a href="#">Change Password</a> </li>
+			  </ul>
+			</li>
+		   <!-- <ul class="nav nav-second-level collapse">
+			  <li> <a href="tables.html"><i class="fa fa-envelope-o fa-fw"></i> Message</a> </li>
+			  <li> <a href="#">Sim Card</a> </li>
+			  <li> <a href="#">Device</a> </li>
+			  <li> <a href="#">Taxi</a> </li>
+			  <li> <a href="#">Taxi Model</a> </li>
+			  <li> <a href="#">Change Password</a> </li>
+			</ul>-->
+			<!-- /.nav-second-level -->
+			<?php if($session->offsetGet('manage_reports')==1){ ?> 
+				 <li> <a href="#"><i class="fa fa-files-o fa-fw"></i>Reports<span></span></a></li>
+		    <?php } ?>
+			
+			<?php if($session->offsetGet('manage_promotion')==1){ ?> 
+				  <li> <a href="<?php echo $path;?>/admin/promotion">Promotion</a></li>
+				  <?php } ?>
+			
+			<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-graduation-cap fa-fw"></i>Users<span class="caret"></span></a>
+			<ul class="dropdown-menu" role="menu">
+			<li> <a href="<?php echo $path;?>/admin/role">Manage Role</a></li>
+			<li> <a href="<?php echo $path;?>/admin/user">Manage User</a> </li>
+			<li> <a href="<?php echo $path;?>/admin/callcentre">Manage CallCenter Agent</a> </li>
+            <li> <a href="<?php echo $path;?>/admin/user/paymentupdate">Credit Request</a> </li>
+            <li> <a href="<?php echo $path;?>/admin/user">Debit  Report</a> </li>
+			</ul>
+			</li>
+		  </ul>
+		</div>
+	</div>	
+    <!--/.nav-collapse --> 
+  </div>
+  <?php echo $this->content; ?>
+  <div class="col-sm-8" id='notification_window' style="display:none;padding: 20px;border-radius: 10px;background:#fff; top:40px !important;">
+    <div class="tab-pane fade in active">
+      <div class="row border" >
+        <div class="col-sm-12"  style="margin:20px auto 4px;">
+          <div class="col-sm-12 col-md-12" >
+            <div class="portlet-body">
+            <form role="form">
+              <h4 class="localHire_package"></h4>
+              <div class="form-inline">
+                <div class="input-group">
+                  <input type="radio" name="localPackage" value="Distance" class="form-control inputsize" id="localpackage_Distance">
+                  <label class="radio-inline distance_localHirePackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="localPackage" value="Hour"class="form-control inputsize" id="localpackage_Hour">
+                  <label class="radio-inline hour_localHirePackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="localPackage" value="Distance_Hour" class="form-control inputsize" id="localpackage_Distance_Hour">
+                  <label class="radio-inline distanceHour_localHirePackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="localPackage" value="Distance_Waiting" class="form-control inputsize" id="localpackage_Distance_Waiting">
+                  <label class="radio-inline distanceWaiting_localHirePackage"></label>
+                </div>
+              </div>
+              <h4 class="point_package"></h4>
+              <div class="form-inline">
+                <div class="input-group">
+                  <input type="radio" name="pointToPointPackage" value="Distance" class="form-control inputsize" id="pointToPointPackage_Distance">
+                  <label class="radio-inline distance_pointPackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="pointToPointPackage" value="Hour"class="form-control inputsize" id="pointToPointPackage_Hour">
+                  <label class="radio-inline hour_pointPackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="pointToPointPackage" value="Distance_Hour" class="form-control inputsize" id="pointToPointPackage_Distance_Hour">
+                  <label class="radio-inline distanceHour_pointPackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="pointToPointPackage" value="Distance_Waiting" class="form-control inputsize" id="pointToPointPackage_Distance_Waiting">
+                  <label class="radio-inline distanceWaiting_pointPackage"></label>
+                </div>
+              </div>
+              <h4 class="airport_package"></h4>
+              <div class="form-inline">
+                <div class="input-group">
+                  <input type="radio" name="airportPackage" value="Distance" class="form-control inputsize" id="airportTransferPackage_Distance">
+                  <label class="radio-inline distance_airportPackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="airportPackage" value="Hour"class="form-control inputsize" id="airportTransferPackage_Hour">
+                  <label class="radio-inline hour_airportPackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="airportPackage" value="Distance_Hour" class="form-control inputsize" id="airportTransferPackage_Distance_Hour">
+                  <label class="radio-inline distanceHour_airportPackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="airportPackage" value="Distance_Waiting" class="form-control inputsize" id="airportTransferPackage_Distance_Waiting">
+                  <label class="radio-inline distanceWaiting_airportPackage"></label>
+                </div>
+              </div>
+              <h4 class="outstation_package"></h4>
+              <div class="form-inline">
+                <div class="input-group">
+                  <input type="radio" name="outstationPackage" value="Distance" class="form-control inputsize" id="outstationPackage_Distance">
+                  <label class="radio-inline distance_outstationPackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="outstationPackage" value="Hour"class="form-control inputsize" id="outstationPackage_Hour">
+                  <label class="radio-inline hour_outstationPackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="outstationPackage" value="Distance_Hour" class="form-control inputsize" id="outstationPackage_Distance_Hour">
+                  <label class="radio-inline distanceHour_outstationPackage"></label>
+                </div>
+                <div class="input-group">
+                  <input type="radio" name="outstationPackage" value="Distance_Waiting" class="form-control inputsize" id="outstationPackage_Distance_Waiting">
+                  <label class="radio-inline distanceWaiting_outstationPackage"></label>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2 pull-right"> <a href="#distanceVehicle" id="packagecalc"  data-toggle="tab">
+                  <button class="btn btn-info form-control" style="margin-bottom:10px;display: block;">Next</button>
+                  </a> </div>
+                <div class="col-sm-2 pull-right" id="package_calc_cab_save" style="margin-bottom:10px;display: none;"> <a href="#"   data-toggle="tab">
+                  <button class="btn btn-info form-control" >Save</button>
+                  </a> </div>
+                <div class="col-sm-2 pull-right" id="package_calc_vehicle_save" style="display:none;" style="padding:0;">
+                <a href="#"  data-toggle="tab">
+                <button class="btn btn-info form-control" style="margin-bottom:10px;">Save</button>
+                </a> </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--footer-->
+
+</body>
+<script>
+$(document).on('click', '#admin_logout', function(){
+    var val	=	$('#admin_id').val();	
+	var site_url ='<?php echo $path."/tunnel/admin/admin_logout";?>';		
+	$.ajax({
+        type: 'POST',
+        url: site_url,
+        dataType: "json",
+        data : {val:val},		
+        success: function(data){
+						if(data.status=='true'){
+						window.location.href='<?php echo $path."/admin";?>'; 
+						}else{
+						window.location.href='<?php echo $path."/admin";?>'; 
+						}
+						return false;
+				},
+		
+		error: function(error){
+	alert(error);	
+		}
+		});
+});
+
+// $(document).ready(function(){
+//   $("#userTabContent input[type=text]").keyup(function(){
+//     var inputval = $(this).val();
+
+//     if( /^[0-9]*$/.test(inputval) == false){
+//       $(this).val("");
+//       if(inputval==""){
+//         $("#errormsgtab").fadeOut();
+//       }
+//       else $("#errormsgtab").fadeIn().html("Please Enter Digits Only");
+//       // alert(inputval);
+//     }
+//     else{
+
+//       $("#errormsgtab").fadeOut();
+//     }
+
+//   });
+// });
+</script>
+<script>
+        var myVar3;
+        
+function dynamicText(id){
+	var url = '<?php echo $path;?>'+'/tunnel/admin/admin_text?id='+id;
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",	 
+		success: function(data){
+			for(key in data.key) {
+				var infoJSON = data.key[key];
+				$('.'+key).html(infoJSON);
+			}
+		},
+		error: function(error){
+			console.log(error);
+		}
+	});
+}
+dynamicText(8);
+function dynamicModule(module){
+	var url = '<?php echo $path;?>'+'/tunnel/admin/admin_text_module?module='+module;
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: "json",	 
+		success: function(data){
+			for(key in data.key) {
+				var infoJSON = data.key[key];
+				$('.'+key).html(infoJSON);
+			}
+			alert(infoJSON);
+		},
+		error: function(error){
+			console.log(error);
+		}
+	});
+}
+
+    $(document).ready(function(){
+        $('#notify').click(function(){
+         $("#notification_window").bPopup(); 
+    
+    })
+    
+ // $(".paging_simple_numbers").delay(5000,function(){
+    
+    $(".paging_simple_numbers").parent().addClass('pgnt_topfix');
+    $('.dataTables_length').parent().removeClass('col-sm-6');
+        $('.dataTables_length').parent().addClass('col-sm-2');
+            $('.dataTables_length').parent().addClass('pgno_top');
+    
+});
+	$("#submit").click(function(){
+	booking_id=$('#booking_id').val();
+	initialize();
+});
+        
+   // })
+    </script>
+</html>
+<!--<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->

@@ -1,0 +1,1466 @@
+<?php //$id=$_REQUEST['id']; ?>
+<style>
+	.gridview{
+		color:#ccc;
+	}
+	
+	.listview
+	{
+		color:#ccc;
+	}
+	
+	.view-controls-list{
+width: ;
+text-align: right;
+margin-right: 0;
+margin-left:;
+
+}
+.active
+{
+	color:#2A6496;
+}
+
+.table-striped th {
+    font-size: 11px !important;
+	color:#333 !important;
+}
+
+
+
+</style>
+
+
+<section style="background:#c0c0c0; padding:0;" >
+        <div class="container">
+          <div class="center wow fadeInDown">
+           <img src="<?= $this->basePath();?>/public/img_banner/services.jpg" />
+               
+    
+        </div><!--/.container-->
+        
+        </div>
+    </section>
+<?php 
+	
+	if($id!="farestructuregrid"){?>
+
+<section class="pricing-page">
+  <div class="container">
+    <div class="center col-sm-6" style="text-align:right;">
+      <h2>Fare Structure </h2>
+      
+    </div>
+      <div class="view-controls-list col-sm-6" id="viewcontrols">
+			<a class="gridview" href="<?php echo $this->basePath();?>/index/page/farestructure?id=farestructuregrid"><i class="fa fa-th fa-2x"></i></a>
+			<a class="listview active"><i class="fa fa-list fa-2x"></i></a>
+		</div>
+        
+    <!--Local new hire start-->
+    <div class="col-md-12 table-responsive">
+      <h3  class="localfarebgorange2">Local Hire ( Delhi) </h3>
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd;">
+        <tr>
+          <th align="center">Car Type</th>
+          <th align="center">Packages</th>
+          <th align="center">Price</th>
+          <th align="center">Extra/KM</th>
+          <th align="center">Extra/hour</th>
+          <th align="center"></th>
+        </tr>
+        <tr>
+          <th rowspan="4"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/economy.jpg"> </th>
+          <th align="center"><span  class="loc4e1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center"><span  class="loce1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc12e1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+                         <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/sedancar.png">
+             
+              </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc4s1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center"><span  class="locs1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc12s1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">prime <br>
+
+          <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/primecar.png">
+            
+            </th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+          <th align="center"><span  class="loc4p1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="locp1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc12p1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        
+         <!--Local new hire End--> 
+    
+    
+    <!--point to point new start-->
+        
+        <tr>
+        	<td colspan="6" style="padding:0 !important;">
+            	  <h3  class="localfarebgred">Point to Point ( Delhi) </h3>
+            </td>
+        </tr>
+         <tr>
+          <th align="center">Car Type</th>
+           <th align="center">Package</th>
+          <th align="center">Price / KM</th>
+          <th align="center">Beyond / KM</th>
+          <th align="center">Charges / Min</th>
+          <th align="center"></th>
+        </tr>
+        <tr>
+          <th width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="" src="<?php echo $this->basePath();?>/public/image/economy.jpg"> </th>
+          <th align="center"></th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott2" style="color:#000;"></span>/<span class="potte" style="color:#000;font-weight:normal;"></span>KM</th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott3" style="color:#000;"></span>/KM</th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott4" style="color:#000;"></span>/Min</th>
+          <th align="center" valign="middle" class="point-to-point-td"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+        
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="2"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Sedan<br>
+            <img src="<?php echo $this->basePath();?>/public/image/sedancar.png" class="" alt=""> 
+            
+            </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+         <th align="center"></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots1" style="color:#000;"></span>/<span class="potts" style="color:#000;font-weight:normal;"></span>KM</th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots2" style="color:#000;"></span>/KM</th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots3" style="color:#000;"></span>/Min</th>
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+      
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="2"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Prime <br>
+            <img src="<?php echo $this->basePath();?>/public/image/primecar.png" class="" alt=""> </th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+         <th align="center"></th>
+           <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="potp1" style="color:#000;"></span>/<span class="pottp" style="color:#000;font-weight:normal;"></span>KM</th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="potp2" style="color:#000;"></span>/KM</th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="potp3" style="color:#000;"></span>/Min</th>
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+        
+         <!-- end-->
+            
+            <!--Airport transfer new start--> 
+         <tr>
+            <td colspan="6" style="padding:0 !important;"> <h3  class="localfarebgblue">Airport Transfers (Delhi) </h3></td>
+            </tr>
+        
+         <tr>
+          <th align="center">Car Type</th>
+          
+          <th align="center">Upto</th>
+          <th align="center">Price</th>
+          <th align="center">Extra/KM</th>
+           <th align="center">Charges / Min</th>
+          <th align="center"></th>
+        </tr>
+        <tr>
+         
+            <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img src="<?php echo $this->basePath();?>/public/image/economy.jpg" class="localimg" alt=""> 
+            
+            </th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        
+        
+           
+            
+            
+            <tr>
+            
+          <th align="center"><span class="" style="color:#000;">
+
+<span class="Air4e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air4e2" style="color:#000;">
+             </span>+Airport Entry </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="Air4e3" style="color:#000;"></span>/KM</th>
+          <th align="center"></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        
+         
+          <th align="center"><span class="" style="color:#000;">
+
+<span class="Aire1" style="color:#000;"></span>
+KM
+</span></th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4s2" style="color:#000;">
+             </span>+Airport Entry </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="Air4s3" style="color:#000;"></span>/KM</th>
+         <th align="center"></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        
+        
+        
+          <th align="center"><span class="" style="color:#000;">
+<span class="Air12e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center">  <i class="fa fa-inr"></i><span  class="Air12e2" style="color:#000;">
+             </span>+Airport Entry  </th>
+          <th align="center">  <i class="fa fa-inr"></i> <span  class="Air12e3" style="color:#000;"></span>/KM</th>
+          <th align="center"></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+            <img src="<?php echo $this->basePath();?>/public/image/sedancar.png" class="localimg" alt=""> </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+        
+         
+          <th align="center"><span class="" style="color:#000;">
+
+<span class="Air4e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4s2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air4s3" style="color:#000;"></span>/KM</th>
+          <th align="center"></th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        
+         
+        
+          <th align="center"><span class="" style="color:#000;">
+
+<span class="Aire1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Airs2" style="color:#000;">
+             </span>+Airport Entry </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Airs3" style="color:#000;"></span>/KM</th>
+          <th align="center"></th>
+          
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        
+        
+           <th align="center"><span class="" style="color:#000;">
+
+<span class="Air12e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air12s2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12s3" style="color:#000;"></span>/KM</th>
+           <th align="center"></th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Prime <br>
+            <img src="<?php echo $this->basePath();?>/public/image/primecar.png" class="localimg" alt=""> 
+            
+            </th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+        
+        
+        
+           <th align="center"><span class="" style="color:#000;">
+
+<span class="Air4e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4p2" style="color:#000;">
+             </span>+Airport Entry </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air4p3" style="color:#000;"></span>/KM</th>
+           <th align="center"></th>
+          
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        
+        
+        </tr>
+        <tr>
+        
+         
+         
+          <th align="center"><span class="" style="color:#000;">
+
+<span  class="Airp1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Airp2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Airp3" style="color:#000;"></span>/KM</th>
+          <th align="center"></th>
+          
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        
+         
+           <th align="center"><span class="" style="color:#000;">
+
+<span class="Air12e1" style="color:#000;"></span>
+KM
+</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air12p2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12p3" style="color:#000;"></span> KM</th>
+          <th align="center"></th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+         <!-- end-->
+         
+         <!--outstation start-->
+    
+     <tr>
+     	<td colspan="6" style="padding:0 !important;">
+        	<h3  class="localfarebgstation">Outstataion(Delhi)</h3>
+        </td>
+     </tr>
+      
+     
+        <tr>
+          <th align="center">Car Type</th>
+          
+          <th align="center">Min KM </th>
+         
+           <th align="center">Min Fare</th>
+           <th align="center"><i class="fa fa-inr"></i>/KM </th>
+           
+            <th align="center">DA </th>
+          
+          
+          <th align="center"></th>
+        </tr>
+        <tr>
+        
+          <th width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Economy <br />
+            <img alt="" class="" src="<?php echo $this->basePath();?>/public/image/economy.jpg" /></th>
+           
+             <th align="center" valign="middle" class="point-to-point-td"> <span  class="oute2" style="color:#000;"></span></th>
+             <th align="center" valign="middle" class="point-to-point-td"> <i class="fa fa-inr"></i> <span style="color:#000;" class="oute4"></span></th>
+             
+             
+          <th align="center" valign="middle" class="point-to-point-td"> <i class="fa fa-inr"></i><span  class="oute1" style="color:#000;"></span></th>
+          
+           <th align="center" valign="middle" class="point-to-point-td"> <i class="fa fa-inr"></i>   <span style="color:#000;" class="oute3"></span></th>
+          
+         
+          
+         
+          
+          
+          <th align="center" valign="middle" class="point-to-point-td"><a onclick="booking_local();" id="a" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a></th>
+        </tr>
+        <tr>
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>-->
+        </tr>
+        <tr>
+          <th rowspan="2"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Sedan<br />
+            <img src="<?php echo $this->basePath();?>/public/image/sedancar.png" class="" alt="" /> </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>-->
+        </tr>
+        <tr>
+       
+        <th align="center" class="point-to-point-td"> <span  class="outs2" style="color:#000;"></span></th>
+         <th align="center" class="point-to-point-td">   <i class="fa fa-inr"></i>   <span style="color:#000;" class="outs4"></span></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i><span  class="outs1" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td">  <i class="fa fa-inr"></i>   <span style="color:#000;" class="outs3"></span></th>
+          
+          
+         
+          
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="a" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a></th>
+        </tr>
+        <tr>
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>-->
+        </tr>
+        <tr>
+          <th rowspan="2"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Prime <br />
+            <img src="<?php echo $this->basePath();?>/public/image/primecar.png" class="" alt="" /></th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>-->
+        </tr>
+        <tr>
+         <th align="center" class="point-to-point-td"> <span  class="outp2" style="color:#000;"></span></th>
+        
+         <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i>   <span style="color:#000;" class="outs4"></span></th>
+         
+          <th align="center" class="point-to-point-td"> <i class="fa fa-inr"></i><span  class="outp1" style="color:#000;"></span></th>
+           <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i>   <span style="color:#000;" class="outs3"></span></th>
+          
+         
+         
+          
+           
+          
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="a" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a></th>
+        </tr>
+     
+    
+      <!-- End-->
+         
+         
+      </table>
+    </div>
+    
+   
+    
+   <!-- end-->
+   
+   
+    
+    
+    
+      
+      
+    
+    
+    <!--intercity new start-->
+    
+     <div class="col-md-12 table-responsive" style="display:none;">
+      <h3  class="localfarebgstation">Intercity one way traffic</h3>
+      <table class="table table-hover table-striped" id="bootstrap-table"  style="border:1px solid #ddd">
+        <tr>
+          <th align="center">Car Type</th>
+          <th align="center">Packages</th>
+          <th align="center">Price</th>
+          <th align="center">Extra/KM</th>
+          <th align="center">Extra/hour</th>
+          <th align="center"></th>
+        </tr>
+        <tr>
+          <th rowspan="4"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/economy.jpg"> </th>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+           
+             <img src="<?php echo $this->basePath();?>/public/image/sedancar.png" class="localimg" alt=""> 
+            
+            </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">Prime <br>
+           <img src="<?php echo $this->basePath();?>/public/image/primecar.png" class="localimg" alt="">  </th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">4hr/80km </th>
+          <th align="center">2500</th>
+          <th align="center">25000</th>
+          <th align="center">12</th>
+          <th align="center"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+      </table>
+    </div>
+    
+    
+    <!-- End-->
+    
+    
+    
+    <!--Delhi sign seen new start-->
+    
+    
+    <div class="col-md-12 table-responsive" style="display:none;">
+      <h3  class="localfarebgred">Delhi sight Seen</h3>
+      <table class="table table-hover table-striped" id="bootstrap-table"  style="border:1px solid #ddd">
+        <tr>
+          <th align="center">Car Type</th>
+          <th align="center">Packages</th>
+          <th align="center">Price</th>
+          <th align="center">Extra/KM</th>
+          <th align="center">Extra/hour</th>
+          <th align="center"></th>
+        </tr>
+        <tr>
+          <th rowspan="4"  align="center" valign="top" style="border:1px solid #ddd">
+            <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/delhi-half-day.png"> </th>
+          <th align="center"  width="19%"  style="padding-top:35px;" >Half  Day Delhi  (Economy)<br>
+          
+          4Km  40  Hours
+
+                                  </th>
+          <th align="center"  style="padding-top:35px;">2500</th>
+          <th align="center"  style="padding-top:35px;">25000</th>
+          <th align="center"  style="padding-top:35px;">12</th>
+          <th align="center"  style="padding-top:35px;"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+      <!--    <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"> </th>-->
+        </tr>
+        <tr>
+      <!--    <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"> </th>-->
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">
+           
+             <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/delhi-full-day.png"> 
+            
+            </th>
+          <!--<th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+          <th align="center"   style="padding-top:35px;">Full  Day Delhi  (Sedan)<br>
+
+2Km  20  Hours
+                               </th>
+          <th align="center"  style="padding-top:35px;">2500</th>
+          <th align="center"  style="padding-top:35px;">25000</th>
+          <th align="center"  style="padding-top:35px;">12</th>
+          <th align="center"  style="padding-top:35px;"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        <!--  <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>-->
+        </tr>
+        <tr>
+        <!--  <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"> </th>-->
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+        <tr>
+          <th rowspan="5"  width="10%"  height="30" align="center" valign="top" style="border:1px solid #ddd">
+          <img alt="" class="localimg" src="<?php echo $this->basePath();?>/public/image/same-day.png"></th>
+          <!-- <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>
+    <th align="center">&nbsp;</th>--> 
+        </tr>
+        <tr>
+          <th align="center"  style="padding-top:35px;">
+Same Day Agra (Prime)<br>
+4Km  40  Hours
+
+</th>
+          <th align="center"  style="padding-top:35px;">2500</th>
+          <th align="center"  style="padding-top:35px;">25000</th>
+          <th align="center"  style="padding-top:35px;">12</th>
+          <th align="center"  style="padding-top:35px;"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="#topheader">Book</a> </th>
+        </tr>
+        <tr>
+        <!--  <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>-->
+        </tr>
+        <tr>
+      <!--    <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"></th>
+          <th align="center"> </th>-->
+        </tr>
+        <tr> 
+          <!-- <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>--> 
+        </tr>
+      </table>
+    </div>
+    
+    
+   <!-- End-->
+   
+   
+
+    
+  </div>
+  
+  <!--localfare start-->
+  
+  </div>
+  <!--/container--> 
+</section>
+
+
+
+<?php }else{?>
+		
+
+
+<section class="pricing-page">
+  <div class="container">
+    <div class="center col-sm-6" style="text-align:right;" >
+      <h2>Fare Structure </h2>
+      <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>--> 
+       
+      
+    </div>
+    <div class="view-controls-list col-sm-6" id="viewcontrols">
+			<a class="gridview active" href=""><i class="fa fa-th fa-2x"></i></a>
+			<a class="listview" href="<?php echo $this->basePath(); ?>/index/page/farestructure"><i class="fa fa-list fa-2x"></i></a>
+		</div>
+   
+    
+    <div class="row" style="padding:0 15px;">
+                   
+          <div class="col-sm-12 plan price-one ">
+          
+          <div class="col-lg-12" style=" background: #c52d2f none repeat scroll 0 0; color: #fff; padding:5px; ">
+           <h2> Local Hire ( Delhi) </h2></div>
+          
+          <div class="col-lg-4" style="background:#EFEFEF;">
+          
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/economy.jpg"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+          <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/hour</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+          
+          <th align="center"><span  class="loc4e1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4e4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center"><span  class="loce1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loce4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc12e1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12e4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+    
+     </div>
+          
+          
+          
+          
+          
+          
+           <div class="col-lg-4" style="background:#ebdddd;">
+           
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/sedancar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+          <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/hour</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc4s1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4s4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+          <th align="center"><span  class="locs1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locs4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center"><span  class="loc12s1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12s4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+            
+          </div>
+                      
+          <div class="col-lg-4" style="background:#eeeeee;">
+          
+           <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">prime <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/primecar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+         <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/hour</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        
+        <tr>
+          <th align="center"><span  class="loc4p1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc4p4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+           <th align="center"><span  class="locp1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="locp4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+           <th align="center"><span  class="loc12p1" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p2" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p3" style="color:#000;"> </span></th>
+          <th align="center"><i class="fa fa-inr"></i> <span  class="loc12p4" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+            
+          </div>                  
+            
+                                 </div>
+                                 
+          <div class="col-sm-12 plan price-one ">
+          
+          <div class="col-lg-12" style=" background: #333 none repeat scroll 0 0; color: #fff; padding:5px; margin-top: 5px;">
+           <h2 class=""> Point to Point ( Delhi) </h2></div>
+          
+          <div class="col-lg-4" style="background:#EFEFEF;">
+          
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/economy.jpg"> </th>
+       
+       </tr>
+       
+        <tr>
+             <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price / KM</th>
+          <th align="center" class="tablepointtd1">Beyond / KM</th>
+          <th align="center" class="tablepointtd1">Charges / Min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+          
+           <th align="center"></th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott2" style="color:#000;"></span>/<span class="potte" style="color:#000;font-weight:normal;"></span>KM</th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott3" style="color:#000;"></span></th>
+          <th align="center" valign="middle" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pott4" style="color:#000;"></span></th>
+          <th align="center" valign="middle" class="point-to-point-td"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+       
+      </table>
+    </div>
+    
+     </div>
+          
+           <div class="col-lg-4" style="background:#ebdddd;">
+           
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/sedancar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+           <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price / KM</th>
+          <th align="center" class="tablepointtd1">Beyond / KM</th>
+          <th align="center" class="tablepointtd1">Charges / Min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+            <th align="center"></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots1" style="color:#000;"></span>/<span class="potts" style="color:#000;font-weight:normal;"></span>KM</th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots2" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="pots3" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+        
+        
+            
+      </table>
+    </div>
+            
+          </div>
+                      
+          <div class="col-lg-4" style="background:#eeeeee;">
+          
+           <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">prime <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/primecar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+           <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price / KM</th>
+          <th align="center" class="tablepointtd1">Beyond / KM</th>
+          <th align="center" class="tablepointtd1">Charges / Min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        
+        <tr>
+          <th align="center"></th>
+           <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="potp1" style="color:#000;"></span>/<span class="pottp" style="color:#000;font-weight:normal;"></span>KM</th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="potp2" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"><i class="fa fa-inr"></i> <span class="potp3" style="color:#000;"></span></th>
+          <th align="center" class="point-to-point-td"> <a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_point" href="#topheader">Book</a> </th>
+        </tr>
+      
+            
+      </table>
+    </div>
+            
+          </div>                  
+            
+                                 </div>
+                                 
+           <div class="col-sm-12 plan price-one ">
+          
+          <div class="col-lg-12" style=" background: #083260 none repeat scroll 0 0; color: #fff; padding:5px; ">
+           <h2> Airport/Railway Station Transfers ( Delhi) </h2></div>
+          
+          <div class="col-lg-4" style="background:#EFEFEF;">
+          
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/economy.jpg"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+          <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+          
+          <th align="center">UP to <span  class="Air4e1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air4e2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air4e3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+          <th align="center">UP to <span  class="Aire1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Aire2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Aire3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center">UP to <span  class="Air12e1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12e2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air12e3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+    
+     </div>
+          
+          
+          
+          
+          
+          
+           <div class="col-lg-4" style="background:#ebdddd;">
+           
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/sedancar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+          <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+           <th align="center">UP to <span  class="Air4s1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4s2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4s3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+          <th align="center">UP to <span  class="Aire1" style="color:#000;"></span>KM 
+			</span></th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Aire2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Aire3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        <tr>
+           <th align="center">UP to <span  class="Air12e1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12e2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12e3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+            
+          </div>
+                      
+          <div class="col-lg-4" style="background:#eeeeee;">
+          
+           <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">prime <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/primecar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+         <th align="center" class="tablepointtd">Packages</th>
+          <th align="center" class="tablepointtd1">Price</th>
+          <th align="center" class="tablepointtd1">Extra/KM</th>
+          <th align="center" class="tablepointtd1">Extra/min</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        
+        <tr>
+          <th align="center">UP to <span  class="Air4p1" style="color:#000;"></span>KM 
+			</span></th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4p2" style="color:#000;">
+             </span>+Airport Entry</th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air4p3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+           <th align="center">UP to <span  class="Airp1" style="color:#000;"></span>KM 
+			</span></th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Airp2" style="color:#000;">
+             </span>+Airport Entry </th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Airp3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        <tr>
+           <th align="center">UP to <span  class="Air12p1" style="color:#000;"></span>KM 
+			</span> </th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="Air12p2" style="color:#000;">
+             </span>+Airport Entry </span></th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="Air12p3" style="color:#000;"></span></th>
+          <th align="center"><span  class="" style="color:#000;"> </span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+            
+      </table>
+    </div>
+            
+          </div>                  
+            
+                                 </div>
+                                 
+                                 
+            <div class="col-sm-12 plan price-one ">
+          
+          <div class="col-lg-12" style=" background: #fab235 none repeat scroll 0 0; color: #fff; padding:5px; ">
+           <h2> Outstation ( Delhi) </h2></div>
+          
+          <div class="col-lg-4" style="background:#EFEFEF;">
+          
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Economy <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/economy.jpg"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+          <th align="center" class="tablepointtd">Minimum KM</th>
+          <th align="center" class="tablepointtd1">Min.Fare</th>
+          <th align="center" class="tablepointtd1"><i class="fa fa-inr"></i>/KM</th>
+          <th align="center" class="tablepointtd1">DA</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+          
+          <th align="center"><span  class="oute2" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span style="color:#000;" class="oute4"></span></th>
+          <th align="center"><i class="fa fa-inr"></i><span  class="oute1" style="color:#000;"></span></th>
+          <th align="center"> <i class="fa fa-inr"></i>   <span style="color:#000;" class="oute3"></span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+                   
+      </table>
+    </div>
+    
+     </div>
+          
+          
+          
+          
+          
+          
+           <div class="col-lg-4" style="background:#ebdddd;">
+           
+          <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">Sedan <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/sedancar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+           <th align="center" class="tablepointtd">Minimum KM</th>
+          <th align="center" class="tablepointtd1">Min.Fare</th>
+          <th align="center" class="tablepointtd1"><i class="fa fa-inr"></i>/KM</th>
+          <th align="center" class="tablepointtd1">DA</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        <tr>
+         <th align="center"><span  class="outs2" style="color:#000;"></span> </th>
+          <th align="center"> <i class="fa fa-inr"></i> <span style="color:#000;" class="outs4"></span></th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="outs1" style="color:#000;"></span></th>
+          <th align="center"><i class="fa fa-inr"></i>   <span style="color:#000;" class="outs3"></span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+        
+            
+      </table>
+    </div>
+            
+          </div>
+                      
+          <div class="col-lg-4" style="background:#eeeeee;">
+          
+           <div class="col-md-12 table-responsive" style="padding:0 !important;">
+     
+      <table class="table table-hover table-striped tablecen" id="bootstrap-table"  style="border:1px solid #ddd; margin-top: 5px;">
+       
+       <tr>
+       		<th colspan="5" align="center" valign="top" style="border:1px solid #ddd">prime <br>
+            <img alt="" class="localimg" src="<?= $this->basePath();?>/public/image/primecar.png"> </th>
+       
+       </tr>
+       
+        <tr>
+         
+         <th align="center" class="tablepointtd">Minimum KM</th>
+          <th align="center" class="tablepointtd1">Min.Fare</th>
+          <th align="center" class="tablepointtd1"><i class="fa fa-inr"></i>/KM</th>
+          <th align="center" class="tablepointtd1">DA</th>
+          <th align="center" class="tablepointtd1"></th>
+        </tr>
+        
+        <tr>
+          <th align="center"> <span  class="outp2" style="color:#000;"></span> </th>
+          <th align="center"><i class="fa fa-inr"></i> <span style="color:#000;" class="outp4"></span></th>
+          <th align="center"> <i class="fa fa-inr"></i><span  class="outp1" style="color:#000;"></span></th>
+          <th align="center"> <i class="fa fa-inr"></i>   <span style="color:#000;" class="outp3"></span></th>
+          <th align="center"><a onclick="booking_local();" id="" role="button" class="btn btn-primaryred btn_fare" href="<?php echo $this->basePath();  ?>#topheader">Book</a> </th>
+        </tr>
+        
+       
+            
+      </table>
+    </div>
+            
+          </div>                  
+            
+                                 </div>                     
+                    
+                                           
+          </div>
+    
+   
+  </div>
+  
+  <!--localfare start-->
+  
+  </div>
+  <!--/container--> 
+</section>
+<!--/#Fare Structure -->
+
+
+
+<?php }  ?>
+

@@ -1,0 +1,1425 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+
+<link rel="stylesheet" href="public/css/cropper.min.css">
+  <link rel="stylesheet" href="public/css/crop-avatar.css">
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>An Confirmation Email has been sent on your account</p>
+                <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default closeButton" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+ 
+</div> 
+<?php
+session_start();
+$_SESSION['id']=uniqid();
+?>
+ 
+    <script>
+// This example displays an address form, using the autocomplete feature
+// of the Google Places API to help users fill in the information.
+    var  z=1;
+var placeSearch, autocomplete;
+var componentForm = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
+
+function initialize(id) {
+  // Create the autocomplete object, restricting the search
+  // to geographical location types.
+  autocomplete = new google.maps.places.Autocomplete(
+      /** @type {HTMLInputElement} */(document.getElementById(id)),
+      { types: ['geocode'] });
+  // When the user selects an address from the dropdown,
+  // populate the address fields in the form.
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+   // fillInAddress();
+  });
+}
+
+// [START region_fillform]
+
+// [END region_fillform]
+
+// [START region_geolocation]
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = new google.maps.LatLng(
+          position.coords.latitude, position.coords.longitude);
+      autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
+          geolocation));
+    });
+  }
+}
+// [END region_geolocation]
+$(document).ready(function(){
+    
+    initialize();
+    //$('#autocomplete').attr('placeholder','');
+    //$('#autocomplete1').attr('placeholder','');
+    //$('.autocomplete').attr('placeholder','');
+    
+});
+
+
+var image_no=1;
+var form_no=1;
+    </script>
+
+<style>
+  
+label.col-lg-offsets-5 {
+margin-left: 41.66666667%;
+color:red;
+}
+input.col-lg-offsets-5{
+    border:1px solid red;
+}
+textarea.col-lg-offsets-5{
+    border:1px solid red;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+</style>
+<!--//////////////////
+<form id="imageform" method="post" enctype="multipart/form-data" action="../hello42/tunnel/Admin/imgs">
+                            <input type="file" name="photoimg" id="photoimg" />
+                            </form>
+                <div id="preview"></div>
+                ///////////////////////////-->
+<div class="signinbg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 pull-left">
+					<?php if($_COOKIE['UsersRole']==3) {
+                                            ?>	
+                                      <h3 id='vendor_head' style="display:block;">DRIVER REGISTRATION FORM</h3>
+                                        <?php 
+                                        
+                                        
+                                      }
+                                      if($_COOKIE['UsersRole']==1){ ?>
+                                      <h3 id='user_head' style="display:block">User Registration Form</h3>
+                                        <?php
+                                        
+                                      } if($_COOKIE['UsersRole']==2){
+                                          ?>
+                                      <h3 id='corp_head' style="display:block">Corporate User Registration Form</h3>
+                                        <?php } ?>
+                      </div>
+					<div class="col-lg-5 col-lg-offset-6" id="crum" style="lin-height:0px !important">
+					  <ul class=" badcarmlist">
+                     	<li class="active"><a class="active" href="">Email</a></li>
+                        <li class='active'><a class="active" href="">Segment</a></li>
+                      	 <li><a href="">Verification</a></li>
+                   
+                       	 <li style="background:none;"><a href="
+                         ">Done</a></li>
+                     </ul>
+					</div>
+ 				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!--footer-->
+		<div class="container">
+<?php error_reporting(0);
+if(($_COOKIE['UsersRole']!=1) and ($_COOKIE['UsersRole']!=2))
+{
+?>
+<!--users-->
+
+<div id="userRoleDriver" style="margin-bottom:70px; ">
+ 
+    
+         <div class=" col-sm-4 col-md-4 col-lg-4 clearfix userprofileimg">
+         	<div id="crop-avatar">
+
+    <!-- Current avatar -->
+   
+    <div class="avatar-view userimg_byratio" title="Profile Picture">
+      <img src="public/image/default_user.png" alt="Avatar" class="resimg">
+    </div>
+ 
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form class="avatar-form" id="0" method="post" action="public/crop-avatar.php" enctype="multipart/form-data">
+            <div class="modal-header">
+             <h1 class="closbtn" style="right: -22px;border: none !important;" data-dismiss="modal"><i class="fa fa-close"></i></h1>
+              <h4 class="modal-title" id="avatar-modal-label">Profile Picture</h4>
+            </div>
+            <div class="modal-body">
+              <div class="avatar-body">
+
+                <!-- Upload image and data -->
+                <div class="avatar-upload">
+                  <input class="avatar-src" name="avatar_src" type="hidden">
+                  <input class="avatar-data" name="avatar_data" type="hidden">
+                  <label for="avatarInput">Local upload</label>
+               
+                  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                </div>
+
+                <!-- Crop and preview -->
+                <div class="row">
+                  <div class="col-md-9">
+                      <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+                    <div class="avatar-wrapper"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="avatar-preview preview-lg" style="position:relative"></div>
+                    <div class="avatar-preview preview-md" style="position:relative"></div>
+                    <div class="avatar-preview preview-sm" style="position:relative"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary avatar-save col-sm-2 pull-right" type="submit" style="margin-left:10px;">Save</button>
+			  <button class="btn btn-default col-sm-2 pull-right" type="button" data-dismiss="modal">Close</button>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- /.modal -->
+
+    <!-- Loading state -->
+   
+  </div>
+             <div id="crop-vehicle">
+
+    <!-- Current avatar -->
+   
+    <div class="avatar-view userimg_byratio" title="Vehicle Picture">
+        <img src="public/image/vehicle.png" alt="Avatar" class="resimg">
+    </div>
+ 
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form class="avatar-form" id="0v" method="post" action="public/crop-avatar.php" enctype="multipart/form-data">
+            <div class="modal-header">
+            <h1 class="closbtn" style="right: -22px;border: none !important;" data-dismiss="modal"><i class="fa fa-close"></i></h1>
+              <h4 class="modal-title" id="avatar-modal-label">Vehicle Picture</h4>
+            </div>
+            <div class="modal-body">
+              <div class="avatar-body">
+
+                <!-- Upload image and data -->
+                <div class="avatar-upload">
+                  <input class="avatar-src" name="avatar_src" type="hidden">
+                  <input class="avatar-data" name="avatar_data" type="hidden">
+                  <label for="avatarInput">Local upload</label>
+                  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                </div>
+
+                <!-- Crop and preview -->
+                <div class="row">
+                  <div class="col-md-9">
+                       <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+                    <div class="avatar-wrapper"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="avatar-preview preview-lg" style="position:relative;"></div>
+                    <div class="avatar-preview preview-md" style="position:relative;"></div>
+                    <div class="avatar-preview preview-sm" style="position:relative;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary avatar-save col-sm-2 pull-right" type="submit" style="margin-left:10px;">Save</button>
+			  <button class="btn btn-default col-sm-2 pull-right" type="button" data-dismiss="modal">Close</button>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- /.modal -->
+
+    <!-- Loading state -->
+   
+  </div>
+        </div>
+     
+    <form  id='frm_details' name='frm_details' method="multipart/form-data" >
+         <div class="col-sm-8 col-md-8 col-lg-8 clearfix">
+             <input type='hidden' id='image_path0' name='image_path' value=''>  	
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Name<span class="mandat_star">*</span></label>
+            <input type="text" id="driver_name" name="dName" class="driver_name col-sm-6 col-lg-5 inputfild alphaName">
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Father's Name<span class="mandat_star">*</span></label>
+            <input type="text" id="dfName" name="dfName" class="driver_name col-sm-6 col-lg-5 inputfild alphaName">
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Email<span class="mandat_star">*</span></label>
+            <input type="email" id="driver_email"  class="col-sm-6 col-lg-5 inputfild email" />
+			<input type="hidden" id="driver_email2" name="driver_email" class="col-sm-6 col-lg-5 inputfild" />
+           </div>
+            <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Refrenced By<span class="mandat_star">*</span></label>
+            <input type="text" id="drefName" name="drefName" class="driver_name col-sm-6 col-lg-5 inputfild alphaName">
+           </div>
+              <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Date Of Birth<span class="mandat_star">*</span></label>
+            <input type="text" id="dreDateOfBirth" name="dreDateOfBirth" class="driver_name col-sm-6 col-lg-5 inputfild name">
+           </div>
+              <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Gender<span class="mandat_star">*</span></label>
+<!--            <input type="text" id="dregender" name="dregender" class="driver_name col-sm-6 col-lg-5 inputfild name">-->
+            <select class=" col-sm-6 inputfild" id="dregender"  name="dregender">
+                
+                <option>Male</option>
+              <option>Female</option>
+             
+            </select>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">City<span class="mandat_star">*</span></label>
+            <input type="text" id="autocomplete" name="city" class="col-sm-6 col-lg-5 inputfild name" onfocus="geolocate()" />
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Contact No.<span class="mandat_star">*</span></label>
+            <input type="text" pattern="[0-9]{10,10}" title="Enter valid Mobile No"   id="driver_no" class=" col-sm-6 col-lg-5 inputfild phno"/>
+            <input type="hidden" pattern="[0-9]{10,10}" title="Enter valid Mobile No"   id="driver_no2" name="dNo" class=" col-sm-6 col-lg-5 inputfild"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Alternate Contact No.<span class="mandat_star">*</span></label>
+            <input type="text" id="driver_Altno" name="dAno" class=" col-sm-6 col-lg-5 inputfild phno"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Residential Address<span class="mandat_star">*</span></label>
+            <textarea rows="3" id="driver_adds" name="dAd" cols="5" class="col-sm-3 inputfild name "></textarea>
+            <div class="col-sm-3">
+              
+                <input name="file" type="file"  />
+                  <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_resident">   
+                   </progress>--> 
+                
+   <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18; display:none" id="driver_resident_loder" ></div>
+ 		<div class="loder" style="display:none" id="driver_resident">
+					</div>
+                <input type="hidden" id="driver_addsH" name="driver_addsH">
+             </div>
+			 
+             </div>
+             
+             <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Pin Code<span class="mandat_star">*</span></label>
+            <input type="text" id="dpincode" class="col-sm-6 col-lg-5 inputfild num" name="dpincode">
+			
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Office Address<span class="mandat_star">*</span></label>
+            <textarea rows="3" id="driver_oadds" name="dofc" cols="5" class="col-sm-3 inputfild name" ></textarea>
+            
+           <div class="col-sm-3">
+ 
+                <input name="file_office" type="file"  />
+                 <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_office">   
+                  </progress>--> 
+  <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18; display: none" id="driver_office_loder"></div>
+            <div class="loder" style="display:none" id="driver_office">
+			</div>
+            <input type="hidden" id="driver_oaddsH" name="driver_oaddsH">
+           </div>
+		   </div>
+		   
+            <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Pan Card Details<span class="mandat_star">*</span></label>
+            <input type="text" id="driver_pan" name="dpan" class="col-sm-3 inputfild name" />
+				<div class="col-sm-3">
+                 <input name="file_pan" type="file"  />
+                 <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_panupload">   
+                  </progress>-->
+ <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none" id="driver_panupload_loder"></div>
+		             <div class="loder" style="display:none" id="driver_panupload">
+				</div>
+				<input type="hidden" id="driver_panH" name="driver_panH">
+           </div>
+           </div>
+		   
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">No. of Fleet<span class="mandat_star">*</span></label>
+            <select class=" col-sm-6 inputfild name" id="driver_fleet" name="dfleet" >
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+           </div>
+<!--          <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Types of Vehicle<span class="mandat_star">*</span></label>
+            <select class=" col-sm-6 inputfild" id="" name="typesVehicles" >
+              
+              <option value="1">Economy</option>
+              <option value="2">Sedan</option>
+              <option value="3">Prime</option>
+              
+            </select>
+           </div> -->
+           
+       <div class="form-group clearfix marginbtom0 ">
+        <div class="col-lg-5"></div>
+           <div class="col-lg-7">
+
+          </div>
+          </div> 
+           
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3"><span class="mandat_star">Name of Vehicle*</span></label>
+   <input type="text" class="col-sm-3 inputfild name vechile_name name" id="vechile_name" name="vechile_name" />
+            <input type="hidden" name="vechile_name_value" id="vechile_name_value">
+
+            <div class="col-sm-3">
+                 <input name="file_vehicle" type="file"  />
+                 <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_vehicle">   
+                  </progress> -->
+   <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none;" id="driver_vehicle_loder"></div>
+ 	            <div class="loder" style="display:none" id="driver_vehicle">
+			</div>
+			<input type="hidden" id="file_vehicleH" name="file_vehicleH">
+            </div>
+           </div>
+           
+ <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Car Types<span class="mandat_star">*</span></label>
+            <select class=" col-sm-6 inputfild" id="driver_cartypes" name="driver_cartypes" >
+              <option value="1">Economy</option>
+              <option value="2">Sedan</option>
+              <option value="3">Prime</option>
+              
+            </select>
+           </div>
+           
+           <div class="form-group clearfix spance">
+               <label class="control-label col-sm-3">Make of Vehicle<span class="mandat_star">*</span></label>
+            <input type="text" class="col-sm-6 inputfild name" id="driverMakeVec" name="driverMakeVec"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Model Year<span class="mandat_star">*</span></label>
+            <input type="text" class="col-sm-6 inputfild year" max="2015" min="1980" id="driverModel" name="driverModel"/>
+           </div>
+           
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Badge / License No.<span class="mandat_star">*</span></label>
+            <input type="text" class="col-sm-3 inputfild num" id="driverBadge" name="driverBadgeLic" />
+            
+             <div class="col-sm-3">
+                 <input name="file_badge" type="file"  />
+              <!--  <progress max="100" value="0" style="visibility: hidden;" id="driver_badge">   
+                  </progress> -->
+    <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none;" id="driver_badge_loder"></div>
+	            <div class="loder" style="display:none" id="driver_badge">
+				</div>
+            <input type="hidden" id="file_badgeH" name="file_badgeH">
+           </div>
+            </div>
+			
+			<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">License State<span class="mandat_star">*</span></label>
+            <input type="text" class="col-sm-6 inputfild name" id="driverLicState" name="driverLicState" />
+            
+             
+            </div>
+			
+			
+             <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Vehicle No.<span class="mandat_star">*</span></label>
+            <input type="text" class="col-sm-6 inputfild name" id="driverBadge" name="driverVechNo" />
+           </div>
+           <div class="form-group clearfix spance" style="margin-bottom: 4px;">
+            <label class="control-label col-sm-3">Eye Sight<span class="mandat_star">*</span></label>
+            <div class="col-sm-8">
+            <label class="radio-inline specs">
+           <input type="radio" id="driverSpec" name="driverSpec" value="" checked="" required>Specs
+           </label>
+           <label class="radio-inline specs" style="padding-left:47px !important;">
+           <input type="radio" id="driverNoSoec" name="driverSpec" value="" required>No Specs
+           </label>
+           </div>
+            </div>
+            
+            <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Zone<span class="mandat_star">*</span></label>
+            <input type="text" id="driverZone" name="driverZone" class="col-sm-6 inputfild name"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Security Amount<span class="mandat_star">*</span></label>
+            <input type="text" id="driverAmount" name="driverAmount" class="col-sm-6 inputfild num"/>
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Bank Name & Branch Name<span class="mandat_star">*</span></label>
+            <input type="text" id="driverBank" name="driverBank" class="col-sm-6 inputfild name"/>
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Bank A/C Holder Name<span class="mandat_star">*</span></label>
+            <input type="text" id="driverholdern" name="driverholdern" class="col-sm-6 inputfild alphaName"/>
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Bank Address<span class="mandat_star">*</span></label>
+            <input type="text" id="driverBaddess" name="driverBaddess" class="col-sm-6 inputfild name"/>
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Bank A/C no<span class="mandat_star">*</span></label>
+            <input type="text" id="driverAcNo" name="driverAcNo" class="col-sm-6 inputfild num"/>
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">RTGS/NEFT Code<span class="mandat_star">*</span></label>
+            <input type="text" id="driverrtgs" name="driverrtgs" class="col-sm-6 inputfild name"/>
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">IBN No.<span class="mandat_star"></span></label>
+            <input type="text" id="driveribn" name="driveribn" class="col-sm-6 inputfild name"/>
+           </div>
+		    <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Route Knowledge<span class="mandat_star">*</span></label>
+            <input type="text" id="driverRknow" name="driverRknow" class="col-sm-6 inputfild name"/>
+           </div> 
+		<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Pref Location<span class="mandat_star">*</span></label>
+            <input type="text" id="driverPrefL" name="driverPrefL" class="col-sm-6 inputfild name"/>
+           </div> 
+
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Week Off<span class="mandat_star">*</span></label>
+<!--            <input type="text" id="driverWoff" name="driverWoff" class="col-sm-6 inputfild name"/>-->
+             <select class=" col-sm-6 inputfild" id="driverWoff" name="driverWoff" >
+              <option>Yes</option>
+              <option>No</option>
+             
+            </select>
+           </div> 
+		   
+		    <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Mobile IMEI No.<span class="mandat_star">*</span></label>
+            <input type="text" id="driveimei" name="driveimei" class="col-sm-6 inputfild imei"/>
+           </div> 
+		   
+		    <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">GPS Device No.<span class="mandat_star">*</span></label>
+            <input type="text" id="drivergps" name="drivergps" class="col-sm-6 inputfild name"/>
+           </div> 
+		
+		<!-- language -->
+		<div class="clearfix">
+              <label class="control-label col-sm-3">Language Known<span class="mandat_star">*</span></label>
+             </div>
+   
+   
+    <div class="form-group clearfix spance">
+     <table class="table" style="margin:0;">
+     <tbody><tr>
+     <td style="border: none;" class="col-sm-3 ">
+      <table class="reglengbox ">
+       <tbody><tr><td style="border: none; font-size:12px; padding-bottom:12px;">Write<span class="mandat_star">*</span></td></tr>
+       <tr><td style="border: none; padding-top:8px; font-size:12px; padding-bottom:10">Speak<span class="mandat_star">*</span></td></tr>
+      </tbody></table>
+     </td>
+     
+     <td style="border: none; padding:0;">
+      <table class="reglengbox">
+       <tbody><tr><td style="padding:5px 3px 3px 3px;"><input type="text" name="write[]" class="inputfild" required/></td><td style="padding:5px 3px 3px 3px;"><input type="text" name="write[]" class="inputfild "/></td><td style="padding:5px 3px 3px 3px;"><input type="text" name="write[]" class="inputfild "/></td><td style="padding:5px 3px 3px 3px;"><input type="text" name="write[]" class="inputfild "/></td></tr>
+       <tr><td style="padding:3px 3px 3px 3px;"><input type="text" name="speak[]" class="inputfild" required/></td><td style="padding:3px 3px 3px 3px;"><input type="text" name="speak[]" class="inputfild "/></td><td style="padding:3px 3px 3px 3px;"><input type="text" name="speak[]" class="inputfild "/></td><td style="padding:3px 3px 3px 3px;"><input type="text" name="speak[]" class="inputfild "/></td></tr>
+      </tbody></table>
+     </td>
+     </tr>
+    </tbody></table>
+    </div>
+	
+<div class="form-group clearfix spance">
+     <table class="table" style="margin:0;">
+     <tbody><tr>
+     <td style="border: none;" class="col-sm-3 text-right">
+      <table class="reglengbox ">
+       <tbody><tr><td style="border: none; font-size:12px;">Shift of Login</td></tr>
+       <tr><td style="border: none; padding-top:5px; font-size:12px; padding-bottom:13px;">Timing</td></tr>
+      </tbody></table>
+     </td>
+     
+     <td style="border: none; padding-left:0;">
+      <table class="reglengbox">
+       <tbody><tr><td style="font-size:12px;">Morning</td><td style="font-size:12px;">Evening</td><td style="font-size:12px;">Night</td></tr>
+    <tr><td style="padding:3px 3px 3px 3px;">
+            
+<!--            <input type="text" name="logtime[]" class="form-control inputfild "/>-->
+             <select class="inputfild" id="" name="logtime[]" >
+                 <option>0:00</option>
+              <option>1:00</option>
+              <option>2:00</option>
+              <option>3:00</option>
+              <option>4:00</option>
+              <option>5:00</option>
+               <option>6:00</option>
+              <option>7:00</option>
+              <option>8:00</option>
+              <option>9:00</option>
+              <option>10:00</option>
+               <option>11:00</option>
+              <option>12:00</option>
+              <option>13:00</option>
+              <option>14:00</option>
+              <option>15:00</option>
+               <option>16:00</option>
+              <option>17:00</option>
+              <option>18:00</option>
+              <option>19:00</option>
+              <option>20:00</option>
+              <option>21:00</option>
+              <option>22:00</option>
+              <option>23:00</option>
+              
+              
+            </select>
+        
+        </td>
+        
+        
+        <td style="padding:3px 3px 3px 3px;">
+<!--            <input type="text" name="logtime[]" class="form-control inputfild "/>-->
+            <select class="inputfild" id="" name="logtime[]" >
+               <option>0:00</option>  
+              <option>1:00</option>
+              <option>2:00</option>
+              <option>3:00</option>
+              <option>4:00</option>
+              <option>5:00</option>
+               <option>6:00</option>
+              <option>7:00</option>
+              <option>8:00</option>
+              <option>9:00</option>
+              <option>10:00</option>
+               <option>11:00</option>
+              <option>12:00</option>
+              <option>13:00</option>
+              <option>14:00</option>
+              <option>15:00</option>
+               <option>16:00</option>
+              <option>17:00</option>
+              <option>18:00</option>
+              <option>19:00</option>
+              <option>20:00</option>
+              <option>21:00</option>
+              <option>22:00</option>
+              <option>23:00</option>
+             
+              
+            </select>
+        
+        
+        </td>
+        
+        
+        
+        <td style="padding:3px 3px 3px 3px;">
+            
+<!--            <input type="text" name="logtime[]" class="form-control inputfild "/>-->
+        <select class="inputfild" id="" name="logtime[]" >
+              <option>0:00</option>
+              <option>1:00</option>
+              <option>2:00</option>
+              <option>3:00</option>
+              <option>4:00</option>
+              <option>5:00</option>
+               <option>6:00</option>
+              <option>7:00</option>
+              <option>8:00</option>
+              <option>9:00</option>
+              <option>10:00</option>
+               <option>11:00</option>
+              <option>12:00</option>
+              <option>13:00</option>
+              <option>14:00</option>
+              <option>15:00</option>
+               <option>16:00</option>
+              <option>17:00</option>
+              <option>18:00</option>
+              <option>19:00</option>
+              <option>20:00</option>
+              <option>21:00</option>
+              <option>22:00</option>
+              <option>23:00</option>
+              
+              
+            </select>
+        
+        
+        </td></tr>
+      </tbody></table>
+     </td>
+     </tr>
+    </tbody></table>
+    </div>	
+		
+
+
+		
+		
+               
+		
+		
+		
+		
+		
+		   
+		  </div>
+     <!--left_panel_form END-->
+    
+   
+      
+      <!--bottom part checkbox of form-->
+      <div class="clearfix"></div>
+      <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="form-group clearfix marginbtom0">
+            <label class="control-label col-lg-2 pull-left" style="margin-right:-8px;">Duty Type pref.<span class="mandat_star">*</span></label>
+            <div class="col-sm-9 pull-left leftmarg10">
+            <label class="checkbox-inline checkboxtext leftmarg10 col-md-2">
+            <input type="checkbox" id="driverAir" name="dAir[]" value="1"/>Airport Transf
+            </label>
+            <label class="checkbox-inline checkboxtext col-md-2">
+            <input type="checkbox" id="driverOut" name="dAir[]" value="2"/>Outstation
+            </label>
+            <label class="checkbox-inline checkboxtext col-md-2">
+            <input type="checkbox" id="driverLocal" name="dAir[]" value="3"/>Local Packg
+            </label>
+            <label class="checkbox-inline checkboxtext col-md-2">
+            <input type="checkbox" id="driverPoint" name="dAir[]" value="4"/>Point To Point
+            </label>
+            <label class="checkbox-inline checkboxtext col-md-2">
+            <input type="checkbox" id="driverAll" name="dAir[]" value="5"/>All
+            </label>
+            </div>
+           </div>
+           </div>
+           
+      <div class="col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 20px;">
+          <div class="form-group clearfix marginbtom0">
+            <label class="control-label col-lg-2 pull-left" style="margin-right:-8px;">Payment Type<span class="mandat_star">*</span></label>
+            <div class="col-sm-9 pull-left leftmarg10">
+            <label class="checkbox-inline checkboxtext leftmarg10 col-md-2">
+            <input type="checkbox" id="driverCash" name="dCash[]" value="1"/>Cash
+            </label>
+            <label class="checkbox-inline checkboxtext col-md-2">
+            <input type="checkbox" id="driverCredit" name="dCash[]" value="2"/>Credit
+            </label>
+            <label class="checkbox-inline checkboxtext col-md-2">
+            <input type="checkbox"id="driverBoth" name="dCash[]" value="3"/>Both
+            </label>
+             
+            </div>
+           </div>
+           </div>
+            <div class="form-group clearfix col-sm-12">
+            <label class="control-label col-sm-2">Police Verification<span class="mandat_star">*</span></label>
+			<div class="col-sm-3"  style="padding-left: 0;">
+             <input name="file_police" type="file"/>
+ <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none;" id="driver_police_loder"></div>
+             <div class="loder" style="display:none" id="driver_police">
+				</div>
+				 <input type="hidden" id="file_policeH" name="file_policeH">
+            </div>
+			</div>
+			
+       <div class="form-group clearfix col-sm-12">
+            <label class="control-label col-sm-2">Audit Report<span class="mandat_star">*</span></label>
+             <div class="col-sm-2" style="padding-left: 0;">
+			 <input name="file_audit" type="file"/>
+  <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none;" id="driver_audit_loder"></div>
+ 			<div class="loder" style="display:none" id="driver_audit">
+			</div>
+			<input type="hidden" id="file_auditH" name="file_auditH">
+			</div>
+            <div class="col-sm-5" id="auditclick">
+			 
+                <i class="fa fa-download fa-1_5x"></i>
+                    &nbsp;<label>Click here to download  the Audit Report</label>
+			
+			</div>
+            
+           </div>
+          <div class="clearfix"></div>
+          
+           <!--New user form-->
+               
+               	            
+           <div id='append'></div>
+          <div class="row"> 
+           <div class="portlet-heading add_new">
+                                        <div class="portlet-title pull-right">
+                                            <h4></h4>
+                                        </div>
+                                        <div class="portlet-widgets pull-left">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="" class="newclick">
+                                            <i class="fa fa-plus fa_2x" style="
+    font-size: 1.5em;
+    color: #fff;
+"></i></a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+          </div>
+           
+           <!--New user form End-->
+           
+           
+           
+           
+           
+           
+           
+           
+            <!--bottom part checkbox of form End-->
+            <div class="row">
+                
+                <div class="col-lg-12"><div class="fa fa-spinner fa-spin fa-2x" style="position: absolute;color: #378D18;right: 170px;top: 29px;display:none" id="registerbtnloader"></div><button type='button' class="btn registerbtn pull-right" id="driver_reg" onclick="driverReg();" style="margin-bottom:-50px !important;">Register <i class="fa fa-spinner fa-spin" style="font-size: 1.5em;
+
+font-size: 1.5em;
+display: none;
+position: absolute;
+right: 20px;
+top: 37px;
+line-height:10px;
+}"></i></button></div>
+            </div>
+            
+<!-- /////////////////////////// /////////////////////verdor form///////////////////////////////////////////////////////////////// -->
+
+ 
+        <!--Login START-->
+		 <div class="col-sm-4" id="driverSignform" style="border-radius: 10px; display: none;      background: rgb(255, 255, 255);">
+   			<h1 class="fa fa-times closbtn b-close" style="margin: 0 14px;border: none !important;"></h1>
+				<div class="text-center">
+					<div class="col-md-12">
+						<div class="exit_iconbox" style="
+    margin: 20px auto 30px;
+">
+							<a href="#">
+                                <div class="circle-tile-heading red">
+                                     <i class="fa fa-thumbs-up fa-fw fa-5x" style="line-height: 120px;"></i>
+                                </div>
+                            </a>
+                            
+
+						</div>
+					</div><div class="clearfix"></div>
+				</div>
+ 			<div class="text-center">
+             
+				<div class="leftbox col-md-12 col-lg-12">
+                                    
+                                    
+                                    
+                                      <div class="form-group clearfix spance  ">
+            <label class="control-label col-sm-4 text-left">Name<span class="mandat_star">*</span></label>
+            <input type="text" id="vender_name" name="vender_name" class="driver_name col-sm-8 inputfild" disabled="">
+           </div>
+               <div class="form-group clearfix spance col-sm-12">
+            <label class="control-label col-sm-4 text-left">Email<span class="mandat_star">*</span></label>
+            <input type="text" id="vender_email" name="vender_email" class="driver_name col-sm-8 inputfild" disabled="">
+           </div>
+                                      <div class="form-group clearfix spance col-sm-12">
+            <label class="control-label col-sm-4 text-left">Create Your Group<span class="mandat_star">*</span></label>
+            <input type="text" id="vender_group" name="vender_group" class="driver_name col-sm-8 inputfild">
+           </div><div class="form-group clearfix spance col-sm-12">
+            <label class="control-label col-sm-4 text-left"></label>
+            <div class="fa fa-spinner fa-spin fa-2x" style="position: absolute;color: #378D18;right: 100px;top: 9px;display:none" id="vendorregisterbtn"></div>
+            <button type="button" class="btn registerbtn col-sm-4" onclick="save_drivers();" style="
+    margin-top: 0 !important;
+">Register</button>
+           </div>
+
+ 					
+			</div>
+  </div>
+   </div>
+        <!--Login END--> 
+        
+
+
+
+
+
+
+
+<!--/////////////////////////////////////////////////end vendor form///////////////////////////////////////////////////////////////////////-->
+         </form>
+    </div>    
+
+
+                
+      
+  <?php
+}
+else{
+  
+    
+  ?>
+   
+                
+       <!--user form start-->
+       
+  <div  id="userRoleNormal" class="clearfix" style="margin:0px auto 80px; display:block"><!--user-->
+       
+    
+    <!--left_panel_form START-->
+     <!--right_panel_form START-->
+         <div class=" col-sm-4 col-md-4 col-lg-4 clearfix userprofileimg" style="margin: 0px auto 0px;">
+         	<div id="crop-avatar">
+
+    <!-- Current avatar -->
+   
+    <div class="avatar-view" title="Profile Picture">
+      <img src="public/image/default_user.png" alt="Avatar" class="resimg">
+    </div>
+ 
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form class="avatar-form" id="0" method="post" action="public/crop-avatar.php" enctype="multipart/form-data">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="avatar-modal-label">Profile Picture</h4>
+            </div>
+            <div class="modal-body">
+              <div class="avatar-body">
+
+                <!-- Upload image and data -->
+                <div class="avatar-upload">
+                  <input class="avatar-src" name="avatar_src" type="hidden">
+                  <input class="avatar-data" name="avatar_data" type="hidden">
+                  <label for="avatarInput">Local upload</label>
+                  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                </div>
+
+                <!-- Crop and preview -->
+                <div class="row">
+                  <div class="col-md-9">
+                      <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+                    <div class="avatar-wrapper"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="avatar-preview preview-lg"></div>
+                    <div class="avatar-preview preview-md"></div>
+                    <div class="avatar-preview preview-sm"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary avatar-save" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- /.modal -->
+    
+    <!-- Loading state -->
+    
+  </div>
+        </div>
+      <!--right_panel_form START-->   
+      <form id="reg_form2">
+         <div class="col-sm-8 col-md-8 col-lg-8 clearfix">
+             
+         	
+             <div class="form-group clearfix spance">
+                <input type='hidden' id='image_path0' name='image_path' value=''>  	
+            <label class="control-label col-mg-3 col-lg-3">Name*</label>
+            <input type="text" name="userName" id="userName" class="col-mg-5 col-lg-5 inputfild"/>
+            </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Mobile No*</label>
+            <input type="text" name="mob_no" id="mob_no" class=" col-mg-5 col-lg-5 inputfild"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Landline No.</label>
+            <input type="text" name="land_no" id="land_no" class=" col-mg-5 col-lg-5 inputfild"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Email id*</label>
+           <input type="text" name="email_id" id="email_id" class=" col-mg-5 col-lg-5 inputfild email"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Alternate Email Id</label>
+           <input type="text" name="alt_email_id" id="alt_email_id" class=" col-mg-5 col-lg-5 inputfild email"/>
+          </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Residential Address*</label>
+          <textarea rows="3" cols="5" class="col-lg-5 inputfild" name="address" id="user_a"></textarea>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">City*</label>
+            <input type="text" id="autocomplete" name="city" class="col-mg-5 col-lg-5 inputfild" onfocus="geolocate()" />
+           </div>
+          <div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Pin Code</label>
+           <input type="text" id="user_pin" name="pincode" class=" col-mg-5 col-lg-5 inputfild num"/>
+          </div>
+            </div>
+           
+     <!--left_panel_form END-->
+	
+       <!--bottom part checkbox of form-->
+      <div class="clearfix"></div>
+	   
+      	 <div class="row">  
+            <h3 class="col-lg-6 company_labelbg">COMPANY DETAILS (Not Mandatory)</h3>
+         </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 clearfix">
+         	
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-2">Company</label>
+            <input type="text" id="user_company" name="user_company" class="col-mg-4 col-lg-4 inputfild not_mandat"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-2">Mobile No.</label>
+            <input type="text" id="user_mob" name="user_mob" class="col-mg-4 col-lg-4 inputfild not_mandat"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-2">LandlineNo.</label>
+            <input type="text" id="user_land" name="user_land" class=" col-mg-4 col-lg-4 inputfild not_mandat"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-2">Email Id </label>
+           <input type="text" id="user_email" name="user_email" class=" col-mg-4 col-lg-4 inputfild not_mandat"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-2">Alternate Email Id</label>
+           <input type="text" id="user_alt_email" name="user_alt_email" class=" col-mg-4 col-lg-4 inputfild not_mandat"/>
+          </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-2">Address</label>
+          <textarea rows="3" cols="5" class="col-lg-4 inputfild not_mandat" name="company_adds" id="user_adds"></textarea>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-2">City</label>
+            <input type="text" id="autocomplete" name="company_city" class="col-mg-4 col-lg-4 inputfild" onfocus="geolocate()" />
+           </div>
+          <div class="form-group clearfix spance">
+            <label class="control-label col-lg-2">Pin Code</label>
+           <input type="text" id="user_pin" name="company_pin" class=" col-mg-4 col-lg-4 inputfild not_mandat num"/>
+          </div>
+            </div>
+           <div class="col-lg-6 clearfix"></div>
+             <!--bottom part checkbox of form End-->
+             
+        	<div class="col-lg-12">
+                    
+            <div class="btn registerbtn pull-right" onclick="user_submit();" style="margin-bottom:-50px !important;">Register<i class="fa fa-spinner fa-spin" style="font-size: 1.5em;
+
+font-size: 1.5em;
+display: none;
+position: absolute;
+right: 20px;
+top: 37px;
+line-height:10px;
+}"></i></div>
+                    
+            </div> 
+         </form>
+   
+       </div>
+       <script>
+        var name = $("#userName").val();
+        document.cookie="username=name";
+        var status = 1;
+       </script>
+       <!--user form End-->  
+  <?php
+}
+  ?>
+       
+     </div>  
+              
+<div class="clearfix"></div>
+<!-- End Signup for users-->
+
+
+
+
+
+<!-- End Signup for users-->
+
+
+
+
+<script>
+
+   
+$('.container').on('change', 'input[type="file"]' , function(e){
+
+e.preventDefault();
+
+   var fileName = $(this).attr("name");
+    
+					
+		var loderForm = fileName.replace ( /[^\d.]/g, '' );
+	var lodervalue = $.isNumeric(loderForm);
+	 if( lodervalue == true){
+			
+				var name = fileName.replace(/\d+/g, '');
+			switch(name){
+			case "file":
+                                        $("#driver_resident_loderH"+loderForm).show();
+//					 $("#driver_residentH"+loderForm).animate({width:'=0px'},'fast'); 
+//					$("#driver_residentH"+loderForm).css("display","block");
+//					$("#driver_residentH"+loderForm).animate({width:'+=150px'},5000); 
+					break;
+			case "file_office":
+                                        $("#driver_office_loderH"+loderForm).show();
+//					$("#driver_officeH"+loderForm).animate({width:'=0px'},'fast'); 
+//					$("#driver_officeH"+loderForm).css("display","block");
+//					$("#driver_officeH"+loderForm).animate({width:'+=150px'},5000);
+					break;
+			case "file_pan":
+                                        $("#driver_panupload_loderH"+loderForm).show();
+//					$("#driver_panuploadH"+loderForm).animate({width:'=0px'},'fast'); 
+//					$("#driver_panuploadH"+loderForm).css("display","block");
+//					$("#driver_panuploadH"+loderForm).animate({width:'+=150px'},5000);
+					break;
+			case "file_vehicle":
+                                        $("#driver_vehicle_loderH"+loderForm).show();
+//					$("#driver_vehicleH"+loderForm).animate({width:'=0px'},'fast'); 
+//					$("#driver_vehicleH"+loderForm).css("display","block");
+//					$("#driver_vehicleH"+loderForm).animate({width:'+=150px'},5000);
+					break;
+			case "file_badge":
+                                         $("#driver_badge_loderH"+loderForm).show();
+//					$("#driver_badgeH"+loderForm).animate({width:'=0px'},'fast');
+//					$("#driver_badgeH"+loderForm).css("display","block");
+//					$("#driver_badgeH"+loderForm).animate({width:'+=150px'},5000);
+					break;
+			case "file_police":
+                             $("#driver_police_loderH"+loderForm).show();
+//					$("#driver_policeH"+loderForm).animate({width:'=0px'},'fast');
+//					$("#driver_policeH"+loderForm).css("display","block");
+//					$("#driver_policeH"+loderForm).animate({width:'+=150px'},5000);
+					break;
+			case "file_audit":
+                            $("#driver_audit_loderH"+loderForm).show();
+//					$("#driver_auditH"+loderForm).animate({width:'=0px'},'fast');
+//					$("#driver_auditH"+loderForm).css("display","block");
+//					$("#driver_auditH"+loderForm).animate({width:'+=150px'},5000);
+				break;		
+		
+				}
+		
+		
+		//alert("yes");
+		
+		 }
+else{
+	
+   if(fileName == 'file'){
+       $("#driver_resident_loder").show();
+//       $("#driver_resident").animate({width:'=0px'},'fast'); 
+//       $("#driver_resident").css("display","block");
+//	    $("#driver_resident").animate({width:'+=150px'},5000); 
+	   
+   }
+   else if(fileName == 'file_office'){
+       
+       $("#driver_office_loder").show();
+//		$("#driver_office").animate({width:'=0px'},'fast'); 
+//       $("#driver_office").css("display","block");
+//	    $("#driver_office").animate({width:'+=150px'},5000); 
+   }
+    else if(fileName == 'file_pan'){
+        $("#driver_panupload_loder").show();
+//		$("#driver_panupload").animate({width:'=0px'},'fast'); 
+//       $("#driver_panupload").css("display","block");
+//		$("#driver_panupload").animate({width:'+=150px'},5000);   
+  }
+   else if(fileName == 'file_vehicle'){
+        $("#driver_vehicle_loder").show();
+//	$("#driver_vehicle").animate({width:'=0px'},'fast'); 
+//       $("#driver_vehicle").css("display","block");
+//    $("#driver_vehicle").animate({width:'+=150px'},5000); 
+   }
+   else if(fileName == 'file_police'){
+        $("#driver_police_loder").show();
+//   $("#driver_police").animate({width:'=0px'},'fast'); 
+//       $("#driver_police").css("display","block");
+//      
+//      $("#driver_police").animate({width:'+=150px'},5000);   
+       
+   
+ 
+   }
+   else if(fileName == 'file_audit'){
+       $("#driver_audit_loder").show();
+//    $("#driver_audit").animate({width:'=0px'},'fast'); 
+//       $("#driver_audit").css("display","block");
+//	   $("#driver_audit").animate({width:'+=150px'},5000);  
+   }
+   else if(fileName == 'file_badge'){
+        $("#driver_badge_loder").show();
+//   $("#driver_badge").animate({width:'=0px'},'fast'); 
+//     $("#driver_badge").css("display","block");  
+//    $("#driver_badge").animate({width:'+=150px'},5000); 
+   }
+   
+}
+   
+    var file = this.files[0];
+    var name = file.name;
+    var size = file.size;
+    var type = file.type;
+    //Your validation
+   // var zip = new JSZip();
+   // zip.add(fileName);
+	
+	//var fileNameN = zip.generate();
+	//location.href="data:application/zip;base64," + content;	
+     
+  
+ var site_url = jQuery.cookie('BaseUrl');	
+ //count = 1;	
+ //driver_resident
+////////////////////////////
+var formData = new FormData($('#frm_details')[0]);
+
+
+        
+        
+    
+        
+    $.ajax({
+        url: site_url+'/public/upload.php?formname='+fileName,  //Server script to process data
+        type: 'POST',
+        dataType: 'json',
+        xhr: function() {  // Custom XMLHttpRequest
+            var myXhr = $.ajaxSettings.xhr();
+            if(myXhr.upload){ // Check if upload property exists
+                //myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+            }
+            return myXhr;
+        },
+        //Ajax events
+       // beforeSend: beforeSendHandler,
+        success: completeHandler,
+        error: errorHandler,
+        // Form data
+        data: formData,
+        //Options to tell jQuery not to process data or worry about content-type.
+        cache: false,
+        contentType: false,
+        processData: false
+    });	
+	
+	
+});
+
+
+
+</script>
+
+
+<script>
+function beforeSendHandler(){
+//setInterval(function () {alert("Hello")}, 3000);
+}
+//		function progressHandlingFunction(e){
+//			
+//			if(e.lengthComputable){
+//			
+//			
+//			   
+//				$('#driver_resident').attr({value:e.loaded,max:e.total});
+//				$('#driver_office').attr({value:e.loaded,max:e.total});
+//				 $('#driver_panupload').attr({value:e.loaded,max:e.total});
+//				  $('#driver_vehicle').attr({value:e.loaded,max:e.total});
+//				   $('#driver_police').attr({value:e.loaded,max:e.total});
+//					$('#driver_audit').attr({value:e.loaded,max:e.total});
+//					$('#driver_badge').attr({value:e.loaded,max:e.total});
+//			}
+//		}
+
+function completeHandler(data){
+    
+    if(data.status == "success"){
+ 
+	var appendedForm = data.path.name.replace ( /[^\d.]/g, '' );
+	var avalue = $.isNumeric(appendedForm);
+	 if( avalue == true){
+			
+				var name = data.path.name.replace(/\d+/g, '');
+			switch(name){
+			case "file":    
+                            
+                                        $("#driver_resident_loderH"+appendedForm).hide();
+                                         $("#driver_residentH"+appendedForm).animate({width:'=0px'},'fast'); 
+					$("#driver_residentH"+appendedForm).css("display","block");
+					$("#driver_residentH"+appendedForm).animate({width:'+=150px'},5000); 
+					$("#fileHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_office": 
+                                        $("#driver_office_loderH"+appendedForm).hide();
+                                        $("#driver_officeH"+appendedForm).animate({width:'=0px'},'fast'); 
+					$("#driver_officeH"+appendedForm).css("display","block");
+					$("#driver_officeH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_officeHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_pan":
+                                        $("#driver_panupload_loderH"+appendedForm).hide();
+                                        $("#driver_panuploadH"+appendedForm).animate({width:'=0px'},'fast'); 
+					$("#driver_panuploadH"+appendedForm).css("display","block");
+					$("#driver_panuploadH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_panHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_vehicle":
+                                        $("#driver_vehicle_loderH"+appendedForm).hide();
+                                         $("#driver_vehicleH"+appendedForm).animate({width:'=0px'},'fast'); 
+					$("#driver_vehicleH"+appendedForm).css("display","block");
+					$("#driver_vehicleH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_vehicleHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_badge":
+                                         $("#driver_badge_loderH"+appendedForm).hide();
+                                        $("#driver_badgeH"+appendedForm).animate({width:'=0px'},'fast');
+					$("#driver_badgeH"+appendedForm).css("display","block");
+					$("#driver_badgeH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_badgeHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_police":
+                                        $("#driver_police_loderH"+appendedForm).hide();
+                                        $("#driver_policeH"+appendedForm).animate({width:'=0px'},'fast');
+					$("#driver_policeH"+appendedForm).css("display","block");
+					$("#driver_policeH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_policeHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_audit":
+                            $("#driver_audit_loderH"+appendedForm).hide();
+                                        $("#driver_auditH"+appendedForm).animate({width:'=0px'},'fast');
+					$("#driver_auditH"+appendedForm).css("display","block");
+					$("#driver_auditH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_auditHa"+appendedForm).val(data.path.url);
+				break;		
+		
+				}
+		
+		
+		//alert("yes");
+		
+		 }
+else{ 
+    
+ //alert("Uploaded file");
+switch(data.path.name){
+case "file":        
+    
+      $("#driver_resident_loder").hide();
+                 $("#driver_resident").animate({width:'=0px'},'fast'); 
+                $("#driver_resident").css("display","block");
+                 $("#driver_resident").animate({width:'+=150px'},5000); 
+		$("#driver_addsH").val(data.path.url);
+		break;
+case "file_office":
+                    $("#driver_office_loder").hide();
+                $("#driver_office").animate({width:'=0px'},'fast'); 
+             $("#driver_office").css("display","block");
+             $("#driver_office").animate({width:'+=150px'},5000);
+		$("#driver_oaddsH").val(data.path.url);
+		break;
+case "file_pan":
+                     $("#driver_panupload_loder").hide();
+                $("#driver_panupload").animate({width:'=0px'},'fast'); 
+                $("#driver_panupload").css("display","block");
+		$("#driver_panupload").animate({width:'+=150px'},5000);  
+		$("#driver_panH").val(data.path.url);
+		break;
+case "file_vehicle":
+                $("#driver_vehicle_loder").hide();
+                $("#driver_vehicle").animate({width:'=0px'},'fast'); 
+                   $("#driver_vehicle").css("display","block");
+                $("#driver_vehicle").animate({width:'+=150px'},5000); 
+		$("#file_vehicleH").val(data.path.url);
+		break;
+case "file_badge":
+                    $("#driver_badge_loder").hide();
+                 $("#driver_badge").animate({width:'=0px'},'fast'); 
+                    $("#driver_badge").css("display","block");  
+                   $("#driver_badge").animate({width:'+=150px'},5000); 
+		$("#file_badgeH").val(data.path.url);
+		break;
+case "file_police":
+                    $("#driver_police_loder").hide();
+               $("#driver_police").animate({width:'=0px'},'fast'); 
+             $("#driver_police").css("display","block");
+      
+              $("#driver_police").animate({width:'+=150px'},5000); 
+		$("#file_policeH").val(data.path.url);
+		break;
+case "file_audit":
+                    $("#driver_audit_loder").hide();
+                    $("#driver_audit").animate({width:'=0px'},'fast'); 
+                     $("#driver_audit").css("display","block");
+                       $("#driver_audit").animate({width:'+=150px'},5000);  
+		$("#file_auditH").val(data.path.url);
+		break;		
+		
+	}
+}				
+				   ///var go = $.isNumeric(y);
+    }
+    else{
+        //alert("not uploaded");
+    }
+
+}
+function errorHandler(error){
+	console.log(error);
+}
+
+
+
+
+
+</script>
+<script src="<?php echo $this->basePath(); ?>/public/js/crop-avatar.js"></script>
+
+
+
+
+
+
+
+
+
+
+

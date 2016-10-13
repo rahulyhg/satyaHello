@@ -1,0 +1,446 @@
+<?php $session=new Zend\Session\Container('user'); 
+ $token_session	=	$session->offsetGet('token');
+?>
+<?php if($token_session==""){ ?>
+ 	<script>
+	window.location='<?php echo $this->basePath();?>';
+ 	</script>
+ 	<?php 
+ }?>
+<?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath().'/';
+?> 
+		<!--footer-->
+     <div class="container-fluid">     
+ 	<div class="row">
+	 	<div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+			<h2>My Account</h2>
+		</div>
+	 </div>	
+	<div style="display:none;"> 
+	<div id="success-msg" style="font-weight:bold;font-size:15px;color:green;text-align:center;">Your Profile updated Successfully</div>
+      <div id="error-msg" style="font-weight:bold;font-size:13px;color:red;text-align:center;">Please Enter Email or Firstname</div>	
+     </div>
+     <div class="container marginbottom20">
+      	<div class="row">
+			<div class="col-lg-12">
+				<div class="col-sm-3 col-md-3 col-lg-2">					 
+					 <div class="list-group">
+            <a href="<?php echo $this->basepath(); ?>/login/driver" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Dashboard</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/drivereditprofile" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Edit Profile</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/changepassword" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Change Password</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/driverorderhistory" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Booking History</a>
+            <!--<a href="<?php echo $this->basepath(); ?>/login/driver/accountbalance" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Account Balance</a>
+			<!--<a href="<?php echo $this->basepath(); ?>/login/driver/markupmanagement" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Markup Management</a>-->
+			<a href="<?php echo $this->basepath(); ?>/login/driver/transaction" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Transaction</a>
+             <a href="<?php echo $this->basepath(); ?>/login/driver/creditrequest" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Credit Request</a>
+                <a href="<?php echo $this->basepath(); ?>/login/driver/bankdetail" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Bank Details</a>
+			<a href="<?php echo $this->basepath(); ?>/login/driver/vehicleupdate" class="list-group-item yellactive"><i class="fa fa-arrow-circle-right"></i> &nbsp;Vehicle Details</a>
+          </div>
+				</div>				
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            <div class="row" style="display:block;">
+                <div class="col-lg-12">
+                    <!--EDIT PROFILE START-->                    
+                    <div class="panel panel-default">
+                        <div   class="panel-heading tabheading text-center text-uppercase ">
+                           <b style="display:;">Vehicle Details</b>
+						   <b style="display:none;">Change Password</b>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">						
+						<!-- Dashboard Start-->	
+        <div class="col-sm-12 col-md-12" style="display:block;">
+            
+        
+                <div class="change_password left_panel col-sm-3">
+                    <div class="left_panel">
+					  <form action="" method="POST" name="driver_editProfile" id="driver_editProfile"> 
+						<label><b>Car Types</b></label><input type="text" class="input  form-control" name="driver_firstName" id="driver_firstName" readonly style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Name of Vehicle</b></label><input type="text" class="input form-control" name="driver_vehicleName" id="driver_vehicleName" readonly style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Ignition Type*</b></label><input type="text" readonly class="input form-control" name="driver_ignitionType" id="driver_ignitionType" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Permit Expiry Date</b></label><input type="text" readonly class="input form-control" name="email_driver" id="email_driver">
+                        <div class="clear"></div>
+                        <label><b>Model Year</b></label><input type="text" readonly class="input form-control" name="city_driver" id="city_driver" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Badge / License No.</b></label><input type="checkbox" disabled="disabled" class="checkbox" name="emailVerify" id="emailVerify">
+                        <div class="clear"></div>                        
+                        <div class="clear"></div>
+                        <label><b>License State</b></label> <input type="text" class="input form-control" readonly name="externalRef" id="externalRef">
+                       
+                        <div class="clear"></div>                        
+                        <label><b>Vehicle No.</b></label><input type="text" class="input form-control" readonly name="driverDefaullag" id="driverDefaullag" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                      						<div class="clear"></div>
+						<input type="hidden" name="id_tbluser" id="id_tbluser">
+						<input type="hidden" name="id_tbluserinfo" id="id_tbluserinfo">
+						<input type="hidden" name="id_tbldriver" id="id_tbldriver">
+						<!--<button type="button" class="btn btn-primary submitbtn" style="margin-left:27% !important;" onclick="driver_edit()" >Save</button>-->
+						</form>
+                    </div>	
+    </div>
+    
+    <div class="right_panel col-sm-3">
+         	<div id="">
+    <!-- Current avatar -->   
+    <div class="avatar-view userimg_byratio" style="width:140px; margin:auto;" title="" data-original-title="Profile Picture"><a href="#avatar-modal" data-toggle="modal" title="Update Profile Picture"><span class="avatar-view userimg_byratio" style="width:140px; margin:auto;"><a href="#avatar-modal" data-toggle="modal" title="Update Profile Picture"><img src="<?php echo $this->basePath();?>/public/image/vehicle.png" alt="Avatar" id="profile_pic_update" style="border:#666 1px solid; box-shadow:#666 2px;width:100%; height:150px; margin-bottom:7px;"/></a></span></a><br/>
+	  <a href="#avatar-modal" data-toggle="modal" title="Profile Picture"><strong style="color: rebeccapurple;margin-left:7px;">Change Vehicle Picture</strong></a>
+    </div> 
+    <!-- Cropping modal -->
+    <div id="crop-avatar">
+	<!-- Current avatar -->	 
+	<!-- Cropping modal -->
+	<div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" style="margin-top:225px;">
+		<div class="modal-content">
+		  <form class="avatar-form" id="change_profileImage" name="change_profileImage" method="POST" action="<?php echo $this->basePath().'/tunnel/menu/updateDriverVehicleImage';?>" enctype="multipart/form-data">
+			<div class="modal-header">
+			 <h1 class="closbtn" style="right: -22px;border: none !important;" data-dismiss="modal"><i class="fa fa-close"></i></h1>
+			  <h4 class="modal-title" id="avatar-modal-label">Vehicle Picture</h4>
+			</div>														
+			<div class="modal-body">
+			  <div class="avatar-body">
+				<!-- Upload image and data -->
+				<div class="avatar-upload">
+				  <input class="avatar-src" name="avatar_src" type="hidden">
+				  <input class="avatar-data" name="avatar_data" type="hidden">
+				  <label for="avatarInput">Local upload</label>														   
+				  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+				</div>
+				<!-- Crop and preview -->
+				<div class="row">
+				  <div class="col-md-9">
+					  <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+					<div class="avatar-wrapper"></div>
+				  </div>
+				  <div class="col-md-3">
+					<div class="avatar-preview preview-lg" style="position:relative"></div>
+					<div class="avatar-preview preview-md" style="position:relative"></div>
+					<div class="avatar-preview preview-sm" style="position:relative"></div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<div class="modal-footer">
+			  <button class="btn btn-primary avatar-save col-sm-2 pull-right" id="save_image" type="submit" style="margin-left:10px;" onclick="changeVehicleImage();">Save</button>
+			  <button class="btn btn-default col-sm-2 pull-right" type="button" data-dismiss="modal">Close</button>														  
+			</div>
+		  </form>
+		</div>
+	  </div>
+	</div><!-- /.modal -->
+	<!-- Loading state -->											   
+  </div><!-- /.modal -->
+    <!-- Loading state -->   
+  </div>             		
+		<!-- <h5><center><b>Management</b></center></h5>
+<center><div class="btn defaultbtnsearch ">Send SMS</div></center>
+<h5><center>Current Status</center></h5>
+<input type="text" id="driverStatus" name="dName" aria-controls="driver" class="form-control input-sm" disabled="">
+<h5><center>Signup status</center></h5>
+<center>
+    <input type="text" id="driver_length" name="dName" aria-controls="driver" class="form-control input-sm" disabled="">
+</center>-->
+        </div>
+	<div class="clear"></div>		
+	<div class="col-sm-4 col-sm-offset-2 paddinttop10"></div>
+						</div>
+								</div>
+							<!-- /.table-responsive End-->
+                        </div>
+							<!--EDIT PROFILE END-->
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+				</div>
+			</div>
+       	</div>
+	 </div>
+
+<script type="text/javascript">
+var base_url = '<?php echo $this->basePath();?>';
+function changeProfileImage(){	      	  
+	  $("#change_profileImage").on('submit',(function(e){
+		e.preventDefault();
+			$.ajax({			
+			type: "POST",
+			data:  new FormData(this),
+			contentType: false,
+			cache: false,
+			processData:false,
+			url: $("#change_profileImage").attr('action'),
+           dataType: "json",		 
+           success: function(data){
+                            if(data.status == 'true'){
+								alert(data.Message);
+								window.location.href = base_url+'/login/driver/drivereditprofile';																	
+                             }else{
+                                 alert(data.Message);
+								 window.location.href = base_url+'/login/driver/drivereditprofile';
+                             }
+                        },		
+                        error: function(error){
+                            console.log(error);	
+                        }	        
+		});
+	}));  
+ }
+ 
+		function changeVehicleImage(){	      	  
+	  $("#change_profileImage").on('submit',(function(e){
+		e.preventDefault();
+			$.ajax({			
+			type: "POST",
+			data:  new FormData(this),
+			contentType: false,
+			cache: false,
+			processData:false,
+			url: $("#change_profileImage").attr('action'),
+           dataType: "json",		 
+           success: function(data){
+                            if(data.status == 'true'){
+								alert(data.Message);
+								window.location.href = base_url+'/login/driver/vehicleupdate';																	
+                             }else{
+                                 alert(data.Message);
+								 window.location.href = base_url+'/login/driver/vehicleupdate';
+                             }
+                        },		
+                        error: function(error){
+                            console.log(error);	
+                        }	        
+		});
+	}));  
+ }
+ 
+        $(document).ready(function() {
+            //$('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true });
+            $.fn.dataTableExt.sErrMode = 'throw';
+            fetch_driver_id();
+        });
+        
+    function fetch_driver_id(){
+        var token = $.cookie('token');
+        $.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/menu/fetchDriverId',
+		cache: false,
+		dataType:"json",
+		data:{
+                    token:token
+		},
+                success: function(data){
+                      //alert(data.driverId);
+                      driverProfile(data.driverId); 
+                },
+                error:function (error){
+                      //alert(error);
+                      console.log(error);
+                }
+   });
+}
+
+function driverProfile(id){
+//var token = $.cookie('token'); 
+var token	=	$('#token').val();
+ var uid=id;
+  var site_url = jQuery.cookie('BaseUrl');      
+        
+         $.ajax({
+                    dataType:'json',
+                    url:site_url+'/tunnel/menu/profileDriver',
+                    type:'POST',
+                    data:{token:token},
+                    success:successProfile,
+                    error:errorProfile
+
+                });
+
+}
+
+var global_url='<?php echo $this->basePath();?>';
+
+function successProfile(data){
+  // alert("qwe");     
+   $("#profile_update").attr('id','profile_update_'+data.data.ID_tbluser);
+   $("#vehicle_update").attr('id','vehicle_update_'+data.data.ID_tbluser);
+    $("#driver_firstName").val(data.data.Cartype);
+    $("#driver_name").html(data.data.name);
+   //alert(ss);
+   $("#driver_vehicleName").val(data.data.vehicleName);
+   $("#driver_ignitionType").val(data.data.ignitionType);
+   $("#externalRef").val(data.data.licence_state);
+   $("#city_driver").val(data.data.CabModel);
+   $("#createdDate").text(data.data.createDate);
+   $("#email_driver").val(data.data.expiryDate);
+   $("#driver_adds").val(data.data.address);
+    $("#driver_addofc").val(data.data.ofcadds);
+   $("#driver_phone").val(data.data.phone);
+   $("#driver_username").val(data.data.userName);
+   $("#driverBirth").val(data.data.db);
+   $("#driverDefaullag").val(data.data.CabRegistrationNumber);
+   //$("#driverGender").val(data.data.gender);
+   $("#vehicleid").text(data.data.vehicleName);
+   $("#driver_account").text(data.data.account);
+   $("#driver_fleetNo").val(data.data.fleet);
+   $("#driver_amount").val(data.data.amount);
+   
+   $("#driver_panNos").val(data.data.panNo);
+   $("#driver_licence").val(data.data.licence);
+   $("#driver_vehicleNo").val(data.data.vehicle);
+   $("#driver_lstate").val(data.data.lstate);
+   $("#driver_modely").val(data.data.modelV);
+   $("#driver_zone").val(data.data.zone);
+   $("#driver_route").val(data.data.route);
+   $("#driver_pref").val(data.data.prflocation);
+   $("#driver_weekoff").val(data.data.weekoff);
+   $("#driveimei").val(data.data.iemi);
+   $("#drivergps").val(data.data.gps);
+   $("#id_tbluser").val(data.data.ID_tbluser);
+   $("#id_tbluserinfo").val(data.data.ID_tbluserinfo);
+   $("#id_tbldriver").val(data.data.ID_tbldriver);
+   if(data.data.prof_img != ''){
+       $("#profile_pic_update").attr("src",global_url+'/'+data.data.veh_img);
+   }else{
+       $("#profile_pic_update").attr("src",global_url+'/public/image/default_user.png');
+       //alert(empty);
+   }
+   
+   var pic = global_url+'/public/image/default_user.png';
+   //alert(global_url);
+   
+   if(data.data.veh_img != ''){
+       $("#vehicle_pic_update").attr("src",global_url+'/'+data.data.veh_img);
+   }else{
+       $("#vehicle_pic_update").attr("src",global_url+'/public/image/vehicle.png');
+       //alert(empty);
+   }
+   
+   //$("#vehicle_pic").attr("src",global_url+'/'+data.data.veh_img);
+   $("#driver_name_head").html(data.data.name);
+   $(".samount").val(data.data.amount);
+   $("#emailVerify").val(data.data.verify);
+   
+   
+   
+   var emailv =$("#emailVerify").val();
+   //alert(emailv);
+   if(emailv == "1"){
+        $('#emailVerify').prop('checked',true);
+        $("#phoneverify").prop('checked',true);
+   }
+ var write = data.data.write;
+ var write_lang = write.split(',');
+ $("#write1").val(write_lang[0]);
+ $("#write2").val(write_lang[1]);
+ $("#write3").val(write_lang[2]);
+ $("#write4").val(write_lang[3]);
+ 
+ var speak = data.data.speak;
+ var speak_lang = speak.split(',');
+ $("#speak1").val(speak_lang[0]);
+ $("#speak2").val(speak_lang[1]);
+ $("#speak3").val(speak_lang[2]);
+ $("#speak4").val(speak_lang[3]);
+ 
+ 
+ var timing = data.data.timing;
+ var timing_driver = timing.split(",");
+ $("#time1").val(timing_driver[0]);
+ $("#time2").val(timing_driver[1]);
+ $("#time3").val(timing_driver[2]);
+ 
+ var duty_pref = data.data.dutyprf;
+ var pref_duty = duty_pref.split(',');
+ for(i=0;i<=pref_duty.length;i++){
+   $(".driver"+pref_duty[i]).prop('checked',true);  
+ }
+ 
+ 
+ var cash = data.data.cash;
+ var driver_cash = cash.split(",");
+ for(i=0;i<=driver_cash.length;i++){
+   $(".driverCash"+driver_cash[i]).prop('checked',true);  
+ } 
+     var driver_status = data.data.active;
+     if(driver_status == 1){
+          $('#isActive').prop('checked', true);
+          $('#driver_length').val('Active');
+     }
+     else if(driver_status == 2){
+         $('#isHold').prop('checked', true);
+         $('#driver_length').val('On Hold'); 
+     }
+     else if(driver_status == 3){
+          $('#isBlack').prop('checked', true);
+          $('#driver_length').val('Black Listed'); 
+     }
+     else if(driver_status == 4){
+          $('#isInactive').prop('checked', true);
+          $('#driver_length').val('Inactive'); 
+     }
+     else{
+          $('#Unapproved').prop('checked', true);
+          $('#driver_length').val('Unapproved'); 
+     }
+     
+     
+     var data_specs = data.data.eyetest;
+	 if(data_specs == 1){
+		 $('#specs_active').prop('checked', true); 
+	 }else{
+		$('#specs_inactive').prop('checked', true); 
+	 }
+     
+ 
+    if(data.data.status_driver == "1"){
+       var txt='Online';
+      $("#driverStatus").val(txt);
+   }
+   else{
+       var txt2 ="Offline";
+       $("#driverStatus").val(txt2);
+   }
+   
+   $("#driver_signup_comts").text(data.data.signup_comts);
+   $("#driver_internal_comts").text(data.data.internal_comts);
+   
+   if(data.data.vendorName != null){
+    $("#vName").text(data.data.vendorName); 
+   }
+   else if(data.data.vendorName == null){
+     var name = "No Boss";
+     $("#vName").text(name);    
+   }
+   
+   
+   if(data.data.photo == "1"){
+      $(".photo").prop('checked',true); 
+   }
+   
+   
+        
+}
+function errorProfile(error){
+     
+    console.log(error);
+    
+}     
+</script>
+  <style>
+  .change_password .input{width:55%; height:30px; background:#f5f5f5; border-radius:4px; border:#d6d3d3 1px solid; float:left; margin-bottom:12px; padding:0px 0px 0px 10px; font-size:12px !important;}
+  
+  label {
+    color: #5c5c5c;
+    font-family: "Conv_GothamRounded-Light",sans-serif;
+    font-size: 13px;
+    font-weight: normal !important;
+    padding: 5px 0 0;
+}
+  </style>  

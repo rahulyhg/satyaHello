@@ -1,0 +1,269 @@
+<div class="signinbg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 pull-left">
+						<strong style="display:block; width:130px; color:white; font-size:14px;">Verification</strong>
+                        <h3 id='done_head' style="display:none;">Done</h3>
+                     
+
+                      </div>
+					<div class="col-lg-5 col-lg-offset-6" id="crum" style="">
+					  <ul class=" badcarmlist">
+                     	<li class="active"><a class="active" href="">Email</a></li>
+                        <li class='active'><a class="active" href="">Segment</a></li>
+                      	 <li class='active'><a class="active">Verification</a></li>
+                   
+                       	 <li style="background:none;" class='done_crum'><a class='done_crum' href="
+                         ">Done</a></li>
+                     </ul>
+					</div>
+ 				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!--footer-->
+		<div class="container">
+<!--<div class="jumbotron">
+    <h1><?php //echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
+    <p><?php //echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
+    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php //echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+       <div>
+			<table>
+			<tr>
+			<h2>User SignUp</h2>
+			</tr>
+			<tr>
+			<td>User Name: </td>
+			<td><input type="text" id="username" name= "username"></td>
+			</tr>
+			<tr>
+			<td>password: </td>
+			<td><input type="text" id="password" name= "password"></td>
+			</tr>
+			<tr>
+			
+			<td><input type="button" value="Save" onclick="testforsignup();"></td>
+			</tr>
+			</table>
+	   </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php// echo $this->translate('Discover Modules') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php //echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
+                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank"><?php //echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php// echo $this->translate('Help &amp; Support') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php //echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
+                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank"><?php// echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function testforsignup(){
+				
+				var username = $("#username").val();
+				var password = $("#password").val();
+				
+
+				var url = '../tunnel/menu/hie';
+						$.ajax({
+							type: 'POST',
+							//contentType: 'application/json',
+							url: url,
+							dataType: "json",
+							data : {user:username,pass:password},
+							success: sucessForUpdate,
+							error: errorForUpdate
+						});
+
+							function sucessForUpdate(data){
+							alert("success");	
+							
+							
+							
+							}
+							function errorForUpdate(data){
+							
+							console.log(data);
+							alert("no");	
+							}
+				
+}
+
+</script>-->
+<?php
+session_start();
+?>
+
+
+		
+		
+        <!--Login START-->
+	
+        <!--Login END--> 
+        
+        
+         <!--EMAIL ID START-->
+	
+        <!--EMAIL ID END--> 
+        
+      <!--Segment START-->  
+
+          <!--Segment END--> 
+         
+           <!--verification START-->
+		<div class="container" id="verification" style="display:none;">
+				<div class="row text-center">
+					<div class="col-md-12">
+						<div class="exit_iconbox">
+							<a href="#">
+                               <!-- <div class="circle-tile-heading red">
+                                     <i class="fa fa-key fa-fw fa-5x"></i>
+                                </div>-->
+								<div class="circle-tile-heading red">
+                                     <i class="fa fa-sign-in fa-fw fa-1_5x sicon" style="cursor:pointer;"></i>
+                                </div>
+                            </a>
+                            
+
+						</div>
+					</div><div class="clearfix"></div>
+				</div>
+				
+			<div class="row text-center">
+           <!-- <h3 class="darkcolor spance20">Enter verification code sent on your email and phone</h3>-->
+			<strong style="font-size:14px;color:grey;">Enter verification code sent on your email and phone</strong><br/><br/>
+				<div class="leftbox col-md-6 col-lg-6 col-md-offset-6 col-lg-offset-1">
+ 					<div class="col-lg-10">
+  							<div class="spance">
+								<input style="width: 250px;margin: 0 0 0 368px; font-size:14px;" type="text" id="varifyCode" 
+								name="varifyCode" onblur="invalid()" placeholder="Verification Code" class="form-control form-horizontal border "/>
+								<p style='display:none;color:red' class="invalid">Please Enter Verification Code</p>
+							</div>
+ 					</div>
+				</div>
+			</div>
+		</div>
+        <!--verification END--> 
+        
+         <!--Done START-->
+		<div class="container" id="conform" style="display:none;">
+				<div class="row text-center">
+					<div class="col-md-12">
+						<div class="exit_iconbox">
+							<a href="#">
+                                <div class="circle-tile-heading red">
+                                     <i class="fa fa-check fa-fw fa-7x"></i>
+                                </div>
+                            </a>
+                            
+
+						</div>
+					</div><div class="clearfix"></div>
+				</div>
+				
+			<div class="row text-center">
+  				<div class="leftbox col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                 <h3 class="darkcolor spance">You are successfully registered.</h3>
+				<!--<div class="alert alert-success">You are successfully registered.</div>-->
+ 					<div class="col-lg-12">
+  				</div>
+				</div>
+			</div>
+		</div>
+        </div>
+        <!--Done END--> 
+        
+         
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p>An Confirmation Email has been sent on your account</p>
+                <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                
+            </div>
+        </div>
+    </div> 
+</div>
+         
+         
+         
+         
+         
+        
+			<div class="login_btnbg" id="login_done" style="background-color: white;">
+					<div class="container">
+							<div class="row text-center">
+							<div class="col-lg-5 col-lg-offset-3">
+							<a href="#" class=" btn btn-lg loginbutton" style="display:none;" id="loginBtn"><label class="manageloginText">Login</label></a>
+                            <a href="#" class="btn btn-sm loginbutton" style="display:none;width:110px;margin-left:42px;" id="verifyBtn"><label class="manageloginText" style="color: #FFF;font-size: 12px;padding: 0px 0px;">Next</label></a>
+                           <a href="#" class="btn btn-sm resendbutton" style="width:110px;margin-left:8px;" id="resendBtn"><label class="manageloginText" style="color: #FFF;font-size: 12px;padding: 0px 0px;">Resend Code</label></a>
+<!--                        <a href="#" class=" btn btn-lg donebtn" style="display:none;" onclick="done();" id="doneButton">done</a>-->
+<form action="<?=$this->basePath()?>" method="post">
+    <input type="text" id="doneverify" style="visibility: hidden;position: absolute">
+<!--<input type="submit" class=" btn btn-lg donebtn" style="display:none;"  id="doneButton">-->
+<a href="<?php echo $this->basePath()?>/login" id="doneButton" style="display:none;font-size:14px;font-weight:bold;color:cornflowerblue;"> Click here to login</a>
+</form>
+							<input type="hidden" id="user_mobile" value="">
+							</div>
+							</div>
+					</div>
+				</div>
+				
+				
+				
+				<!--<form id="uploadForm" action="" method="post" enctype="multipart/form-data">
+				<label>Upload Image File:</label><br/>
+				<input name="image" type="file" class="inputFile" />
+				<input type="submit" value="Submit" class="btnSubmit" onclick="uploImage();"/>
+				</form>-->
+	
+<script>   
+</script>
+
+<script>
+function done(){
+window.location = "<?php echo $this->basePath(); ?>";
+}
+
+$('#doneButton').keypress(function (e) {
+ var key = e.which;
+ if(key == 13)  // the enter key code
+  {
+  done();
+  }
+});
+
+
+$(document).ready(function(){
+$('#user_mobile').val(jQuery.cookie('MobileNo'));
+});
+</script>   

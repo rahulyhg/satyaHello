@@ -1,0 +1,352 @@
+
+	 
+
+     <div class="container-fluid">
+     
+ 	<div class="row">
+	 	<div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+			<h2>My Account</h2>
+		</div>
+	 </div>
+	 
+			   																												      
+     <div class="container marginbottom20">
+      	<div class="row">
+			<div class="col-lg-12">
+				<div class="col-sm-3 col-md-3 col-lg-2">
+					 
+					 <div class="list-group">
+                                             <a href="<?=$this->basepath().'/login/user';?>" class="list-group-item userItem yellactive"><i class="fa fa-arrow-circle-right"></i> &nbsp;Dashboard</a>
+                                             <a href="<?= $this->basepath().'/login/user/editprofile'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Edit Profile</a>
+                                             <a href="<?= $this->basepath().'/login/user/changepassword'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Change Password</a>
+                                             <a href="<?= $this->basepath().'/login/user/userorderhistory'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Order History</a>
+                                             <a href="<?= $this->basepath().'/login/user/credithistory'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Account Balance</a>
+                                            <!-- <a href="<?= $this->basepath().'/login/user/Creditrequest'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Credit Request</a>
+                                             <a href="<?= $this->basepath().'/login/user/bankaccount'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Bank Account</a>-->
+          </div>
+				</div>
+				
+				<div class="col-sm-9 col-md-9 col-lg-10">
+					<div class="row" style="display:block;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading tabheading text-center text-uppercase ">
+                           <b style="">Dashboard</b>
+						   
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+						
+						<!-- Dashboard Start-->	
+                                    <div class="col-sm-12 col-md-12" style="display:block;">
+                                         <div style="height:70px;">
+											 <center>
+											  <h2 id="welcome"></h2>
+											 </center>
+											 <div class="image_box" style="margin-top:-33px;">
+											 <div id="crop-avatar">
+												<!-- Current avatar -->											   
+												<div class="avatar-view userimg_byratio" title="Profile Picture">
+												<a href="#avatar-modal" data-toggle="modal" title="Update Profile Picture">
+												<img id="d_image" src="" style="float:right;margin-right: 11px;" width="80" height="70" /></a>
+												  <!--<img src="public/image/default_user.png" alt="Avatar" class="resimg">-->
+												</div>
+											 <!--<a href="#avatar-modal" data-toggle="modal" title="Profile Picture"><strong style="color: rebeccapurple;margin-left:128px;">Change Profile Picture</strong></a>-->
+												<!-- Cropping modal -->
+												<div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+												  <div class="modal-dialog modal-lg" style="margin-top:225px;">
+													<div class="modal-content">
+													  <form class="avatar-form" id="change_profileImage" name="change_profileImage" method="POST" action="<?php echo $this->basePath().'/tunnel/menu/updateUserProfileImage';?>" enctype="multipart/form-data">
+														<div class="modal-header">
+														 <h1 class="closbtn" style="right: -22px;border: none !important;" data-dismiss="modal"><i class="fa fa-close"></i></h1>
+														  <h4 class="modal-title" id="avatar-modal-label">Profile Picture</h4>
+														</div>														
+														<div class="modal-body">
+														  <div class="avatar-body">
+															<!-- Upload image and data -->
+															<div class="avatar-upload">
+															  <input class="avatar-src" name="avatar_src" type="hidden">
+															  <input class="avatar-data" name="avatar_data" type="hidden">
+															  <label for="avatarInput">Local upload</label>														   
+															  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+															</div>
+															<!-- Crop and preview -->
+															<div class="row">
+															  <div class="col-md-9">
+																  <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+																<div class="avatar-wrapper"></div>
+															  </div>
+															  <div class="col-md-3">
+																<div class="avatar-preview preview-lg" style="position:relative"></div>
+																<div class="avatar-preview preview-md" style="position:relative"></div>
+																<div class="avatar-preview preview-sm" style="position:relative"></div>
+															  </div>
+															</div>
+														  </div>
+														</div>
+														<div class="modal-footer">
+														  <button class="btn btn-primary avatar-save col-sm-2 pull-right" id="save_image" type="submit" style="margin-left:10px;" onclick="changeProfileImage();">Save</button>
+														  <button class="btn btn-default col-sm-2 pull-right" type="button" data-dismiss="modal">Close</button>														  
+														</div>
+													  </form>
+													</div>
+												  </div>
+												</div><!-- /.modal -->
+												<!-- Loading state -->											   
+											  </div>
+											  <!--<img id="d_image" src="" style="float:right;margin-right: 11px;" width="80" height="70" /> -->
+											  <!--<img id="d_veh_image" src="" style="float:right; margin-right: 5px;" width="129" height="120" />-->
+											  </div>
+										  </div>
+                                    <div class="col-sm-4 paddinttop10">
+										 
+			                        <div class="portlet portlet-de" style="border:1px solid #d5d3d4;">
+			                         <div class="panel-heading text-center text-uppercase" style="background:#f5f5f5;">
+			                           <b style="">Segment</b>
+			                         </div>
+			                            <div class="portlet-body">
+			                                <div class="table-responsive ">
+			                                   <center><label id="segment"></label></center>
+			                                </div>
+			                            </div>
+			                        </div>
+                     
+					</div>
+                                    <div class="col-sm-4 paddinttop10">
+                                             <div class="portlet portlet-de" style="border:1px solid #d5d3d4;">
+			                         <div class="panel-heading text-center text-uppercase" style="background:#f5f5f5;">
+			                           <b style="">Discount</b>
+			                         </div>
+			                            <div class="portlet-body">
+			                                <div class="table-responsive ">
+			                                   <center><label>%</label></center>
+			                                </div>
+											
+			                            </div>
+			                        </div>
+                                            </div>
+                                            <div class="col-sm-4 paddinttop10">
+                                                     <div class="portlet portlet-de" style="border:1px solid #d5d3d4;">
+			                         <div class="panel-heading text-center text-uppercase" style="background:#f5f5f5;">
+			                           <b style="">Credit Balance</b>
+			                         </div>
+			                            <div class="portlet-body">
+			                                <div class="table-responsive ">
+			                                   <center><i class="fa fa-inr"></i>&nbsp;<label id="balance"></label></center>
+			                                </div>
+											
+			                            </div>
+			                        </div>
+					</div>
+									
+					
+						
+					<div class="col-sm-12 paddinttop10">
+						<div class="portlet portlet-de" style="border:1px solid #d5d3d4;">
+			                         <div class="panel-heading text-uppercase" style="background:#f5f5f5;">
+			                           <b style="">Personal Details</b>
+			                         </div>
+			                            <div class="portlet-body">
+			                                <div class="table-responsive " style="overflow-x: auto;">
+			                                   <table class="table borderless table-responsive" style="margin:0 auto;width: 100% !important;">
+												<tr>
+													<td><b>Name</b></td><td id="name"></td>
+													<td><b>Email Id</b></td><td id="email"></td>
+													<td><b>Mobile</b></td><td id="mobNo"></td>
+												</tr>
+												<tr>
+													<td><b>Address</b></td><td id="address"></td>
+													<td><b>Residential Address</b></td><td id="city"></td>
+													<td><b>Company</b></td><td id="company"></td>
+												</tr>
+											</table>
+			                                </div>
+			                            </div>
+			                        </div>
+					</div>
+								
+						
+					
+					
+						
+						<div class="col-sm-12 paddinttop10">
+                        	<hr style="width:100%;"/>
+							<div class="portlet portlet-de" style="border:1px solid #d5d3d4;width: ;margin: 0px auto;">
+			                         <div class="panel-heading text-uppercase" style="background: #e9e5e4;">
+			                           <b style="">Recent Booking</b>
+			                         </div>
+			                            <div class=" ">
+			                                <div class="table-responsive ">
+                                        <table class="table" id="user" style=" margin: 0px auto; width: 100% !important;">
+                                            <thead style="background:#f5f5f5">
+                                                   <tr>
+                                                       <th style="width:200px !important;">Id</th>
+                                                        <th style="width:200px !important;">Pick Up Time</th>
+                                                        <th>Vehicle</th>
+                                                        <th style="width:150px !important;">Booking Type</th>
+                                                        <th>Partner</th>
+                                                        <th>Client</th>
+                                                        <th style="width:287px !important;">Departure</th>
+                                                        <th style="width:130px !important;">Drop Area</th>
+                                                        <th style="width:130px !important;">Status</th>
+                                                   </tr>
+                                            </thead>
+                                        </table>
+			                                </div>
+			                            </div>
+						</div>
+									
+									
+								</div>
+							
+							
+							<!-- /.table-responsive End-->
+                         
+                        </div>
+        
+                 
+                 
+							<!-- Dashboard Start-->	
+
+						
+				
+							
+							
+
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+				</div>
+			</div>
+       	</div>
+	 </div>
+
+
+</div>
+</div>
+     	 
+
+	 
+          
+        
+	
+<script>
+var base_url = '<?php echo $this->basePath();?>';
+
+function loginhome(){	
+//window.open('http://50.62.22.158:8085/hello42test/public/login',"_self");
+window.open(base_url+'/login',"_self");
+}
+
+
+function signuphome(){
+	
+	window.open(base_url+'/login',"_self");
+	
+}
+
+
+</script>	
+	 
+
+<script type="text/javascript">
+        $(document).ready(function() {
+            //$('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true });
+        var token = $.cookie('token');
+	var url = base_url+'/tunnel/menu/fetchUserId?token='+token;	
+	$.ajax({
+        type: 'POST',
+        url: url,
+        dataType: "json",		 
+        success: function(data){
+                            if(data.status == 'true'){
+                                printData(data);
+                             }else{
+                                 //alert("error");
+                             }
+                        },		
+                        error: function(error){
+                            console.log(error);	
+                        }
+		});
+                
+          //==================get orders======================
+           
+        table=$('#user').dataTable({
+        "ajax": '<?php echo $this->basePath();?>/tunnel/menu/userOrderHistory?token='+token,
+        "deferRender": true
+        });  
+        $("user_wrapper").attr("style","border:1px solid #d2d2d2;");
+        $("#user_wrapper").addClass("clearfix");
+        //$("#driver_wrapper").addClass("font12px");
+        $("#user_wrapper + div").removeClass("row");
+        $("#user_info").parent().parent().removeClass("row");
+        $("#user_wrapper div:first").attr("class","tbsearchrow clearfix");
+        $('#user_filter label').attr("style","display:none;");
+        $(".paginate_button").attr("style","z-index:999 !important;");
+        $.fn.dataTableExt.sErrMode = 'throw';
+	});	
+                
+    function printData(data){		
+        document.getElementById("name").innerHTML = data.fname +' '+ data.lname;
+        document.getElementById("welcome").innerHTML = "Welcome "+data.fname + data.lname+"!";
+        if(data.mobileNo !=""){
+        document.getElementById("mobNo").innerHTML = data.mobileNo;
+        }else{
+            document.getElementById("mobNo").innerHTML = data.contact;
+        }
+        document.getElementById("company").innerHTML = data.company;
+        document.getElementById("email").innerHTML = data.email;
+        document.getElementById("address").innerHTML = data.address1;
+        if(data.user_type==1){
+            document.getElementById("segment").innerHTML = "User";
+        }
+		if(data.currentbalance==0){
+			document.getElementById("balance").innerHTML ="000.0";
+		}else{
+			document.getElementById("balance").innerHTML = data.currentbalance;
+		}        
+        document.getElementById("city").innerHTML = data.address2;
+		
+		if(data.prof_img != ''){
+				//alert(data.prof_img);
+           $("#d_image").attr("src",base_url+'/'+data.prof_img);
+	   }else{		  
+		   $("#d_image").attr("src",base_url+'/public/image/default_user.png');
+	   }
+        
+    }     
+	 function changeProfileImage(){	      	  
+	  $("#change_profileImage").on('submit',(function(e){
+		e.preventDefault();
+			$.ajax({			
+			type: "POST",
+			data:  new FormData(this),
+			contentType: false,
+			cache: false,
+			processData:false,
+			url: $("#change_profileImage").attr('action'),
+           dataType: "json",		 
+           success: function(data){
+                            if(data.status == 'true'){
+								alert(data.Message);
+								window.location.href = base_url+'/login/user';																	
+                             }else{
+                                 alert(data.Message);
+								 window.location.href = base_url+'/login/user';
+                             }
+                        },		
+                        error: function(error){
+                            console.log(error);	
+                        }	        
+		});
+	}));  
+ } 
+                
+                
+  
+</script>
+    

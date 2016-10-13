@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+@import "jquery-ui.css";
+@import url("fonts.css");
+
+@import url("animate.min.css");
+@import url("carousel.css");
+@import url("jsCarousel.css");
+@import url("updatedstyle.css");
+
+@import "bootstrap.min.css";
+@import url("bootstrap-theme.min.css");
+@import url("responsive.css");
+@import "bootstrap.min1.css";
+@import url("custom.css");
+/*@import url("css/font-awesome-4.2.0/css/font-awesome.css");
+@import url("css/font-awesome-4.2.0/css/font-awesome.min.css");*/
+
+@import url("style.css");
+@import url("main.css");
+

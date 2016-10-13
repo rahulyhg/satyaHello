@@ -1,0 +1,2980 @@
+<link rel="stylesheet" href="public/css/jquery-ui.css">
+
+<link rel="stylesheet" href="public/css/cropper.min.css">
+<link rel="stylesheet" href="public/css/crop-avatar.css">
+  
+     <style>
+    .multiselect {
+        width: ;
+    }
+    .selectBox {
+        position: relative;
+    }
+    .selectBox select {
+        width: 100%;
+        font-weight: ;
+    }
+    .overSelect {
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+    }
+    #checkboxes, #checkboxes1 {
+        display: none;
+        border: 1px #dadada solid;
+		background:#fff; height:104px; display:block; overflow:scroll;
+		padding:0 5px;
+		margin:29px 0;
+		
+    }
+    #checkboxes, #checkboxes1 label {
+        display: block;
+		font-family:"Conv_GothamRounded-Light",sans-serif !important;
+		font-size:12px !important;
+		line-height:25px !important;
+		height:25px !important;
+		padding-top:0 !important;
+		margin:0 0 !important;
+		color:#333;
+    }
+    #checkboxes, #checkboxes1 label:hover {
+        background-color: #1e90ff;
+    }
+	
+	
+	#checkboxes {
+        display: none;
+        border: 1px #dadada solid;
+		background:#fff; height:104px !important; display:block; overflow:scroll;
+		padding:0 5px;
+		margin:29px 0;
+		
+    }
+    #checkboxes label {
+        display: block;
+		font-family:"Conv_GothamRounded-Light",sans-serif !important;
+		font-size:12px !important;
+		line-height:25px !important;
+		height:25px !important;
+		padding-top:0 !important;
+		margin:0 0 !important;
+		color:#333;
+    }
+    #checkboxes label:hover {
+        background-color: #1e90ff;
+    }
+	
+
+	
+	
+	
+	label {
+    color: #333;
+    font-family: "Conv_GothamRounded-Light",sans-serif;
+    font-size: 12px !important;
+    font-weight: normal !important;
+    padding: 5px 0 0;
+}
+	.col-sm-2new {
+		width:18.9% !important;
+   
+}
+
+</style>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>An Confirmation Email has been sent on your account</p>
+                <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default closeButton" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+ 
+</div> 
+<?php
+session_start();
+$_SESSION['id']=uniqid();
+?>
+ 
+    <script>
+// This example displays an address form, using the autocomplete feature
+// of the Google Places API to help users fill in the information.
+    var  z=1;
+var placeSearch, autocomplete;
+var componentForm = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
+
+function initialize(id) {
+  // Create the autocomplete object, restricting the search
+  // to geographical location types.
+  autocomplete = new google.maps.places.Autocomplete(
+      /** @type {HTMLInputElement} */(document.getElementById(id)),
+      { types: ['geocode'] });
+  // When the user selects an address from the dropdown,
+  // populate the address fields in the form.
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+   // fillInAddress();
+  });
+}
+
+// [START region_fillform]
+
+// [END region_fillform]
+
+// [START region_geolocation]
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = new google.maps.LatLng(
+          position.coords.latitude, position.coords.longitude);
+      autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
+          geolocation));
+    });
+  }
+}
+// [END region_geolocation]
+$(document).ready(function(){
+    
+    initialize();
+    //$('#autocomplete').attr('placeholder','');
+    //$('#autocomplete1').attr('placeholder','');
+    //$('.autocomplete').attr('placeholder','');
+    
+});
+
+
+var image_no=1;
+var form_no=1;
+    </script>
+
+<style>
+  
+label.col-lg-offsets-5 {
+margin-left: 38.66666667%;
+color:red;
+}
+input.col-lg-offsets-5{
+    border:1px solid red;
+}
+textarea.col-lg-offsets-5{
+    border:1px solid red;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+</style>
+<!--//////////////////
+<form id="imageform" method="post" enctype="multipart/form-data" action="../hello42/tunnel/Admin/imgs">
+                            <input type="file" name="photoimg" id="photoimg" />
+                            </form>
+                <div id="preview"></div>
+                ///////////////////////////-->
+<div class="signinbgnew">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 pull-left">
+					<?php 
+                                      if($_COOKIE['UsersRole']==1){ ?>
+                                      <h3 id='user_head' style="display:block">User Registration Form</h3>
+									 
+                                        <?php
+                                        
+                                      } if($_COOKIE['UsersRole']==2){
+                                          ?>
+                                      <!--<h3 id='corp_head' style="display:block">Corporate User Registration Form</h3>-->
+									  <strong id='corp_head' style="display:block; width:240px; color:white; font-size:14px;">Corporate Registration Form</strong>
+                                        <?php }else {
+                                            ?>	
+                                     <!--<h3 id='vendor_head' style="display:block;">Driver Registration Form</h3>-->
+									  <strong id='vendor_head' style="display:block; width:240px; color:white; font-size:14px;">Driver Registration Form</strong>
+                                        <?php 
+                                        
+                                        
+                                      } ?>
+                      </div>
+					
+					
+					<div class="row">
+					<div class="col-lg-6 pull-left">
+						<!--<strong style="display:block; width:200px; color:white; font-size:14px;">Registration Form</strong>-->
+                        <h3 style="display:none;">Login</h3>
+                        <h3 style="display:none; ">Segment</h3>
+
+                      </div>
+					<div style="line-height:0px !important;" id="crum" class="col-lg-5 col-mg-6 pull-right">
+					  <ul style="margin-top:-12px;" class=" badcarmlist">
+                     	<li class="active"><a href="#" class="active">Email</a></li>
+                        <li class="segment_crum active"><a href="#" class="segment_crum active">Segment</a></li>
+                      	 <li><a href="#">Verification</a></li>
+                   
+                       	 <li style="background:none;"><a href="#">Done</a></li>
+                     </ul>
+					</div>
+ 				</div>
+					
+					
+					
+ 				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!--footer-->
+		<div class="container">
+<?php error_reporting(0);
+if(($_COOKIE['UsersRole']!=1) and ($_COOKIE['UsersRole']!=2))
+{
+?>
+
+<!--users-->
+<div id="userRoleDriver" style="margin-bottom:70px; ">
+ 
+    
+         <div class=" col-sm-4 col-md-4 col-lg-4 clearfix userprofileimg">
+         	<div id="crop-avatar">
+
+    <!-- Current avatar -->
+   
+    <div class="avatar-view userimg_byratio" title="Upload Profile Picture">
+      <img src="public/image/default_user.png" alt="Avatar" class="resimg">
+    </div>
+	
+	 <div class="avatar-view userimg_byratio" style="border: none; box-shadow: 0 0 0 0; height:35px; font-weight:bold;">Upload Profile Pic</div>
+<!-- <div style="width:95%; margin-top:40px; margin-left:95px;"><input type="file" name="file"></div>-->
+	
+	
+	
+ <!--<a href="#avatar-modal" data-toggle="modal" title="Profile Picture"><strong style="color: rebeccapurple;margin-left:128px;">Upload Profile Picture</strong></a>-->
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form class="avatar-form" id="0" method="post" action="public/crop-avatar.php" enctype="multipart/form-data">
+            <div class="modal-header">
+             <h1 class="closbtn" style="right: ;border: none !important;" data-dismiss="modal"><i class="fa fa-close"></i></h1>
+              <h4 class="modal-title" id="avatar-modal-label">Profile Picture</h4>
+            </div>
+			
+            <div class="modal-body">
+              <div class="avatar-body">
+
+                <!-- Upload image and data -->
+                <div class="avatar-upload">
+                  <input class="avatar-src" name="avatar_src" type="hidden">
+                  <input class="avatar-data" name="avatar_data" type="hidden">
+                  <label for="avatarInput"></label>
+               
+                  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                </div>
+
+                <!-- Crop and preview -->
+                <div class="row">
+                  <div class="col-md-9">
+                      <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+                    <div class="avatar-wrapper"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="avatar-preview preview-lg" style="position:relative"></div>
+                    <div class="avatar-preview preview-md" style="position:relative"></div>
+                    <div class="avatar-preview preview-sm" style="position:relative"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary avatar-save col-sm-2 pull-right" type="submit" style="margin-left:10px;">Save</button>
+			  <button class="btn btn-default col-sm-2 pull-right" type="button" data-dismiss="modal">Close</button>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- /.modal -->
+
+    <!-- Loading state -->
+   
+  </div>
+             <div id="crop-vehicle" style="margin-top:60px;" >
+
+    <!-- Current avatar -->
+   
+    <div class="avatar-view userimg_byratio" title="Upload Vehicle Picture" >
+        <img src="public/image/vehicle.png" alt="Avatar" class="resimg">
+    </div>
+   
+	 <div class="avatar-view userimg_byratio" style="border: none; box-shadow: 0 0 0 0; height:35px; font-weight:bold; width:180px;margin-right:83px;">Upload Vehicle Pic</div>
+<!--<div style="width:95%; margin-top:40px; margin-left:95px;"><input type="file" name="file"></div>-->
+		
+	
+	
+
+
+		
+		
+	
+	
+ <!--<a href="#avatar-modal" data-toggle="modal" title="Vehicle Picture"><strong style="color: rebeccapurple;margin-left:128px;">Upload Vehicle Image</strong></a>-->
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form class="avatar-form" id="0v" method="post" action="public/crop-avatar.php" enctype="multipart/form-data">
+            <div class="modal-header">
+            <h1 class="closbtn" style="right:;border: none !important;" data-dismiss="modal"><i class="fa fa-close"></i></h1>
+              <h4 class="modal-title" id="avatar-modal-label">Vehicle Picture</h4>
+            </div>
+            <div class="modal-body">
+              <div class="avatar-body">
+
+                <!-- Upload image and data -->
+                <div class="avatar-upload">
+                  <input class="avatar-src" name="avatar_src" type="hidden">
+                  <input class="avatar-data" name="avatar_data" type="hidden">
+                  <label for="avatarInput"></label>
+                  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                </div>
+
+                <!-- Crop and preview -->
+                <div class="row">
+                  <div class="col-md-9">
+                       <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+                    <div class="avatar-wrapper"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="avatar-preview preview-lg" style="position:relative;"></div>
+                    <div class="avatar-preview preview-md" style="position:relative;"></div>
+                    <div class="avatar-preview preview-sm" style="position:relative;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary avatar-save col-sm-2 pull-right" type="submit" style="margin-left:10px;">Save</button>
+			  <button class="btn btn-default col-sm-2 pull-right" type="button" data-dismiss="modal">Close</button>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- /.modal -->
+
+    <!-- Loading state -->
+   
+  </div>
+        </div>
+     
+    <form  id='frm_details' name='frm_details' method="multipart/form-data" >
+         <div class="col-sm-8 col-md-8 col-lg-8 clearfix">
+             <input type='hidden' id='image_path0' name='image_path' value=''>  	
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Name<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="driver_name" name="dName" class="driver_name col-sm-6 col-lg-5 inputfild">
+			<label id="driver_name-error" class="error col-lg-offsets-5" for="driver_name" generated="true" style="margin-left:17%;"></label>
+			<script> $('#driver_name').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Father's Name<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="dfName" name="dfName" class="driver_name col-sm-6 col-lg-5 inputfild ">
+			<label id="dfName-error" class="error col-lg-offsets-5" for="dfName" generated="true" style="margin-left:17%;"></label>
+			<script> $('#dfName').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Email<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="email" id="driver_email" name="dr_email" class="col-sm-6 col-lg-5 inputfild" />
+			<label id="driver_email-error" class="error col-lg-offsets-5" for="driver_email" generated="true" style="margin-left:17%;"></label>
+			<input type="hidden" id="driver_email2" name="driver_email" class="col-sm-6 col-lg-5 inputfild" />
+           </div>
+            <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Refrenced By</label>
+            <input type="text" id="drefName" name="drefName" class="driver_name col-sm-6 col-lg-5 inputfild  ">
+           <script> $('#drefName').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script>
+		   </div>
+              <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Date Of Birth<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="dreDateOfBirth" name="dreDateOfBirth" class="driver_name col-sm-6 col-lg-5 inputfild">
+			<label id="dreDateOfBirth-error" class="error col-lg-offsets-5" for="dreDateOfBirth" generated="true" style="margin-left:17%;"></label>
+			 <script> /*$('#dreDateOfBirth').keypress(function(){
+						$("#dreDateOfBirth").attr("disabled", true);
+						});*/			
+				</script>
+			
+           </div>
+              <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Gender<span class="mandat_star" style="color:red;">*</span></label>
+<!--            <input type="text" id="dregender" name="dregender" class="driver_name col-sm-6 col-lg-5 inputfild name">-->
+            <select class=" col-sm-6 inputfild" id="dregender"  name="dregender" style="text-transform:uppercase;">
+                <option value="" selected="selected">--Select Gender--</option>
+                <option>Male</option>
+              <option>Female</option>
+             
+            </select>
+			<label id="dregender-error" class="error col-lg-offsets-5" for="dregender" generated="true" style="margin-left:17%;"></label>
+           </div>           
+          
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Residential Address<span class="mandat_star" style="color:red;">*</span></label>
+            <textarea rows="5" id="driver_adds" name="dAd" cols="8" class="col-sm-3 inputfild  " style="height:56px !important;"></textarea>
+            <script> $('#driver_adds').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script>
+			<div class="col-sm-4">
+              
+                <input name="file" type="file" style="width:95%" />
+				<span style="font-weight:bold;color: indianred;"><small>Upload Your Residential Proof</small></span>
+                  <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_resident">   
+                   </progress>--> 
+                
+   <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18; display:none" id="driver_resident_loder" ></div>
+ 		<div class="loder" style="display:none" id="driver_resident">
+					</div>
+                <input type="hidden" id="driver_addsH" name="driver_addsH">
+             </div>
+			 <label id="driver_adds-error" class="error col-lg-offsets-5" for="driver_adds" generated="true" style="margin-left:32%;margin-top:-5px;"></label>
+             </div>
+			 <div class="form-group clearfix spance apend_country">
+               <label class="control-label col-sm-3 col-lg-3"> Select Country<span class="mandat_star" style="color:red;">*</span></label>
+			   <input type="hidden" name="driver_country" id="driver_country" value="1">
+			   <input type="text" class="col-sm-6 col-lg-5 inputfild" readonly="true" name="driver_country" id="driver_country" value="India">
+				<!--<select id="driver_country" name="driver_country" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+					<option value="" selected="selected">Select Country</option>
+					</select>-->
+				<label id="driver_country-error" class="error col-lg-offsets-5" for="driver_country" generated="true" style="margin-left:17%;"></label>
+			</div>
+			<div class="form-group clearfix spance apend_country">
+            <label class="control-label col-sm-3 col-lg-3"> Select State<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="driver_state" name="driver_state" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+				<option value="" selected="selected">Select State</option>
+					</select>
+				<label id="driver_state-error" class="error col-lg-offsets-5" for="driver_state" generated="true" style="margin-left:17%;"></label>
+			</div>
+			<div class="form-group clearfix spance apend_country">
+            <label class="control-label col-sm-3 col-lg-3"> Select City<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="autocomplete" name="city" class="col-sm-6 inputfild" style="text-transform: capitalize;" onchange="GetISDcode(this.value);">
+				<option value="" selected="selected">Select City</option>
+					</select>
+				<label id="autocomplete-error" class="error col-lg-offsets-5" for="autocomplete" generated="true" style="margin-left:17%;"></label>
+			</div>
+            
+             <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Pin Code<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="dpincode" class="col-sm-6 col-lg-5 inputfild  " name="dpincode">
+			<label id="dpincode-error" class="error col-lg-offsets-5" for="dpincode" generated="true" style="margin-left:17%;"></label>
+			<script> $('#dpincode').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+           </div>
+		    <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Mobile No.<span class="mandat_star" style="color:red;">*</span></label>
+			<input type="text" name="driver_mob_isd" id="driver_mob_isd" class="col-sm-1 col-lg-1 inputfild" disabled="true" value="+91" style="color:#333 !important;">
+            <input type="text" pattern="[0-9]{10,10}" title="Enter valid Mobile No" id="driver_no" name="driver_no" class=" col-sm-4 col-lg-4 inputfild  " style="margin-left:57px;">
+            <label id="driver_no-error" class="error col-lg-offsets-5" for="driver_no" generated="true" style="margin-left:17%;"></label>
+			<!--<input type="text" pattern="[0-9]{10,10}" title="Enter valid Mobile No"   id="driver_no" class=" col-sm-6 col-lg-5 inputfild phno"/>-->
+            <input type="hidden" pattern="[0-9]{10,10}" title="Enter valid Mobile No"   id="driver_no2" name="dNo" class=" col-sm-6 col-lg-5 inputfild"/>
+			 <input type="hidden" id="driver_passwd" name="driver_passwd" class="driver_name col-sm-6 col-lg-5 inputfild">
+           </div>
+
+		   
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Alternate Contact No. </label>
+			<input type="text" name="driver_alt_mob_isd" id="driver_alt_mob_isd" class="col-sm-1 col-lg-1 inputfild" disabled="true" value="+91"  style="color:#333 !important;">
+            <input type="text" id="driver_Altno" name="dAno" class=" col-sm-4 col-lg-4 inputfild " style="margin-left:57px;"/>
+			<label id="driver_Altno-error" class="error col-lg-offsets-5" for="driver_Altno" generated="true" style="margin-left:17%;"></label>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Office Address </label>
+            <textarea rows="3" id="driver_oadds" name="dofc" cols="5" class="col-sm-3 inputfild" ></textarea>            
+           <script> $('#driver_oadds').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+		   <div class="col-sm-4">
+ 
+                <input name="file_office" type="file" style="width:100%" />
+				<span style="font-weight:bold;color: indianred;"><small>Upload Your Office Address Proof </small></span>
+                 <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_office">   
+                  </progress>--> 
+  <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18; display: none" id="driver_office_loder"></div>
+            <div class="loder" style="display:none" id="driver_office">
+			</div>
+            <input type="hidden" id="driver_oaddsH" name="driver_oaddsH">
+           </div>
+		   </div>
+		   
+		   
+		    <!-- Operational Company Name Starts Here -->
+            
+             <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Company Name<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="operational_company_name" name="operational_company_name" class="driver_name col-sm-6 col-lg-5 inputfild">
+			<label id="operational_company_name-error" class="error col-lg-offsets-5" for="operational_company_name" generated="true" style="margin-left:17%;"></label>
+			   <script> $('#operational_company_name').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+			
+           </div>
+            
+            <!-- Operational Company Name Ends Here -->
+		   
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Country<span class="mandat_star" style="color:red;">*</span></label>
+			<input type="hidden" name="driver_opration_country" id="driver_opration_country" value="1">
+			   <input type="text" class="col-sm-6 col-lg-5 inputfild" readonly="true" name="driver_opration_country" id="driver_opration_country" value="India">
+				<!--<select id="driver_opration_country" name="driver_opration_country" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+				<option value="" selected="true">--Select Country--</option>
+			   </select>-->
+				<label id="driver_opration_country-error" class="error col-lg-offsets-5" for="driver_opration_country" generated="true" style="margin-left:17%;"></label>
+			</div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">State<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="driver_opration_state" name="driver_opration_state" class="col-sm-6 inputfild" style="text-transform: capitalize;"> 
+              <option value="" selected="true">Select State</option>				
+				</select>
+				<label id="driver_opration_state-error" class="error col-lg-offsets-5" for="driver_opration_state" generated="true" style="margin-left:17%;"></label>
+			</div>
+			<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">City<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="driver_opration_city" name="driver_opration_city" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+                <option value="" selected="true">Select City</option>
+				</select>				
+				<label id="driver_opration_city-error" class="error col-lg-offsets-5" for="driver_opration_city" generated="true" style="margin-left:17%;"></label>
+			</div>
+            
+            <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Pin Code<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="com_pincode" class="col-sm-6 col-lg-5 inputfild  " name="com_pincode">
+			<label id="com_pincode-error" class="error col-lg-offsets-5" for="com_pincode" generated="true" style="margin-left:17%;"></label>
+			<script> $('#com_pincode').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+           </div>
+			 <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Select Company<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="driver_opration_Company" name="driver_opration_Company" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+			    <option value="" selected="true">--Select Company--</option>
+				<option value="123">REGENCY</option>
+				<option value="121">HELLO42</option>
+				</select>
+				<label id="driver_opration_Company-error" class="error col-lg-offsets-5" for="driver_opration_Company" generated="true" style="margin-left:17%;"></label>
+			</div>
+			
+			 <!-- Service Tax Registration No Starts Here -->
+            
+             <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Service tax Registration No<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="service_tax_reg_no" name="service_tax_reg_no" class="driver_name col-sm-6 col-lg-5 inputfild">
+			<label id="service_tax_reg_no-error" class="error col-lg-offsets-5" for="service_tax_reg_no" generated="true" style="margin-left:17%;"></label>
+			 <script> /*$('#dreDateOfBirth').keypress(function(){
+						$("#dreDateOfBirth").attr("disabled", true);
+						});*/			
+				</script>
+			
+           </div>
+            
+            <!-- Service Tax Registration No Ends Here -->
+            
+            <!-- Vehicle Owned or Attached Starts Here -->
+            
+             <div class="form-group clearfix spance" style="margin-bottom: 4px;">
+            <label class="control-label col-sm-3">Vehicle Owner<span class="mandat_star" style="color:red;">*</span></label>
+            <div class="col-sm-8">
+            <label class="radio-inline specs">
+           <input type="radio" id="vehicle_owned" class="vehicle_owned_attach" name="vehicle_owned" value="vehicle_owned" checked="">Owned
+           </label>
+           <label class="radio-inline specs" style="padding-left:47px !important;">
+           <input type="radio" id="vehicle_attached" class="vehicle_owned_attach" name="vehicle_owned" value="vehicle_attached"  >Attached
+           </label>
+           </div>
+		   <label id="vehicle_owned-error" class="error col-lg-offsets-5" for="vehicle_owned" generated="true" style="margin-left:17%;"></label>
+		   <label id="vehicle_attached-error" class="error col-lg-offsets-5" for="vehicle_attached" generated="true" style="margin-left:17%;"></label>
+            </div> 
+			
+			<!-- Vehicle Owned or Attached Ends Here -->
+			
+			
+			<div id="vehicle_owned_attach" style="display:none; margin-bottom:15px;">
+			
+			<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Owner Name</label>
+            <input type="text" id="vehicle_owner_name" name="vehicle_owner_name" class="driver_name col-sm-6 col-lg-5 inputfild">
+           </div>	
+           
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Owner Contact No.</label>
+            <input type="text" id="vehicle_owner_cnt_no" name="vehicle_owner_cnt_no" class="driver_name col-sm-6 col-lg-5 inputfild">
+           </div>
+           
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Owner Alt. Contact No.</label>
+            <input type="text" id="vehicle_owner_alt_cnt_no" name="vehicle_owner_alt_cnt_no" class="driver_name col-sm-6 col-lg-5 inputfild">
+           </div>
+			
+			
+			</div>
+			
+            <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Pan Card Details<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="driver_pan" name="dpan" class="col-sm-3 inputfild  " />
+				<script> $('#driver_pan').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script>
+				<div class="col-sm-4">
+                 <input name="file_pan" type="file" style="width:100%" />
+				 <span style="font-weight:bold;color: indianred;"><small>Upload Your Pan Card Proof</small></span>
+                 <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_panupload">   
+                  </progress>-->
+ <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none" id="driver_panupload_loder"></div>
+		             <div class="loder" style="display:none" id="driver_panupload">
+				</div>
+				<input type="hidden" id="driver_panH" name="driver_panH">
+           </div>
+		   <label id="driver_pan-error" class="error col-lg-offsets-5" for="driver_pan" generated="true" style="margin-left:30%;"></label>
+           </div>
+		   
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">No. of Fleet<span class="mandat_star" style="color:red;">*</span></label>
+            <select class=" col-sm-6 inputfild  " id="driver_fleet" name="dfleet" style="text-transform:uppercase;">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+			<label id="driver_fleet-error" class="error col-lg-offsets-5" for="driver_fleet" generated="true" style="margin-left:17%;"></label>
+           </div>
+<!--          <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Types of Vehicle<span class="mandat_star" style="color:red;">*</span></label>
+            <select class=" col-sm-6 inputfild" id="" name="typesVehicles" >
+              
+              <option value="1">Economy</option>
+              <option value="2">Sedan</option>
+              <option value="3">Prime</option>
+              
+            </select>
+           </div> -->
+ <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Car Types<span class="mandat_star" style="color:red;">*</span></label>
+            <select class=" col-sm-6 inputfild" id="driver_cartypes" name="driver_cartypes" style="text-transform:uppercase;" onchange="GetCabByCategory(this.value)">
+			<option value="" selected="true">--Select Car Types--</option>                           
+            </select>	
+			<label id="driver_cartypes-error" class="error col-lg-offsets-5" for="driver_cartypes" generated="true" style="margin-left:17%;"></label>
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Name of Vehicle<span class="mandat_star" style="color:red;">*</span></label>
+   <!--<input type="text" class="col-sm-3 inputfild name vechile_name name" id="vechile_name" name="vechile_name" />-->
+			<select class=" col-sm-3 inputfild" id="vechile_name" name="vechile_name" style="text-transform:uppercase;">
+             <option value="" selected="true">--Select Vehicle--</option>				
+            </select>			
+            <input type="hidden" name="vechile_name_value" id="vechile_name_value">
+
+            <div class="col-sm-4">
+                 <input name="file_vehicle" type="file" style="width:100%" />
+				 <span style="font-weight:bold;color: indianred;"><small>Upload Your Vehicle Proof </small></span>
+                 <!--<progress max="100" value="0" style="visibility: hidden;" id="driver_vehicle">   
+                  </progress> -->
+              <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none;" id="driver_vehicle_loder"></div>
+ 	            <div class="loder" style="display:none" id="driver_vehicle">
+			</div>
+			<input type="hidden" id="file_vehicleH" name="file_vehicleH">
+            </div>
+			<label id="vechile_name-error" class="error col-lg-offsets-5" for="vechile_name" generated="true" style="margin-left:28%;"></label>
+           </div>
+		    <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Ignition Type<span class="mandat_star" style="color:red;">*</span></label>
+            <select class=" col-sm-6 inputfild  " id="igniton_type" name="igniton_type" style="text-transform:uppercase;">
+				<option value="" selected="true">--Select Ignition Type--</option>
+                <option value="1">Petrol</option>
+				<option value="2">Diesel</option>
+				<option value="3">CNG</option>
+            </select>
+			<label id="igniton_type-error" class="error col-lg-offsets-5" for="igniton_type" generated="true" style="margin-left:17%;"></label>
+			<script> /* $('#igniton_type').change(function(){
+						this.value = this.value.toUpperCase();
+						$('#igniton_type option').each(function(){
+							$(this).html($(this).html().toUpperCase());
+						 });
+						}); */
+				</script>
+           </div>
+           
+           <!-- Vehcile Color Starts Here -->
+           
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Vehicle Color<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="CabColor" name="CabColor" class="driver_name col-sm-6 col-lg-5 inputfild  ">
+			<label id="CabColor-error" class="error col-lg-offsets-5" for="CabColor" generated="true" style="margin-left:17%;"></label>
+           </div>
+           
+           <!-- Vehcile Color Ends Here -->
+           
+<!-- RC Proof Starts Here -->
+    
+    
+<div class="form-group clearfix spance">
+<label class="control-label col-sm-3">RC Proof<span class="mandat_star" style="color:red;">*</span></label>
+<input type="text" class="col-sm-3 inputfild" id="rc_no" name="rc_no" />
+<div class="col-sm-4">
+<input name="file_rcproof" type="file" style="width:95%" />
+<span style="font-weight:bold;color: indianred;"><small>Upload Your RC Proof </small></span>
+<!--  <progress max="100" value="0" style="visibility: hidden;" id="driver_badge">   
+</progress> -->
+<div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none;" id="file_rcproof_loder"></div>
+<div class="loder" style="display:none" id="file_rcproof">
+</div>
+<input type="hidden" id="file_rcproofH" name="file_rcproofH">
+</div>
+<label id="file_rcproof-error" class="error col-lg-offsets-5" for="file_rcproof" generated="true" style="margin-left:29%;"></label>
+</div>
+    
+    
+<!-- RC Proof Ends Here -->  
+		   
+          
+           
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Permit Expiry Date<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="permit_date" name="permit_date" class="driver_name col-sm-6 col-lg-5 inputfild  ">
+			<label id="permit_date-error" class="error col-lg-offsets-5" for="permit_date" generated="true" style="margin-left:17%;"></label>
+           </div>
+           
+           <!--<div class="form-group clearfix spance">
+               <label class="control-label col-sm-3">Make of Vehicle<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" class="col-sm-6 inputfild name" id="driverMakeVec" name="driverMakeVec"/>
+           </div>-->
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Model Year<span class="mandat_star" style="color:red;">*</span></label>
+            <!--<input type="text" class="col-sm-6 inputfild year" max="2015" min="1980" id="driverModel" name="driverModel"/>-->
+			<select class=" col-sm-6 inputfild " id="driverModel" name="driverModel" style="text-transform:uppercase;">
+				<option value="" selected="true">--Select Model Year--</option>               
+            </select>
+			<label id="driverModel-error" class="error col-lg-offsets-5" for="driverModel" generated="true" style="margin-left:17%;"></label>
+			<script>
+			var date=new Date().getFullYear();
+			var i;
+				for(i=date;i>=date-9;){					
+					 $('#driverModel').append($('<option>', {
+						value: i,
+						text: i
+					})); 
+					i--;
+				}
+			</script>
+           </div>
+           
+           <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Badge / License No.<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" class="col-sm-3 inputfild" id="driverBadge" name="driverBadgeLic" />
+            <script> $('#driverBadge').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script>
+             <div class="col-sm-4">
+                 <input name="file_badge" type="file" style="width:95%" />
+				 <span style="font-weight:bold;color: indianred;"><small>Upload Your License Proof </small></span>
+              <!--  <progress max="100" value="0" style="visibility: hidden;" id="driver_badge">   
+                  </progress> -->
+    <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none;" id="driver_badge_loder"></div>
+	            <div class="loder" style="display:none" id="driver_badge">
+				</div>
+            <input type="hidden" id="file_badgeH" name="file_badgeH">
+           </div>
+		   <label id="driverBadge-error" class="error col-lg-offsets-5" for="driverBadge" generated="true" style="margin-left:29%;"></label>
+            </div>
+			
+			<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">License State<span class="mandat_star" style="color:red;">*</span></label>
+			
+			    <select id="driverLicState" name="driverLicState" class="col-sm-6 inputfild driver_pref_city"> 
+                <option value="" selected="selected">Select State</option>
+				</select>		
+			
+            <!--<input type="text" class="col-sm-6 inputfild " id="driverLicState" name="driverLicState" />-->
+			<label id="driverLicState-error" class="error col-lg-offsets-5" for="driverLicState" generated="true" style="margin-left:17%;"></label>
+           <script> $('#driverLicState').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script>            
+            </div>
+            
+            <!-- License Validity Starts Here -->
+            
+             <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">License Validity<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="license_validity" name="license_validity" class="driver_name col-sm-6 col-lg-5 inputfild">
+			<label id="license_validity-error" class="error col-lg-offsets-5" for="license_validity" generated="true" style="margin-left:17%;"></label>
+			 <script> /*$('#dreDateOfBirth').keypress(function(){
+						$("#dreDateOfBirth").attr("disabled", true);
+						});*/			
+				</script>
+			
+           </div>
+                     
+    
+     <!-- License Validity Starts Here -->
+    
+    
+    <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Insurance Validity<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" class="col-sm-3 inputfild" id="insurance_validity" name="insurance_validity" />
+             <div class="col-sm-4">
+                 <input name="file_insurance" type="file" style="width:95%" />
+ <span style="font-weight:bold;color: indianred;"><small>Upload Your Insurance Proof </small></span>
+              <!--  <progress max="100" value="0" style="visibility: hidden;" id="driver_badge">   
+                  </progress> -->
+    <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none;" id="file_insurance_loder"></div>
+            <div class="loder" style="display:none" id="file_insurance">
+</div>
+            <input type="hidden" id="file_insuranceH" name="file_insuranceH">
+           </div>
+   <label id="file_insurance-error" class="error col-lg-offsets-5" for="file_insurance" generated="true" style="margin-left:29%;"></label>
+            </div>
+    
+    
+    
+  <!-- Insurance Validity Ends Here -->  
+    
+    
+            
+            
+            
+             <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Vehicle No.<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" class="col-sm-3 inputfild " id="driverVechNoChar" name="driverVechNoChar" style="width: 72px;" placeholder="DL"/>
+			<label id="driverVechNoChar-error" class="error col-lg-offsets-5" for="driverVechNoChar" generated="true" style="margin-left: -34%;margin-top: 4%;"></label>
+			<input type="text" class="col-sm-3 inputfild " id="driverVechNo" name="driverVechNo" style="margin-left: 47px;width: 145px;" placeholder="10F1530"/>
+			<label id="driverVechNo-error" class="error col-lg-offsets-5" for="driverVechNo" generated="true" style="margin-left: 10%;"></label>
+           </div>
+		     <script> $('#driverVechNo').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+						$('#driverVechNoChar').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script>
+			<div class="form-group clearfix spance">
+				<label class="control-label col-sm-3">Pref City to Drive Cab<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="driver_pref_city" name="driver_pref_city" class="col-sm-6 inputfild driver_pref_city"> 
+                <option value="" selected="selected">Select City</option>
+				</select>			
+				<label id="driver_pref_city-error" class="error col-lg-offsets-5" for="driver_pref_city" generated="true" style="margin-left:17%;"></label>
+				
+           </div>
+           <div class="form-group clearfix spance" style="margin-bottom: 4px;">
+            <label class="control-label col-sm-3">Eye Sight<span class="mandat_star" style="color:red;">*</span></label>
+            <div class="col-sm-8">
+            <label class="radio-inline specs">
+           <input type="radio" id="driverSpec" name="driverSpec" value="" checked="">Specs
+           </label>
+           <label class="radio-inline specs" style="padding-left:47px !important;">
+           <input type="radio" id="driverNoSoec" name="driverSpec" value=""  >No Specs
+           </label>
+           </div>
+		   <label id="driverSpec-error" class="error col-lg-offsets-5" for="driverSpec" generated="true" style="margin-left:17%;"></label>
+		   <label id="driverNoSoec-error" class="error col-lg-offsets-5" for="driverNoSoec" generated="true" style="margin-left:17%;"></label>
+            </div>           
+           
+           <!--/* <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Security Amount<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="driverAmount" name="driverAmount" class="col-sm-6 inputfild  "/>
+			<label id="driverAmount-error" class="error col-lg-offsets-5" for="driverAmount" generated="true" style="margin-left:17%;"></label>
+           </div> */-->
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Bank Name & Branch Name<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="driverBank" name="driverBank" class="col-sm-6 inputfild  "/>
+			<script> $('#driverBank').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+				<label id="driverBank-error" class="error col-lg-offsets-5" for="driverBank" generated="true" style="margin-left:17%;"></label>
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Bank A/C Holder Name<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="driverholdern" name="driverholdern" class="col-sm-6 inputfild  "/>
+			<label id="driverholdern-error" class="error col-lg-offsets-5" for="driverholdern" generated="true" style="margin-left:17%;"></label>
+			<script> $('#driverholdern').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Bank Address<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="driverBaddess" name="driverBaddess" class="col-sm-6 inputfild  "/>
+			<label id="driverBaddess-error" class="error col-lg-offsets-5" for="driverBaddess" generated="true" style="margin-left:17%;"></label>
+			<script> $('#driverBaddess').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script>
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Bank A/C no<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="driverAcNo" name="driverAcNo" class="col-sm-6 inputfild  "/>
+			<label id="driverAcNo-error" class="error col-lg-offsets-5" for="driverAcNo" generated="true" style="margin-left:17%;"></label>
+			<script> $('#driverAcNo').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">IFSC/NEFT Code<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="driverrtgs" name="driverrtgs" class="col-sm-6 inputfild  "/>
+			<label id="driverrtgs-error" class="error col-lg-offsets-5" for="driverrtgs" generated="true" style="margin-left:13%;"></label>
+			<script> $('#driverrtgs').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+           </div>
+		   <!--<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">IBN No.<span class="mandat_star"></span></label>
+            <input type="text" id="driveribn" name="driveribn" class="col-sm-6 inputfild  "/>
+			<label id="driveribn-error" class="error col-lg-offsets-5" for="driveribn" generated="true" style="margin-left:17%;"></label>
+			<script> $('#driveribn').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+           </div>-->
+		    <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Route Knowledge<span class="mandat_star" style="color:red;">*</span></label>
+            <!--<input type="text" id="driverRknow" name="driverRknow" class="col-sm-6 inputfild  "/>-->
+			<select class=" col-sm-6 inputfild" id="driverRknow" name="driverRknow" style="text-transform:uppercase;">
+			    <option value="" selected="true">--Select Location--</option>
+                <option value="Yes">Yes</option>
+				<option value="No">No</option>
+				
+            </select>
+			
+			
+			<label id="driverRknow-error" class="error col-lg-offsets-5" for="driverRknow" generated="true" style="margin-left:17%;"></label>
+			<script> $('#driverRknow').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script>
+           </div> 
+		   
+		   <!--- AC Non-AC Starts Here -->
+		   
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">AC/Non-AC<span class="mandat_star" style="color:red;">*</span></label>
+			<select class=" col-sm-6 inputfild" id="driverRAc_NonAC" name="driverRAc_NonAC" style="text-transform:uppercase;">
+			    <option value="" selected="true">--Select--</option>
+                <option value="AC">AC</option>
+				<option value="Non AC">Non AC</option>
+				
+            </select>
+			
+			
+			<label id="driverRknow-error" class="error col-lg-offsets-5" for="driverRknow" generated="true" style="margin-left:17%;"></label>
+			<script> $('#driverRAc_NonAC').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script>
+           </div>
+		   
+		   <!--- AC Non-AC Ends Here -->
+		<!--<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Pref Location<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="driverPrefL" name="driverPrefL" class="col-sm-6 inputfild  "/>
+			<script> $('#driverPrefL').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+           </div> -->
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Pref Location/Zone<span class="mandat_star" style="color:red;">*</span></label>            
+			 <select class=" col-sm-6 inputfild" id="driverPrefL" name="driverPrefL" style="text-transform:uppercase;">
+			    <option value="" selected="true">--Select Location--</option>
+                <option value="Airport">Airport</option>
+				<option value="Center">Center</option>
+				<option value="East">East</option>
+				<option value="North">North</option>
+				<option value="South">South</option>
+				<option value="West">West</option>
+            </select>
+            <label id="driverPrefL-error" class="error col-lg-offsets-5" for="driverPrefL" generated="true" style="margin-left:17%;"></label>			
+           </div>
+		     <!--<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Zone<span class="mandat_star" style="color:red;">*</span></label>            
+			 <select class=" col-sm-6 inputfild" id="driverZone" name="driverZone" style="text-transform:uppercase;">
+			    <option value=" " selected="true">--Select Zone--</option>
+                <option value="Airport">Airport</option>
+				<option value="Center">Center</option>
+				<option value="East">East</option>
+				<option value="North">North</option>
+				<option value="South">South</option>
+				<option value="West">West</option>
+            </select>
+			<script>/*  $('#driverZone').change(function(){
+						this.value = this.value.toUpperCase();
+						}); */
+				</script> 
+           </div>-->
+
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Week Off<span class="mandat_star" style="color:red;">*</span></label>
+<!--            <input type="text" id="driverWoff" name="driverWoff" class="col-sm-6 inputfild  "/>-->
+             <select class=" col-sm-6 inputfild" id="driverWoff" name="driverWoff" style="text-transform:uppercase;">
+			  <option value="">Select an Option</option>
+              <option>Yes</option>
+              <option>No</option>             
+            </select>
+            <label id="driverWoff-error" class="error col-lg-offsets-5" for="driverWoff" generated="true" style="margin-left:17%;"></label>			
+           </div>
+			<div class="form-group clearfix spance" id="DriveroffDayMain" style="display:none;">
+            <label class="control-label col-sm-3">Select Day<span class="mandat_star" style="color:red;">*</span></label>
+             <select class=" col-sm-6 inputfild" id="DriveroffDay" name="DriveroffDay" style="text-transform:uppercase;">
+				<option value="Sunday">Sunday</option>
+				<option value="Monday">Monday</option>
+				<option value="Tuesday">Tuesday</option>
+				<option value="Wednesday">Wednesday</option> 
+				<option value="Thirsday">Thirsday</option>
+				<option value="Friday">Friday</option> 
+				<option value="Saturday">Saturday</option>							  
+            </select>
+            <label id="DriveroffDay-error" class="error col-lg-offsets-5" for="DriveroffDay" generated="true" style="margin-left:17%;"></label>			
+           </div>
+		    <!--<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Mobile IMEI No.</label>
+				<script> $('#driveimei').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+            <input type="text" id="driveimei" name="driveimei" class="col-sm-6 inputfild"/>
+			 <label id="driveimei-error" class="error col-lg-offsets-5" for="driveimei" generated="true" style="margin-left:17%;"></label> 
+           </div>--> 		   
+		    <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">GPS Device No.<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="drivergps" name="drivergps" class="col-sm-6 inputfild  "/>
+			<label id="drivergps-error" class="error col-lg-offsets-5" for="drivergps" generated="true" style="margin-left:17%;"></label>
+			<script> $('#drivergps').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+           </div> 		
+		<!-- language -->
+         <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Speak Language<span class="mandat_star" style="color:red;">*</span></label>
+          
+          <div class="multiselect col-sm-6" style="padding:0 !important; z-index:;">
+        <div class="selectBox" onclick="showCheckboxes()">
+            <select id="speak11" name="speak1[]" class="col-sm-6 inputfild" multiple="multiple">
+                <option>--Select Language--</option>
+            </select>
+            <div class="overSelect"></div>
+        </div>
+        <div id="checkboxes">
+            <label><input type="checkbox" name="speak[]" id="one" value="Hindi"/>Hindi</label>
+            <label><input type="checkbox" name="speak[]" id="two" value="English"/>English </label>
+            <label><input type="checkbox"  name="speak[]" id="three" value="Tamil"/>Tamil</label>
+            <label><input type="checkbox"  name="speak[]" id="four" value="Telugu"/>Telugu</label>
+            <label><input type="checkbox" name="speak[]" id="five" value="Urdu"/>Urdu</label>
+            <label><input type="checkbox" name="speak[]" id="six" value="Bangla"/>Bangla</label>
+            <label><input type="checkbox" name="speak[]" id="seven" value="Marathi"/>Marathi</label>
+            <label><input type="checkbox" name="speak[]" id="eight" value="Gujrati"/>Gujrati</label>
+            <label><input type="checkbox" name="speak[]" id="nine" value="Marwadi"/>Marwadi</label>
+            <label><input type="checkbox" name="speak[]" id="ten" value="Kannad"/>Kannad</label>
+            <label><input type="checkbox" name="speak[]" id="eleven" value="Malyalam"/>Malyalam</label>
+            <label><input type="checkbox" name="speak[]" id="twelve" value="Bhojpuri"/>Bhojpuri</label>
+        </div>
+    </div>
+          
+	 </div>	     
+	  <div class="form-group clearfix spance">
+		<label class="control-label col-sm-3">Write language<span class="mandat_star" style="color:red;">*</span></label>
+        <div class="multiselect col-sm-6" style="padding:0 !important; z-index:;">
+        <div class="selectBox" onclick="showCheckboxes1()">
+            <select id="write11" name="write1[]" class="col-sm-6 inputfild" multiple="multiple">
+                <option>--Select Language--</option>
+            </select>
+            <div class="overSelect"></div>
+        </div>
+        <div id="checkboxes1">
+            <label><input type="checkbox" name="write[]" id="one" value="Hindi"/>Hindi</label>
+            <label><input type="checkbox" name="write[]" id="two" value="English"/>English</label>
+            <label><input type="checkbox" name="write[]" id="three" value="Tamil"/>Tamil</label>
+            <label><input type="checkbox" name="write[]" id="four" value="Telugu"/>Telugu</label>
+            <label><input type="checkbox" name="write[]" id="five" value="Urdu"/>Urdu</label>
+            <label><input type="checkbox" name="write[]" id="six" value="Bangla"/>Bangla</label>
+            <label><input type="checkbox" name="write[]" id="seven" value="Marathi"/>Marathi</label>
+            <label><input type="checkbox" name="write[]" id="eight" value="Gujrati"/>Gujrati</label>
+            <label><input type="checkbox" name="write[]" id="nine"value="Marwadi" />Marwadi</label>
+            <label><input type="checkbox" name="write[]" id="ten" value="Kannad"/>Kannad</label>
+            <label><input type="checkbox" name="write[]" id="eleven" value="Malyalam"/>Malyalam</label>
+            <label><input type="checkbox" name="write[]" id="twelve" value="Bhojpuri"/>Bhojpuri</label>
+        
+        
+        
+        </div>
+    </div>
+       
+	 </div>
+
+  
+           <div class="form-group clearfix spance">
+
+		
+     <table class="table" style="margin:0; width:100% !important;">
+     <tbody><tr>
+     <td width="21%" class="col-sm-3 text-right" style="border: none;">
+      <table class="reglengbox ">
+       <tbody><tr><td width="87" style="border: none; text-align:left; font-size:12px;">Shift of Login</td></tr>
+       <tr><td style="border: none; padding-top:5px; text-align:left; font-size:12px; padding-bottom:13px;">Timing</td></tr>
+      </tbody></table>
+     </td>
+     
+     <td width="75%" style="border: none; padding-left:0;">
+      <table class="reglengbox" style="width:68%;">
+       <tbody><tr><td align="left" style="font-size:12px; text-align:left;">Morning</td><td align="left" style="font-size:12px; text-align:left;">Evening</td><td align="left" style="font-size:12px; text-align:left;">Night</td></tr>
+    <tr><td align="left" style="padding:3px 3px 3px 3px;">
+            
+<!--            <input type="text" name="logtime[]" class="form-control inputfild "/>-->
+             <select class="inputfild" id="" name="logtime[]" style="text-transform:uppercase;">
+			 <option value=" " selected="true">-Select-</option>
+                <!-- <option>0:00</option>
+              <option>1:00</option>
+              <option>2:00</option>
+              <option>3:00</option>
+              <option>4:00</option>
+              <option>5:00</option>
+               <option>6:00</option>-->
+              <option>7:00</option>
+              <option>8:00</option>
+              <option>9:00</option>
+              <option>10:00</option>
+               <option>11:00</option>
+              <option>12:00</option>
+              <option>13:00</option>
+              <option>14:00</option>
+              <option>15:00</option>
+              <!-- <option>16:00</option>
+              <option>17:00</option>
+              <option>18:00</option>
+              <option>19:00</option>
+              <option>20:00</option>
+              <option>21:00</option>
+              <option>22:00</option>
+              <option>23:00</option>-->
+              
+              
+            </select>
+        
+        </td>
+        
+        
+        <td align="left" style="padding:3px 3px 3px 3px;">
+<!--            <input type="text" name="logtime[]" class="form-control inputfild "/>-->
+            <select class="inputfild" id="" name="logtime[]" style="text-transform:uppercase;">
+			<option value=" " selected="true">-Select-</option>
+              <!-- <option>0:00</option>  
+              <option>1:00</option>
+              <option>2:00</option>
+              <option>3:00</option>
+              <option>4:00</option>
+              <option>5:00</option>
+               <option>6:00</option>
+              <option>7:00</option>
+              <option>8:00</option>
+              <option>9:00</option>
+              <option>10:00</option>
+               <option>11:00</option>
+              <option>12:00</option>
+              <option>13:00</option>
+              <option>14:00</option>-->
+              <option>15:00</option>
+               <option>16:00</option>
+              <option>17:00</option>
+              <option>18:00</option>
+              <option>19:00</option>
+              <option>20:00</option>
+            <option>21:00</option>
+              <option>22:00</option>
+               <!-- <option>23:00</option>-->
+             
+              
+            </select>
+        
+        
+        </td>
+        
+        
+        
+        <td align="left" style="padding:3px 3px 3px 3px;">
+            
+<!--            <input type="text" name="logtime[]" class="form-control inputfild "/>-->
+        <select class="inputfild" id="" name="logtime[]" style="text-transform:uppercase;">
+		<option value=" " selected="true">-Select-</option>
+             
+             <!-- <option>8:00</option>
+              <option>9:00</option>
+              <option>10:00</option>
+               <option>11:00</option>
+              <option>12:00</option>
+              <option>13:00</option>
+              <option>14:00</option>
+              <option>15:00</option>
+               <option>16:00</option>
+              <option>17:00</option>
+              <option>18:00</option>
+              <option>19:00</option>
+              <option>20:00</option>
+              <option>21:00</option>
+              <option>22:00</option>-->
+              <option>23:00</option>
+               <option>24:00</option>
+              <option>1:00</option>
+              <option>2:00</option>
+              <option>3:00</option>
+              <option>4:00</option>
+              <option>5:00</option>
+               <option>6:00</option>
+              <option>7:00</option>
+              
+            </select>
+        
+        
+        </td></tr>
+      </tbody></table>
+     </td>
+     </tr>
+    </tbody></table>
+    </div>
+    </div>
+	
+
+    
+
+    
+		 
+     <!--left_panel_form END-->
+      <!--bottom part checkbox of form-->
+      <div class="clearfix"></div>
+      
+      
+      
+      
+      <div class="col-sm-12 col-md-12 col-lg-12" >
+          <div class="form-group clearfix marginbtom0" id="transer_type">
+            <label class="control-label col-lg-2 pull-left" style="margin-right:0;">Duty Type pref.<span class="mandat_star" style="color:red;">*</span></label>
+            <div class="col-sm-8 pull-left leftmarg10" id="duty_type">
+            <!--<label class="checkbox-inline checkboxtext leftmarg10 col-md-2" style="height:20px !important">
+            <input type="checkbox" id="driverAir" name="dAir[]" value="103" class='tf'/><span style=" height:20px; margin-top:-10px !important;">Airport Transfer</span>
+            </label>
+            <label class="checkbox-inline checkboxtext col-md-2">
+            <input type="checkbox" id="driverOut" name="dAir[]" value="104" class='tf'/>Outstation
+            </label>
+            <label class="checkbox-inline checkboxtext col-md-2" style="margin-left:-1.8%;">
+            <input type="checkbox" id="driverLocal" name="dAir[]" value="101" class='tf'/>Local Transfer
+            </label>
+            <label class="checkbox-inline checkboxtext col-md-2">
+            <input type="checkbox" id="driverPoint" name="dAir[]" value="102" class='tf'/>Point To Point
+            </label>
+			<label class="checkbox-inline checkboxtext col-md-2">
+			<input type="checkbox" id="driverIntercity" name="dAir[]" value="105" class='tf'/>Intercity
+			</label>
+			<label class="checkbox-inline checkboxtext col-md-2" style="margin-left:-3.8%;">
+			<input type="checkbox" id="driverAll" name="dAir[]" value="101,102,103,104,105" class='tf'/>All
+			</label>
+			<label id="dAir[]-error" class="error col-lg-offsets-5" for="dAir[]" generated="true" style="display:inline-block;margin-left:-101%;margin-top:4%;"></label>-->
+            </div>	
+            <div class="col-sm-1 pull-left leftmarg10" style="margin-left:-25px !important;" >
+			<label class="checkbox-inline checkboxtext col-md-2" style="margin-left:-3.8%;">
+			<input type="checkbox" id="driverAll" name="driverAll" value="101,102,103,104,105"/>All
+			</label>
+			<label id="drAir[]-error" class="error col-lg-offsets-5" for="drAir[]" generated="true" style="display:inline-block;margin-left:-101%;margin-top:4%;"></label>
+           </div>
+           </div>
+           </div>
+			<script>
+			$(document).on('click','#driverAll',function(){
+			$("input[name='drAir\\[\\]']").prop('checked', $(this).prop("checked"));
+			});
+			</script>
+           
+      <div class="col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 20px;">
+          <div class="form-group clearfix marginbtom0">
+            <label class="control-label col-lg-2 pull-left" style="margin-right:-8px;">Payment Type<span class="mandat_star" style="color:red;">*</span></label>
+            <div class="col-sm-9 pull-left leftmarg10">
+            <label class="checkbox-inline checkboxtext leftmarg10 col-md-2">
+            <input type="checkbox" id="driverCash" name="dCash[]" value="1" class="ptt"/>Cash
+            </label>
+            <label class="checkbox-inline checkboxtext col-md-2">
+            <input type="checkbox" id="driverCredit" name="dCash[]" value="2" class="ptt"/>Credit
+            </label>
+            <label class="checkbox-inline checkboxtext col-md-2">
+            <input type="checkbox"id="driverBoth" name="dCash[]" value="3"/>Both
+            </label>
+             <label id="dCash[]-error" class="error col-lg-offsets-5" for="dCash[]" generated="true" style="display: inline-block;margin-left: -55%;margin-top: 4%;"></label>
+            </div>
+           </div>
+			<script>
+		   $("#driverBoth").change(function(){
+				var status = $(this).is(":checked") ? true : false;
+				$(".ptt").prop("checked",status);
+			});
+		   </script>		   
+           </div>
+            <div class="form-group clearfix col-sm-12">
+            <label class="control-label col-md-2">Police Verification</label>
+			<div class="col-sm-4"  style="padding-left: 0;">
+             <input name="file_police" type="file" style="width:60%"/>
+			 <span style="font-weight:bold;color: indianred;"><small>Upload Police Verification Proof</small></span>
+ <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none;" id="driver_police_loder"></div>
+             <div class="loder" style="display:none" id="driver_police">
+				</div>
+				 <input type="hidden" id="file_policeH" name="file_policeH">
+            </div>
+			</div>
+			
+       <div class="form-group clearfix col-sm-12">
+            <label class="control-label col-md-2">Audit Report </label>
+             <div class="col-sm-2" style="padding-left: 0;">
+			 <input name="file_audit" type="file" style="width:90%"/>
+			 <span style="font-weight:bold;color: indianred;"><small>Upload Audit Report Proof</small></span>
+         <div class="fa fa-spinner fa-spin fa-1_5x" style="position: absolute;color: #378D18;display:none;" id="driver_audit_loder"></div>
+ 			<div class="loder" style="display:none" id="driver_audit">
+			</div>
+			<input type="hidden" id="file_auditH" name="file_auditH">
+			</div>
+            <div class="col-sm-5" id="auditclick" style="display:none">
+			 
+                <i class="fa fa-download fa-1_5x"></i>
+                    &nbsp;<label>Click here to download  the Audit Report</label>
+			
+			</div>
+            
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-2"></label>
+            <input type="checkbox" id="DriverTerms" name="DriverTerms" />
+            <a href="#" style="color:#333 !important;">
+            Accept Terms & Conditions</a><span class="mandat_star" style="color:red;">*</span>
+			<label id="DriverTerms-error" class="error col-lg-offsets-5" for="DriverTerms" generated="true" style="margin-left:16%;display:block;"></label>			 
+           </div>
+          <div class="clearfix"></div>
+          
+           <!--New user form-->
+               
+               	            
+           <div id='append'></div>
+          <div class="row" style="display:none;"> 
+           <div class="portlet-heading add_new">
+                                        <div class="portlet-title pull-right">
+                                            <h4></h4>
+                                        </div>
+                                        <div class="portlet-widgets pull-left">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="" class="newclick">
+                                            <i class="fa fa-plus fa_2x" style="
+    font-size: 1.5em;
+    color: #fff;
+"></i></a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+          </div>
+           
+           <!--New user form End-->
+           
+           
+           
+           
+           
+           
+           
+           
+            <!--bottom part checkbox of form End-->
+				<div class="row">
+
+				<div class="col-lg-12">
+				<div class="fa fa-spinner fa-spin fa-2x" style="position: absolute;color: #378D18;right: 170px;top: 29px;display:none" id="registerbtnloader"></div>
+				<button type='button' class="btn registerbtn pull-right" id="driver_reg" onclick="driverReg();" style="margin-bottom:30px !important;">Register <i class="fa fa-spinner fa-spin" style="font-size: 1.5em;
+
+				font-size: 1.5em;
+				display: none;
+				position: absolute;
+				right: 20px;
+				top: 37px;
+				line-height:10px;
+				}"></i></button></div>
+				</div>
+            
+<!-- /////////////////////////// /////////////////////vendor form///////////////////////////////////////////////////////////////// -->
+
+ 
+        <!--Login START-->
+				<div class="col-sm-4" id="driverSignform" style="border-radius: 10px; display: none;      background: rgb(255, 255, 255);">
+				<h1 class="fa fa-times closbtn b-close" style="margin: 0 0;border: none !important;"></h1>
+				<div class="text-center">
+				<div class="col-md-12">
+				<div class="exit_iconbox" style="
+				margin: 20px auto 30px;
+				">
+				<a href="#">
+				<div class="circle-tile-heading red">
+				<i class="fa fa-thumbs-up fa-fw fa-5x" style="line-height: 120px;"></i>
+				</div>
+				</a>
+
+
+				</div>
+				</div><div class="clearfix"></div>
+				</div>
+				<div class="text-center">
+
+				<div class="leftbox col-md-12 col-lg-12">
+
+
+
+				<div class="form-group clearfix spance  ">
+				<label class="control-label col-sm-4 text-left">Name<span class="mandat_star" style="color:red;">*</span></label>
+				<input type="text" id="vender_name" name="vender_name" class="driver_name col-sm-8 inputfild" disabled="">
+				</div>
+				<div class="form-group clearfix spance col-sm-12">
+				<label class="control-label col-sm-4 text-left">Email<span class="mandat_star" style="color:red;">*</span></label>
+				<input type="text" id="vender_email" name="vender_email" class="driver_name col-sm-8 inputfild" disabled="">
+				</div>
+				<div class="form-group clearfix spance col-sm-12">
+				<label class="control-label col-sm-4 text-left">Create Your Group<span class="mandat_star" style="color:red;">*</span></label>
+				<input type="text" id="vender_group" name="vender_group" class="driver_name col-sm-8 inputfild">
+				</div><div class="form-group clearfix spance col-sm-12">
+				<label class="control-label col-sm-4 text-left"></label>
+				<div class="fa fa-spinner fa-spin fa-2x" style="position: absolute;color: #378D18;right: 100px;top: 9px;display:none" id="vendorregisterbtn"></div>
+				<button type="button" class="btn registerbtn col-sm-4" onclick="save_drivers();" style="margin-top: 0 !important;
+				">Register</button>
+				</div>
+
+
+				</div>
+				</div>
+				</div>
+        <!--Login END--> 
+        
+
+
+
+
+
+
+
+<!--/////////////////////////////////////////////////end vendor form///////////////////////////////////////////////////////////////////////-->
+         </form>
+    </div>    
+
+
+                
+      
+  <?php
+}
+else if(($_COOKIE['UsersRole']!=2) and ($_COOKIE['UsersRole']!=3)){
+  
+    
+  ?>
+   
+                
+       <!--user form start-->
+       
+  <div  id="userRoleNormal" class="clearfix" style="margin:0px auto 80px; display:block"><!--user-->
+       
+    
+    <!--left_panel_form START-->
+     <!--right_panel_form START-->
+         <div class=" col-sm-4 col-md-4 col-lg-4 clearfix userprofileimg" style="margin: 0px auto 0px;">
+         	<div id="crop-avatar">
+
+    <!-- Current avatar -->
+   
+    <div class="avatar-view" title="Profile Picture">
+      <img src="public/image/default_user.png" alt="Avatar" class="resimg">
+    </div>
+	
+	
+	
+	<div style="width:95%; margin-top:40px; margin-left:95px;"><input type="file" name="file"></div>
+	
+	
+	
+	
+ <a href="#avatar-modal" data-toggle="modal" title="Profile Picture"><strong style="color: rebeccapurple;margin-left:128px;">Upload Profile Picture</strong></a>
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form class="avatar-form" id="0" method="post" action="public/crop-avatar.php" enctype="multipart/form-data">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="avatar-modal-label">Profile Picture</h4>
+            </div>
+            <div class="modal-body">
+              <div class="avatar-body">
+
+                <!-- Upload image and data -->
+                <div class="avatar-upload">
+                  <input class="avatar-src" name="avatar_src" type="hidden">
+                  <input class="avatar-data" name="avatar_data" type="hidden">
+                  <label for="avatarInput"></label>
+                  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                </div>
+
+                <!-- Crop and preview -->
+                <div class="row">
+                  <div class="col-md-9">
+                      <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+                    <div class="avatar-wrapper"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="avatar-preview preview-lg"></div>
+                    <div class="avatar-preview preview-md"></div>
+                    <div class="avatar-preview preview-sm"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary avatar-save" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- /.modal -->
+    
+    <!-- Loading state -->
+    
+  </div>
+        </div>
+      <!--right_panel_form START-->   
+      <form id="reg_form2">    
+         <div class="col-sm-8 col-md-8 col-lg-8 clearfix">
+             
+         	
+             <div class="form-group clearfix spance">
+              <input type='hidden' id='image_path0' name='image_path' value=''>  	
+            <label class="control-label col-mg-3 col-lg-3">Name&nbsp;<span style="color:red">*</span></label>
+            <input type="text" name="userName" id="userName" class="col-mg-5 col-lg-5 inputfild"/>
+            </div>
+			<div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Email id&nbsp;<span style="color:red">*</span></label>
+           <input type="text" name="email_id" id="email_id" class=" col-mg-5 col-lg-5 inputfild email"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Alternate Email Id</label>
+           <input type="text" name="alt_email_id" id="alt_email_id" class=" col-mg-5 col-lg-5 inputfild email not_mandat"/>
+          </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Residential Address&nbsp;<span style="color:red">*</span></label>
+          <textarea class="col-lg-5 inputfild" name="user_a" rows="3" cols="5" id="user_a"></textarea>
+           </div>
+           
+           <div class="form-group clearfix spance apend_country">
+            <label class="control-label col-mg-3 col-lg-3">Select Country&nbsp;<span style="color:red">*</span></label>
+            <select id="user_country" name="user_country" class="col-mg-5 col-lg-5 inputfild" onchange="GetISDcodeUser(this.value)"> 
+                <option value="" selected="selected">Select Country</option>
+	    </select>
+           </div>
+          <!-- <div class="form-group clearfix spance apend_country">
+               <label class="control-label col-sm-3 col-lg-3"> Select Country<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="user_country" name="user_country" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+					<option value="" selected="selected">Select Country</option>
+					</select>
+				<label id="user_country-error" class="error col-lg-offsets-5" for="user_country" generated="true" style="margin-left:17%;"></label>
+			</div>
+           
+           <div class="form-group clearfix spance apend_country">
+            <label class="control-label col-sm-3 col-lg-3"> Select State<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="user_state" name="user_state" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+				<option value="" selected="selected">Select State</option>
+					</select>
+				<label id="user_state-error" class="error col-lg-offsets-5" for="user_state" generated="true" style="margin-left:17%;"></label>
+			</div>
+			<div class="form-group clearfix spance apend_country">
+            <label class="control-label col-sm-3 col-lg-3"> Select City<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="autocomplete" name="user_city" class="col-sm-6 inputfild" style="text-transform: capitalize;" onchange="GetISDcode(this.value);">
+				<option value="" selected="selected">Select City</option>
+					</select>
+				<label id="autocomplete-error" class="error col-lg-offsets-5" for="autocomplete" generated="true" style="margin-left:17%;"></label>
+			</div>
+            
+            <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Pin Code<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="user_pincode" class="col-sm-6 col-lg-5 inputfild  " name="user_pincode">
+			<label id="user_pincode-error" class="error col-lg-offsets-5" for="user_pincode" generated="true" style="margin-left:17%;"></label>
+           </div>-->
+           
+          <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">City&nbsp;<span style="color:red">*</span></label>
+            <input type="text" id="autocomplete" name="autocomplete" class="col-mg-5 col-lg-5 inputfild" onfocus="geolocate()" />
+           </div>
+             
+			<div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Pin Code&nbsp;<span style="color:red">*</span></label>
+           <input type="text" id="pincode" name="pincode" class=" col-mg-5 col-lg-5 inputfild num"/>
+          </div>
+			 
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Mobile No&nbsp;<span style="color:red">*</span></label>
+            <input type="text" name="mob_isd" id="mob_isd" class="col-mg-1 col-lg-1 inputfild" disabled="disabled" value="+91" style="color:#333;">
+            <input type="text" name="mob_no" id="mob_no" class="col-mg-4 col-lg-4 inputfild" style="margin-left:57px;">
+			<label id="mob_no-error" class="error col-lg-offsets-5" for="mob_no" style="margin-left: 362px;" generated="true"></label>
+           </div>
+	   <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Alternate Mobile No</label>
+             <input type="text" name="alt_mob_isd" id="alt_mob_isd" class="col-mg-1 col-lg-1 inputfild " disabled="disabled" value="+91" style="color:#333;">
+            <input type="text" name="alternate_mob_no" id="alternate_mob_no" class="col-mg-4 col-lg-4 inputfild not_mandat" style="margin-left:57px;">
+            <label id="alternate_mob_no-error" class="error col-lg-offsets-5" for="alternate_mob_no" style="margin-left: 362px;" generated="true"></label>
+           </div>
+                      
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Landline No.(Resi.)</label>
+            <input type="text" name="land_std" id="land_std" class="col-mg-1 col-lg-1 inputfild not_mandat">
+            <input type="text" name="land_no" id="land_no" class="col-mg-4 col-lg-4 inputfild not_mandat" style="margin-left:57px;">
+			<label id="land_std-error" class="error col-lg-offsets-5" for="land_std" style="display: inline-block;margin-left: 195px;" generated="true"></label>
+			<label id="land_no-error" class="error col-lg-offsets-5" for="land_no" style="display: inline-block;margin-left: 70px;" generated="true"></label>            
+           </div>
+		   
+          
+		  <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Language<span class="mandat_star" style="color:red;">*</span></label>
+             <select class="col-mg-5 col-lg-5 inputfild" id="speak11Us" name="speakUs" style="text-transform:uppercase;" required>
+			    <option value="" selected="true">--Select Language--</option>
+                <option value="Hindi">Hindi</option>
+				<option value="English">English</option>
+				<option value="Punjabi">Punjabi</option>
+				<option value="Tamil">Tamil</option>
+				<option value="Telugu">Telugu</option>
+				<option value="Urdu">Urdu</option>
+				<option value="Bangla">Bangla</option>
+				<option value="Marathi">Marathi</option>
+				<option value="Gujrati">Gujrati</option>
+				<option value="Marwadi">Marwadi</option>
+				<option value="Kannad">Kannad</option>
+				<option value="Malyalam">Malyalam</option>
+				<option value="Bhojpuri">Bhojpuri</option>
+            </select>			
+			<label id="speak11-error" class="error col-lg-offsets-5" for="speak11" generated="true" style="width: 100%;"></label>
+			<script>  $('#speak').change(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script>
+	 </div>
+            </div>
+           
+     <!--left_panel_form END-->      
+	
+       <!--bottom part checkbox of form-->
+      <div class="clearfix"></div>
+	   
+      	 <div class="row">  
+            <!--<h3 class="col-lg-6 company_labelbg">COMPANY DETAILS (Not Mandatory)</h3>-->
+			<strong class="col-lg-6 company_labelbg" style="display:block; color:white; font-size:14px;">Company Details ( Not Mandatory )</strong>
+         </div>
+            <div class="col-sm-8 col-md-8 col-lg-8 clearfix">
+         	
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Company</label>
+            <input type="text" id="user_company" name="user_company" class="col-mg-5 col-lg-5 inputfild "/>
+           </div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Email Id </label>
+           <input type="text" id="user_email" name="user_email" class=" col-mg-5 col-lg-5 inputfild email"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Alternate Email Id</label>
+           <input type="text" id="user_alt_email" name="user_alt_email" class=" col-mg-5 col-lg-5 inputfild email"/>
+          </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Address</label>
+          <textarea name="user_adds" id="user_adds" class="col-lg-5 inputfild " rows="3" cols="5"></textarea>
+           </div>
+          <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">City</label>
+            <input type="text" id="autocomplete1" name="autocomplete1" class="col-mg-5 col-lg-5 inputfild " onfocus="geolocate()" />
+           </div>
+		   <div class="form-group clearfix spance apend_country">
+            <label class="control-label col-mg-3 col-lg-3">Select Country&nbsp;</label>
+            <select id="cmpany_country" name="cmpany_country" class="col-mg-5 col-lg-5 inputfild " onchange="GetCompanyISDcode(this.value)"> 
+                <option value="" selected="selected">Select Country</option>
+			</select>
+           </div>
+           
+            <!--<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Country<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="cmpany_country" name="cmpany_country" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+				<option value="" selected="true">--Select Country--</option>
+			   </select>
+				<label id="cmpany_country-error" class="error col-lg-offsets-5" for="cmpany_country" generated="true" style="margin-left:17%;"></label>
+			</div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">State<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="user_company_state" name="user_company_state" class="col-sm-6 inputfild" style="text-transform: capitalize;"> 
+              <option value="" selected="true">--Select State--</option>				
+				</select>
+				<label id="user_company_state-error" class="error col-lg-offsets-5" for="user_company_state" generated="true" style="margin-left:17%;"></label>
+			</div>
+			<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">City<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="user_company_city" name="user_company_city" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+                <option value="" selected="true">--Select City--</option>
+				</select>				
+				<label id="user_company_city-error" class="error col-lg-offsets-5" for="user_company_city" generated="true" style="margin-left:17%;"></label>
+			</div>
+            
+            <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Pin Code<span class="mandat_star" style="color:red;">*</span></label>
+            <input type="text" id="user_company_pincode" class="col-sm-6 col-lg-5 inputfild  " name="user_company_pincode">
+			<label id="user_company_pincode-error" class="error col-lg-offsets-5" for="user_company_pincode" generated="true" style="margin-left:17%;"></label>
+			<script> $('#user_company_pincode').keyup(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+  
+           </div>-->
+		   
+		    <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Pin Code</label>
+           <input type="text" id="user_pin" name="user_pin" class=" col-mg-5 col-lg-5 inputfild num"/>
+          </div>
+		   
+		   		   
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Mobile No.</label>
+            <input type="text" name="cmp_mob_isd" id="cmp_mob_isd" class="col-mg-1 col-lg-1 inputfild" disabled="disabled" style="width:63px;">
+            <input type="text" name="user_mob" id="user_mob" class="col-mg-4 col-lg-4 inputfild " style="margin-left:57px; width:260px;">
+			<label id="user_mob-error" class="error col-lg-offsets-5" for="user_mob" style="margin-left: 362px;" generated="true"></label>            
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Landline No.(Office)</label>
+            <input type="text" name="cmp_lan_std" id="cmp_lan_std" class="col-mg-1 col-lg-1 inputfild" style="width:63px;">
+            <input type="text" name="user_land" id="user_land" class="col-mg-4 col-lg-4 inputfild " style="margin-left:57px; width:260px;">
+            <label id="cmp_lan_std-error" class="error col-lg-offsets-5" for="cmp_lan_std" style="display: inline-block;margin-left: 195px;" generated="true"></label>
+			<label id="user_land-error" class="error col-lg-offsets-5" for="user_land" style="display: inline-block;margin-left: 70px;" generated="true"></label>             
+           </div>           
+         
+		  <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3"></label>
+           <input type="checkbox" id="userTerms" name="userTerms" />Accept Terms & Conditions<span class="mandat_star" style="color:red;">*</span>
+		   <label id="userTerms-error" class="error col-lg-offsets-5" for="userTerms" style="display: block;margin-left: 192px;" generated="true"></label>
+          </div>
+            </div>
+           <div class="col-lg-8 clearfix"></div>
+             <!--bottom part checkbox of form End-->
+             
+        	<div class="col-lg-12">
+                    
+            <div class="btn registerbtn pull-right" onclick="user_submit();" style="margin-bottom:-50px !important;">Register<i class="fa fa-spinner fa-spin" style="font-size: 1.5em;
+
+font-size: 1.5em;
+display: none;
+position: absolute;
+right: 20px;
+top: 37px;
+line-height:10px;
+}"></i></div>
+                    
+            </div> 
+         </form>
+   
+       </div>
+       <script>
+        var name = $("#userName").val();
+        document.cookie="username=name";
+        var status = 1;
+       </script>
+       <!--user form End-->  
+  <?php
+}else{
+  ?>
+                
+       <!--Corporate user form start-->
+       
+  <div  id="userRoleCorporate" class="clearfix" style="margin:0px auto 80px; display:block"><!--user-->
+       
+    
+    <!--left_panel_form START-->
+     <!--right_panel_form START-->
+         <div class=" col-sm-4 col-md-4 col-lg-4 clearfix userprofileimg" style="margin: 0px auto 0px;">
+         	<div id="crop-avatar">
+			
+		
+
+    <!-- Current avatar -->
+   
+    <div class="avatar-view" title="Profile Picture">
+        <img src="public/image/default_user.png" alt="Avatar" class="resimg"><br/>
+    </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    <a href="#avatar-modal" data-toggle="modal" title="Profile Picture"><strong style="color: rebeccapurple;margin-left:128px;">Upload Profile Picture</strong></a>
+	
+	
+	
+	
+	
+	
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form class="avatar-form" id="0" method="post" action="public/crop-avatar.php" enctype="multipart/form-data">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="avatar-modal-label">Profile Picture</h4>
+            </div>
+            <div class="modal-body">
+              <div class="avatar-body">
+
+                <!-- Upload image and data -->
+                <div class="avatar-upload">
+                  <input class="avatar-src" name="avatar_src" type="hidden">
+                  <input class="avatar-data" name="avatar_data" type="hidden">
+                  <label for="avatarInput"></label>
+                  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                </div>
+
+                <!-- Crop and preview -->
+                <div class="row">
+                  <div class="col-md-9">
+                      <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+                    <div class="avatar-wrapper"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="avatar-preview preview-lg"></div>
+                    <div class="avatar-preview preview-md"></div>
+                    <div class="avatar-preview preview-sm"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary avatar-save" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- /.modal -->
+    
+    <!-- Loading state -->
+    
+  </div>
+        </div>
+      <!--right_panel_form START-->   
+      <form id="reg_Corporate" name="reg_Corporate">
+         <div class="col-sm-8 col-md-8 col-lg-8 clearfix">
+             <div class="form-group clearfix spance">
+              <input type='hidden' id='image_path0' name='image_path' value=''>  	
+              <label class="control-label col-mg-3 col-lg-3">Name&nbsp;<span style="color:red">*</span></label>
+              <input type="text" name="co_userName" id="co_userName" class="col-mg-5 col-lg-5 inputfild"/>
+            </div>
+			<div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Email id&nbsp;<span style="color:red">*</span></label>
+           <input type="text" name="co_email_id" id="co_email_id" class=" col-mg-5 col-lg-5 inputfild email"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Alternate Email Id</label>
+           <input type="text" name="co_alt_email_id" id="co_alt_email_id" class=" col-mg-5 col-lg-5 inputfild email"/>
+          </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Residential Address&nbsp;<span style="color:red">*</span></label>
+          <textarea rows="3" cols="5" class="col-lg-5 inputfild" name="co_address" id="co_address"></textarea>
+           </div>
+		   
+		    <div class="form-group clearfix spance apend_country">
+            <label class="control-label col-mg-3 col-lg-3">Select Country&nbsp;<span style="color:red">*</span></label>
+            <select id="co_user_country" name="co_user_country" class="col-mg-5 col-lg-5 inputfild" onchange="GetISDcodeUser(this.value)"> 
+                <option value="" selected="selected">Select Country</option>
+			</select>
+           </div>
+		   
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">City&nbsp;<span style="color:red">*</span></label>
+            <input type="text" id="co_city" name="co_city" class="col-mg-5 col-lg-5 inputfild" onfocus="geolocate()" />
+           </div>
+            
+           
+		    <div class="form-group clearfix spance">
+            <label class="control-label col-lg-3">Pin Code&nbsp;<span style="color:red">*</span></label>
+           <input type="text" id="co_user_pin" name="co_user_pin" class=" col-mg-5 col-lg-5 inputfild num"/>
+          </div>
+		   
+              <!--<div class="form-group clearfix spance apend_country">
+               <label class="control-label col-sm-3 col-lg-3"> Select Country<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="driver_country" name="driver_country" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+					<option value="" selected="selected">Select Country</option>
+					</select>
+				<label id="driver_country-error" class="error col-lg-offsets-5" for="driver_country" generated="true" style="margin-left:17%;"></label>
+			</div>
+           
+           <div class="form-group clearfix spance apend_country">
+            <label class="control-label col-sm-3 col-lg-3"> Select State<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="driver_state" name="driver_state" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+				<option value="" selected="selected">Select State</option>
+					</select>
+				<label id="driver_state-error" class="error col-lg-offsets-5" for="driver_state" generated="true" style="margin-left:17%;"></label>
+			</div>
+			<div class="form-group clearfix spance apend_country">
+            <label class="control-label col-sm-3 col-lg-3"> Select City<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="autocomplete" name="city" class="col-sm-6 inputfild" style="text-transform: capitalize;" onchange="GetISDcode(this.value);">
+				<option value="" selected="selected">Select City</option>
+					</select>
+				<label id="autocomplete-error" class="error col-lg-offsets-5" for="autocomplete" generated="true" style="margin-left:17%;"></label>
+			</div>-->
+           
+           
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Mobile No&nbsp;<span style="color:red">*</span></label>
+            <input type="text" name="co_mob_isd" id="co_mob_isd" class="col-mg-1 col-lg-1 inputfild" disabled="disabled" value="+91" style="color:#333;">
+            <input type="text" name="co_mob_no" id="co_mob_no" class="col-mg-4 col-lg-4 inputfild" style="margin-left:57px;">
+			<label id="co_mob_no-error" class="error col-lg-offsets-5" for="co_mob_no" style="margin-left: 362px;" generated="true"></label>
+           </div>
+		    <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Alternate Mobile No</label>
+	        <input type="text" name="co_alt_mob_isd" id="co_alt_mob_isd" class="col-mg-1 col-lg-1 inputfild" disabled="disabled" value="+91" style="color:#333;">
+            <input type="text" name="co_alternate_mob_no" id="co_alternate_mob_no" class="col-mg-4 col-lg-4 inputfild" style="margin-left:57px;">
+			<label id="co_alternate_mob_no-error" class="error col-lg-offsets-5" for="co_alternate_mob_no" style="margin-left: 362px;" generated="true"></label>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Landline No.(Resi.)</label>
+            <input type="text" name="co_land_stdress" id="co_land_stdress" class="col-mg-1 col-lg-1 inputfild">
+            <input type="text" name="co_land_no" id="co_land_no" class="col-mg-4 col-lg-4 inputfild" style="margin-left:57px;"> 
+			<label id="co_land_stdress-error" class="error col-lg-offsets-5" for="co_land_stdress" style="display: inline-block;margin-left: 195px;" generated="true"></label>
+			<label id="co_land_no-error" class="error col-lg-offsets-5" for="co_land_no" style="display: inline-block;margin-left: 70px;" generated="true"></label> 
+           </div>
+           
+         
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3">Language<span class="mandat_star" style="color:red;">*</span></label>
+             <select class="col-mg-5 col-lg-5 inputfild" id="speak11Co" name="speakCo" style="text-transform:uppercase;" required>
+			    <option value="" selected="true">--Select Language--</option>
+                <option value="Hindi">Hindi</option>
+				<option value="English">English</option>
+				<option value="Punjabi">Punjabi</option>
+				<option value="Tamil">Tamil</option>
+				<option value="Telugu">Telugu</option>
+				<option value="Urdu">Urdu</option>
+				<option value="Bangla">Bangla</option>
+				<option value="Marathi">Marathi</option>
+				<option value="Gujrati">Gujrati</option>
+				<option value="Marwadi">Marwadi</option>
+				<option value="Kannad">Kannad</option>
+				<option value="Malyalam">Malyalam</option>
+				<option value="Bhojpuri">Bhojpuri</option>
+            </select>			
+			<label id="speak11-error" class="error col-lg-offsets-5" for="speak11" generated="true" style="width: 100%;"></label>
+			<script>  $('#speak').change(function(){
+						this.value = this.value.toUpperCase();
+						});
+				</script> 
+	 </div>
+            </div>
+           
+     <!--left_panel_form END-->
+	
+       <!--bottom part checkbox of form-->
+      <div class="clearfix"></div>
+	   
+      	 <div class="row">  
+            <!--<h3 class="col-lg-6 company_labelbg">COMPANY DETAILS ( Mandatory)</h3>-->
+			<strong class="col-lg-6 company_labelbg" style="display:block; color:white; font-size:14px;">Company Details ( Mandatory )</strong>
+         </div>
+            <div class="col-sm-8 col-md-8 col-lg-8 clearfix">
+         	
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Company&nbsp;<span style="color:red">*</span></label>
+            <input type="text" id="co_user_company" name="co_user_company" class="col-mg-5 col-lg-5 inputfild "/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Authorised Person&nbsp;<span style="color:red">*</span></label>
+            <input type="text" id="otherise_per" name="otherise_per" class="col-mg-5 col-lg-5 inputfild "/>
+           </div>
+           
+            <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Position&nbsp;<span style="color:red">*</span></label>
+            <input type="text" id="position" name="position" class="col-mg-5 col-lg-5 inputfild "/>
+           </div>
+           
+           
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Dipartment&nbsp;<span style="color:red">*</span></label>
+            <input type="text" id="department" name="department" class="col-mg-5 col-lg-5 inputfild "/>
+           </div>
+           
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Email Id&nbsp;<span style="color:red">*</span> </label>
+           <input type="text" id="co_user_email" name="co_user_email" class=" col-mg-5 col-lg-5 inputfild email"/>
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Alternate Email Id</label>
+           <input type="text" id="co_user_alt_email" name="co_user_alt_email" class=" col-mg-5 col-lg-5 inputfild not_mandat"/>
+          </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Address&nbsp;<span style="color:red">*</span></label>
+          <textarea rows="3" cols="5" class="col-lg-5 inputfild not_mandat" name="co_company_adds" id="co_company_adds"></textarea>
+           </div>
+              
+           <div class="form-group clearfix spance apend_country">
+                <label class="control-label col-mg-3 col-lg-3">Select Country&nbsp;<span style="color:red">*</span></label>
+                <select id="co_cmpany_country" name="co_cmpany_country" class="col-mg-5 col-lg-5 inputfild" onchange="GetCompanyISDcode(this.value)"> 
+                <option value="" selected="selected">Select Country</option>
+		</select>
+           </div>
+		   
+		   
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">City&nbsp;<span style="color:red">*</span></label>
+            <input type="text" id="co_company_city" name="co_company_city" class="col-mg-5 col-lg-5 inputfild" onfocus="geolocate()" />
+           </div>
+		   
+		    <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Pin Code&nbsp;<span style="color:red">*</span></label>
+           <input type="text" id="co_company_pin" name="co_company_pin" class=" col-mg-5 col-lg-5 inputfild num"/>
+          </div>
+		   
+		   
+             <!-- <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">Country<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="driver_opration_country" name="driver_opration_country" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+				<option value="" selected="true">--Select Country--</option>
+			   </select>
+				<label id="driver_opration_country-error" class="error col-lg-offsets-5" for="driver_opration_country" generated="true" style="margin-left:17%;"></label>
+			</div>
+		   <div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">State<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="driver_opration_state" name="driver_opration_state" class="col-sm-6 inputfild" style="text-transform: capitalize;"> 
+              <option value="" selected="true">--Select State--</option>				
+				</select>
+				<label id="driver_opration_state-error" class="error col-lg-offsets-5" for="driver_opration_state" generated="true" style="margin-left:17%;"></label>
+			</div>
+			<div class="form-group clearfix spance">
+            <label class="control-label col-sm-3 col-lg-3">City<span class="mandat_star" style="color:red;">*</span></label>
+				<select id="driver_opration_city" name="driver_opration_city" class="col-sm-6 inputfild" style="text-transform: capitalize;">
+                <option value="" selected="true">--Select City--</option>
+				</select>				
+				<label id="driver_opration_city-error" class="error col-lg-offsets-5" for="driver_opration_city" generated="true" style="margin-left:17%;"></label>
+			</div>-->
+            
+        
+           
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Mobile No.&nbsp;<span style="color:red">*</span></label>
+			<input type="text" name="co_cmp_mob_isd" id="co_cmp_mob_isd" class="col-mg-1 col-lg-1 inputfild" disabled="disabled" style="color:#333;" value="+91">
+            <input type="text" name="co_user_mob" id="co_user_mob" class="col-mg-4 col-lg-4 inputfild" style="margin-left:57px;">	        
+            <label id="co_user_mob-error" class="error col-lg-offsets-5" for="co_user_mob" style="margin-left: 362px;" generated="true"></label>            
+           </div>
+           <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3">Landline No.(Office)&nbsp;<span style="color:red">*</span></label>
+			<input type="text" name="co_land_std" id="co_land_std" class="col-mg-1 col-lg-1 inputfild">
+            <input type="text" name="co_user_land" id="co_user_land" class="col-mg-4 col-lg-4 inputfild" style="margin-left:57px;"> 
+			<label id="co_land_std-error" class="error col-lg-offsets-5" for="co_land_std" style="display: inline-block;margin-left: 195px;" generated="true"></label>
+			<label id="co_user_land-error" class="error col-lg-offsets-5" for="co_user_land" style="display: inline-block;margin-left: 70px;" generated="true"></label>                      
+           </div>           
+          
+		  <div class="form-group clearfix spance">
+            <label class="control-label col-mg-3 col-lg-3"></label>
+           <input type="checkbox" id="co_userTerms" name="co_userTerms"/><a href="#" style="color:#333 !important;">Accept Terms & Conditions</a><span class="mandat_star" style="color:red;">*</span>
+		   <label id="co_userTerms-error" class="error col-lg-offsets-5" for="co_userTerms" style="display: block;margin-left: 192px;" generated="true"></label>
+          </div>
+            </div>
+           <div class="col-lg-6 clearfix"></div>
+             <!--bottom part checkbox of form End-->
+             
+        	<div class="col-lg-12">
+                    
+            <div class="btn registerbtn pull-right" onclick="corporate_submit()" style="margin-bottom:-50px !important;">Register<i class="fa fa-spinner fa-spin" style="font-size: 1.5em;
+
+font-size: 1.5em;
+display: none;
+position: absolute;
+right: 20px;
+top: 37px;
+line-height:10px;
+}"></i></div>
+                    
+            </div> 
+         </form>
+   
+       </div>
+       <script>
+        var name = $("#userName").val();
+        document.cookie="username=name";
+        var status = 1;
+       </script>
+       <!--Corporate user form End--> 
+<?php
+ }
+ ?>    
+     </div>  
+              
+<div class="clearfix"></div>
+<!-- End Signup for users-->
+
+
+
+
+
+<!-- End Signup for users-->
+
+
+
+
+<script>
+var site_url = "<?php echo $this->basePath(); ?>"; 
+    $(document).ready(function() {
+   var site_url = "<?php echo $this->basePath(); ?>";  
+   //********Fetch CabTypes***********
+   var url = site_url+'/tunnel/menu/getCabTypes'; 
+   $.ajax({
+                type: 'POST',
+                url: url,
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                        alert("Failed to Fetch CabTypes");
+                    }else{                        
+                        $.each(data.CabData, function(idx, obj) {                            
+                            $("#driver_cartypes").append("<option value='"+obj["id"]+"'>"+obj["CabType"]+"</option>");			                
+                        });
+                    }                        
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        }); 
+  ////*******Fetch driver_pref_city*******
+	//$(".driver_pref_city").load(getDriverPrefcity());
+	var urlll = site_url+'/tunnel/menu/getDriverPrefcity'; 
+	//function getDriverPrefcity(){         
+			$.ajax({
+					type: 'POST',
+					url: urlll,
+					dataType: "json",				 
+					success: function(data){
+						if(data.Status=="Failed"){
+							alert("Failed to Fetch Driver Pref Cities");
+						}else{                        
+							$.each(data.record, function(idx, obj) {                            
+								$("#driver_pref_city").append("<option value='"+obj["id"]+"'>"+obj["CityName"]+"</option>");								
+							});
+						}                        
+					},
+					error: function(error){
+							console.log(error);	
+					}
+			});
+		 //}
+		 
+		 
+		 ////*******Fetch driver_Licence_State*******
+	//$(".driver_pref_city").load(getDriverPrefcity());
+	var urllci = site_url+'/tunnel/menu/getStateLic'; 
+	//function getDriverPrefcity(){         
+			$.ajax({
+					type: 'POST',
+					url: urllci,
+					dataType: "json",				 
+					success: function(data){
+						if(data.Status=="Failed"){
+							alert("Failed to Fetch Driver Pref Cities");
+						}else{                        
+							$.each(data.record, function(idx, obj) {                            
+								$("#driverLicState").append("<option value='"+obj["id"]+"'>"+obj["state_name"]+"</option>");								
+							});
+						}                        
+					},
+					error: function(error){
+							console.log(error);	
+					}
+			});
+		 //}
+		 
+////*******Fetch coutries*******
+//$(".apend_country").load(getCountrylist());
+var url = site_url+'/tunnel/menu/getCountry'; 
+//function getCountrylist(){         
+        $.ajax({
+                type: 'POST',
+                url: url,
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                        alert("Failed to Fetch Country list");
+                    }else{
+                           $("#driver_opration_country").empty();
+						   $("#driver_opration_country").append("<option value=''>"+'Select Country'+"</option>");
+                        $.each(data.record, function(idx, obj) {                            
+                            $("#user_country").append("<option value='"+obj["id"]+"'>"+obj["country_name"]+"</option>");
+			                $("#cmpany_country").append("<option value='"+obj["id"]+"'>"+obj["country_name"]+"</option>");
+                            $("#co_user_country").append("<option value='"+obj["id"]+"'>"+obj["country_name"]+"</option>");
+			                $("#co_cmpany_country").append("<option value='"+obj["id"]+"'>"+obj["country_name"]+"</option>");
+							$("#driver_country").append("<option value='"+obj["id"]+"'>"+obj["country_name"]+"</option>");
+							$("#driver_opration_country").append("<option value='"+obj["id"]+"'>"+obj["country_name"]+"</option>");							
+                        });
+                    }                        
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        });
+    // }	
+	
+//// Fetch States Starts Here ////////
+	
+	var url = site_url+'/tunnel/menu/getState'; 
+	  $.ajax({
+                type: 'POST',
+                url: url,
+				data:{Country_id:1},
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                        alert("Failed to Fetch State list");
+						   $("#driver_state").empty();
+						    $("#driver_opration_state").empty();
+						   $("#driver_state").append("<option value=''>"+'Select State'+"</option>");
+						    $("#driver_opration_state").append("<option value=''>"+'Select State'+"</option>");
+						   $("#autocomplete").empty();
+						   $("#autocomplete").append("<option value=''>"+'Select City'+"</option>");						 
+                    }else{
+                           $("#driver_state").empty();
+						    $("#driver_opration_state").empty();
+						   $("#driver_state").append("<option value=''>"+'Select State'+"</option>");
+						   $("#driver_opration_state").append("<option value=''>"+'Select State'+"</option>");
+                        $.each(data.record, function(idx, obj) {                            
+                            $("#driver_state").append("<option value='"+obj["id"]+"'>"+obj["state_name"]+"</option>");			                							
+                        });
+						$.each(data.record, function(idx, obj) {                            
+                            $("#driver_opration_state").append("<option value='"+obj["id"]+"'>"+obj["state_name"]+"</option>");			                							
+                        });
+                    }                        
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        });
+		
+//// Fetch States Ends Here /////////
+	
+//**************End Ready function//	 
+}); 
+$("#driver_country").on('change',function(){
+	var url = site_url+'/tunnel/menu/getState'; 
+	  $.ajax({
+                type: 'POST',
+                url: url,
+				data:{Country_id:$(this).val()},
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                        alert("Failed to Fetch State list");
+						   $("#driver_state").empty();
+						   $("#driver_state").append("<option value=''>"+'Select State'+"</option>");
+						   $("#autocomplete").empty();
+						   $("#autocomplete").append("<option value=''>"+'Select City'+"</option>");						 
+                    }else{
+                           $("#driver_state").empty();
+						   $("#driver_state").append("<option value=''>"+'Select State'+"</option>");
+                        $.each(data.record, function(idx, obj) {                            
+                            $("#driver_state").append("<option value='"+obj["id"]+"'>"+obj["state_name"]+"</option>");			                							
+                        });
+                    }                        
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        });
+ });
+ $("#driver_state").on('change',function(){
+	var url = site_url+'/tunnel/menu/getCity'; 
+	  $.ajax({
+                type: 'POST',
+                url: url,
+				data:{State_id:$(this).val()},
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                           alert("Failed to Fetch City list");	
+							$("#autocomplete").empty();
+						   $("#autocomplete").append("<option value=''>"+'Select City'+"</option>");						
+                    }else{
+                           $("#autocomplete").empty();
+						   $("#autocomplete").append("<option value=''>"+'Select City'+"</option>");
+                        $.each(data.record, function(idx, obj) {                            
+                            $("#autocomplete").append("<option value='"+obj["id"]+"'>"+obj["city_name"]+"</option>");			                							
+                        });
+                    }                        
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        });
+ });
+ //**************GET ISD CODE******************
+  function GetISDcode(value)
+    {  
+        var site_url = "<?php echo $this->basePath(); ?>";
+        var path = site_url+'/tunnel/menu/getCountryIsd';        
+       $.ajax({
+                type: 'POST',
+                url: path,
+                data:{count_id:$("#driver_country").val()},
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                       // alert("Failed to Fetch Country ISD code! Please Try Again");
+						 $("#driver_mob_isd").attr('disabled',false);
+			             $("#driver_alt_mob_isd").attr('disabled',false);
+						 $("#driver_mob_isd").focus();
+                    }else{
+                           $("#mob_isd").val("+"+data.isdcode);
+			               $("#alt_mob_isd").val("+"+data.isdcode);
+                           $("#co_mob_isd").val("+"+data.isdcode);
+			               $("#co_alt_mob_isd").val("+"+data.isdcode);
+						   $("#driver_mob_isd").val("+"+data.isdcode);
+			               $("#driver_alt_mob_isd").val("+"+data.isdcode);
+                    }
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        });
+    }
+	 function GetISDcodeUser(value)
+    { 		
+        var site_url = "<?php echo $this->basePath(); ?>";
+        var path = site_url+'/tunnel/menu/getCountryIsd';        
+       $.ajax({
+                type: 'POST',
+                url: path,
+                data:{count_id:value},
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                       // alert("Failed to Fetch Country ISD code! Please Try Again");
+						 $("#driver_mob_isd").attr('disabled',false);
+			             $("#driver_alt_mob_isd").attr('disabled',false);
+						 $("#driver_mob_isd").focus();
+                    }else{
+                           $("#mob_isd").val("+"+data.isdcode);
+			               $("#alt_mob_isd").val("+"+data.isdcode);
+                           $("#co_mob_isd").val("+"+data.isdcode);
+			               $("#co_alt_mob_isd").val("+"+data.isdcode);
+						   $("#driver_mob_isd").val("+"+data.isdcode);
+			               $("#driver_alt_mob_isd").val("+"+data.isdcode);
+                    }
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        });
+    }
+//************End Get isd code**********
+$("#driver_opration_country").on('change',function(){
+	var url = site_url+'/tunnel/menu/getState'; 
+	  $.ajax({
+                type: 'POST',
+                url: url,
+				data:{Country_id:$(this).val()},
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                        alert("Failed to Fetch State list");
+						   $("#driver_opration_state").empty();
+						   $("#driver_opration_state").append("<option value=''>"+'Select State'+"</option>");
+						   $("#driver_opration_city").empty();
+						   $("#driver_opration_city").append("<option value=''>"+'Select City'+"</option>");						 
+                    }else{
+                           $("#driver_opration_state").empty();
+						   $("#driver_opration_state").append("<option value=''>"+'Select State'+"</option>");
+                        $.each(data.record, function(idx, obj) {                            
+                            $("#driver_opration_state").append("<option value='"+obj["id"]+"'>"+obj["state_name"]+"</option>");			                							
+                        });
+                    }                        
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        });
+ });
+ $("#driver_opration_state").on('change',function(){
+	var url = site_url+'/tunnel/menu/getCity'; 
+	  $.ajax({
+                type: 'POST',
+                url: url,
+				data:{State_id:$(this).val()},
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                        alert("Failed to Fetch City list");						
+                    }else{
+                           $("#driver_opration_city").empty();
+						   $("#driver_opration_city").append("<option value=''>"+'Select City'+"</option>");
+                        $.each(data.record, function(idx, obj) {                            
+                            $("#driver_opration_city").append("<option value='"+obj["id"]+"'>"+obj["city_name"]+"</option>");			                							
+                        });
+                    }                        
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        });
+ });
+ //********************end get Opration city*******************
+ $("#driverWoff").on('change',function(){
+	 if(this.value =="Yes"){
+		$("#DriveroffDayMain").css("display","block");
+	 }
+	 if(this.value =="No"){
+		$("#DriveroffDayMain").css("display","none");
+	 }
+ });
+
+ //////////// SHow hide of Vehicel Owner or Attached Starts Here ///
+ 
+ $(".vehicle_owned_attach").on('click',function(){
+	 if(this.value =="vehicle_attached"){
+		$("#vehicle_owned_attach").css("display","block");
+	 }
+	 if(this.value =="vehicle_owned"){
+		$("#vehicle_owned_attach").css("display","none");
+	 }
+ });
+ 
+ //////////// SHow hide of Vehicel Owner or Attached Ends Here ///
+ 
+ 
+ 
+function GetCabByCategory(value){
+	 var site_url = "<?php echo $this->basePath(); ?>";
+	 var url = site_url+'/tunnel/menu/GetCabByCategory'; 
+     $.ajax({
+                type: 'POST',
+                url: url,
+				data:{CabId:value},
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                        alert("Failed to Fetch Cabs");
+                    }else{ 
+						   $("#vechile_name").empty();
+						   $("#vechile_name").append("<option value=''>"+'Select Your Vehicle'+"</option>");
+                        $.each(data.CabData, function(idx, obj) { 							
+                            $("#vechile_name").append("<option value='"+obj["CabName"]+"'>"+obj["CabName"]+"</option>");			                
+                        });
+                    }                        
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        }); 
+ }
+
+ 
+	function GetCompanyISDcode(value)
+    {  
+        var site_url = "<?php echo $this->basePath(); ?>";
+        var path = site_url+'/tunnel/menu/getCountryIsd';        
+       $.ajax({
+                type: 'POST',
+                url: path,
+                data:{count_id:value},
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                        //alert("Failed to Fetch Country ISD code! Please Try Again");
+						$("#cmp_mob_isd").attr('disabled',false);
+			             $("#co_cmp_mob_isd").attr('disabled',false);
+						 $("#cmp_mob_isd").focus();
+                    }else{
+                           $("#cmp_mob_isd").val("+"+data.isdcode);
+                           $("#co_cmp_mob_isd").val("+"+data.isdcode);
+                    }
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        });
+    }
+	function getstatecity(address)
+    {  	
+        var site_url = "<?php echo $this->basePath(); ?>";
+        var path = site_url+'/tunnel/menu/getstatecity';        
+       $.ajax({
+                type: 'POST',
+                url: path,
+                data:{Geoaddress:address},
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                        //alert("Failed to Retrive State and City Name! Please Enter Manually");
+						$("#driver_state").focus();
+						return false;
+                    }else{
+                           $("#driver_state").val(data.state);
+                           $("#autocomplete").val(data.city);
+						   $("#driver_country").val(data.COUNTRY_NAME);
+						   $("#driver_mob_isd").val("+"+data.ISD);
+			               $("#driver_alt_mob_isd").val("+"+data.ISD);
+						   $("#dpincode").focus();
+						   return false;
+                    }
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        });
+    }
+
+
+
+
+$('.container').on('change', 'input[type="file"]' , function(e){
+
+e.preventDefault();
+
+   var fileName = $(this).attr("name");
+    
+					
+		var loderForm = fileName.replace ( /[^\d.]/g, '' );
+	var lodervalue = $.isNumeric(loderForm);
+	 if( lodervalue == true){
+			
+				var name = fileName.replace(/\d+/g, '');
+			switch(name){
+			case "file":
+                                        $("#driver_resident_loderH"+loderForm).show();
+//					 $("#driver_residentH"+loderForm).animate({width:'=0px'},'fast'); 
+//					$("#driver_residentH"+loderForm).css("display","block");
+//					$("#driver_residentH"+loderForm).animate({width:'+=150px'},5000); 
+					break;
+			case "file_office":
+                                        $("#driver_office_loderH"+loderForm).show();
+//					$("#driver_officeH"+loderForm).animate({width:'=0px'},'fast'); 
+//					$("#driver_officeH"+loderForm).css("display","block");
+//					$("#driver_officeH"+loderForm).animate({width:'+=150px'},5000);
+					break;
+			case "file_pan":
+                                        $("#driver_panupload_loderH"+loderForm).show();
+//					$("#driver_panuploadH"+loderForm).animate({width:'=0px'},'fast'); 
+//					$("#driver_panuploadH"+loderForm).css("display","block");
+//					$("#driver_panuploadH"+loderForm).animate({width:'+=150px'},5000);
+					break;
+			case "file_vehicle":
+                                        $("#driver_vehicle_loderH"+loderForm).show();
+//					$("#driver_vehicleH"+loderForm).animate({width:'=0px'},'fast'); 
+//					$("#driver_vehicleH"+loderForm).css("display","block");
+//					$("#driver_vehicleH"+loderForm).animate({width:'+=150px'},5000);
+					break;
+			case "file_badge":
+                                         $("#driver_badge_loderH"+loderForm).show();
+//					$("#driver_badgeH"+loderForm).animate({width:'=0px'},'fast');
+//					$("#driver_badgeH"+loderForm).css("display","block");
+//					$("#driver_badgeH"+loderForm).animate({width:'+=150px'},5000);
+					break;
+			case "file_police":
+                             $("#driver_police_loderH"+loderForm).show();
+//					$("#driver_policeH"+loderForm).animate({width:'=0px'},'fast');
+//					$("#driver_policeH"+loderForm).css("display","block");
+//					$("#driver_policeH"+loderForm).animate({width:'+=150px'},5000);
+					break;
+			case "file_audit":
+                            $("#driver_audit_loderH"+loderForm).show();
+//					$("#driver_auditH"+loderForm).animate({width:'=0px'},'fast');
+//					$("#driver_auditH"+loderForm).css("display","block");
+//					$("#driver_auditH"+loderForm).animate({width:'+=150px'},5000);
+				break;		
+			case "file_insurance":
+                $("#file_insurance_loderH"+loderForm).show();
+//		$("#driver_auditH"+loderForm).animate({width:'=0px'},'fast');
+//		$("#driver_auditH"+loderForm).css("display","block");
+//		$("#driver_auditH"+loderForm).animate({width:'+=150px'},5000);
+	break;
+	case "file_rcproof":
+                $("#file_rcproof_loderH"+loderForm).show();
+//		$("#driver_auditH"+loderForm).animate({width:'=0px'},'fast');
+//		$("#driver_auditH"+loderForm).css("display","block");
+//		$("#driver_auditH"+loderForm).animate({width:'+=150px'},5000);
+	break;
+				}
+		
+		
+		//alert("yes");
+		
+		 }
+else{
+	
+   if(fileName == 'file'){
+       $("#driver_resident_loder").show();
+//       $("#driver_resident").animate({width:'=0px'},'fast'); 
+//       $("#driver_resident").css("display","block");
+//	    $("#driver_resident").animate({width:'+=150px'},5000); 
+	   
+   }
+   else if(fileName == 'file_office'){
+       
+       $("#driver_office_loder").show();
+//		$("#driver_office").animate({width:'=0px'},'fast'); 
+//       $("#driver_office").css("display","block");
+//	    $("#driver_office").animate({width:'+=150px'},5000); 
+   }
+    else if(fileName == 'file_pan'){
+        $("#driver_panupload_loder").show();
+//		$("#driver_panupload").animate({width:'=0px'},'fast'); 
+//       $("#driver_panupload").css("display","block");
+//		$("#driver_panupload").animate({width:'+=150px'},5000);   
+  }
+   else if(fileName == 'file_vehicle'){
+        $("#driver_vehicle_loder").show();
+//	$("#driver_vehicle").animate({width:'=0px'},'fast'); 
+//       $("#driver_vehicle").css("display","block");
+//    $("#driver_vehicle").animate({width:'+=150px'},5000); 
+   }
+   else if(fileName == 'file_police'){
+        $("#driver_police_loder").show();
+//   $("#driver_police").animate({width:'=0px'},'fast'); 
+//       $("#driver_police").css("display","block");
+//      
+//      $("#driver_police").animate({width:'+=150px'},5000);   
+       
+   
+ 
+   }
+   else if(fileName == 'file_audit'){
+       $("#driver_audit_loder").show();
+//    $("#driver_audit").animate({width:'=0px'},'fast'); 
+//       $("#driver_audit").css("display","block");
+//	   $("#driver_audit").animate({width:'+=150px'},5000);  
+   }
+   else if(fileName == 'file_badge'){
+        $("#driver_badge_loder").show();
+//   $("#driver_badge").animate({width:'=0px'},'fast'); 
+//     $("#driver_badge").css("display","block");  
+//    $("#driver_badge").animate({width:'+=150px'},5000); 
+   }
+   else if(fileName == 'file_insurance'){
+       $("#file_insurance_loder").show();
+//  $("#driver_badge").animate({width:'=0px'},'fast'); 
+//    $("#driver_badge").css("display","block");  
+//   $("#driver_badge").animate({width:'+=150px'},5000); 
+  }
+  else if(fileName == 'file_rcproof'){
+       $("#file_rcproof_loder").show();
+//  $("#driver_badge").animate({width:'=0px'},'fast'); 
+//    $("#driver_badge").css("display","block");  
+//   $("#driver_badge").animate({width:'+=150px'},5000); 
+  }
+   
+}
+   
+    var file = this.files[0];
+    var name = file.name;
+    var size = file.size;
+    var type = file.type;
+    //Your validation
+   // var zip = new JSZip();
+   // zip.add(fileName);
+	
+	//var fileNameN = zip.generate();
+	//location.href="data:application/zip;base64," + content;	
+     
+  
+ var site_url = jQuery.cookie('BaseUrl');	
+ //count = 1;	
+ //driver_resident
+////////////////////////////
+var formData = new FormData($('#frm_details')[0]);
+
+
+        
+        
+    
+        
+    $.ajax({
+        url: site_url+'/upload.php?formname='+fileName,  //Server script to process data
+        type: 'POST',
+        dataType: 'json',
+        xhr: function() {  // Custom XMLHttpRequest
+            var myXhr = $.ajaxSettings.xhr();
+            if(myXhr.upload){ // Check if upload property exists
+                //myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+            }
+            return myXhr;
+        },
+        //Ajax events
+       // beforeSend: beforeSendHandler,
+        success: completeHandler,
+        error: errorHandler,
+        // Form data
+        data: formData,
+        //Options to tell jQuery not to process data or worry about content-type.
+        cache: false,
+        contentType: false,
+        processData: false
+    });	
+	
+	
+});
+
+
+
+</script>
+
+
+<script>
+function beforeSendHandler(){
+//setInterval(function () {alert("Hello")}, 3000);
+}
+//		function progressHandlingFunction(e){
+//			
+//			if(e.lengthComputable){
+//			
+//			
+//			   
+//				$('#driver_resident').attr({value:e.loaded,max:e.total});
+//				$('#driver_office').attr({value:e.loaded,max:e.total});
+//				 $('#driver_panupload').attr({value:e.loaded,max:e.total});
+//				  $('#driver_vehicle').attr({value:e.loaded,max:e.total});
+//				   $('#driver_police').attr({value:e.loaded,max:e.total});
+//					$('#driver_audit').attr({value:e.loaded,max:e.total});
+//					$('#driver_badge').attr({value:e.loaded,max:e.total});
+//			}
+//		}
+
+function completeHandler(data){
+    
+    if(data.status == "success"){
+ 
+	var appendedForm = data.path.name.replace ( /[^\d.]/g, '' );
+	var avalue = $.isNumeric(appendedForm);
+	 if( avalue == true){
+			
+				var name = data.path.name.replace(/\d+/g, '');
+			switch(name){
+			case "file":    
+                            
+                                        $("#driver_resident_loderH"+appendedForm).hide();
+                                         $("#driver_residentH"+appendedForm).animate({width:'=0px'},'fast'); 
+					$("#driver_residentH"+appendedForm).css("display","block");
+					$("#driver_residentH"+appendedForm).animate({width:'+=150px'},5000); 
+					$("#fileHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_office": 
+                                        $("#driver_office_loderH"+appendedForm).hide();
+                                        $("#driver_officeH"+appendedForm).animate({width:'=0px'},'fast'); 
+					$("#driver_officeH"+appendedForm).css("display","block");
+					$("#driver_officeH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_officeHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_pan":
+                                        $("#driver_panupload_loderH"+appendedForm).hide();
+                                        $("#driver_panuploadH"+appendedForm).animate({width:'=0px'},'fast'); 
+					$("#driver_panuploadH"+appendedForm).css("display","block");
+					$("#driver_panuploadH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_panHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_vehicle":
+                                        $("#driver_vehicle_loderH"+appendedForm).hide();
+                                         $("#driver_vehicleH"+appendedForm).animate({width:'=0px'},'fast'); 
+					$("#driver_vehicleH"+appendedForm).css("display","block");
+					$("#driver_vehicleH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_vehicleHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_badge":
+                                         $("#driver_badge_loderH"+appendedForm).hide();
+                                        $("#driver_badgeH"+appendedForm).animate({width:'=0px'},'fast');
+					$("#driver_badgeH"+appendedForm).css("display","block");
+					$("#driver_badgeH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_badgeHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_police":
+                                        $("#driver_police_loderH"+appendedForm).hide();
+                                        $("#driver_policeH"+appendedForm).animate({width:'=0px'},'fast');
+					$("#driver_policeH"+appendedForm).css("display","block");
+					$("#driver_policeH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_policeHa"+appendedForm).val(data.path.url);
+					break;
+			case "file_audit":
+                            $("#driver_audit_loderH"+appendedForm).hide();
+                                        $("#driver_auditH"+appendedForm).animate({width:'=0px'},'fast');
+					$("#driver_auditH"+appendedForm).css("display","block");
+					$("#driver_auditH"+appendedForm).animate({width:'+=150px'},5000);
+					$("#file_auditHa"+appendedForm).val(data.path.url);
+				break;		
+			case "file_insurance":
+                $("#file_insurance_loderH"+appendedForm).hide();
+                            $("#file_insuranceH"+appendedForm).animate({width:'=0px'},'fast');
+		$("#file_insuranceH"+appendedForm).css("display","block");
+		$("#file_insuranceH"+appendedForm).animate({width:'+=150px'},5000);
+		$("#file_insuranceHa"+appendedForm).val(data.path.url);
+	break;
+	case "file_rcproof":
+                $("#file_rcproof_loderH"+appendedForm).hide();
+                            $("#file_rcproofH"+appendedForm).animate({width:'=0px'},'fast');
+		$("#file_rcproofH"+appendedForm).css("display","block");
+		$("#file_rcproofH"+appendedForm).animate({width:'+=150px'},5000);
+		$("#file_rcproofHa"+appendedForm).val(data.path.url);
+	break;
+		
+				}
+		
+		
+		//alert("yes");
+		
+		 }
+else{ 
+    
+ //alert("Uploaded file");
+switch(data.path.name){
+case "file":        
+    
+      $("#driver_resident_loder").hide();
+                 $("#driver_resident").animate({width:'=0px'},'fast'); 
+                $("#driver_resident").css("display","block");
+                 $("#driver_resident").animate({width:'+=150px'},5000); 
+		$("#driver_addsH").val(data.path.url);
+		break;
+case "file_office":
+                    $("#driver_office_loder").hide();
+                $("#driver_office").animate({width:'=0px'},'fast'); 
+             $("#driver_office").css("display","block");
+             $("#driver_office").animate({width:'+=150px'},5000);
+		$("#driver_oaddsH").val(data.path.url);
+		break;
+case "file_pan":
+                     $("#driver_panupload_loder").hide();
+                $("#driver_panupload").animate({width:'=0px'},'fast'); 
+                $("#driver_panupload").css("display","block");
+		$("#driver_panupload").animate({width:'+=150px'},5000);  
+		$("#driver_panH").val(data.path.url);
+		break;
+case "file_vehicle":
+                $("#driver_vehicle_loder").hide();
+                $("#driver_vehicle").animate({width:'=0px'},'fast'); 
+                   $("#driver_vehicle").css("display","block");
+                $("#driver_vehicle").animate({width:'+=150px'},5000); 
+		$("#file_vehicleH").val(data.path.url);
+		break;
+case "file_badge":
+                    $("#driver_badge_loder").hide();
+                 $("#driver_badge").animate({width:'=0px'},'fast'); 
+                    $("#driver_badge").css("display","block");  
+                   $("#driver_badge").animate({width:'+=150px'},5000); 
+		$("#file_badgeH").val(data.path.url);
+		break;
+case "file_police":
+                    $("#driver_police_loder").hide();
+               $("#driver_police").animate({width:'=0px'},'fast'); 
+             $("#driver_police").css("display","block");
+      
+              $("#driver_police").animate({width:'+=150px'},5000); 
+		$("#file_policeH").val(data.path.url);
+		break;
+case "file_audit":
+                    $("#driver_audit_loder").hide();
+                    $("#driver_audit").animate({width:'=0px'},'fast'); 
+                     $("#driver_audit").css("display","block");
+                       $("#driver_audit").animate({width:'+=150px'},5000);  
+		$("#file_auditH").val(data.path.url);
+		break;		
+case "file_insurance":
+    $("#file_insurance_loder").hide();
+    $("#file_insurance").animate({width:'=0px'},'fast'); 
+     $("#file_insurance").css("display","block");
+       $("#file_insurance").animate({width:'+=150px'},5000);  
+$("#file_insuranceH").val(data.path.url);
+break;	
+case "file_rcproof":
+    $("#file_rcproof_loder").hide();
+    $("#file_rcproof").animate({width:'=0px'},'fast'); 
+     $("#file_rcproof").css("display","block");
+       $("#file_rcproof").animate({width:'+=150px'},5000);  
+$("#file_rcproofH").val(data.path.url);
+break;	
+		
+	}
+}				
+				   ///var go = $.isNumeric(y);
+    }
+    else{
+        //alert("not uploaded");
+    }
+
+}
+function errorHandler(error){
+	console.log(error);
+}
+
+
+</script>
+<script src="<?php echo $this->basePath(); ?>/public/js/crop-avatar.js"></script>
+<!-- for testing purpose 25 07 2016-->
+<script src="<?php echo $this->basePath(); ?>/public/js/driver_reg.js"></script>
+
+<script>
+    var expanded = false;
+    function showCheckboxes() {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
+    }
+	
+	function showCheckboxes1() {
+        var checkboxes1 = document.getElementById("checkboxes1");
+        if (!expanded) {
+            checkboxes1.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes1.style.display = "none";
+            expanded = false;
+        }
+    }
+</script>
+
+
+
+
+
+
+

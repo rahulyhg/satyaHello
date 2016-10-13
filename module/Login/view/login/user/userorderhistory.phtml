@@ -1,0 +1,201 @@
+<?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath().'/';
+
+?>     
+	 
+
+     <div class="container-fluid">
+     
+ 	<div class="row">
+	 	<div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+			<h2>My Account</h2>
+		</div>
+	 </div>
+	 
+			   																												      
+     <div class="container marginbottom20">
+      	<div class="row">
+			<div class="col-lg-12">
+				<div class="col-sm-3 col-md-3 col-lg-2">
+					 
+					 <div class="list-group">
+
+            <a href="<?=$this->basepath().'/login/user';?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Dashboard</a>
+            <a href="<?= $this->basepath().'/login/user/editprofile'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Edit Profile</a>
+            <a href="<?= $this->basepath().'/login/user/changepassword'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Change Password</a>
+            <a href="<?= $this->basepath().'/login/user/userorderhistory'?>" class="list-group-item userItem yellactive"><i class="fa fa-arrow-circle-right"></i> &nbsp;Order History</a>
+            <a href="<?= $this->basepath().'/login/user/credithistory'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Account Balance</a>
+           <!-- <a href="<?= $this->basepath().'/login/user/Creditrequest'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Credit Request</a>
+            <a href="<?= $this->basepath().'/login/user/bankaccount'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Bank Account</a>-->
+
+          </div>
+				</div>
+				
+				<div class="col-sm-9 col-md-9 col-lg-10">
+					<div class="row" style="display:block;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading tabheading text-center text-uppercase ">
+                           <b style="">User Order History</b>
+						 
+                        </div>
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+						 <div class="portlet-body" style="margin-top:10px;">
+<form id="AllocationHistoryForm">
+<div class="row">
+<div class="form-group clearfix margintopbottom20">
+<label id="flight_nos" class="col-sm-1 control-label labelalign">From</label>
+<div class="col-sm-2">
+<input id="from_date_allocation" class="form-control inputchange required hasDatepicker" type="text" placeholder="From Date">
+</div>
+<label id="flight_nos" class="col-sm-1 control-label labelalign">To</label>
+<div class="col-sm-2">
+<input id="to_date_allocation" class="form-control inputchange hasDatepicker" type="text" placeholder="To Date">
+</div>
+<div class="col-sm-1" style="margin-left:5px;">
+<a id="allocationHistorySearch" class="btn btn-red defaultbtnsearch " href="#">
+<i class="fa fa-search" style="color:#fff; margin:5px"></i>
+Search
+</a>
+</div>
+<div class="col-sm-1">
+<a class="btn btn-red defaultbtnsearch" href="javascript:document.getElementById('AllocationHistoryForm').reset();">
+<i class="fa fa-times" style="color:#fff; margin:5px"></i>
+Clear
+</a>
+</div>
+</div>
+</div>
+</form>
+</div>
+						<!-- Dashboard Start-->	
+								<div class="col-sm-12 col-md-12" style="display:block;">
+									
+									<div class="col-sm-4 col-sm-offset-2 paddinttop10">
+										 
+			                       
+                        <!-- /.portlet -->
+                     
+									</div>
+									<div class="col-sm-4 paddinttop10">
+										
+									</div>
+									
+						<div class="row">
+						
+									<div class="col-sm-4 paddinttop10">
+										
+									</div>
+									
+									<div class="col-sm-4 paddinttop10">
+									
+									</div>
+									
+									<div class="col-sm-4 paddinttop10">
+									
+			                       
+									</div>
+						
+						</div>
+					
+						
+						<div class="row">
+							<div class="portlet portlet-de" style="border:1px solid #d5d3d4;">
+			                         
+			                            <div class=" ">
+			                                <div class="table-responsive ">
+			                <table class="table" id="user" style=" margin: 0; padding: 0;">
+                                            <thead style="background:#f5f5f5">
+                                                   <tr>
+                                                       <th>Id</th>
+                                                        <th style="width:81px !important;">Pick Up Time</th>
+                                                        <th>Vehicle</th>
+                                                        <th style="width:91px !important;">Booking Type</th>
+                                                        <th>Partner</th>
+                                                        <th>Client</th>
+                                                        <th style="width:287px !important;">Departure</th>
+                                                        <th style="width:130px !important;">Drop Area</th>
+                                                        <th>Status</th>
+                                                   </tr>
+                                            </thead>
+                                        </table>
+			                                </div>
+			                            </div>
+						</div>
+									
+									
+								
+								</div>
+							
+							<!-- /.table-responsive End-->
+                         
+                        </div>
+							<!-- Dashboard Start-->	
+		
+
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+				</div>
+			</div>
+       	</div>
+	 </div>
+	</div>
+	 </div>
+
+
+
+	
+<script>
+
+
+
+function loginhome(){
+	var base_url = "<?php echo $this->basePath(); ?>";
+	//alert(base_url);
+//window.open('http://50.62.22.158:8085/hello42test/public/login',"_self");
+window.open(base_url+'/login',"_self");
+}
+
+
+function signuphome(){
+	
+	window.open(base_url+'/login',"_self");
+	
+}
+
+
+</script>	
+	 
+
+<script type="text/javascript">
+        $(document).ready(function() {
+         //   $('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true }); 
+        var token = $.cookie('token');
+        Allorders(token);
+        $.fn.dataTableExt.sErrMode = 'throw';
+    });
+         
+        
+	function Allorders(token){
+		table=$('#user').dataTable({
+			"ajax": '<?php echo $this->basePath();?>/tunnel/menu/userOrderHistory?token='+token,
+			"deferRender": true
+		});  
+		$("user_wrapper").attr("style","border:1px solid #d2d2d2;");
+		$("#user_wrapper").addClass("clearfix");
+		//$("#driver_wrapper").addClass("font12px");
+		$("#user_wrapper + div").removeClass("row");
+		$("#user_info").parent().parent().removeClass("row");
+		$("#user_wrapper div:first").attr("class","tbsearchrow clearfix");
+		$('#user_filter label').attr("style","display:none;");
+		$(".paginate_button").attr("style","z-index:999 !important;");
+	}
+</script>
+    

@@ -1,0 +1,464 @@
+<?php $session=new Zend\Session\Container('user'); 
+ $token_session	=	$session->offsetGet('token');
+?>
+<?php if($token_session==""){ ?>
+ 	<script>
+	window.location='<?php echo $this->basePath();?>';
+ 	</script>
+ 	<?php 
+ }?>
+<style>
+.panel-heading
+{
+	font-size:13px;
+}
+</style>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+      <h2>My Account</h2>
+    </div>
+  </div>
+  <div class="container marginbottom20">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="col-sm-3 col-md-3 col-lg-2">
+          <div class="list-group"> 
+			  <a href="<?php echo $this->basepath(); ?>/login/driver" class="list-group-item "><i class="fa fa-arrow-circle-right"></i> &nbsp;Dashboard</a> 
+			  <a href="<?php echo $this->basepath(); ?>/login/driver/drivereditprofile" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Edit Profile</a> 
+			  <a href="<?php echo $this->basepath(); ?>/login/driver/changepassword" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Change Password</a> 
+			  <a href="<?php echo $this->basepath(); ?>/login/driver/driverorderhistory" class="list-group-item "><i class="fa fa-arrow-circle-right"></i> &nbsp;Booking History</a> 
+			  <!--<a href="<?php echo $this->basepath(); ?>/login/driver/accountbalance" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Account Balance</a> -->
+			  <!--<a href="<?php echo $this->basepath(); ?>/login/driver/markupmanagement" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Markup Management</a> -->
+			  <a href="<?php echo $this->basepath(); ?>/login/driver/transaction" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Transaction</a>
+               <a href="<?php echo $this->basepath(); ?>/login/driver/creditrequest" class="list-group-item "><i class="fa fa-arrow-circle-right"></i> &nbsp;Credit Request</a>
+                <a href="<?php echo $this->basepath(); ?>/login/driver/vehicleupdate" class="list-group-item yellactive"><i class="fa fa-arrow-circle-right"></i> &nbsp;Bank Details</a>
+			  <a href="<?php echo $this->basepath(); ?>/login/driver/vehicleupdate" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Vehicle Details</a>			  
+		  </div>
+        </div>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+          <div class="row" style="display:block;">
+            <div class="col-lg-12">
+              <div class="panel panel-default">
+                <div class="panel-heading tabheading text-center text-uppercase "> <b style="display:;">Bank Details</b> (Hello 42)</div>
+                <!-- /.panel-heading -->
+                <div class="panel-body"> 
+                  
+                  <!-- Dashboard Start-->
+                  <div class="col-sm-12 col-md-12" style="display:block;">
+				  
+                   
+                    
+                    <div class="row">
+                      <div class="clear"></div> 
+					  					                       
+					  <div class="col-sm-6 paddinttop10" style="width: 100%;margin-left:;">
+                        <div class="portlet portlet-de" style="border:1px solid #d5d3d4; height:;">
+                          <div class="panel-heading text-uppercase newheaing" style="background:#f5f5f5;"> <b style="display:;">Kindly make your deposits in favor of "ACCOUNT NAME" given in below table </b> </div>
+                          <div class="portlet-body" style="height:;">
+                            <div class="table-responsive " style="overflow-x: auto;">
+                              <table class="table borderless table-responsive">
+                                <tr>
+                                  <td><b style="font-size:13px !important;">SR.NO</b></td>
+                                  <td><b style="font-size:13px !important;">BANK NAME & ADDRESS</b></td>
+                                  <td><b style="font-size:13px !important;">ACCOUNT NAME</b></td>
+                                  <td><b style="font-size:13px !important;">ACCOUNT NUMBER</b></td>
+                                   <td><b style="font-size:13px !important;">IFSC CODE</b></td>
+                                </tr>
+                                <tr>
+                                  <td id="sr">1</td>
+                                  <td id="bank_name">HDFC Bank<br />
+									No-2212, Gali No. 64-65, J Block, Naiwala, <br />
+Gurudwara Road, Karol Bagh, New Delhi-10005.
+</td>
+                                  <td id="account_name">Hello 42 India Pvt. Ltd</td>
+                                  <td id="account_number">O4392560009799</td>
+                                   <td id="ifsc_code">HDFC0000439</td>
+                                    </td>
+                                </tr>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        
+                         <div class="panel-heading tabheading text-center text-uppercase "> <b style="display:;">Your Bank Details</b></div>
+                        <div class="portlet portlet-de" style="border:1px solid #d5d3d4; height:;">
+                         
+                          <div class="portlet-body" style="height:;">
+                            <div class="table-responsive " style="overflow-x: auto;">
+                              <table class="table borderless table-responsive">
+                                <tr>
+                                  <td><b style="font-size:13px !important;">SR.NO</b></td>
+                                  <td><b style="font-size:13px !important;">BANK NAME & ADDRESS</b></td>
+                                  <td><b style="font-size:13px !important;">ACCOUNT NAME</b></td>
+                                  <td><b style="font-size:13px !important;">ACCOUNT NUMBER</b></td>
+                                   <td><b style="font-size:13px !important;">IFSC CODE</b></td>
+                                   <td><b></b></td>
+                                </tr>
+                                <tr>
+                                  <td id="1"><span>1</span></td>
+                                  <td id="2"><span id="userbank_name"></span></td>
+                                  <td id="3"><span id="useraccount_name"></span></td>
+                                  <td id="4"><span id="useraccount_no"></span></td>
+                                   <td id="5"><span id="userbank_ifsc"></span></td>
+                                    <td id="6">
+                                   
+                                    <a href="#" style=" color:#333;" data-toggle="modal" data-target="#myModal">Edit</a></td>
+                                    </td>
+                                </tr>
+                                
+                                
+                                
+                              
+                                
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-sm-12 paddinttop10"> </div>
+                    </div>
+                    
+                    
+                    
+                    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Update Your Bank Detail</h4>
+        </div>
+        <div class="modal-body">
+        	
+        <div class="row" style="margin-bottom:11px;"> 
+               
+          <div class="col-sm-4" >
+          	Bank Name
+          </div>
+          
+          <div class="col-sm-4" >
+          	Account Name
+          </div>
+          
+          <div class="col-sm-4" >
+          	Account Nubmer
+          </div>
+          
+          </div>
+        <div class="row" style="margin-bottom:11px;">        
+          <div class="col-sm-4" >
+          	<input name="bankname" value="" class="form-control" id="userbank_nameedit" />
+          </div>
+          
+          <div class="col-sm-4" >
+          	<input name="bankhodername" value="" class="form-control" id="useraccount_nameedit" />
+          </div>
+          
+          <div class="col-sm-4" >
+          	<input name="bankaccountno" value="" class="form-control" id="useraccount_noedit" />
+          </div>
+          
+          </div>
+          <div class="row" style="margin-bottom:11px;"> 
+               
+          <div class="col-sm-4" >
+          	IFSC CODE
+          </div>
+          
+          <div class="col-sm-4" >
+          	Bank Address
+          </div>
+          
+          <div class="col-sm-4" >
+          	
+          </div>
+          
+          </div>
+          <div class="row" style="padding:5px 0;">        
+          <div class="col-sm-4" >
+          	<input name="bankifsc" value="" class="form-control" id="userbank_ifscedit" />
+          </div>
+          
+          <div class="col-sm-4" >
+          	<input name="bankaddress" value="" class="form-control" id="useraccount_addedit" />
+          </div>
+          
+          <div class="col-sm-4" >
+          	<input name="" type="button"  value="Update"/>
+<a data-target="#myModal" data-toggle="modal" class="btn btn-primarynew" href="#topheader">Close</a>
+          </div>
+		  
+		  
+		  
+		  
+          
+          </div>
+        </div>
+      
+      </div>
+      
+    </div>
+  </div>
+                    
+                    
+                    
+                    
+                    
+                    <!--						<div class="row">
+							<div class="portlet portlet-de" style="border:1px solid #d5d3d4;">
+			                         <div class="panel-heading text-uppercase" style="background: #e9e5e4;">
+			                           <b style="display:;">Recent Orders</b>
+			                         </div>
+			                            <div class=" ">
+			                                <div class="table-responsive ">
+			    <table class="table" id="driver" style=" margin: 0; padding: 0;">
+                                            <thead style="background:#f5f5f5">
+                                                   <tr>
+                                                       <th>Id</th>
+                                                        <th style="width:81px !important;">Pick Up Time</th>
+                                                        <th>Vehicle</th>
+                                                        <th style="width:91px !important;">Booking Type</th>
+                                                        <th>Partner</th>
+                                                        <th>Client</th>
+                                                        <th style="width:287px !important;">Departure</th>
+                                                        <th style="width:130px !important;">Drop Area</th>
+                                                        <th>Status</th>
+                                                   </tr>
+                                            </thead>
+                              </table>
+			                                </div>
+			                            </div>
+						</div>
+									
+									
+								
+								</div>--> 
+                    
+                    <!-- /.table-responsive End--> 
+                    
+                  </div>
+                  <!-- Dashboard End--> 
+                  
+                  <!-- /.panel-body --> 
+                </div>
+                <!-- /.panel --> 
+              </div>
+              <!-- /.col-lg-12 --> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var base_url = '<?php echo $this->basePath();?>';
+function changeProfileImage(){	      	  
+	  $("#change_profileImage").on('submit',(function(e){
+		e.preventDefault();
+			$.ajax({			
+			type: "POST",
+			data:  new FormData(this),
+			contentType: false,
+			cache: false,
+			processData:false,
+			url: $("#change_profileImage").attr('action'),
+           dataType: "json",		 
+           success: function(data){
+                            if(data.status == 'true'){
+								alert(data.Message);
+								window.location.href = base_url+'/login/driver';																	
+                             }else{
+                                 alert(data.Message);
+								 window.location.href = base_url+'/login/driver';
+                             }
+                        },		
+                        error: function(error){
+                            console.log(error);	
+                        }	        
+		});
+	}));  
+ }
+	
+
+
+function loginhome(){
+	var base_url = "<?php echo $this->basePath(); ?>";
+	//alert(base_url);
+//window.open('http://50.62.22.158:8085/hello42test/public/login',"_self");
+window.open(base_url+'/login',"_self");
+}
+
+
+function signuphome(){
+	
+	window.open(base_url+'/login',"_self");
+	
+}
+
+
+</script> 
+<script type="text/javascript">
+        $(document).ready(function() {
+            //$('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true });
+            book_count();
+            driverProfile();
+            $.fn.dataTableExt.sErrMode = 'throw';
+        });
+        
+       
+//        function fetch_driver_id(){
+//                        var token = $.cookie('token'); 
+//                        table=$('#driver').dataTable({
+//                        "ajax": '<?php echo $this->basePath();?>/tunnel/menu/driverOrderHistory?ids='+token,
+//                        "deferRender": true
+//                        });  
+//                        $("#driver_wrapper").attr("style","border:1px solid #d2d2d2;");
+//                        $("#driver_wrapper").addClass("clearfix");
+//                        //$("#driver_wrapper").addClass("font12px");
+//                        $("#driver_wrapper + div").removeClass("row");
+//                        $("#driver_info").parent().parent().removeClass("row");
+//                        $("#driver_wrapper div:first").attr("class","tbsearchrow clearfix");
+//                        $('#driver_filter label').attr("style","display:none;");
+//                        $(".paginate_button").attr("style","z-index:999 !important;");
+//                        driverProfile(token);
+//}
+
+function driverProfile(id){
+
+  var site_url = jQuery.cookie('BaseUrl');      
+        //var token = $.cookie('token');
+        var token	=	$('#token').val(); 
+         $.ajax({
+                    dataType:'json',
+                    url:site_url+'/tunnel/menu/profileDriver',
+                    type:'POST',
+                    data:{token:token},
+                    success:successProfile,
+                    error:errorProfile
+
+                });
+
+}
+
+var global_url='<?php echo $this->basePath();?>';
+
+function successProfile(data){
+  // alert("qwe"); 
+  var name = data.data.name+" "+data.data.lastname;
+  $("#email_driver").html(data.data.email);
+  $("#driver_firstName").html(name);
+  $("#welcome").html("Welcome "+name);
+  $("#driver_phone").html(data.data.phone);
+  $("#userType").html("Driver");
+  $("#d_address").html(data.data.address);
+  $("#d_city").html(data.data.city);
+  $("#d_state").html(", "+data.data.state);
+  $("#d_pin").html(", "+data.data.pin);
+  $("#d_country").html(data.data.country);
+  $("#d_mob").html(data.data.phone);
+  $("#res_mob").html(data.data.phone);
+  $("#d_id").html(data.data.ID_tbluser);
+  $("#acc_bal").html(data.data.acc_bal);
+  
+ 
+  var bank_name_address=data.data.bank_account_name+',<br/> '+data.data.bank_adds;
+  
+  $("#userbank_name").html(bank_name_address);
+  $("#useraccount_name").html(data.data.acount_holder);
+  $("#useraccount_no").html(data.data.account_no);
+  $("#userbank_ifsc").html(data.data.rtgs_neft);
+  
+  $("#userbank_nameedit").val(data.data.bank_account_name);
+  $("#useraccount_nameedit").val(data.data.acount_holder);
+  $("#useraccount_noedit").val(data.data.account_no);
+  $("#userbank_ifscedit").val(data.data.rtgs_neft);
+   $("#useraccount_addedit").val(data.data.bank_adds);
+
+  
+  
+  if(data.data.prof_img != ''){
+       $("#d_image").attr("src",global_url+'/'+data.data.prof_img);
+   }else{
+       $("#d_image").attr("src",global_url+'/public/image/default_user.png');
+   }
+  
+  if(data.data.veh_img != ''){
+       $("#d_veh_image").attr("src",global_url+'/'+data.data.veh_img);
+   }else{
+       $("#d_veh_image").attr("src",global_url+'/public/image/vehicle.jpg');
+   }
+  
+  $("#v_name").html(data.data.v_name);
+  $("#v_email").html(data.data.v_email);
+  $("#v_id").html(data.data.v_id);
+  $("#v_mob").html(data.data.v_mob);
+  $("#v_address").html(data.data.ofcadds);
+  $("#v_city").html(data.data.v_city);
+  $("#v_state").html(", "+data.data.v_state);
+  $("#v_pin").html(", "+data.data.v_pin);
+  $("#v_country").html(data.data.v_country);
+  $("#v_mob2").html(data.data.v_mob);
+  
+  console.log(data.data);
+}
+function errorProfile(error){
+    console.log(error);
+}
+ 
+ 
+function book_count()
+{
+    var site_url = jQuery.cookie('BaseUrl');      
+    //var token = $.cookie('token'); 
+    var token	=	$('#token').val();
+     $.ajax({
+                dataType:'json',
+                url:site_url+'/tunnel/menu/log_count',
+                type:'POST',
+                data:{token:token},
+                success:successCount,
+                error:errorProfile
+
+            });
+}
+ 
+function successCount(data)
+{
+  $("#total_book").html(data.data[0].total);
+  $("#completed_book").html(data.data[0].complete);
+  $("#pending_book").html(data.data[0].pending);
+  $("#canceled_book").html(data.data[0].cancel);
+  $("#month_log").html(data.data[0].month_log);
+  $("#week_log").html(data.data[0].week_log);
+  $("#daily_log").html(data.data[0].day_log);
+  $("#month_logout").html(data.data[0].month_logout);
+  $("#week_logout").html(data.data[0].week_logout);
+  $("#daily_logout").html(data.data[0].day_logout);
+}
+
+   function showhide()
+     {
+           var div = document.getElementById("newpost");
+    if (div.style.display != "none") {
+        div.style.display = "none";
+    }
+    else {
+        div.style.display = "block";
+    }
+     }
+        
+</script> 
+
+
+<style>
+	.modal-dialog {
+    margin: 100px auto 0 auto !important;
+    width: 600px;
+}
+
+</style>

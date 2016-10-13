@@ -1,0 +1,91 @@
+body {
+	background-color: #F5F5F5;
+}
+
+.body {
+	
+}
+.wrapper {
+	min-width: 1000px;
+	min-height: 100%;
+}
+
+.header {
+	background-color: white;
+	height: 85px;
+}
+
+.logo {
+	height: 65px;
+	margin-top: 18px;
+}
+
+.margin80left {
+	/*margin-left: 80px;*/
+	width: 1170px !important;
+}
+
+
+.noborder {
+	border-radius: 0px;
+}
+
+.well-white {
+	-moz-box-sizing: border-box;
+	background-color: #FFFFFF;
+	border: 1px solid #D5D5D5;
+	border-radius: 6px 6px 6px 6px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.well-white .page-header {
+	margin-top: 16px;
+	padding-bottom: 0px;
+	padding-left: 20px;
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.well-white .page-header h1 {
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 22px;
+}
+.page-list > li:first-child {
+	border-top: medium none;
+	margin-top: -20px;
+}
+.page-list li {
+	border-top: 1px solid #EEEEEE;
+}
+
+.well-white .body {
+	padding: 0 20px 20px;
+}
+
+input[type=submit]{
+	margin-top: 15px;
+}
+
+.nomargin-left{
+	margin-left:0px;
+}
+
+.adminreply{
+	padding: 15px;
+}
+
+.navupdate{margin:0; padding:0;}
+.navupdate li a{color:#fff !important;}
+.navupdate li a:hover{color:#A3E0FF !important;}
+.container{width:97% !important;}
+.tablesorter-bootstrap tr  td{text-align:center;}
+.changetdcolor{}
+.changetdcolor td{background:#DB7C86  !important; color:#000; text-align:center;}
+
+.changetdcolor td a{color:#54CAC !important; text-decoration:none;}
+.changetdcolor2 td{background:#ffc8ce   !important; color:#000; text-align:center;}
+
+.changetdcolor2 td a{color:#54CAC !important; text-decoration:none;}

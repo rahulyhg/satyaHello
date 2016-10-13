@@ -1,0 +1,218 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?><?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath().'/';
+?>     
+<?php 
+
+if($this->id != "")
+
+{ ?>
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 margintop10">
+					 <a href="<?php echo $path?>" class="bgnone  pull-right">
+                     	<div onclick="editprofile();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">Edit Profile</label>                 
+                     </a>
+					 <a href="<?= $this->basePath();?>/login/index/logout" class="bgnone  pull-right">
+                     	<div  class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">LogOut</label>                 
+                     </a>
+           </div>
+      </div>
+    </div>
+	
+<?php
+} 
+else{
+	
+	
+
+ ?>
+ 
+<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 margintop10">
+					 <a href="<?php echo $path?>/login" class="bgnone  pull-right">
+                     	<div onclick="loginhome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">Login</label>                 
+                     </a>
+					 <a href="<?php echo $path?>/login" class="bgnone  pull-right">
+                     	<div onclick="signuphome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">Sign Up</label>                 
+                     </a>
+           </div>
+      </div>
+    </div>
+    <?php } ?>
+    <div class="navbar navbar-inverse mannavi marginbtom0" role="navigation" style="border-radius:0;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active1" ><a href="#">Delhi</a></li>
+            <li ><a href="#about">Banglore</a></li>
+            <li><a href="#contact">Hyderabad</a></li>
+            <li><a href="#contact">Ahmedabad</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" style="margin-top:2px; background:#111;">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider menudivderbg"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+		
+		
+	 
+		<!--footer-->
+	 
+
+     <div class="container-fluid">
+     <div class="row">
+	 	<div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+			<h2>SELECT A CAR FOR LOCAL HIRE</h2>
+		</div>
+	 
+	 </div>
+
+	 <div class="row ">
+	<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4 table-bordered text-center table-responsive" style="padding:0; background:#f8f8f8; border:none;" >
+		<table class="table table-bordered" style="margin:0;">
+			<tr><td>I want a cab in	</td><td>Delhi/NCR</td></tr>
+			<tr><td>I want a Cab for</td><td>8 hours</td></tr>
+			<tr><td>Nationality</td><td>Indian</td></tr>
+			<tr><td>No. of Adults</td><td>2</td></tr>
+			<tr><td>No. of Childs</td><td>1</td></tr>
+			<tr><td>No. of Languages </td><td>3</td></tr>
+			<tr><td>Pickup Address	</td><td>Karol bagh</td></tr>
+			<tr><td>Pickup Date</td><td>07-10-2014</td></tr>
+			<tr><td>Pickup Time</td><td>13:40</td></tr>
+		</table>
+	</div>
+
+</div>	
+			   																												      
+     <div class="container">
+     	<div class="row">   <hr></div>
+      </div>
+
+
+
+     	<div class="row">
+		  <div class="container">
+		
+			<div class="col-sm-6 col-md-6">
+				<div class="booknowcol clearfix">
+					<div class="carepic">
+						<img src="<?php echo $path?>/public/img/car.png" alt="" class="img-responsive" />
+					</div>
+					<div class="carinfo">
+						<h4>Compact</h4>
+						<h5>Tata Indica</h5>
+						<h4>4 person + Driver</h4>
+						<p>Minimum Charge: Rs. 1000 80 Km for 8 hours Fare Details</p>
+					</div>
+					<a href="#">book now</a>
+				</div>
+            </div>
+			<div class="col-sm-6 col-md-6">
+				<div class="booknowcol clearfix">
+					<div class="carepic">
+						<img src="<?php echo $path?>/public/img/car.png" alt="" class="img-responsive" />
+					</div>
+					<div class="carinfo">
+						<h4>Compact</h4>
+						<h5>Tata Indica</h5>
+						<h4>4 person + Driver</h4>
+						<p>Minimum Charge: Rs. 1000 80 Km for 8 hours Fare Details</p>
+					</div>
+					<a href="#">book now</a>
+				</div>
+            </div>
+ 
+     
+     </div>
+	 <div class="row">
+		  <div class="container">
+		
+			<div class="col-sm-6 col-md-6">
+				<div class="booknowcol clearfix">
+					<div class="carepic">
+						<img src="<?php echo $path?>/public/img/car.png" alt="" class="img-responsive" />
+					</div>
+					<div class="carinfo">
+						<h4>Compact</h4>
+						<h5>Tata Indica</h5>
+						<h4>4 person + Driver</h4>
+						<p>Minimum Charge: Rs. 1000 80 Km for 8 hours Fare Details</p>
+					</div>
+					<a href="#">book now</a>
+				</div>
+            </div>
+			<div class="col-sm-6 col-md-6">
+				<div class="booknowcol clearfix">
+					<div class="carepic">
+						<img src="<?php echo $path?>/public/img/car.png" alt="" class="img-responsive" />
+					</div>
+					<div class="carinfo">
+						<h4>Compact</h4>
+						<h5>Tata Indica</h5>
+						<h4>4 person + Driver</h4>
+						<p>Minimum Charge: Rs. 1000 80 Km for 8 hours Fare Details</p>
+					</div>
+					<a href="#" class="col-lg-2">book now</a>
+				</div>
+            </div>
+ 
+     
+     </div>
+</div>
+          
+        
+	
+<script>
+
+	
+
+
+function loginhome(){
+	var base_url = "<?php echo $this->basePath(); ?>";
+	//alert(base_url);
+//window.open('http://50.62.22.158:8085/hello42test/public/login',"_self");
+window.open(base_url+'/login',"_self");
+}
+
+
+function signuphome(){
+	
+	window.open(base_url+'/login',"_self");
+	
+}
+
+
+</script>	
+	 
+
+<script type="text/javascript">
+        $(document).ready(function() {
+            $('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true });
+        });
+</script>
+    

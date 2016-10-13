@@ -1,0 +1,387 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?>
+ <style>
+      html, body, #map-canvas {
+        height: 500px;
+        width:100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+	
+
+
+ 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+// This example creates an interactive map which constructs a
+// polyline based on user clicks. Note that the polyline only appears
+// once its path property contains two LatLng coordinates.
+
+var poly;
+var map;
+var src;
+var src2;
+var booking_id;
+
+
+     var service = new google.maps.DirectionsService();
+function initialize() {
+    alert("dfdfd");
+  var mapOptions = {
+    zoom: 21,
+    // Center the map on Chicago, USA.
+    center: new google.maps.LatLng(28.6519649,77.1943095)
+  };
+
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var polyOptions = {
+    strokeColor: '#000000',
+    strokeOpacity: 1.0,
+    strokeWeight: 3
+  };
+   var polyOptions2 = {
+    strokeColor: '#0000ff',
+    strokeOpacity: 1.0,
+    strokeWeight: 3
+  };
+   var polyOptions3 = {
+    strokeColor: '#ff0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 3
+  };
+  
+  poly = new google.maps.Polyline(polyOptions);
+  poly2 = new google.maps.Polyline(polyOptions2);
+   poly3 = new google.maps.Polyline(polyOptions3);
+  poly.setMap(map);
+  poly2.setMap(map);
+   poly3.setMap(map);
+  var path2 = poly2.getPath();
+  var path3 = poly3.getPath();
+   $.ajax({
+		url: '<?php echo $this->basePath();?>/tunnel/admin/track_lat?data='+booking_id,
+		cache: false,
+		dataType:"json"
+	}).done(function( html ) {
+	
+	//alert(html[0].p);
+	//alert(html[0].d)
+        console.log(html);
+    a=html.data.Latitude;
+    
+	b=html.data.Longtitude1;
+	map.setCenter(new google.maps.LatLng(html.data.lat,html.data.lon));
+	alert(a);
+	latlng = new google.maps.LatLng(a,b);
+	var marker = new google.maps.Marker({
+				position: latlng,
+				icon:'<?php echo $this->basePath();?>/public/image/car_1.png',
+				map: map
+			  });
+			  var marker2 = new google.maps.Marker({
+				position:new google.maps.LatLng(html.data.lat,html.data.lon),
+				icon:'<?php echo $this->basePath();?>/public/image/a.png',
+				map: map
+			  });
+			   var marker2 = new google.maps.Marker({
+				position:new google.maps.LatLng(html.data.dlat,html.data.dlon),
+				icon:'<?php echo $this->basePath();?>/public/image/a.png',
+				map: map
+			  });
+			  
+			
+	//alert(latlng);
+	service.route({
+                    origin:html.data.p,
+                    destination:html.data.d,
+                    travelMode: google.maps.TravelMode['DRIVING']
+                }, function (result, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                            path2.push(result.routes[0].overview_path[i]);
+                        }
+                    }
+                });
+				
+				latlng = new google.maps.LatLng(a,b);
+				service.route({
+                    origin:latlng,
+                    destination:html.data.p,
+                    travelMode: google.maps.TravelMode['DRIVING']
+                }, function (result, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                            path3.push(result.routes[0].overview_path[i]);
+                        }
+                    }
+                });
+				addLatLng2();
+	
+//path.push(latlng);
+ 
+	//latlng='('+a+','+b+')';
+	//alert(latlng);
+	});
+  // Add a listener for the click event
+  google.maps.event.addListener(map, 'click', addLatLng);
+}
+
+/**
+ * Handles click events on a map, and adds a new point to the Polyline.
+ * @param {google.maps.MouseEvent} event
+ */
+ function addLatLng2() {
+    var a;
+	var b;
+	var latlng;
+  var path = poly.getPath();
+  //alert(path);
+  
+   /*$.ajax({
+		url: '<?php echo $this->basePath();?>/tunnel/admin/full_lat?data='+booking_id,
+		cache: false,
+		dataType:"json"
+	}).done(function( html ) {
+		//console.log(html);
+	for(var i=0;i<html.data.length;i++)
+	{
+	
+   a=html.data[i].lat;
+   b=html.data[i].longi;
+	//alert(a);
+	//alert(a);
+	latlng = new google.maps.LatLng(a,b);
+	
+	//alert(latlng);
+	path.push(latlng);
+	src2= new google.maps.LatLng(a,b);
+	}
+//path.push(latlng);
+ 
+	//latlng='('+a+','+b+')';
+	//alert(latlng);
+	});
+	*/
+	
+  // Because path is an MVCArray, we can simply append a new coordinate
+  // and it will automatically appear.
+  
+  //alert(event.latLng);
+ // path.push(event.latLng);
+
+  // Add a new marker at the new plotted point on the polyline.
+ 
+ 
+}
+ 
+function addLatLng() {
+    var a;
+	var b;
+	var latlng;
+  var path = poly.getPath();
+  //alert(path);
+  
+   $.ajax({
+		url: '<?php echo $this->basePath();?>/tunnel/admin/track_lat?data='+booking_id,
+		cache: false,
+		dataType:"json"
+	}).done(function( html ) {
+	
+        console.log(html);
+	
+   a=html.data.Latitude;
+b=html.data.Longtitude1;
+	//alert(a);
+        //alert(b);
+	latlng = new google.maps.LatLng(a,b);
+	
+	
+    //alert(latlng);
+	service.route({
+                    origin:src,
+                    destination: latlng,
+                    travelMode: google.maps.TravelMode['DRIVING']
+                }, function (result, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                            path.push(result.routes[0].overview_path[i]);
+                        }
+                    }
+                });
+	
+//path.push(latlng);
+ 
+	//latlng='('+a+','+b+')';
+	//alert(latlng);
+	});
+	
+	src= new google.maps.LatLng(a,b);
+  // Because path is an MVCArray, we can simply append a new coordinate
+  // and it will automatically appear.
+  
+  //alert(event.latLng);
+ // path.push(event.latLng);
+
+  // Add a new marker at the new plotted point on the polyline.
+ 
+ 
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+setInterval(function(){addLatLng()},30000);
+$("#submit").click(function(){
+	alert('1');
+    booking_id=$('#booking_id').val();
+    initialize();
+});
+    </script>
+    <body>
+        <div id="page-wrapper" style="margin-top:100px">
+         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style=" background: #b64242 !important;box-shadow: 0px 0px 10px #838383; border:none;">
+      <ul class="nav navbar-top-links navbar-right" style="float:right;margin:38px 15px 0;">
+                
+                 
+                <!-- /.dropdown -->
+                <li class="dropdown" style="float:right;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background:none;">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+ <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" style="float: left;margin: 60px 10px 0;border-color: #fff;">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+        
+        <a class="navbar-brand" style="margin:2px 15px 0px;z-index: 999;" href="<?php print site_url;?>/admin/dashboard"><img src="<?php echo $this->basePath();?>/public/image/logo.png" alt=""></a>
+        <div class="navbar-collapse" style="width:100%;">
+            <ul class="nav navbar-nav" style="margin:47px 0 0;">
+
+                <li>
+                    <a href="<?php print site_url;?>/admin/dashboard/booking"><i class="fa fa-briefcase fa-fw"></i> Jobs</a>
+                </li>
+                <li>
+                    <a href="<?php print site_url;?>/admin/tracking"><i class="fa fa-map-marker fa-fw"></i> Tracking<span></span></a>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="tables.html"><i class="fa fa-envelope-o fa-fw"></i> Message</a>
+                </li>
+                <li>
+                    <a href="<?php print site_url;?>/admin/complaint"><i class="fa fa-edit fa-fw"></i> Complaint</a>
+                </li>
+<!--                <li>
+                    <a href="<?php print site_url;?>/admin/driver"><i class="fa fa-user fa-fw"></i> Driver</a>
+                </li>-->
+<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-graduation-cap fa-fw"></i>Entity<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+
+                        <li>
+                            <a href="<?php print site_url;?>/admin/client">Client</a>
+                        </li>
+                        <li>
+                            <a href="<?php print site_url;?>/admin/driver">Driver</a>
+                        </li>
+                        <li>
+                            <a href="<?php print site_url;?>/admin/group">Driver Groups</a>
+                        </li>
+                        
+
+                    </ul>
+                 </li>
+ 
+  <li>
+                            <a href="<?php print site_url;?>/admin/fairmanage">Fair Manage</a>
+                        </li>
+                       
+                <li>
+
+                </li><li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-graduation-cap fa-fw"></i>General Master<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+
+                        <li>
+                            <a href="#">Sim Card</a>
+                        </li>
+                      <li>
+                    <a href="<?php print site_url;?>/admin/device">Device</a>
+                </li>
+                        <li>
+                           
+                        </li>
+                        <li>
+                            <a href="<?php print site_url;?>/admin/vehicle">Vehicle</a>
+                        </li>
+                        <li>
+                            <a href="#">Change Password</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <ul class="nav nav-second-level collapse">
+                    <li>
+                        <a href="#">Sim Card</a>
+                    </li>
+                    <li>
+                        <a href="#">Device</a>
+                    </li>
+                    <li>
+                        <a href="#">Taxi</a>
+                    </li>
+                    <li>
+                        <a href="#">Taxi Model</a>
+                    </li>
+                    <li>
+                        <a href="#">Change Password</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+
+
+                <li>
+                    <a href="#"><i class="fa fa-files-o fa-fw"></i>Repots<span></span></a>
+                    <!-- /.nav-second-level -->
+                </li>
+                
+
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+        <div id="page-wrapper">
+            <input type="text" id="booking_id">
+            <button id="submit">Submit</button>
+    <div id="map-canvas"></div>
+        </div>
+    </div>
+    </body>
+    <script>
+    $("#submit").click(function(){
+		alert('2');
+    booking_id=$('#booking_id').val();
+    initialize();
+});
+    </script>

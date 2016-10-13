@@ -1,0 +1,172 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?><div id="page-wrapper" class="" >
+  <h4 style="">Add Promotion</h4>
+  <div>
+    <div class="container">
+      <div class="row">
+        <form role="form" method="post" action="update">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="PromotionName">Promotion Name</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="PromotionName" id="PromotionName" value="<?php print $data['Rec']->PromotionName;?>" placeholder="Promotion Name" required>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span></div>
+            </div>
+            <div class="form-group">
+              <label for="PromotionName">Promotion Description</label>
+              <div class="input-group">
+                <textarea name="PromotionDescription" id="PromotionDescription" class="form-control"><?php print $data['Rec']->PromotionDescription;?></textarea>
+                <span class="input-group-addon"></span></div>
+            </div>
+            <div class="form-group">Coupon Type
+              <div class="input-group">
+                <select name="CouponType" id="CouponType" class="form-control" >
+				<option value="1">Select Coupon</option>
+				<option value="1">Coupon Only Discount</option>
+				<option value="2">Credit Coupon</option>
+				<option value="3">General Coupon</option>
+				<option value="4">General Restricted Coupon</option>
+                </select>
+                <span class="input-group-addon"></span></div>
+            </div>
+            <div class="form-group">
+              <label for="ValidDateFrom">Valid Date</label>
+              <div class="input-group"> <span class="input-group-addon"> From </span>
+                <input type="text" class="form-control" id="ValidDateFrom" name="ValidDateFrom" value="<?php print date('d-m-Y',strtotime($data['Rec']->ValidDateFrom));?>" placeholder="Enter Date From" required>
+                <span class="input-group-addon"> To </span>
+                <input type="text" class="form-control" id="ValidDateTo" name="ValidDateTo" value="<?php print date('d-m-Y',strtotime($data['Rec']->ValidDateTo));?>" placeholder="Enter Date To" required>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span> </div>
+            </div>
+            <div class="form-group">
+              <label for="ValidTimeFrom">Valid Time From</label>
+              <div class="input-group"> <span class="input-group-addon"> From </span>
+                <select name="ValidTimeFrom" id="ValidTimeFrom" class="form-control" required>
+                  <?php print $this->data['TimeList'];?>
+                </select>
+                <span class="input-group-addon"> To </span>
+                <select name="ValidTimeTo" id="ValidTimeTo" class="form-control" required>
+                  <?php print $this->data['TimeList'];?>
+                </select>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span> </div>
+            </div>
+            <div class="form-group">
+              <label for="WeekDay">Select Days</label>
+              <div class="input-group">
+                <ul style="list-style-type: none;">
+                  <li>
+                    <input type="checkbox" name="CheckAll" id="selecctall" value="1" />
+                  <strong>Check All</strong></li>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="WeekDays[]" id="Sunday" class="checkbox1" value="Sunday" />
+                    Sunday </li>
+                  <li>
+                    <input type="checkbox" name="WeekDays[]" id="Monday" class="checkbox1" value="Monday" />
+                    Monday </li>
+                  <li>
+                    <input type="checkbox" name="WeekDays[]" id="Tuesday" class="checkbox1" value="Tuesday" />
+                    Tuesday </li>
+                  <li>
+                    <input type="checkbox" name="WeekDays[]" id="Wednesday" class="checkbox1" value="Wednesday" />
+                    Wednesday </li>
+                  <li>
+                    <input type="checkbox" name="WeekDays[]" id="Thursday" class="checkbox1" value="Thursday" />
+                    Thursday </li>
+                  <li>
+                    <input type="checkbox" name="WeekDays[]" id="Friday" class="checkbox1" value="Friday" />
+                    Friday </li>
+                  <li>
+                    <input type="checkbox" name="WeekDays[]" id="Saturday" class="checkbox1" value="Saturday" />
+                    Saturday </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="BookingType">Booking Type</label>
+              <div class="input-group">
+                <select name="BookingTypeId" id="BookingTypeId" class="form-control" required>
+                  <?php print $data['BookingTypeList'];?>
+                </select>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span></div>
+            </div>
+            <div class="form-group">
+              <label for="MinimumBookingAmount">Minimum Booking Amount</label>
+              <div class="input-group">
+                <input type="number" maxlength="4" class="form-control" id="MinimumBookingAmount" name="MinimumBookingAmount" value="<?php print $data['Rec']->MinimumBookingAmount;?>" placeholder="Minimum Booking Amount" required />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span></div>
+            </div>
+            <div class="form-group">
+              <label for="Discount">Discount In</label>
+              <div class="input-group">
+                
+                RS <input type="radio" onclick="discount_type(this.value)" name="DiscountType" id="RS" value="RS" />
+                % <input type="radio" onclick="discount_type(this.value)" name="DiscountType" id="Per" value="%" />
+                
+                <span class="input-group-addon" id="DiscountType">RS</span><input type="number" class="form-control" id="Discount" name="Discount" value="<?php print $data['Rec']->Discount;?>" placeholder="Discount" required />
+              </div>
+                
+            </div>
+            <input type="submit" value="Save Coupon Code" class="btn btn-info pull-right">
+          </div>
+          <input type="hidden" name="id" value="<?php print $this->data['Rec']->id;?>" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+	$(document).ready(function(){	
+		
+		$('#CouponType').val(<?php print $this->data['Rec']->CouponType;?>);
+		$('#ValidTimeFrom').val('<?php print date('h:i A',strtotime($this->data['Rec']->ValidTimeFrom));?>');
+		$('#ValidTimeTo').val('<?php print date('h:i A',strtotime($this->data['Rec']->ValidTimeTo));?>');
+		$('#BookingTypeId').val(<?php print $this->data['Rec']->BookingTypeId;?>);
+		$('input[name="DiscountType"][value="<?php print $this->data['Rec']->DiscountType;?>"]').prop('checked', true);
+		$('input[name="WeekDays"][value="Tuesday"]').prop('checked', true);
+		<?php foreach(explode(',',$this->data['Rec']->WeekDays) as $val){?>
+		$('input[id="<?php print $val;?>"][value="<?php print $val;?>"]').prop('checked', true);
+		<?php }?>
+		
+		$(function() {
+			$("#ValidDateFrom" ).datepicker({
+				changeMonth: true,
+				changeYear: true,
+				yearRange: '2010:2020',
+				dateFormat : 'dd-mm-yy',
+				defaultDate: new Date(<?=date('Y , m , d')?>)
+			});
+			$("#ValidDateTo" ).datepicker({
+				changeMonth: true,
+				changeYear: true,
+				yearRange: '2010:2020',
+				dateFormat : 'dd-mm-yy',
+				defaultDate: new Date(<?=date('Y , m , d')?>)
+			});
+		});
+	});
+	
+	function discount_type(ds_type){
+		$('#DiscountType').html(ds_type);
+	}
+	
+	$(document).ready(function() {
+		$('#selecctall').click(function(event) {  //on click 
+			if(this.checked) { // check select status
+				$('.checkbox1').each(function() { //loop through each checkbox
+					this.checked = true;  //select all checkboxes with class "checkbox1"               
+				});
+			}else{
+				$('.checkbox1').each(function() { //loop through each checkbox
+					this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+				});         
+			}
+		});
+	});
+	
+</script> 

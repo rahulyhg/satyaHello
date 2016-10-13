@@ -1,0 +1,31 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?><input type="text" id="pointPickupArea" />
+<script>
+$(document).ready(function(){
+  
+ var site_url = jQuery.cookie('BaseUrl');
+    
+    $( "#pointPickupArea" ).autocomplete({
+      source: '/hello42/tunnel/menu/allcities?key=',minLength:0,delay:0,
+      focus: function( event, ui ) {
+        $( "#pointPickupArea" ).val( ui.item.label );
+        return false;
+      },
+      select: function( event, ui ) {
+        $( "#pointPickupArea" ).val( ui.item.label );
+        $( "#pointPickupArea_value" ).val( ui.item.value );
+       
+ 
+        return false;
+      }
+    });
+   
+});
+
+
+</script>

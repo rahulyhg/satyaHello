@@ -1,0 +1,218 @@
+<?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath().'/';
+?>
+<!--footer-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+      <h2>My Account</h2>
+    </div>
+  </div>
+  <div id="success-msg" style="font-weight:bold;font-size:15px;color:green;text-align:center;">Your Profile updated Successfully</div>
+      <div id="error-msg" style="font-weight:bold;font-size:13px;color:red;text-align:center;">Please Enter Email or Firstname</div>
+  <div class="container marginbottom20">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="col-sm-3 col-md-3 col-lg-2">
+          <div class="list-group"> 
+		  <a href="<?=$this->basepath().'/login/user';?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Dashboard</a> 
+		  <a href="<?= $this->basepath().'/login/user/editprofile'?>" class="list-group-item userItem yellactive"><i class="fa fa-arrow-circle-right"></i> &nbsp;Edit Profile</a> 
+		  <a href="<?= $this->basepath().'/login/user/changepassword'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Change Password</a> 
+		  <a href="<?= $this->basepath().'/login/user/userorderhistory'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Order History</a> 
+		  <a href="<?= $this->basepath().'/login/user/credithistory'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Account Balance</a> 
+         <!--<a href="<?= $this->basepath().'/login/user/Creditrequest'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i> &nbsp;Credit Request</a>
+          <a href="<?= $this->basepath().'/login/user/bankaccount'?>" class="list-group-item userItem"><i class="fa fa-arrow-circle-right"></i>&nbsp;Bank Account</a>-->
+          
+          </div>
+          
+        </div>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+          <div class="row" style="display:block;">
+            <div class="col-lg-12">
+              <div class="panel panel-default">
+                <div class="panel-heading tabheading text-center text-uppercase "> <b style="">Edit Profile</b> </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                  <!-- Edit profile start -->
+                  <div class="table-responsive" >
+				  <form name="update_user" id="update_user" action="" method="POST">
+                    <table class="table table-striped table-bordered ">
+                      <tbody>
+                        <tr>
+                          <td><strong>Name</strong></td>
+                          <td><input type="text" class="input" id="firstName" name="firstName"></td>
+						  <td><strong>Mobile No</strong></td>
+                          <td><input type="text" class="input" id="mob" name="mob"></td>
+						  <td><strong>Landline No</strong></td>
+                          <td><input type="text" class="input" id="landline" name="landline"></td>
+                        </tr>                        
+                        <tr>
+						  <td><strong>Email Id</strong></td>
+                          <td><input type="text" class="input" id="email" name="email" disabled></td>
+                          <td><strong>Alt Email Id</strong></td>
+                          <td><input type="text" class="input" id="alt_email" name="alt_email"></td>
+						  <td><strong>Company</strong></td>
+                          <td><input type="text" class="input" id="company" name="company"></td>
+                        </tr>                       
+                        <tr>
+                          <td><strong>Address</strong></td>
+                          <td><input type="text" class="input" id="address" name="address"></td>
+						  <td><strong>Resident Address</strong></td>
+                          <td><input type="text" class="input" id="res_address" name="res_address"></td>
+						  <td></td>
+						  <td><button type="button" class="btn btn-primary submitbtn">Update</button></td>
+                        </tr>                       
+                        <tr>                          
+                          
+                        </tr>
+                      </tbody>
+                    </table>
+					</form>
+                  </div>
+                  <!-- Edit profile End-->
+                  <!-- /.panel-body --> 
+                </div>
+                <!-- /.panel --> 
+              </div>
+              <!-- /.col-lg-12 --> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function loginhome(){
+	var base_url = "<?php echo $this->basePath(); ?>";
+	//alert(base_url);
+//window.open('http://50.62.22.158:8085/hello42test/public/login',"_self");
+window.open(base_url+'/login',"_self");
+}
+function signuphome(){	
+	window.open(base_url+'/login',"_self");	
+}
+</script> 
+<script type="text/javascript">
+        $(document).ready(function() {
+            //$('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true });
+        var token = $.cookie('token');
+	var url = '<?php echo $this->basePath();?>/tunnel/menu/fetchUserId?token='+token;	
+	$.ajax({
+            type: 'POST',
+            url: url,
+            dataType: "json",	 
+            success: function(data){
+                console.log(data);
+                             $("#firstName").val(data.fname+" "+data.lname);
+                             $("#mob").val(data.mobileNo);
+                             $("#landline").val(data.landline);
+                             $("#email").val(data.email);
+                             $("#alt_email").val(data.alt_email);
+                             $("#company").val(data.company);
+                             $("#address").val(data.address1);
+                             $("#res_address").val(data.address2);
+			},
+                    error: function(error){
+                    console.log(error);	
+		}
+            });
+        });
+		
+$("#success-msg").hide();
+$("#error-msg").hide();
+        
+$(".submitbtn").click(function(){
+	var token = $.cookie('token');
+	var name = $("#firstName").val();
+	var mobile = $("#mob").val();
+	var landline = $("#landline").val();
+	var email = $("#email").val();
+	var altEmail = $("#alt_email").val();
+	var company = $("#company").val();
+	var addr = $("#address").val();
+	var resAddr = $("#res_address").val();
+	$.ajax({
+		type: 'POST',
+		url: '<?php echo $this->basePath();?>'+'/tunnel/menu/edit_user_profile',
+		cache: false,
+		dataType:"json",
+		data:{
+				name:name,
+				mobile:mobile,
+				landline:landline,
+				email:email,
+				altEmail:altEmail,
+				company:company,
+				addr:addr,
+				resAddr:resAddr,
+				token:token
+			}
+		})
+		.done(function(data){
+						if(data.status=="true")
+						{
+							$('html, body').animate({ scrollTop: 0 }, 'fast', function () {							
+							});
+							$("#success-msg").show();
+							setTimeout(function() {
+								$("#success-msg").hide();
+							}, 15000);
+								//alert(data.Message);
+								//location.reload();
+						}else{
+								alert(data.Message);
+								//location.reload();
+						}
+		  }).fail(function (error){
+						alert(error);
+						console.log(error);
+		 });
+});
+//***************************************
+     jQuery.validator.addMethod("lettersonly", function(value, element) {
+		  return this.optional(element) || /^[a-z]+$/i.test(value);
+		}, "Letters only");  
+         $("#update_user").validate({			 
+             errorClass: 'error col-lg-offsets-5',
+			rules: {                           
+					firstName: {
+						required: true,
+						lettersonly:true
+					},					
+					email: {
+						required: true,
+						email: true                                  
+					},                    
+					address: {
+						required: true
+					},                    
+					mob: {                                        
+						number: true,
+						minlength: 10,
+						maxlength: 10,                                        
+						required:true
+					}
+			},
+			messages: {                            
+					firstName: {
+						required: "Please Enter your name",
+						lettersonly:"Numbers are not allowed"
+					},
+					email: {
+						required: "Please Enter your Email",
+						email: "Please Enter a valid Email"                                  
+					},                            
+					address: {
+						required: "Please Enter Your Address"
+					},                         
+					mob: {                                        
+						number: "Enter valid Mobile No.",
+						minlength: "Minimum length is 10",
+						maxlength: "Maximum length is 10",
+						required: "Please Enter Mobile No."
+					}
+			}
+		});    
+</script> 

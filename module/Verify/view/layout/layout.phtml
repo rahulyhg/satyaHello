@@ -1,0 +1,129 @@
+<?php 
+if (defined('RUNNING_FROM_ROOT')) {
+  //$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+} ?>
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle(''. $this->translate('Hello42'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/custom.css')
+                        ->prependStylesheet($this->basePath() . '/font-awesome-4.2.0/css/font-awesome.css')
+                        ->prependStylesheet($this->basePath() . '/font-awesome-4.2.0/css/font-awesome.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+
+        <!-- Scripts -->
+		
+        <?php echo $this->headScript()
+			->prependFile($this->basePath() . '/js/jquery.cookie.js')
+			->prependFile($this->basePath() . '/js/jquery-1.11.0.min.js')
+            ->prependFile($this->basePath() . '/js/jquery-migrate-1.2.1.min.js')
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/jquery-1.11.0.min.js')
+            ->prependFile($this->basePath() . '/js/jquery-migrate-1.2.1.min.js')
+            ->prependFile($this->basePath() . '/ie-emulation-modes-warning.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+        ; 
+		
+		
+		?>
+
+    </head>
+    <body>
+        <!--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php //echo $this->url('home') ?>"><img src="<?php// echo $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;<?php echo $this->translate('Skeleton Application') ?></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="<?php //echo $this->url('home') ?>"><?php //echo $this->translate('Home') ?></a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            <!--</div>
+        </nav>
+        <div class="container">
+            <?php //echo $this->content; ?>
+            <hr>
+            <footer>
+                <p>&copy; 2005 - <?php// echo date('Y') ?> by Zend Technologies Ltd. <?php //echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        </div> <!-- /container -->
+        <?php //echo $this->inlineScript() ?>
+<div class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1><img src="image/logo.png" width="182" height="93"></h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="signinbg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 pull-left">
+						<h3 style="display:block;">vendor registration form</h3>
+                        <h3 style="display:none;">user registration form</h3>
+                      </div>
+					<div class="col-lg-9 col-lg-offset-1" style="display:none;">
+					  <ul class=" badcarmlist">
+                     	<li class="active"><a class="active" href="">Email</a></li>
+                      	<li><a href="">Pricing</a></li>
+                      	 <li><a href="">Verification</a></li>
+                       	 <li style="background:none;"><a href="
+                         ">Done</a></li>
+                     </ul>
+					</div>
+ 				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!--footer-->
+		<div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+            <div class="footer">
+  
+      <div class="container">
+          <div class="row">
+         <ul class="footerlist">
+          <li>Copyright 2013 &copy; Hello42 Pvt. Ltd. All Rights Reserved.</li>
+                    
+        </ul>
+          
+        
+      </div>
+    </div>
+   </div>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+		<!--footer-->
+		<!--footer-->
+		
+    </body>
+	
+</html>
+
+ 

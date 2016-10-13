@@ -1,0 +1,205 @@
+<?php $session=new Zend\Session\Container('user'); 
+ $token_session	=	$session->offsetGet('token');
+?>
+<?php if($token_session==""){ ?>
+ 	<script>
+	window.location='<?php echo $this->basePath();?>';
+ 	</script>
+ 	<?php 
+ }?>
+ <div class="container-fluid">     
+ 	<div class="row">
+	 	<div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+			<h2>My Account</h2>
+		</div>
+	 </div>   																												      
+     <div class="container marginbottom20">
+      	<div class="row">
+			<div class="col-lg-12">
+				<div class="col-sm-3 col-md-3 col-lg-2">					 
+					 <div class="list-group">
+            <a href="<?php echo $this->basepath(); ?>/login/driver" class="list-group-item "><i class="fa fa-arrow-circle-right"></i> &nbsp;Dashboard</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/drivereditprofile" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Edit Profile</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/changepassword" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Change Password</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/driverorderhistory" class="list-group-item "><i class="fa fa-arrow-circle-right"></i> &nbsp;Booking History</a>
+            <!--<a href="<?php echo $this->basepath(); ?>/login/driver/accountbalance" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Account Balance</a>
+			<!--<a href="<?php echo $this->basepath(); ?>/login/driver/markupmanagement" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Markup Management</a>-->
+			<a href="<?php echo $this->basepath(); ?>/login/driver/transaction" class="list-group-item yellactive"><i class="fa fa-arrow-circle-right"></i> &nbsp;Transaction</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/creditrequest" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Credit Request</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/bankdetail" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Bank Details</a>
+           <a href="<?php echo $this->basepath(); ?>/login/driver/vehicleupdate" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Vehicle Details</a>
+		   </div>
+				</div>				
+				<div class="col-sm-9 col-md-9 col-lg-10">
+					<div class="row" style="display:block;">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading tabheading text-center text-uppercase ">
+                           <b style="display:;">Driver Transaction History</b>						 
+                        </div>						
+						<div class="order_history" style="margin-top:10px;">
+						<!--<label>Transaction Type</label>
+							<Select type="text" class="text3">
+							<option>All </option>
+							<option>Local Hire</option>
+							<option>Point to Point</option>
+							<option>Airport Transfer</option>
+							<option>Out station</option>
+							</select>-->
+					    <label class="col-sm-1">Payment ID</label>
+                        <div class="col-sm-2">
+						<input type="text" class="text3 form-control" id="TransactionID" >
+                        </div>
+						<label class="col-sm-1">Booking Status</label>
+                        <div class="col-sm-1">
+						<select class="text3 form-control" id="transaction_type">
+						<option value="All" selected="true">All</option>
+						<option value="A">Accepted</option>
+						<option value="M">Missed</option>
+						<option value="C">Cancelled</option>
+						<option value="R">Rejected</option>
+						</select>
+                        </div>						
+						<label class="col-sm-1">From Date</label>
+                        <div class="col-sm-2">
+						<input type="text" class="text3 form-control" id="from">
+                        </div>
+						<label class="col-sm-1">To Date</label>
+                        <div class="col-sm-2">
+						<input type="text" class="text3 form-control" id="to">
+                        </div>							
+						<!--<label>Transaction ID</label>
+						<input type="text" class="text3">						
+						<label style="margin-left:50px;">Cancellation Id</label>
+						<input type="text" class="text3">						
+						<label>Passenger Name</label>
+						<input type="text" class="text3">-->
+                        <div class="col-sm-1">
+                        <input type="button" class="submit" value="SUBMIT" id="orderHistory" onclick="fetch_transaction_history();">
+                        </div>
+						</div>						
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">						
+						<!-- Dashboard Start-->	
+								<div class="col-sm-12 col-md-12" style="display:block;">									
+									<div class="col-sm-4 col-sm-offset-2 paddinttop10">	
+                        <!-- /.portlet -->                     
+									</div>
+									<div class="col-sm-4 paddinttop10">										
+									</div>									
+						<div class="row">						
+									<div class="col-sm-4 paddinttop10">										
+									</div>									
+									<div class="col-sm-4 paddinttop10">									
+									</div>									
+									<div class="col-sm-4 paddinttop10">	
+									</div>
+						</div>
+						<div class="row" id="show_order" style="display:;">
+							<div class="portlet portlet-de" style="border:1px solid #d5d3d4;">
+									<div class="table-responsive ">	
+										<table id="driver" class="table table-striped" style="width: 100% !important;">
+											<thead>
+												<tr>
+													<th style="">Serial Number</th>
+													<th style="">Payment Date</th>
+													<th style="">Payment Id</th>
+													<th style="">Booking Number</th>
+													<th style="">Booking Type</th>
+													<th style="">Vehicle Category</th>
+													<th style="">Client Name</th>
+													<th style="">Booking Address</th>
+													<!--<th style="">Booking Amount</th>													-->
+													<th style="">Booking Status</th>
+                                                    <th style="">Coupon Code/Advance</th>                        
+													<th style="">Credit Amount</th>
+													<!--<th style="">Balance Amount</th>-->
+												</tr>
+											</thead>
+										<tbody>
+										</tbody>
+										</table>
+									</div>
+							</div>
+						</div>							
+							<!-- /.table-responsive End-->                         
+                        </div>
+							<!-- Dashboard Start-->	
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+				</div>
+			</div>
+			</div>
+       	</div>
+	 </div>
+</div>
+</div>
+<script>
+$(document).ready(function() {
+	        $("#from").datepicker();
+            $("#from").datepicker("option","dateFormat","yy-mm-dd");
+            $("#to").datepicker();
+            $("#to").datepicker("option","dateFormat","yy-mm-dd"); 
+		
+});
+
+
+  $(function() {
+    
+  });
+
+function loginhome(){
+	var base_url = "<?php echo $this->basePath(); ?>";
+	//alert(base_url);
+//window.open('http://50.62.22.158:8085/hello42test/public/login',"_self");
+window.open(base_url+'/login',"_self");
+} 
+     function fetch_transaction_history(){            
+            $("#show_order").show();
+			var Tid = $("#TransactionID").val();
+            var tType = $("#transaction_type").val();
+            var fromDate = $("#from").val();
+            var toDate = $("#to").val();			
+            var token = $.cookie('token');
+			var login_id = $.cookie('login_id');
+            var table;
+            table=$('#driver').dataTable({
+            "ajax": '<?php echo $this->basePath();?>/tunnel/menu/driverTransactionHistory?tID='+Tid+'&ids='+token+'&from='+fromDate+'&to='+toDate+'&type='+tType+'&Did='+login_id,
+            "deferRender": true
+            });  
+            $("#driver_wrapper").attr("style","border:1px solid #d2d2d2;");
+            $("#driver_wrapper").addClass("clearfix");
+            $("#driver_wrapper + div").removeClass("row");
+            $("#driver_info").parent().parent().removeClass("row");
+            $("#driver_wrapper div:first").attr("class","tbsearchrow clearfix");
+            $('#driver_filter label').attr("style","display:none;");
+            $(".paginate_button").attr("style","z-index:999 !important;");
+}
+$('.text3').keypress(function(e){
+	var key=e.which;
+	if(key==13)
+	{
+		fetch_transaction_history();
+	}
+});
+</script>
+
+ 
+    
+<style>
+		.col-sm-2 {
+    color: #333 !important;
+	padding-right:0 !important;
+}
+
+.col-sm-1 {
+    color: #333 !important;
+	padding-right:0 !important;
+	
+}
+
+</style>

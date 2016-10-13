@@ -1,0 +1,259 @@
+<?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath().'/';
+?>     
+<?php 
+
+if($this->id != "")
+
+{ ?>
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 margintop10">
+					 <a href="<?php echo $path?>" class="bgnone  pull-right">
+                     	<div onclick="editprofile();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">Edit Profile</label>                 
+                     </a>
+					 <a href="<?= $this->basePath();?>/login/index/logout" class="bgnone  pull-right">
+                     	<div  class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">LogOut</label>                 
+                     </a>
+           </div>
+      </div>
+    </div>
+	
+<?php
+} 
+else{
+	
+	
+
+ ?>
+ 
+<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 margintop10">
+					 <a href="<?php echo $path?>/login" class="bgnone  pull-right">
+                     	<div onclick="loginhome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">Login</label>                 
+                     </a>
+					 <a href="<?php echo $path?>/login" class="bgnone  pull-right">
+                     	<div onclick="signuphome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">Sign Up</label>                 
+                     </a>
+           </div>
+      </div>
+    </div>
+    <?php } ?>
+    <div class="navbar navbar-inverse mannavi marginbtom0" role="navigation" style="border-radius:0;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active1" ><a href="#">Delhi</a></li>
+            <li ><a href="#about">Banglore</a></li>
+            <li><a href="#contact">Hyderabad</a></li>
+            <li><a href="#contact">Ahmedabad</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" style="margin-top:2px; background:#111;">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider menudivderbg"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+		
+		
+	 
+		<!--footer-->
+	 
+
+     <div class="container-fluid">
+     
+ 	<div class="row">
+	 	<div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+			<h2>travel details</h2>
+		</div>
+	 </div>
+	 
+			   																												      
+     <div class="container marginbottom20">
+      	<div class="row">
+			<div class="col-lg-12">
+				<div class="col-sm-5 col-md-5 col-lg-5">
+					<div class="portlet portlet-orange">
+                                    <div class="portlet-heading">
+                                        <div class="portlet-title">
+                                            <h4>Payment Option</h4>
+                                        </div>
+                                      
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div id="inputGroupsExample" class="panel-collapse in" style="height: auto;">
+                                        <div class="portlet-body">
+											  <div class="form-group clearfix">
+									            
+									           
+									            <label class="radio-inline padding_margin0 col-xs-12 col-sm-12 col-lg-12" style="padding-top: 15px !important;">
+									           <input type="radio" name="optionsInlineRadios" value="" checked="" style="margin: 0px 10px -10px 0;">Credit Card, Debit Card and Net Banking
+									           </label>
+									           <label class="radio-inline padding_margin0 col-xs-12 col-sm-12 col-lg-12" style="padding-top:15px !important;">
+									           <input type="radio" name="optionsInlineRadios" value=""style="margin: 0px 10px -10px 0;">Pay at the time of travel
+									           </label>
+											   
+									            <label class="checkbox-inline checkboxtext padding_margin0 col-xs-12 col-sm-12 col-lg-12">
+									            <input type="checkbox" value="" style="margin:16px 10px -10px 0"/>I have read & i accept terms & conditions.
+									            </label>
+												
+												<button type="submit" class="btn confirmbookingbtn">CONFIRM BOOKING</button>
+												
+									            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+					<div class="portlet portlet-orange">
+                                    <div class="portlet-heading">
+                                        <div class="portlet-title">
+                                            <h4>Payment Option</h4>
+                                        </div>
+                                      
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div id="inputGroupsExample" class="panel-collapse in" style="height: auto;">
+                                        <div class="portlet-body clearfix">
+											 
+											  	<table class="table clearfix bordernonetable">
+													<tr>
+														<td class="col-lg-6">Booking Amount</td>
+														<td class="col-lg-6">Rs. 1000</td>
+													</tr>
+													<tr>
+														<td class="col-lg-6">Discount(0%)</td>
+														<td class="col-lg-6">Rs. 0</td>
+													</tr>
+													<tr>
+														<td class="col-lg-6">Net Amount</td>
+														<td class="col-lg-6">Rs. 1000</td>
+													</tr>
+													<tr>
+														<td class="col-lg-6">Service Tax(4.94%)</td>
+														<td class="col-lg-6">Rs. 50</td>
+													</tr>
+													<tr>
+														<td class="col-lg-6">Payable Amount</td>
+														<td class="col-lg-6">Rs. 1050 | $20</td>
+													</tr>
+												</table>
+											   
+                                        </div>
+                                    </div>
+                                </div>
+				</div>
+				
+				<div class="col-sm-7 col-md-7 col-lg-7">
+					<div class="portlet" style="border:1px solid #d2d2d2;">
+                                   
+                                    <div id="inputGroupsExample" class="panel-collapse in" style="height: auto;">
+                                        <div class="portlet-body clearfix">
+ 											<div class="col-sm-5 col-md-5 col-lg-5 padding_margin0">
+												 
+													<img src="<?php echo $path?>/public/img/car_detail.png" alt=""  class="img-responsive  cardetail_img" />
+												 
+											</div>
+											<div class="col-lg-12 col-md-7 col-lg-7">
+												<table class="table clearfix bordernonetable col-xs-12 col-sm-12 col-md-12 col-lg-12 padding_margin0">
+													<tr>
+														<td>Car Type :</td>
+														<td>Compact, tata Indica</td>
+													</tr>
+													<tr>
+														<td class="col-xs-6 col-sm-5 col-md-5 col-lg-4">service :</td>
+														<td class="col-xs-6 col-sm-7 col-md-7 col-lg-8">Local Hire</td>
+													</tr>
+													<tr>
+														<td class="col-xs-6 col-sm-5 col-md-5 col-lg-4">City :</td>
+														<td class="col-xs-6 col-sm-7 col-md-7 col-lg-8">Delhi/NCR</td>
+													</tr>
+													<tr>
+														<td class="col-xs-6 col-sm-5 col-md-5 col-lg-4">Pickup Address :</td>
+														<td class="col-xs-6 col-sm-7 col-md-7 col-lg-8">Karol bagh</td>
+													</tr>
+													<tr>
+														<td class="col-xs-6 col-sm-5 col-md-5 col-lg-4">Pickup Date :</td>
+														<td class="col-xs-6 col-sm-7 col-md-7 col-lg-8">07-10-2014</td>
+													</tr>
+													<tr>
+														<td class="col-xs-6 col-sm-5 col-md-5 col-lg-4">Pickup Time :</td>
+														<td class="col-xs-6 col-sm-7 col-md-7 col-lg-8">14:20</td>
+													</tr>
+													<tr>
+														<td class="col-xs-6 col-sm-5 col-md-5 col-lg-4">Fare Details :</td>
+														<td class="col-xs-6 col-sm-7 col-md-7 col-lg-8">Per Km extra charge = Rs.9
+																		Per Hour extra charge  = Rs.60
+																tolls and parking charge extra
+														</td>
+													</tr>
+													<tr>
+ 														<td colspan="2" >Final Fare shall depend upon actual Kms Travelled
++ Service Tax extra
+														</td>
+													</tr>
+												</table>
+											</div>
+											 
+                                        </div>
+                                    </div>
+                                </div>
+				</div>
+			</div>
+       	</div>
+	 </div>
+
+
+
+     	 
+		 
+	 
+          
+        
+	
+<script>
+
+	
+
+
+function loginhome(){
+	var base_url = "<?php echo $this->basePath(); ?>";
+	//alert(base_url);
+//window.open('http://50.62.22.158:8085/hello42test/public/login',"_self");
+window.open(base_url+'/login',"_self");
+}
+
+
+function signuphome(){
+	
+	window.open(base_url+'/login',"_self");
+	
+}
+
+
+</script>	
+	 
+
+<script type="text/javascript">
+        $(document).ready(function() {
+            $('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true });
+        });
+</script>
+    

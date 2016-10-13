@@ -1,0 +1,153 @@
+ <?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath();
+?>     
+<?php 
+$userId = $this->id;
+
+if($this->id != "")
+
+{ ?>
+<input type="hidden" id="loginId" value="<?php echo $userId=$this->id ?>" >
+
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 margintop10">
+					
+					 <a href="<?= $this->basePath();?>/login/index/logout" class="bgnone  pull-right">
+                     	<div  class="circle-tile-heading login_signbg red marginbtom0"><i  style='cursor:pointer;'  class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">LogOut</label>                 
+                     </a>
+                     <a href="<?php echo $path?>/dashboard/profile" class="bgnone  pull-right">
+                     	<div onclick="editprofile();" class="circle-tile-heading login_signbg red marginbtom0"><i style='cursor:pointer;' class="fa fa-sign-in fa-fw fa-2x sicon"></i></div>    
+                         <label class="control-label textlogin">My Account</label>                 
+                     </a>
+           </div>
+      </div>
+    </div>
+	
+<?php
+} 
+else{
+	
+	
+
+ ?>
+ <input type="hidden" id="loginId" value="<?php echo $userId=$this->id ?>" >
+ 
+<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="margin-top:5px;">
+					 <a href="<?php echo $path?>/login" class="bgnone  pull-right">
+                     	<div onclick="loginhome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-1_5x sicon" style='cursor:pointer;' ></i></div>    
+                         <label class="control-label textlogin">Login</label>                 
+                     </a>
+					 <a href="<?php echo $path?>/login/index/signup" class="bgnone  pull-right">
+                     	<div onclick="signuphome();" class="circle-tile-heading login_signbg red marginbtom0"><i class="fa fa-sign-in fa-fw fa-1_5x sicon" style='cursor:pointer;' ></i></div>    
+                         <label class="control-label textlogin">Sign Up</label>                 
+                     </a>
+           </div>
+      </div>
+    </div>
+    <?php } ?>
+	  <div class="container-fluid navbar-inverse mannavi">
+	  <div class="container">
+    <div class="navbar navbar-inverse marginbtom0 mannavi" role="navigation" style="border-radius:0; border:none">
+    
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" style="padding:0;" data-toggle="collapse" data-target=".navbar-collapse1">
+             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         </div>
+        <div class="navbar-collapse1 collapse">
+          <ul class="nav navbar-nav">
+<!--            <li class="active1" ><a href="#" id="home_regions" ></a></li>-->
+            <li class="dropdown active1">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="choose_cities()"><bdi id="home_regions"></bdi><span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" style="margin-top:2px; ">
+                <li><a href="#" id="cities_drop"></a></li>
+<!--                <li><a href="#">Hyderabad</a></li>
+                <li><a href="#">Ahmedabad</a></li>
+                <li><a href="#">Amritsar</a></li>
+                <li><a href="#">Chandigarh</a></li>
+                <li><a href="#">Jaipur</a></li>-->
+               <!-- <li class="divider menudivderbg"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>-->
+              </ul>
+           <!-- <li ><a href="#about" id="home_aboutus" style="text-transform: capitalize"></a></li>-->
+          <!--  <li><a href="#contact" id="home_services" style="text-transform: capitalize"></a></li>-->
+            <li><a href="#contact" id="home_partners" style="text-transform: capitalize"></a></li>
+             <li><a href="#contact" id="home_careers" style="text-transform: capitalize"></a></li>
+              <li><a href="#contact" id="home_testimonials" style="text-transform: capitalize"></a></li>
+               <li><a href="#contact" id="home_tc"></a></li>
+               <!--<li><a href="#contact" id="home_contact" style="text-transform: capitalize">Contact Us</a></li>-->
+              
+<!--            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" style="margin-top:2px; background:#111;">
+                <li><a href="#"></a></li>
+                <li><a href="#">Hyderabad</a></li>
+                <li><a href="#">Ahmedabad</a></li>
+                <li><a href="#">Amritsar</a></li>
+                <li><a href="#">Chandigarh</a></li>
+                <li><a href="#">Jaipur</a></li>
+                <li class="divider menudivderbg"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>-->
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	 </div>
+		
+
+<div class="container_fluid">
+    
+	 	<div class="col-lg-12 text-center headingbg">
+			<h2>CAREER</h2>
+		</div>
+	  
+    
+    <div class=" container margin-b20">
+    <article><h4>Operations Manager</h4>
+	<br>
+
+<strong>Roles and Responsibilities:</strong>
+<div class="clear"></div>
+<ul>
+<li>  Strategy Responsible for strategizing for the day-to-day operating activities including fleet management, partner management and customer management.
+</li>
+<li>Operations Ensure all SLAs with Partners are met e.g. ensure timely dispatch of cars and timely reporting to the customers by effective management of all resources available. Responsi    
+      ble for supervision of drivers for training, mannerisms, customers focus etc.</li>
+    <li>Customer Service Build a top class customer service and call center organization Develop systems and processes to constantly seek customer feedback Identify issues across operations     
+     at early stage and devise ways to address the same Enable a high degree of visibility and credibility for the TaxiForSure brand.</li>
+     
+    <li>Processes & Systems Monitor & set Processes & Systems in order to ensure safety, preventive maintenance, cleanliness in vehicles etc Ensure all safety and hygiene standards are met.</li>
+    <li>Best Practices & Innovation Establish Taxiforsure’s operations and customer service standards, guidelines and best practices. Build an environment to constantly challenge the status   
+     quo and innovate. Constantly improve, understand and benchmark with respect to global standards and methodologies.</li>
+    <li>Communication- Develop effective processes for communication within the team and other functions.</li>
+</ul>
+
+<p><h4>UI/UX Designer</h4></p>
+<p><strong>Roles and Responsibilities:</strong></p>
+
+<ul>
+<li>Design web portal, Mobile WAP site, Mobile App</li>
+<li>Strong consumer / user orientation</li>
+<li>Come up with a mascot for the company which will be used across all the marketing campaigns of the company</li>
+<li>Analyze customer experience on the portal, mobile App, WAP site - take feedback and incorporate</li>
+</ul>
+
+<p><strong>Job Requirements:</strong></p>
+<ul>
+<li>Should have designed e-commerce portals before</li>
+<li>Strong consumer / user orientation</li>
+<li>Designed mobile apps, WAP sites</li>
+<li>Should have designed marketing collateral - Both Offline & Online</li>
+<li>Self-Motivated</li>
+<li>Experience in building a brand is an advantage</li>
+</ul>
+    </div></div>

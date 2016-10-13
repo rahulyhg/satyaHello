@@ -1,0 +1,300 @@
+<?php $session=new Zend\Session\Container('admin');
+if($session->offsetGet('adminuser')==''){
+	$bashPath=$this->basePath();
+	$location="Location:".$bashPath."/admin";
+ 	header($location);	
+	exit;	
+ } ?>
+ 
+  <style>
+ 	.padding_topbot
+	{
+		padding:10px 0;
+	}
+ </style>
+<div id="page-wrapper" class="" >
+  <h4 style="">Edit User</h4>
+  <div>
+    <div class="container">
+      <div class="row">	
+		 <form role="form" method="post" action="update">
+         
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="Full Name" class="col-sm-2 padding_topbot">Name</label>
+              <div class="col-sm-4 padding_topbot">
+                <input type="text" class="form-control" name="full_name" id="full_name" value="<?php print $data['Rec']->full_name;?>" placeholder="Full Name" required>
+         </div>
+                
+                 <label class="col-sm-2 padding_topbot" style="float:left">Mobile No.</label>
+              <div class="col-sm-4 padding_topbot">
+				<input type="text" class="form-control " name="mobile_no" id="mobile_no"  value="<?php print $data['Rec']->mobile_no;?>" placeholder="Mobile" required>
+               </div>
+                
+            </div>
+            
+			<div class="form-group padding_topbot">
+			<label for="Email" class="col-sm-2">Email</label>
+			<div class="col-sm-10 padding_topbot">
+			<input type="text" class="form-control" name="email" id="email" value="<?php print $data['Rec']->email;?>" placeholder="Email" required>
+			</div>
+			</div>
+
+			<div class="form-group">
+			<label for="Address" class="col-sm-2 padding_topbot">Address</label>
+			<div class="col-sm-10 padding_topbot">
+			<textarea class="form-control" cols="3" rows="5" height="40" name="user_address" id="user_address"><?php print $data['Rec']->address;?></textarea>				
+			</div>
+			</div>
+
+
+			<div class="form-group">
+			<label for="Country" class="col-sm-2 padding_topbot">Country</label>
+			<div class="col-sm-4 padding_topbot">              
+			<select  class="form-control"  name="user_country" id="user_country" required>
+			<?php print $data['CountryList'];?>
+			</select>
+			</div>
+                
+			<label for="State" class="col-sm-2 padding_topbot">State</label>
+			<div class="col-sm-4 padding_topbot">
+			<select  class="form-control" name="user_state" id="user_state" required>
+			<?php print $data['StateList'];?>
+			</select>
+			</div>
+			</div>
+
+			<div class="form-group">
+			<label for="City" class="col-sm-2 padding_topbot">City</label>
+			<div class="col-sm-4 padding_topbot">
+			<select  class="form-control" name="user_city" id="user_city" required>
+			<?php print $data['CityList'];?>
+			</select>
+			</div>
+
+			<label for="pinncode" class="col-sm-2 padding_topbot">Pin Code</label>
+			<div class="col-sm-4 padding_topbot">
+			<input type="text" class="form-control" name="pincode" id="pincode" maxlength="6" value="<?php print $data['Rec']->pincode;?>" placeholder="Pin Code" required>
+			</div>
+			</div>
+
+			<div class="form-group">
+			<label for="User Tupe" class="col-sm-2 padding_topbot">User Type</label>
+			<div class="col-sm-4 padding_topbot">
+			<select  class="form-control" name="user_role_type" id="user_role_type" required>
+			<?php print $data['RollTypeList'];?>
+			</select>
+			</div>
+
+			<label for="Role" class="col-sm-2 padding_topbot">Designation</label>
+			<div class="col-sm-4 padding_topbot">
+			<select name="role_id" id="role_id" class="form-control" required>
+			<?php print $data['RoleList'];?>               
+			</select>
+			</div>
+            </div>
+            
+          
+            
+            <div class="form-group">
+              <label for="Username" class="col-sm-2 padding_topbot">Username</label>
+              <div class="col-sm-4 padding_topbot">
+				<input type="text" class="form-control" name="username" id="username" value="<?php print $data['Rec']->username;?>" placeholder="Username" required>            </div>
+               <!-- <label for="Password" class="col-sm-2 padding_topbot">Password</label>
+              <div class="col-sm-4 padding_topbot">
+				<input type="password" class="form-control" name="password" id="password" value="<?php print $data['Rec']->password;?>" placeholder="Password" required>
+                </div>-->
+                
+            </div>
+						
+			<div class="form-group">
+				<label for="Status" class="col-sm-2 padding_topbot">IsActive</label>
+				<div class="col-sm-4 padding_topbot">
+				<select name="IsActive" id="IsActive" class="form-control" required>
+				<?php print $data['StatusList'];?>
+				</select>
+				</div>
+                <label class="col-sm-2 padding_topbot"></label>
+                <div class="col-sm-4 padding_topbot pull-right">
+                </div>
+			</div>
+           
+            
+          </div>
+		  
+		  
+		   <div class="col-sm-5 pull-right">
+          	<div class="form-group">
+              <label for="Module" class="col-sm-12"><strong>Select Module</strong></label>
+              <div class="col-sm-6 pull-left">
+                <ul style="list-style-type: none;">
+                  <li><input type="checkbox" name="CheckAll" id="selectall" value="1" /><strong> Check / Un-Check All</strong></li>
+				  <li><input type="checkbox" name="manage_jobs" id="manage_jobs" class="checkbox1" value="1" <?php if($data['Rec']->manage_jobs==1) echo "checked";?>/> Jobs</li>
+                  <li><input type="checkbox" name="manage_client" id="manage_client" class="checkbox1" value="1"  <?php if($data['Rec']->manage_client==1) echo "checked";?>/> Client</li>
+                  <li><input type="checkbox" name="manage_driver" id="manage_driver" class="checkbox1" value="1" <?php if($data['Rec']->manage_driver==1) echo "checked";?> /> Driver</li>
+				  <li><input type="checkbox" name="manage_driver_groups" id="manage_driver_groups" class="checkbox1" value="1" <?php if($data['Rec']->manage_driver_groups==1) echo "checked";?> /> Driver Groups</li>
+				  <li><input type="checkbox" name="manage_tracking" id="manage_tracking" class="checkbox1" value="1" <?php if($data['Rec']->manage_tracking==1) echo "checked";?> /> Tracking</li>
+				  <li><input type="checkbox" name="manage_complaint" id="manage_complaint" class="checkbox1" value="1" <?php if($data['Rec']->manage_complaint==1) echo "checked";?> /> Complaint</li>
+				  <li><input type="checkbox" name="manage_fair" id="manage_fair" class="checkbox1" value="1" <?php if($data['Rec']->manage_fair==1) echo "checked";?>/> Manage Fair</li>
+				  <li><input type="checkbox" name="manage_reports" id="manage_reports" class="checkbox1" value="1" <?php if($data['Rec']->manage_reports==1) echo "checked";?>/> Reports</li>
+				  <li><input type="checkbox" name="manage_promotion" id="manage_promotion" class="checkbox1" value="1"  <?php if($data['Rec']->manage_promotion==1) echo "checked";?>/> Promotion</li>
+				  <li><input type="checkbox" name="manage_device" id="manage_device" class="checkbox1" value="1"  <?php if($data['Rec']->manage_device==1) echo "checked";?>/> Device</li>
+                  <li><input type="checkbox" name="manage_vehicle" id="manage_vehicle" class="checkbox1" value="1"  <?php if($data['Rec']->manage_vehicle==1) echo "checked";?>/> Vehicle</li>
+                  <li><input type="checkbox" name="manage_enquiry" id="manage_enquiry" class="checkbox1" value="1"  <?php if($data['Rec']->manage_enquiry==1) echo "checked";?>/> Enquiry</li>
+				  <li><input type="checkbox" name="manage_role" id="manage_role" class="checkbox1" value="1" <?php if($data['Rec']->manage_role==1) echo "checked";?> /> Manage Role</li>
+				  <li><input type="checkbox" name="manage_user" id="manage_user" class="checkbox1" value="1" <?php if($data['Rec']->manage_user==1) echo "checked";?> /> Manage User</li>
+				  <li><input type="checkbox" name="mange_driver_payment" id="mange_driver_payment" class="checkbox1" value="1" <?php if($data['Rec']->mange_driver_payment==1) echo "checked";?> /> Driver Payment</li>
+					<li><input type="submit" value="Save" class="btn btn-info pull-left "></li>
+
+                </ul>
+              </div>
+            
+            </div>
+          </div>
+		  
+		  
+		  
+		  
+		  
+          <input type="hidden" name="id" value="<?php print $data['Rec']->id;?>" />
+        </form>
+		
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).ready(function(){
+        $("select").change(function(){
+            $( "select option:selected").each(function(){
+                if($(this).attr("value")=="call_center"){
+                    $("#role_id").show();
+                    $("#role_id1").hide();
+					$("#role_id2").hide();
+                }
+                if($(this).attr("value")=="accountant"){
+                   $("#role_id").hide();
+                    $("#role_id1").show();
+					$("#role_id2").hide();
+                }
+                if($(this).attr("value")=="admin"){
+                   $("#role_id").hide();
+                    $("#role_id1").hide();
+					$("#role_id2").show();
+                }
+                if($(this).attr("value")=="choose"){
+                    $("#role_id").show();
+                    $("#role_id1").hide();
+					$("#role_id2").hide();
+                }
+            });
+        }).change();
+		
+		
+		//// Code to fetch the Designation Depends on UserType Starts Here /////		
+		
+$("#user_role_type").on('change',function(){
+var url = global_url+'/tunnel/menu/getUserRole'; 
+$.ajax({
+		type: 'POST',
+		url: url,
+		data:{usertype_id:$(this).val()},
+		dataType: "json",				 
+		success: function(data){
+			if(data.Status=="Failed"){
+				alert("Failed to Fetch Designation");
+				   $("#role_id").empty();
+				   $("#role_id").append("<option value=''>"+'Select Designation'+"</option>");				 
+			}else{
+				   $("#role_id").empty();
+				   $("#role_id").append("<option value=''>"+'Select Designation'+"</option>");
+				$.each(data.record, function(idx, obj) {                            
+					$("#role_id").append("<option value='"+obj["id"]+"'>"+obj["role_name"]+"</option>");			                							
+				});
+			}                        
+		},
+		error: function(error){
+				console.log(error);	
+		}
+});
+});
+
+//// Code to fetch the Designation Depends on UserType Ends Here /////
+
+
+//// Code to fetch the State list Starts Here /////		
+		
+$("#user_country").on('change',function(){
+var url = global_url+'/tunnel/menu/getState'; 
+$.ajax({
+		type: 'POST',
+		url: url,
+		data:{Country_id:$(this).val()},
+		dataType: "json",				 
+		success: function(data){
+			if(data.Status=="Failed"){
+				alert("Failed to Fetch State list");
+				   $("#user_state").empty();
+				   $("#user_state").append("<option value=''>"+'Select State'+"</option>");				 
+			}else{
+				   $("#user_state").empty();
+				   $("#user_state").append("<option value=''>"+'Select State'+"</option>");
+				$.each(data.record, function(idx, obj) {                            
+					$("#user_state").append("<option value='"+obj["id"]+"'>"+obj["state_name"]+"</option>");			                							
+				});
+			}                        
+		},
+		error: function(error){
+				console.log(error);	
+		}
+});
+});
+
+//// Code to fetch the State list Ends Here /////
+
+//// Code to fetch the Country list Starts Here /////		
+
+$("#user_state").on('change',function(){
+	var url = global_url+'/tunnel/menu/getCity'; 
+	  $.ajax({
+                type: 'POST',
+                url: url,
+				data:{State_id:$(this).val()},
+                dataType: "json",				 
+                success: function(data){
+                    if(data.Status=="Failed"){
+                           alert("Failed to Fetch City list");
+							$("#user_city").empty();
+							$("#user_city").append("<option value=''>"+'Select City'+"</option>");								   
+                    }else{
+							$("#user_city").empty();
+							$("#user_city").append("<option value=''>"+'Select City'+"</option>");
+                        $.each(data.record, function(idx, obj) {                            
+                            $("#user_city").append("<option value='"+obj["id"]+"'>"+obj["city_name"]+"</option>");			                							
+                        });
+                    }                        
+                },
+                error: function(error){
+                        console.log(error);	
+                }
+        });
+ });
+
+//// Code to fetch the Country list Ends Here /////		
+
+$('#selectall').click(function(event) {  //on click 
+			if(this.checked) { // check select status
+				$('.checkbox1').each(function() { //loop through each checkbox
+					this.checked = true;  //select all checkboxes with class "checkbox1"               
+				});
+			}else{
+				$('.checkbox1').each(function() { //loop through each checkbox
+					this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+				});         
+			}
+		});
+		
+    });
+	
+	
+</script>

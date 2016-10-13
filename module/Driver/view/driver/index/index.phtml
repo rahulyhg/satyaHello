@@ -1,0 +1,463 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<div class="signinbg">
+			<div class="container">
+				<div class="">
+					<div class="col-lg-6 pull-left">
+						<strong style="display:block; width:200px; color:white; font-size:14px;">Driver Registration</strong>
+                        <h3 style="display:none;">Login</h3>
+                        <h3 style="display:none;">Segment</h3>
+
+                      </div>
+					<div class="col-lg-5 col-mg-6 pull-right" id="crum" style="line-height:0px !important;">
+					  <ul class=" badcarmlist" style="margin-top:-12px;">
+                     	<li class="active"><a class="active" href="#">Email</a></li>
+                        <li class='segment_crum'><a class="segment_crum" href="#">Segment</a></li>
+                      	 <li><a href="#">Verification</a></li>
+                   
+                       	 <li style="background:none;"><a href="#">Done</a></li>
+                     </ul>
+					</div>
+ 				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!--footer-->
+		<div class="container">
+<form id="login_form3">
+         <!--EMAIL ID START-->
+		<div class="container" id="email_id" style="">
+				<div class="row text-center">
+					<div class="col-md-12">
+						<div class="exit_iconbox">
+							
+                                <!--<div class="circle-tile-heading red">
+                                    <i class="fa fa-envelope fa-fw fa-4x" style="position: absolute;margin:2px 0 0 -48px;transform: rotate(-21deg) !important;text-shadow: -1px 1px 1px #ccc!important;"></i>
+                                    <i class="fa fa-mobile fa-fw fa-7x" style="position: absolute;margin: 0 0 0 -91px;text-shadow: 1px 1px 0px #999;"></i>
+                                </div>-->
+								<div class="circle-tile-heading red">
+                                    <i class="fa fa-user fa-fw fa-1_5x sicon"></i>
+                                </div>
+                          
+                            
+
+						</div>
+					</div><div class="clearfix"></div>
+				</div>
+ 			<div class="row text-center">
+             <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+             	<!--<h5 class="darkcolor spance20">Type your Email or Mobile</h5>-->
+				<strong style="font-size:14px;color:grey;">Enter your Registration Details</strong>
+             </div><br/><br/>
+				<div class="leftbox col-md-6 col-lg-5 col-md-offset-3 col-lg-offset-3">
+ 					<div class="col-lg-12">
+							<div class="spance" align="center">
+							<p style='display:none;color:red' class='already'>User Already Exists Please click on Login</p>
+							<input style="width: 250px;margin: 0 0 0 0;font-size:14px;" id="emailOrNo" name="email" type="text" placeholder="Enter Email or Mobile" class="signup form-control form-horizontal border " value=""/>
+							<p style="display:none;color:red" class="valid_error email_error"></p>
+							</div>
+							<div class="spance" align="center">
+							<input style="width: 250px;margin: 0 0 0 0;font-size:14px;" id="firstPass" name="firstPass" type="password" placeholder="Enter Password" class="signup form-control form-horizontal border "/>
+							<p style="display:none;color:red" class="valid_error pass_error"></p>
+							</div>
+							<div class="spance" align="center">
+							
+							<input style="width: 250px;margin: 0 0 0 0;font-size:14px;" id="secondPass" name="secondPass" type="password" placeholder="Retype Password" class="signup form-control form-horizontal border "/>
+							<p style="display:none;color:red" class="valid_error cpass_error"></p>
+							</div>
+<!--<div class="spance">
+                             	<strong><a style="font-size:14px;" class="darkcolor" href="forgetpassword">Forgot password?</a></strong>
+                             </div>-->
+  						</div>
+				</div>
+			</div>
+		</div>
+        <!--EMAIL ID END--> 
+        
+      <!--Segment START-->  
+        <div class="container" id="segment" style="display:none;">
+         <!-- Start DASHBOARD -->
+         
+         	<div class="row text-center">
+            <div class="col-md-8 col-lg-12">
+            <div  class="col-lg-3 col-sm-3"></div>
+                     <div  class="col-lg-3 col-sm-3">
+                        <div class="circle-tile" >  
+							<div class="circle-tile-content orange" id="1" onclick="segment(this.id)">
+							   <div style="margin-top:-45px;">
+									<div class="circle-tile-heading red" id="1" onclick="segment(this.id)" style="cursor:pointer;">
+										<i class="fa fa-user fa-fw fa-1_5x sicon" style="cursor:pointer;"></i>
+								    </div>
+								     <div class="circle-tile-number text-faded text-center">USER</div>
+							   </div>								
+                            </div>
+                            <a data-toggle="modal" data-target="#myModalmore" style="cursor:pointer;" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                        </div>
+                    </div>
+                   <div  class="col-lg-3 col-sm-3">
+                        <div onclick="segment(this.id)" id="1" class="circle-tile-content orange">
+							   <div style="margin-top:-45px;">
+									<div style="cursor:pointer;" onclick="segment(this.id)" id="1" class="circle-tile-heading red">
+										<i style="cursor:pointer;" class="fa fa-users fa-fw fa-1_5x sicon"></i>
+								    </div>
+								     <div class="circle-tile-number text-faded text-center">CORPORATE USERS</div>
+							   </div>								
+                            </div>
+
+<a class="circle-tile-footer" data-toggle="modal" data-target="#myModalmore" style="cursor:pointer;">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                    </div>
+                    <!--<div  class="col-lg-4 col-sm-4">
+                        <div class="circle-tile">                         
+                                <div class="circle-tile-heading red dashboardiconsposg" style="cursor:pointer;" id="3" onclick="segment(this.id)">                                     
+                                    <i class="fa fa-male fa-fw fa-5x" style="position: absolute;margin: -10px 0 0 -66px;text-shadow: -1px 1px 1px #ccc!important;text-shadow: 1px 1px 1px #999;"></i>
+                                    <i class="fa fa-car fa-fw fa-4x" style="position: absolute;margin: 0 0 0 -23px;text-shadow: 1px 1px 0px #999;text-shadow: 1px 1px 1px #999;"></i>                                
+                                </div>                          
+                            <div class="circle-tile-content orange" id="3" onclick="segment(this.id)">
+                                 <div class="circle-tile-number text-faded text-center">DRIVER</div>
+                             </div>
+                            <a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                        </div>
+                    </div>-->
+                </div>
+   			</div>      
+         <!-- DASHBOARD End-->
+         
+         
+         </div>
+          <!--Segment END--> 
+         
+           <!--verification START-->
+		<div class="container" style="display:none;">
+				<div class="row text-center">
+					<div class="col-md-12">
+						<div class="exit_iconbox">
+							<a href="#">
+                                <div class="circle-tile-heading red">
+                                     <i class="fa fa-key fa-fw fa-7x"></i>
+                                </div>
+                            </a>
+                            
+
+						</div>
+					</div><div class="clearfix"></div>
+				</div>
+				
+			<div class="row text-center">
+            <h1 class="darkcolor spance20">Enter verification code sent on your email and phone</h1>
+				<div class="leftbox col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
+ 					<div class="col-lg-12">
+  							<div class="spance">
+                            <input type="text" placeholder="VERIFICATION CODE" class="form-control form-horizontal border textsize17"/>
+
+							</div>
+ 					</div>
+				</div>
+			</div>
+		</div>
+        <!--verification END--> 
+        
+         <!--Done START-->
+		<div class="container" style="display:none;">
+				<div class="row text-center">
+					<div class="col-md-12">
+						<div class="exit_iconbox">
+							<a href="#">
+                                <div class="circle-tile-heading red">
+                                     <i class="fa fa-check fa-fw fa-7x"></i>
+                                </div>
+                            </a>
+                            
+
+						</div>
+					</div><div class="clearfix"></div>
+				</div>
+				
+			<div class="row text-center">
+  				<div class="leftbox col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                <h1 class="darkcolor spance">You are successfully registered.</h1>
+ 					<div class="col-lg-12">
+  				</div>
+				</div>
+			</div>
+		</div>
+        <!--Done END--> 
+               
+        <div class="login_btnbg" id="login_done" style="background-color: white;">
+					<div class="">
+							<div class="row text-center" style="margin:0;">
+							<div class="col-lg-5 col-lg-offset-3">
+							<a href="#" class=" btn btn-lg loginbutton" style="display:none;" id="loginBtn" ><label class="manageloginText" style="color: #FFF">Login</label></a>
+                           <?php // if($_REQUEST["role"]==3){?>
+						   <a href="#" class="btn btn-sm loginbutton" style="width:110px;margin-left:10px" id="nextStepBtn" rel="3" >
+							<label class="manageloginText" style="color: #FFF;font-size: 12px;padding: 0px 0px;">Next</label></a>
+						   <?php // }else{?>
+						  <!-- <a href="#segment" class="btn btn-sm loginbutton" style="width:110px;margin-left:10px" id="nextStepBtn">
+							<label class="manageloginText" style="color: #FFF;font-size: 12px;padding: 0px 0px;">Next</label></a>-->
+						   <?php // }?>
+                            <a href="#" class=" btn btn-lg donebtn"  id="doneButton" style="color: #FFF; display:none;">done</a>
+							</div>
+							</div>
+					</div>
+				</div>
+         
+        </form>
+        
+       </div> 
+       
+       
+        <div class="modal fade" id="myModalmore" role="dialog">
+    <div class="modal-dialog modal-dialoglogin">
+    
+      <!-- Modal content-->
+      <div class="modal-content modal-dialoglogin1 login_form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title">
+
+About User SignUp
+
+</h2>
+        </div>
+        <div class="modal-body">
+          <div class="row" style="padding:0 15px;">
+                   
+          <div class="col-sm-12 plan price-one" style="height:350px; overflow:scroll;">
+          
+         <!-- <div class="col-lg-12" style=" background: #c52d2f none repeat scroll 0 0; color: #fff; padding:5px;">
+           <h2>Package-
+                                <span style="font-size:14px;">4 Hours - 40 KM</span>
+                                </h2></div>-->
+          
+         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br />
+<br />
+
+
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<br />
+<br />
+
+ 
+
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.  
+                            
+            
+                                 </div>
+                          
+          </div>
+          
+          <div></div>
+          
+        </div>
+        
+        <div class="modal-footer" style=" padding-top:2px !important;">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+      
+      
+    </div>
+  </div>
+  
+  
+  
+  <div class="modal fade" id="myModallsogin" role="dialog">
+    <div class="modal-dialog modal-dialoglogin">
+    
+      <!-- Modal content-->
+      <div class="modal-content modal-dialoglogin1 login_form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title">
+
+Login
+
+</h2>
+        </div>
+        <div class="modal-body">
+          <div class="row" style="padding:0 15px;">
+                   
+          <div class="col-sm-12 plan price-one ">
+          
+         <!-- <div class="col-lg-12" style=" background: #c52d2f none repeat scroll 0 0; color: #fff; padding:5px;">
+           <h2>Package-
+                                <span style="font-size:14px;">4 Hours - 40 KM</span>
+                                </h2></div>-->
+          <form id="login_form2" autocomplete="off">
+          <div class="col-sm-6" style="background:; border-right:1px solid #ccc;">
+          
+          <p class='invalid' style='display:none;color:red'>Invalid Username or Password</p>
+           <label class="col-lg-12" style="text-align:left;"> Email or Mobile  </label> 
+
+
+          	<input class="form-control"  id="login_email" name="login_email" placeholder="Email or Mobile">
+          
+            <label class="col-lg-12" style="color:#000;">
+            Password
+             </label>
+      
+           <input class="form-control" type="password" id="login_password" name="password" placeholder="Password">
+            
+             
+             <label class="col-lg-12" style="color:#000; text-align:center;">
+             <input type="button" id="signin"   value="Login" class="btn btn-primary"  />
+                      
+                           </label>
+            <label>
+             <a href="#" id="forgot_form" class="loginhome"> Forgot password?</a><br />
+
+ <a href="<?php echo $this->basePath(); ?>/login/index/signup" class="loginhome">New User? Create Account </a>
+            </label>
+            <label class="col-lg-12" style="color:#000;"></label>
+            <div align="center"> OR</div>
+            <label class="col-lg-12" style="color:#000;"></label>
+            
+            <div class="col-md-12" id="renderMe" style="padding:0 !important;" >
+            <a class="btn btn-danger btn-social btn-google-plus" style="background:#c52d2f;">
+							<i class="fa fa-google-plus"></i>Sign in with Google Plus
+						  </a></div>
+                          
+                     <label class="col-lg-12" style="color:#000;"></label>     
+                          <div class="col-md-6" id="renderMe" align="left" style="padding:0 !important;">
+							 <a class="btn btn-danger btn-social btn-google-plus" style="background:#3c55a2;">
+							<i class="fa fa-facebook  fa-1x"></i>
+                            
+                            Connect using Facebook
+						  </a>
+                          
+                         
+                            </div>
+                             <label class="col-lg-12" style="color:#000;"></label>
+						    <div class="spance col-md-6">
+								<script type="in/Login">
+								</script>
+								</div>
+            
+          </div>
+          </form>
+          <div class="col-sm-5 right" style="background:; float:right;" align="right">
+           <label class="col-lg-12" style="padding-right:0 !important;"> 
+    <a href="<?php echo $this->basepath(); ?>/login/index/myaccount" class="loginhome">My Profile </a> </label>
+    <label class="col-lg-12" style="padding-right:0 !important;"> 
+    <a href="<?php echo $this->basepath(); ?>/login/index/myaccount" class="loginhome">Manage Bookings</a>
+    </label>
+    <label class="col-lg-12" style="border-bottom:1px solid #ccc;"></label>
+    <label class="col-lg-12" style="padding-right:0 !important;"> 
+   <a href="#" class="loginhome"> View E-Ticket</a></label>
+    <label class="col-lg-12" style="padding-right:0 !important;"> 
+   <a href="#" class="loginhome"> Cancel Bookings</a></label>
+    <label class="col-lg-12" style="padding-right:0 !important;"> 
+    <a href="#" class="loginhome">Change Travel Date</a></label>
+    <label class="col-lg-12" style="padding-right:0 !important;"> 
+    <a href="#" class="loginhome">Check Refund Status</a></label>
+    <label class="col-lg-12" style="padding-right:0 !important;"> 
+    <a href="#" class="loginhome">View Holiday Booking</a></label>
+    <label class="col-lg-12" style="padding-right:0 !important;"> 
+    <a href="#" class="loginhome">Make Payment</a></label>
+  
+          	
+            
+          </div>
+          
+           
+                      
+                            
+            
+                                 </div>
+                          
+          </div>
+          
+          <div></div>
+          
+        </div>
+        
+        
+        <div class="modal-footer" style=" padding-top:2px !important;">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+      
+      <div class="modal-content modal-dialoglogin2 modal-dialoglogin1 forgot_form" style="display:none;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title">
+
+Forgot Pasword
+
+</h2>
+        </div>
+        
+        
+        <div class="modal-body">
+          <div class="row" style="padding:0 15px;">
+                   
+          <div class="col-sm-12 plan price-one ">
+          
+         <!-- <div class="col-lg-12" style=" background: #c52d2f none repeat scroll 0 0; color: #fff; padding:5px;">
+           <h2>Package-
+                                <span style="font-size:14px;">4 Hours - 40 KM</span>
+                                </h2></div>-->
+         <form id="login_form4" novalidate="novalidate">
+          <div class="col-sm-12">
+          
+          <p class='invalid' style='display:none;color:red'>Invalid Username or Password</p>
+           <label class="col-lg-12" style="text-align:left;"> Enter your email to Reset Password  </label> 
+           
+           <input  type="text" id="email" name="login_email" placeholder="Type your email here" class="form-control">
+
+                       
+             <label class="col-lg-12" style="color:#000; text-align:center;">
+            
+               <a href="#" class="btn btn-primary back_btn"><i class="fa fa-angle-double-left"></i> Back</a>
+                               
+             <input type="button" id="forget" value="Submit" class="btn btn-primary">
+                      
+                      
+                   
+                           </label>
+          
+            
+            
+                          
+                    
+            
+          </div>
+          </form>
+                <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>An Confirmation Email has been sent on your account</p>
+                <p class="text-warning"><small></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default closeButton" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+ 
+</div>   
+                      
+            
+                                 </div>
+                          
+          </div>
+          
+          <div></div>
+          
+        </div>
+        <div class="modal-footer" style=" padding-top:2px !important;">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+                    
+                    

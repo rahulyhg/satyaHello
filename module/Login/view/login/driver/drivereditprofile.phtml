@@ -1,0 +1,608 @@
+<?php $session=new Zend\Session\Container('user'); 
+ $token_session	=	$session->offsetGet('token');
+?>
+<?php if($token_session==""){ ?>
+ 	<script>
+	window.location='<?php echo $this->basePath();?>';
+ 	</script>
+ 	<?php 
+ }?>
+
+<?php
+//$this->plugin('basePath')->setBasePath($this->basePath().'/public');
+$path=$this->basePath().'/';
+?> 
+		<!--footer-->
+     <div class="container-fluid">     
+ 	<div class="row">
+	 	<div class="col-lg-12 col-lg-col-lg-offset-2 text-center headingbg">
+			<h2>My Account</h2>
+		</div>
+	 </div>	 
+     <div style="display:none;">
+	<div id="success-msg" style="font-weight:bold;font-size:15px;color:green;text-align:center;">Your Profile updated Successfully</div>
+      <div id="error-msg" style="font-weight:bold;font-size:13px;color:red;text-align:center;">Please Enter Email or Firstname</div>
+      </div>	
+     <div class="container marginbottom20">
+      	<div class="row">
+			<div class="col-lg-12">
+				<div class="col-sm-3 col-md-3 col-lg-2">					 
+					 <div class="list-group">
+            <a href="<?php echo $this->basepath(); ?>/login/driver" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Dashboard</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/drivereditprofile" class="list-group-item yellactive"><i class="fa fa-arrow-circle-right"></i> &nbsp;Edit Profile</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/changepassword" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Change Password</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/driverorderhistory" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Booking History</a>
+            <!--<a href="<?php echo $this->basepath(); ?>/login/driver/accountbalance" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Account Balance</a>
+			<!--<a href="<?php echo $this->basepath(); ?>/login/driver/markupmanagement" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Markup Management</a>-->
+			<a href="<?php echo $this->basepath(); ?>/login/driver/transaction" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Transaction</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/creditrequest" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Credit Request</a>
+            <a href="<?php echo $this->basepath(); ?>/login/driver/bankdetail" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Bank Details</a>
+			<a href="<?php echo $this->basepath(); ?>/login/driver/vehicleupdate" class="list-group-item"><i class="fa fa-arrow-circle-right"></i> &nbsp;Vehicle Details</a>
+          </div>
+				</div>				
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            <div class="row" style="display:block;">
+                <div class="col-lg-12">
+                    <!--EDIT PROFILE START-->                    
+                    <div class="panel panel-default">
+                        <div   class="panel-heading tabheading text-center text-uppercase ">
+                           <b style="display:;">Edit Profile</b>
+						   <b style="display:none;">Change Password</b>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">						
+						<!-- Dashboard Start-->	
+        <div class="col-sm-12 col-md-12" style="display:block;">
+        
+        <div class="right_panel col-sm-3" style="float:right;">
+         	<div id="">
+    <!-- Current avatar -->   
+    <div class="avatar-view userimg_byratio" style="width:140px; margin:auto;" title="" data-original-title="Profile Picture">
+	<a href="#avatar-modal" data-toggle="modal" title="Update Profile Picture">
+      <img src="" alt="Avatar" id="profile_pic_update" style="border:#666 1px solid; box-shadow:#666 2px;width:100%;margin-bottom:7px; height:150px;"/>
+	  </a><br/>
+	  <a href="#avatar-modal" data-toggle="modal" title="Profile Picture"><strong style="color: rebeccapurple;margin-left:7px;">Change Profile Picture</strong></a>
+    </div> 
+    <!-- Cropping modal -->
+    <div id="crop-avatar">
+	<!-- Current avatar -->	 
+	<!-- Cropping modal -->
+	<div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" style="margin-top:225px;">
+		<div class="modal-content">
+		  <form class="avatar-form" id="change_profileImage" name="change_profileImage" method="POST" action="<?php echo $this->basePath().'/tunnel/menu/updateDriverProfileImage';?>" enctype="multipart/form-data">
+			<div class="modal-header">
+			 <h1 class="closbtn" style="right:0;border: none !important;" data-dismiss="modal"><i class="fa fa-close"></i></h1>
+			  <h4 class="modal-title" id="avatar-modal-label">Profile Picture</h4>
+			</div>														
+			<div class="modal-body">
+			  <div class="avatar-body">
+				<!-- Upload image and data -->
+				<div class="avatar-upload">
+				  <input class="avatar-src" name="avatar_src" type="hidden">
+				  <input class="avatar-data" name="avatar_data" type="hidden">
+				  <label for="avatarInput"></label>														   
+				  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+				</div>
+				<!-- Crop and preview -->
+				<div class="row">
+				  <div class="col-md-9">
+					  <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+					<div class="avatar-wrapper"></div>
+				  </div>
+				  <div class="col-md-3">
+					<div class="avatar-preview preview-lg" style="position:relative"></div>
+					<div class="avatar-preview preview-md" style="position:relative"></div>
+					<div class="avatar-preview preview-sm" style="position:relative"></div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<div class="modal-footer">
+			  <button class="btn btn-primary avatar-save col-sm-2 pull-right" id="save_image" type="submit" style="margin-left:10px;" onclick="changeProfileImage();">Save</button>
+			  <button class="btn btn-default col-sm-2 pull-right" type="button" data-dismiss="modal">Close</button>														  
+			</div>
+		  </form>
+		</div>
+	  </div>
+	</div><!-- /.modal -->
+	<!-- Loading state -->											   
+  </div><!-- /.modal -->
+    <!-- Loading state -->   
+  </div>             		
+		<!-- <h5><center><b>Management</b></center></h5>
+<center><div class="btn defaultbtnsearch ">Send SMS</div></center>
+<h5><center>Current Status</center></h5>
+<input type="text" id="driverStatus" name="dName" aria-controls="driver" class="form-control input-sm" disabled="">
+<h5><center>Signup status</center></h5>
+<center>
+    <input type="text" id="driver_length" name="dName" aria-controls="driver" class="form-control input-sm" disabled="">
+</center>-->
+        </div>
+            
+                <form action="" method="POST" name="driver_editProfile" id="driver_editProfile"> 
+                    <div class="left_panel col-sm-6" style="float:left;">
+                    <div class="change_password">
+					  
+						<label><b>First Name*</b></label><input type="text" class="input" name="driver_firstName" id="driver_firstName" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Last Name</b></label><input type="text" class="input" name="driver_lastName" id="driver_lastName" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Father's Name*</b></label><input type="text" class="input" name="driver_father" id="driver_father" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Email*</b></label><input type="text" class="input" name="email_driver" id="email_driver">
+                        <div class="clear"></div>
+                        <label><b>City*</b></label><input type="text" class="input" name="city_driver" id="city_driver" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Email Verified *</b></label><input type="checkbox" class="checkbox" name="emailVerify" id="emailVerify">
+                        <div class="clear"></div>                        
+                        <div class="clear"></div>
+                        <label><b>External Reference</b></label> <input type="text" class="input" name="externalRef" id="externalRef">
+                        <div class="clear"></div>
+                        <label><b>Created On</b></label><label><span id="createdDate"></span></label>
+                        <div class="clear"></div>
+                        <label><b>Boss Of Driver Group*</b></label><label><span id="vName"></span></label>
+                        <div class="clear"></div>                        
+                        <label><b>Default Language*</b></label><input type="text" class="input" name="driverDefaullag" id="driverDefaullag" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Gender*</b></label>
+						<select class="input" name="driverGender" id="driverGender" style="text-transform:uppercase;">
+						<option value="" selected="true">--Select Gender--</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						</select>
+                        <div class="clear"></div>
+                        <label><b>Date Of Birth*</b></label><input type="text" class="input" name="driverBirth" id="driverBirth">
+                        <div class="clear"></div>
+                        <label><b>Terms Acceted On*</b></label><label><span id=""></span></label>
+                        <div class="clear"></div>
+                        <label><b>Has Account*</b></label><label><span id="driver_account"></span></label>
+                        <div class="clear"></div>
+                        <label><b>Address*</b></label><input type="text" class="input" name="driver_adds" id="driver_adds" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Office Address</b></label><input type="text" class="input" name="driver_addofc" id="driver_addofc" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Phone Number*</b></label><input type="text" class="input" name="driver_phone" id="driver_phone" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <label><b>Phone Number Verified*</b></label><input type="checkbox" class="checkbox" name="dAir1" value="" id="phoneverify">
+                        <div class="clear"></div>                       
+                        <label><b>Pan Card Details*</b></label><input type="text" class="input" name="driver_panNos" id="driver_panNos" style="text-transform:uppercase;">	
+                        <div class="clear"></div>
+                        <label><b>Badge / License No.*</b></label><input type="text" class="input" name="driver_licence"  id="driver_licence" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+                        <!-- <label><b>Vehicle No.*</b></label><input type="text" class="input" name="driver_vehicleNo" id="driver_vehicleNo" style="text-transform:uppercase;" >
+                        <div class="clear"></div>
+                        <label><b>No. Of Fleet*</b></label><input type="text" class="input" name="driver_fleetNo" id="driver_fleetNo" readonly>
+                        <div class="clear"></div>-->
+                        <label><b>Security Amount*</b></label><input type="text" class="input" name="driver_amount" id="driver_amount" readonly>
+                        <div class="clear"></div>
+                       <!-- <label><b>Current Vehicle*</b></label><label><span id="vehicleid"></span></label>
+                        <div class="clear"></div>
+                        <label><b>Model Year*</b></label>
+						<select class="input" name="driver_modely" id="driver_modely" style="text-transform:uppercase;">
+							<option value="" selected="true">--Select Model Year--</option>               
+						</select>
+						<script>
+								var date=new Date().getFullYear();
+								var i;
+									for(i=date;i>=date-15;){					
+										 $('#driver_modely').append($('<option>', {
+											value: i,
+											text: i
+										})); 
+										i--;
+									}
+						</script>
+                        <div class="clear"></div>
+                        <label><b>License State*</b></label><input type="text" class="input" name="driver_lstate" id="driver_lstate" style="text-transform:uppercase;" >
+                        <div class="clear"></div>-->
+                        <label><b>Driver Specs*</b></label><div><input type="radio" name="specs_active" id="specs_active" value="1">Specs <input type="radio" name="specs_active" id="specs_inactive" value="2">No Specs</div>
+                        <div class="clear"></div>
+                        <label></label>
+                       <!-- <div class="clear"></div>
+                        <label><b>Zone*</b></label><input type="text" class="input" name="driver_zone" id="driver_zone" style="text-transform:uppercase;>-->
+                        <div class="clear"></div>
+                        <label><b>Route Knowledge*</b></label><input type="text" class="input" name="driver_route" id="driver_route" style="text-transform:uppercase;">
+                                <div class="clear"></div>
+                        <label><b>Preferred Location/Zone*</b></label>
+						<select  class="input" name="driver_pref" id="driver_pref" style="text-transform:uppercase;">
+							<option value="" selected="true">--Select Location--</option>
+							<option value="Airport">Airport</option>
+							<option value="Center">Center</option>
+							<option value="East">East</option>
+							<option value="North">North</option>
+							<option value="South">South</option>
+							<option value="West">West</option>
+						</select>
+                        <div class="clear"></div>
+                        <label><b>Week Off*</b></label>
+                        <select  class="input" name="driver_weekoff" id="driver_weekoff" style="text-transform:uppercase;">							
+							<option value="Yes" selected="selected">Yes</option>
+							<option value="No">No</option>							
+						</select>
+						<div class="clear"></div>
+                        <label><b>Mobile IMEI No.*</b></label><input type="text" class="input" name="driveimei" id="driveimei" style="text-transform:uppercase;">
+                        <div class="clear"></div>
+						 <label><b>RC No.</b></label><input type="text" class="input" name="driverrc_no" id="driverrc_no" disabled="true">
+                        <div class="clear"></div>
+                        <!-- <label><b>GPS Device No.*</b></label><input type="text" class="input" name="drivergps" id="drivergps" style="text-transform:uppercase;">
+                        <div class="clear"></div>-->
+                        <label><b>Language Known*</b></label>
+                        <div class="clear"></div>
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Write*</b></label>
+						<input type="text" class="input1" name="writelang[]" id="write1">
+						<input type="text" class="input1" name="writelang[]" id="write2">
+						<input type="text" class="input1" name="writelang[]" id="write3">
+						<input type="text" class="input1" name="writelang[]" id="write4">
+                        <div class="clear"></div>
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Speak*</b></label>
+						<input type="text" class="input1" name="speak[]" id="speak1">
+						<input type="text" class="input1" name="speak[]" id="speak2">
+						<input type="text" class="input1" name="speak[]" id="speak3">
+						<input type="text" class="input1" name="speak[]" id="speak4">
+                        <div class="clear"></div>
+                        <label><b>Time of Login</b></label>
+						<label style="width:95px !important;"><span  id="">Morning</span></label>
+						<label style="width:95px !important;"><span id="">Evening</span></label>
+						<label><span id="">Night</span></label>
+                        <div class="clear"></div>
+                        <label><b>Timing</b></label>
+						<input type="text" class="input2" name="logtime" id="time1">
+						<input type="text" class="input2" name="logtime1" id="time2">
+						<input type="text" class="input2" name="logtime2" id="time3">
+						<div class="clear"></div>
+                        <label><b>AC/Non-AC*</b></label>
+					<input type="text" class="input" name="driverRAc_NonAC" id="driverRAc_NonAC" readonly value="">
+                        <div class="clear"></div>
+                        <label><b>Driver Status*</b></label>
+						<div>
+							<input type="text" name="driver_isActive" id="isActive1" readonly value="" style="margin-right:3px;">
+						<!--<input type="radio" name="driver_isActive" id="isActive" value="1" style="margin-right:3px;">  &nbsp;&nbsp;
+						<input type="radio" name="driver_isActive" id="isHold" value="2" style="margin-right:3px;"> On Hold  &nbsp;&nbsp;
+						<input type="radio" name="driver_isActive" id="isBlack" value="3" style="margin-right:3px;"> Black Listed &nbsp;&nbsp;
+						<input type="radio" name="driver_isActive" id="isInactive" value="4" style="margin-right:3px;"> Inactive 
+						<input type="radio" name="driver_isActive" id="Unapproved" value="5" style="margin-top:10px;">Unapproved-->
+						</div>
+                       </div></div>
+                        <div class="left_panel col-sm-6" style="float:left; width:100% !important;">
+                    <div class="change_password">
+                        <div class="clear"></div>
+                        <label>&nbsp;</label>
+                        <div class="clear"></div>
+                        <label class=""><b>Duty Type Pref.*</b></label>
+                        <div class="col-sm-8" style="padding-left:0 !important;" id="duty_type_inner">
+                        <!--<div style="float:left;"><input type="checkbox" class="checkbox driver101 dtp" name="dAir[]" value="101" id="driverLocal" style="margin-right:3px;">Local Packg&nbsp;&nbsp;</div>
+                        
+                        <div style="float:left;"><input type="checkbox" class="checkbox driver102 dtp" name="dAir[]" value="102" id="driverPoint" style="margin-right:3px;">Point To Point &nbsp;&nbsp;</div> 
+                        
+						<div style="float:left;"><input type="checkbox" class="checkbox driver103 dtp" name="dAir[]" value="103" id="driverAir" style="margin-right:3px;">Airport Transf&nbsp;&nbsp;</div>
+                        
+                        <div style="float:left;"><input type="checkbox" class="checkbox driver104 dtp" name="dAir[]" value="104" id="driverOut" style="margin-right:3px;">Outstation &nbsp;&nbsp;</div>
+
+						<div style="float:left;"><input type="checkbox" class="checkbox driver105 dtp" name="dAir[]" value="105" id="driverinter" style="margin-right:3px;">Intercity &nbsp;&nbsp;</div>--> 
+                        
+						 
+						
+						
+                        </div>
+						
+						<div style="float:left;"><input type="checkbox" class="checkbox driver5 dtp" name="driverAll" value="101,102,103,104,105" id="driverAll" style="margin-right:3px;">All</div>
+						
+                        <div class="clear"></div>
+                        <label>&nbsp;</label>
+                        <div class="clear"></div>
+                        <label><b>Payment Type*</b></label>
+						<div style="float:left;" >
+						<input type="checkbox" class="checkbox driverCash1 ccb" name="drpaymentType[]" value="1" id="driverCash" style="margin-right:3px;">Cash &nbsp;&nbsp;</div>
+						<div style="float:left;">
+						<input type="checkbox" class="checkbox driverCash2 ccb" name="drpaymentType[]" value="2" id="driverCredit" style="margin-right:3px;">Credit &nbsp;&nbsp;</div>
+						<div style="float:left;">
+						<input type="checkbox" class="checkbox driverCash3" name="drpaymentType[]" value="3" id="driverBoth" style="margin-right:3px;">Both</div> 
+						<div class="clear"></div>
+						<input type="hidden" name="id_tbluser" id="id_tbluser">
+						<input type="hidden" name="id_tbluserinfo" id="id_tbluserinfo">
+						<input type="hidden" name="id_tbldriver" id="id_tbldriver">
+						<button type="button" class="btn btn-primary submitbtn" style="margin-left:27% !important;" onclick="driver_edit()" >Save</button>
+					
+                    </div>	
+    </div>
+     </form>
+   					 
+        
+	<div class="clear"></div>		
+	<div class="col-sm-4 col-sm-offset-2 paddinttop10"></div>
+						</div>
+								</div>
+							<!-- /.table-responsive End-->
+                        </div>
+							<!--EDIT PROFILE END-->
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+				</div>
+			</div>
+       	</div>
+	 </div>
+
+<script type="text/javascript">
+var base_url = '<?php echo $this->basePath();?>';
+function changeProfileImage(){	      	  
+	  $("#change_profileImage").on('submit',(function(e){
+		e.preventDefault();
+			$.ajax({			
+			type: "POST",
+			data:  new FormData(this),
+			contentType: false,
+			cache: false,
+			processData:false,
+			url: $("#change_profileImage").attr('action'),
+           dataType: "json",		 
+           success: function(data){
+                            if(data.status == 'true'){
+								alert(data.Message);
+								window.location.href = base_url+'/login/driver/drivereditprofile';																	
+                             }else{
+                                 alert(data.Message);
+								 window.location.href = base_url+'/login/driver/drivereditprofile';
+                             }
+                        },		
+                        error: function(error){
+                            console.log(error);	
+                        }	        
+		});
+	}));  
+ }
+        $(document).ready(function() {
+            //$('#jsCarousel').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true });
+            $.fn.dataTableExt.sErrMode = 'throw';
+            fetch_driver_id();
+        });
+ 
+$(document).on('click','#driverAll',function(){
+$("input[name='drAir\\[\\]']").prop('checked', $(this).prop("checked"));
+});
+ 
+    function fetch_driver_id(){
+        var token = $.cookie('token');
+        $.ajax({
+		url: '<?php echo $this->basePath();?>'+'/tunnel/menu/fetchDriverId',
+		cache: false,
+		dataType:"json",
+		data:{
+                    token:token
+		},
+                success: function(data){
+                      //alert(data.driverId);
+                      driverProfile(data.driverId); 
+                },
+                error:function (error){
+                      //alert(error);
+                      console.log(error);
+                }
+   });
+}
+
+function driverProfile(id){
+//var token = $.cookie('token'); 
+  var token	=	$('#token').val(); 
+ var uid=id;
+  var site_url = jQuery.cookie('BaseUrl');      
+        
+         $.ajax({
+                    dataType:'json',
+                    url:site_url+'/tunnel/menu/profileDriver',
+                    type:'POST',
+                    data:{token:token},
+                    success:successProfile,
+                    error:errorProfile
+
+                });
+
+}
+
+var global_url='<?php echo $this->basePath();?>';
+
+function successProfile(data){
+  // alert("qwe");     
+   $("#profile_update").attr('id','profile_update_'+data.data.ID_tbluser);
+   $("#vehicle_update").attr('id','vehicle_update_'+data.data.ID_tbluser);
+    $("#driver_firstName").val(data.data.name);
+    $("#driver_name").html(data.data.name);
+   //alert(ss);
+   $("#driver_lastName").val(data.data.lastname);
+   $("#driver_father").val(data.data.fathername);
+   $("#externalRef").val(data.data.refn);
+   $("#city_driver").val(data.data.cn);
+   $("#createdDate").text(data.data.createDate);
+   $("#email_driver").val(data.data.email);
+   $("#driver_adds").val(data.data.address);
+    $("#driver_addofc").val(data.data.ofcadds);
+   $("#driver_phone").val(data.data.phone);
+   $("#driver_username").val(data.data.userName);
+   $("#driverBirth").val(data.data.db);
+   $("#driverDefaullag").val('Hindi');
+   $("#driverGender").val(data.data.gender);
+   $("#driverRAc_NonAC").val(data.data.ac_nonac)
+   $("#vehicleid").text(data.data.vehicleName);
+   $("#driver_account").text(data.data.account);
+   $("#driver_fleetNo").val(data.data.fleet);
+   $("#driver_amount").val(data.data.amount);
+   
+   $("#driver_panNos").val(data.data.panNo);
+   $("#driver_licence").val(data.data.licence);
+   $("#driver_vehicleNo").val(data.data.vehicle);
+   $("#driver_lstate").val(data.data.lstate);
+   $("#driver_modely").val(data.data.modelV);
+   $("#driver_zone").val(data.data.zone);
+   $("#driver_route").val(data.data.route);
+   $("#driver_pref").val(data.data.prflocation);
+   $("#driver_weekoff").val(data.data.weekoff);
+   $("#driveimei").val(data.data.iemi);
+   $("#drivergps").val(data.data.gps);
+   $("#id_tbluser").val(data.data.ID_tbluser);
+   $("#id_tbluserinfo").val(data.data.ID_tbluserinfo);
+   $("#id_tbldriver").val(data.data.ID_tbldriver);
+   $("#driverrc_no").val(data.data.rc_no);
+   if(data.data.prof_img != ''){
+       $("#profile_pic_update").attr("src",global_url+'/'+data.data.prof_img);
+   }else{
+       $("#profile_pic_update").attr("src",global_url+'/public/image/default_user.png');
+       //alert(empty);
+   }
+   
+   var pic = global_url+'/public/image/default_user.png';
+   //alert(global_url);
+   
+   if(data.data.veh_img != ''){
+       $("#vehicle_pic_update").attr("src",global_url+'/'+data.data.veh_img);
+   }else{
+       $("#vehicle_pic_update").attr("src",global_url+'/public/image/vehicle.png');
+       //alert(empty);
+   }
+   
+   //$("#vehicle_pic").attr("src",global_url+'/'+data.data.veh_img);
+   $("#driver_name_head").html(data.data.name);
+   $(".samount").val(data.data.amount);
+   $("#emailVerify").val(data.data.verify);
+   
+   
+   
+   var emailv =$("#emailVerify").val();
+   //alert(emailv);
+   if(emailv == "1"){
+        $('#emailVerify').prop('checked',true);
+        $("#phoneverify").prop('checked',true);
+   }
+ var write = data.data.write;
+ var write_lang = write.split(',');
+ $("#write1").val(write_lang[0]);
+ $("#write2").val(write_lang[1]);
+ $("#write3").val(write_lang[2]);
+ $("#write4").val(write_lang[3]);
+ 
+ var speak = data.data.speak;
+ var speak_lang = speak.split(',');
+ $("#speak1").val(speak_lang[0]);
+ $("#speak2").val(speak_lang[1]);
+ $("#speak3").val(speak_lang[2]);
+ $("#speak4").val(speak_lang[3]);
+ 
+ 
+ var timing = data.data.timing;
+ var timing_driver = timing.split(",");
+ $("#time1").val(timing_driver[0]);
+ $("#time2").val(timing_driver[1]);
+ $("#time3").val(timing_driver[2]);
+ 
+ var duty_pref = data.data.dutyprf;
+ var pref_duty = duty_pref.split(',');
+ if(pref_duty=="101,102,103,104,105"){
+	 $("#driverAll").prop('checked',true);  
+ }
+ for(j=0;j<=pref_duty.length;j++){
+   $(".driver"+pref_duty[j]).prop('checked',true);  
+ }
+ 
+ 
+ var cash = data.data.cash;
+ var driver_cash = cash.split(",");
+ for(i=0;i<=driver_cash.length;i++){
+   $(".driverCash"+driver_cash[i]).prop('checked',true);  
+ } 
+     var driver_status = data.data.active;
+     if(driver_status == 1){
+          //$('#isActive').prop('checked', true);
+		  $('#isActive1').val("Active");
+		 
+          $('#driver_length').val('Active');
+     }
+     else if(driver_status == 2){
+         //$('#isHold').prop('checked', true);
+		  $('#isActive1').val("On Hold");
+         $('#driver_length').val('On Hold'); 
+     }
+     else if(driver_status == 3){
+          //$('#isBlack').prop('checked', true);
+		 $('#isActive1').val("Black Listed");
+          $('#driver_length').val('Black Listed'); 
+     }
+     else if(driver_status == 4){
+          //$('#isInactive').prop('checked', true);
+		 $('#isActive1').val("Inactive");
+		 
+          $('#driver_length').val('Inactive'); 
+     }
+     else{
+          //$('#Unapproved').prop('checked', true);
+		 $('#isActive1').val("Unapproved");
+          $('#driver_length').val('Unapproved'); 
+     }
+     
+     
+     var data_specs = data.data.eyetest;
+	 if(data_specs == 1){
+		 $('#specs_active').prop('checked', true); 
+	 }else{
+		$('#specs_inactive').prop('checked', true); 
+	 }
+     
+ 
+    if(data.data.status_driver == "1"){
+       var txt='Online';
+      $("#driverStatus").val(txt);
+   }
+   else{
+       var txt2 ="Offline";
+       $("#driverStatus").val(txt2);
+   }
+   
+   $("#driver_signup_comts").text(data.data.signup_comts);
+   $("#driver_internal_comts").text(data.data.internal_comts);
+   
+   if(data.data.vendorName != null){
+    $("#vName").text(data.data.vendorName); 
+   }
+   else if(data.data.vendorName == null){
+     var name = "No Boss";
+     $("#vName").text(name);    
+   }
+   
+   
+   if(data.data.photo == "1"){
+      $(".photo").prop('checked',true); 
+   }
+   
+   
+        
+}
+function errorProfile(error){
+     
+    console.log(error);
+    
+}     
+</script>
+    
+<style>
+		.col-sm-2 {
+    color: #5c5c5c !important;
+	padding-right:0 !important;
+}
+
+.col-sm-1 {
+    color: #5c5c5c !important;
+	padding-right:0 !important;
+	
+}
+
+label {
+    color: #5c5c5c;
+    font-family: "Conv_GothamRounded-Light",sans-serif;
+    font-size: 13px;
+    font-weight: normal !important;
+    padding: 5px 0 0;
+}
+
+</style>
